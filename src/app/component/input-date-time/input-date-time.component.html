@@ -1,0 +1,10 @@
+<input
+  type="text"
+  mask="00-00-0000"
+  nbInput
+  fullWidth
+  placeholder="Data:"
+  [(ngModel)]="dateTime"
+  (ngModelChange)="emit()"
+  [dropSpecialCharacters]="false"
+  >

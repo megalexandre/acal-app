@@ -1,0 +1,11 @@
+<div class="table-responsive">
+  <table class="table table-hover"
+    [ngClass]="
+      {
+        'table-striped': tableStriped,
+        'table-bordered': tableBordered
+      }"
+    >
+    <ng-content></ng-content>
+  </table>
+</div>

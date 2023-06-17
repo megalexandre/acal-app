@@ -1,0 +1,47 @@
+<nb-accordion>
+  <nb-accordion-item>
+   <nb-accordion-item-header>Filtros Avançados</nb-accordion-item-header>
+   <nb-accordion-item-body *ngIf="filter">
+
+    <div class="row">
+
+      <div class="col-12">
+        <label>
+          Período
+        </label>
+      </div>
+
+      <div class="col-md-3 col-12">
+        <input nbInput fullWidth [nbDatepicker]="datepickerStarted" placeholder="De:"  [readonly]="true" [(ngModel)]="filter.createdAtStarted">
+        <nb-datepicker nb-datepicker #datepickerStarted></nb-datepicker>
+      </div>
+
+      <div class="col-md-3 col-12">
+        <input nbInput fullWidth [nbDatepicker]="datepickerFinish" placeholder="Até:" [readonly]="true" [(ngModel)]="filter.createdAtFinish" >
+        <nb-datepicker nb-datepicker #datepickerFinish></nb-datepicker>
+      </div>
+
+    </div>
+
+    <hr>
+
+    <div class="row">
+
+      <div class="offset-md-6 col-md-3 col-12">
+        <button nbButton outline status="basic" type="button" fullWidth (click)="clear()">
+          <nb-icon icon="trash-outline"></nb-icon>
+        </button>
+      </div>
+
+      <div class="col-md-3 col-12">
+        <button nbButton outline status="success" fullWidth (click)="startSearch()">
+          <nb-icon icon="search-outline"></nb-icon>
+        </button>
+      </div>
+
+    </div>
+
+
+   </nb-accordion-item-body>
+  </nb-accordion-item>
+ </nb-accordion>

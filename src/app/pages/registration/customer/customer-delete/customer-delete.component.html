@@ -1,0 +1,66 @@
+
+<div *ngIf="loaded">
+    <div class="row">
+      <div class="col-lg-12">
+        <nb-card>
+
+          <nb-card-header>
+            Deletar Usuário
+          </nb-card-header>
+
+          <nb-card-body>
+            <div class="row mb-3">
+
+              <div class="col-12">
+                <label for="name" class="label">Nome:</label>
+                <input id="name" type="text" nbInput fullWidth placeholder="Nome:" [(ngModel)]="customer.name" disabled>
+              </div>
+
+              <div [ngClass]="customer.personType.name === 'PERSON'? 'col-xl-3 col-12':'col-xl-4 col-md-6 col-12'" >
+                <label for="document" class="label">Documento:</label>
+                <input id="document" disabled
+                  type="text"
+                  [(ngModel)]="customer.document"
+                  [mask]="customer.personType.name === 'PERSON' ? '000.000.000-00':'00.000.000/0000-00'"
+                  nbInput placeholder="Documento" fullWidth >
+              </div>
+
+              <div [ngClass]="customer.personType.name === 'PERSON'? 'col-xl-3 col-12':'col-xl-4 col-md-6 col-12'" *ngIf="customer.personType.name === 'PERSON'" >
+
+                <label for="membershipNumber" class="label">Número de Sócio:</label>
+                <input id="membershipNumber" mask="0*" type="text" nbInput fullWidth placeholder="Número de Sócio:" [(ngModel)]="customer.membershipNumber" disabled>
+              </div>
+
+              <div [ngClass]="customer.personType.name === 'PERSON'? 'col-xl-3 col-12':'col-xl-4 col-md-6 col-12'" >
+                <label for="telefone" class="label">Telefone:</label>
+                <input id="telefone" mask="(00) 0 0000-0000" type="text" nbInput fullWidth placeholder="Telefone:" [(ngModel)]="customer.phoneNumber" disabled>
+              </div>
+
+              <div [ngClass]="customer.personType.name === 'PERSON'? 'col-xl-3 col-12':'col-xl-4 col-md-6 col-12'" >
+                <label for="birthDay" class="label">Data de Nascimento:</label>
+                <input id="birthDay" mask="00/00/0000" type="text" nbInput fullWidth  placeholder="Data de Nascimento:" [(ngModel)]="customer.birthDay" disabled>
+              </div>
+
+            </div>
+
+          </nb-card-body>
+          <nb-card-footer>
+
+            <div class="d-flex justify-content-between">
+              <button type="button" nbButton outline status="basic" (click)="back()">
+                <nb-icon icon="arrow-back-outline"></nb-icon>
+              </button>
+
+              <button type="button" nbButton outline status="danger" (click)="commit()">
+                <nb-icon icon="trash-2-outline"></nb-icon>
+              </button>
+            </div>
+
+          </nb-card-footer>
+        </nb-card>
+
+      </div>
+
+    </div>
+
+</div>

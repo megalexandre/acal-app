@@ -1,0 +1,113 @@
+<nb-card *ngIf="loaded">
+  <nb-card-body>
+
+    <div class="flex-container-vertical">
+      <div class="flex-container">
+        <div class="header-logo">Logo 3</div>
+        <div class="header-text">Texto 3</div>
+      </div>
+      <div >
+        <div class="col-12 text-center">
+          <h2><b><u>ACAL - Associção Comunitária e Assistência de Lages</u></b></h2>
+        </div>
+        <div class="col-12 text-center">
+          <h5><b><u>ECONOMIZAR ÁGUA É UM DEVER DE TODO SER HUMANO.</u></b></h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex-container-vertical m-3">
+
+      <div class="flex-container border-top border-bottom ">
+        <div class="column col-md-4 col-12">
+
+          <div class="col-12 text-center">
+            <b>Número de Associado</b>
+          </div>
+
+          <div class="col-12 text-center">
+            {{invoice.link.customer.membershipNumber}}
+          </div>
+
+        </div>
+
+        <div class="column col-md-4 col-12">
+
+            <div class="col-12 text-center">
+              <b>Número Boleto</b>
+            </div>
+
+            <div class="col-12 text-center">
+              {{invoice.id}}
+            </div>
+
+        </div>
+
+        <div class="column col-md-4 col-12">
+
+            <div class="col-12 text-center">
+              <b>Refêrencia</b>
+            </div>
+
+            <div class="col-12 text-center">
+              {{invoice.reference | reference}}
+            </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="flex-container border-top border-bottom">
+      <div class="column">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <tbody>
+              <tr><td><b>Sócio:</b></td><td>{{invoice.link.customer.name}}</td></tr>
+              <tr><td><b>Endereço:</b></td><td>{{invoice.link.linkName}} </td></tr>
+              <tr><td><b>Número:</b></td><td>{{invoice.id}}</td></tr>
+              <tr><td><b>Grupo:</b></td><td>{{invoice.link.group.name}} </td></tr>
+              <tr><td><b>Categoria:</b></td><td>{{invoice.link.group.category | category}}</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="column border">
+      </div>
+
+      <div class="column">
+        <div class="table-responsive">
+          <table class="table table-striped column">
+            <tbody>
+              <tr><td><b>Data de Emissão:</b></td><td>{{invoice.emission | dateTime}}</td></tr>
+              <tr><td><b>Vencimento:</b></td><td>{{invoice.dueDate | dateTime}}</td></tr>
+
+              <ng-container *ngFor="let detail of invoice.invoiceDetails">
+                <tr><td><b>{{detail.reason | reason}}:</b></td><td>{{detail.value | currency}}</td></tr>
+              </ng-container>
+
+              <tr><td><b>Total:</b></td><td><b>{{getTotal() | currency}}</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+  </nb-card-body>
+
+  <nb-card-footer>
+    <div class="d-flex justify-content-between">
+      <button type="button" nbButton outline status="basic" (click)="back()">
+        <nb-icon icon="arrow-back-outline"></nb-icon>
+      </button>
+
+      <button type="submit" nbButton outline status="success" (click)="open()" [disabled]="invoice.isPayed">
+        <nb-icon icon="credit-card-outline"></nb-icon>
+      </button>
+    </div>
+  </nb-card-footer>
+
+</nb-card>
+

@@ -5,8 +5,8 @@
  */
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
@@ -20,6 +20,14 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+import { JwtInterceptor } from './@interceptor/jwt.interceptor';
+import { AuthGuard } from './@auth/auth.guard';
+import { NgxMaskModule } from 'ngx-mask';
+
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,7 +38,7 @@ import {
     AppRoutingModule,
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
-    NbDatepickerModule.forRoot(),
+
     NbDialogModule.forRoot(),
     NbWindowModule.forRoot(),
     NbToastrModule.forRoot(),
@@ -39,6 +47,14 @@ import {
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+    NgxMaskModule.forRoot(),
+    NbDatepickerModule.forRoot(),
+  ],
+  providers:[
+    AuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
+    { provide:  DEFAULT_CURRENCY_CODE, useValue: 'BRL'},
   ],
   bootstrap: [AppComponent],
 })

@@ -1,0 +1,111 @@
+<nb-card>
+
+  <nb-card-header>
+    Faturas
+  </nb-card-header>
+
+  <nb-card-body>
+
+    <ngx-app-table [nbSpinner]="loading">
+      <thead>
+        <tr>
+
+          <th class="col-9 align-middle" (click)="order('name')">
+            Nome:
+          </th>
+
+          <th class="col-2 align-middle">
+            Valor:
+          </th>
+
+          <th class="col-2 align-middle">
+            Vencimento:
+          </th>
+
+          <th class="col-2 align-middle">
+            Referência:
+          </th>
+
+          <th class="col-1 align-middle" colspan="2">
+            <button nbButton outline status="basic" fullWidth (click)="add()">
+              <nb-icon icon="plus-outline"></nb-icon>
+            </button>
+          </th>
+        </tr>
+      </thead>
+
+      <thead>
+        <tr>
+
+          <th>
+            <input type="text" nbInput placeholder="Responsável" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.customerName">
+          </th>
+
+          <th>
+            <ngx-input-currency [(currency)]="filter.value" placeholder="Valor" (keydown.enter)="search()" ></ngx-input-currency>
+          </th>
+
+          <th>
+            <input nbInput [nbDatepicker]="datepicker" placeholder="Data" [readonly]="true" [(ngModel)]="filter.dueDate" (ngModelChange)="search()" >
+            <nb-datepicker nb-datepicker #datepicker></nb-datepicker>
+          </th>
+
+          <th>
+            <input id="startedAt" type="text"  nbInput fullWidth placeholder="Referência:" mask="00/0000" [(ngModel)]="filter.reference"  (keydown.enter)="search()" >
+          </th>
+
+          <th>
+            <button nbButton outline status="basic" type="button" fullWidth (click)="reset()">
+              <nb-icon icon="undo-outline"></nb-icon>
+            </button>
+          </th>
+
+          <th>
+            <button nbButton outline status="success" fullWidth (click)="search()">
+              <nb-icon icon="funnel-outline"></nb-icon>
+            </button>
+          </th>
+
+        </tr>
+      </thead>
+
+      <tbody >
+        <tr *ngFor="let item of page?.content"
+          [ngClass]="{
+            'table-success': item.isPayed,
+            'table-danger': item.isOverdue }"
+          >
+          <td class="align-middle">{{ item.link.customer.name }}</td>
+          <td class="align-middle">{{ item.totalValue | currency }}</td>
+          <td class="align-middle">{{ item.dueDate | dateTime }}</td>
+          <td class="align-middle">{{ item.reference | reference }}</td>
+
+          <td class="align-middle">
+            <button nbButton outline status="basic" fullWidth (click)="download(item.id)">
+              <nb-icon icon="printer-outline"></nb-icon>
+            </button>
+          </td>
+
+          <td class="align-middle">
+            <button nbButton outline status="success" fullWidth (click)="view(item.id)" >
+              <nb-icon icon="credit-card-outline"></nb-icon>
+            </button>
+          </td>
+
+        </tr>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colspan="5" *ngIf="page">
+            <ngx-app-table-footer [page]="page" (search)="paginate($event)">
+            </ngx-app-table-footer>
+          </td>
+        </tr>
+      </tfoot>
+
+    </ngx-app-table>
+
+  </nb-card-body>
+
+</nb-card>

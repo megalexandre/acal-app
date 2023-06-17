@@ -1,0 +1,74 @@
+<nb-card>
+
+  <nb-card-header>
+    Endereços
+  </nb-card-header>
+
+  <nb-card-body>
+
+    <ngx-app-table [nbSpinner]="loading">
+      <thead>
+        <tr>
+          <th class="col-9 align-middle" (click)="order('name')">
+              Nome:
+              <nb-icon *ngIf="filter.sortedField === 'name' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+              <nb-icon *ngIf="filter.sortedField === 'name' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+          <th class="col-1 align-middle" colspan="2">
+            <button nbButton outline status="basic" fullWidth (click)="add()">
+              <nb-icon icon="plus-outline"></nb-icon>
+            </button>
+          </th>
+
+        </tr>
+      </thead>
+
+      <thead>
+        <tr>
+
+          <th>
+            <input type="text" nbInput placeholder="Nome" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.name">
+          </th>
+
+          <th colspan="2">
+            <button nbButton outline status="success" fullWidth (click)="search()">
+              <nb-icon icon="search-outline"></nb-icon>
+            </button>
+          </th>
+
+        </tr>
+      </thead>
+
+      <tbody >
+        <tr *ngFor="let item of page?.content">
+          <td class="align-middle">{{item.name}}</td>
+
+          <td class="align-middle">
+            <button nbButton outline status="warning" fullWidth (click)="edit(item.id)">
+              <nb-icon icon="edit-2-outline"></nb-icon>
+            </button>
+          </td>
+
+          <td class="align-middle">
+            <button nbButton outline status="danger" fullWidth (click)="remove(item.id)" >
+              <nb-icon icon="trash-2-outline"></nb-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colspan="4" *ngIf="page">
+            <ngx-app-table-footer [page]="page" (search)="paginate($event)">
+            </ngx-app-table-footer>
+          </td>
+        </tr>
+      </tfoot>
+
+    </ngx-app-table>
+
+  </nb-card-body>
+
+</nb-card>

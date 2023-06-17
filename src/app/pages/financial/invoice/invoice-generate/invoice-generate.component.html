@@ -1,0 +1,39 @@
+<nb-card>
+
+  <nb-card-header>
+    Gerar Faturas
+  </nb-card-header>
+
+  <nb-card-body *ngIf="this.form.invalid || !submmited">
+    <form [formGroup]="form" (submit)="submit()">
+      <div class="row d-flex justify-content-between align-items-center">
+
+        <div class="col-md-3 col-12">
+          <label for="startedAt" class="label">Referência:</label>
+          <input id="startedAt" type="text" formControlName="reference" nbInput fullWidth placeholder="Nome:" mask="00/0000" [status]="getStatus('reference')">
+          <error-message [message]="'Não é uma data valida'" [show]="(_reference.errors?.required && (submmited || this.form.touched))"></error-message>
+          <error-message [message]="'Não é um mês valido'" [show]="(_reference.errors?.monthNotValid && (submmited || this.form.touched))"></error-message>
+          <error-message [message]="'Não é um ano valido'" [show]="(_reference.errors?.yearNotValid && (submmited || this.form.touched))"></error-message>
+        </div>
+
+        <div class="col-md-3 col-12">
+          <label for="startedAt" class="label">Buscar:</label>
+          <button nbButton outline status="basic" fullWidth>
+            Buscar
+          </button>
+        </div>
+
+      </div>
+    </form>
+  </nb-card-body>
+
+  <nb-card-body>
+    <ng-container *ngIf="this.form.valid && submmited">
+      <ngx-invoice-select [reference]="reference" (back)="clear()"></ngx-invoice-select>
+    </ng-container>
+  </nb-card-body>
+
+
+
+
+</nb-card>

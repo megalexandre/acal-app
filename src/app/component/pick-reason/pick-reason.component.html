@@ -1,0 +1,4 @@
+
+<nb-select [(selected)]="model" fullWidth (selectedChange)="selectedChange($event)" >
+  <nb-option *ngFor="let reason of reasons" [value]=reason.value>{{reason.name}}</nb-option>
+</nb-select>

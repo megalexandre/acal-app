@@ -1,0 +1,80 @@
+
+<div *ngIf="loaded">
+  <form [formGroup]="form" (submit)="submit()">
+    <div class="row">
+      <div class="col-lg-12">
+        <nb-card>
+
+          <nb-card-header>
+            Editar Usuário
+          </nb-card-header>
+
+          <nb-card-body>
+            <div class="row mb-3">
+
+              <div class="col-12">
+                <label for="name" class="label">Nome:</label>
+                <input id="name" type="text" nbInput fullWidth placeholder="Nome:" formControlName="name"  [status]="getStatus('name')">
+                <error-message [message]="'Nome é obrigatório'" [show]="(name.errors?.required && (submmited || this.form.touched))"></error-message>
+              </div>
+
+              <div [ngClass]="personTypeValue === 'PERSON'? 'col-xl-3 col-12':'col-xl-4 col-md-6 col-12'" >
+                <label for="name" class="label">Documento:</label>
+                <nb-form-field>
+                  <input id="document"
+                    type="text"
+                    [status]="getStatus('document')"
+                    [mask]="personTypeValue === 'PERSON' ? '000.000.000-00':'00.000.000/0000-00'"
+                    nbInput placeholder="Documento" fullWidth formControlName="document" >
+
+                  <button nbSuffix nbButton ghost (click)="togglePersonType()" type="button">
+                    <nb-icon [icon]="personTypeValue === 'PERSON' ? 'person-outline' : 'car-outline'"
+                            pack="eva" [attr.aria-label]="personTypeValue === 'LEGAL' ? 'LEGAL' : 'PERSON'">
+                    </nb-icon>
+                  </button>
+                </nb-form-field>
+                <error-message [message]="'Documento é obrigatório'" [show]="(document.errors?.required && (submmited || this.form.touched))"></error-message>
+                <error-message [message]="'Esse número não é valido é obrigatório'" [show]="(document.errors?.cpfNotValid && (submmited || this.form.touched))"></error-message>
+
+              </div>
+
+              <div [ngClass]="personTypeValue === 'PERSON'? 'col-xl-3 col-12':'col-xl-4 col-md-6 col-12'" *ngIf="personTypeValue === 'PERSON'"  >
+                <label for="socio" class="label">Número de Sócio:</label>
+                <input id="membershipNumber" [status]="getStatus('membershipNumber')" mask="0*" type="text" nbInput fullWidth placeholder="Número de Sócio:" formControlName="membershipNumber">
+              </div>
+
+              <div [ngClass]="personTypeValue === 'PERSON'? 'col-xl-3 col-12':'col-xl-4 col-md-6 col-12'"  >
+                <label for="telefone" class="label">Telefone:</label>
+                <input id="telefone" [status]="getStatus('phoneNumber')" mask="(00) 0 0000-0000" type="text" nbInput fullWidth placeholder="Telefone:" formControlName="phoneNumber">
+              </div>
+
+              <div [ngClass]="personTypeValue === 'PERSON'? 'col-xl-3 col-12':'col-xl-4 col-md-6 col-12'" >
+                <label for="telefone" class="label">Data de Nascimento:</label>
+                <ngx-input-date (setBlur)="setBirthDayTouched()" (setDate)="setDate($event)" [model]="this.customer.birthDay" placeholder="Data de Nascimento:" [status]="getStatus('birthDay')"></ngx-input-date>
+                <error-message [message]="'Esse data não é valida'" [show]="(birthDay.errors?.dateNotValid && (submmited || this.form.touched))"></error-message>
+              </div>
+
+            </div>
+
+          </nb-card-body>
+          <nb-card-footer>
+
+            <div class="d-flex justify-content-between">
+              <button type="button" nbButton outline status="basic" (click)="back()">
+                <nb-icon icon="arrow-back-outline"></nb-icon>
+              </button>
+
+              <button type="submit" nbButton outline status="warning">
+                <nb-icon icon="edit-2-outline"></nb-icon>
+              </button>
+            </div>
+
+          </nb-card-footer>
+        </nb-card>
+
+      </div>
+
+    </div>
+  </form>
+
+</div>

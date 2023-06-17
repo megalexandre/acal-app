@@ -1,0 +1,12 @@
+<input
+  type="text"
+  mask="00/00/0000"
+  nbInput
+  fullWidth
+  placeholder="Data de Nascimento:"
+  [(ngModel)]="model"
+  (ngModelChange)="emiteDate()"
+  [dropSpecialCharacters]="false"
+  [status]="status"
+  (blur)="onBlur()"
+>

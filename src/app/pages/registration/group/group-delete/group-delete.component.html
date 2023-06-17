@@ -1,0 +1,54 @@
+<div *ngIf="loaded">
+  <div class="row">
+    <div class="col-lg-12">
+      <nb-card>
+
+        <nb-card-header>
+          Deletar Preço
+        </nb-card-header>
+
+        <nb-card-body>
+
+          <div class="row mb-3">
+
+            <div class="col-md-9 col-12">
+              <label for="name" class="label">Nome:</label>
+              <input id="name" type="text" nbInput fullWidth placeholder="Nome:" [(ngModel)]="group.name" disabled>
+            </div>
+
+            <div class="col-md-3 col-12">
+              <label for="value" class="label">Categoria:</label>
+              <input id="name" type="text" nbInput fullWidth placeholder="Nome:" [(ngModel)]="categoryName" disabled>
+            </div>
+
+            <div class="col-md-6 col-12">
+              <label for="value" class="label">Valor:</label>
+              <ngx-input-currency [currency]="this.group.value" [disabled]="true"></ngx-input-currency>
+            </div>
+
+            <div class="col-md-6 col-12">
+              <label for="value" class="label">Valor da Categoria:</label>
+              <ngx-input-currency  [currency]="this.group.categoryValue" [disabled]="true"></ngx-input-currency>
+            </div>
+          </div>
+
+        </nb-card-body>
+        <nb-card-footer>
+
+          <div class="d-flex justify-content-between">
+            <button type="button" nbButton outline status="basic" (click)="back()">
+              <nb-icon icon="arrow-back-outline"></nb-icon>
+            </button>
+
+            <button type="button" nbButton outline status="danger" (click)="commit()">
+              <nb-icon icon="trash-2-outline"></nb-icon>
+            </button>
+          </div>
+
+        </nb-card-footer>
+      </nb-card>
+
+    </div>
+
+  </div>
+</div>

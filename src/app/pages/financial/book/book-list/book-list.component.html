@@ -1,0 +1,99 @@
+<nb-card>
+
+  <nb-card-header>
+    Livro de caixa
+  </nb-card-header>
+
+  <nb-card-body>
+    <ngx-book-filter [filter]="filter" (search)="search()"></ngx-book-filter>
+  </nb-card-body>
+
+  <nb-card-body>
+
+    <ngx-app-table [nbSpinner]="loading" [tableStriped]="true">
+      <thead>
+        <tr>
+          <th (click)="order('value')" class="col-md-3">
+              Valor:
+              <nb-icon *ngIf="filter.sortedField === 'value' && filter.direction.name  === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+              <nb-icon *ngIf="filter.sortedField === 'value' && filter.direction.name  === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+          <th (click)="order('createdBy')" class="col-md-3">
+            Responsável:
+            <nb-icon *ngIf="filter.sortedField === 'createdBy' && filter.direction.name  === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'createdBy' && filter.direction.name  === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+          <th (click)="order('createdAt')" class="col-md-2">
+            Data:
+            <nb-icon *ngIf="filter.sortedField === 'createdAt' && filter.direction.name  === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'createdAt' && filter.direction.name  === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+          <th (click)="order('type')" class="col-md-2">
+            Tipo:
+            <nb-icon *ngIf="filter.sortedField === 'type' && filter.direction.name  === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'type' && filter.direction.name  === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+          <th (click)="order('reason')" class="col-md-2">
+            Motivo:
+            <nb-icon *ngIf="filter.sortedField === 'reason' && filter.direction.name  === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'reason' && filter.direction.name  === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+        </tr>
+      </thead>
+
+      <thead>
+        <tr>
+
+          <th>
+            <ngx-input-currency [(currency)]="filter.value" placeholder="Valor" (keydown.enter)="search()" ></ngx-input-currency>
+          </th>
+
+          <th>
+            <input type="text" nbInput placeholder="Responsável" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.createdBy">
+          </th>
+
+          <th>
+            <input nbInput [nbDatepicker]="datepicker" placeholder="Data" [readonly]="true" [(ngModel)]="filter.createdAt" (ngModelChange)="search()" >
+            <nb-datepicker nb-datepicker #datepicker></nb-datepicker>
+          </th>
+
+          <th>
+            <ngx-pick-type [(model)]="filter.type" (modelChange)="search()"></ngx-pick-type>
+          </th>
+
+          <th>
+            <ngx-pick-reason [(model)]="filter.reason" placeholder="Motivo" (modelChange)="search()"></ngx-pick-reason>
+          </th>
+
+        </tr>
+      </thead>
+
+      <tbody >
+        <tr *ngFor="let item of page?.content">
+          <td class="align-middle">{{item.value | currency}}</td>
+          <td class="align-middle">{{item.createdBy }}</td>
+          <td class="align-middle">{{item.createdAt | dateTime}}</td>
+          <td class="align-middle">{{item.type | type}}</td>
+          <td class="align-middle">{{item.reason | reason}}</td>
+        </tr>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colspan="5" *ngIf="page">
+              <ngx-app-table-footer [page]="page" (search)="paginate($event)">
+              </ngx-app-table-footer>
+          </td>
+        </tr>
+      </tfoot>
+
+    </ngx-app-table>
+
+  </nb-card-body>
+
+</nb-card>

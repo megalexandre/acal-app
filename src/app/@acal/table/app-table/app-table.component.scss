@@ -1,0 +1,13 @@
+@import '../../../@theme/styles/themes';
+
+
+@include nb-install-component() {
+  table.table {
+    font-family: nb-theme(font-family-primary);
+    color: nb-theme(text-basic-color);
+  }
+}
+
+.table {
+  vertical-align: middle;
+}

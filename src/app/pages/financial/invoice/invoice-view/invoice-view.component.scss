@@ -1,0 +1,44 @@
+
+@import '../../../../@theme/styles/themes';
+
+@include nb-install-component() {
+
+  .sucess-row {
+    background-color: nb-theme(color-success-100);
+  }
+
+  .extra-sucess-row {
+    background-color: nb-theme(color-success-400);
+  }
+
+  .warning-row {
+    background-color: nb-theme(color-warning-100);
+  }
+
+  .extra-warning-row {
+    background-color: nb-theme(color-warning-400);
+  }
+
+}
+
+.flex-container {
+  display: flex;
+}
+
+.flex-container-vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.column {
+  flex-grow: 1;
+  min-width: 33.3333%;
+}
+
+.header-logo {
+  flex-grow: 1;
+}
+
+.header-text {
+  flex-grow: 3;
+}

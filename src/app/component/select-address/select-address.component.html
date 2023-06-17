@@ -1,0 +1,8 @@
+<label for="address" *ngIf="showTitle" class="label">Endereço:</label>
+
+<nb-select *ngIf="loaded" id ="address" placeholder="Endereço" [(ngModel)]="address" (selectedChange)="selectedChange($event)" fullWidth [status]="status" [compareWith]="compareById">
+  <nb-option [value]='null'>Selecione</nb-option>
+  <nb-option-group [title]="group.name" *ngFor="let group of groups">
+    <nb-option *ngFor="let item of group.values" [value]="item">{{item.name}}</nb-option>
+  </nb-option-group>
+</nb-select>

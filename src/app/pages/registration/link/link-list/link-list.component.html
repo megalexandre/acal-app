@@ -1,0 +1,165 @@
+<nb-card>
+
+  <nb-card-header >
+    Ligações
+
+    <button nbButton class="float-right" outline status="basic" (click)="download()">
+      <nb-icon icon="printer-outline"></nb-icon>
+    </button>
+
+  </nb-card-header>
+
+  <nb-card-body>
+    <span *ngIf="!loading">
+      <ngx-link-filter [filter]="filter" (search)="search()"></ngx-link-filter>
+    </span>
+  </nb-card-body>
+
+  <nb-card-body>
+
+    <ngx-app-table [nbSpinner]="loading" [tableStriped]="true">
+      <thead>
+        <tr>
+
+          <th class="col-4 align-middle" (click)="order('customer.name')">
+            Nome:
+            <nb-icon *ngIf="filter.sortedField === 'customer.name' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'customer.name' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+          <th class="col-2 align-middle" (click)="order('customer.document')">
+            Documento:
+            <nb-icon *ngIf="filter.sortedField === 'customer.document' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'customer.document' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+          <th class="col-1 align-middle" (click)="order('group.category')">
+            Categoria:
+            <nb-icon *ngIf="filter.sortedField === 'group.category' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'group.category' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+          <th class="col-1 align-middle" (click)="order('group.name')">
+            Grupo:
+            <nb-icon *ngIf="filter.sortedField === 'group.name' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'group.name' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+          <th class="col-2 align-middle" (click)="order('place.address.name')">
+            Logradouro:
+            <nb-icon *ngIf="filter.sortedField === 'place.address.name' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'place.address.name' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+          <th class="col-1 align-middle" (click)="order('place.number')">
+            Número:
+            <nb-icon *ngIf="filter.sortedField === 'place.number' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'place.number' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+          <th class="col-1 align-middle" (click)="order('group.value')">
+            Valor:
+            <nb-icon *ngIf="filter.sortedField === 'group.value' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'group.value' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+          <th class="col-1 align-middle" colspan="2">
+            <button nbButton outline status="basic" fullWidth (click)="add()">
+              <nb-icon icon="plus-outline"></nb-icon>
+            </button>
+          </th>
+        </tr>
+      </thead>
+
+      <thead>
+        <tr>
+
+          <th>
+            <input type="text" nbInput placeholder="Nome" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.customer.name">
+          </th>
+
+          <th>
+            <nb-form-field>
+              <input type="text"
+                [mask]="filter.personType.name === 'PERSON' ? '000.000.000-00':'00.000.000/0000-00'"
+                nbInput placeholder="Documento" fullWidth (keydown.enter)="search()"
+                [(ngModel)]="filter.customer.document">
+
+              <button nbSuffix nbButton ghost (click)="togglePersonType()">
+                <nb-icon
+                  [icon]="filter.personType.name === 'PERSON' ? 'person-outline' : 'car-outline'"
+                  pack="eva" [attr.aria-label]="filter.personType.name === 'LEGAL' ? 'LEGAL' : 'PERSON'">
+                </nb-icon>
+              </button>
+
+            </nb-form-field>
+          </th>
+
+          <th>
+            <ngx-select-category [(category)]="filter.category"></ngx-select-category>
+          </th>
+
+
+          <th>
+            <input type="text" nbInput placeholder="Grupo" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.group.name">
+          </th>
+
+          <th>
+            <ngx-select-address [addSelectOption]='true' [showTitle]='false' [(address)]="filter.address"></ngx-select-address>
+          </th>
+
+          <th>
+            <input type="text" nbInput placeholder="Número" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.place.number">
+          </th>
+
+          <th>
+            <input type="text" nbInput placeholder="Valor" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.group.value">
+          </th>
+
+          <th colspan="2">
+            <button nbButton outline status="success" fullWidth (click)="search()">
+              <nb-icon icon="search-outline"></nb-icon>
+            </button>
+          </th>
+
+        </tr>
+      </thead>
+
+      <tbody >
+        <tr *ngFor="let item of page?.content">
+          <td class="align-middle">{{item.customer.name}}</td>
+          <td class="align-middle">{{item.customer.document | identification}}</td>
+          <td class="align-middle"><b>{{item.group.category | category}}</b></td>
+          <td class="align-middle">{{item.group.name}}</td>
+          <td class="align-middle">{{item.place.address.name}}</td>
+          <td class="align-middle">{{item.place.number}}</td>
+          <td class="align-middle">{{item.group.value | currency }}</td>
+
+          <td class="align-middle">
+            <button nbButton outline status="basic" fullWidth (click)="view(item.id)">
+              <nb-icon icon="eye-outline"></nb-icon>
+            </button>
+          </td>
+
+          <td class="align-middle">
+            <button nbButton outline status="danger" fullWidth (click)="inactive(item.id)" [disabled]="!item.active" >
+              <nb-icon icon="droplet-off-outline"></nb-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colspan="9" *ngIf="page">
+              <ngx-app-table-footer [page]="page" (search)="paginate($event)">
+              </ngx-app-table-footer>
+          </td>
+        </tr>
+      </tfoot>
+
+    </ngx-app-table>
+
+  </nb-card-body>
+
+</nb-card>

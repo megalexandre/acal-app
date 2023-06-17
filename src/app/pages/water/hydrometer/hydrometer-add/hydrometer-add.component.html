@@ -1,0 +1,90 @@
+<nb-card>
+
+  <nb-card-header>
+    Registrar Coleta para a referência:  {{reference | reference}}
+  </nb-card-header>
+
+  <nb-card-header *ngIf="!reference">
+    <ngx-hydrometer-select-reference (setReference)="setReference($event)"></ngx-hydrometer-select-reference>
+  </nb-card-header>
+
+  <nb-card-body *ngIf="reference">
+    <nb-accordion>
+      <nb-accordion-item>
+       <nb-accordion-item-header>Detalhes</nb-accordion-item-header>
+       <nb-accordion-item-body>
+          <span class="d-flex justify-content-between align-items-center">
+            Valor considerado por litro:
+            <b>
+              <input nbInput type="number"
+              [(ngModel)]="waterMonetaryValue" disabled>
+            </b>
+          </span>
+          <hr>
+          <span class="d-flex justify-content-between align-items-center">
+            Gratuidade em litros:
+            <input
+              nbInput [(ngModel)]="waterFreeTear" type="number"
+              mask="0*"
+              mask="separator.3"
+              thousandSeparator="."
+              disabled>
+          </span>
+       </nb-accordion-item-body>
+      </nb-accordion-item>
+     </nb-accordion>
+
+  </nb-card-body>
+
+
+  <nb-card-body *ngIf="reference">
+
+    <ngx-app-table>
+      <thead>
+        <th class="col-6 align-middle">
+          Responsável:
+        </th>
+        <th class="col-2 align-middle">
+          Matricula
+        </th>
+        <th class="col-2 align-middle">
+          valor:
+        </th>
+        <th class="col-2 align-middle">
+          Consumo:
+        </th>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of data">
+            <td class="align-middle">{{item.link.customer.name}}</td>
+            <td class="align-middle">{{item.link.linkName}}</td>
+            <td class="align-middle">{{(consideredWaterConsumption(item.consumption) * waterMonetaryValue)| currency }}</td>
+            <td class="align-middle">
+              <input
+                [(ngModel)]="item.consumption"
+                type="text" nbInput placeholder="Consumo"
+                mask="0*"
+                mask="separator.3"
+                thousandSeparator="."
+                fullWidth>
+            </td>
+      </tbody>
+    </ngx-app-table>
+  </nb-card-body>
+
+  <nb-card-footer>
+
+    <div class="d-flex justify-content-between">
+      <button type="button" nbButton outline status="basic" (click)="back()">
+        <nb-icon icon="arrow-back-outline"></nb-icon>
+      </button>
+
+      <button type="button" nbButton outline status="success" (click)="save()">
+        <nb-icon icon="save-outline"></nb-icon>
+      </button>
+
+    </div>
+
+  </nb-card-footer>
+
+</nb-card>

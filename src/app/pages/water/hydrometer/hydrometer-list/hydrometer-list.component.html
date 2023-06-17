@@ -1,0 +1,73 @@
+<nb-card>
+
+  <nb-card-header>
+    Hidrômetro
+  </nb-card-header>
+
+  <nb-card-body>
+
+    <ngx-app-table [nbSpinner]="loading"  >
+      <thead>
+        <tr>
+
+          <th class="col-3 align-middle" >
+            Ligação
+          </th>
+
+          <th class="col-2 align-middle" >
+            Responsável
+          </th>
+
+          <th class="col-2 align-middle" >
+            Referência
+          </th>
+
+          <th class="col-2 align-middle">
+            Quantidade (Litros)
+          </th>
+
+          <th class="col-2 align-middle">
+            Valor
+          </th>
+
+          <th class="col-1 align-middle" colspan="2">
+            <ngx-add-button (click)="add()"></ngx-add-button>
+          </th>
+
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of page?.content;">
+          <td class="align-middle">{{item.linkName}}</td>
+          <td class="align-middle">{{item.personName}}</td>
+          <td class="align-middle">{{item.reference | reference }}</td>
+          <td class="align-middle">{{item.consumption | number}}</td>
+          <td class="align-middle">{{item.costValue | currency}}</td>
+
+          <td class="align-middle">
+
+            <ngx-edit-button (click)="edit(item.id)" [disabled]="true"></ngx-edit-button>
+          </td>
+
+          <td class="align-middle">
+            <ngx-delete-button (click)="remove(item.id)"></ngx-delete-button>
+          </td>
+
+        </tr>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colspan="7" *ngIf="page">
+            <ngx-app-table-footer [page]="page" (search)="paginate($event)">
+            </ngx-app-table-footer>
+          </td>
+        </tr>
+      </tfoot>
+
+    </ngx-app-table>
+
+  </nb-card-body>
+
+</nb-card>

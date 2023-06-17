@@ -1,0 +1,169 @@
+<span class="d-flex justify-content-between align-items-center">
+  Mês de referência:
+  <input nbInput [(ngModel)]="formattedReference" disabled>
+</span>
+
+<hr>
+
+<span class="d-flex justify-content-between align-items-center">
+  Data de vencimento {{warning}}:
+  <b>
+    <input nbInput [nbDatepicker]="datepicker" [(ngModel)]="dueDate" [status]='warning ? "warning": "basic"'>
+    <nb-datepicker #datepicker></nb-datepicker>
+  </b>
+</span>
+
+<hr>
+
+<ngx-app-table [tableStriped]="false">
+
+  <thead>
+    <tr>
+
+      <th class="col-5">
+        Responsável:
+      </th>
+
+      <th class="col-1 text-center">
+        Matrícula:
+      </th>
+
+      <th class="col-2 text-center">
+        Grupo/Categoria:
+      </th>
+
+      <th class="col-1 text-center">
+        Valor Hidrômetro:
+      </th>
+
+      <th class="col-1 text-center">
+        Valor Categoria:
+      </th>
+
+      <th class="col-1 text-center">
+        Valor Total:
+      </th>
+
+      <th class="col-1 text-center">
+        <nb-checkbox
+        [status]="selectedAll? 'success':'warning'"
+        [checked]="selectedAll" (checkedChange)="selectAll($event)"></nb-checkbox>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <ng-container *ngIf="groups.length === 0">
+      <tr class="extra-danger-row">
+        <td class="text-center" colspan="7">
+          <b> Nenhum Registro</b>
+        </td>
+      </tr>
+    </ng-container>
+
+    <ng-container *ngFor="let group of groups">
+      <tr [ngClass]="group.selected  ? 'extra-sucess-row':'extra-warning-row'">
+
+        <td class="text-center" colspan="6">
+          <b>{{group.address.name}}</b>
+        </td>
+
+        <td class="text-center">
+          <nb-checkbox
+            [status]="group.selected ? 'success':'warning'"
+            [(checked)]="group.selected" status="basic"
+            (checkedChange)="selectedAddress($event, group)" ></nb-checkbox>
+        </td>
+
+      </tr>
+
+      <tr *ngFor="let link of group.links" [ngClass]="link.selected ? 'sucess-row':'warning-row'">
+        <td>
+          {{link.link.customer.name}}
+        </td>
+
+        <td class="text-center">
+          {{link.link.place.number +'/'+ link.link.place.letter}}
+        </td>
+
+        <td class="text-center">
+          {{(link.link.group.category | category) +'/'+ link.link.group.name }}
+        </td>
+
+        <td class="text-center">
+          <ng-container *ngIf="link.link.hydrometer?.costValue === null ">
+            {{ 0 | currency}}
+          </ng-container>
+
+          <ng-container *ngIf="link.link.hydrometer?.costValue !== null ">
+            {{(link.link.hydrometer?.costValue) | currency}}
+          </ng-container>
+        </td>
+
+        <td class="text-center">
+          {{link.link.group.value | currency}}
+        </td>
+
+        <td class="text-center">
+          {{(link.link.group.value + link.link.hydrometer?.costValue | currency)}}
+        </td>
+
+        <td class="text-center">
+          <nb-checkbox
+          [status]="link.selected ? 'success':'warning'"
+          [(checked)]="link.selected"
+          (checkedChange)="updateIndex()"></nb-checkbox>
+        </td>
+
+      </tr>
+    </ng-container>
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <th colspan="5">
+        Valor Selecionado:
+      </th>
+
+      <th class="text-center">
+        {{selectedTotal | currency}}
+      </th>
+
+      <th></th>
+    </tr>
+
+    <tr>
+      <th colspan="3">
+        Valor Total:
+      </th>
+
+      <th class="text-center">
+        {{totalHydrometer | currency}}
+      </th>
+
+      <th class="text-center">
+        {{totalCategory | currency}}
+      </th>
+
+      <th class="text-center">
+        {{total | currency}}
+      </th>
+
+      <th></th>
+
+    </tr>
+  </tfoot>
+
+</ngx-app-table>
+
+<div class="d-flex justify-content-between">
+  <button type="button" nbButton outline status="basic" (click)="clear()">
+    <nb-icon icon="arrow-back-outline"></nb-icon>
+  </button>
+
+  <button type="button" nbButton outline status="success" (click)="save()" >
+    <nb-icon icon="save-outline"></nb-icon>
+  </button>
+
+</div>

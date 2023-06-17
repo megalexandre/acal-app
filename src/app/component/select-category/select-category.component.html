@@ -1,0 +1,6 @@
+<nb-select placeholder="Categoria" id="category" type="text" fullWidth placeholder="Categoria:" [(ngModel)]="category" (selectedChange)="selectedChange()"  [status]="status">
+    <nb-option [value]='null'>Selecione</nb-option>
+    <nb-option value="FOUNDER">Fundador</nb-option>
+    <nb-option value="EFFECTIVE">Efetivo</nb-option>
+    <nb-option value="TEMPORARY">Temporário</nb-option>
+  </nb-select>

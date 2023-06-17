@@ -1,0 +1,93 @@
+<nb-card>
+  <nb-card-header>
+    Revisão da ligação
+  </nb-card-header>
+
+  <nb-card-body>
+
+    <nb-accordion multi>
+
+      <nb-accordion-item #customer collapsed="false">
+       <nb-accordion-item-header>Usuário</nb-accordion-item-header>
+       <nb-accordion-item-body>
+
+        <div class="col-md-6 col-12 d-flex flex-column ">
+          <div> Nome: <b>{{link.customer.name}}</b> </div>
+          <div> Tipo: <b>{{link.customer.personType === 'PERSON' ? 'C.P.F': 'C.N.P.J'}}</b> </div>
+          <div> Número: <b>{{link.customer.document | identification }}</b></div>
+        </div>
+
+       </nb-accordion-item-body>
+      </nb-accordion-item>
+
+      <nb-accordion-item collapsed="false">
+        <nb-accordion-item-header>Endereço</nb-accordion-item-header>
+        <nb-accordion-item-body>
+
+
+        <div class="col-md-6 col-12 d-flex flex-column ">
+          <div> Endereço de serviço </div>
+          <hr/>
+          <div> Nome: <b>{{link.place.address.name}}</b> </div>
+          <div> Número: <b>{{link.place.number}}</b> </div>
+          <div> Letra: <b>{{link.place.letter}}</b> </div>
+        </div>
+
+        <hr *ngIf="link?.mailPlace">
+
+        <div class="col-md-6 col-12 d-flex flex-column" *ngIf="link?.mailPlace">
+          <div> Endereço de Correspondência </div>
+          <hr/>
+          <div> Nome: <b>{{link.mailPlace.address.name}}</b> </div>
+          <div> Número: <b>{{link.mailPlace.number}}</b> </div>
+          <div> Letra: <b>{{link.mailPlace.letter}}</b> </div>
+        </div>
+
+        </nb-accordion-item-body>
+       </nb-accordion-item>
+
+       <nb-accordion-item collapsed="false">
+        <nb-accordion-item-header>Preço</nb-accordion-item-header>
+        <nb-accordion-item-body>
+
+          <div class="col-md-6 col-12 d-flex flex-column ">
+            <div> Categoria: <b>{{link.group.category | category}}</b> </div>
+            <div> Grupo: <b>{{link.group.name}}</b> </div>
+            <div> Valor: <b>{{link.group.value | currency}}</b> </div>
+          </div>
+        </nb-accordion-item-body>
+       </nb-accordion-item>
+
+
+       <nb-accordion-item collapsed="false" *ngIf="link?.startedAt">
+        <nb-accordion-item-header>Data </nb-accordion-item-header>
+        <nb-accordion-item-body>
+
+          <div class="col-md-6 col-12 d-flex flex-column ">
+            <div> Período de operação</div>
+            <div> Iníciado Em: <b>{{link.startedAt | date: 'dd/MM/yyyy hh:MM:ss'}}</b> </div>
+            <div *ngIf="link.finishedAt !== null"> Finalizado Em: <b>{{link.finishedAt| date: 'dd/MM/yyyy hh:MM:ss' }}</b> </div>
+            <div *ngIf="link.finishedAt === null"> Finalizado Em: <b> Até o presente</b> </div>
+          </div>
+
+        </nb-accordion-item-body>
+       </nb-accordion-item>
+
+       <nb-accordion-item collapsed="false" *ngIf="link?.createdBy">
+        <nb-accordion-item-header>Criado Por: </nb-accordion-item-header>
+        <nb-accordion-item-body>
+
+          <div class="col-md-6 col-12 d-flex flex-column ">
+            <div> <b> {{link.createdBy}} </b></div>
+          </div>
+
+        </nb-accordion-item-body>
+       </nb-accordion-item>
+
+
+
+
+    </nb-accordion>
+  </nb-card-body>
+
+</nb-card>

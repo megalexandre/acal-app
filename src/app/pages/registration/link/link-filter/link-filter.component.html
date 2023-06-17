@@ -1,0 +1,16 @@
+<nb-accordion>
+  <nb-accordion-item>
+   <nb-accordion-item-header>Filtros Avançados</nb-accordion-item-header>
+   <nb-accordion-item-body>
+    <div class="row">
+      <div class="col-md-6 col-12 form-inline">
+        <nb-radio-group [(value)]="filter.active" (valueChange)="startSearch()" >
+          <nb-radio [value]="true">Ligações Ativas</nb-radio>
+          <nb-radio [value]="false">Ligações Inativas</nb-radio>
+          <nb-radio [value]="null">Todos os registros</nb-radio>
+        </nb-radio-group>
+      </div>
+    </div>
+   </nb-accordion-item-body>
+  </nb-accordion-item>
+ </nb-accordion>

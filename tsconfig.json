@@ -1,6 +1,14 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@model/*": ["app/@core/model/*"],
+      "@core/*": ["app/@core/*"],
+      "@env/*": ["environments/*"],
+    },
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "importHelpers": true,
     "module": "es2020",
     "outDir": "./dist/out-tsc",
@@ -19,5 +27,9 @@
     "plugins": [
       { "name": "tslint-language-service"}
     ]
+  },
+  "angularCompilerOptions": {
+    "strictTemplates": true,
+    "preserveWhitespaces": true,
   }
 }

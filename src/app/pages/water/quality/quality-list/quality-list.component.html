@@ -1,0 +1,85 @@
+<nb-card>
+
+  <nb-card-header>
+    Qualidade da Água
+  </nb-card-header>
+
+  <nb-card-body>
+
+    <ngx-app-table [nbSpinner]="loading" [tableStriped]="false"  >
+      <thead>
+        <tr>
+
+          <th class="col-2 align-middle align-middle text-center" >
+            Período
+          </th>
+
+          <th class="col-6 align-middle">
+            Parâmetro
+          </th>
+
+          <th class="col-1 align-middle align-middle text-center">
+            Exigido
+          </th>
+
+          <th class="col-1 align-middle align-middle text-center">
+            Analisado
+          </th>
+
+          <th class="col-1 align-middle align-middle text-center">
+            Conforme
+          </th>
+
+          <th class="col-1 align-middle" colspan="2">
+            <ngx-add-button (click)="add()"></ngx-add-button>
+          </th>
+
+        </tr>
+      </thead>
+
+      <tbody>
+        <ng-container *ngFor="let item of page?.content; let i = index">
+
+          <tr class="container" [ngClass]="{'custom-table-stripped':i%2===0}" >
+
+            <th class="align-middle text-center" [attr.rowspan]='item.gathering.length+1'>
+              <div class="d-flex flex-column align-middle ">
+                <span>{{item.startedAt | reference}}</span>
+              </div>
+            </th>
+
+          </tr>
+
+          <tr *ngFor="let gathering of item.gathering; let g = index" [ngClass]="{'custom-table-stripped':(g+i)%2===0}">
+            <td>{{gathering.param | param}}</td>
+            <td class="align-middle text-center">{{gathering.required}}</td>
+            <td class="align-middle text-center">{{gathering.analyzed}}</td>
+            <td class="align-middle text-center">{{gathering.conformity}}</td>
+
+            <td class="align-middle" [attr.rowspan]='item.gathering.length+1' *ngIf="g === 0">
+              <ngx-edit-button (click)="edit(item.id)"></ngx-edit-button>
+            </td>
+
+            <td class="align-middle" [attr.rowspan]='item.gathering.length+1' *ngIf="g === 0">
+              <ngx-delete-button (click)="remove(item.id)"></ngx-delete-button>
+            </td>
+
+          </tr>
+
+        </ng-container>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colspan="7" *ngIf="page">
+            <ngx-app-table-footer [page]="page" (search)="paginate($event)">
+            </ngx-app-table-footer>
+          </td>
+        </tr>
+      </tfoot>
+
+    </ngx-app-table>
+
+  </nb-card-body>
+
+</nb-card>

@@ -1,0 +1,127 @@
+<nb-card>
+
+  <nb-card-header>
+    <h4>{{title}}</h4>
+  </nb-card-header>
+
+  <nb-card-body *ngIf="place !== null">
+    <ngx-app-table>
+      <thead>
+        <tr>
+          <th class="col-7 align-middle">Nome:</th>
+          <th class="col-3 align-middle">Letra:</th>
+          <th class="col-3 align-middle">Número:</th>
+          <th class="col-2 align-middle">Limpar</th>
+        </tr>
+      </thead>
+
+      <tbody >
+        <tr>
+          <td class="align-middle">
+            {{place.address.name}}
+          </td>
+
+          <td class="align-middle">
+            {{place.number}}
+          </td>
+
+          <td class="align-middle">
+            {{place.letter}}
+          </td>
+
+          <td class="align-middle">
+            <button nbButton outline status="basic" fullWidth (click)="clearPlace()">
+              <nb-icon icon="trash-2-outline"></nb-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+
+
+    </ngx-app-table>
+
+  </nb-card-body>
+
+  <nb-card-body *ngIf="place === null">
+    <ngx-app-table [nbSpinner]="loading">
+      <thead>
+        <tr>
+          <th class="col-9 align-middle" (click)="order('address.name')">
+            Logradouro:
+            <nb-icon *ngIf="filter.sortedField === 'address.name' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'address.name' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+          <th class="col-1 align-middle" (click)="order('number')">
+              Número:
+              <nb-icon *ngIf="filter.sortedField === 'number' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+              <nb-icon *ngIf="filter.sortedField === 'number' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+          <th class="col-1 align-middle" (click)="order('letter')">
+            Letra:
+            <nb-icon *ngIf="filter.sortedField === 'letter' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'letter' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+          <th class="col-1 align-middle" colspan="2">
+          </th>
+
+        </tr>
+      </thead>
+
+      <thead>
+        <tr>
+
+          <th>
+            <ngx-select-address [(address)]="filter.address" [showTitle]='false' [addSelectOption]='true' ></ngx-select-address>
+          </th>
+
+          <th>
+            <input type="text" mask="0*" nbInput placeholder="Número" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.number">
+          </th>
+
+          <th>
+            <input type="text" mask="A*" nbInput placeholder="Letra" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.letter">
+          </th>
+
+          <th colspan="2">
+            <button nbButton outline status="success" fullWidth (click)="search()">
+              <nb-icon icon="search-outline"></nb-icon>
+            </button>
+          </th>
+
+        </tr>
+      </thead>
+
+      <tbody >
+        <tr *ngFor="let item of page?.content">
+          <td class="align-middle">{{item.address.name}}</td>
+          <td class="align-middle">{{item.number}}</td>
+          <td class="align-middle">{{item.letter}}</td>
+
+          <td class="align-middle">
+          </td>
+
+          <td class="align-middle">
+            <button nbButton outline status="basic" fullWidth (click)="emitPlace(item)">
+              <nb-icon icon="plus-outline"></nb-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colspan="5" *ngIf="page">
+            <ngx-app-table-footer [page]="page" (search)="paginate($event)">
+            </ngx-app-table-footer>
+          </td>
+        </tr>
+      </tfoot>
+
+    </ngx-app-table>
+  </nb-card-body>
+
+
+</nb-card>

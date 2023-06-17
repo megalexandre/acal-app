@@ -1,0 +1,114 @@
+<nb-card>
+
+  <nb-card-header>
+    <h4>Selecionar o Usuário</h4>
+  </nb-card-header>
+
+  <nb-card-body *ngIf="customer !== null">
+
+    <ngx-app-table>
+      <thead>
+        <tr>
+          <th class="col-7 align-middle">Nome:</th>
+          <th class="col-4 align-middle">Documento:</th>
+          <th class="col-1 align-middle">Limpar</th>
+        </tr>
+      </thead>
+
+      <tbody >
+        <tr>
+          <td class="align-middle">
+            {{customer.name}}
+          </td>
+
+          <td class="align-middle">
+            {{customer.document | identification}}
+          </td>
+
+          <td class="align-middle">
+            <button nbButton outline status="basic" fullWidth (click)="clearUser()">
+              <nb-icon icon="trash-2-outline"></nb-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+
+
+    </ngx-app-table>
+
+  </nb-card-body>
+
+  <nb-card-body *ngIf="customer === null">
+
+    <ngx-app-table [nbSpinner]="loading">
+      <thead>
+        <tr>
+
+          <th class="col-9 align-middle" (click)="order('name')">
+              Nome:
+              <nb-icon *ngIf="filter.sortedField === 'name' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+              <nb-icon *ngIf="filter.sortedField === 'name' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+          <th colspan="2" class="col-2 align-middle" (click)="order('document')">
+            Documento:
+            <nb-icon *ngIf="filter.sortedField === 'document' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'document' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+        </tr>
+      </thead>
+
+      <thead>
+        <tr>
+
+          <th>
+            <input type="text" nbInput placeholder="Nome" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.name">
+          </th>
+
+          <th>
+            <nb-form-field>
+              <input type="text" [mask]="personType === 'PERSON' ? '000.000.000-00':'00.000.000/0000-00'" nbInput placeholder="Documento" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.document">
+              <button nbSuffix nbButton ghost (click)="togglePersonType()">
+                <nb-icon [icon]="personType === 'PERSON' ? 'person-outline' : 'car-outline'"
+                         pack="eva" [attr.aria-label]="personType === 'LEGAL' ? 'LEGAL' : 'PERSON'">
+                </nb-icon>
+              </button>
+            </nb-form-field>
+          </th>
+
+          <th colspan="2">
+            <button nbButton outline status="success" fullWidth (click)="search()">
+              <nb-icon icon="search-outline"></nb-icon>
+            </button>
+          </th>
+
+        </tr>
+      </thead>
+
+      <tbody >
+        <tr *ngFor="let item of page?.content">
+          <td class="align-middle">{{item.name}}</td>
+          <td class="align-middle">{{item.document | identification}}</td>
+          <td class="align-middle">
+            <button nbButton outline status="basic" fullWidth (click)="selectUser(item)">
+              <nb-icon icon="plus-outline"></nb-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colspan="4" *ngIf="page">
+              <ngx-app-table-footer [page]="page" (search)="paginate($event)">
+              </ngx-app-table-footer>
+          </td>
+        </tr>
+      </tfoot>
+
+    </ngx-app-table>
+
+  </nb-card-body>
+
+</nb-card>

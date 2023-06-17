@@ -1,0 +1,18 @@
+<nb-card>
+
+  <nb-card-body>
+    <ngx-link-review *ngIf="link" [link]="link"></ngx-link-review>
+  </nb-card-body>
+
+  <nb-card-footer>
+
+    <div class="d-flex justify-content-between">
+      <button type="button" nbButton outline status="basic" (click)="back()">
+        <nb-icon icon="arrow-back-outline"></nb-icon>
+      </button>
+    </div>
+
+  </nb-card-footer>
+
+</nb-card>
+

@@ -1,0 +1,47 @@
+<nb-card *ngIf="hydrometer">
+
+  <nb-card-body>
+
+    <ngx-app-table>
+      <thead>
+        <th class="col-5 align-middle">
+          Responsável:
+        </th>
+        <th class="col-3 align-middle">
+          Matricula
+        </th>
+        <th class="col-2 align-middle">
+          valor:
+        </th>
+        <th class="col-2 align-middle">
+          Consumo:
+        </th>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="align-middle">{{hydrometer.link.customer.name}}</td>
+            <td class="align-middle">{{hydrometer.link.linkName}}</td>
+            <td class="align-middle">{{(consideredWaterConsumption(hydrometer.consumption) * waterMonetaryValue)| currency }}</td>
+            <td class="align-middle">
+              {{hydrometer.consumption | number}}
+            </td>
+      </tbody>
+    </ngx-app-table>
+  </nb-card-body>
+
+  <nb-card-footer>
+
+    <div class="d-flex justify-content-between">
+      <button type="button" nbButton outline status="basic" (click)="back()" >
+        <nb-icon icon="arrow-back-outline"></nb-icon>
+      </button>
+
+      <button type="button" nbButton outline status="danger" (click)="commit()">
+        <nb-icon icon="trash-2-outline"></nb-icon>
+      </button>
+
+    </div>
+
+  </nb-card-footer>
+
+</nb-card>

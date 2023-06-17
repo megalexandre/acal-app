@@ -1,0 +1,160 @@
+<nb-card>
+
+  <nb-card-header>
+    <h4>Selecionar o Preço</h4>
+  </nb-card-header>
+
+  <nb-card-body *ngIf="group !== null">
+
+    <ngx-app-table>
+      <thead>
+        <tr>
+          <th class="col-5 align-middle">Categoria:</th>
+          <th class="col-3 align-middle">Nome:</th>
+          <th class="col-3 align-middle">Valor:</th>
+          <th class="col-3 align-middle">Valor da Categoria:</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td class="align-middle">
+            {{group.category | category}}
+          </td>
+
+          <td class="align-middle">
+            {{group.name}}
+          </td>
+
+          <td class="align-middle">
+            {{group.value | currency}}
+          </td>
+
+          <td class="align-middle">
+            {{group.categoryValue | currency}}
+          </td>
+
+          <td class="align-middle">
+            <button nbButton outline status="basic" fullWidth (click)="clearGroup()">
+              <nb-icon icon="trash-2-outline"></nb-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </ngx-app-table>
+
+  </nb-card-body>
+
+  <nb-card-body *ngIf="group === null">
+    <ngx-app-table [nbSpinner]="loading">
+      <thead>
+        <tr>
+
+          <th class="col-2 align-middle" (click)="order('category')">
+            Categoria:
+            <nb-icon *ngIf="filter.sortedField === 'category' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'category' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+          <th class="col-7 align-middle" (click)="order('name')">
+            Nome:
+            <nb-icon *ngIf="filter.sortedField === 'name' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'name' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+          <th class="col-2 align-middle" (click)="order('value')">
+            Valor:
+            <nb-icon *ngIf="filter.sortedField === 'value' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'value' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+          <th class="col-2 align-middle" (click)="order('categoryValue')">
+            Valor da Categoria:
+            <nb-icon *ngIf="filter.sortedField === 'categoryValue' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'categoryValue' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+          <th class="col-1 align-middle" colspan="2">
+          </th>
+        </tr>
+      </thead>
+
+      <thead>
+        <tr>
+
+          <th>
+            <nb-select placeholder="Categoria"
+              id="category" type="text" fullWidth placeholder="Categoria:" [(ngModel)]="filter.category" (ngModelChange)="search()">
+              <nb-option [value]='null'>Selecione</nb-option>
+              <nb-option value="Fundador">Fundador</nb-option>
+              <nb-option value="Efetivo">Efetivo</nb-option>
+              <nb-option value="Temporário">Temporário</nb-option>
+            </nb-select>
+          </th>
+
+          <th>
+            <input type="text" nbInput placeholder="Nome" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.name">
+          </th>
+
+          <th>
+            <input type="text" nbInput placeholder="Valor" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.value"
+              mask="separator.2"
+              [thousandSeparator]="'.'"
+              [decimalMarker]="','"
+              prefix="R$ "
+              type="text"
+              [dropSpecialCharacters]="true">
+          </th>
+
+          <th>
+            <input type="text" nbInput placeholder="Valor" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.categoryValue"
+              mask="separator.2"
+              [thousandSeparator]="'.'"
+              [decimalMarker]="','"
+              prefix="R$ "
+              type="text"
+              [dropSpecialCharacters]="true">
+          </th>
+
+          <th colspan="2">
+            <button nbButton outline status="success" fullWidth (click)="search()">
+              <nb-icon icon="search-outline"></nb-icon>
+            </button>
+          </th>
+
+        </tr>
+      </thead>
+
+      <tbody >
+        <tr *ngFor="let item of page?.content">
+          <td class="align-middle">{{item.category | category}}</td>
+          <td class="align-middle">{{item.name}}</td>
+          <td class="align-middle">{{item.value | currency}}</td>
+          <td class="align-middle">{{item.categoryValue | currency}}</td>
+
+          <td class="align-middle">
+          </td>
+
+          <td class="align-middle">
+            <button nbButton outline status="basic" fullWidth (click)="emitGroup(item)">
+              <nb-icon icon="plus-outline"></nb-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colspan="6" *ngIf="page">
+            <ngx-app-table-footer [page]="page" (search)="paginate($event)">
+            </ngx-app-table-footer>
+          </td>
+        </tr>
+      </tfoot>
+
+    </ngx-app-table>
+  </nb-card-body>
+
+</nb-card>

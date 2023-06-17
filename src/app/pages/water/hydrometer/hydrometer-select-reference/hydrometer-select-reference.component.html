@@ -1,0 +1,18 @@
+<form [formGroup]="form" (submit)="submit()">
+  <div class="row">
+    <div class="col-md-3 col-12">
+      <label for="startedAt" class="label">Referência:</label>
+      <input id="startedAt" type="text" formControlName="reference" nbInput fullWidth placeholder="Nome:" mask="00/0000" [status]="getStatus('reference')">
+      <error-message [message]="'Não é uma data valida'" [show]="(_reference.errors?.required && (submmited || this.form.touched))"></error-message>
+      <error-message [message]="'Não é um mês valido'" [show]="(_reference.errors?.monthNotValid && (submmited || this.form.touched))"></error-message>
+      <error-message [message]="'Não é um ano valido'" [show]="(_reference.errors?.yearNotValid && (submmited || this.form.touched))"></error-message>
+    </div>
+
+    <div class="offset-md-6 col-md-3 col-12">
+      <label for="startedAt" class="label">Buscar:</label>
+      <button type="submit" fullWidth nbButton outline status="success">
+        <nb-icon icon="search-outline"></nb-icon>
+      </button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,74 @@
+<form [formGroup]="form" (submit)="submit()" >
+  <nb-card *ngIf="loaded">
+
+    <nb-card-header>
+      Qualidade da Água Deletar
+    </nb-card-header>
+
+    <nb-card-body>
+      <div class="col-md-6 col-12">
+        <label for="startedAt" class="label">Referência:</label>
+        <input id="startedAt" type="text" nbInput fullWidth placeholder="Nome:" formControlName="startedAt"  [status]="getStatus('startedAt')" mask="00/0000">
+        <error-message [message]="'Referência é obrigatório'" [show]="(startedAt.errors?.required && (submmited || this.form.touched))"></error-message>
+      </div>
+    </nb-card-body>
+
+    <nb-card-body>
+      <ngx-app-table [tableStriped]="false">
+        <thead class="thead-light">
+          <tr>
+
+            <th class="col-3">
+              Parâmetro
+            </th>
+
+            <th class="col-3">
+              Exigido
+            </th>
+
+            <th class="col-3">
+              Analisado
+            </th>
+
+            <th class="col-3">
+              Conforme
+            </th>
+
+          </tr>
+        </thead>
+
+
+        <tbody>
+          <ng-container formArrayName="gathering">
+            <tr *ngFor="let control of gathering.controls; index as i">
+              <td>{{gathering.controls[i].get('param').value | param}}</td>
+
+              <ng-container [formGroupName]="i">
+                <td><input fullWidth nbInput formControlName="required" /></td>
+                <td><input fullWidth nbInput formControlName="analyzed" /></td>
+                <td><input fullWidth nbInput formControlName="conformity" /></td>
+              </ng-container>
+
+            </tr>
+          </ng-container>
+        </tbody>
+      </ngx-app-table>
+
+    </nb-card-body>
+    <nb-card-footer>
+
+      <div class="d-flex justify-content-between">
+        <button type="button" nbButton outline status="basic" (click)="back()">
+          <nb-icon icon="arrow-back-outline"></nb-icon>
+        </button>
+
+        <button type="submit" nbButton outline status="danger">
+          <nb-icon icon="trash-2-outline"></nb-icon>
+        </button>
+
+      </div>
+
+    </nb-card-footer>
+
+  </nb-card>
+</form>

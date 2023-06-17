@@ -1,0 +1,70 @@
+
+<div *ngIf="loaded">
+  <form [formGroup]="form" (submit)="submit()">
+    <div class="row">
+      <div class="col-lg-12">
+        <nb-card>
+
+          <nb-card-header>
+            Atualizar Matrícula
+          </nb-card-header>
+
+          <nb-card-body>
+            <div class="row mb-3">
+
+              <div class="col-12">
+                <ngx-select-address [status]="getStatus('address')" (address)="address?.value" [address]="address?.value" [status]="getStatus('address')" ></ngx-select-address>
+                <error-message [message]="'Endereço é obrigatório'" [show]="(address.errors?.required && (submmited || this.form.touched))"></error-message>
+              </div>
+
+            </div>
+
+            <div class="row mb-3">
+
+              <div class="col-md-6 col-12">
+                <label for="number" class="label">Número:</label>
+                <input id="number" mask="0*" nbInput fullWidth placeholder="Número:" formControlName="number"  [status]="getStatus('number')">
+                <error-message [message]="'Número é obrigatório'" [show]="(number.errors?.required && (submmited || this.form.touched))"></error-message>
+              </div>
+
+              <div class="col-md-6 col-12">
+                <label for="letter" class="label">Letra:</label>
+                <input id="letter" type="text" mask="A*" nbInput fullWidth placeholder="Letra:" formControlName="letter"  [status]="getStatus('letter')">
+                <error-message [message]="'Letra é obrigatório'" [show]="(letter.errors?.required && (submmited || this.form.touched))"></error-message>
+              </div>
+
+              <div class="col-12">
+                <label for="letter" class="label">Observações:</label>
+                <textarea id="letter" type="text" nbInput fullWidth placeholder="Observações:" formControlName="other"  [status]="getStatus('other')"></textarea>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 col-12 form-inline">
+                <nb-checkbox title="Possui Hidrômetro" formControlName="hasHydrometer" [status]="getStatus('hasHydrometer')"  status="basic">Possui Hidrômetro?</nb-checkbox>
+              </div>
+            </div>
+
+          </nb-card-body>
+
+          <nb-card-footer>
+
+            <div class="d-flex justify-content-between">
+              <button type="button" nbButton outline status="basic" (click)="back()">
+                <nb-icon icon="arrow-back-outline"></nb-icon>
+              </button>
+
+              <button type="submit" nbButton outline status="warning">
+                <nb-icon icon="edit-2-outline"></nb-icon>
+              </button>
+            </div>
+
+          </nb-card-footer>
+        </nb-card>
+
+      </div>
+
+    </div>
+  </form>
+
+</div>

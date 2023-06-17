@@ -1,0 +1,30 @@
+<nb-card>
+
+  <nb-card-header class="text-center">
+    Receber Fatura
+  </nb-card-header>
+
+  <nb-card-body>
+
+    <p>
+      Eu, <b>{{user.name}}</b>
+      Confirmo recebimento no valor de:
+    </p>
+
+    <h1 class="text-center">
+      <b>
+        {{sumInvoiceValues(invoice) | currency}}
+      </b>
+    </h1>
+
+  </nb-card-body>
+
+  <nb-card-footer>
+    <button nbButton outline status="success" fullWidth (click)="pay()" >
+      Confirmar
+    </button>
+
+  </nb-card-footer>
+
+</nb-card>
+

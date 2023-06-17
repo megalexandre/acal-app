@@ -1,0 +1,72 @@
+<nb-card>
+  <nb-card-body>
+    <nb-stepper orientation="horizontal" [linear]="true" disableStepNavigation>
+
+      <nb-step [label]="usuario" >
+        <ng-template #usuario>Usuário</ng-template>
+
+        <hr/>
+          <ngx-select-user (selectCustomer)="selectCustomer($event)"></ngx-select-user>
+        <hr/>
+
+        <div class="d-flex justify-content-between">
+          <button nbButton disabled nbStepperPrevious>Voltar</button>
+          <button nbButton nbStepperNext [disabled]="customer.invalid" (click)="index = 'endereco'">Avançar</button>
+        </div>
+      </nb-step>
+
+      <nb-step [label]="endereco">
+        <ng-template #endereco>Endereço de serviço</ng-template>
+
+        <hr/>
+          <ngx-select-place [title]="'Endereço de serviço'" (selectPlace)="selectPlace($event)" ></ngx-select-place>
+        <hr/>
+
+        <div class="d-flex justify-content-between">
+          <button nbButton nbStepperPrevious (click)="index = 'usuario'">Voltar</button>
+          <button nbButton nbStepperNext [disabled]="place.invalid" (click)="index = 'enderecoDeCorrepondencia'">Avançar</button>
+        </div>
+      </nb-step>
+
+      <nb-step [label]="enderecoDeCorrepondencia">
+        <ng-template #enderecoDeCorrepondencia>Endereço correspôndencia</ng-template>
+
+        <hr/>
+          <ngx-select-place [title]="'Endereço de correspôndencia'" (selectPlace)="selectMailPlace($event)" ></ngx-select-place>
+        <hr/>
+
+        <div class="d-flex justify-content-between">
+          <button nbButton nbStepperPrevious (click)="index = 'endereco'">Voltar</button>
+          <button nbButton nbStepperNext [disabled]="place.invalid" (click)="index = 'categoria'">Avançar</button>
+        </div>
+      </nb-step>
+
+      <nb-step [label]="categoria">
+         <ng-template #categoria>Preço</ng-template>
+
+        <hr/>
+          <ngx-select-group (selectGroup)="selectGroup($event)" ></ngx-select-group>
+        <hr/>
+
+        <div class="d-flex justify-content-between">
+          <button nbButton nbStepperPrevious (click)="index='endereco'">Voltar</button>
+          <button nbButton nbStepperNext [disabled]="group.invalid" (click)="index='review'">Avançar</button>
+        </div>
+      </nb-step>
+
+      <nb-step [label]="review">
+        <ng-template #review>Revisão</ng-template>
+
+        <hr/>
+          <ngx-link-review [link]="this.form.value" *ngIf="index === 'review'"></ngx-link-review>
+        <hr/>
+
+        <div class="d-flex justify-content-between">
+          <button nbButton nbStepperPrevious (click)="index='endereco'">Voltar</button>
+          <button nbButton nbStepperNext [disabled]="group.invalid" status="success" (click)="submit()" >Finalizar</button>
+        </div>
+      </nb-step>
+
+    </nb-stepper>
+  </nb-card-body>
+</nb-card>

@@ -1,8 +1,35 @@
-/**
- * @license
- * Copyright Akveo. All Rights Reserved.
- * Licensed under the MIT License. See License.txt in the project root for license information.
- */
+export const baseUrl = 'https://localhost:8080/';
+
 export const environment = {
   production: true,
+
+  api: baseUrl,
+
+  auth:{
+    login: `auth/login`,
+    logout: `auth/logout`,
+  },
+
+  quality: `${baseUrl + 'quality'}`,
+  customer: `${baseUrl + 'customer'}`,
+  address: `${baseUrl + 'address'}`,
+  group: `${baseUrl + 'group'}`,
+  link: `${baseUrl + 'link'}`,
+  invoice: `${baseUrl + 'invoice'}`,
+  place: `${baseUrl + 'place'}`,
+  report: `${baseUrl + 'report'}`,
+
+  management: {
+    router: '/management',
+  },
+
+  dashboard: {
+    routers: {
+      planAccount:
+      {
+        synthetic: '/synthetic',
+        analytical : '/analytical',
+      },
+    },
+  },
 };
