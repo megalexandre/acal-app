@@ -1,5 +1,4 @@
 import { ActivatedRoute, Router } from "@angular/router";
-import { DefaultFilter, DefaultFilterPage, DefaultModel, DefaultModelPage } from "@model/default/_index";
 import { Page } from "@model/page";
 import { DataService } from "app/@shared/data.service";
 import { DefaultService } from "app/@shared/default.service";
@@ -11,12 +10,12 @@ export type Action = {
 export abstract class ListComponent{
 
   public loading: boolean =  false;
-  public page: Page<any>;
 
-  public abstract filter: DefaultFilterPage
+  public page: Page<any>;
+  public abstract filter: any
 
   constructor(
-    public service: DefaultService<DefaultModel, DefaultFilter, DefaultModelPage, DefaultFilterPage>,
+    public service: DefaultService<any, any, any, any>,
     public activatedRoute: ActivatedRoute,
     public router: Router,
     public data: DataService,

@@ -4,6 +4,7 @@ import { ListComponent } from '@core/list.component';
 import { CustomerPageFilter } from '@model/default/customer';
 import { DataService } from 'app/@shared/data.service';
 import { CustomerService } from '../customer.service';
+import { Page } from '@model/page';
 
 @Component({
   selector: 'ngx-customer-list',
@@ -12,6 +13,7 @@ import { CustomerService } from '../customer.service';
 })
 export class CustomerListComponent  extends ListComponent implements OnInit {
 
+  public page: Page<any>;
   public filter: CustomerPageFilter = new CustomerPageFilter()
 
   constructor(
