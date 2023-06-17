@@ -6,7 +6,7 @@
 <hr>
 
 <span class="d-flex justify-content-between align-items-center">
-  Data de vencimento {{warning}}:
+  Data de vencimento:
   <b>
     <input nbInput [nbDatepicker]="datepicker" [(ngModel)]="dueDate" [status]='warning ? "warning": "basic"'>
     <nb-datepicker #datepicker></nb-datepicker>

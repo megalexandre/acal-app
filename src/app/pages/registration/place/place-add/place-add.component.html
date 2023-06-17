@@ -12,10 +12,8 @@
           <div class="row mb-3">
 
             <div class="col-12">
-              <!--
-                <ngx-select-address [status]="getStatus('address')" (selectAddress)="selectAddress($event)"></ngx-select-address>
-                <error-message [message]="'Endereço é obrigatório'" [show]="(address.errors?.required && (submmited || this.form.touched))"></error-message>
-              -->
+              <ngx-select-address [status]="getStatus('address')" (addressChange)="selectAddress($event)" ></ngx-select-address>
+              <error-message [message]="'Endereço é obrigatório'" [show]="(address.errors?.required && (submmited || this.form.touched))"></error-message>
             </div>
 
           </div>
