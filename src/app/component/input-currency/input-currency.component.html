@@ -1,12 +1,11 @@
 <input
   [(ngModel)]="currency"
-  (ngModelChange)="currencyChange.emit(currency)"
+  (ngModelChange)="emit()"
   nbInput fullWidth placeholder="value:" [status]="status"
   mask="separator.2"
   [thousandSeparator]="'.'"
   [decimalMarker]="','"
   prefix="R$ "
-  type="text"
   [dropSpecialCharacters]="true"
   [disabled]="disabled"
 >

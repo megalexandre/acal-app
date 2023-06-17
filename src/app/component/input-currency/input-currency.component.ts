@@ -20,4 +20,8 @@ export class InputCurrencyComponent {
 
   constructor() { }
 
+  public emit(){
+    this.currencyChange.emit(Number(this.currency))
+  }
+
 }

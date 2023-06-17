@@ -23,44 +23,44 @@
 
           <th class="col-4 align-middle" (click)="order('customer.name')">
             Nome:
-            <nb-icon *ngIf="filter.sortedField === 'customer.name' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
-            <nb-icon *ngIf="filter.sortedField === 'customer.name' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'customer.name' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'customer.name' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
           <th class="col-2 align-middle" (click)="order('customer.document')">
             Documento:
-            <nb-icon *ngIf="filter.sortedField === 'customer.document' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
-            <nb-icon *ngIf="filter.sortedField === 'customer.document' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'customer.document' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'customer.document' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
           <th class="col-1 align-middle" (click)="order('group.category')">
             Categoria:
-            <nb-icon *ngIf="filter.sortedField === 'group.category' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
-            <nb-icon *ngIf="filter.sortedField === 'group.category' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'group.category' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'group.category' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
           <th class="col-1 align-middle" (click)="order('group.name')">
             Grupo:
-            <nb-icon *ngIf="filter.sortedField === 'group.name' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
-            <nb-icon *ngIf="filter.sortedField === 'group.name' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'group.name' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'group.name' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
           <th class="col-2 align-middle" (click)="order('place.address.name')">
             Logradouro:
-            <nb-icon *ngIf="filter.sortedField === 'place.address.name' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
-            <nb-icon *ngIf="filter.sortedField === 'place.address.name' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'place.address.name' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'place.address.name' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
           <th class="col-1 align-middle" (click)="order('place.number')">
             Número:
-            <nb-icon *ngIf="filter.sortedField === 'place.number' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
-            <nb-icon *ngIf="filter.sortedField === 'place.number' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'place.number' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'place.number' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
           <th class="col-1 align-middle" (click)="order('group.value')">
             Valor:
-            <nb-icon *ngIf="filter.sortedField === 'group.value' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
-            <nb-icon *ngIf="filter.sortedField === 'group.value' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'group.value' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'group.value' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
           <th class="col-1 align-middle" colspan="2">
@@ -96,18 +96,15 @@
           </th>
 
           <th>
-            <!--
-              <ngx-select-category [(category)]="filter.category"></ngx-select-category>
-            -->
+            <ngx-select-category [(category)]="filter.group.category" (categoryChange)="search()"></ngx-select-category>
           </th>
-
 
           <th>
             <input type="text" nbInput placeholder="Grupo" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.group.name">
           </th>
 
           <th>
-            <ngx-select-address [addSelectOption]='true' [showTitle]='false' [(address)]="filter.address"></ngx-select-address>
+            <ngx-select-address [addSelectOption]='true' [showTitle]='false' [(address)]="filter.place.address" (addressChange)="search()"></ngx-select-address>
           </th>
 
           <th>
@@ -118,9 +115,15 @@
             <input type="text" nbInput placeholder="Valor" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.group.value">
           </th>
 
-          <th colspan="2">
+          <th>
+            <button nbButton outline status="basic" type="button" fullWidth (click)="reset()">
+              <nb-icon icon="undo-outline"></nb-icon>
+            </button>
+          </th>
+
+          <th>
             <button nbButton outline status="success" fullWidth (click)="search()">
-              <nb-icon icon="search-outline"></nb-icon>
+              <nb-icon icon="funnel-outline"></nb-icon>
             </button>
           </th>
 

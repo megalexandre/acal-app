@@ -12,26 +12,26 @@
 
           <th class="col-2 align-middle" (click)="order('category')">
             Categoria:
-            <nb-icon *ngIf="filter.sortedField === 'category' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
-            <nb-icon *ngIf="filter.sortedField === 'category' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'category' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'category' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
           <th class="col-7 align-middle" (click)="order('name')">
             Nome:
-            <nb-icon *ngIf="filter.sortedField === 'name' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
-            <nb-icon *ngIf="filter.sortedField === 'name' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'name' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'name' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
           <th class="col-1 align-middle" (click)="order('value')">
             Valor Taxa:
-            <nb-icon *ngIf="filter.sortedField === 'value' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
-            <nb-icon *ngIf="filter.sortedField === 'value' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'value' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'value' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
           <th class="col-1 align-middle" (click)="order('categoryValue')">
             Valor Categoria:
-            <nb-icon *ngIf="filter.sortedField === 'categoryValue' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
-            <nb-icon *ngIf="filter.sortedField === 'categoryValue' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'categoryValue' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'categoryValue' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
           <th class="col-1 align-middle" colspan="2">
@@ -46,9 +46,7 @@
         <tr>
 
           <th>
-            <!--
-              <ngx-select-category [(category)]="filter.category" (change)="this.search()"></ngx-select-category>
-            -->
+            <ngx-select-category [(category)]="filter.category" (categoryChange)="this.search()"></ngx-select-category>
           </th>
 
           <th>

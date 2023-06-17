@@ -7,11 +7,6 @@ export interface Address {
 export class AddressFilter {
   id?: string = null;
   name?: string = null;
-
-  reset(): void {
-    this.id = null;
-    this.name = null;
-  }
 }
 
 export interface AddressPage {
