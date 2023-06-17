@@ -32,6 +32,7 @@ export class AddressPageFilter {
     this.pageSize = 10;
     this.direction = 'ASC';
     this.sortedField = 'id';
+
     this.id = '';
     this.name = '';
   }

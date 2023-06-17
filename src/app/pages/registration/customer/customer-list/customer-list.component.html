@@ -12,14 +12,14 @@
 
           <th class="col-9 align-middle" (click)="order('name')">
               Nome:
-              <nb-icon *ngIf="filter.sortedField === 'name' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
-              <nb-icon *ngIf="filter.sortedField === 'name' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+              <nb-icon *ngIf="filter.sortedField === 'name' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+              <nb-icon *ngIf="filter.sortedField === 'name' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
           <th class="col-2 align-middle" (click)="order('document')">
             Documento:
-            <nb-icon *ngIf="filter.sortedField === 'document' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
-            <nb-icon *ngIf="filter.sortedField === 'document' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'document' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'document' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
           <th class="col-1 align-middle" colspan="2">

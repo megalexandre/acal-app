@@ -38,11 +38,6 @@ export class AddressDeleteComponent extends AddressComponent implements OnInit {
     this.service.getById(this.id).subscribe(
       (address: Address)=> {
         this.address = address;
-
-        this.form = this.formBuilder.group({
-          id: [address.id, Validators.required],
-          name: [address.name, Validators.required],
-        })
         this.loaded = true
       }
     )

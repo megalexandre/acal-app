@@ -1,6 +1,5 @@
-import { DefaultFilter, DefaultFilterPage, DefaultModel, DefaultModelPage } from "./_index";
 
-export interface Book extends DefaultModel {
+export interface Book {
   id: string,
   value: number,
   createdBy: string,
@@ -13,7 +12,7 @@ export interface Type {
   name: 'IN'|'OUT',
 }
 
-export interface BookPage extends DefaultModelPage{
+export interface BookPage {
   id: string,
   value: number,
   createdBy: string,
@@ -22,7 +21,7 @@ export interface BookPage extends DefaultModelPage{
   reason: string,
 }
 
-export interface BookFilter extends DefaultFilter {
+export interface BookFilter {
   value?: number,
   createdBy?: string,
   createdAt?: string,
@@ -32,7 +31,7 @@ export interface BookFilter extends DefaultFilter {
   createdAtFinish?: string,
 }
 
-export class BookPageFilter extends DefaultFilterPage {
+export class BookPageFilter {
   value?: number = null;
   createdBy?: string = null;
   createdAt?: string = null;
@@ -40,9 +39,16 @@ export class BookPageFilter extends DefaultFilterPage {
   reason?: string = null;
   createdAtStarted?: string = null;
   createdAtFinish?: string = null;
+  page: number = 0;
+  pageSize: number = 10;
+  direction: string = 'ASC';
+  sortedField: string = 'id';
 
   reset(){
-    super.reset();
+    this.page = 0;
+    this.pageSize = 10;
+    this.direction = 'ASC';
+    this.sortedField = 'id';
     this.value = null;
     this.createdAt = null;
     this.createdBy = null

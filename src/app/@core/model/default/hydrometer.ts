@@ -1,4 +1,4 @@
-import { DefaultFilter, DefaultFilterPage, Link } from "./_index";
+import { Link } from "./_index";
 
 export interface Hydrometer {
   id: string,
@@ -10,14 +10,22 @@ export interface Hydrometer {
   personName?: String,
 }
 
-export interface HydrometerPage extends Hydrometer{}
+export interface HydrometerPage {
+  id: string,
+  reference: string,
+  costValue: number,
+  consumption: number,
+  link: Link,
+  linkName?: String,
+  personName?: String,
+}
 
-export interface HydrometerFilter extends DefaultFilter {
+export interface HydrometerFilter {
   id?: string,
   name?: string,
 }
 
-export class HydrometerPageFilter extends DefaultFilterPage {
+export class HydrometerPageFilter {
 
   id?: string = null;
   reference?: string = null;
@@ -27,8 +35,12 @@ export class HydrometerPageFilter extends DefaultFilterPage {
   linkName?: String = null;
   personName?: String = null;
 
+  page: number = 0;
+  pageSize: number = 10;
+  direction: string = 'ASC';
+  sortedField: string = 'id';
+
   reset(){
-    super.reset()
     this.id = null;
     this.reference = null;
     this.costValue = null;

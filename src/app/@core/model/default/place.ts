@@ -1,6 +1,6 @@
-import { Address, AddressFilter, DefaultFilter, DefaultFilterPage, DefaultModel, DefaultModelPage } from "./_index";
+import { Address, AddressFilter } from "./_index";
 
-export interface Place extends DefaultModel {
+export interface Place {
   id: string,
   number: number,
   letter: string,
@@ -9,7 +9,7 @@ export interface Place extends DefaultModel {
   other: string,
 }
 
-export interface PlacePage extends DefaultModelPage {
+export interface PlacePage  {
   id: string,
   number: number,
   letter: string,
@@ -18,14 +18,14 @@ export interface PlacePage extends DefaultModelPage {
   other: string,
 }
 
-export interface PlaceFilter extends DefaultFilter {
+export interface PlaceFilter {
   number?: string,
   letter?: string,
   address?: AddressFilter,
 }
 
 
-export class PlacePageFilter extends DefaultFilterPage {
+export class PlacePageFilter{
   id?: string = null;
   number?: number = null;
   letter?: string = null;
@@ -33,13 +33,22 @@ export class PlacePageFilter extends DefaultFilterPage {
   hasHydrometer?: boolean = null;
   other?: string = null;
 
+  page: number = 0;
+  pageSize: number = 10;
+  direction: string = 'ASC';
+  sortedField: string = 'id';
+
   reset(){
-    super.reset();
     this.id = null;
     this.number = null;
     this.letter = null
     this.address = null;
     this.hasHydrometer = null;
     this.other = null;
+
+    this.page = 0;
+    this.pageSize = 10;
+    this.direction = 'ASC';
+    this.sortedField = 'id';
   }
 }

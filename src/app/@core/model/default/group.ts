@@ -1,6 +1,5 @@
-import { DefaultFilter, DefaultFilterPage, DefaultModel } from "./_index";
 
-export interface Group extends DefaultModel {
+export interface Group {
   id: string,
   value: number,
   categoryValue: number,
@@ -8,7 +7,7 @@ export interface Group extends DefaultModel {
   category: Category,
 }
 
-export interface GroupFilter extends DefaultFilter {
+export interface GroupFilter {
   name?: string;
   document?: string;
   category?: Category ;
@@ -16,7 +15,7 @@ export interface GroupFilter extends DefaultFilter {
   value?: number;
 }
 
-export interface GroupPage extends Group {
+export interface GroupPage {
   id: string,
   value: number,
   categoryValue: number,
@@ -24,21 +23,29 @@ export interface GroupPage extends Group {
   category: Category,
 }
 
-export class GroupPageFilter extends DefaultFilterPage {
+export class GroupPageFilter {
   name?: string = '';
   document?: string = '';
   category?: Category = null;
   categoryValue?: number = null;
   value?: number = null;
 
+  page: number = 0;
+  pageSize: number = 10;
+  direction: string = 'ASC';
+  sortedField: string = 'id';
+
   reset(){
-    super.reset();
     this.name = '';
     this.document = '';
     this.category = null;
     this.value = null;
     this.categoryValue = null;
 
+    this.page = 0;
+    this.pageSize = 10;
+    this.direction = 'ASC';
+    this.sortedField = 'id';
   }
 }
 
@@ -46,7 +53,7 @@ export interface Category {
   name: 'FOUNDER'|'EFFECTIVE'|'TEMPORARY',
 }
 
-export interface GroupPage extends DefaultFilter{}
+export interface GroupPage {}
 
 
 

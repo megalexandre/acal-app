@@ -1,6 +1,6 @@
-import { Address, Category, Customer, CustomerFilter, DefaultFilter, DefaultFilterPage, DefaultModel, DefaultModelPage, Group, GroupFilter, Hydrometer, PersonType, Place, PlaceFilter } from "./_index";
+import { Address, Category, Customer, CustomerFilter, Group, GroupFilter, Hydrometer, PersonType, Place, PlaceFilter } from "./_index";
 
-export interface Link extends DefaultModel {
+export interface Link {
   id: string,
   group: Group,
   customer: Customer,
@@ -14,7 +14,7 @@ export interface Link extends DefaultModel {
   createdBy: string,
 }
 
-export interface LinkPage extends DefaultModelPage {
+export interface LinkPage {
   id: string,
   group: Group,
   customer: Customer,
@@ -28,7 +28,7 @@ export interface LinkPage extends DefaultModelPage {
   createdBy: string,
 }
 
-export class LinkFilter implements DefaultFilter {
+export class LinkFilter {
   id?: string;
   active?: boolean = null;
   group?: GroupFilter = null;
@@ -36,14 +36,16 @@ export class LinkFilter implements DefaultFilter {
   place?: PlaceFilter = null;
   personType?: PersonType = null;
 
+  page: number = 0;
+  pageSize: number = 10;
+  direction: string = 'ASC';
+  sortedField: string = 'id';
+
   reset(): void {
-    Object.keys(this).forEach((key) => {
-      this[key] = null;
-    });
   }
 }
 
-export class LinkPageFilter extends DefaultFilterPage {
+export class LinkPageFilter {
   id?: string;
   active?: boolean = null;
   category?: Category = null;

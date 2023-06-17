@@ -48,20 +48,20 @@
         <tr>
           <th class="col-9 align-middle" (click)="order('address.name')">
             Logradouro:
-            <nb-icon *ngIf="filter.sortedField === 'address.name' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
-            <nb-icon *ngIf="filter.sortedField === 'address.name' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'address.name' &&  filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'address.name' &&  filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
           <th class="col-1 align-middle" (click)="order('number')">
               Número:
-              <nb-icon *ngIf="filter.sortedField === 'number' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
-              <nb-icon *ngIf="filter.sortedField === 'number' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+              <nb-icon *ngIf="filter.sortedField === 'number' &&  filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+              <nb-icon *ngIf="filter.sortedField === 'number' &&  filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
           <th class="col-1 align-middle" (click)="order('letter')">
             Letra:
-            <nb-icon *ngIf="filter.sortedField === 'letter' && filter.direction.name === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
-            <nb-icon *ngIf="filter.sortedField === 'letter' && filter.direction.name === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'letter' &&  filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'letter' &&  filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
           <th class="col-1 align-middle" colspan="2">

@@ -12,12 +12,12 @@ const routes: Routes = [
         loadChildren: () => import('../registration/address/address.module')
           .then(m => m.AddressModule),
       },
-      /*
       {
         path: 'customer',
         loadChildren: () => import('../registration/customer/customer.module')
           .then(m => m.CustomerModule),
       },
+      /*
       {
         path: 'group',
         loadChildren: () => import('../registration/group/group.module')

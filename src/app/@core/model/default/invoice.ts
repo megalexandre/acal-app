@@ -1,4 +1,4 @@
-import { DefaultFilter, DefaultFilterPage, Link } from "./_index";
+import { Link } from "./_index";
 
 export interface Invoice {
   id?: string,
@@ -44,7 +44,7 @@ interface linkRequest {
   id: string
 }
 
-export interface InvoiceFilter extends DefaultFilter {
+export interface InvoiceFilter {
   id?: string,
   reference?: string,
   value?: number,
@@ -55,7 +55,7 @@ export interface InvoiceFilter extends DefaultFilter {
 
 }
 
-export class InvoicePageFilter extends DefaultFilterPage {
+export class InvoicePageFilter {
 
     id?: string = null;
     reference?: string = null;
@@ -63,8 +63,12 @@ export class InvoicePageFilter extends DefaultFilterPage {
     dueDate?: string = null;
     customerName: string = null;
 
+    page: number = 0;
+    pageSize: number = 10;
+    direction: string = 'ASC';
+    sortedField: string = 'id';
+
     reset(){
-      super.reset();
       this.id = null;
       this.reference = null;
       this.value = null;

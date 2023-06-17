@@ -1,33 +1,26 @@
-import { DefaultFilter, DefaultFilterPage, DefaultModel, DefaultModelPage } from "./default-filter"
-
-export interface Quality extends DefaultModel{
+export interface Quality  {
   id: string,
   startedAt: string,
   gathering: Gathering[],
 }
 
-export interface QualityPage extends DefaultModelPage {
+export interface QualityPage {
   id: string,
   startedAt: string,
   gathering: Gathering[],
 }
 
-export interface QualityFilter extends DefaultFilter {
+export interface QualityFilter {
   id: string,
   startedAt: string,
   gathering: Gathering[],
 }
 
-
-export class QualityPageFilter extends DefaultFilterPage {
+export class QualityPageFilter {
   id?: string = null;
   startedAt?: string = null;
 
   reset(){
-    super.reset();
-    Object.keys(this).forEach((key) => {
-      this[key] = null;
-    });
   }
 
 }

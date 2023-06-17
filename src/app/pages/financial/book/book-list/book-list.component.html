@@ -15,32 +15,32 @@
         <tr>
           <th (click)="order('value')" class="col-md-3">
               Valor:
-              <nb-icon *ngIf="filter.sortedField === 'value' && filter.direction.name  === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
-              <nb-icon *ngIf="filter.sortedField === 'value' && filter.direction.name  === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+              <nb-icon *ngIf="filter.sortedField === 'value' &&  filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+              <nb-icon *ngIf="filter.sortedField === 'value' &&  filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
           <th (click)="order('createdBy')" class="col-md-3">
             Responsável:
-            <nb-icon *ngIf="filter.sortedField === 'createdBy' && filter.direction.name  === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
-            <nb-icon *ngIf="filter.sortedField === 'createdBy' && filter.direction.name  === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'createdBy' &&  filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'createdBy' &&  filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
           <th (click)="order('createdAt')" class="col-md-2">
             Data:
-            <nb-icon *ngIf="filter.sortedField === 'createdAt' && filter.direction.name  === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
-            <nb-icon *ngIf="filter.sortedField === 'createdAt' && filter.direction.name  === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'createdAt' &&  filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'createdAt' &&  filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
           <th (click)="order('type')" class="col-md-2">
             Tipo:
-            <nb-icon *ngIf="filter.sortedField === 'type' && filter.direction.name  === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
-            <nb-icon *ngIf="filter.sortedField === 'type' && filter.direction.name  === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'type' &&  filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'type' &&  filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
           <th (click)="order('reason')" class="col-md-2">
             Motivo:
-            <nb-icon *ngIf="filter.sortedField === 'reason' && filter.direction.name  === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
-            <nb-icon *ngIf="filter.sortedField === 'reason' && filter.direction.name  === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'reason' &&  filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'reason' &&  filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
         </tr>

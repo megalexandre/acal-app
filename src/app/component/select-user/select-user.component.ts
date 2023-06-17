@@ -35,10 +35,10 @@ export class SelectUserComponent implements OnInit{
 
   public order(field: string){
     this.filter.sortedField = field
-    if(this.filter.direction.name ===  'ASC') {
-      this.filter.direction.name = 'DESC';
+    if(this.filter.direction ===  'ASC') {
+      this.filter.direction = 'DESC';
     } else {
-      this.filter.direction.name = 'ASC';
+      this.filter.direction = 'ASC';
     }
 
     this.search();
