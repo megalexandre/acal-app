@@ -32,7 +32,7 @@ export class BookListComponent extends ListComponent implements OnInit {
 
   public prepareDataForSearch() {
     const formatedDate = this.formatedDate()
-    return {...this.filter, formatedDate}
+    return {...this.filter, createdAt: formatedDate}
   }
 
   public formatedDate(){
