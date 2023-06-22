@@ -1,7 +1,7 @@
 export const baseUrl = 'https://localhost:8080/';
 
 export const environment = {
-  production: true,
+  production: false,
 
   api: baseUrl,
 
@@ -10,6 +10,8 @@ export const environment = {
     logout: `auth/logout`,
   },
 
+  book: `${baseUrl + 'book'}`,
+  hydrometer: `${baseUrl + 'hydrometer'}`,
   quality: `${baseUrl + 'quality'}`,
   customer: `${baseUrl + 'customer'}`,
   address: `${baseUrl + 'address'}`,
@@ -18,6 +20,7 @@ export const environment = {
   invoice: `${baseUrl + 'invoice'}`,
   place: `${baseUrl + 'place'}`,
   report: `${baseUrl + 'report'}`,
+
 
   management: {
     router: '/management',
