@@ -7,9 +7,9 @@
 
     <nb-card-body>
       <div class="col-md-6 col-12">
-        <label for="startedAt" class="label">Referência:</label>
-        <input id="startedAt" type="text" nbInput fullWidth placeholder="Nome:" formControlName="startedAt"  [status]="getStatus('startedAt')" mask="00/0000">
-        <error-message [message]="'Referência é obrigatório'" [show]="(startedAt.errors?.required && (submmited || this.form.touched))"></error-message>
+        <label for="reference" class="label">Referência:</label>
+        <input id="reference" type="text" nbInput fullWidth placeholder="Nome:" formControlName="reference"  [status]="getStatus('reference')" mask="00/0000">
+        <error-message [message]="'Referência é obrigatório'" [show]="(reference.errors?.required && (submmited || this.form.touched))"></error-message>
       </div>
     </nb-card-body>
 

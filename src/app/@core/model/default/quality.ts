@@ -1,24 +1,24 @@
 export interface Quality  {
   id: string,
-  startedAt: string,
+  reference: string,
   gathering: Gathering[],
 }
 
 export interface QualityPage {
   id: string,
-  startedAt: string,
+  reference: string,
   gathering: Gathering[],
 }
 
 export interface QualityFilter {
   id: string,
-  startedAt: string,
+  reference: string,
   gathering: Gathering[],
 }
 
 export class QualityPageFilter {
   id?: string = null;
-  startedAt?: string = null;
+  reference?: string = null;
 
   reset(){
   }

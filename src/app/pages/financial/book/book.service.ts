@@ -15,4 +15,8 @@ export class BookService extends DefaultService<Book, BookFilter, BookPage, Book
     super(http)
   }
 
+  public getReportInvoiceLot(filter: any){
+    return this.http.post<any>(`${this.env}/report`, filter ,{ 'responseType': 'arraybuffer' as 'json' })
+  }
+
 }

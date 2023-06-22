@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
 
-import { LayoutService } from '../../../@core/utils';
-import { map, takeUntil } from 'rxjs/operators';
+import { NbAuthJWTToken, NbAuthService, NbTokenService } from '@nebular/auth';
 import { Subject } from 'rxjs';
-import { NbTokenService } from '@nebular/auth';
+import { map, takeUntil } from 'rxjs/operators';
+import { LayoutService } from '../../../@core/utils';
 
 @Component({
   selector: 'ngx-header',
@@ -44,6 +44,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ];
 
   constructor(
+    private authService: NbAuthService,
     private sidebarService: NbSidebarService,
     private menuService: NbMenuService,
     private themeService: NbThemeService,
@@ -72,6 +73,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe(themeName => this.currentTheme = themeName);
 
     this.ngOnMenu()
+
+    this.authService.onTokenChange()
+    .subscribe((token: NbAuthJWTToken) => {
+      if (token.isValid()) {
+        this.user = token.getPayload()
+      }
+    }
+  );
   }
 
   ngOnMenu(){

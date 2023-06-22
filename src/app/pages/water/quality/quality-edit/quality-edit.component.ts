@@ -58,7 +58,7 @@ export class QualityEditComponent extends QualityComponent implements OnInit {
 
         this.form = this.formBuilder.group({
           id: [quality.id, Validators.required],
-          startedAt: [quality.startedAt, Validators.required],
+          reference: [quality.reference, Validators.required],
           gathering: gathering
         })
 

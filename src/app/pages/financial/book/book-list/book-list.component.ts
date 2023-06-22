@@ -30,6 +30,16 @@ export class BookListComponent extends ListComponent implements OnInit {
     super.init();
   }
 
+
+  downloadAll(){
+    this.service.getReportInvoiceLot(this.prepareDataForSearch()).subscribe((response)=>{
+      let file = new Blob([response], { type: 'application/pdf' });
+      var fileURL = URL.createObjectURL(file);
+      window.open(fileURL, "_blank");
+    })
+  }
+
+
   public prepareDataForSearch() {
     const formatedDate = this.formatedDate()
     return {...this.filter, createdAt: formatedDate}

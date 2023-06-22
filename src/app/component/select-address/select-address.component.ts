@@ -2,14 +2,29 @@ import { filter } from 'rxjs/operators';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Address } from '@model/default/address';
 import { AddressService } from 'app/pages/registration/address/address.service';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const OUTROS = 5
 @Component({
   selector: 'ngx-select-address',
   templateUrl: './select-address.component.html',
-  styleUrls: ['./select-address.component.scss']
+  styleUrls: ['./select-address.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: SelectAddressComponent
+    }
+  ]
 })
-export class SelectAddressComponent implements OnInit {
+export class SelectAddressComponent implements ControlValueAccessor, OnInit {
+
+  value: SelectAddressComponent;
+  disabled = false;
+
+  onChange = (value: SelectAddressComponent) => {};
+  onTouched = () => {};
+
 
   @Input()
   public status: string = 'basic';
@@ -38,6 +53,22 @@ export class SelectAddressComponent implements OnInit {
     this.defaulValues.forEach(name=>{
       this.groups.push({name: name, values:[]})
     })
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
+  writeValue(value: SelectAddressComponent): void {
+    this.value = value;
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
   }
 
   ngOnInit(): void {

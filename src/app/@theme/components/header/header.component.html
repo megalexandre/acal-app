@@ -14,10 +14,12 @@
   <nb-actions size="small">
 
     <nb-action class="user-action" *nbIsGranted="['view', 'user']" >
-      <nb-user [nbContextMenu]="userMenu"
-               [onlyPicture]="userPictureOnly"
-               [name]="user?.name"
-               [picture]="user?.picture">
+      <nb-user
+        [nbContextMenu]="userMenu"
+        [onlyPicture]="userPictureOnly"
+        [name]="user?.name"
+        [title]="user.role"
+        [picture]="user?.picture">
       </nb-user>
     </nb-action>
   </nb-actions>

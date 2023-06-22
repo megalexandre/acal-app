@@ -33,15 +33,23 @@ export class InvoiceListComponent extends ListComponent implements OnInit {
   }
 
   download(id: string){
-    this.service.getById(id).subscribe(item => {
-      this.service.getReportInvoice(item).subscribe((response)=>{
-        let file = new Blob([response], { type: 'application/pdf' });
-        var fileURL = URL.createObjectURL(file);
-        window.open(fileURL, "_blank");
-      })
+    this.service.getReportInvoice(id).subscribe((response)=>{
+      let file = new Blob([response], { type: 'application/pdf' });
+      var fileURL = URL.createObjectURL(file);
+      window.open(fileURL, "_blank");
     })
-
   }
+
+  downloadAll(){
+    this.service.getReportInvoiceLot(this.prepareDataForSearch()).subscribe((response)=>{
+      let file = new Blob([response], { type: 'application/pdf' });
+      var fileURL = URL.createObjectURL(file);
+      window.open(fileURL, "_blank");
+    })
+  }
+
+
+
 
   ngOnInit(): void {
     this.init();

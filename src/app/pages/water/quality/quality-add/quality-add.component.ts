@@ -39,7 +39,7 @@ export class QualityAddComponent extends QualityComponent implements OnInit {
     })
 
     this.form = this.formBuilder.group({
-      startedAt: [null, Validators.required],
+      reference: [null, Validators.required],
       gathering: gathering
     })
   }

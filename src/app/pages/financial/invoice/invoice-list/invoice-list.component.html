@@ -2,6 +2,11 @@
 
   <nb-card-header>
     Faturas
+
+    <button nbButton class="float-right" outline status="basic" (click)="downloadAll()">
+      <nb-icon icon="printer-outline"></nb-icon>
+    </button>
+
   </nb-card-header>
 
   <nb-card-body>
@@ -81,13 +86,13 @@
           <td class="align-middle">{{ item.reference | reference }}</td>
 
           <td class="align-middle">
-            <button nbButton outline status="basic" fullWidth (click)="download(item.id)">
+            <button nbButton status="basic" fullWidth (click)="download(item.id)">
               <nb-icon icon="printer-outline"></nb-icon>
             </button>
           </td>
 
           <td class="align-middle">
-            <button nbButton outline status="success" fullWidth (click)="view(item.id)" >
+            <button nbButton status="success" fullWidth (click)="view(item.id)" >
               <nb-icon icon="credit-card-outline"></nb-icon>
             </button>
           </td>

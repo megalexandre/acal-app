@@ -7,9 +7,9 @@
 
     <nb-card-body>
       <div class="col-md-6 col-12">
-        <label for="startedAt" class="label">Referência:</label>
-        <input id="startedAt" type="text" nbInput fullWidth placeholder="Nome:" formControlName="startedAt"  [status]="getStatus('startedAt')" mask="00/0000">
-        <error-message [message]="'Referência é obrigatório'" [show]="(startedAt.errors?.required && (submmited || this.form.touched))"></error-message>
+        <label for="reference" class="label">Referência:</label>
+        <input id="reference" type="text" nbInput fullWidth placeholder="Nome:" formControlName="reference"  [status]="getStatus('reference')" mask="00/0000">
+        <error-message [message]="'Referência é obrigatório'" [show]="(reference.errors?.required && (submmited || this.form.touched))"></error-message>
       </div>
     </nb-card-body>
 
@@ -18,19 +18,19 @@
         <thead class="thead-light">
           <tr>
 
-            <th class="col-3">
+            <th class="col-6">
               Parâmetro
             </th>
 
-            <th class="col-3">
+            <th class="col-2">
               Exigido
             </th>
 
-            <th class="col-3">
+            <th class="col-2">
               Analisado
             </th>
 
-            <th class="col-3">
+            <th class="col-2">
               Conforme
             </th>
 
@@ -40,7 +40,7 @@
         <tbody>
           <ng-container formArrayName="gathering">
             <tr *ngFor="let control of gathering.controls; index as i">
-              <td>{{gathering.controls[i].get('param').value | param}}</td>
+              <td class="align-middle">{{gathering.controls[i].get('param').value | param}}</td>
 
               <ng-container [formGroupName]="i">
                 <td><input fullWidth nbInput formControlName="required" /></td>

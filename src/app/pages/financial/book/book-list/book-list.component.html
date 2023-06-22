@@ -2,6 +2,11 @@
 
   <nb-card-header>
     Livro de caixa
+
+    <button nbButton class="float-right" outline status="basic" (click)="downloadAll()">
+      <nb-icon icon="printer-outline"></nb-icon>
+    </button>
+
   </nb-card-header>
 
   <nb-card-body>
@@ -25,7 +30,7 @@
             <nb-icon *ngIf="filter.sortedField === 'createdBy' &&  filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
-          <th (click)="order('createdAt')" class="col-md-2">
+          <th (click)="order('createdAt')" class="col-md-1">
             Data:
             <nb-icon *ngIf="filter.sortedField === 'createdAt' &&  filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
             <nb-icon *ngIf="filter.sortedField === 'createdAt' &&  filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
@@ -41,6 +46,12 @@
             Motivo:
             <nb-icon *ngIf="filter.sortedField === 'reason' &&  filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
             <nb-icon *ngIf="filter.sortedField === 'reason' &&  filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+          <th class="col-md-1" colspan="1">
+          </th>
+
+          <th class="col-md-1" colspan="1">
           </th>
 
         </tr>
@@ -70,6 +81,18 @@
             <ngx-pick-reason [(model)]="filter.reason" placeholder="Motivo" (modelChange)="search()"></ngx-pick-reason>
           </th>
 
+          <th>
+            <button nbButton outline status="basic" type="button" fullWidth (click)="reset()">
+              <nb-icon icon="undo-outline"></nb-icon>
+            </button>
+          </th>
+
+          <th>
+            <button nbButton outline status="success" fullWidth (click)="search()">
+              <nb-icon icon="search-outline"></nb-icon>
+            </button>
+          </th>
+
         </tr>
       </thead>
 
@@ -80,12 +103,13 @@
           <td class="align-middle">{{item.createdAt | dateTime}}</td>
           <td class="align-middle">{{item.type | type}}</td>
           <td class="align-middle">{{item.reason | reason}}</td>
+          <td class="align-middle" colspan="2"></td>
         </tr>
       </tbody>
 
       <tfoot>
         <tr>
-          <td colspan="5" *ngIf="page">
+          <td colspan="7" *ngIf="page">
               <ngx-app-table-footer [page]="page" (search)="paginate($event)">
               </ngx-app-table-footer>
           </td>

@@ -52,8 +52,8 @@ export class QualityComponent {
     return 'basic'
   }
 
-  get startedAt(): AbstractControl {
-    return this.form.get('startedAt')
+  get reference(): AbstractControl {
+    return this.form.get('reference')
   }
 
   get gathering(): FormArray {

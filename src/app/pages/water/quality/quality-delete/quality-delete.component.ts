@@ -55,7 +55,7 @@ export class QualityDeleteComponent extends QualityComponent implements OnInit  
         })
 
         this.form = this.formBuilder.group({
-          startedAt: [quality.startedAt, Validators.required],
+          startedAt: [quality.reference, Validators.required],
           gathering: gathering
         })
 

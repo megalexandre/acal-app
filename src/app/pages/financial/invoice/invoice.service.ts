@@ -21,8 +21,12 @@ export class InvoiceService  extends DefaultService<Invoice, InvoiceFilter, Invo
     return this.http.put(`${this.env+'/pay/'}${id}`, "");
   }
 
-  public getReportInvoice(invoice: Invoice){
-    return this.http.post<any>(`${environment.invoice}/report/${invoice.id}`, {} ,{ 'responseType': 'arraybuffer' as 'json' })
+  public getReportInvoice(id: string){
+    return this.http.post<any>(`${environment.invoice}/report/${id}`, {} ,{ 'responseType': 'arraybuffer' as 'json' })
+  }
+
+  public getReportInvoiceLot(filter: any){
+    return this.http.post<any>(`${environment.invoice}/report`, filter ,{ 'responseType': 'arraybuffer' as 'json' })
   }
 
   public saveAll(invoices: InvoiceRequest[]){
