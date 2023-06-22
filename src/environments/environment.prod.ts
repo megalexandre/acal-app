@@ -1,7 +1,7 @@
 export const baseUrl = 'https://localhost:8080/';
 
 export const environment = {
-  production: false,
+  production: true,
 
   api: baseUrl,
 
