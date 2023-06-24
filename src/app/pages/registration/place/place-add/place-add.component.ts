@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { PlaceComponent } from './../place.component';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NbToastrService } from '@nebular/theme';
+import { DataService } from 'app/@shared/data.service';
+import { PlaceService } from '../place.service';
 
 @Component({
   selector: 'ngx-place-add',
@@ -11,6 +15,17 @@ export class PlaceAddComponent extends PlaceComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm()
+  }
+
+  constructor(
+    public data: DataService,
+    public formBuilder: FormBuilder,
+    public activatedRoute: ActivatedRoute,
+    public router: Router,
+    public service: PlaceService,
+    public toastrService: NbToastrService,
+  ){
+    super(data, formBuilder, activatedRoute, router, service, toastrService)
   }
 
   override createForm(): void {

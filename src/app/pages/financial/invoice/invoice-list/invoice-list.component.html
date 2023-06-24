@@ -15,20 +15,28 @@
       <thead>
         <tr>
 
-          <th class="col-9 align-middle" (click)="order('name')">
+          <th class="col-9 align-middle" (click)="order('link.customer.name')">
             Nome:
+            <nb-icon *ngIf="filter.sortedField === 'link.customer.name' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'link.customer.name' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
-          <th class="col-2 align-middle">
+          <th class="col-2 align-middle" (click)="order('value')">
             Valor:
+            <nb-icon *ngIf="filter.sortedField === 'value' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'value' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
-          <th class="col-2 align-middle">
+          <th class="col-2 align-middle" (click)="order('dueDate')">
             Vencimento:
+            <nb-icon *ngIf="filter.sortedField === 'dueDate' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'dueDate' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
-          <th class="col-2 align-middle">
+          <th class="col-2 align-middle" (click)="order('reference')">
             Referência:
+            <nb-icon *ngIf="filter.sortedField === 'reference' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'reference' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
           <th class="col-1 align-middle" colspan="2">

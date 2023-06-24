@@ -19,9 +19,7 @@
 
             <div class="col-md-3 col-12">
               <label for="value" class="label">Categoria:</label>
-              <!--
-                <ngx-select-category formControlName="category"  [status]="getStatus('category')"></ngx-select-category>
-              -->
+              <ngx-select-category (categoryChange)="selectCategory($event)"  [status]="getStatus('category')"></ngx-select-category>
               <error-message [message]="'Categoria é obrigatório'" [show]="(category.errors?.required && (submmited || this.form.touched))"></error-message>
             </div>
 

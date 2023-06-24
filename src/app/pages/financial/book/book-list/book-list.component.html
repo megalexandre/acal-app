@@ -48,10 +48,10 @@
             <nb-icon *ngIf="filter.sortedField === 'reason' &&  filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
-          <th class="col-md-1" colspan="1">
-          </th>
-
-          <th class="col-md-1" colspan="1">
+          <th class="col-md-1">
+            <button nbButton outline status="basic" type="button" fullWidth (click)="reset()">
+              <nb-icon icon="undo-outline"></nb-icon>
+            </button>
           </th>
 
         </tr>
@@ -80,13 +80,6 @@
           <th>
             <ngx-pick-reason [(model)]="filter.reason" placeholder="Motivo" (modelChange)="search()"></ngx-pick-reason>
           </th>
-
-          <th>
-            <button nbButton outline status="basic" type="button" fullWidth (click)="reset()">
-              <nb-icon icon="undo-outline"></nb-icon>
-            </button>
-          </th>
-
           <th>
             <button nbButton outline status="success" fullWidth (click)="search()">
               <nb-icon icon="search-outline"></nb-icon>
@@ -103,7 +96,9 @@
           <td class="align-middle">{{item.createdAt | dateTime}}</td>
           <td class="align-middle">{{item.type | type}}</td>
           <td class="align-middle">{{item.reason | reason}}</td>
-          <td class="align-middle" colspan="2"></td>
+          <td class="align-middle" colspan="2">
+
+          </td>
         </tr>
       </tbody>
 
