@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Invoice, InvoiceFilter, InvoicePage, InvoicePageFilter } from '@model/default/invoice';
 import { Page } from '@model/page';
 import { DataService } from 'app/@shared/data.service';
-import 'rxjs/Rx';
 import { InvoiceService } from '../invoice.service';
 import { format } from 'date-fns'
 import { ListComponent } from '@core/list.component';
@@ -47,9 +46,6 @@ export class InvoiceListComponent extends ListComponent implements OnInit {
       window.open(fileURL, "_blank");
     })
   }
-
-
-
 
   ngOnInit(): void {
     this.init();

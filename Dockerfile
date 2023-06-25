@@ -1,12 +1,15 @@
-FROM node:16.13.2-alpine as builder
+#FROM node:16.13.2-alpine as node
 
-WORKDIR /usr/local/app
-COPY package*.json ./
-RUN npm install --force
-COPY . .
-RUN $(npm bin)/ng build --configuration=production --source-map=false
+#WORKDIR /app
+#COPY package*.json ./
+#RUN npm install --force
+#COPY . .
+#RUN npm run build --aot
+
 FROM nginx:1.21.5-alpine
+COPY /dist /usr/share/nginx/html
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY --from=builder /app/dist/** /usr/share/nginx/html
+#COPY --from=node /app/** /usr/share/nginx/html
 EXPOSE 80
 CMD nginx -g "daemon off;"
+
