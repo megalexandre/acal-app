@@ -2,11 +2,11 @@
   <nb-card>
 
     <nb-card-header>
-      Qualidade da Água Salvar
+      Qualidade da Água
     </nb-card-header>
 
     <nb-card-body>
-      <div class="col-md-6 col-12">
+      <div class="col-md-3 col-12">
         <label for="reference" class="label">Referência:</label>
         <input id="reference" type="text" nbInput fullWidth placeholder="Nome:" formControlName="reference"  [status]="getStatus('reference')" mask="00/0000">
         <error-message [message]="'Referência é obrigatório'" [show]="(reference.errors?.required && (submmited || this.form.touched))"></error-message>
@@ -17,7 +17,6 @@
       <ngx-app-table [tableStriped]="false">
         <thead class="thead-light">
           <tr>
-
             <th class="col-6">
               Parâmetro
             </th>

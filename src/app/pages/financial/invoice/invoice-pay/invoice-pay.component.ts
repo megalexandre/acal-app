@@ -37,7 +37,7 @@ export class InvoicePayComponent {
     this.service.pay(this.invoice.id).subscribe(
       ()=> {
         this.dialogRef.close();
-        this.router.navigate(['./list'],{relativeTo: this.activatedRoute});
+        this.router.navigate(['/pages/financial/invoice/list'])
       }
     )
   }

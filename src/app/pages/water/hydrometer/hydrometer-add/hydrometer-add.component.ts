@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HydrometerService } from '../hydrometer.service';
 import { Hydrometer } from '@model/default/hydrometer';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NbToastrService } from '@nebular/theme';
 
 @Component({
   selector: 'ngx-hydrometer-add',
@@ -19,6 +20,7 @@ export class HydrometerAddComponent {
     private service: HydrometerService,
     public activatedRoute: ActivatedRoute,
     public router: Router,
+    public toastrService: NbToastrService,
   ) {}
 
   setReference(reference: string){
@@ -44,6 +46,9 @@ export class HydrometerAddComponent {
     )).subscribe(
       () => {
         this.back();
+      },
+      (response) =>{
+        this.toastrService.danger(response.error.detail, `Não foi possivel realizar a ação`)
       }
     )
 
