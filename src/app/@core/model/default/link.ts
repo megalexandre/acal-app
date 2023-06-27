@@ -15,6 +15,18 @@ export interface Link {
   createdBy: string,
 }
 
+export interface HydrometerGenerater {
+  addressName: String,
+  linkHydrometerPair: LinkHydrometerPair[]
+}
+
+export interface LinkHydrometerPair {
+  link: Link,
+  lastConsumption: number,
+  actualConsumption?: number,
+  value: number,
+}
+
 export interface LinkPage {
   id: string,
   group: Group,

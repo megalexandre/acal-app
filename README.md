@@ -1,5 +1,6 @@
 Acal Vesão 2.0
 
+npm run build -- --configuration production --aot
 docker build . -t alexandrequeiroz/app:1.0.0
 docker push alexandrequeiroz/app:1.0.0 
 

@@ -20,6 +20,11 @@ const routes: Routes = [
           .then(m => m.BookModule),
       },
       {
+        path: 'receiver',
+        loadChildren: () => import('./receiver/receiver.module')
+          .then(m => m.ReceiverModule),
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: 'invoice',

@@ -71,6 +71,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'livro de caixa',
         link: '/pages/financial/book/list',
       },
+      {
+        title: 'receber',
+        link: '/pages/financial/receiver/list',
+      },
     ],
   }
 ];

@@ -135,7 +135,10 @@
       </thead>
 
       <tbody >
-        <tr *ngFor="let item of page?.content">
+        <tr *ngFor="let item of page?.content" [ngClass]="{
+          'table-danger': !item.active,
+          'table-success': item.active
+        }">
           <td class="align-middle">{{item.customer.name}}</td>
           <td class="align-middle">{{item.customer.document | identification}}</td>
           <td class="align-middle"><b>{{item.group.category | category}}</b></td>
@@ -145,7 +148,6 @@
           <!--
             <td class="align-middle">{{item.group.value | currency }}</td>
           -->
-
           <td class="align-middle">
             <button nbButton outline status="basic" fullWidth (click)="view(item.id)">
               <nb-icon icon="eye-outline"></nb-icon>

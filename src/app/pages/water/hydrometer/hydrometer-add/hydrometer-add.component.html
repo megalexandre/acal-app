@@ -39,37 +39,91 @@
 
   <nb-card-body *ngIf="reference">
 
-    <ngx-app-table>
+    <ngx-app-table [tableStriped]="false" >
       <thead>
-        <th class="col-6 align-middle">
+
+        <th class="col-5 align-middle">
           Responsável:
         </th>
-        <th class="col-2 align-middle">
+
+        <th class="col-1 align-middle">
           Matricula
         </th>
+
+        <th class="col-1 align-middle">
+          Registro Anterior:
+        </th>
+
         <th class="col-2 align-middle">
+          Registro Atual:
+        </th>
+
+        <th class="col-1 align-middle">
+          Consumo total:
+        </th>
+
+        <th class="col-1 align-middle">
+          Consumo considerado:
+        </th>
+
+        <th class="col-1 align-middle">
           valor:
         </th>
-        <th class="col-2 align-middle">
-          Consumo:
-        </th>
+
       </thead>
       <tbody>
-          <tr *ngFor="let item of data">
-            <td class="align-middle">{{item.link.customer.name}}</td>
-            <td class="align-middle">{{item.link.linkName}}</td>
-            <td class="align-middle">{{(consideredWaterConsumption(item.consumption) * waterMonetaryValue)| currency }}</td>
-            <td class="align-middle">
-              <input
-                [(ngModel)]="item.consumption"
-                type="text" nbInput placeholder="Consumo"
-                mask="0*"
-                mask="separator.3"
-                thousandSeparator="."
-                fullWidth>
-            </td>
+
+
+    <ng-container *ngFor="let item of data">
+      <tr class="table-success">
+        <td class="text-center" colspan="7">
+          <b>{{item.addressName}}</b>
+        </td>
+      </tr>
+
+      <tr *ngFor="let insideItem of item.linkHydrometerPair">
+
+        <td class="align-middle">
+          <b>{{insideItem.link.customer.name}}</b>
+        </td>
+
+        <td class="align-middle">
+          <b>{{insideItem.link.place.number + insideItem.link.place.letter}}</b>
+        </td>
+
+        <td class="align-middle">
+          <b>{{insideItem.lastConsumption | number}}</b>
+        </td>
+
+        <td class="align-middle">
+          <input
+            [(ngModel)]="insideItem.actualConsumption"
+            type="text" nbInput placeholder="Consumo"
+            mask="0*"
+            [min]="insideItem.lastConsumption"
+            mask="separator.3"
+            thousandSeparator="."
+            fullWidth>
+        </td>
+
+        <td class="align-middle">
+          {{waterConsumtion(insideItem.lastConsumption, insideItem.actualConsumption)| number }}
+        </td>
+
+        <td class="align-middle">
+          {{consideredWaterConsumption(insideItem.lastConsumption, insideItem.actualConsumption)| number }}
+        </td>
+
+        <td class="align-middle">
+          {{waterValue(insideItem) | currency}}
+        </td>
+
+      </tr>
+
+    </ng-container>
       </tbody>
     </ngx-app-table>
+
   </nb-card-body>
 
   <nb-card-footer>
@@ -82,9 +136,9 @@
       <button type="button" nbButton outline status="success" (click)="save()">
         <nb-icon icon="save-outline"></nb-icon>
       </button>
-
     </div>
 
   </nb-card-footer>
 
 </nb-card>
+

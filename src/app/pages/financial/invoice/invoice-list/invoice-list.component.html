@@ -14,26 +14,31 @@
     <ngx-app-table [nbSpinner]="loading">
       <thead>
         <tr>
-
-          <th class="col-9 align-middle" (click)="order('link.customer.name')">
+          <th class="col-6 align-middle" (click)="order('link.customer.name')">
             Nome:
             <nb-icon *ngIf="filter.sortedField === 'link.customer.name' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
             <nb-icon *ngIf="filter.sortedField === 'link.customer.name' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
-          <th class="col-2 align-middle" (click)="order('value')">
+          <th class="col-2 align-middle" (click)="order('link.place.address.name')">
+            Logradouro:
+            <nb-icon *ngIf="filter.sortedField === 'link.place.address.name' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'link.place.address.name' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+          <th class="col-1 align-middle" (click)="order('value')">
             Valor:
             <nb-icon *ngIf="filter.sortedField === 'value' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
             <nb-icon *ngIf="filter.sortedField === 'value' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
-          <th class="col-2 align-middle" (click)="order('dueDate')">
+          <th class="col-1 align-middle" (click)="order('dueDate')">
             Vencimento:
             <nb-icon *ngIf="filter.sortedField === 'dueDate' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
             <nb-icon *ngIf="filter.sortedField === 'dueDate' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
-          <th class="col-2 align-middle" (click)="order('reference')">
+          <th class="col-1 align-middle" (click)="order('reference')">
             Referência:
             <nb-icon *ngIf="filter.sortedField === 'reference' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
             <nb-icon *ngIf="filter.sortedField === 'reference' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
@@ -55,7 +60,11 @@
           </th>
 
           <th>
-            <ngx-input-currency [(currency)]="filter.value" placeholder="Valor" (keydown.enter)="search()" ></ngx-input-currency>
+            <ngx-select-address [(address)]="filter.address" (addressChange)="search()" [showTitle]='false' [addSelectOption]='true' ></ngx-select-address>
+          </th>
+
+          <th>
+            <ngx-input-currency [(currency)]="filter.value"  placeholder="Valor" (keydown.enter)="search()" ></ngx-input-currency>
           </th>
 
           <th>
@@ -86,9 +95,10 @@
         <tr *ngFor="let item of page?.content"
           [ngClass]="{
             'table-success': item.isPayed,
-            'table-danger': item.isOverdue }"
-          >
+            'table-danger': item.isOverdue }">
+
           <td class="align-middle">{{ item.link.customer.name }}</td>
+          <td class="align-middle">{{ item.link.place.address.name }}</td>
           <td class="align-middle">{{ item.totalValue | currency }}</td>
           <td class="align-middle">{{ item.dueDate | dateTime }}</td>
           <td class="align-middle">{{ item.reference | reference }}</td>
@@ -110,7 +120,7 @@
 
       <tfoot>
         <tr>
-          <td colspan="5" *ngIf="page">
+          <td colspan="6" *ngIf="page">
             <ngx-app-table-footer [page]="page" (search)="paginate($event)">
             </ngx-app-table-footer>
           </td>

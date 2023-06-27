@@ -50,7 +50,6 @@ export class InvoiceViewComponent implements OnInit{
     this.router.navigate(['../list'],{relativeTo: this.activatedRoute})
   }
 
-
   public getCategoryValue(){
     return this.invoice.invoiceDetails.find( d=> d.reason === "CATEGORY" ).value
   }

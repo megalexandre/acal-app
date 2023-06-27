@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
 import { Hydrometer, HydrometerFilter, HydrometerPage, HydrometerPageFilter } from '@model/default/hydrometer';
-import { Link } from '@model/default/link';
+import { HydrometerGenerater, Link } from '@model/default/link';
 import { DefaultService } from 'app/@shared/default.service';
 import { Observable } from 'rxjs';
 
@@ -21,8 +21,8 @@ export class HydrometerService extends DefaultService<Hydrometer, HydrometerFilt
     return this.http.post<[]>(`${this.env}`, d);
   }
 
-  public findByReference(reference: string): Observable<Link[]>{
-    return this.http.get<Link[]>(`${this.env}/findByReference/${reference}`)
+  public findByReference(reference: string): Observable<HydrometerGenerater[]>{
+    return this.http.get<HydrometerGenerater[]>(`${this.env}/findByReference/${reference}`)
   }
 
 }

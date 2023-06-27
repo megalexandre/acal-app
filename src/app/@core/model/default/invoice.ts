@@ -62,6 +62,7 @@ export class InvoicePageFilter {
     value?: number = null;
     dueDate?: string = null;
     customerName: string = null;
+    address: any = null;
 
     page: number = 0;
     pageSize: number = 10;
@@ -71,6 +72,7 @@ export class InvoicePageFilter {
     reset(){
       this.id = null;
       this.reference = null;
+      this.address = null,
       this.value = null;
       this.dueDate = null;
       this.customerName = null;

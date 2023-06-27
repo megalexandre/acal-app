@@ -1,0 +1,27 @@
+<nb-card>
+
+  <nb-card-header>
+    Buscar Fatura
+  </nb-card-header>
+
+  <nb-card-body>
+    <form [formGroup]="form" (submit)="submit()">
+      <div class="row d-flex justify-content-between align-items-center">
+
+        <div class="col-12">
+          <label for="startedAt" class="label">Referência:</label>
+          <input id="startedAt" type="text" formControlName="id" nbInput fullWidth placeholder="Número:" >
+        </div>
+
+        <div class="offset-md-9 col-md-3 col-12">
+          <label for="startedAt" class="label">Buscar:</label>
+          <button nbButton outline status="basic" fullWidth>
+            Buscar
+          </button>
+        </div>
+
+      </div>
+    </form>
+  </nb-card-body>
+
+</nb-card>

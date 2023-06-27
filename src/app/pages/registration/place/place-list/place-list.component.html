@@ -27,6 +27,12 @@
             <nb-icon *ngIf="filter.sortedField === 'letter' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
+          <th class="col-1 align-middle" (click)="order('hasHydrometer')">
+            Possui Hidrômetro:
+            <nb-icon *ngIf="filter.sortedField === 'hasHydrometer' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'hasHydrometer' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
           <th class="col-1 align-middle" colspan="2">
             <button nbButton outline status="basic" fullWidth (click)="add()">
               <nb-icon icon="plus-outline"></nb-icon>
@@ -52,6 +58,15 @@
           </th>
 
           <th>
+            <nb-select id ="possui" placeholder="Selecione" [(ngModel)]="filter.hasHydrometer" fullWidth  (ngModelChange)="search()" >
+              <nb-option [value]='null'>Todos</nb-option>
+              <nb-option [value]='true'>Sim</nb-option>
+              <nb-option [value]='false'>Não</nb-option>
+            </nb-select>
+
+          </th>
+
+          <th>
             <button nbButton outline status="basic" type="button" fullWidth (click)="reset()">
               <nb-icon icon="undo-outline"></nb-icon>
             </button>
@@ -71,6 +86,8 @@
           <td class="align-middle">{{item.address.name}}</td>
           <td class="align-middle">{{item.number}}</td>
           <td class="align-middle">{{item.letter}}</td>
+
+          <td class="align-middle">{{item.hasHydrometer ? "Sim":"Não" }}</td>
 
           <td class="align-middle">
             <button nbButton outline status="warning" fullWidth (click)="edit(item.id)">

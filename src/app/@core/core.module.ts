@@ -47,6 +47,8 @@ export const NB_CORE_PROVIDERS = [
               success: '/pages/homepage',
               failure: null,
             },
+            defaultErrors: ['Aparemente o seu Login ou senha (ou ambos) estão incorretos'],
+            defaultMessages: ['logado com sucesso.'],
           },
 
           register: {

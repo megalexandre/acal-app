@@ -9,12 +9,16 @@ import {
   NbAlertModule,
   NbButtonModule,
   NbCheckboxModule,
+  NbFormFieldModule,
+  NbIconModule,
   NbInputModule
 } from '@nebular/theme';
 import { NgxLoginComponent } from './login/login.component';
 
 @NgModule({
   imports: [
+    NbIconModule,
+    NbFormFieldModule,
     CommonModule,
     FormsModule,
     RouterModule,

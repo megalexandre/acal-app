@@ -5,4 +5,6 @@ export interface Dashboard {
   generatedInvoice: number,
   qtdTransactionsToday: number,
   valueTransactionsToday: number,
+  awaitingPaymentInvoiceCurrency: number,
+  totalPaymentInvoiceCurrency: number,
 }

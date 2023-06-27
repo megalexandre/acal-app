@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { HydrometerService } from '../hydrometer.service';
-import { Hydrometer } from '@model/default/hydrometer';
+import { Hydrometer, SaveHydrometer } from '@model/default/hydrometer';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
+import { HydrometerGenerater, LinkHydrometerPair } from '@model/default/link';
 
 @Component({
   selector: 'ngx-hydrometer-add',
@@ -11,7 +12,7 @@ import { NbToastrService } from '@nebular/theme';
 export class HydrometerAddComponent {
 
   reference: string
-  data: Hydrometer[]
+  data: HydrometerGenerater[]
 
   waterFreeTear = 10000
   waterMonetaryValue = 4/1000
@@ -28,33 +29,13 @@ export class HydrometerAddComponent {
     this.loadData()
   }
 
-  public back(){
-    this.router.navigate(['../list'],{relativeTo: this.activatedRoute})
+  waterConsumtion(last: number, actual: number): number{
+    return actual - last
   }
 
-  public save(){
-    this.service.saveAll(
-      this.data.map(d =>({
-        id: d.id,
-        reference: d.reference,
-        costValue: this.consideredWaterConsumption(d.consumption) * this.waterMonetaryValue,
-        consumption: d.consumption,
-        link: {
-          id: d.link.id
-        },
-      })
-    )).subscribe(
-      () => {
-        this.back();
-      },
-      (response) =>{
-        this.toastrService.danger(response.error.detail, `Não foi possivel realizar a ação`)
-      }
-    )
+  consideredWaterConsumption(last: number, actual: number): number {
+    const consumption = this.waterConsumtion(last, actual)
 
-  }
-
-  consideredWaterConsumption(consumption: number): number {
     if(consumption <= this.waterFreeTear ){
       return 0
     } else {
@@ -62,18 +43,53 @@ export class HydrometerAddComponent {
     }
   }
 
+  waterValue(linkHydrometerPair: LinkHydrometerPair): number {
+    linkHydrometerPair.value =
+       this.consideredWaterConsumption(linkHydrometerPair.lastConsumption, linkHydrometerPair.actualConsumption) * this.waterMonetaryValue
+
+      return linkHydrometerPair.value
+    }
+
   loadData(){
     this.data = [];
+
     this.service.findByReference(this.reference).subscribe(
-      link => link.forEach(l => {
-        this.data.push({
-          id: null,
-          reference: this.reference,
-          costValue: 0,
-          consumption: 0,
-          link: l,
-        })
-      })
+      data => this.data = data
     )
   }
+
+
+  public back(){
+    this.router.navigate(['../list'],{relativeTo: this.activatedRoute})
+  }
+
+  public save(){
+    const allLinkHydrometerPairs: LinkHydrometerPair[] = [];
+    const hydrometers: SaveHydrometer[] = [];
+
+    for (const generater of this.data) {
+      allLinkHydrometerPairs.push(...generater.linkHydrometerPair);
+    }
+    allLinkHydrometerPairs.forEach(item => {
+      hydrometers.push({
+        reference: this.reference,
+        costValue: item.value,
+        consumption: item.actualConsumption,
+        link: { id: item.link.id },
+      })
+    })
+
+
+    this.service.saveAll(
+      hydrometers
+    ).subscribe(
+      () => {
+        this.back();
+      },
+      (response) =>{
+        this.toastrService.danger(response.error.detail, `Não foi possivel realizar a ação`)
+      }
+    )
+  }
+
 }

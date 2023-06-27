@@ -10,6 +10,18 @@ export interface Hydrometer {
   personName?: String,
 }
 
+export interface SaveHydrometer{
+  reference: String,
+  costValue: number,
+  consumption: number,
+  link: LinkRequest,
+}
+
+export interface LinkRequest {
+  id: string
+}
+
+
 export interface HydrometerPage {
   id: string,
   reference: string,

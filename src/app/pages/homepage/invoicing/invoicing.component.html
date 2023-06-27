@@ -1,27 +1,49 @@
-<nb-card>
+<nb-reveal-card>
+  <nb-card-front>
+    <nb-card>
+      <nb-card-header class="flex-container-center">
+        Faturamento Mensal Sintetico
+      </nb-card-header>
 
-  <nb-card-header class="flex-container-center">
-    Faturamento Mensal
-  </nb-card-header>
+      <nb-card-body>
+        <div class="flex-container">
 
-  <nb-card-body>
+          <span>
+            <b>{{dashboard.awaitingPaymentInvoice | number}}</b><br/>
+            Emitido
+          </span>
 
-    <div class="flex-container">
-
-      <span>
-        <b>{{dashboard.awaitingPaymentInvoice | number}}</b><br/>
-        Emitido
-      </span>
-
-      <span>
-        <b>{{dashboard.generatedInvoice | number}}</b><br/>
-        Faturado
-      </span>
-
-    </div>
+          <span>
+            <b>{{dashboard.generatedInvoice | number}}</b><br/>
+            Faturado
+          </span>
 
 
-  </nb-card-body>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </nb-card-front>
+  <nb-card-back>
+    <nb-card>
+      <nb-card-header class="flex-container-center">
+        Faturamento Mensal Analítico
+      </nb-card-header>
 
-</nb-card>
+      <nb-card-body>
+        <div class="flex-container">
 
+          <span>
+            <b>{{dashboard.awaitingPaymentInvoiceCurrency | currency}}</b><br/>
+            Emitido
+          </span>
+
+          <span>
+            <b>{{dashboard.totalPaymentInvoiceCurrency | currency}}</b><br/>
+            Faturado
+          </span>
+
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </nb-card-back>
+</nb-reveal-card>
