@@ -51,10 +51,18 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   },
+
   {
     title: 'Estratégico',
-    group: true,
+    icon: 'people-outline',
+    children: [
+      {
+        title: 'Úsuarios',
+        link: '/pages/security/user',
+      },
+    ],
   },
+
   {
     title: 'Financeiro',
     icon: 'credit-card-outline',

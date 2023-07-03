@@ -33,6 +33,12 @@ const routes: Routes = [{
       loadChildren: () => import('./miscellaneous/miscellaneous.module')
         .then(m => m.MiscellaneousModule),
     },
+
+    {
+      path: 'security',
+      loadChildren: () => import('./security/security.module')
+        .then(m => m.SecurityModule),
+    },
     {
       path: '',
       redirectTo: 'homepage',

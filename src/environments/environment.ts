@@ -1,4 +1,4 @@
-export const baseUrl = 'https://acal.online:8080/';
+export const baseUrl = 'http://localhost:8080/';
 
 export const environment = {
   production: false,
@@ -14,6 +14,7 @@ export const environment = {
   hydrometer: `${baseUrl + 'hydrometer'}`,
   quality: `${baseUrl + 'quality'}`,
   customer: `${baseUrl + 'customer'}`,
+  user: `${baseUrl + 'user'}`,
   address: `${baseUrl + 'address'}`,
   group: `${baseUrl + 'group'}`,
   link: `${baseUrl + 'link'}`,

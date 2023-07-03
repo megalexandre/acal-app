@@ -1,0 +1,52 @@
+<nb-card>
+
+  <nb-card-header>
+    Funcionarios
+  </nb-card-header>
+
+  <nb-card-body>
+
+    <ngx-app-table [nbSpinner]="loading" [tableStriped]="true">
+      <thead>
+        <tr>
+
+          <th class="col-9 align-middle">
+              Nome:
+          </th>
+
+          <th class="col-2 align-middle">
+             Permissões:
+          </th>
+
+          <th class="col-1 align-middle">
+            <button nbButton outline status="basic" fullWidth (click)="add()">
+              <nb-icon icon="plus-outline"></nb-icon>
+            </button>
+         </th>
+
+        </tr>
+      </thead>
+
+
+      <tbody >
+        <tr *ngFor="let item of page?.content">
+          <td class="align-middle">{{item.username }}</td>
+          <td class="align-middle">{{item.roles}}</td>
+          <td class="align-middle">{{item.roles}}</td>
+        </tr>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colspan="3" *ngIf="page">
+              <ngx-app-table-footer [page]="page" (search)="paginate($event)">
+              </ngx-app-table-footer>
+          </td>
+        </tr>
+      </tfoot>
+
+    </ngx-app-table>
+
+  </nb-card-body>
+
+</nb-card>

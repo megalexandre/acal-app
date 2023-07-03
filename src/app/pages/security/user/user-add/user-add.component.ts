@@ -2,22 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
-import DateValidator from 'app/@validator/date.validator';
-import DocumentValidator from 'app/@validator/document.validator';
-import { CustomerComponent } from '../customer.component';
-import { CustomerService } from '../customer.service';
+import { UserComponent } from '../user.component';
+import { UserService } from '../user.service';
 
 @Component({
-  selector: 'ngx-customer-add',
-  templateUrl: './customer-add.component.html',
+  selector: 'ngx-user-add',
+  templateUrl: './user-add.component.html',
+  styleUrls: ['./user-add.component.scss']
 })
-export class CustomerAddComponent extends CustomerComponent implements OnInit {
+export class UserAddComponent extends UserComponent implements OnInit  {
 
   constructor(
     public formBuilder: FormBuilder,
     public activatedRoute: ActivatedRoute,
     public router: Router,
-    public service: CustomerService,
+    public service: UserService,
     public toastrService: NbToastrService,
     ) {
     super(formBuilder, activatedRoute, router, service, toastrService);
@@ -29,12 +28,8 @@ export class CustomerAddComponent extends CustomerComponent implements OnInit {
 
   override createForm(): void {
     this.form = this.formBuilder.group({
-      name: [null, Validators.required],
-      document: [null, [Validators.required, DocumentValidator.valid() ]],
-      birthDay: [null, [DateValidator.valid()]],
-      phoneNumber: [null],
-      personType: ['PERSON'],
-      membershipNumber: [null, Validators.required],
+      username: [null, Validators.required],
+      password: [null, Validators.required],
     })
   }
 
@@ -50,5 +45,5 @@ export class CustomerAddComponent extends CustomerComponent implements OnInit {
 
     )
   }
-
 }
+

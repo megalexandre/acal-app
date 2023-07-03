@@ -11,7 +11,7 @@ import { Page } from '@model/page';
   templateUrl: './customer-list.component.html',
   styleUrls: ['./customer-list.component.scss']
 })
-export class CustomerListComponent  extends ListComponent implements OnInit {
+export class CustomerListComponent extends ListComponent implements OnInit {
 
   public page: Page<any>;
   public filter: CustomerPageFilter = new CustomerPageFilter()

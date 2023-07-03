@@ -52,6 +52,9 @@ import 'zone.js';  // Included with Angular CLI.
 import 'core-js/es7/array';
 import 'core-js/es7/object';
 
+import 'classlist.js';
+import 'web-animations-js';
+
 if (typeof SVGElement.prototype.contains === 'undefined') {
   SVGElement.prototype.contains = HTMLDivElement.prototype.contains;
 }
