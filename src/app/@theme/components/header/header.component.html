@@ -3,11 +3,10 @@
     <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">
       <nb-icon icon="menu-2-outline"></nb-icon>
     </a>
-    <a class="logo" href="#" (click)="navigateHome()"><span>Acal</span></a>
+    <a class="logo" href="#" (click)="navigateHome()" nbTooltip="V1.3.0" nbTooltipStatus="basic"><span>Acal</span>
+    </a>
   </div>
-  <nb-select [selected]="currentTheme" (selectedChange)="changeTheme($event)" status="primary">
-    <nb-option *ngFor="let theme of themes" [value]="theme.value"> {{ theme.name }}</nb-option>
-  </nb-select>
+
 </div>
 
 <div class="header-container">

@@ -76,7 +76,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/financial/invoice/list',
       },
       {
-        title: 'livro de caixa',
+        title: 'livro caixa',
         link: '/pages/financial/book/list',
       },
       {
