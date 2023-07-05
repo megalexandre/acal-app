@@ -19,6 +19,9 @@ export interface QualityFilter {
 export class QualityPageFilter {
   id?: string = null;
   reference?: string = null;
+  page: number = 0;
+  direction: string = 'DESC';
+  sortedField: string = 'reference';
 
   reset(){
   }

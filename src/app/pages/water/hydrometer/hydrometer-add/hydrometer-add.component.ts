@@ -52,12 +52,13 @@ export class HydrometerAddComponent {
 
   loadData(){
     this.data = [];
-
     this.service.findByReference(this.reference).subscribe(
-      data => this.data = data
+      (data) => {
+        this.data = data
+        this.data.forEach( (data)=>data.linkHydrometerPair.forEach((item)=>{item.checked = false}) )
+      }
     )
   }
-
 
   public back(){
     this.router.navigate(['../list'],{relativeTo: this.activatedRoute})
@@ -70,7 +71,10 @@ export class HydrometerAddComponent {
     for (const generater of this.data) {
       allLinkHydrometerPairs.push(...generater.linkHydrometerPair);
     }
-    allLinkHydrometerPairs.forEach(item => {
+
+    allLinkHydrometerPairs
+    .filter((item)=> item.checked === true)
+    .forEach(item => {
       hydrometers.push({
         reference: this.reference,
         costValue: item.value,
@@ -84,7 +88,7 @@ export class HydrometerAddComponent {
       hydrometers
     ).subscribe(
       () => {
-        this.back();
+        this.loadData();
       },
       (response) =>{
         this.toastrService.danger(response.error.detail, `Não foi possivel realizar a ação`)

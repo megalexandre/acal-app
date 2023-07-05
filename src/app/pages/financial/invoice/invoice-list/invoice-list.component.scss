@@ -1,0 +1,37 @@
+
+@import '../../../../@theme/styles/themes';
+
+@include nb-install-component() {
+
+  .awaiting {
+    background-color: nb-theme(color-basic-200);
+  }
+
+  .awaiting:hover {
+    background-color: nb-theme(color-basic-400);
+  }
+
+  .payed {
+    background-color: nb-theme(color-success-200);
+  }
+
+  .payed:hover {
+    background-color: nb-theme(color-success-400);
+  }
+
+  .accountOverdue {
+    background-color: nb-theme(color-warning-200);
+  }
+
+  .accountOverdue:hover {
+    background-color: nb-theme(color-warning-400);
+  }
+
+  .atRiskOfBeingCanceled {
+    background-color: nb-theme(color-danger-200);
+  }
+
+  .atRiskOfBeingCanceled:hover {
+    background-color: nb-theme(color-danger-400);
+  }
+}

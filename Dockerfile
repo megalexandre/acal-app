@@ -10,7 +10,6 @@ FROM nginx:1.21.5-alpine
 COPY /nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY /nginx/cert /etc/nginx/cert/
 COPY /dist /usr/share/nginx/html
-#COPY --from=node /app/** /usr/share/nginx/html
 EXPOSE 80
 CMD nginx -g "daemon off;"
 

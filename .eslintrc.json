@@ -37,7 +37,6 @@
         "@angular-eslint/directive-selector": [
           "error",
           {
-            "prefix": "ngx",
             "style": "camelCase",
             "type": "attribute"
           }

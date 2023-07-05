@@ -2,7 +2,7 @@ import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NbButtonModule, NbCardModule, NbCheckboxModule, NbDatepickerModule, NbDialogModule, NbIconModule, NbInputModule, NbSpinnerModule, NbWindowModule } from '@nebular/theme';
+import { NbButtonModule, NbCardModule, NbCheckboxModule, NbDatepickerModule, NbDialogModule, NbIconModule, NbInputModule, NbSpinnerModule, NbWindowModule, NbAccordionModule, NbListModule } from '@nebular/theme';
 import { AcalModule } from 'app/@acal/acal.module';
 import { PipeModule } from 'app/@pipe/pipe.module';
 import { LinkService } from 'app/pages/registration/link/link.service';
@@ -37,6 +37,8 @@ import { ComponentModule } from 'app/component/component.module';
     NbIconModule,
     NbDialogModule.forChild(),
     ComponentModule,
+    NbAccordionModule,
+    NbListModule,
   ],
   declarations: [
     InvoiceComponent,

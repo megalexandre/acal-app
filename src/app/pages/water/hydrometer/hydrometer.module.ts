@@ -6,7 +6,7 @@ import { HydrometerListComponent } from './hydrometer-list/hydrometer-list.compo
 import { HydrometerRoutingModule } from './hydrometer-routing.module';
 import { HydrometerService } from './hydrometer.service';
 import { HydrometerComponent } from './hydrometer.component';
-import { NbAccordionModule, NbButton, NbButtonModule, NbCardModule, NbIconModule, NbInputModule, NbSpinnerModule } from '@nebular/theme';
+import { NbAccordionModule, NbButton, NbButtonModule, NbCardModule, NbCheckboxModule, NbIconModule, NbInputModule, NbSpinnerModule } from '@nebular/theme';
 import { AcalModule } from 'app/@acal/acal.module';
 import { PipeModule } from 'app/@pipe/pipe.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -28,6 +28,7 @@ import { HydrometerSelectReferenceComponent } from './hydrometer-select-referenc
     NbAccordionModule,
     NbButtonModule,
     NgxMaskModule.forChild(),
+    NbCheckboxModule,
   ],
 
   declarations: [

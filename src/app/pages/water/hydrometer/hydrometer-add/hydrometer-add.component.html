@@ -42,7 +42,7 @@
     <ngx-app-table [tableStriped]="false" >
       <thead>
 
-        <th class="col-5 align-middle">
+        <th class="col-4 align-middle">
           Responsável:
         </th>
 
@@ -70,13 +70,16 @@
           valor:
         </th>
 
+        <th class="col-1 align-middle">
+        </th>
+
       </thead>
       <tbody>
 
 
     <ng-container *ngFor="let item of data">
       <tr class="table-success">
-        <td class="text-center" colspan="7">
+        <td class="text-center" colspan="8">
           <b>{{item.addressName}}</b>
         </td>
       </tr>
@@ -116,6 +119,13 @@
 
         <td class="align-middle">
           {{waterValue(insideItem) | currency}}
+        </td>
+
+        <td class="align-middle">
+          <nb-checkbox
+            status="success"
+            [checked]="insideItem.checked" (checkedChange)="insideItem.checked = !insideItem.checked" >
+          </nb-checkbox>
         </td>
 
       </tr>

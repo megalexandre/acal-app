@@ -9,9 +9,28 @@
 
   </nb-card-header>
 
+  <nb-card-header>
+    <nb-accordion>
+      <nb-accordion-item>
+       <nb-accordion-item-header>Legenda</nb-accordion-item-header>
+       <nb-accordion-item-body>
+        <nb-list>
+
+          <nb-list-item class="awaiting"> Aguardando Pagamento </nb-list-item>
+          <nb-list-item class="payed" > Pago</nb-list-item>
+          <nb-list-item class="accountOverdue"> Vencido </nb-list-item>
+          <nb-list-item class="atRiskOfBeingCanceled"> Passivel de corte </nb-list-item>
+        </nb-list>
+       </nb-accordion-item-body>
+      </nb-accordion-item>
+     </nb-accordion>
+
+  </nb-card-header>
+
+
   <nb-card-body>
 
-    <ngx-app-table [nbSpinner]="loading">
+    <ngx-app-table [nbSpinner]="loading" [tableStriped]="false" >
       <thead>
         <tr>
           <th class="col-6 align-middle" (click)="order('link.customer.name')">
@@ -94,8 +113,11 @@
       <tbody >
         <tr *ngFor="let item of page?.content"
           [ngClass]="{
-            'table-success': item.isPayed,
-            'table-danger': item.isOverdue }">
+            'awaiting': item.status === 'awaiting',
+            'payed': item.status === 'payed',
+            'accountOverdue': item.status === 'accountOverdue',
+            'atRiskOfBeingCanceled': item.status === 'atRiskOfBeingCanceled'
+          }">
 
           <td class="align-middle">{{ item.link.customer.name }}</td>
           <td class="align-middle">{{ item.link.place.address.name }}</td>
@@ -120,7 +142,7 @@
 
       <tfoot>
         <tr>
-          <td colspan="6" *ngIf="page">
+          <td colspan="7" *ngIf="page">
             <ngx-app-table-footer [page]="page" (search)="paginate($event)">
             </ngx-app-table-footer>
           </td>

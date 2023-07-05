@@ -9,6 +9,7 @@ export interface Invoice {
   emission: string,
   isPayed: boolean,
   invoiceDetails: InvoiceDetail[],
+  status: string,
 }
 
 export interface InvoicePage {
@@ -21,6 +22,7 @@ export interface InvoicePage {
   emission: string,
   isPayed: boolean,
   invoiceDetails: InvoiceDetail[],
+  status: string,
 }
 
 

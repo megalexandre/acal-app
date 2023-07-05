@@ -25,6 +25,7 @@ export interface LinkHydrometerPair {
   lastConsumption: number,
   actualConsumption?: number,
   value: number,
+  checked?: boolean;
 }
 
 export interface LinkPage {

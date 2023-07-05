@@ -32,9 +32,9 @@ export class QualityAddComponent extends QualityComponent implements OnInit {
       gathering.push(
         this.formBuilder.group({
           param: [p.title, Validators.required],
-          required: [10, [Validators.required]],
-          analyzed: [10, [Validators.required]],
-          conformity: [10, [Validators.required]],
+          required: [6, [Validators.required]],
+          analyzed: [6, [Validators.required]],
+          conformity: [6, [Validators.required]],
         }))
     })
 

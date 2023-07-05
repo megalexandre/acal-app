@@ -26,6 +26,7 @@ import { NgxMaskModule } from 'ngx-mask';
 
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
+import { environment } from '../environments/environment';
 
 registerLocaleData(localePt);
 

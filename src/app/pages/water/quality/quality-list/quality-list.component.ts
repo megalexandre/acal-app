@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Quality, QualityPage, QualityPageFilter } from '@model/default/quality';
+import { Quality, QualityPage, QualityPageFilter, params } from '@model/default/quality';
 import { Page } from '@model/page';
 import { DataService } from 'app/@shared/data.service';
 import { QualityService } from '../quality.service';
-import { ListComponent } from '@core/list.component';
+import { Action, ListComponent } from '@core/list.component';
 
 @Component({
   selector: 'ngx-quality-list',
@@ -30,4 +30,23 @@ export class QualityListComponent extends ListComponent implements OnInit {
     this.init()
   }
 
+  public search(action: Action = {name: 'search'}) {
+    if(action.name === 'search'){
+      this.filter.page = 0;
+    }
+
+    this.loading = true;
+    this.service.getPage(this.prepareDataForSearch()).subscribe(
+      page => {
+        this.page = page;
+        this.page.content.forEach(
+          item => {
+            item.gathering = item.gathering.sort((a,b) => a.param.localeCompare(b.param))
+          }
+        )
+        this.loading = false;
+      },
+    );
+
+  }
 }
