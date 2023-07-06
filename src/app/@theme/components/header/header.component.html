@@ -3,15 +3,13 @@
     <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">
       <nb-icon icon="menu-2-outline"></nb-icon>
     </a>
-    <a class="logo" href="#" (click)="navigateHome()" nbTooltip="V1.3.0" nbTooltipStatus="basic"><span>Acal</span>
+    <a class="logo" href="#" (click)="navigateHome()" nbTooltip="V1.3.1|1.3.1" nbTooltipStatus="basic"><span>Acal</span>
     </a>
   </div>
-
 </div>
 
 <div class="header-container">
   <nb-actions size="small">
-
     <nb-action class="user-action" *nbIsGranted="['view', 'user']" >
       <nb-user
         [nbContextMenu]="userMenu"
