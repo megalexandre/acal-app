@@ -1,0 +1,226 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Transactions" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+
+<div class="row">
+    <div class="col-xxl-3 col-md-6">
+        <div class="card card-animate">
+            <div class="card-body">
+                <div class="d-flex mb-3">
+                    <div class="flex-grow-1">
+                        <lord-icon src="https://cdn.lordicon.com/fhtaantg.json" trigger="loop" colors="primary:#405189,secondary:#0ab39c" style="width:55px;height:55px">
+                        </lord-icon>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <a href="javascript:void(0);" class="badge bg-warning-subtle text-warning badge-border">BTC</a>
+                        <a href="javascript:void(0);" class="badge bg-info-subtle text-info badge-border">ETH</a>
+                        <a href="javascript:void(0);" class="badge bg-primary-subtle text-primary badge-border">USD</a>
+                        <a href="javascript:void(0);" class="badge bg-danger-subtle text-danger badge-border">EUR</a>
+                    </div>
+                </div>
+                <h3 class="mb-2">$<span [countUp]="74858" class="counter-value" [options]="option"></span><small class="text-muted fs-13">.68k</small></h3>
+                <h6 class="text-muted mb-0">Available Balance (USD)</h6>
+            </div>
+        </div><!--end card-->
+    </div><!--end col-->
+    <div class="col-xxl-3 col-md-6">
+        <div class="card card-animate">
+            <div class="card-body">
+                <div class="d-flex mb-3">
+                    <div class="flex-grow-1">
+                        <lord-icon src="https://cdn.lordicon.com/qhviklyi.json" trigger="loop" colors="primary:#405189,secondary:#0ab39c" style="width:55px;height:55px"></lord-icon>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <a href="javascript:void(0);" class="badge bg-warning-subtle text-warning badge-border">BTC</a>
+                        <a href="javascript:void(0);" class="badge bg-info-subtle text-info badge-border">ETH</a>
+                        <a href="javascript:void(0);" class="badge bg-primary-subtle text-primary badge-border">USD</a>
+                        <a href="javascript:void(0);" class="badge bg-danger-subtle text-danger badge-border">EUR</a>
+                    </div>
+                </div>
+                <h3 class="mb-2">$<span [countUp]="74361" class="counter-value" [options]="option"></span><small class="text-muted fs-13">.34k</small></h3>
+                <h6 class="text-muted mb-0">Send (Previous Month)</h6>
+            </div>
+        </div><!--end card-->
+    </div><!--end col-->
+    <div class="col-xxl-3 col-md-6">
+        <div class="card card-animate">
+            <div class="card-body">
+                <div class="d-flex mb-3">
+                    <div class="flex-grow-1">
+                        <lord-icon src="https://cdn.lordicon.com/yeallgsa.json" trigger="loop" colors="primary:#405189,secondary:#0ab39c" style="width:55px;height:55px">
+                        </lord-icon>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <a href="javascript:void(0);" class="badge bg-warning-subtle text-warning badge-border">BTC</a>
+                        <a href="javascript:void(0);" class="badge bg-info-subtle text-info badge-border">ETH</a>
+                        <a href="javascript:void(0);" class="badge bg-primary-subtle text-primary badge-border">USD</a>
+                        <a href="javascript:void(0);" class="badge bg-danger-subtle text-danger badge-border">EUR</a>
+                    </div>
+                </div>
+                <h3 class="mb-2">$<span [countUp]="97685" class="counter-value" [options]="option"></span><small class="text-muted fs-13">.22k</small></h3>
+                <h6 class="text-muted mb-0">Receive (Previous Month)</h6>
+            </div>
+        </div><!--end card-->
+    </div><!--end col-->
+    <div class="col-xxl-3 col-md-6" dir="ltr">
+        <ngx-slick-carousel [config]="config" class="carousel">
+            <div class="swiper-slide" ngxSlickItem>
+                <div class="card card-animate  overflow-hidden">
+                    <div class="card-body bg-warning-subtle">
+                        <div class="d-flex mb-3">
+                            <div class="flex-grow-1">
+                                <lord-icon src="https://cdn.lordicon.com/vaeagfzc.json" trigger="loop" colors="primary:#405189,secondary:#0ab39c" style="width:55px;height:55px">
+                                </lord-icon>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <a href="javascript:void(0);" class="fw-medium">Bitcoin (BTC)</a>
+                            </div>
+                        </div>
+                        <h3 class="mb-2">$245<small class="text-muted fs-13">.65k</small></h3>
+                        <h6 class="text-muted mb-0">Send - Receive (Previous Month)</h6>
+                    </div>
+                </div><!--end card-->
+            </div>
+            <div class="swiper-slide" ngxSlickItem>
+                <div class="card card-animate  overflow-hidden">
+                    <div class="card-body bg-warning-subtle">
+                        <div class="d-flex mb-3">
+                            <div class="flex-grow-1">
+                                <lord-icon src="https://cdn.lordicon.com/vaeagfzc.json" trigger="loop" colors="primary:#405189,secondary:#0ab39c" style="width:55px;height:55px">
+                                </lord-icon>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <a href="javascript:void(0);" class="fw-medium">Ethereum (ETH)</a>
+                            </div>
+                        </div>
+                        <h3 class="mb-2">$24<small class="text-muted fs-13">.74k</small></h3>
+                        <h6 class="text-muted mb-0">Send - Receive (Previous Month)</h6>
+                    </div>
+                </div><!--end card-->
+            </div>
+            <div class="swiper-slide" ngxSlickItem>
+                <div class="card card-animate  overflow-hidden">
+                    <div class="card-body bg-warning-subtle">
+                        <div class="d-flex mb-3">
+                            <div class="flex-grow-1">
+                                <lord-icon src="https://cdn.lordicon.com/vaeagfzc.json" trigger="loop" colors="primary:#405189,secondary:#0ab39c" style="width:55px;height:55px">
+                                </lord-icon>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <a href="javascript:void(0);" class="fw-medium">Monero (XMR)</a>
+                            </div>
+                        </div>
+                        <h3 class="mb-2">$124<small class="text-muted fs-13">.36k</small></h3>
+                        <h6 class="text-muted mb-0">Send - Receive (Previous Month)</h6>
+                    </div>
+                </div><!--end card-->
+            </div>
+        </ngx-slick-carousel>
+    </div><!--end col-->
+</div><!--end row-->
+
+<div class="row align-items-center mb-4 g-3">
+    <div class="col-sm-3">
+        <div class="d-flex align-items-center gap-2">
+            <span class="text-muted flex-shrink-0">Sort by: </span>
+            <div class="w-md">
+                <select class="form-control mb-0" data-choices data-choices-search-false name="choices-single-default" id="choices-single-default" [(ngModel)]="currency" (ngModelChange)="CurrencyFilter()">
+                    <option value="" selected>All</option>
+                    <option value="USD">USD</option>
+                    <option value="ETH">ETH</option>
+                    <option value="BTC">BTC</option>
+                    <option value="EUR">EUR</option>
+                    <option value="JPY">JPY</option>
+                </select>
+            </div>
+        </div>
+    </div><!--end col-->
+    <div class="col-sm-auto ms-auto">
+        <div class="d-flex gap-2">
+            <a href="javascript:void(0);" (click)="setType('Deposit')" data-bs-toggle="modal" class="btn btn-info">Deposite</a>
+            <a href="javascript:void(0);" (click)="setType('Withdraw')" data-bs-toggle="modal" class="btn btn-danger">Withdraw</a>
+        </div>
+    </div><!--end col-->
+</div><!--end row-->
+
+<div class="card" id="contactList">
+    <div class="card-header">
+        <div class="row align-items-center g-3">
+            <div class="col-md-3">
+                <h5 class="card-title mb-0">All Transactions</h5>
+            </div><!--end col-->
+            <div class="col-md-auto ms-auto">
+                <div class="d-flex gap-2">
+                    <div class="search-box">
+                        <input type="text" name="searchTerm" class="form-control" placeholder="Search for transactions..." [(ngModel)]="searchTerm" (ngModelChange)="performSearch()">
+                        <i class="ri-search-line search-icon"></i>
+                    </div>
+                    <button class="btn btn-success"><i class="ri-equalizer-line align-bottom mx-1"></i> Filters</button>
+                </div>
+            </div><!--end col-->
+        </div><!--end row-->
+    </div><!--end card-header-->
+    <div class="card-body">
+        <div class="table-responsive table-card">
+            <table class="table align-middle table-nowrap" id="customerTable">
+                <thead class="table-light text-muted">
+                    <tr>
+                        <th class="sort" style="width: 60px;"></th>
+                        <th class="sort" (click)="onSort('time')">Timestamp</th>
+                        <th class="sort" (click)="onSort('currency')">Currency</th>
+                        <th class="sort" (click)="onSort('from')">Form</th>
+                        <th class="sort" (click)="onSort('to')">To</th>
+                        <th class="sort" (click)="onSort('details')">Details</th>
+                        <th class="sort" (click)="onSort('id')">Transaction ID</th>
+                        <th class="sort" (click)="onSort('type')">Type</th>
+                        <th class="sort" (click)="onSort('amount')">Amount</th>
+                        <th class="sort" (click)="onSort('status')">Status</th>
+                    </tr><!--end tr-->
+                </thead>
+                <tbody class="list form-check-all">
+                    @for ( data of transactions; track $index) {
+                    <tr>
+                        <td>
+                            <div class="avatar-xs">
+                                <div class="avatar-title bg-{{data.bg_color}}-subtle text-{{data.bg_color}} rounded-circle fs-16">
+                                    <i class="{{data.icon}}"></i>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="date">{{data.date}} <small class="text-muted">{{data.time}}</small></td>
+                        <td class="currency_name">
+                            <div class="d-flex align-items-center">
+                                <img src="{{data.image}}" alt="" class="avatar-xxs me-2">
+                                {{data.currency}}
+                            </div>
+                        </td>
+                        <td><ngb-highlight [result]="data.from" [term]="searchTerm"></ngb-highlight></td>
+                        <td><ngb-highlight [result]="data.to" [term]="searchTerm"></ngb-highlight></td>
+                        <td><ngb-highlight [result]="data.details" [term]="searchTerm"></ngb-highlight></td>
+                        <td><ngb-highlight [result]="data.id" [term]="searchTerm"></ngb-highlight></td>
+                        <td><ngb-highlight [result]="data.type" [term]="searchTerm"></ngb-highlight></td>
+                        <td>
+                            <h6 class="text-{{data.bg_color}} mb-1 amount">{{data.amount}}</h6>
+                            <p class="text-muted mb-0">{{data.amount1}}</p>
+                        </td>
+                        <td class="status">
+                            <span class="badge bg-{{data.status_color}}-subtle text-{{data.status_color}} fs-11"><i class="ri-checkbox-circle-line align-bottom"></i> {{data.status}}</span>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table><!--end table-->
+        </div>
+        <div class="d-flex justify-content-end mt-3">
+            <!-- Pagination -->
+                    <ngb-pagination [collectionSize]="TransactionList?.length" [(page)]="service.page" [pageSize]="service.pageSize" (pageChange)="changePage()">
+                    </ngb-pagination>
+            <!-- End Pagination -->
+        </div>
+        <div id="elmLoader">
+            <div class="spinner-border text-primary avatar-sm" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div><!--end card-body-->
+</div><!--end card-->

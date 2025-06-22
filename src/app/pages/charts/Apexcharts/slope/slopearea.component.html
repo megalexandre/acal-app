@@ -1,0 +1,36 @@
+<app-breadcrumbs title="Radar Charts" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+<!-- end row -->
+
+<div class="row">
+    <div class="col-xl-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Basic</h4>
+            </div><!-- end card header -->
+  
+            <div class="card-body">
+                <apx-chart [series]="basicRadialbarChart.series" [chart]="basicRadialbarChart.chart"
+                [colors]="basicRadialbarChart.colors" [plotOptions]="basicRadialbarChart.plotOptions" dir="ltr" class="apex-charts"></apx-chart>
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+    </div>
+    <!-- end col -->
+  
+    <div class="col-xl-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Multi Group</h4>
+            </div><!-- end card header -->
+  
+            <div class="card-body">
+                <apx-chart [series]="multipleRadialbarChart.series" [chart]="multipleRadialbarChart.chart"
+                [colors]="multipleRadialbarChart.colors" [plotOptions]="multipleRadialbarChart.plotOptions"
+                [tooltip]="multipleRadialbarChart.tooltip" [dataLabels]="multipleRadialbarChart.dataLabels"
+                [xaxis]="multipleRadialbarChart.xaxis" [yaxis]="multipleRadialbarChart.yaxis"
+                [legend]="multipleRadialbarChart.legend" [stroke]="multipleRadialbarChart.stroke" dir="ltr" class="apex-charts"></apx-chart>
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+    </div>
+    <!-- end col -->
+  </div>
