@@ -126,10 +126,10 @@ export class RangeSlidersComponent implements OnInit {
      showTicks: true
    };
 
-   /**
+    /**
    * Show Code Toggle
    */
-    ShowCode(event: any) {     
+     ShowCode(event: any) {     
       let card = event.target.closest('.card');
       const preview = card.children[1].children[1];
       const codeView = card.children[1].children[2];
@@ -141,6 +141,5 @@ export class RangeSlidersComponent implements OnInit {
         
       }
     }
-
 
 }

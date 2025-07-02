@@ -69,8 +69,8 @@ export class NftComponent implements OnInit {
 
         // Date Set
         const currentDate = new Date();
-        currentDate.setDate(currentDate.getDate() + 1);
-        this._trialEndsAt = currentDate.toISOString().split('T')[0];
+    currentDate.setDate(currentDate.getDate() + 1);
+    this._trialEndsAt = currentDate.toISOString().split('T')[0];
 
         /**
          * Count date set
@@ -166,7 +166,7 @@ export class NftComponent implements OnInit {
         slidesToShow: 3,
         autoplay: true,
         dots: false,
-        arrows: true,
+        arrows: false
     };
 
     /**

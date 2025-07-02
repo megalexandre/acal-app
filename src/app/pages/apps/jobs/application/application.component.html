@@ -9,9 +9,9 @@
                     <h5 class="card-title mb-3 mb-md-0 flex-grow-1">Job Application</h5>
                     <div class="flex-shrink-0">
                         <div class="d-flex gap-1 flex-wrap">
-                            <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal" (click)="openModel(content)"><i class="ri-add-line align-bottom me-1"></i> Create
+                            <button type="button" class="btn btn-primary add-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal" (click)="openModel(content)"><i class="ri-add-line align-bottom me-1"></i> Create
                                 Application</button>
-                            <button type="button" class="btn btn-info"><i class="ri-file-download-line align-bottom me-1"></i> Import</button>
+                            <button type="button" class="btn btn-success"><i class="ri-file-download-line align-bottom me-1"></i> Import</button>
                             <button class="btn btn-soft-danger" id="remove-actions" (click)="confirm(deletemodal,'')"><i class="ri-delete-bin-2-line"></i></button>
                         </div>
                     </div>
@@ -22,20 +22,20 @@
                 <div class="row g-3">
                     <div class="col-xxl-5 col-sm-6">
                         <div class="search-box">
-                            <input type="text" class="form-control search" placeholder="Search for application ID, company, designation status or something..." [(ngModel)]="searchTerm" (ngModelChange)="performSearch()">
+                            <input type="text" class="form-control search" placeholder="Search for application ID, company, designation status or something..." [(ngModel)]="searchTerm">
                             <i class="ri-search-line search-icon"></i>
                         </div>
                     </div>
                     <!--end col-->
                     <div class="col-xxl-2 col-sm-6">
                         <div>
-                            <input type="text" class="form-control" mwlFlatpickr [convertModelValue]="true" placeholder="Select date" [(ngModel)]="date" mode="range">
+                            <input type="text" class="form-control" mwlFlatpickr [convertModelValue]="true" placeholder="Select date" mode="range" [(ngModel)]="date">
                         </div>
                     </div>
                     <!--end col-->
                     <div class="col-xxl-2 col-sm-4">
                         <div>
-                            <select class="form-control" data-choices data-choices-search-false name="choices-single-default" id="idStatus" [(ngModel)]="status" (ngModelChange)="statusFilter()">
+                            <select class="form-control" data-choices data-choices-search-false name="choices-single-default" id="idStatus" [(ngModel)]="searchTerm">
                                 <option value="">Status</option>
                                 <option value="" selected>All</option>
                                 <option value="Approved">Approved</option>
@@ -48,7 +48,7 @@
                     <!--end col-->
                     <div class="col-xxl-2 col-sm-4">
                         <div>
-                            <select class="form-control" data-choices data-choices-search-false name="choices-single-default" id="idType" [(ngModel)]="type" (ngModelChange)="typeFilter()">
+                            <select class="form-control" data-choices data-choices-search-false name="choices-single-default" id="idType" [(ngModel)]="searchTerm">
                                 <option value="">Select Type</option>
                                 <option value="" selected>All</option>
                                 <option value="Full Time">Full Time</option>
@@ -59,7 +59,7 @@
                     <!--end col-->
                     <div class="col-xxl-1 col-sm-4">
                         <div>
-                            <button type="button" class="btn btn-primary w-100" onclick="filterData();"> <i class="ri-equalizer-fill mx-1 align-bottom"></i>
+                            <button type="button" class="btn btn-info w-100" onclick="filterData();"> <i class="ri-equalizer-fill me-1 align-bottom"></i>
                                 Filters
                             </button>
                         </div>
@@ -85,22 +85,22 @@
                                                     <input class="form-check-input" type="checkbox" id="checkAll" value="option" [(ngModel)]="masterSelected" (change)="checkUncheckAll($event)">
                                                 </div>
                                             </th>
-                                            <th class="sort" (click)="onSort('id')" (appsort)="onSort($event)" style="width: 140px;">Application ID</th>
-                                            <th class="sort" (click)="onSort('name')" (appsort)="onSort($event)">Company
-                                                Name</th>
-                                            <th class="sort" (click)="onSort('designation')" (appsort)="onSort($event)">
+                                            <th class="sort" (click)="onSort('id')" style="width: 140px;">Application ID</th>
+                                            <th class="sort" (click)="onSort('name')">Company Name
+                                            </th>
+                                            <th class="sort" (click)="onSort('designation')">
                                                 Designation</th>
-                                            <th class="sort" (click)="onSort('date')" (appsort)="onSort($event)">Apply Date
+                                            <th class="sort" (click)="onSort('date')">Apply Date
                                             </th>
-                                            <th class="sort" (click)="onSort('contacts')" (appsort)="onSort($event)">Contacts
+                                            <th class="sort" (click)="onSort('contacts')">Contacts
                                             </th>
-                                            <th class="sort" (click)="onSort('type')" (appsort)="onSort($event)">Type</th>
-                                            <th class="sort" (click)="onSort('status')" (appsort)="onSort($event)">Status</th>
+                                            <th class="sort" (click)="onSort('type')">Type</th>
+                                            <th class="sort" (click)="onSort('status')">Status</th>
                                             <th class="sort">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody class="list form-check-all">
-                                        @for ( data of applications; track $index) {
+                                        @for( data of applications;track $index){
                                         <tr id="a_{{data.id}}">
                                             <th scope="row">
                                                 <div class="form-check">
@@ -146,8 +146,7 @@
                                                     </li>
                                                 </ul>
                                             </td>
-                                        </tr>
-                                        }
+                                        </tr>}
                                     </tbody>
                                 </table>
                             </ng-template>
@@ -165,18 +164,180 @@
                                                     <input class="form-check-input" type="checkbox" id="checkAll" value="option" [(ngModel)]="masterSelected" (change)="checkUncheckAll($event)">
                                                 </div>
                                             </th>
-                                            <th class="sort" data-sort="id" style="width: 140px;">Application ID</th>
-                                            <th class="sort" data-sort="company">Company Name</th>
-                                            <th class="sort" data-sort="designation">Designation</th>
-                                            <th class="sort" data-sort="date">Apply Date</th>
-                                            <th class="sort" data-sort="contacts">Contacts</th>
-                                            <th class="sort" data-sort="type">Type</th>
-                                            <th class="sort" data-sort="status">Status</th>
-                                            <th class="sort" data-sort="city">Action</th>
+                                            <th class="sort" (click)="onSort('id')" style="width: 140px;">Application ID</th>
+                                            <th class="sort" (click)="onSort('name')">Company Name
+                                            </th>
+                                            <th class="sort" (click)="onSort('designation')">
+                                                Designation</th>
+                                            <th class="sort" (click)="onSort('date')">Apply Date
+                                            </th>
+                                            <th class="sort" (click)="onSort('contacts')">Contacts
+                                            </th>
+                                            <th class="sort" (click)="onSort('type')">Type</th>
+                                            <th class="sort" (click)="onSort('status')">Status</th>
+                                            <th class="sort">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody class="list form-check-all">
-                                        @for ( data of applications; track $index) {
+                                        @for( data of applications;track $index){
+                                        <tr id="a_{{data.id}}">
+                                            <th scope="row">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="checkAll" value="{{data.id}}" [(ngModel)]="data.state" (change)="onCheckboxChange($event)">
+                                                </div>
+                                            </th>
+                                            <td class="id"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ{{data.id}}</a>
+                                            </td>
+                                            <td class="company">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-shrink-0">
+                                                        <img src="{{data.img}}" alt="" class="avatar-xxs rounded-circle image_src object-fit-cover">
+                                                    </div>
+                                                    <div class="flex-grow-1 ms-2">{{data.name}}</div>
+                                                </div>
+                                            </td>
+                                            <td class="designation">{{data.designation}}</td>
+                                            <td class="date">{{data.date}}</td>
+                                            <td class="contacts">{{data.contacts}}</td>
+                                            <td class="type">{{data.type}}</td>
+                                            <td class="status">
+                                                <span class="badge text-uppercase" [ngClass]="{'bg-danger-subtle text-danger': data.status == 'Rejected','bg-info-subtle text-info': data.status == 'New',
+                                                    'bg-warning-subtle text-warning': data.status == 'Pending','bg-success-subtle text-success': data.status == 'Approved'}">
+                                                    {{data.status}}</span>
+
+                                            </td>
+                                            <td>
+                                                <ul class="list-inline hstack gap-2 mb-0">
+                                                    <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="View">
+                                                        <a routerLink="/job-lists/overview" class="text-primary d-inline-block">
+                                                            <i class="ri-eye-fill fs-16"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="Edit" (click)="editorder(content,$index)">
+                                                        <a data-bs-toggle="modal" class="text-primary d-inline-block edit-item-btn">
+                                                            <i class="ri-pencil-fill fs-16"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-inline-item me-0" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="Remove">
+                                                        <a class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal" (click)="confirm(deletemodal,data.id)">
+                                                            <i class="ri-delete-bin-5-fill fs-16"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>}
+                                    </tbody>
+                                </table>
+                            </ng-template>
+                        </li>
+                        <li [ngbNavItem]="3" class="nav-item">
+                            <a ngbNavLink class="nav-link py-3 Pending" data-bs-toggle="tab" id="Pending" href="javascript:void(0);" role="tab" aria-selected="false">
+                                Pending <span class="badge bg-danger align-middle ms-1">2</span>
+                            </a>
+                            <ng-template ngbNavContent>
+                                <table class="table table-nowrap align-middle" id="jobListTable">
+                                    <thead class="text-muted table-light">
+                                        <tr class="text-uppercase">
+                                            <th scope="col" style="width: 25px;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="checkAll" value="option" [(ngModel)]="masterSelected" (change)="checkUncheckAll($event)">
+                                                </div>
+                                            </th>
+                                            <th class="sort" (click)="onSort('id')" style="width: 140px;">Application ID</th>
+                                            <th class="sort" (click)="onSort('name')">Company Name
+                                            </th>
+                                            <th class="sort" (click)="onSort('designation')">
+                                                Designation</th>
+                                            <th class="sort" (click)="onSort('date')">Apply Date
+                                            </th>
+                                            <th class="sort" (click)="onSort('contacts')">Contacts
+                                            </th>
+                                            <th class="sort" (click)="onSort('type')">Type</th>
+                                            <th class="sort" (click)="onSort('status')">Status</th>
+                                            <th class="sort">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="list form-check-all">
+                                        @for( data of applications;track $index){
+                                        <tr id="a_{{data.id}}">
+                                            <th scope="row">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="checkAll" value="{{data.id}}" [(ngModel)]="data.state" (change)="onCheckboxChange($event)">
+                                                </div>
+                                            </th>
+                                            <td class="id"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ{{data.id}}</a>
+                                            </td>
+                                            <td class="company">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-shrink-0">
+                                                        <img src="{{data.img}}" alt="" class="avatar-xxs rounded-circle image_src object-fit-cover">
+                                                    </div>
+                                                    <div class="flex-grow-1 ms-2">{{data.name}}</div>
+                                                </div>
+                                            </td>
+                                            <td class="designation">{{data.designation}}</td>
+                                            <td class="date">{{data.date}}</td>
+                                            <td class="contacts">{{data.contacts}}</td>
+                                            <td class="type">{{data.type}}</td>
+                                            <td class="status">
+                                                <span class="badge text-uppercase" [ngClass]="{'bg-danger-subtle text-danger': data.status == 'Rejected','bg-info-subtle text-info': data.status == 'New',
+                                                    'bg-warning-subtle text-warning': data.status == 'Pending','bg-success-subtle text-success': data.status == 'Approved'}">
+                                                    {{data.status}}</span>
+
+                                            </td>
+                                            <td>
+                                                <ul class="list-inline hstack gap-2 mb-0">
+                                                    <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="View">
+                                                        <a routerLink="/job-lists/overview" class="text-primary d-inline-block">
+                                                            <i class="ri-eye-fill fs-16"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="Edit" (click)="editorder(content,$index)">
+                                                        <a data-bs-toggle="modal" class="text-primary d-inline-block edit-item-btn">
+                                                            <i class="ri-pencil-fill fs-16"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-inline-item me-0" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="Remove">
+                                                        <a class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal" (click)="confirm(deletemodal,data.id)">
+                                                            <i class="ri-delete-bin-5-fill fs-16"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>}
+                                    </tbody>
+                                </table>
+                            </ng-template>
+                        </li>
+                        <li [ngbNavItem]="4" class="nav-item">
+                            <a ngbNavLink class="nav-link py-3 Approved" data-bs-toggle="tab" id="Approved" href="javascript:void(0);" role="tab" aria-selected="false">
+                                Approved
+                            </a>
+                            <ng-template ngbNavContent>
+                                <table class="table table-nowrap align-middle" id="jobListTable">
+                                    <thead class="text-muted table-light">
+                                        <tr class="text-uppercase">
+                                            <th scope="col" style="width: 25px;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="checkAll" value="option" [(ngModel)]="masterSelected" (change)="checkUncheckAll($event)">
+                                                </div>
+                                            </th>
+                                            <th class="sort" (click)="onSort('id')" style="width: 140px;">Application ID</th>
+                                            <th class="sort" (click)="onSort('name')">Company Name
+                                            </th>
+                                            <th class="sort" (click)="onSort('designation')">
+                                                Designation</th>
+                                            <th class="sort" (click)="onSort('date')">Apply Date
+                                            </th>
+                                            <th class="sort" (click)="onSort('contacts')">Contacts
+                                            </th>
+                                            <th class="sort" (click)="onSort('type')">Type</th>
+                                            <th class="sort" (click)="onSort('status')">Status</th>
+                                            <th class="sort">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="list form-check-all">
+                                        @for( data of applications;track $index){
                                         <tr id=" a_{{data.id}}">
                                             <th scope="row">
                                                 <div class="form-check">
@@ -205,82 +366,6 @@
                                             </td>
                                             <td>
                                                 <ul class="list-inline hstack gap-2 mb-0">
-                                                    <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="View">
-                                                        <a routerLink="/job-lists/overview" class="text-primary d-inline-block">
-                                                            <i class="ri-eye-fill fs-16"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="Edit" (click)="editorder(content,$index)">
-                                                        <a data-bs-toggle="modal" class="text-primary d-inline-block edit-item-btn">
-                                                            <i class="ri-pencil-fill fs-16"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item me-0" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="Remove">
-                                                        <a class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal" (click)="confirm(deletemodal,data.id)">
-                                                            <i class="ri-delete-bin-5-fill fs-16"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            </ng-template>
-                        </li>
-                        <li [ngbNavItem]="3" class="nav-item">
-                            <a ngbNavLink class="nav-link py-3 Pending" data-bs-toggle="tab" id="Pending" href="javascript:void(0);" role="tab" aria-selected="false">
-                                Pending <span class="badge bg-danger align-middle ms-1">2</span>
-                            </a>
-                            <ng-template ngbNavContent>
-                                <table class="table table-nowrap align-middle" id="jobListTable">
-                                    <thead class="text-muted table-light">
-                                        <tr class="text-uppercase">
-                                            <th scope="col" style="width: 25px;">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="checkAll" value="option" [(ngModel)]="masterSelected" (change)="checkUncheckAll($event)">
-                                                </div>
-                                            </th>
-                                            <th class="sort" data-sort="id" style="width: 140px;">Application ID</th>
-                                            <th class="sort" data-sort="company">Company Name</th>
-                                            <th class="sort" data-sort="designation">Designation</th>
-                                            <th class="sort" data-sort="date">Apply Date</th>
-                                            <th class="sort" data-sort="contacts">Contacts</th>
-                                            <th class="sort" data-sort="type">Type</th>
-                                            <th class="sort" data-sort="status">Status</th>
-                                            <th class="sort" data-sort="city">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="list form-check-all">
-                                        @for ( data of applications; track $index) {
-                                        <tr id="a_{{data.id}}">
-                                            <th scope="row">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="checkAll" value="{{data.id}}" [(ngModel)]="data.state" (change)="onCheckboxChange($event)">
-                                                </div>
-                                            </th>
-                                            <td class="id"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ{{data.id}}</a>
-                                            </td>
-                                            <td class="company">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="flex-shrink-0">
-                                                        <img src="{{data.img}}" alt="" class="avatar-xxs rounded-circle image_src object-fit-cover">
-                                                    </div>
-                                                    <div class="flex-grow-1 ms-2">{{data.name}}</div>
-                                                </div>
-                                            </td>
-                                            <td class="designation">{{data.designation}}</td>
-                                            <td class="date">{{data.date}}</td>
-                                            <td class="contacts">{{data.contacts}}</td>
-                                            <td class="type">{{data.type}}</td>
-                                            <td class="status">
-                                                <span class="badge text-uppercase" [ngClass]="{'bg-danger-subtle text-danger': data.status == 'Rejected','bg-info-subtle text-info': data.status == 'New',
-                                                    'bg-warning-subtle text-warning': data.status == 'Pending','bg-success-subtle text-success': data.status == 'Approved'}">
-                                                    {{data.status}}</span>
-
-                                            </td>
-                                            <td>
-                                                <ul class="list-inline hstack gap-2 mb-0">
                                                     <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="View">
                                                         <a routerLink="/job-lists/overview" class="text-primary d-inline-block">
                                                             <i class="ri-eye-fill fs-16"></i>
@@ -291,83 +376,7 @@
                                                             <i class="ri-pencil-fill fs-16"></i>
                                                         </a>
                                                     </li>
-                                                    <li class="list-inline-item me-0" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="Remove">
-                                                        <a class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal" (click)="confirm(deletemodal,data.id)">
-                                                            <i class="ri-delete-bin-5-fill fs-16"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            </ng-template>
-                        </li>
-                        <li [ngbNavItem]="4" class="nav-item">
-                            <a ngbNavLink class="nav-link py-3 Approved" data-bs-toggle="tab" id="Approved" href="javascript:void(0);" role="tab" aria-selected="false">
-                                Approved
-                            </a>
-                            <ng-template ngbNavContent>
-                                <table class="table table-nowrap align-middle" id="jobListTable">
-                                    <thead class="text-muted table-light">
-                                        <tr class="text-uppercase">
-                                            <th scope="col" style="width: 25px;">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="checkAll" value="option" [(ngModel)]="masterSelected" (change)="checkUncheckAll($event)">
-                                                </div>
-                                            </th>
-                                            <th class="sort" data-sort="id" style="width: 140px;">Application ID</th>
-                                            <th class="sort" data-sort="company">Company Name</th>
-                                            <th class="sort" data-sort="designation">Designation</th>
-                                            <th class="sort" data-sort="date">Apply Date</th>
-                                            <th class="sort" data-sort="contacts">Contacts</th>
-                                            <th class="sort" data-sort="type">Type</th>
-                                            <th class="sort" data-sort="status">Status</th>
-                                            <th class="sort" data-sort="city">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="list form-check-all">
-                                        @for ( data of applications; track $index) {
-                                        <tr id="a_{{data.id}}">
-                                            <th scope="row">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="checkAll" value="{{data.id}}" [(ngModel)]="data.state" (change)="onCheckboxChange($event)">
-                                                </div>
-                                            </th>
-                                            <td class="id"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ{{data.id}}</a>
-                                            </td>
-                                            <td class="company">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="flex-shrink-0">
-                                                        <img src="{{data.img}}" alt="" class="avatar-xxs rounded-circle image_src object-fit-cover">
-                                                    </div>
-                                                    <div class="flex-grow-1 ms-2">{{data.name}}</div>
-                                                </div>
-                                            </td>
-                                            <td class="designation">{{data.designation}}</td>
-                                            <td class="date">{{data.date}}</td>
-                                            <td class="contacts">{{data.contacts}}</td>
-                                            <td class="type">{{data.type}}</td>
-                                            <td class="status">
-                                                <span class="badge text-uppercase" [ngClass]="{'bg-danger-subtle text-danger': data.status == 'Rejected','bg-info-subtle text-info': data.status == 'New',
-                                                    'bg-warning-subtle text-warning': data.status == 'Pending','bg-success-subtle text-success': data.status == 'Approved'}">
-                                                    {{data.status}}</span>
-
-                                            </td>
-                                            <td>
-                                                <ul class="list-inline hstack gap-2 mb-0">
-                                                    <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="View">
-                                                        <a routerLink="/job-lists/overview" class="text-primary d-inline-block">
-                                                            <i class="ri-eye-fill fs-16"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="Edit" (click)="editorder(content,$index)">
-                                                        <a data-bs-toggle="modal" class="text-primary d-inline-block edit-item-btn">
-                                                            <i class="ri-pencil-fill fs-16"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item me-0" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="Remove">
+                                                    <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="Remove">
                                                         <a class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal" (click)="confirm(deletemodal,data.id)">
                                                             <i class="ri-delete-bin-5-fill fs-16"></i>
                                                         </a>
@@ -393,18 +402,22 @@
                                                     <input class="form-check-input" type="checkbox" id="checkAll" value="option" [(ngModel)]="masterSelected" (change)="checkUncheckAll($event)">
                                                 </div>
                                             </th>
-                                            <th class="sort" data-sort="id" style="width: 140px;">Application ID</th>
-                                            <th class="sort" data-sort="company">Company Name</th>
-                                            <th class="sort" data-sort="designation">Designation</th>
-                                            <th class="sort" data-sort="date">Apply Date</th>
-                                            <th class="sort" data-sort="contacts">Contacts</th>
-                                            <th class="sort" data-sort="type">Type</th>
-                                            <th class="sort" data-sort="status">Status</th>
-                                            <th class="sort" data-sort="city">Action</th>
+                                            <th class="sort" (click)="onSort('id')" style="width: 140px;">Application ID</th>
+                                            <th class="sort" (click)="onSort('name')">Company Name
+                                            </th>
+                                            <th class="sort" (click)="onSort('designation')">
+                                                Designation</th>
+                                            <th class="sort" (click)="onSort('date')">Apply Date
+                                            </th>
+                                            <th class="sort" (click)="onSort('contacts')">Contacts
+                                            </th>
+                                            <th class="sort" (click)="onSort('type')">Type</th>
+                                            <th class="sort" (click)="onSort('status')">Status</th>
+                                            <th class="sort">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody class="list form-check-all">
-                                        @for ( data of applications; track $index) {
+                                        @for( data of applications;track $index){
                                         <tr id="a_{{data.id}}">
                                             <th scope="row">
                                                 <div class="form-check">
@@ -443,15 +456,14 @@
                                                             <i class="ri-pencil-fill fs-16"></i>
                                                         </a>
                                                     </li>
-                                                    <li class="list-inline-item me-0" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="Remove">
+                                                    <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="Remove">
                                                         <a class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal" (click)="confirm(deletemodal,data.id)">
                                                             <i class="ri-delete-bin-5-fill fs-16"></i>
                                                         </a>
                                                     </li>
                                                 </ul>
                                             </td>
-                                        </tr>
-                                        }
+                                        </tr>}
                                     </tbody>
                                 </table>
                             </ng-template>
@@ -460,7 +472,6 @@
 
                     <!-- Tab Pane -->
                     <div class="table-responsive table-card mb-1">
-                        <div [ngbNavOutlet]="nav"></div>
                         <div class="noresult" style="display: none">
                             <div class="text-center">
                                 <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop" colors="primary:#405189,secondary:#0ab39c" style="width:75px;height:75px">
@@ -470,6 +481,7 @@
                                     search.</p>
                             </div>
                         </div>
+                        <div [ngbNavOutlet]="nav"></div>
                     </div>
                     <!-- pagination -->
                     <ngb-pagination class="d-flex justify-content-end pt-2" [collectionSize]="allapplications?.length" [(page)]="service.page" [pageSize]="service.pageSize" (pageChange)="changePage()" aria-label="Custom pagination">

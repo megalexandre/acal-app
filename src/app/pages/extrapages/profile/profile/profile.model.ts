@@ -1,15 +1,15 @@
 export interface projectListModel {
-  title?: any;
-  updatedTime?: any;
-  badgeText ?: any;
-  badgeClass?: any;
-  member?: Array<{
-    name?: any;
-    text?: any;
-    img?: any;
-    variant?: any;
+  title?: string;
+  updatedTime?: string;
+  badgeText ?: string;
+  badgeClass?: string;
+  member: Array<{
+    name?: string;
+    text?: string;
+    img?: string;
+    variant?: string;
   }>;
-  cardBorderColor?:string;
+  cardBorderColor:string;
 }
 
 export interface documentModel {

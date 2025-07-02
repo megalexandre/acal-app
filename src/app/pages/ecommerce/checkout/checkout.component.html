@@ -6,6 +6,7 @@
     <div class="col-xl-8">
         <div class="card">
             <div class="card-body checkout-tab">
+
                 <div class="step-arrow-nav mt-n3 mx-n3 mb-3">
                     <ul ngbNav #customNav="ngbNav" [activeId]="1" class="nav nav-pills custom-nav nav-justified"
                         role="tablist">
@@ -20,6 +21,7 @@
                                     <h5 class="mb-1">Billing Information</h5>
                                     <p class="text-muted mb-4">Please fill all information below</p>
                                 </div>
+
                                 <div>
                                     <div class="row">
                                         <div class="col-sm-6">
@@ -116,7 +118,7 @@
 
                                     <div class="d-flex align-items-start gap-3 mt-3">
                                         <button type="button" class="btn btn-primary btn-label right ms-auto nexttab"
-                                            data-nexttab="pills-bill-address-tab" (click)="changeActiveTab(2)"><i
+                                            data-nexttab="pills-bill-address-tab"><i
                                                 class="ri-truck-line label-icon align-middle fs-16 ms-2"></i>Proceed to
                                             Shipping</button>
                                     </div>
@@ -138,11 +140,11 @@
                                 <div class="mt-4">
                                     <div class="d-flex align-items-center mb-2">
                                         <div class="flex-grow-1">
-                                            <h5 class="fs-15 mb-0">Saved Address</h5>
+                                            <h5 class="fs-14 mb-0">Saved Address</h5>
                                         </div>
                                         <div class="flex-shrink-0">
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-sm btn-success mb-3"
+                                            <button type="button" class="btn btn-sm btn-primary mb-3"
                                                 data-bs-toggle="modal" data-bs-target="#addAddressModal"
                                                 (click)="openModal(content)">
                                                 Add Address
@@ -155,13 +157,13 @@
                                                 <input id="shippingAddress01" name="shippingAddress" type="radio"
                                                     class="form-check-input" checked>
                                                 <label class="form-check-label" for="shippingAddress01">
-                                                    <span class="mb-4 fw-bold d-block text-muted text-uppercase">Home
+                                                    <span
+                                                        class="mb-4 fw-semibold d-block text-muted text-uppercase">Home
                                                         Address</span>
 
-                                                    <span class="fs-15 mb-2 d-block">Marcus Alfaro</span>
+                                                    <span class="fs-14 mb-2 d-block">Marcus Alfaro</span>
                                                     <span class="text-muted fw-normal text-wrap mb-1 d-block">4739 Bubby
-                                                        Drive
-                                                        Austin, TX 78729</span>
+                                                        Drive Austin, TX 78729</span>
                                                     <span class="text-muted fw-normal d-block">Mo. 012-345-6789</span>
                                                 </label>
                                             </div>
@@ -187,13 +189,13 @@
                                                 <input id="shippingAddress02" name="shippingAddress" type="radio"
                                                     class="form-check-input">
                                                 <label class="form-check-label" for="shippingAddress02">
-                                                    <span class="mb-4 fw-bold d-block text-muted text-uppercase">Office
+                                                    <span
+                                                        class="mb-4 fw-semibold d-block text-muted text-uppercase">Office
                                                         Address</span>
 
-                                                    <span class="fs-15 mb-2 d-block">James Honda</span>
+                                                    <span class="fs-14 mb-2 d-block">James Honda</span>
                                                     <span class="text-muted fw-normal text-wrap mb-1 d-block">1246
-                                                        Virgil Street
-                                                        Pensacola, FL 32501
+                                                        Virgil Street Pensacola, FL 32501
                                                     </span>
                                                     <span class="text-muted fw-normal d-block">Mo. 012-345-6789</span>
                                                 </label>
@@ -218,7 +220,7 @@
                                     </div>
 
                                     <div class="mt-4">
-                                        <h5 class="fs-15 mb-3">Shipping Method</h5>
+                                        <h5 class="fs-14 mb-3">Shipping Method</h5>
 
                                         <div class="row g-4">
                                             <div class="col-lg-6">
@@ -227,11 +229,10 @@
                                                         class="form-check-input" checked>
                                                     <label class="form-check-label" for="shippingMethod01">
                                                         <span
-                                                            class="fs-20 float-end mt-2 text-wrap d-block fw-bold">Free</span>
-                                                        <span class="fs-16 mb-1 text-wrap d-block">Free Delivery</span>
+                                                            class="fs-20 float-end mt-2 text-wrap d-block fw-semibold">Free</span>
+                                                        <span class="fs-14 mb-1 text-wrap d-block">Free Delivery</span>
                                                         <span class="text-muted fw-normal text-wrap d-block">Expected
-                                                            Delivery 3
-                                                            to 5 Days</span>
+                                                            Delivery 3 to 5 Days</span>
                                                     </label>
                                                 </div>
                                             </div>
@@ -241,12 +242,11 @@
                                                         class="form-check-input" checked>
                                                     <label class="form-check-label" for="shippingMethod02">
                                                         <span
-                                                            class="fs-20 float-end mt-2 text-wrap d-block fw-bold">$24.99</span>
-                                                        <span class="fs-16 mb-1 text-wrap d-block">Express
+                                                            class="fs-20 float-end mt-2 text-wrap d-block fw-semibold">$24.99</span>
+                                                        <span class="fs-14 mb-1 text-wrap d-block">Express
                                                             Delivery</span>
                                                         <span class="text-muted fw-normal text-wrap d-block">Delivery
-                                                            within
-                                                            24hrs.</span>
+                                                            within 24hrs.</span>
                                                     </label>
                                                 </div>
                                             </div>
@@ -256,11 +256,11 @@
 
                                 <div class="d-flex align-items-start gap-3 mt-4">
                                     <button type="button" class="btn btn-light btn-label previestab"
-                                        data-previous="pills-bill-info-tab" (click)="changeActiveTab(1)"><i
+                                        data-previous="pills-bill-info-tab"><i
                                             class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i>Back to
                                         Personal Info</button>
                                     <button type="button" class="btn btn-primary btn-label right ms-auto nexttab"
-                                        data-nexttab="pills-payment-tab" (click)="changeActiveTab(3)"><i
+                                        data-nexttab="pills-payment-tab"><i
                                             class="ri-bank-card-line label-icon align-middle fs-16 ms-2"></i>Continue to
                                         Payment</button>
                                 </div>
@@ -286,7 +286,7 @@
                                                 <input id="paymentMethod01" name="paymentMethod" type="radio"
                                                     class="form-check-input">
                                                 <label class="form-check-label" for="paymentMethod01">
-                                                    <span class="fs-16 text-muted mx-2"><i
+                                                    <span class="fs-16 text-muted me-2"><i
                                                             class="ri-paypal-fill align-bottom"></i></span>
                                                     <span class="fs-14 text-wrap">Paypal</span>
                                                 </label>
@@ -300,7 +300,7 @@
                                                 <input id="paymentMethod02" name="paymentMethod" type="radio"
                                                     class="form-check-input" checked>
                                                 <label class="form-check-label" for="paymentMethod02">
-                                                    <span class="fs-16 text-muted mx-2"><i
+                                                    <span class="fs-16 text-muted me-2"><i
                                                             class="ri-bank-card-fill align-bottom"></i></span>
                                                     <span class="fs-14 text-wrap">Credit / Debit Card</span>
                                                 </label>
@@ -315,7 +315,7 @@
                                                 <input id="paymentMethod03" name="paymentMethod" type="radio"
                                                     class="form-check-input">
                                                 <label class="form-check-label" for="paymentMethod03">
-                                                    <span class="fs-16 text-muted mx-2"><i
+                                                    <span class="fs-16 text-muted me-2"><i
                                                             class="ri-money-dollar-box-fill align-bottom"></i></span>
                                                     <span class="fs-14 text-wrap">Cash on Delivery</span>
                                                 </label>
@@ -354,18 +354,17 @@
                                     </div>
                                     <div class="text-muted mt-2 fst-italic">
                                         <i data-feather="lock" class="text-muted icon-xs"></i> Your transaction is
-                                        secured with
-                                        SSL encryption
+                                        secured with SSL encryption
                                     </div>
                                 </div>
 
                                 <div class="d-flex align-items-start gap-3 mt-4">
                                     <button type="button" class="btn btn-light btn-label previestab"
-                                        data-previous="pills-bill-address-tab" (click)="changeActiveTab(2)"><i
+                                        data-previous="pills-bill-address-tab"><i
                                             class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i>Back to
                                         Shipping</button>
                                     <button type="button" class="btn btn-primary btn-label right ms-auto nexttab"
-                                        data-nexttab="pills-finish-tab" (click)="changeActiveTab(4)"><i
+                                        data-nexttab="pills-finish-tab"><i
                                             class="ri-shopping-basket-line label-icon align-middle fs-16 ms-2"></i>Complete
                                         Order</button>
                                 </div>
@@ -381,8 +380,8 @@
 
                                     <div class="mb-4">
                                         <lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop"
-                                            colors="primary:#0ab39c,secondary:#405189" style="width:120px;height:120px">
-                                        </lord-icon>
+                                            colors="primary:#25a0e2,secondary:#00bd9d"
+                                            style="width:120px;height:120px"></lord-icon>
                                     </div>
                                     <h5>Thank you ! Your Order is Completed !</h5>
                                     <p class="text-muted">You will receive an order confirmation email with
@@ -434,7 +433,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h5 class="fs-14"><a routerLink="/ecommerce/product-detail/"
+                                    <h5 class="fs-14"><a routerLink="/ecommerce/product-detail/1"
                                             class="text-body">Sweatshirt for Men (Pink)</a>
                                     </h5>
                                     <p class="text-muted mb-0">$ 119.99 x 2</p>
@@ -448,7 +447,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h5 class="fs-14"><a routerLink="/ecommerce/product-detail/"
+                                    <h5 class="fs-14"><a routerLink="/ecommerce/product-detail/1"
                                             class="text-body">Noise Evolve Smartwatch</a></h5>
                                     <p class="text-muted mb-0">$ 94.99 x 1</p>
                                 </td>
@@ -461,7 +460,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h5 class="fs-14"><a routerLink="/ecommerce/product-detail/" class="text-body">350
+                                    <h5 class="fs-14"><a routerLink="/ecommerce/product-detail/1" class="text-body">350
                                             ml Glass Grocery Container</a></h5>
                                     <p class="text-muted mb-0">$ 24.99 x 1</p>
                                 </td>
@@ -540,8 +539,7 @@
     <div class="modal-footer">
         <button type="button" class="btn btn-light" data-bs-dismiss="modal"
             (click)="modal.close('Close click')">Close</button>
-        <button type="button" class="btn btn-success" data-bs-dismiss="modal"
-            (click)="modal.dismiss('Cross click')">Save</button>
+        <button type="button" class="btn btn-success">Save</button>
     </div>
 </ng-template>
 

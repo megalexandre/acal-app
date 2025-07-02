@@ -1,6 +1,8 @@
 import { Component, QueryList, ViewChildren } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
+import { Observable } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { UntypedFormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators, UntypedFormBuilder } from '@angular/forms';
 
 // Range Slider
 import { Options } from 'ngx-slider-v2';
@@ -44,7 +46,6 @@ export class ExploreComponent {
       { label: 'NFT Marketplace' },
       { label: 'Explore Now', active: true }
     ];
-
     // FetchData
     this.basicData = exploreData;
   }
@@ -64,7 +65,6 @@ export class ExploreComponent {
   activeMenu(id: any) {
     document.querySelector('.heart_icon_' + id)?.classList.toggle('active');
   }
-
   // Search Data
   performSearch(): void {
     this.searchResults = exploreData.filter((item: any) => {
@@ -100,5 +100,4 @@ export class ExploreComponent {
       this.basicData = exploreData;
     }
   }
-
 }

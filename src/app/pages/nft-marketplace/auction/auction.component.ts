@@ -30,7 +30,7 @@ export class AuctionComponent implements OnInit {
     /**
     * BreadCrumb
     */
-    this.breadCrumbItems = [
+     this.breadCrumbItems = [
       { label: 'NFT Marketplace' },
       { label: 'Live Auction', active: true }
     ];
@@ -38,9 +38,9 @@ export class AuctionComponent implements OnInit {
     /**
      * fetches data
      */
-    this.filterredImages = this.list;
+     this.filterredImages = this.list;
 
-    // Date Set
+         // Date Set
     const currentDate = new Date();
     currentDate.setDate(currentDate.getDate() + 1);
     this._trialEndsAt = currentDate.toISOString().split('T')[0];
@@ -49,21 +49,21 @@ export class AuctionComponent implements OnInit {
      * Count date set
      */
     interval(1000).pipe(map((x) => {
-      this._diff = Date.parse(this._trialEndsAt) - Date.parse(new Date().toString());
+        this._diff = Date.parse(this._trialEndsAt) - Date.parse(new Date().toString());
     })).subscribe((x) => {
-      this._days = this.getDays(this._diff);
-      this._hours = this.getHours(this._diff);
-      this._minutes = this.getMinutes(this._diff);
-      this._seconds = this.getSeconds(this._diff);
+        this._days = this.getDays(this._diff);
+        this._hours = this.getHours(this._diff);
+        this._minutes = this.getMinutes(this._diff);
+        this._seconds = this.getSeconds(this._diff);
     });
   }
 
   /**
    * Portfolio Modern Data
    */
-  filterredImages: { id: number; img?: string; date: string; likes: string; price: string; title: string; available: string; sold: string; progressClass: any; size: any; category: string; }[] | undefined;
-  galleryFilter = 'allItems';
-  list = [
+   filterredImages: { id: number; img?: string; date: string; likes: string; price: string; title: string; available: string; sold: string; progressClass: any; size: any; category: string;}[] | undefined;
+   galleryFilter = 'allItems';
+   list = [
     {
       id: 1,
       img: 'assets/images/nft/img-01.jpg',
@@ -174,19 +174,19 @@ export class AuctionComponent implements OnInit {
   /***
   * Active all category selected
   */
-  activeCategory(category: string) {
-    this.galleryFilter = category;
-    if (this.galleryFilter === 'allItems') {
-      this.filterredImages = this.list;
-    } else {
-      this.filterredImages = this.list.filter(x => x.category === this.galleryFilter);
-    }
-  }
+ activeCategory(category: string) {
+   this.galleryFilter = category;
+   if (this.galleryFilter === 'allItems') {
+     this.filterredImages = this.list;
+   } else {
+     this.filterredImages = this.list.filter(x => x.category === this.galleryFilter);
+   }
+ }
 
   /**
    * Day Set
    */
-  getDays(t: number) {
+   getDays(t: number) {
     return Math.floor(t / (1000 * 60 * 60 * 24));
   }
 

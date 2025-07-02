@@ -20,7 +20,9 @@ export class ProjectsComponent implements OnInit {
   MyTask: any;
   TeamMembers: any;
   status7: any;
+
   @ViewChild('scrollRef') scrollRef: any;
+
 
   constructor() {
   }
@@ -40,8 +42,8 @@ export class ProjectsComponent implements OnInit {
     this.fetchData();
 
     // Chart Color Data Get Function
-    this._OverviewChart('["--vz-primary", "--vz-warning", "--vz-success"]');
-    this._status7('["--vz-success", "--vz-primary", "--vz-warning", "--vz-danger"]');
+    this._OverviewChart('["--vz-primary", "--vz-primary-rgb, 0.1", "--vz-primary-rgb, 0.50"]');
+    this._status7('["--vz-primary", "--vz-primary-rgb, 0.85", "--vz-primary-rgb, 0.70", "--vz-primary-rgb, 0.50"]');
 
   }
 
@@ -82,10 +84,10 @@ export class ProjectsComponent implements OnInit {
     });
   }
 
+
   /**
  * Projects Overview
  */
-
   setprojectvalue(value: any) {
     if (value == 'all') {
       this.OverviewChart.series = [{
@@ -269,8 +271,8 @@ export class ProjectsComponent implements OnInit {
   }
 
   /**
- *  Status7
- */
+*  Status7
+*/
   setstatusvalue(value: any) {
     if (value == 'all') {
       this.status7.series = [125, 42, 58, 89]
@@ -330,4 +332,5 @@ export class ProjectsComponent implements OnInit {
     this.MyTask = MyTask;
     this.TeamMembers = TeamMembers;
   }
+
 }

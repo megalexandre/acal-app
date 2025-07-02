@@ -4,6 +4,7 @@ import { collectionModel } from './collection.model';
 import { PaginationService } from 'src/app/core/services/pagination.service';
 import { collectionData } from 'src/app/core/data';
 
+
 @Component({
   selector: 'app-collections',
   templateUrl: './collections.component.html',
@@ -14,6 +15,7 @@ import { collectionData } from 'src/app/core/data';
  * Collections Component
  */
 export class CollectionsComponent {
+
 
   // bread crumb items
   breadCrumbItems!: Array<{}>;
@@ -27,6 +29,7 @@ export class CollectionsComponent {
     this.allcollectionData = collectionData;
   }
 
+
   ngOnInit(): void {
     /**
    * BreadCrumb
@@ -36,6 +39,7 @@ export class CollectionsComponent {
       { label: 'Collections', active: true }
     ];
   }
+
 
   // Pagination
   changePage() {

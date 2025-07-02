@@ -11,16 +11,16 @@
                         <h5 class="card-title mb-0">My Portfolio Statistics</h5>
                     </div>
                     <div class="toolbar d-flex align-items-start justify-content-center flex-wrap gap-2">
-                        <button type="button" class="btn btn-soft-primary timeline-btn btn-sm" id="one_month">
+                        <button type="button" class="btn btn-soft-secondary timeline-btn btn-sm" id="one_month">
                             1M
                         </button>
-                        <button type="button" class="btn btn-soft-primary timeline-btn btn-sm" id="six_months">
+                        <button type="button" class="btn btn-soft-secondary timeline-btn btn-sm" id="six_months">
                             6M
                         </button>
-                        <button type="button" class="btn btn-soft-primary timeline-btn btn-sm" id="one_year">
+                        <button type="button" class="btn btn-soft-secondary timeline-btn btn-sm" id="one_year">
                             1Y
                         </button>
-                        <button type="button" class="btn btn-soft-primary timeline-btn btn-sm active" id="all">
+                        <button type="button" class="btn btn-soft-secondary timeline-btn btn-sm active" id="all">
                             ALL
                         </button>
                     </div>
@@ -38,7 +38,7 @@
                 <h5 class="mb-0">Watchlist</h5>
             </div>
             <div class="flexshrink-0">
-                <button class="btn btn-success btn-sm"><i class="ri-star-line align-bottom"></i> Add Watchlist</button>
+                <button class="btn btn-primary btn-sm"><i class="ri-star-line align-bottom"></i> Add Watchlist</button>
             </div>
         </div>
 
@@ -293,12 +293,12 @@
                             </tr>
                         </thead><!--end thead-->
                         <tbody class="list form-check-all">
-                            @for ( data of WalletList; track $index) {
+                            @for (data of WalletList; track $index) {
                             <tr>
                                 <td>
                                     <div class="d-flex align-items-center fw-medium">
                                         <img src="{{data.img}}" alt="" class="avatar-xxs me-2" />
-                                        <a href="javascript:void(0)" class="currency_name">{{data.coinName}}</a>
+                                        <a href="javascript:void(0)" class="currency_name link-secondary">{{data.coinName}}</a>
                                     </div>
                                 </td>
                                 <td><ngb-highlight [result]="data.quantity" [term]="searchTerm"></ngb-highlight>
@@ -333,8 +333,8 @@
     </div><!--end col-->
 
     <div class="col-xxl-3">
-        <div class="card overflow-hidden">
-            <div class="card-body bg-warning-subtle">
+        <div class="card border-0 overflow-hidden">
+            <div class="card-body bg-primary-subtle">
                 <div class="d-flex">
                     <div class="flex-grow-1">
                         <h5 class="fs-13 mb-3">My Portfolio</h5>
@@ -441,7 +441,7 @@
                     </div>
                 </div>
                 <div>
-                    <a routerLink="/crypto/transactions" class="btn btn-soft-info w-100">View All Transactions <i class="ri-arrow-right-line align-bottom"></i></a>
+                    <a routerLink="/crypto/transactions" class="btn btn-soft-primary w-100">View All Transactions <i class="ri-arrow-right-line align-bottom"></i></a>
                 </div>
             </div>
         </div><!--end card-->

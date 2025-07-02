@@ -1,10 +1,10 @@
-import {Component, QueryList, ViewChildren} from '@angular/core';
-import {DecimalPipe} from '@angular/common';
-import {Observable} from 'rxjs';
+import { Component, QueryList, ViewChildren } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
+import { Observable } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { UntypedFormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 
-import {GridJsModel} from './gridjs.model';
+import { GridJsModel } from './gridjs.model';
 import { GridJsService } from './gridjs.service';
 import { PaginationService } from 'src/app/core/services/pagination.service';
 
@@ -28,7 +28,7 @@ export class GridjsComponent {
   total$: Observable<number>;
   griddata: any;
 
-  constructor(private modalService: NgbModal,public service: GridJsService, private sortService: PaginationService) {
+  constructor(private modalService: NgbModal, public service: GridJsService, private sortService: PaginationService) {
     this.gridjsList$ = service.countries$;
     this.total$ = service.total$;
   }
@@ -37,7 +37,7 @@ export class GridjsComponent {
     /**
     * BreadCrumb
     */
-     this.breadCrumbItems = [
+    this.breadCrumbItems = [
       { label: 'Tables' },
       { label: 'Grid Js', active: true }
     ];
@@ -49,8 +49,6 @@ export class GridjsComponent {
 
   // Sort Data
   onSort(column: any) {
-    this.griddata= this.sortService.onSort(column, this.griddata)
+    this.griddata = this.sortService.onSort(column, this.griddata)
   }
-
-
 }

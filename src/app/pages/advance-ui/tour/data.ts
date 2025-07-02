@@ -40,9 +40,6 @@ export const steps: Step.StepOptions[] = [
       element: '.actions',
       on: 'bottom'
     },
-    // popperOptions: {
-    //   modifiers: [{ name: 'offset', options: { offset: [0, 12] } }],
-    // },
     buttons: [
       builtInButtons.next
     ],
@@ -56,9 +53,6 @@ export const steps: Step.StepOptions[] = [
       element: '.get-started',
       on: 'bottom'
     },
-    // popperOptions: {
-    //   modifiers: [{ name: 'offset', options: { offset: [0, 12] } }],
-    // },
     buttons: [  
       builtInButtons.back,
       builtInButtons.next
@@ -73,9 +67,6 @@ export const steps: Step.StepOptions[] = [
       element: '.contributors',
       on: 'bottom'
     },
-    // popperOptions: {
-    //   modifiers: [{ name: 'offset', options: { offset: [0, 12] } }],
-    // },
     buttons: [
       builtInButtons.back,
       builtInButtons.next
@@ -90,9 +81,6 @@ export const steps: Step.StepOptions[] = [
       element: '.getProduct',
       on: 'bottom'
     },
-    // popperOptions: {
-    //   modifiers: [{ name: 'offset', options: { offset: [0, 12] } }],
-    // },
     buttons: [
       builtInButtons.back,
       builtInButtons.next
@@ -107,9 +95,6 @@ export const steps: Step.StepOptions[] = [
       element: '.ThankYou',
       on: 'bottom'
     },
-    // popperOptions: {
-    //   modifiers: { name: 'offset', options: { offset: [0, 12] } },
-    // },
     buttons: [
       builtInButtons.back,
       builtInButtons.finish

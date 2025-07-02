@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, Input, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
 
 interface MarkerProperties {
   position: {
@@ -21,25 +20,22 @@ export class GoogleComponent implements OnInit {
 
   // bread crumb items
   breadCrumbItems!: Array<{}>;
-
   longitude = 20.728218;
   latitude = 52.128973;
   zoom: number = 15;
-
-  @Input() pitch: number = 10;
-  @Input() scrollwheel: boolean = false;
-  center: any;
+  @ViewChild('streetviewMap', { static: true }) streetviewMap: any;
+  @ViewChild('streetviewPano', { static: true }) streetviewPano: any;
 
   constructor(@Inject(PLATFORM_ID) private platformId: any) { }
 
   ngOnInit(): void {
-    /**
+     /**
     * BreadCrumb
     */
-    this.breadCrumbItems = [
-      { label: 'Maps' },
-      { label: 'Google Maps', active: true }
-    ];
+      this.breadCrumbItems = [
+        { label: 'Maps' },
+        { label: 'Google Maps', active: true }
+      ];
 
   }
 
@@ -53,6 +49,5 @@ export class GoogleComponent implements OnInit {
     { position: { lat: 48.8606, lng: 2.3376 } }, // Louvre Museum
     { position: { lat: 48.8530, lng: 2.3499 } }, // Cathédrale Notre-Dame de Paris
   ];
-
 
 }

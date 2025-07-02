@@ -9,7 +9,7 @@ export const MENU: MenuItem[] = [
   {
     id: 2,
     label: 'MENUITEMS.DASHBOARD.TEXT',
-    icon: 'ri-dashboard-2-line',
+    icon: 'las la-tachometer-alt',
     isCollapsed: true,
     subItems: [
       {
@@ -60,20 +60,21 @@ export const MENU: MenuItem[] = [
         link: '/dashboard-blog',
         parentId: 2,
       }
+      
     ]
   },
   {
     id: 8,
     label: 'MENUITEMS.APPS.TEXT',
-    icon: 'ri-apps-2-line',
+    icon: 'lab la-delicious',
     isCollapsed: true,
     subItems: [
-
       {
         id: 9,
         label: 'MENUITEMS.APPS.LIST.CALENDAR',
-        isCollapsed: true,
+        link: '/calendar',
         parentId: 8,
+        isCollapsed: true,
         subItems: [
           {
             id: 9,
@@ -87,7 +88,6 @@ export const MENU: MenuItem[] = [
           }
         ]
       },
-
       {
         id: 10,
         label: 'MENUITEMS.APPS.LIST.CHAT',
@@ -98,6 +98,7 @@ export const MENU: MenuItem[] = [
         id: 11,
         label: 'MENUITEMS.APPS.LIST.EMAIL',
         parentId: 8,
+        isCollapsed: true,
         subItems: [
           {
             id: 13,
@@ -129,6 +130,7 @@ export const MENU: MenuItem[] = [
       {
         id: 12,
         label: 'MENUITEMS.APPS.LIST.ECOMMERCE',
+        link: '/mailbox',
         parentId: 8,
         isCollapsed: true,
         subItems: [
@@ -141,7 +143,7 @@ export const MENU: MenuItem[] = [
           {
             id: 14,
             label: 'MENUITEMS.APPS.LIST.PRODUCTDETAILS',
-            link: '/ecommerce/product-detail',
+            link: '/ecommerce/product-detail/1',
             parentId: 12
           },
           {
@@ -539,7 +541,7 @@ export const MENU: MenuItem[] = [
   {
     id: 55,
     label: 'MENUITEMS.AUTHENTICATION.TEXT',
-    icon: 'ri-account-circle-line',
+    icon: 'lar la-user-circle',
     isCollapsed: true,
     subItems: [
       {
@@ -744,7 +746,7 @@ export const MENU: MenuItem[] = [
   {
     id: 82,
     label: 'MENUITEMS.PAGES.TEXT',
-    icon: 'ri-pages-line',
+    icon: 'las la-pager',
     isCollapsed: true,
     subItems: [
       {
@@ -757,6 +759,7 @@ export const MENU: MenuItem[] = [
         id: 84,
         label: 'MENUITEMS.PAGES.LIST.PROFILE',
         parentId: 82,
+        isCollapsed: true,
         subItems: [
           {
             id: 85,
@@ -1016,7 +1019,7 @@ export const MENU: MenuItem[] = [
         parentId: 97
       },
       {
-        id: 117,
+        id: 117_1,
         label: 'MENUITEMS.BASEUI.LIST.LINKS',
         link: '/ui/links',
         badge: {
@@ -1031,7 +1034,6 @@ export const MENU: MenuItem[] = [
         link: '/ui/general',
         parentId: 97
       },
-
       {
         id: 119,
         label: 'MENUITEMS.BASEUI.LIST.RIBBONS',
@@ -1049,7 +1051,7 @@ export const MENU: MenuItem[] = [
   {
     id: 121,
     label: 'MENUITEMS.ADVANCEUI.TEXT',
-    icon: 'ri-stack-line',
+    icon: 'las la-briefcase',
     isCollapsed: true,
     subItems: [
       {
@@ -1099,13 +1101,13 @@ export const MENU: MenuItem[] = [
   {
     id: 131,
     label: 'MENUITEMS.WIDGETS.TEXT',
-    icon: 'ri-honour-line',
+    icon: 'las la-flask',
     link: '/widgets'
   },
   {
     id: 132,
     label: 'MENUITEMS.FORMS.TEXT',
-    icon: 'ri-file-list-3-line',
+    icon: 'lar la-newspaper',
     isCollapsed: true,
     subItems: [
       {
@@ -1185,7 +1187,7 @@ export const MENU: MenuItem[] = [
   {
     id: 145,
     label: 'MENUITEMS.TABLES.TEXT',
-    icon: 'ri-layout-grid-line',
+    icon: 'las la-table',
     isCollapsed: true,
     subItems: [
       {
@@ -1211,7 +1213,7 @@ export const MENU: MenuItem[] = [
   {
     id: 149,
     label: 'MENUITEMS.CHARTS.TEXT',
-    icon: 'ri-pie-chart-line',
+    icon: 'las la-chart-pie',
     isCollapsed: true,
     subItems: [
       {
@@ -1256,9 +1258,9 @@ export const MENU: MenuItem[] = [
             parentId: 150
           },
           {
-            id: 157,
+            id: 166_1,
             label: 'MENUITEMS.CHARTS.LIST.RANGEAREA',
-            link: '/charts/range-area',
+            link: '/charts/apex-range-area',
             badge: {
               variant: 'bg-success',
               text: 'MENUITEMS.DASHBOARD.BADGE',
@@ -1266,9 +1268,9 @@ export const MENU: MenuItem[] = [
             parentId: 150
           },
           {
-            id: 15,
+            id: 166_2,
             label: 'MENUITEMS.CHARTS.LIST.FUNNEL',
-            link: '/charts/funnel',
+            link: '/charts/apex-funnel',
             badge: {
               variant: 'bg-success',
               text: 'MENUITEMS.DASHBOARD.BADGE',
@@ -1276,61 +1278,61 @@ export const MENU: MenuItem[] = [
             parentId: 150
           },
           {
-            id: 158,
+            id: 157,
             label: 'MENUITEMS.CHARTS.LIST.CANDLSTICK',
             link: '/charts/apex-candlestick',
             parentId: 150
           },
           {
-            id: 159,
+            id: 158,
             label: 'MENUITEMS.CHARTS.LIST.BOXPLOT',
             link: '/charts/apex-boxplot',
             parentId: 150
           },
           {
-            id: 160,
+            id: 159,
             label: 'MENUITEMS.CHARTS.LIST.BUBBLE',
             link: '/charts/apex-bubble',
             parentId: 150
           },
           {
-            id: 161,
+            id: 160,
             label: 'MENUITEMS.CHARTS.LIST.SCATTER',
             link: '/charts/apex-scatter',
             parentId: 150
           },
           {
-            id: 162,
+            id: 161,
             label: 'MENUITEMS.CHARTS.LIST.HEATMAP',
             link: '/charts/apex-heatmap',
             parentId: 150
           },
           {
-            id: 163,
+            id: 162,
             label: 'MENUITEMS.CHARTS.LIST.TREEMAP',
             link: '/charts/apex-treemap',
             parentId: 150
           },
           {
-            id: 164,
+            id: 163,
             label: 'MENUITEMS.CHARTS.LIST.PIE',
             link: '/charts/apex-pie',
             parentId: 150
           },
           {
-            id: 165,
+            id: 164,
             label: 'MENUITEMS.CHARTS.LIST.RADIALBAR',
             link: '/charts/apex-radialbar',
             parentId: 150
           },
           {
-            id: 166,
+            id: 165,
             label: 'MENUITEMS.CHARTS.LIST.RADAR',
             link: '/charts/apex-radar',
             parentId: 150
           },
           {
-            id: 167,
+            id: 166,
             label: 'MENUITEMS.CHARTS.LIST.POLARAREA',
             link: '/charts/apex-polar',
             parentId: 150
@@ -1344,13 +1346,13 @@ export const MENU: MenuItem[] = [
         ]
       },
       {
-        id: 168,
+        id: 167,
         label: 'MENUITEMS.CHARTS.LIST.CHARTJS',
         link: '/charts/chartjs',
         parentId: 149
       },
       {
-        id: 169,
+        id: 168,
         label: 'MENUITEMS.CHARTS.LIST.ECHARTS',
         link: '/charts/echarts',
         parentId: 149
@@ -1358,53 +1360,53 @@ export const MENU: MenuItem[] = [
     ]
   },
   {
-    id: 170,
+    id: 169,
     label: 'MENUITEMS.ICONS.TEXT',
-    icon: 'ri-compasses-2-line',
+    icon: 'lab la-fonticons',
     isCollapsed: true,
     subItems: [
       {
-        id: 171,
+        id: 170,
         label: 'MENUITEMS.ICONS.LIST.REMIX',
         link: '/icons/remix',
-        parentId: 170
+        parentId: 169
+      },
+      {
+        id: 171,
+        label: 'MENUITEMS.ICONS.LIST.BOXICONS',
+        link: '/icons/boxicons',
+        parentId: 169
       },
       {
         id: 172,
-        label: 'MENUITEMS.ICONS.LIST.BOXICONS',
-        link: '/icons/boxicons',
-        parentId: 170
+        label: 'MENUITEMS.ICONS.LIST.MATERIALDESIGN',
+        link: '/icons/materialdesign',
+        parentId: 169
       },
       {
         id: 173,
-        label: 'MENUITEMS.ICONS.LIST.MATERIALDESIGN',
-        link: '/icons/materialdesign',
-        parentId: 170
+        label: 'MENUITEMS.ICONS.LIST.LINEAWESOME',
+        link: '/icons/lineawesome',
+        parentId: 169
       },
       {
         id: 174,
-        label: 'MENUITEMS.ICONS.LIST.LINEAWESOME',
-        link: '/icons/lineawesome',
-        parentId: 170
-      },
-      {
-        id: 175,
         label: 'MENUITEMS.ICONS.LIST.FEATHER',
         link: '/icons/feather',
-        parentId: 170
+        parentId: 169
       },
       {
-        id: 176,
+        id: 174,
         label: 'MENUITEMS.ICONS.LIST.CRYPTOSVG',
         link: '/icons/icons-crypto',
-        parentId: 170,
+        parentId: 169,
       },
     ]
   },
   {
     id: 175,
     label: 'MENUITEMS.MAPS.TEXT',
-    icon: 'ri-map-pin-line',
+    icon: 'las la-map',
     isCollapsed: true,
     subItems: [
       {
@@ -1424,7 +1426,7 @@ export const MENU: MenuItem[] = [
   {
     id: 179,
     label: 'MENUITEMS.MULTILEVEL.TEXT',
-    icon: 'ri-share-line',
+    icon: 'las la-folder-plus',
     isCollapsed: true,
     subItems: [
       {
@@ -1435,6 +1437,7 @@ export const MENU: MenuItem[] = [
       {
         id: 181,
         label: 'MENUITEMS.MULTILEVEL.LIST.LEVEL1.2',
+        isCollapsed: true,
         subItems: [
           {
             id: 182,

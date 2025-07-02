@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-// search module
-import { NgPipesModule } from 'ngx-pipes';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -18,12 +15,10 @@ import { initFirebaseBackend } from './authUtils';
 import { FakeBackendInterceptor } from './core/helpers/fake-backend';
 import { ErrorInterceptor } from './core/helpers/error.interceptor';
 import { JwtInterceptor } from './core/helpers/jwt.interceptor';
-import { MockAuthInterceptor } from './core/helpers/auth.interceptor';
 
 // Language
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-
 // Store
 import { rootReducer } from './store';
 import { StoreModule } from '@ngrx/store';
@@ -63,10 +58,6 @@ if (environment.defaultauth === 'firebase') {
                 deps: [HttpClient]
             }
         }),
-        BrowserAnimationsModule,
-        BrowserModule,
-        AppRoutingModule,
-        LayoutsModule,
         StoreModule.forRoot(rootReducer),
         StoreDevtoolsModule.instrument({
             maxAge: 25, // Retains last 25 states
@@ -86,12 +77,14 @@ if (environment.defaultauth === 'firebase') {
             ApplicationEffects,
             ApikeyEffects
         ]),
-        PagesModule,
-        NgPipesModule], providers: [
+        BrowserAnimationsModule,
+        BrowserModule,
+        AppRoutingModule,
+        LayoutsModule,
+        PagesModule], providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true },
-        { provide: HTTP_INTERCEPTORS, useClass: MockAuthInterceptor, multi: true },
         provideHttpClient(withInterceptorsFromDi()),
     ] })
 export class AppModule { }

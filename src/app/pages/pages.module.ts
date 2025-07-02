@@ -1,9 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {
-  NgbToastModule, NgbProgressbarModule
-} from '@ng-bootstrap/ng-bootstrap';
+import { NgbToastModule, NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { CountUpModule } from 'ngx-countup';
@@ -31,7 +29,6 @@ import { DashboardsModule } from "./dashboards/dashboards.module";
 import { AppsModule } from "./apps/apps.module";
 import { EcommerceModule } from "./ecommerce/ecommerce.module";
 
-
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -41,7 +38,6 @@ import { EcommerceModule } from "./ecommerce/ecommerce.module";
     CommonModule,
     FormsModule,
     NgbToastModule,
-    NgbProgressbarModule,
     FlatpickrModule.forRoot(),
     CountUpModule,
     NgApexchartsModule,

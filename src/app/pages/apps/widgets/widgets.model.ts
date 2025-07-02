@@ -20,6 +20,15 @@ export interface TitleBox1Model {
   suffix: string,
 }
 
+// Bank card List
+export interface BankModel {
+  id: any,
+  icon: string,
+  cardcolor: string,
+  card: string,
+  amount: string
+}
+
 /**
  * Title Box2 List
  */
@@ -82,7 +91,7 @@ export interface TitleBox4Model {
 }
 
 /**
- * Title Box4 List
+ * Title Box5 List
  */
 export interface TitleBox5Model {
   id: any,
@@ -93,7 +102,6 @@ export interface TitleBox5Model {
   companyname: string,
   location: string
 }
-
 
 /**
  * other Widgets List
@@ -158,15 +166,6 @@ export interface CandidateModel {
   name: string
   insta: string,
   designation: string
-}
-
-// Bank card List
-export interface BankModel {
-  id: any,
-  icon: string,
-  cardcolor: string,
-  card: string,
-  amount: string
 }
 
 import {

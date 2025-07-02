@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class RecentOrdersComponent implements OnInit {
 
    // Recent Orders data
-   @Input() Recentelling: Array<{
+   @Input() RecentSelling: Array<{
     id?: string;
     image?: string;
     customer?: string;

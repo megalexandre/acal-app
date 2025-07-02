@@ -3855,15 +3855,15 @@ export class AreaComponent implements OnInit {
     ];
 
     // Chart Color Data Get Function
-    this._basicAreaChart('["--vz-success"]');
-    this._splineAreaChart('["--vz-primary", "--vz-success"]');
-    this._datetimeXaxisChart('["--vz-info"]');
-    this._nagativeValueChart('["--vz-success", "--vz-info"]');
-    this._githubmMonthAreaChart('["--vz-danger"]');
-    this._githubmYearAreaChart('["--vz-success"]');
-    this._stackedAreaChart('["--vz-success", "--vz-info", "--vz-light"]');
-    this._irregularTimeseriesChart('["--vz-primary", "--vz-warning", "--vz-success"]');
-    this._nullValuesAreaChart('["--vz-success"]');
+    this._basicAreaChart('["--vz-primary"]');
+    this._splineAreaChart('["--vz-primary", "--vz-info"]');
+    this._datetimeXaxisChart('["--vz-primary"]');
+    this._nagativeValueChart('["--vz-info", "--vz-primary"]');
+    this._githubmMonthAreaChart('["--vz-success"]');
+    this._githubmYearAreaChart('["--vz-primary"]');
+    this._stackedAreaChart('["--vz-primary", "--vz-info", "--vz-light"]');
+    this._irregularTimeseriesChart('["--vz-primary", "--vz-info", "--vz-success"]');
+    this._nullValuesAreaChart('["--vz-primary"]');
   }
 
   // Chart Colors Set

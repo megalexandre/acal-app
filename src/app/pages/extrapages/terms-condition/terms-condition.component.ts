@@ -21,4 +21,5 @@ export class TermsConditionComponent implements OnInit {
       { label: 'Term & Conditions', active: true }
     ];
   }
+
 }

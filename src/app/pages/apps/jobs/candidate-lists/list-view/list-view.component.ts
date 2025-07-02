@@ -1,13 +1,15 @@
+import { DecimalPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { candidatelist } from 'src/app/core/data';
+import { Observable } from 'rxjs';
 
+import { candidatelist } from 'src/app/core/data';
 // Data Get
 import { PaginationService } from 'src/app/core/services/pagination.service';
 
 @Component({
   selector: 'app-list-view',
   templateUrl: './list-view.component.html',
-  styleUrls: ['./list-view.component.scss'],
+  styleUrls: ['./list-view.component.scss']
 })
 export class ListViewComponent implements OnInit {
 
@@ -17,7 +19,6 @@ export class ListViewComponent implements OnInit {
   alllistview: any;
   searchResults: any;
   searchTerm: any;
-
 
   constructor(public service: PaginationService) {
     this.service.pageSize = 8
@@ -32,7 +33,6 @@ export class ListViewComponent implements OnInit {
       { label: 'List View', active: true }
     ];
 
-    // Fetch Data
     setTimeout(() => {
       this.listview = this.service.changePage(candidatelist);
       this.alllistview = candidatelist;
@@ -68,5 +68,4 @@ export class ListViewComponent implements OnInit {
     });
     this.listview = this.service.changePage(this.searchResults)
   }
-
 }

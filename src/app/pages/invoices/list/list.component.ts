@@ -1,14 +1,10 @@
 import { Component, QueryList, ViewChildren } from '@angular/core';
-import { DecimalPipe } from '@angular/common';
+import { DatePipe, DecimalPipe } from '@angular/common';
 import { Observable } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { UntypedFormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
-
+import { UntypedFormBuilder } from '@angular/forms';
 // Sweet Alert
 import Swal from 'sweetalert2';
-
-// Date Format
-import { DatePipe } from '@angular/common';
 
 // Rest Api Service
 import { restApiService } from "../../../core/services/rest-api.service";
@@ -20,10 +16,11 @@ import { cloneDeep } from 'lodash';
 import { PaginationService } from 'src/app/core/services/pagination.service';
 import { InvoiceListModel } from 'src/app/store/Invoice/invoice_model';
 
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss'],
+  styleUrls: ['./list.component.scss']
 })
 
 /**
@@ -86,8 +83,8 @@ export class ListComponent {
   };
 
   /**
-  * Confirmation mail model
-  */
+   * Confirmation mail model
+   */
   deleteId: any;
   confirm(content: any, id: any) {
     this.deleteId = id;
@@ -106,9 +103,10 @@ export class ListComponent {
     this.masterSelected = false;
   }
 
+
   /**
-   * Multiple Delete
-   */
+  * Multiple Delete
+  */
   checkedValGet: any[] = [];
   deleteMultiple(content: any) {
     var checkboxes: any = document.getElementsByName('checkAll');
@@ -124,7 +122,7 @@ export class ListComponent {
       this.modalService.open(content, { centered: true });
     }
     else {
-      Swal.fire({ text: 'Please select at least one checkbox', confirmButtonColor: '#29badb', });
+      Swal.fire({ text: 'Please select at least one checkbox', confirmButtonColor: '#299cdb', });
     }
     this.checkedValGet = checkedVal;
   }
@@ -142,7 +140,6 @@ export class ListComponent {
     }
     this.checkedValGet = checkedVal
     checkedVal.length > 0 ? (document.getElementById("remove-actions") as HTMLElement).style.display = "block" : (document.getElementById("remove-actions") as HTMLElement).style.display = "none";
-
   }
 
   // Select Checkbox value Get
@@ -157,22 +154,6 @@ export class ListComponent {
     }
     this.checkedValGet = checkedVal
     checkedVal.length > 0 ? (document.getElementById("remove-actions") as HTMLElement).style.display = "block" : (document.getElementById("remove-actions") as HTMLElement).style.display = "none";
-  }
-
-  // Filtering
-  isstatus?: any
-  SearchData() {
-    var status = document.getElementById("idStatus") as HTMLInputElement;
-    var date = document.getElementById("isDate") as HTMLInputElement;
-    var dateVal = date.value ? this.datePipe.transform(new Date(date.value), "yyyy-MM-dd") : '';
-    if (status.value != 'all' && status.value != '' || dateVal != '') {
-      this.invoices = this.content.filter((list: any) => {
-        return this.datePipe.transform(new Date(list.date), "yyyy-MM-dd") == dateVal || list.status === status.value;
-      });
-    }
-    else {
-      this.invoices = this.content;
-    }
   }
 
   // Pagination

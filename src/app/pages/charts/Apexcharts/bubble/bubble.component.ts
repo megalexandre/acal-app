@@ -28,8 +28,8 @@ export class BubbleComponent implements OnInit {
     ];
 
     // Chart Color Data Get Function
-    this._simpleBubbleChart('["--vz-primary", "--vz-info", "--vz-warning", "--vz-success"]');
-    this._BubbleChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger"]');
+    this._simpleBubbleChart('["--vz-primary", "--vz-info", "--vz-secondary", "--vz-success"]');
+    this._BubbleChart('["--vz-primary", "--vz-success", "--vz-info", "--vz-secondary"]');
 
   }
 

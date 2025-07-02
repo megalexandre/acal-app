@@ -6,7 +6,7 @@ export interface ListJsModel {
   date: string;
   status: string;
   status_color: string;
-  isSelected?: any;
+  isSelected?:any;
 }
 
 export interface paginationModel {

@@ -14,9 +14,9 @@ import { SitemapComponent } from "./sitemap/sitemap.component";
 import { SearchResultsComponent } from "./search-results/search-results.component";
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TermsConditionComponent } from './terms-condition/terms-condition.component';
-import { PagesBlogListComponent } from './pages-blog-list/pages-blog-list.component';
-import { PagesBlogGridComponent } from './pages-blog-grid/pages-blog-grid.component';
 import { PagesBlogOverviewComponent } from './pages-blog-overview/pages-blog-overview.component';
+import { PagesBlogGridComponent } from './pages-blog-grid/pages-blog-grid.component';
+import { PagesBlogListComponent } from './pages-blog-list/pages-blog-list.component';
 
 const routes: Routes = [
   {
@@ -79,7 +79,6 @@ const routes: Routes = [
     path: 'pages-blog-overview',
     component: PagesBlogOverviewComponent
   }
-
 ];
 
 @NgModule({

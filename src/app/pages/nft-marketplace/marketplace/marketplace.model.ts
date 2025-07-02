@@ -20,16 +20,15 @@ export interface tradingModel {
   isActive?: any;
 }
 
-
 // Recent Model 
 export interface recentModel {
-  id?: number;
+  id: number;
   img: string;
-  likes?: string;
-  title?: string;
-  category?: string;
-  highest?: string;
-  price?:string;
+  likes: string;
+  title: string;
+  category: string;
+  highest:string;
+  price: string;
 }
 
 // Popular Model 

@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/adjacent-overload-signatures */
-import {Injectable, PipeTransform} from '@angular/core';
+import { Injectable, PipeTransform } from '@angular/core';
 
-import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
+import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 
-import {GridJsModel} from './gridjs.model';
-import {DecimalPipe} from '@angular/common';
-import {debounceTime, delay, switchMap, tap} from 'rxjs/operators';
+import { GridJsModel } from './gridjs.model';
+import { DecimalPipe } from '@angular/common';
+import { debounceTime, delay, switchMap, tap } from 'rxjs/operators';
 import { GridJs } from 'src/app/core/data';
 
 interface SearchResult {
@@ -27,16 +27,16 @@ const compare = (v1: string | number, v2: string | number) => v1 < v2 ? -1 : v1 
 
 function matches(country: GridJsModel, term: string, pipe: PipeTransform) {
   return country.id.toLowerCase().includes(term.toLowerCase())
-  || country.name.toLowerCase().includes(term.toLowerCase())
-  || country.email.toLowerCase().includes(term.toLowerCase())
-  || country.position.toLowerCase().includes(term.toLowerCase())
-  || country.company.toLowerCase().includes(term.toLowerCase())
-  || country.country.toLowerCase().includes(term.toLowerCase())
-  ;
+    || country.name.toLowerCase().includes(term.toLowerCase())
+    || country.email.toLowerCase().includes(term.toLowerCase())
+    || country.position.toLowerCase().includes(term.toLowerCase())
+    || country.company.toLowerCase().includes(term.toLowerCase())
+    || country.country.toLowerCase().includes(term.toLowerCase())
+    ;
 
 }
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class GridJsService {
   private _loading$ = new BehaviorSubject<boolean>(true);
   private _search$ = new Subject<void>();
@@ -77,9 +77,9 @@ export class GridJsService {
   get endIndex() { return this._state.endIndex; }
   get totalRecords() { return this._state.totalRecords; }
 
-  set page(page: number) { this._set({page}); }
-  set pageSize(pageSize: number) { this._set({pageSize}); }
-  set searchTerm(searchTerm: string) { this._set({searchTerm}); }
+  set page(page: number) { this._set({ page }); }
+  set pageSize(pageSize: number) { this._set({ pageSize }); }
+  set searchTerm(searchTerm: string) { this._set({ searchTerm }); }
   set startIndex(startIndex: number) { this._set({ startIndex }); }
   set endIndex(endIndex: number) { this._set({ endIndex }); }
   set totalRecords(totalRecords: number) { this._set({ totalRecords }); }
@@ -90,7 +90,7 @@ export class GridJsService {
   }
 
   private _search(): Observable<SearchResult> {
-    const { pageSize, page, searchTerm} = this._state;
+    const { pageSize, page, searchTerm } = this._state;
 
     // 1. sort
     let countries = GridJs;
@@ -104,9 +104,9 @@ export class GridJsService {
     this._state.startIndex = (page - 1) * this.pageSize + 1;
     this._state.endIndex = (page - 1) * this.pageSize + this.pageSize;
     if (this.endIndex > this.totalRecords) {
-        this.endIndex = this.totalRecords;
+      this.endIndex = this.totalRecords;
     }
     countries = countries.slice(this._state.startIndex - 1, this._state.endIndex);
-    return of({countries, total});
+    return of({ countries, total });
   }
 }

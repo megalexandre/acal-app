@@ -9,7 +9,7 @@
     </thead>
 
     <tbody>
-        @for ( data of ClosingDeals; track $index) {
+        @for (data of ClosingDeals; track $index) {
         <tr>
             <td>{{data.name}}</td>
             <td><img src="{{data.profile}}" alt="" class="avatar-xs rounded-circle me-2">
@@ -17,7 +17,6 @@
             </td>
             <td>${{data.amount}}</td>
             <td>{{data.date}}</td>
-        </tr>
-        }
+        </tr>}
     </tbody><!-- end tbody -->
 </table><!-- end table -->

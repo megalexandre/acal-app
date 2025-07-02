@@ -19,13 +19,13 @@
                         </div>
 
                         <div class="row gallery-wrapper">
-                            @for ( data of filterredImages; track $index) {
+                            @for (data of filterredImages; track $index) {
                             <div class="element-item col-xxl-3 col-xl-4 col-sm-6 project designing development" data-category="designing development">
                                 <div class="gallery-box card">
                                     <div class="gallery-container">
                                         <a class="image-popup" title="">
                                             <img class="gallery-img img-fluid mx-auto" src="{{data.img}}" alt="" />
-                                            <div class="gallery-overlay" (click)="open( $index)">
+                                            <div class="gallery-overlay" (click)="open($index)">
                                                 <h5 class="overlay-caption">{{data.title}}</h5>
                                             </div>
                                         </a>

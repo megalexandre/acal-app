@@ -11,7 +11,7 @@
                 </div>
                 <p class="text-muted mb-2">You used 215 of 2000 of your API</p>
                 <div class="text-end">
-                    <button type="button" class="btn btn-success btn-sm create-btn" data-bs-toggle="modal" data-bs-target="#api-key-modal" (click)="openModal(content)">Create API Key</button>
+                    <button type="button" class="btn btn-primary btn-sm create-btn" data-bs-toggle="modal" data-bs-target="#api-key-modal" (click)="openModal(content)">Create API Key</button>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
                 <div class="d-flex justify-content-between">
                     <div>
                         <p class="fw-medium text-muted mb-0">Successful conversions</p>
-                        <h2 class="mt-4 ff-secondary fw-semibold">
+                        <h2 class="mt-4 ff-secondary fw-bold">
                             <span [countUp]="50" class="counter-value" [options]="option"></span>
                         </h2>
                         <p class="mb-0 text-muted"><span class="badge bg-light text-success mb-0"><i class="ri-arrow-up-line align-middle"></i> 8.24 % </span> 7 last week</p>
@@ -31,6 +31,7 @@
                     <div>
                         <div class="avatar-sm flex-shrink-0">
                             <span class="avatar-title bg-success-subtle rounded-circle fs-2">
+                                <!-- <i data-feather="check-circle" class="text-success"></i> -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle text-success">
                                     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                                     <polyline points="22 4 12 14.01 9 11.01"></polyline>
@@ -49,7 +50,7 @@
                 <div class="d-flex justify-content-between">
                     <div>
                         <p class="fw-medium text-muted mb-0">Failed conversions</p>
-                        <h2 class="mt-4 ff-secondary fw-semibold">
+                        <h2 class="mt-4 ff-secondary fw-bold">
                             <span [countUp]="8" class="counter-value" [options]="option"></span>
                         </h2>
                         <p class="mb-0 text-muted"><span class="badge bg-light text-danger mb-0"><i class="ri-arrow-down-line align-middle"></i> 25.87 % </span> 7 last week</p>
@@ -80,7 +81,9 @@
                 <h5 class="card-title flex-grow-1 mb-0">API Keys</h5>
                 <div class="d-flex gap-1 flex-wrap">
                     <button class="btn btn-soft-danger" id="remove-actions" style="display: none" (click)="confirm(deleteModel,'')"><i class="ri-delete-bin-2-line"></i></button>
-                    <button type="button" class="btn btn-success create-btn" data-bs-toggle="modal" data-bs-target="#api-key-modal" (click)="openModal(content)"><i class="ri-add-line align-bottom me-1"></i> Add</button>
+                    <button type="button" class="btn btn-primary create-btn" data-bs-toggle="modal" data-bs-target="#api-key-modal" (click)="openModal(content)"><i class="ri-add-line align-bottom me-1"></i> Add API
+                        Key</button>
+
                 </div>
             </div>
             <div class="card-body">
@@ -94,15 +97,15 @@
                                             <input class="form-check-input" type="checkbox" id="checkAll" value="option" [(ngModel)]="masterSelected" (change)="checkUncheckAll($event)">
                                         </div>
                                     </th>
-                                    <th class="sort d-none" (click)="onSort('id')">Id</th>
-                                    <th class="sort" (click)="onSort('name')">Name</th>
-                                    <th class="sort" (click)="onSort('createdby')">Created By
+                                    <th class="sort d-none" (click)="onSort('id')" scope="col">Id</th>
+                                    <th class="sort" (click)="onSort('name')" scope="col">Name</th>
+                                    <th class="sort" (click)="onSort('createdby')" scope="col">Created By
                                     </th>
-                                    <th class="sort" (click)="onSort('key')">API Key</th>
-                                    <th class="sort" (click)="onSort('status')">Status</th>
-                                    <th class="sort" (click)="onSort('create_date')">Create
+                                    <th class="sort" (click)="onSort('key')" scope="col">API Key</th>
+                                    <th class="sort" (click)="onSort('status')" scope="col">Status</th>
+                                    <th class="sort" (click)="onSort('create_date')" scope="col">Create
                                         Date</th>
-                                    <th class="sort" (click)="onSort('expiry_date')">Expiry
+                                    <th class="sort" (click)="onSort('expiry_date')" scope="col">Expiry
                                         Date</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -112,7 +115,7 @@
                                 <tr id="a_{{data.id}}">
                                     <th scope="row">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="checkAll" value="{{data._id}}" [(ngModel)]="data.state" (change)="onCheckboxChange($event)">
+                                            <input class="form-check-input" type="checkbox" name="checkAll" value="{{data.id}}" [(ngModel)]="data.state" (change)="onCheckboxChange($event)">
                                         </div>
                                     </th>
                                     <td class="id" style="display:none;">
@@ -141,8 +144,7 @@
                                             </ul>
                                         </div>
                                     </td>
-                                </tr>
-                                }
+                                </tr>}
                             </tbody>
                         </table>
                         <div class="noresult" style="display: none">
@@ -156,11 +158,7 @@
                         </div>
                     </div>
                     <!-- Pagination -->
-
-
-                 
-                    <ngb-pagination class="d-flex justify-content-end pt-2 hstack gap-2" [collectionSize]="allapikeys?.length" [(page)]="service.page" [pageSize]="service.pageSize" aria-label="Custom pagination" (pageChange)="changePage()">
-
+                    <ngb-pagination class="d-flex justify-content-end pt-2 hstack gap-2" [collectionSize]="allapikeys?.length" [(page)]="service.page" [pageSize]="service.pageSize" (pageChange)="changePage()" aria-label="Custom pagination">
                         <ng-template ngbPaginationPrevious let-page let-pages="pages">
                             <i class="ci-arrow-left me-2"></i>
                             Prev
@@ -171,6 +169,7 @@
                         </ng-template>
                     </ngb-pagination>
                 </div>
+
                 <div id="elmLoader">
                     <div class="spinner-border text-primary avatar-sm" role="status">
                         <span class="visually-hidden">Loading...</span>
@@ -212,7 +211,6 @@
             <button type="button" class="btn btn-primary d-none" id="edit-btn" (click)="editApi()">Save Changes</button>
         </div>
     </div>
-    <!-- </form> -->
 </ng-template>
 <!-- end modal -->
 

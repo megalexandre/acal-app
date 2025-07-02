@@ -131,7 +131,6 @@
                     }
                 }
             }
-
             .vertical-sidebar-enable .app-menu {
                 margin-left: auto !important;
                 z-index: 1004;
@@ -780,17 +779,11 @@
     }
 }
 
-
-
-
-
 [data-layout="semibox"] {
     @media (min-width: 1440px) {
         .main-content {
             margin-left: 0;
         }
-
-
         #page-topbar {
             left: 134px;
             right: 385px;

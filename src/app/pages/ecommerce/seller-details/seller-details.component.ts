@@ -2,11 +2,9 @@ import { Component, QueryList, ViewChildren } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { Observable } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { GlobalComponent } from '../../../global-component';
 
 // Sweet Alert
 import Swal from 'sweetalert2';
-
 
 // Products Services
 import { Router } from '@angular/router';
@@ -16,6 +14,9 @@ import { selectDataLoading, selectProductData } from 'src/app/store/Ecommerce/ec
 import { PaginationService } from 'src/app/core/services/pagination.service';
 import { cloneDeep } from 'lodash';
 import { deleteProduct, fetchProductListData } from 'src/app/store/Ecommerce/ecommerce_action';
+import { GlobalComponent } from 'src/app/global-component';
+
+;
 
 @Component({
   selector: 'app-seller-details',
@@ -53,7 +54,7 @@ export class SellerDetailsComponent {
     ];
 
     // Chart Color Data Get Function
-    this._analyticsChart('["--vz-primary", "--vz-success", "--vz-danger"]');
+    this._analyticsChart('["--vz-primary-rgb, 0.1", "--vz-primary", "--vz-primary-rgb, 0.6"]');
 
     /**
      * fetches data
@@ -89,6 +90,7 @@ export class SellerDetailsComponent {
     this.products = this.service.changePage(this.searchResults)
   }
 
+
   num: number = 0;
   option = {
     startVal: this.num,
@@ -96,6 +98,49 @@ export class SellerDetailsComponent {
     duration: 2,
     decimalPlaces: 2,
   };
+
+  /**
+    * Confirmation mail model
+  */
+  deleteId: any;
+  confirm(content: any, id: any) {
+    this.deleteId = id;
+    this.modalService.open(content, { centered: true });
+  }
+
+  // Delete Data
+  deleteData(id: any) {
+    if (id) {
+      this.store.dispatch(deleteProduct({ id: this.deleteId.toString() }));
+    } else {
+      this.store.dispatch(deleteProduct({ id: this.checkedValGet.toString() }));
+      (document.getElementById("selection-element") as HTMLElement).style.display = "none"
+    }
+    this.deleteId = ''
+  }
+
+  /**
+  * Multiple Delete
+  */
+  checkedValGet: any[] = [];
+  deleteMultiple(content: any) {
+    var checkboxes: any = document.getElementsByName('checkAll');
+    var result
+    var checkedVal: any[] = [];
+    for (var i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].checked) {
+        result = checkboxes[i].value;
+        checkedVal.push(result);
+      }
+    }
+    if (checkedVal.length > 0) {
+      this.modalService.open(content, { centered: true });
+    }
+    else {
+      Swal.fire({ text: 'Please select at least one checkbox', confirmButtonColor: '#299cdb', });
+    }
+    this.checkedValGet = checkedVal;
+  }
 
   // Chart Colors Set
   private getChartColorsArray(colors: any) {
@@ -298,50 +343,6 @@ export class SellerDetailsComponent {
 
     };
   }
-
-  /**
-  * Confirmation mail model
-  */
-  deleteId: any;
-  confirm(content: any, id: any) {
-    this.deleteId = id;
-    this.modalService.open(content, { centered: true });
-  }
-
-  // Delete Data
-  deleteData(id: any) {
-    if (id) {
-      this.store.dispatch(deleteProduct({ id: this.deleteId.toString() }));
-    } else {
-      this.store.dispatch(deleteProduct({ id: this.checkedValGet.toString() }));
-      (document.getElementById("selection-element") as HTMLElement).style.display = "none"
-    }
-    this.deleteId = ''
-  }
-
-  /**
-  * Multiple Delete
-  */
-  checkedValGet: any[] = [];
-  deleteMultiple(content: any) {
-    var checkboxes: any = document.getElementsByName('checkAll');
-    var result
-    var checkedVal: any[] = [];
-    for (var i = 0; i < checkboxes.length; i++) {
-      if (checkboxes[i].checked) {
-        result = checkboxes[i].value;
-        checkedVal.push(result);
-      }
-    }
-    if (checkedVal.length > 0) {
-      this.modalService.open(content, { centered: true });
-    }
-    else {
-      Swal.fire({ text: 'Please select at least one checkbox', confirmButtonColor: '#299cdb', });
-    }
-    this.checkedValGet = checkedVal;
-  }
-
   godetail(id: any) {
     this.router.navigate(['/ecommerce/product-detail/', this.products[id]])
   }
@@ -368,5 +369,5 @@ export class SellerDetailsComponent {
   onSort(column: any) {
     this.products = this.service.onSort(column, this.products)
   }
-
 }
+

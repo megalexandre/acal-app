@@ -2,7 +2,7 @@ import { Component, QueryList, ViewChildren } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { Observable } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { UntypedFormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators, UntypedFormBuilder } from '@angular/forms';
 
 import { rankingModel } from './ranking.model';
 import { rankingData } from 'src/app/core/data';
@@ -11,7 +11,7 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 @Component({
   selector: 'app-ranking',
   templateUrl: './ranking.component.html',
-  styleUrls: ['./ranking.component.scss']
+  styleUrls: ['./ranking.component.scss'],
 })
 
 /**
@@ -39,7 +39,6 @@ export class RankingComponent {
       { label: 'NFT Marketplace' },
       { label: 'Ranking', active: true }
     ];
-
     // FetchData
     this.allrankingData = rankingData
     this.rankingData = this.service.changePage(rankingData)

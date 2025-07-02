@@ -65,13 +65,11 @@
                                                     <input [type]="passwordField ? 'text' : 'password'" class="form-control pe-5 password-input" placeholder="Enter password" id="password-input" aria-describedby="passwordInput" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
                                                     <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle" [ngClass]="{'mdi-eye-off-outline': !passwordField, 'mdi-eye-outline': passwordField
                                                     }" (click)="togglepasswordField()"></i></button>
-                                                    @if (submitted && f['password'].errors) {
+                                                    @if(submitted && f['password'].errors){
                                                     <div class="invalid-feedback">
                                                         @if(f['password'].errors['required']){
-                                                        <span>Password is required</span>
-                                                        }
-                                                    </div>
-                                                    }
+                                                        <span>Password is required</span>}
+                                                    </div>}
                                                 </div>
                                                 <div id="passwordInput" class="form-text">Must be at least 8 characters.</div>
                                             </div>
@@ -82,13 +80,12 @@
                                                     <input [type]="confirmField ? 'text' : 'password'" class="form-control pe-5 password-input" placeholder="Confirm password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="confirm-password-input" required formControlName="cpassword" [ngClass]="{ 'is-invalid': submitted && f['cpassword'].errors }">
                                                     <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="confirm-password-input"><i class="ri-eye-fill align-middle" [ngClass]="{'mdi-eye-off-outline': !passwordField, 'mdi-eye-outline': passwordField
                                                     }" (click)="toggleconfirmField()"></i></button>
-                                                    @if (submitted && f['cpassword'].errors) {
+                                                    @if(submitted && f['cpassword'].errors){
                                                     <div class="invalid-feedback">
                                                         @if(f['cpassword'].errors['required']){
-                                                        <span>Confirm Password is required</span>
-                                                        }
-                                                    </div>
-                                                    }
+                                                        <span>Confirm Password is required</span>}
+
+                                                    </div>}
                                                 </div>
                                             </div>
 

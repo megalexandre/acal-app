@@ -10,9 +10,9 @@
           </div><!-- end card header -->
 
           <div class="card-body">
-            <apx-chart [series]="basicCandlestickChart.series" [chart]="basicCandlestickChart.chart" [plotOptions]="basicCandlestickChart.plotOptions"
+            <apx-chart [series]="basicCandlestickChart.series" [chart]="basicCandlestickChart.chart"
             [xaxis]="basicCandlestickChart.xaxis" [yaxis]="basicCandlestickChart.yaxis"
-            [title]="basicCandlestickChart.title" dir="ltr"></apx-chart>
+            [title]="basicCandlestickChart.title" [plotOptions]="basicCandlestickChart.plotOptions" dir="ltr"></apx-chart>
           </div><!-- end card-body -->
       </div><!-- end card -->
   </div>
@@ -28,7 +28,7 @@
               <div>
                 <div id="combo_candlestick" class="apex-charts" dir="ltr">
                   <apx-chart #chartCandle [series]="chartCandleOptions.series" [chart]="chartCandleOptions.chart"
-                      [xaxis]="chartCandleOptions.xaxis" [plotOptions]="chartCandleOptions.plotOptions" dir="ltr"></apx-chart>
+                      [xaxis]="chartCandleOptions.xaxis" [plotOptions]="chartCandleOptions.plotOptions"></apx-chart>
               </div>
               <div id="combo_candlestick_chart" class="apex-charts" dir="ltr">
                   <apx-chart #chartBar [series]="chartBarOptions.series" [chart]="chartBarOptions.chart"
@@ -53,8 +53,8 @@
 
           <div class="card-body">
             <apx-chart [series]="categoryXAxisChart.series" [chart]="categoryXAxisChart.chart"
-            [xaxis]="categoryXAxisChart.xaxis" [plotOptions]="categoryXAxisChart.plotOptions" [yaxis]="categoryXAxisChart.yaxis"
-            [title]="categoryXAxisChart.title" [tooltip]="categoryXAxisChart.tooltip" dir="ltr"></apx-chart>
+            [xaxis]="categoryXAxisChart.xaxis" [yaxis]="categoryXAxisChart.yaxis"
+            [title]="categoryXAxisChart.title" [tooltip]="categoryXAxisChart.tooltip" [plotOptions]="categoryXAxisChart.plotOptions" dir="ltr"></apx-chart>
           </div><!-- end card-body -->
       </div><!-- end card -->
   </div>

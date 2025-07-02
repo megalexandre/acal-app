@@ -30,5 +30,5 @@ export class ProjectsStatComponent implements OnInit {
     duration: 2,
     decimalPlaces: 2,
   };
-
+  
 }

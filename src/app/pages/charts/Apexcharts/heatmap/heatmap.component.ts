@@ -30,10 +30,10 @@ export class HeatmapComponent implements OnInit {
     ];
 
     // Chart Color Data Get Function
-    this._basicHeatmapChart('["--vz-success", "--vz-secondary-bg"]');
-    this._multipleSeriesChart('["--vz-primary", "--vz-secondary", "--vz-success", "--vz-info", "--vz-warning", "--vz-danger", "--vz-body-color", "--vz-primary", "--vz-secondary-bg"]');
-    this._colorRangeChart('["--vz-info", "--vz-success", "--vz-primary", "--vz-warning"]');
-    this._rangeWithoutShadesChart('["--vz-info", "--vz-primary"]');
+    this._basicHeatmapChart('["--vz-success", "--vz-card-bg-custom"]');
+    this._multipleSeriesChart('["--vz-primary", "--vz-secondary", "--vz-success", "--vz-info", "--vz-warning", "--vz-danger", "--vz-dark", "--vz-primary", "--vz-card-bg-custom"]');
+    this._colorRangeChart('["--vz-info", "--vz-success", "--vz-primary", "--vz-secondary"]');
+    this._rangeWithoutShadesChart('["--vz-primary", "--vz-primary-rgb, 0.45"]');
     }
 
   // Chart Colors Set
@@ -84,7 +84,7 @@ private generateData(count: number, yrange: { max: number; min: number; }) {
   /**
  * Basic Heatmap Chart
  */
-  private _basicHeatmapChart(colors:any) {
+   private _basicHeatmapChart(colors:any) {
     colors = this.getChartColorsArray(colors);
     this.basicHeatmapChart = {
       series: [

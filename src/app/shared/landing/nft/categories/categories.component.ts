@@ -35,12 +35,13 @@ export class CategoriesComponent implements OnInit {
   /**
    * Swiper Responsive setting
    */
-   public Responsive = {
+  public Responsive = {
     infinite: true,
     slidesToShow: 4,
     autoplay: true,
     dots: true,
     arrows: false
   };
+
 
 }

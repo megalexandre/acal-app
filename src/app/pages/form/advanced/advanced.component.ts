@@ -21,7 +21,7 @@ export class AdvancedComponent implements OnInit {
     /**
     * BreadCrumb
     */
-     this.breadCrumbItems = [
+    this.breadCrumbItems = [
       { label: 'Forms' },
       { label: 'Form Advanced', active: true }
     ];
@@ -30,8 +30,8 @@ export class AdvancedComponent implements OnInit {
   /**
    * Default Select2
    */
-   selectedAccount = 'This is a placeholder';
-   public Default = chatMessagesData;
+  selectedAccount = 'This is a placeholder';
+  public Default = chatMessagesData;
 
   keyword = 'name';
   // Fruit Data
@@ -150,21 +150,21 @@ export class AdvancedComponent implements OnInit {
     }
   ];
 
-  selectEvent(item: any) {  }
-  onChangeSearch(search: string) {}
+  selectEvent(item: any) { }
+  onChangeSearch(search: string) { }
   onFocused(e: any) { }
 
-  
+
   // Default
   counter = 0;
   increment() {
     this.counter++;
   }
-  
+
   decrement() {
     this.counter--;
   }
-  
+
   // Light
   lightcounter = 5;
   lightincrement() {

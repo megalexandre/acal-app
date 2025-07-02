@@ -5,8 +5,7 @@
             <div class="col-lg-8">
                 <div class="text-center mb-5">
                     <h2 class="mb-3 fw-semibold lh-base">Explore Products</h2>
-                    <p class="text-muted mb-4">Collection widgets specialize in displaying many elements of the same
-                        type, such as a collection of pictures from a collection of articles.</p>
+                    <p class="text-muted mb-4">Collection widgets specialize in displaying many elements of the same type, such as a collection of pictures from a collection of articles.</p>
                     <ul class="nav nav-pills filter-btns justify-content-center" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link fw-medium active" type="button" data-filter="all" (click)="activeCategory('allItems')" [ngClass]="{'active': galleryFilter ==='allItems'}">All Items</button>
@@ -31,7 +30,7 @@
             </div><!-- end col -->
         </div><!-- end row -->
         <div class="row">
-            @for ( data of filterredImages; track $index) {
+            @for (data of filterredImages; track $index) {
             <div class="col-lg-4 product-item artwork crypto-card 3d-style">
                 <div class="card explore-box card-animate">
                     <div class="bookmark-icon position-absolute top-0 end-0 p-2">
@@ -45,22 +44,20 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <p class="fw-medium mb-0 float-end"><i class="mdi mdi-heart text-danger align-middle"></i>
-                            {{data.like}}k </p>
+                        <p class="fw-medium mb-0 float-end"><i class="mdi mdi-heart text-danger align-middle"></i> {{data.like}}k </p>
                         <h5 class="mb-1"><a href="/nft-details">{{data.title}}</a></h5>
                         <p class="text-muted mb-0">{{data.sub_title}}</p>
                     </div>
                     <div class="card-footer border-top border-top-dashed">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1 fs-14">
-                                <i class="ri-price-tag-3-fill text-warning align-bottom mx-1"></i> Highest: <span class="fw-medium">{{data.highest}}ETH</span>
+                                <i class="ri-price-tag-3-fill text-warning align-bottom me-1"></i> Highest: <span class="fw-medium">{{data.highest}}ETH</span>
                             </div>
                             <h5 class="flex-shrink-0 fs-14 text-primary mb-0">{{data.eth}} ETH</h5>
                         </div>
                     </div>
                 </div>
-            </div>
-            }
+            </div>}
         </div>
     </div><!-- end container -->
 </section>

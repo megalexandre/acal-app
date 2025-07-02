@@ -615,6 +615,7 @@
                             width: calc(200px + var(--#{$prefix}vertical-menu-width-sm));
                             transition: none;
                             background: var(--#{$prefix}vertical-menu-bg);
+
                             .icon-dual {
                                 fill: rgba($white, 0.16);
                             }

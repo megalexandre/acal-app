@@ -1,5 +1,6 @@
+import { DecimalPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-
+import { Observable } from 'rxjs';
 import { jobgrid } from 'src/app/core/data';
 import { PaginationService } from 'src/app/core/services/pagination.service';
 
@@ -9,7 +10,6 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
   styleUrls: ['./grid.component.scss'],
 })
 export class GridComponent implements OnInit {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   jobgrids: any;

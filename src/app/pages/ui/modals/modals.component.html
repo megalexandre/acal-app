@@ -268,8 +268,7 @@ style=&quot;width:120px;height:120px&quot;&gt;
                 <p class="text-muted">Toggle between multiple modals with some clever placement of the
                     <code>data-bs-target</code> and <code>data-bs-toggle</code> attributes.
                     Please note multiple modals cannot be open at the same time. this method simply toggles between two
-                    separate modals.
-                </p>
+                    separate modals.</p>
                 <div class="live-preview">
                     <div>
                         <button type="button" class="btn btn-primary " data-bs-toggle="modal"
@@ -291,7 +290,7 @@ style=&quot;width:120px;height:120px&quot;&gt;
 &lt;lord-icon
 src=&quot;https://cdn.lordicon.com/tdrtiskw.json&quot;
 trigger=&quot;loop&quot;
-colors=&quot;primary:#f7b84b,secondary:#405189&quot;
+colors=&quot;primary:#FFBC0A,secondary:#25a0e2&quot;
 style=&quot;width:130px;height:130px&quot;&gt;
 &lt;/lord-icon&gt;
 &lt;div class=&quot;mt-4 pt-4&quot;&gt;
@@ -314,7 +313,7 @@ Continue
 &lt;lord-icon
 src=&quot;https://cdn.lordicon.com/zpxybbhl.json&quot;
 trigger=&quot;loop&quot;
-colors=&quot;primary:#405189,secondary:#0ab39c&quot;
+colors=&quot;primary:#25a0e2,secondary:#00bd9d&quot;
 style=&quot;width:150px;height:150px&quot;&gt;
 &lt;/lord-icon&gt;
 &lt;div class=&quot;mt-4 pt-3&quot;&gt;
@@ -356,8 +355,7 @@ style=&quot;width:150px;height:150px&quot;&gt;
                 <p class="text-muted"><a href="https://getbootstrap.com/docs/5.1/components/tooltips/">Tooltips</a> and
                     <a href="https://getbootstrap.com/docs/5.1/components/popovers/">Popovers</a>
                     can be placed within modals as needed.When modals are closed, any tooltips and popovers within are
-                    also automatically dismissed.
-                </p>
+                    also automatically dismissed.</p>
 
                 <div class="live-preview">
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
@@ -391,10 +389,9 @@ style=&quot;width:150px;height:150px&quot;&gt;
                                             class="tooltip-test text-decoration-underline fw-medium"
                                             title="Morton Bayer" data-bs-container="#exampleModalPopovers"
                                             data-bs-toggle="tooltip" data-bs-original-title="Tooltip title">graphic
-                                            design</a> to be interested in the unusual, and that’s why using <a
-                                            href="javascript:void(0);" class="tooltip-test text-decoration-underline"
-                                            title="Web Developers" data-bs-toggle="tooltip"
-                                            data-bs-container="#exampleModalPopovers"
+                                            design</a> to be interested in the unusual, and that’s why using <a href="#"
+                                            class="tooltip-test text-decoration-underline" title="Web Developers"
+                                            data-bs-toggle="tooltip" data-bs-container="#exampleModalPopovers"
                                             data-bs-original-title="Tooltip title">design</a> contrasting colors in
                                         Graphic Design is a must.</p>
                                 </div>
@@ -791,8 +788,6 @@ hover.&lt;/p&gt;
 </div>
 <!--end row-->
 
-
-
 <!-- Standard Modal -->
 <ng-template #content role="document" let-modal>
     <div class="modal-header">
@@ -801,14 +796,18 @@ hover.&lt;/p&gt;
     </div>
     <div class="modal-body">
         <h5>Overflowing text to show scroll behavior</h5>
-        <p class="text-muted">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in
-            his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could
-            see his brown belly, slightly domed and divided by arches into stiff sections.</p>
-        <p class="text-muted">The bedding was hardly able to cover it and seemed ready to slide off any moment. His many
-            legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's
-            happened to me?" he thought.</p>
-        <p class="text-muted">It wasn't a dream. His room, a proper human room although a little too small, lay
-            peacefully between its four familiar walls.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum.
+            Cras justo odio, dapibus ac facilisis in,
+            egestas eget quam. Morbi leo risus, porta ac
+            consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque
+            nisl consectetur et. Vivamus sagittis lacus vel
+            augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur.
+            Praesent commodo cursus magna, vel scelerisque
+            nisl consectetur et. Donec sed odio dui. Donec
+            ullamcorper nulla non metus auctor
+            fringilla.</p>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
@@ -1910,7 +1909,7 @@ hover.&lt;/p&gt;
             <form>
                 <div class="mb-3">
                     <label for="fullName" class="form-label">Full Name</label>
-                    <input type="text" class="form-control" id="fullName" placeholder="Enter your name">
+                    <input type="email" class="form-control" id="fullName" placeholder="Enter your name">
                 </div>
                 <div class="mb-3">
                     <label for="emailInput" class="form-label">Email address</label>

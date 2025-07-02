@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-cover',
@@ -13,7 +13,7 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 export class CoverComponent implements OnInit {
 
   // Login Form
-  loginForm!: UntypedFormGroup;
+  loginForm!: FormGroup;
   submitted = false;
   passwordField!: boolean;
   confirmField!: boolean;
@@ -24,7 +24,7 @@ export class CoverComponent implements OnInit {
   // Carousel navigation arrow show
   showNavigationArrows: any;
 
-  constructor(private formBuilder: UntypedFormBuilder) { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     /**

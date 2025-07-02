@@ -63,6 +63,7 @@ export class SellersComponent {
       this.sellers = data;
       this.sellerList = cloneDeep(data);
       this.sellers = this.service.changePage(this.sellerList)
+      console.log(this.sellers)
     });
 
   }

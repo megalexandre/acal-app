@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { circle, latLng, tileLayer } from 'leaflet';
 
+import { circle, latLng, tileLayer } from 'leaflet';
 import { TitleBox1Model, TitleBox2Model, TitleBox3Model, TitleBox4Model, otherWidgetsModel, widgetsActivitiesModel, widgetsTasksModel, TitleBox5Model, HotproductModel, BankModel, CandidateModel } from './widgets.model';
 import { UntypedFormBuilder, Validators, UntypedFormGroup, UntypedFormArray, AbstractControl } from '@angular/forms';
 import { bank, candidate, hotproducts, otherWidgets, tileBoxs1, tileBoxs2, tileBoxs3, tileBoxs4, tileBoxs5, widgetsActivities, widgetsTasks } from 'src/app/core/data';
-
 @Component({
   selector: 'app-widgets',
   templateUrl: './widgets.component.html',
@@ -60,14 +59,13 @@ export class WidgetsComponent implements OnInit {
     this._fetchData();
 
     // Chart Color Data Get Function
-    this._basicBarChart('["--vz-info", "--vz-info", "--vz-info", "--vz-info", "--vz-danger", "--vz-info", "--vz-info", "--vz-info", "--vz-info", "--vz-info"]');
-    this._basicColumnChart('["--vz-success", "--vz-light"]');
-    this._simpleDonutChart('["--vz-primary", "--vz-info", "--vz-warning", "--vz-success"]');
-    this._basicHeatmapChart('["--vz-info", "--vz-success", "--vz-primary", "--vz-warning", "--vz-danger"]');
+    this._basicBarChart('["--vz-primary", "--vz-primary", "--vz-primary", "--vz-primary", "--vz-info", "--vz-primary", "--vz-primary", "--vz-primary", "--vz-primary", "--vz-primary"]');
+    this._basicColumnChart('["--vz-primary", "--vz-light"]');
+    this._simpleDonutChart('["--vz-primary", "--vz-primary-rgb, 0.85", "--vz-primary-rgb, 0.65", "--vz-primary-rgb, 0.50"]');
+    this._basicHeatmapChart('["--vz-info", "--vz-success", "--vz-primary", "--vz-warning", "--vz-secondary"]');
     this._applicationChart('["--vz-success" , "--vz-transparent"]');
     this._interviewChart('["--vz-danger" , "--vz-transparent"]');
     this._hiredChart('["--vz-success", "--vz-transparent"]');
-
     // Validation
     this.customcardData = this.formBuilder.group({
       card_no: ['', [Validators.required]],
@@ -229,8 +227,8 @@ export class WidgetsComponent implements OnInit {
   }
 
   /**
-  * Application Chart
-  */
+* Application Chart
+*/
   private _applicationChart(colors: any) {
     colors = this.getChartColorsArray(colors);
     this.ApplicationChart = {
@@ -270,8 +268,8 @@ export class WidgetsComponent implements OnInit {
   }
 
   /**
- * Interviewed Chart
- */
+  * Interviewed Chart
+  */
   private _interviewChart(colors: any) {
     colors = this.getChartColorsArray(colors);
     this.InterviewedChart = {
@@ -682,6 +680,7 @@ export class WidgetsComponent implements OnInit {
     circle([1.3, 103.8], { color: "#435fe3", opacity: 0.5, weight: 10, fillColor: "#435fe3", fillOpacity: 1, radius: 400000, }),
   ];
 
+
   /**
      * Swiper Responsive setting
      */
@@ -699,6 +698,8 @@ export class WidgetsComponent implements OnInit {
     duration: 2,
     decimalPlaces: 2,
   };
+
+
   // open Candidate Detail
   opendetail(id: any) {
     this.candidatedetail = this.candidates[id]

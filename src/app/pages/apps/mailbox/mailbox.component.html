@@ -9,39 +9,31 @@
 
             <ngx-simplebar class="mx-n4 px-4 email-menu-sidebar-scroll">
                 <div class="mail-list mt-3">
-                    <a href="javascript:void(0);" class="active" (click)="categoryFilter($event,'all')">
-                        <i class="ri-mail-fill me-3 align-middle fw-medium"></i>
-                        <span class="mail-list-link">All</span>
+                    <a href="javascript:void(0)" class="active" (click)="categoryFilter($event,'all')">
+                        <i class="ri-mail-fill me-3 align-middle fw-medium"></i> All
                         <span class="badge bg-success-subtle text-success ms-auto">{{dataCount}}</span>
                     </a>
-                    <a href="javascript:void(0);" (click)="categoryFilter($event,'inbox')">
-                        <i class="ri-inbox-archive-fill me-3 align-middle fw-medium"></i>
-                        <span class="mail-list-link">Inbox</span>
-                        <span class="badge bg-success-subtle text-success ms-auto">5</span>
+                    <a href="javascript:void(0)" (click)="categoryFilter($event,'inbox')">
+                        <i class="ri-inbox-archive-fill me-3 align-middle fw-medium"></i> Inbox
+                        <span class="badge bg-success-subtle text-success ms-auto  ">5</span>
                     </a>
-                    <a href="javascript:void(0);" (click)="categoryFilter($event,'sent')">
-                        <i class="ri-send-plane-2-fill me-3 align-middle fw-medium"></i>
-                        <span class="mail-list-link">Sent</span>
+                    <a href="javascript:void(0)" (click)="categoryFilter($event,'sent')">
+                        <i class="ri-send-plane-2-fill me-3 align-middle fw-medium"></i> Sent
                     </a>
-                    <a href="javascript:void(0);" (click)="categoryFilter($event,'draft')">
-                        <i class="ri-edit-2-fill me-3 align-middle fw-medium"></i>
-                        <span class="mail-list-link">Draft</span>
+                    <a href="javascript:void(0)" (click)="categoryFilter($event,'draft')">
+                        <i class="ri-edit-2-fill me-3 align-middle fw-medium"></i>Draft
                     </a>
-                    <a href="javascript:void(0);" (click)="categoryFilter($event,'spam')">
-                        <i class="ri-error-warning-fill me-3 align-middle fw-medium"></i>
-                        <span class="mail-list-link">Spam</span>
+                    <a href="javascript:void(0)" (click)="categoryFilter($event,'spam')">
+                        <i class="ri-error-warning-fill me-3 align-middle fw-medium"></i>Spam
                     </a>
-                    <a href="javascript:void(0);" (click)="categoryFilter($event,'trash')">
-                        <i class="ri-delete-bin-5-fill me-3 align-middle fw-medium"></i>
-                        <span class="mail-list-link">Trash</span>
+                    <a href="javascript:void(0)" (click)="categoryFilter($event,'trash')">
+                        <i class="ri-delete-bin-5-fill me-3 align-middle fw-medium"></i>Trash
                     </a>
-                    <a href="javascript:void(0);" (click)="categoryFilter($event,'starred')">
-                        <i class="ri-star-fill me-3 align-middle fw-medium"></i>
-                        <span class="mail-list-link">Starred</span>
+                    <a href="javascript:void(0)" (click)="categoryFilter($event,'starred')">
+                        <i class="ri-star-fill me-3 align-middle fw-medium"></i>Starred
                     </a>
-                    <a href="javascript:void(0);" (click)="categoryFilter($event,'important')">
-                        <i class="ri-price-tag-3-fill me-3 align-middle fw-medium"></i>
-                        <span class="mail-list-link">Important</span>
+                    <a href="javascript:void(0)" (click)="categoryFilter($event,'important')">
+                        <i class="ri-price-tag-3-fill me-3 align-middle fw-medium"></i>Important
                     </a>
                 </div>
 
@@ -49,27 +41,22 @@
                     <h5 class="fs-12 text-uppercase text-muted mt-4">Labels</h5>
 
                     <div class="mail-list mt-1">
-                        <a href="javascript:void(0);" (click)="labelsFilter($event,'support')">
-                            <span class="ri-checkbox-blank-circle-line me-2 text-info"></span>
-                            <span class="mail-list-link" data-type="label">Support</span>
+                        <a href="javascript:void(0)" (click)="labelsFilter($event,'support')">
+                            <span class="ri-checkbox-blank-circle-line me-2 text-info"></span> Theme Support
                             <span class="badge bg-success-subtle text-success ms-auto">3</span>
                         </a>
-                        <a href="javascript:void(0);" (click)="labelsFilter($event,'freelance')">
-                            <span class="ri-checkbox-blank-circle-line me-2 text-warning"></span>
-                            <span class="mail-list-link" data-type="label">Freelance</span>
+                        <a href="javascript:void(0)" (click)="labelsFilter($event,'freelance')">
+                            <span class="ri-checkbox-blank-circle-line me-2 text-warning"></span> Freelance
                         </a>
-                        <a href="javascript:void(0);" (click)="labelsFilter($event,'social')">
-                            <span class="ri-checkbox-blank-circle-line me-2 text-primary"></span>
-                            <span class="mail-list-link" data-type="label">Social</span>
+                        <a href="javascript:void(0)" (click)="labelsFilter($event,'social')">
+                            <span class="ri-checkbox-blank-circle-line me-2 text-primary"></span> Social
                         </a>
-                        <a href="javascript:void(0);" (click)="labelsFilter($event,'friends')">
-                            <span class="ri-checkbox-blank-circle-line me-2 text-danger"></span>
-                            <span class="mail-list-link" data-type="label">Friends</span>
+                        <a href="javascript:void(0)" (click)="labelsFilter($event,'friends')">
+                            <span class="ri-checkbox-blank-circle-line me-2 text-danger"></span> Friends
                             <span class="badge bg-success-subtle text-success ms-auto">2</span>
                         </a>
-                        <a href="javascript:void(0);" (click)="labelsFilter($event,'family')">
-                            <span class="ri-checkbox-blank-circle-line me-2 text-success"></span>
-                            <span class="mail-list-link" data-type="label">Family</span>
+                        <a href="javascript:void(0)" (click)="labelsFilter($event,'family')">
+                            <span class="ri-checkbox-blank-circle-line me-2 text-success"></span> Family
                         </a>
                     </div>
                 </div>
@@ -79,46 +66,46 @@
                     <h5 class="fs-12 text-uppercase text-muted mb-3">Chat</h5>
 
                     <div class="mt-2 vstack email-chat-list mx-n4">
-                        <a href="javascript: void(0);" class="d-flex align-items-center" (click)="chatFilter($event,'Scott Median','avatar-2.jpg')">
-                            <div class="flex-shrink-0 me-2 avatar-xxs chatlist-user-image">
+                        <a href="javascript: void(0);" class="d-flex align-items-center active" (click)="chatFilter($event,'Scott Median','avatar-2.jpg')">
+                            <div class="flex-shrink-0 me-2 avatar-xxs">
                                 <img class="img-fluid rounded-circle" src="assets/images/users/avatar-2.jpg" alt="">
                             </div>
 
                             <div class="flex-grow-1 chat-user-box overflow-hidden">
-                                <h5 class="fs-13 text-truncate mb-0 chatlist-user-name">Scott Median</h5>
+                                <h5 class="fs-14 text-truncate mb-0">Scott Median</h5>
                                 <small class="text-muted text-truncate mb-0">Hello ! are you there?</small>
                             </div>
                         </a>
 
                         <a href="javascript: void(0);" class="d-flex align-items-center" (click)="chatFilter($event,'Julian Rosa','avatar-4.jpg')">
-                            <div class="flex-shrink-0 me-2 avatar-xxs chatlist-user-image">
+                            <div class="flex-shrink-0 me-2 avatar-xxs">
                                 <img class="img-fluid rounded-circle" src="assets/images/users/avatar-4.jpg" alt="">
                             </div>
 
                             <div class="flex-grow-1 chat-user-box overflow-hidden">
-                                <h5 class="fs-13 text-truncate mb-0 chatlist-user-name">Julian Rosa</h5>
+                                <h5 class="fs-14 text-truncate mb-0">Julian Rosa</h5>
                                 <small class="text-muted text-truncate mb-0">What about our next..</small>
                             </div>
                         </a>
 
                         <a href="javascript: void(0);" class="d-flex align-items-center" (click)="chatFilter($event,'David Medina','avatar-3.jpg')">
-                            <div class="flex-shrink-0 me-2 avatar-xxs chatlist-user-image">
+                            <div class="flex-shrink-0 me-2 avatar-xxs">
                                 <img class="img-fluid rounded-circle" src="assets/images/users/avatar-3.jpg" alt="">
                             </div>
 
                             <div class="flex-grow-1 chat-user-box overflow-hidden">
-                                <h5 class="fs-13 text-truncate mb-0 chatlist-user-name">David Medina</h5>
+                                <h5 class="fs-14 text-truncate mb-0">David Medina</h5>
                                 <small class="text-muted text-truncate mb-0">Yeah everything is fine</small>
                             </div>
                         </a>
 
                         <a href="javascript: void(0);" class="d-flex align-items-center" (click)="chatFilter($event,'Jay Baker','avatar-5.jpg')">
-                            <div class="flex-shrink-0 me-2 avatar-xxs chatlist-user-image">
+                            <div class="flex-shrink-0 me-2 avatar-xxs">
                                 <img class="img-fluid rounded-circle" src="assets/images/users/avatar-5.jpg" alt="">
                             </div>
 
                             <div class="flex-grow-1 chat-user-box overflow-hidden">
-                                <h5 class="fs-13 text-truncate mb-0 chatlist-user-name">Jay Baker</h5>
+                                <h5 class="fs-14 text-truncate mb-0">Jay Baker</h5>
                                 <small class="text-muted text-truncate mb-0">Wow that's great</small>
                             </div>
                         </a>
@@ -147,11 +134,10 @@
                     </div>
                     <div class="col-sm order-3 order-sm-2">
                         <div class="hstack gap-sm-1 align-items-center flex-wrap email-topbar-link">
-                            <div class="form-check fs-14 m-0">
-                                <input class="form-check-input" type="checkbox" id="checkAll" value="option" [(ngModel)]="masterSelected" (change)="checkUncheckAll($event)">
-                                <label class="form-check-label" for="checkall"></label>
+                            <div class="form-check checkbox-wrapper-mail fs-14 m-0">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheck18" [(ngModel)]="masterSelected" (change)="checkUncheckAll($event)">
+                                <label class="form-check-label" for="flexCheck18"></label>
                             </div>
-
                             <div id="email-topbar-actions">
                                 <div class="hstack gap-sm-1 align-items-center flex-wrap">
                                     <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm fs-16" ngbTooltip="Archive" placement="bottom">
@@ -165,42 +151,22 @@
                                     </button>
                                 </div>
                             </div>
-
                             <div class="vr align-self-center mx-2"></div>
-
-                            <div class="dropdown" ngbDropdown>
-                                <button class="btn btn-ghost-secondary btn-icon btn-sm fs-16 arrow-none d-block" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>
-                                    <i class="ri-price-tag-3-fill align-bottom"></i>
-                                </button>
-                                <div class="dropdown-menu" ngbDropdownMenu>
-                                    <a class="dropdown-item" href="javascript:void(0);">Support</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">Freelance</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">Social</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">Friends</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">Family</a>
-                                </div>
-                            </div>
-                            <div class="dropdown" ngbDropdown>
-                                <button class="btn btn-ghost-secondary btn-icon btn-sm fs-16 arrow-none d-block" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>
-                                    <i class="ri-more-2-fill align-bottom"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
-                                    <a class="dropdown-item" href="javascript:void(0);" id="mark-all-read">Mark all as
-                                        Read</a>
-                                </div>
-                            </div>
-                            <div class="alert alert-warning alert-dismissible unreadConversations-alert px-4 fade show " id="unreadConversations" role="alert">
-                                No Unread Conversations
-                            </div>
+                            <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm fs-16" ngbTooltip="Labels" placement="bottom">
+                                <i class="ri-mail-open-fill align-bottom"></i>
+                            </button>
+                            <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm fs-16" ngbTooltip="Labels" placement="bottom">
+                                <i class="ri-price-tag-3-fill align-bottom"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="col-auto order-2 order-sm-3">
                         <div class="d-flex gap-sm-1 email-topbar-link">
-                            <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm fs-16 d-block">
+                            <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm fs-16">
                                 <i class="ri-refresh-line align-bottom"></i>
                             </button>
                             <div class="dropdown" ngbDropdown>
-                                <button class="dropdown-toggle btn btn-ghost-secondary btn-icon btn-sm fs-16 arrow-none d-block" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>
+                                <button class="btn btn-ghost-secondary btn-icon btn-sm fs-16 arrow-none" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>
                                     <i class="ri-more-2-fill align-bottom"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
@@ -218,7 +184,7 @@
                 <div class="row align-items-end mt-3">
                     <div class="col">
                         <div id="mail-filter-navlist">
-                            <ul ngbNav #nav="ngbNav" [activeId]="1" class="nav nav-tabs nav-tabs-custom nav-success gap-1 text-center border-bottom-0">
+                            <ul ngbNav #nav="ngbNav" [activeId]="1" class="nav nav-tabs nav-tabs-custom nav-primary gap-1 text-center border-bottom-0">
                                 <li [ngbNavItem]="1">
                                     <a ngbNavLink class="nav-link fw-semibold" href="javascript:void(0)">
                                         <i class="ri-inbox-fill align-bottom d-inline-block"></i>
@@ -226,14 +192,14 @@
                                     </a>
                                     <ng-template ngbNavContent>
                                         <ul class="message-list" id="emaildata">
-                                            @for ( email of emailDatas; track $index) {
-                                            <li class="unread" [ngClass]="{ 'unread': email.unread === true }" id="chk-{{email.id}}">
+                                            @for( email of emailDatas;track $index){
+                                            <li class="unread" [ngClass]=" { 'unread' : email.unread===true }" id="chk-{{email.id}}">
                                                 <div class="col-mail col-mail-1">
                                                     <div class="form-check checkbox-wrapper-mail fs-14">
                                                         <input type="checkbox" class="form-check-input" id="chk-{{$index}}" name="checkAll" value="{{email.id}}" (change)="selectMail($event,email.id)" [(ngModel)]="email.state">
                                                         <label for="chk-{{$index}}" class="toggle"></label>
                                                     </div>
-                                                    <button type="button" class="btn avatar-xs p-0 favourite-btn fs-15 star_{{email.id}}" [ngClass]="{'active': email.category == 'starred'}" (click)="activeStar(email.id, $index)">
+                                                    <button type="button" class="btn avatar-xs p-0 favourite-btn fs-15 star_{{email.id}}" [ngClass]="{'active': email.category == 'starred'}" (click)="activeStar(email.id,$index)">
                                                         <i class="ri-star-fill"></i>
                                                     </button>
                                                     <a href="javascript: void(0);" class="title" (click)="onSettingsButtonClicked($event,email.id)">{{email.name}}</a>
@@ -246,8 +212,10 @@
                                                     </a>
                                                     <div class="date">{{email.date}}</div>
                                                 </div>
+                                            </li>}
+                                            <li class="bg-transparent text-center">
+                                                <button type="button" class="btn btn-soft-info rounded-pill btn-sm px-2"><i class="mdi mdi-spin mdi-loading me-2"></i>Load More</button>
                                             </li>
-                                            }
                                         </ul>
                                     </ng-template>
                                 </li>
@@ -258,14 +226,14 @@
                                     </a>
                                     <ng-template ngbNavContent>
                                         <ul class="message-list" id="emaildata">
-                                            @for ( email of emailDatas; track $index) {
+                                            @for( email of emailDatas;track $index){
                                             <li class="unread" [ngClass]="{ 'unread': email.unread === true }" id="chk-{{email.id}}">
                                                 <div class="col-mail col-mail-1">
                                                     <div class="form-check checkbox-wrapper-mail fs-14">
-                                                        <input type="checkbox" class="form-check-input" id="chk-{{ $index}}" name="checkAll" value="{{email.id}}" (change)="selectMail($event,email.id)" [(ngModel)]="email.state">
+                                                        <input type="checkbox" class="form-check-input" id="chk-{{$index}}" name="checkAll" value="{{email.id}}" (change)="selectMail($event,email.id)" [(ngModel)]="email.state">
                                                         <label for="chk-{{$index}}" class="toggle"></label>
                                                     </div>
-                                                    <button type="button" class="btn avatar-xs p-0 favourite-btn fs-15 star_{{email.id}}" [ngClass]="{'active': email.category == 'starred'}" (click)="activeStar(email.id, $index)">
+                                                    <button type="button" class="btn avatar-xs p-0 favourite-btn fs-15 star_{{email.id}}" [ngClass]="{'active': email.category == 'starred'}" (click)="activeStar(email.id,$index)">
                                                         <i class="ri-star-fill"></i>
                                                     </button>
                                                     <a href="javascript: void(0);" class="title" (click)="onSettingsButtonClicked($event,email.id)">{{email.name}}</a>
@@ -279,10 +247,10 @@
                                                     <div class="date">{{email.date}}</div>
                                                 </div>
                                             </li>
+                                            }
                                             <li class="bg-transparent text-center">
                                                 <button type="button" class="btn btn-soft-info rounded-pill btn-sm px-2"><i class="mdi mdi-spin mdi-loading me-2"></i>Load More</button>
                                             </li>
-                                            }
                                         </ul>
                                     </ng-template>
                                 </li>
@@ -293,14 +261,14 @@
                                     </a>
                                     <ng-template ngbNavContent>
                                         <ul class="message-list" id="emaildata">
-                                            @for ( email of emailDatas; track $index){
+                                            @for( email of emailDatas;track $index){
                                             <li class="unread" [ngClass]="{ 'unread': email.unread === true }" id="chk-{{email.id}}">
                                                 <div class="col-mail col-mail-1">
                                                     <div class="form-check checkbox-wrapper-mail fs-14">
-                                                        <input type="checkbox" class="form-check-input" id="chk-{{ $index}}" name="checkAll" value="{{email.id}}" (change)="selectMail($event,email.id)" [(ngModel)]="email.state">
-                                                        <label for="chk-{{ $index}}" class="toggle"></label>
+                                                        <input type="checkbox" class="form-check-input" id="chk-{{$index}}" name="checkAll" value="{{email.id}}" (change)="selectMail($event,email.id)" [(ngModel)]="email.state">
+                                                        <label for="chk-{{$index}}" class="toggle"></label>
                                                     </div>
-                                                    <button type="button" class="btn avatar-xs p-0 favourite-btn fs-15 star_{{email.id}}" [ngClass]="{'active': email.category == 'starred'}" (click)="activeStar(email.id, $index)">
+                                                    <button type="button" class="btn avatar-xs p-0 favourite-btn fs-15 star_{{email.id}}" [ngClass]="{'active': email.category == 'starred'}" (click)="activeStar(email.id,$index)">
                                                         <i class="ri-star-fill"></i>
                                                     </button>
                                                     <a href="javascript: void(0);" class="title" (click)="onSettingsButtonClicked($event,email.id)">{{email.name}}</a>
@@ -313,11 +281,10 @@
                                                     </a>
                                                     <div class="date">{{email.date}}</div>
                                                 </div>
-                                            </li>
+                                            </li>}
                                             <li class="bg-transparent text-center">
                                                 <button type="button" class="btn btn-soft-info rounded-pill btn-sm px-2"><i class="mdi mdi-spin mdi-loading me-2"></i>Load More</button>
                                             </li>
-                                            }
                                         </ul>
                                     </ng-template>
                                 </li>
@@ -342,7 +309,7 @@
     </div>
     <!-- end email-content -->
 
-    <div class="email-detail-content">
+    <div class="email-detail-content border">
         <div class="p-4 d-flex flex-column h-100">
             <div class="pb-4 border-bottom border-bottom-dashed">
                 <div class="row">
@@ -361,7 +328,7 @@
                             <button class="btn btn-ghost-secondary btn-icon btn-sm fs-16">
                                 <i class="ri-printer-fill align-bottom"></i>
                             </button>
-                            <button class="btn btn-ghost-secondary btn-icon btn-sm fs-16" (click)="confirm(deleteModel)">
+                            <button class="btn btn-ghost-secondary btn-icon btn-sm fs-16">
                                 <i class="ri-delete-bin-5-fill align-bottom"></i>
                             </button>
                             <div class="dropdown" ngbDropdown>
@@ -383,115 +350,120 @@
 
             <ngx-simplebar class="mx-n4 px-4 email-detail-content-scroll">
                 <div class="mt-4 mb-3">
-                    <h5 class="fw-bold email-subject-title">{{singleData.badge ? singleData.badge: singleData.subject}}
-                    </h5>
+                    <h5 class="fw-bold">{{singleData.badge ? singleData.badge: singleData.subject}}</h5>
                 </div>
 
                 <div class="accordion accordion-flush checkout-accordion">
-                    <div ngbAccordion activeIds="static-3">
+                    <div ngbAccordion #acc="ngbAccordion" activeIds="static-3" [closeOthers]="true">
                         <div ngbAccordionItem id="static-1">
-                            <div ngbAccordionHeader class="accordion-header">
-                                <div class="accordion-header">
-                                    <a role="button" class="btn w-100 text-start p-0 bg-transparent shadow-none collapsed" data-bs-toggle="collapse" href="javascript:void(0)" aria-expanded="true" aria-controls="email-collapseOne">
-                                        <div class="d-flex align-items-center text-muted">
-                                            <div class="flex-shrink-0 avatar-xs me-3">
-                                                <img src="{{singleData.img}}" alt="" class="img-fluid rounded-circle">
-                                            </div>
-                                            <div class="flex-grow-1 overflow-hidden">
-                                                <h5 class="fs-14 text-truncate email-user-name mb-0">{{singleData.name}}
-                                                </h5>
-                                                <div class="text-truncate fs-12">to: me</div>
-                                            </div>
-                                            <div class="flex-shrink-0 align-self-start">
-                                                <div class="text-muted fs-12">09 Jan 2022, 11:12 AM</div>
-                                            </div>
+                            <h2 ngbAccordionHeader class="accordion-header">
+                                <button ngbAccordionButton role="button" class="btn w-100 text-start p-0 bg-transparent shadow-none collapsed" data-bs-toggle="collapse" href="javascript:void(0)" aria-expanded="true" aria-controls="email-collapseOne">
+                                    <div class="d-flex align-items-center text-muted">
+                                        <div class="flex-shrink-0 avatar-xs me-3">
+                                            <img src="{{singleData.img}}" alt="" class="img-fluid rounded-circle">
                                         </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div ngbAccordionCollapse>
-                                <div>
-                                    <p>Hi,</p>
-                                    <p>Praesent dui ex, dapibus eget mauris ut, finibus vestibulum enim. Quisque arcu
-                                        leo, facilisis in fringilla id, luctus in tortor.
-                                    </p>
-                                    <p>Sed elementum turpis eu lorem interdum, sed porttitor eros commodo. Nam eu
-                                        venenatis tortor, id lacinia diam. Sed aliquam in dui et porta. Sed bibendum
-                                        orci non tincidunt ultrices.</p>
-                                    <p>Sincerly,</p>
-
-                                    <div class="d-flex gap-3">
-                                        <div class="border rounded avatar-xl h-auto">
-                                            <img src="assets/images/small/img-2.jpg" alt="" class="img-fluid rouned-top">
-                                            <div class="py-2 text-center">
-                                                <a href="javascript:void(0);" class="d-block fw-semibold">Download</a>
-                                            </div>
+                                        <div class="flex-grow-1 overflow-hidden">
+                                            <h5 class="fs-15 text-truncate mb-0">{{singleData.name}}</h5>
+                                            <div class="text-truncate fs-14">to: me</div>
                                         </div>
-                                        <div class="border rounded avatar-xl h-auto">
-                                            <img src="assets/images/small/img-6.jpg" alt="" class="img-fluid rouned-top">
-                                            <div class="py-2 text-center">
-                                                <a href="javascript:void(0);" class="d-block fw-semibold">Download</a>
-                                            </div>
+                                        <div class="flex-shrink-0 align-self-start">
+                                            <div class="text-muted fs-13">09 Jan 2022, 11:12 AM</div>
                                         </div>
                                     </div>
+                                </button>
+                            </h2>
+                            <div ngbAccordionCollapse>
+                                <div ngbAccordionBody>
+                                    <ng-template>
+                                        <div>
+                                            <p>Hi,</p>
+                                            <p>Praesent dui ex, dapibus eget mauris ut, finibus vestibulum enim. Quisque arcu
+                                                leo, facilisis in fringilla id, luctus in tortor.
+                                            </p>
+                                            <p>Sed elementum turpis eu lorem interdum, sed porttitor eros commodo. Nam eu
+                                                venenatis tortor, id lacinia diam. Sed aliquam in dui et porta. Sed bibendum
+                                                orci non tincidunt ultrices.</p>
+                                            <p>Sincerly,</p>
+
+                                            <div class="d-flex gap-3">
+                                                <div class="border rounded avatar-xl h-auto">
+                                                    <img src="assets/images/small/img-2.jpg" alt="" class="img-fluid rouned-top">
+                                                    <div class="py-2 text-center">
+                                                        <a href="" class="d-block fw-semibold">Download</a>
+                                                    </div>
+                                                </div>
+                                                <div class="border rounded avatar-xl h-auto">
+                                                    <img src="assets/images/small/img-6.jpg" alt="" class="img-fluid rouned-top">
+                                                    <div class="py-2 text-center">
+                                                        <a href="" class="d-block fw-semibold">Download</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
                                 </div>
                             </div>
                         </div>
                         <div ngbAccordionItem id="static-2">
-                            <div ngbAccordionHeader class="accordion-header">
-                                <div class="accordion-header">
-                                    <a role="button" class="btn w-100 text-start p-0 bg-transparent shadow-none collapsed" data-bs-toggle="collapse" href="javascript:void(0)" aria-expanded="true" aria-controls="email-collapseTwo">
-                                        <div class="d-flex align-items-center text-muted">
-                                            <div class="flex-shrink-0 avatar-xs me-3">
-                                                <img src="assets/images//users/avatar-1.jpg" alt="" class="img-fluid rounded-circle">
-                                            </div>
-                                            <div class="flex-grow-1 overflow-hidden">
-                                                <h5 class="fs-14 text-truncate email-user-name-right mb-0">Anna Adame
-                                                </h5>
-                                                <div class="text-truncate fs-12">to: jackdavis&#64;email.com</div>
-                                            </div>
-                                            <div class="flex-shrink-0 align-self-start">
-                                                <div class="text-muted fs-12">09 Jan 2022, 02:15 PM</div>
-                                            </div>
+                            <h2 ngbAccordionHeader class="accordion-header">
+                                <button ngbAccordionButton role="button" class="btn w-100 text-start p-0 bg-transparent shadow-none collapsed" data-bs-toggle="collapse" href="javascript:void(0)" aria-expanded="true" aria-controls="email-collapseTwo">
+                                    <div class="d-flex align-items-center text-muted">
+                                        <div class="flex-shrink-0 avatar-xs me-3">
+                                            <img src="assets/images//users/avatar-1.jpg" alt="" class="img-fluid rounded-circle">
                                         </div>
-                                    </a>
-                                </div>
-                            </div>
+                                        <div class="flex-grow-1 overflow-hidden">
+                                            <h5 class="fs-15 text-truncate mb-0">Anna Adame</h5>
+                                            <div class="text-truncate fs-14">to: jackdavis&#64;email.com</div>
+                                        </div>
+                                        <div class="flex-shrink-0 align-self-start">
+                                            <div class="text-muted fs-13">09 Jan 2022, 02:15 PM</div>
+                                        </div>
+                                    </div>
+                                </button>
+                            </h2>
                             <div ngbAccordionCollapse>
-                                <div>
-                                    <p>Hi,</p>
-                                    <p>If several languages coalesce, the grammar of the resulting language is more
-                                        simple and regular than that of the individual.</p>
-                                    <p>Thank you</p>
+                                <div ngbAccordionBody>
+                                    <ng-template>
+                                        <div>
+                                            <p>Hi,</p>
+                                            <p>If several languages coalesce, the grammar of the resulting language is more
+                                                simple and regular than that of the individual.</p>
+                                            <p>Thank you</p>
+                                        </div>
+                                    </ng-template>
                                 </div>
                             </div>
                         </div>
                         <div ngbAccordionItem id="static-3">
-                            <div ngbAccordionHeader class="accordion-header">
+                            <h2 ngbAccordionHeader class="accordion-header">
                                 <div class="accordion-header">
-                                    <a role="button" class="btn w-100 text-start p-0 bg-transparent shadow-none" data-bs-toggle="collapse" href="javascript:void(0)" aria-expanded="true" aria-controls="email-collapseThree">
+                                    <button ngbAccordionButton role="button" class="btn w-100 text-start p-0 bg-transparent shadow-none" data-bs-toggle="collapse" href="javascript:void(0)" aria-expanded="true" aria-controls="email-collapseThree">
                                         <div class="d-flex align-items-center text-muted">
                                             <div class="flex-shrink-0 avatar-xs me-3">
                                                 <img src="{{singleData.img}}" alt="" class="img-fluid rounded-circle">
                                             </div>
                                             <div class="flex-grow-1 overflow-hidden">
-                                                <h5 class="fs-14 text-truncate mb-0">{{singleData.name}}</h5>
-                                                <div class="text-truncate fs-12">to: me</div>
+                                                <h5 class="fs-15 text-truncate mb-0">{{singleData.name}}</h5>
+                                                <div class="text-truncate fs-14">to: me</div>
                                             </div>
                                             <div class="flex-shrink-0 align-self-start">
-                                                <div class="text-muted fs-12">10 Jan 2022, 10:08 AM</div>
+                                                <div class="text-muted fs-13">10 Jan 2022, 10:08 AM</div>
                                             </div>
                                         </div>
-                                    </a>
+                                    </button>
                                 </div>
-                            </div>
+                            </h2>
                             <div ngbAccordionCollapse>
-                                <div>
-                                    <p>Hi,</p>
-                                    <p>Everyone realizes why a new common language would be desirable: one could refuse
-                                        to pay expensive translators. To achieve this, it would be necessary to have
-                                        uniform grammar pronunciation.</p>
-                                    <p>Thank you</p>
+                                <div ngbAccordionBody>
+                                    <ng-template>
+                                        <div>
+                                            <p>Hi,</p>
+                                            <p>Everyone realizes why a new common language would be desirable: one could refuse
+                                                to pay expensive translators. To achieve this, it would be necessary to have
+                                                uniform grammar pronunciation.</p>
+                                            <p>Thank you</p>
+                                        </div>
+                                    </ng-template>
                                 </div>
                             </div>
                         </div>
@@ -692,22 +664,22 @@
                 <input type="text" class="form-control email-compose-input" data-choices data-choices-limit="15" value="support@themesbrand.com" data-choices-removeItem placeholder="To">
                 <div class="position-absolute top-0 end-0">
                     <div class="d-flex">
-                        <button class="btn btn-link text-reset fw-semibold px-2" type="button" data-bs-toggle="collapse" data-bs-target="#CcRecipientsCollapse" aria-expanded="false" aria-controls="CcRecipientsCollapse" (click)="collapseCc.toggle()" [attr.aria-expanded]="!CcRecipientsCollapse" aria-controls="collapseExample">
+                        <button class="btn btn-link text-reset fw-semibold px-2" type="button" data-bs-toggle="collapse" data-bs-target="#CcRecipientsCollapse" aria-expanded="false" aria-controls="CcRecipientsCollapse">
                             Cc
                         </button>
-                        <button class="btn btn-link text-reset fw-semibold px-2" type="button" data-bs-toggle="collapse" data-bs-target="#BccRecipientsCollapse" aria-expanded="false" aria-controls="BccRecipientsCollapse" (click)="collapseBcc.toggle()" [attr.aria-expanded]="!BccRecipientsCollapse" aria-controls="collapseExample">
+                        <button class="btn btn-link text-reset fw-semibold px-2" type="button" data-bs-toggle="collapse" data-bs-target="#BccRecipientsCollapse" aria-expanded="false" aria-controls="BccRecipientsCollapse">
                             Bcc
                         </button>
                     </div>
                 </div>
             </div>
-            <div class="collapse" id="CcRecipientsCollapse" #collapseCc="ngbCollapse" [(ngbCollapse)]="CcRecipientsCollapse">
+            <div class="collapse" id="CcRecipientsCollapse">
                 <div class="mb-3">
                     <label>Cc:</label>
                     <input type="text" class="form-control" data-choices data-choices-limit="15" data-choices-removeItem placeholder="Cc recipients">
                 </div>
             </div>
-            <div class="collapse" id="BccRecipientsCollapse" #collapseBcc="ngbCollapse" [(ngbCollapse)]="BccRecipientsCollapse">
+            <div class="collapse" id="BccRecipientsCollapse">
                 <div class="mb-3">
                     <label>Bcc:</label>
                     <input type="text" class="form-control" data-choices data-choices-limit="15" data-choices-removeItem placeholder="Bcc recipients">

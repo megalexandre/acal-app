@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-basic',
@@ -12,8 +12,8 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
  */
 export class BasicComponent implements OnInit {
 
-   // Login passresetForm
-   passresetForm!: UntypedFormGroup;
+   // Login Form
+   passresetForm!: FormGroup;
    submitted = false;
    passwordField!: boolean;
    confirmField!: boolean;
@@ -22,15 +22,15 @@ export class BasicComponent implements OnInit {
    // set the current year
    year: number = new Date().getFullYear();
  
-   constructor(private formBuilder: UntypedFormBuilder) { }
+   constructor(private formBuilder: FormBuilder) { }
  
    ngOnInit(): void {
      /**
       * Form Validatyion
       */
       this.passresetForm = this.formBuilder.group({
-        password: ['', [Validators.required]],
-        cpassword: ['', [Validators.required]]
+       password: ['', [Validators.required]],
+       cpassword: ['', [Validators.required]]
      });
 
       // Password Validation set

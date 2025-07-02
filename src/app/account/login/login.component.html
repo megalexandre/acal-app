@@ -17,7 +17,7 @@
                 <div class="col-lg-12">
                     <div class="text-center mt-sm-5 mb-4 text-white-50">
                         <div>
-                            <a href="javascript:void(0);" class="d-inline-block auth-logo">
+                            <a routerLink="/" class="d-inline-block auth-logo">
                                 <img src="assets/images/logo-light.png" alt="" height="20">
                             </a>
                         </div>
@@ -42,16 +42,14 @@
                                     <div class="mb-3">
                                         <label class="form-label" for="username">Email</label>
                                         <input type="email" class="form-control" id="email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" placeholder="Enter email">
-                                        @if (submitted && f['email'].errors) {
+                                        @if(submitted && f['email'].errors){
                                         <div class="invalid-feedback">
                                             @if(f['email'].errors['required']){
                                             <div>Email is required</div>}
                                             @if(f['email'].errors['email']){
                                             <div>Email must be a valid email address
-                                            </div>
-                                            }
-                                        </div>
-                                        }
+                                            </div>}
+                                        </div>}
                                     </div>
 
                                     <div class="mb-3">
@@ -63,13 +61,12 @@
                                             <input [type]="fieldTextType ? 'text' : 'password'" class="form-control pe-5" placeholder="Enter password" id="password-input" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
                                             <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted" type="button" id="password-addon"><i class="mdi align-middle" [ngClass]="{'mdi-eye-off-outline': !fieldTextType, 'mdi-eye-outline': fieldTextType
                                           }" (click)="toggleFieldTextType()"></i></button>
-                                            @if (submitted && f['password'].errors) {
+                                            @if(submitted && f['password'].errors){
                                             <div class="invalid-feedback">
                                                 @if(f['password'].errors['required']){
                                                 <span>Password is required</span>
                                                 }
-                                            </div>
-                                            }
+                                            </div>}
                                         </div>
                                     </div>
 

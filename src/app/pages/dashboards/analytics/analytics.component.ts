@@ -23,7 +23,6 @@ export class AnalyticsComponent implements OnInit {
     basicHeatmapChart: any;
     simpleDonutChart: any;
     TopPages: any;
-    isRTL: any = true;
 
     constructor() {
     }
@@ -43,10 +42,10 @@ export class AnalyticsComponent implements OnInit {
         this.fetchData();
 
         // Chart Color Data Get Function
-        this._basicBarChart('["--vz-info", "--vz-info", "--vz-info", "--vz-info", "--vz-danger", "--vz-info", "--vz-info", "--vz-info", "--vz-info", "--vz-info"]');
-        this._basicColumnChart('["--vz-success", "--vz-light"]');
-        this._basicHeatmapChart('["--vz-success", "--vz-info"]');
-        this._simpleDonutChart('["--vz-primary", "--vz-warning", "--vz-info"]');
+        this._basicBarChart('["--vz-primary", "--vz-primary", "--vz-primary", "--vz-primary", "--vz-primary-rgb, 0.45", "--vz-primary", "--vz-primary", "--vz-primary", "--vz-primary", "--vz-primary"]');
+        this._basicColumnChart('["--vz-primary", "--vz-light"]');
+        this._basicHeatmapChart('["--vz-info", "--vz-primary"]');
+        this._simpleDonutChart('["--vz-primary", "--vz-primary-rgb, 0.60", "--vz-primary-rgb, 0.75"]');
     }
 
     num: number = 0;
@@ -55,7 +54,7 @@ export class AnalyticsComponent implements OnInit {
         useEasing: true,
         duration: 2,
         decimalPlaces: 2,
-      };
+    };
 
     // Chart Colors Set
     private getChartColorsArray(colors: any) {
@@ -83,8 +82,8 @@ export class AnalyticsComponent implements OnInit {
     }
 
     /**
-   * Series Data
-   */
+     * Series Data
+     */
     private generateData(count: number, yrange: { max: number; min: number; }) {
         var i = 0;
         var series = [];
@@ -103,8 +102,8 @@ export class AnalyticsComponent implements OnInit {
     }
 
     /**
-    * Basic Bar Chart data
-    */
+   * Basic Bar Chart
+   */
     selectvalue(x: any) {
         if (x == 'all') {
             this.basicBarChart.series = [{
@@ -126,9 +125,6 @@ export class AnalyticsComponent implements OnInit {
         }
     }
 
-    /**
-   * Basic Bar Chart
-   */
     private _basicBarChart(colors: any) {
         colors = this.getChartColorsArray(colors);
         this.basicBarChart = {
@@ -138,8 +134,7 @@ export class AnalyticsComponent implements OnInit {
             }],
             chart: {
                 type: 'bar',
-                height: 400,
-                direction: 'rtl',
+                height: 436,
                 toolbar: {
                     show: false,
                 }
@@ -176,129 +171,9 @@ export class AnalyticsComponent implements OnInit {
         };
     }
 
-
     /**
-    * Basic Column Chart data
-    */
-    setcolumnchartvalue(x: any) {
-        if (x == 'all') {
-            this.basicColumnChart.series = [{
-                name: 'Last Year',
-                data: [36.2, 22.4, 38.2, 30.5, 26.4, 30.4, 20.2, 29.6, 10.9, 36.2, 22.4, 38.2]
-            }, {
-                name: 'Current Year',
-                data: [36.2, 22.4, 38.2, 30.5, 26.4, 30.4, 20.2, 29.6, 10.9, 36.2, 22.4, 38.2]
-            }]
-        }
-        if (x == '1M') {
-            this.basicColumnChart.series = [{
-                name: 'Last Year',
-                data: [25.3, 12.5, 20.2, 18.5, 40.4, 25.4, 15.8, 22.3, 19.2, 25.3, 12.5, 20.2]
-            }, {
-                name: 'Current Year',
-                data: [25.3, 12.5, 20.2, 18.5, 40.4, 25.4, 15.8, 22.3, 19.2, 25.3, 12.5, 20.2]
-            }]
-        }
-        if (x == '6M') {
-            this.basicColumnChart.series = [{
-                name: 'Last Year',
-                data: [36.2, 22.4, 38.2, 30.5, 26.4, 30.4, 20.2, 29.6, 10.9, 36.2, 22.4, 38.2]
-            }, {
-                name: 'Current Year',
-                data: [25.3, 12.5, 20.2, 18.5, 40.4, 25.4, 15.8, 22.3, 19.2, 25.3, 12.5, 20.2]
-            }]
-        }
-        if (x == '1Y') {
-            this.basicColumnChart.series = [{
-                name: 'Last Year',
-                data: [25.3, 12.5, 20.2, 18.5, 40.4, 25.4, 15.8, 22.3, 19.2, 25.3, 12.5, 20.2]
-            }, {
-                name: 'Current Year',
-                data: [36.2, 22.4, 38.2, 30.5, 26.4, 30.4, 20.2, 29.6, 10.9, 36.2, 22.4, 38.2]
-            }]
-        }
-    }
-
-    /**
-   * Basic Column Charts
+   * Basic Heatmap Chart
    */
-    private _basicColumnChart(colors: any) {
-        colors = this.getChartColorsArray(colors);
-        this.basicColumnChart = {
-            series: [{
-                name: 'Last Year',
-                data: [36.2, 22.4, 38.2, 30.5, 26.4, 30.4, 20.2, 29.6, 10.9, 36.2, 22.4, 38.2]
-            }, {
-                name: 'Current Year',
-                data: [36.2, 22.4, 38.2, 30.5, 26.4, 30.4, 20.2, 29.6, 10.9, 36.2, 22.4, 38.2]
-            }],
-            chart: {
-                type: 'bar',
-                height: 306,
-                stacked: true,
-                toolbar: {
-                    show: false,
-                }
-            },
-            plotOptions: {
-                bar: {
-                    horizontal: false,
-                    columnWidth: '20%',
-                    borderRadius: 6,
-                },
-            },
-            dataLabels: {
-                enabled: false,
-            },
-            legend: {
-                show: true,
-                position: 'bottom',
-                horizontalAlign: 'center',
-                fontWeight: 400,
-                fontSize: '8px',
-                offsetX: 0,
-                offsetY: 0,
-                markers: {
-                    width: 9,
-                    height: 9,
-                    radius: 4,
-                },
-            },
-            stroke: {
-                show: true,
-                width: 2,
-                colors: ['transparent']
-            },
-            grid: {
-                show: false,
-            },
-            colors: colors,
-            xaxis: {
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                axisTicks: {
-                    show: false,
-                },
-            },
-            yaxis: {
-                show: false
-            },
-            fill: {
-                opacity: 1
-
-            },
-            tooltip: {
-                y: {
-                    formatter: function (val: any) {
-                        return "$ " + val + " thousands"
-                    }
-                }
-            }
-        };
-    }
-
-    /**
-  * Basic Heatmap Chart
-  */
     private _basicHeatmapChart(colors: any) {
         colors = this.getChartColorsArray(colors);
         this.basicHeatmapChart = {
@@ -413,8 +288,139 @@ export class AnalyticsComponent implements OnInit {
     }
 
     /**
- * Simple Donut Chart
- */
+   * Basic Column Charts
+   */
+    setcolumnchartvalue(x: any) {
+        if (x == 'all') {
+            this.basicColumnChart.series = [{
+                name: 'Last Year',
+                data: [36.2, 22.4, 38.2, 30.5, 26.4, 30.4, 20.2, 29.6, 10.9, 36.2, 22.4, 38.2]
+            }, {
+                name: 'Current Year',
+                data: [36.2, 22.4, 38.2, 30.5, 26.4, 30.4, 20.2, 29.6, 10.9, 36.2, 22.4, 38.2]
+            }]
+        }
+        if (x == '1M') {
+            this.basicColumnChart.series = [{
+                name: 'Last Year',
+                data: [25.3, 12.5, 20.2, 18.5, 40.4, 25.4, 15.8, 22.3, 19.2, 25.3, 12.5, 20.2]
+            }, {
+                name: 'Current Year',
+                data: [25.3, 12.5, 20.2, 18.5, 40.4, 25.4, 15.8, 22.3, 19.2, 25.3, 12.5, 20.2]
+            }]
+        }
+        if (x == '6M') {
+            this.basicColumnChart.series = [{
+                name: 'Last Year',
+                data: [36.2, 22.4, 38.2, 30.5, 26.4, 30.4, 20.2, 29.6, 10.9, 36.2, 22.4, 38.2]
+            }, {
+                name: 'Current Year',
+                data: [25.3, 12.5, 20.2, 18.5, 40.4, 25.4, 15.8, 22.3, 19.2, 25.3, 12.5, 20.2]
+            }]
+        }
+        if (x == '1Y') {
+            this.basicColumnChart.series = [{
+                name: 'Last Year',
+                data: [25.3, 12.5, 20.2, 18.5, 40.4, 25.4, 15.8, 22.3, 19.2, 25.3, 12.5, 20.2]
+            }, {
+                name: 'Current Year',
+                data: [36.2, 22.4, 38.2, 30.5, 26.4, 30.4, 20.2, 29.6, 10.9, 36.2, 22.4, 38.2]
+            }]
+        }
+    }
+
+    private _basicColumnChart(colors: any) {
+        colors = this.getChartColorsArray(colors);
+        this.basicColumnChart = {
+            series: [{
+                name: 'Last Year',
+                data: [36.2, 22.4, 38.2, 30.5, 26.4, 30.4, 20.2, 29.6, 10.9, 36.2, 22.4, 38.2]
+            }, {
+                name: 'Current Year',
+                data: [36.2, 22.4, 38.2, 30.5, 26.4, 30.4, 20.2, 29.6, 10.9, 36.2, 22.4, 38.2]
+            }],
+            chart: {
+                type: 'bar',
+                height: 306,
+                stacked: true,
+                toolbar: {
+                    show: false,
+                }
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '20%',
+                    borderRadius: 6,
+                },
+            },
+            dataLabels: {
+                enabled: false,
+            },
+            legend: {
+                show: true,
+                position: 'bottom',
+                horizontalAlign: 'center',
+                fontWeight: 400,
+                fontSize: '8px',
+                offsetX: 0,
+                offsetY: 0,
+                markers: {
+                    width: 9,
+                    height: 9,
+                    radius: 4,
+                },
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+            },
+            grid: {
+                show: false,
+            },
+            colors: colors,
+            xaxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                axisTicks: {
+                    show: false,
+                },
+            },
+            yaxis: {
+                show: false
+            },
+            fill: {
+                opacity: 1
+
+            },
+            tooltip: {
+                y: {
+                    formatter: function (val: any) {
+                        return "$ " + val + " thousands"
+                    }
+                }
+            }
+        };
+    }
+
+    /**
+   * Simple Donut Chart
+   */
+    setdevicevalue(value: any) {
+        if (value == 'today') {
+            this.simpleDonutChart.series = [78.56, 105.02, 42.89]
+        }
+        if (value == 'last_week') {
+            this.simpleDonutChart.series = [48.56, 95.02, 52.89]
+        }
+        if (value == 'last_month') {
+            this.simpleDonutChart.series = [28.56, 58.02, 92.89]
+        }
+        if (value == 'current_year') {
+            this.simpleDonutChart.series = [18.56, 105.02, 102.89]
+        }
+    }
+
     private _simpleDonutChart(colors: any) {
         colors = this.getChartColorsArray(colors);
         this.simpleDonutChart = {
@@ -495,5 +501,6 @@ export class AnalyticsComponent implements OnInit {
         this.statData = analyticstatData;
         this.TopPages = analyticTopPages;
     }
+
 
 }

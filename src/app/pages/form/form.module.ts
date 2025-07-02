@@ -83,10 +83,10 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     CdkStepperModule,
     NgStepperModule,
     CKEditorModule,
+    DropzoneModule,
     AutocompleteLibModule,
     FormRoutingModule,
-    SharedModule,
-    DropzoneModule,
+    SharedModule
   ],
   providers: [
     provideNgxMask(),

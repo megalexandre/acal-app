@@ -26,7 +26,6 @@ import { RatingsComponent } from './ratings/ratings.component';
 import { HighlightComponent } from './highlight/highlight.component';
 import { ScrollspyComponent } from './scrollspy/scrollspy.component';
 
-
 @NgModule({
   declarations: [
     SweetalertsComponent,
@@ -35,7 +34,7 @@ import { ScrollspyComponent } from './scrollspy/scrollspy.component';
     SwipersComponent,
     RatingsComponent,
     HighlightComponent,
-    ScrollspyComponent,
+    ScrollspyComponent
   ],
   imports: [
     CommonModule,
@@ -43,8 +42,8 @@ import { ScrollspyComponent } from './scrollspy/scrollspy.component';
     NgbRatingModule,
     SimplebarAngularModule,
     AsvanceUiRoutingModule,
-    SlickCarouselModule,
     SharedModule,
+    SlickCarouselModule,
     ScrollToModule.forRoot()
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

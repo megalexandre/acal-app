@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { BitcoinChart, cryptoBinanceChart, cryptoBitcoinChart, cryptoCurrencies, cryptoDashChart, cryptoEatherreumChart, cryptoNeoChart, cryptoNewsFeed, cryptoTetherChart, cryptoTopPerformers, cryptolitecoinChart, cryptostatData, litecoinChart, statData } from 'src/app/core/data';
 
-
 @Component({
   selector: 'app-crypto',
   templateUrl: './crypto.component.html',
@@ -47,8 +46,8 @@ export class CryptoComponent implements OnInit {
     this.fetchData();
 
     // Chart Color Data Get Function
-    this._portfolioChart('["--vz-primary", "--vz-info", "--vz-warning", "--vz-success"]');
-    this._marketGraphChart('["--vz-success", "--vz-danger"]');
+    this._portfolioChart('["--vz-primary", "--vz-primary-rgb, 0.85", "--vz-primary-rgb, 0.65", "--vz-primary-rgb, 0.50"]');
+    this._marketGraphChart('["--vz-success-rgb, 0.75", "--vz-danger-rgb, 0.75"]');
   }
 
   // Chart Colors Set
@@ -76,6 +75,9 @@ export class CryptoComponent implements OnInit {
     });
   }
 
+  /**
+ * My Portfolio Chart
+ */
   getSelectedDropdown(value: any) {
     if (value == 'BTC') {
       this.portfolioChart.series = [19405, 40552, 15824, 30635]
@@ -88,9 +90,6 @@ export class CryptoComponent implements OnInit {
     }
   }
 
-  /**
- * My Portfolio Chart
- */
   private _portfolioChart(colors: any) {
     colors = this.getChartColorsArray(colors);
     this.portfolioChart = {
@@ -98,7 +97,7 @@ export class CryptoComponent implements OnInit {
       labels: ["Bitcoin", "Ethereum", "Litecoin", "Dash"],
       chart: {
         type: "donut",
-        height: 220,
+        height: 210,
       },
       plotOptions: {
         pie: {
@@ -154,8 +153,6 @@ export class CryptoComponent implements OnInit {
       colors: colors
     };
   }
-
-
 
   /**
  * Market Graph Chart
@@ -408,7 +405,7 @@ export class CryptoComponent implements OnInit {
       }],
       chart: {
         type: 'candlestick',
-        height: 350,
+        height: 294,
         toolbar: {
           show: false,
         }
@@ -439,6 +436,7 @@ export class CryptoComponent implements OnInit {
     };
   }
 
+
   /**
    * Fetches the data
    */
@@ -466,5 +464,6 @@ export class CryptoComponent implements OnInit {
     autoplay: false,
     arrows: false
   };
+
 
 }

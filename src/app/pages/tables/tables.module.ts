@@ -4,11 +4,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbDropdownModule, NgbPaginationModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
-// FlatPicker
-import { FlatpickrModule } from 'angularx-flatpickr';
-
 // Simplebar
 import { SimplebarAngularModule } from 'simplebar-angular';
+
+// Ng Search 
+import { NgPipesModule } from 'ngx-pipes';
+
+// FlatPicker
+import { FlatpickrModule } from 'angularx-flatpickr';
 
 // Load Icon
 import { defineElement } from "@lordicon/element";
@@ -20,18 +23,14 @@ import { SharedModule } from '../../shared/shared.module';
 import { BasicComponent } from './basic/basic.component';
 import { GridjsComponent } from './gridjs/gridjs.component';
 import { ListjsComponent } from './listjs/listjs.component';
+import { NgbdOrdersSortableHeader } from './listjs/listjs-sortable.directive'
 
-// Ng Search 
-import { NgPipesModule } from 'ngx-pipes';
-
-// Sorting page
-import { NgbdListSortableHeader } from './listjs/listjs-sortable.directive'
 
 @NgModule({ declarations: [
         BasicComponent,
         GridjsComponent,
         ListjsComponent,
-        NgbdListSortableHeader
+        NgbdOrdersSortableHeader
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA], imports: [CommonModule,
         FormsModule,

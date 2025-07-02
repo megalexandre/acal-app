@@ -17,7 +17,7 @@
                     </div>
                     <div>
                         <div class="avatar-sm flex-shrink-0">
-                            <span class="avatar-title bg-info-subtle text-info rounded-circle fs-4">
+                            <span class="avatar-title bg-primary-subtle text-primary rounded-circle fs-4">
                                 <i class="ri-ticket-2-line"></i>
                             </span>
                         </div>
@@ -40,7 +40,7 @@
                     </div>
                     <div>
                         <div class="avatar-sm flex-shrink-0">
-                            <span class="avatar-title bg-info-subtle text-info rounded-circle fs-4">
+                            <span class="avatar-title bg-primary-subtle text-primary rounded-circle fs-4">
                                 <i class="mdi mdi-timer-sand"></i>
                             </span>
                         </div>
@@ -63,7 +63,7 @@
                     </div>
                     <div>
                         <div class="avatar-sm flex-shrink-0">
-                            <span class="avatar-title bg-info-subtle text-info rounded-circle fs-4">
+                            <span class="avatar-title bg-primary-subtle text-primary rounded-circle fs-4">
                                 <i class="ri-shopping-bag-line"></i>
                             </span>
                         </div>
@@ -86,7 +86,7 @@
                     </div>
                     <div>
                         <div class="avatar-sm flex-shrink-0">
-                            <span class="avatar-title bg-info-subtle text-info rounded-circle fs-4">
+                            <span class="avatar-title bg-primary-subtle text-primary rounded-circle fs-4">
                                 <i class="ri-delete-bin-line"></i>
                             </span>
                         </div>
@@ -105,19 +105,18 @@
             <div class="card-header border-0">
                 <div class="d-flex align-items-center">
                     <h5 class="card-title mb-0 flex-grow-1">Tickets</h5>
-                    <div class="flex-shrink-0  hstack gap-2">
-                        <button class="btn btn-danger add-btn" data-bs-toggle="modal" data-bs-target="#showModal" (click)="openModal(content)"><i class="ri-add-line align-bottom me-1"></i> Create
+                    <div class="flex-shrink-0 d-flex gap-1">
+                        <button class="btn btn-primary add-btn" data-bs-toggle="modal" data-bs-target="#showModal" (click)="openModal(content)"><i class="ri-add-line align-bottom me-1"></i> Create
                             Tickets</button>
-                        <button class="btn btn-soft-danger" id="remove-actions" style="display: none" (click)="deleteMultiple(deleteModel)"><i class="ri-delete-bin-2-line"></i></button>
+                        <button class="btn btn-soft-secondary" id="remove-actions" style="display: none" (click)="deleteMultiple(deleteModel)"><i class="ri-delete-bin-2-line"></i></button>
                     </div>
                 </div>
             </div>
             <div class="card-body border border-dashed border-end-0 border-start-0">
-
                 <div class="row g-3">
                     <div class="col-xxl-5 col-sm-12">
                         <div class="search-box">
-                            <input type="text" name="searchTerm" class="form-control search bg-light border-light" placeholder="Search for ticket details or something..." [(ngModel)]="searchTerm" (ngModelChange)="performSearch()">
+                            <input type="text" name="searchTerm" class="form-control search bg-light border-light" placeholder="Search for ticket details or something..." [(ngModel)]="searchTerm">
                             <i class="ri-search-line search-icon"></i>
                         </div>
                     </div>
@@ -130,8 +129,8 @@
 
                     <div class="col-xxl-3 col-sm-4">
                         <div class="input-light">
-                            <select class="form-control" data-choices data-choices-search-false name="choices-single-default" id="idStatus" [(ngModel)]="status" (ngModelChange)="statusFilter()">
-                                <option value="" selected>Select Status</option>
+                            <select class="form-control bg-light border-light" data-choices data-choices-search-false name="choices-single-default" id="idStatus" [(ngModel)]="status">
+                                <option value="" selected>All</option>
                                 <option value="Open">Open</option>
                                 <option value="Inprogress">Inprogress</option>
                                 <option value="Closed">Closed</option>
@@ -139,22 +138,22 @@
                             </select>
                         </div>
                     </div>
+                    <!--end col-->
                     <div class="col-xxl-1 col-sm-4">
-                        <button type="button" class="btn btn-primary w-100" (click)="SearchData();"> <i class="ri-equalizer-fill mx-1 align-bottom"></i>
+                        <button type="button" class="btn btn-primary w-100"> <i class="ri-equalizer-fill me-1 align-bottom"></i>
                             Filters
                         </button>
                     </div>
                     <!--end col-->
                 </div>
                 <!--end row-->
-
             </div>
             <!--end card-body-->
             <div class="card-body">
                 <div class="table-responsive table-card mb-3">
                     <table class="table align-middle table-nowrap mb-0" id="ticketTable">
-                        <thead>
-                            <tr>
+                        <thead class="table-light">
+                            <tr class="text-uppercase text-muted fs-13">
                                 <th scope="col" style="width: 40px;">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="checkAll" value="option" [(ngModel)]="masterSelected" (change)="checkUncheckAll($event)">
@@ -171,8 +170,8 @@
                                 <th class="sort">Action</th>
                             </tr>
                         </thead>
-                        <tbody class="list form-check-all" id="ticket-list-data">
-                            @for ( data of lists; track $index) {
+                        <tbody class="list form-check-all">
+                            @for (data of lists; track $index) {
                             <tr id="t_{{data._id}}">
                                 <th scope="row">
                                     <div class="form-check">
@@ -206,22 +205,20 @@
                                             <i class="ri-more-fill align-middle"></i>
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
-                                            <li><a class="dropdown-item" routerLink="/tickets/details"><i class="ri-eye-fill align-bottom me-2 text- float-start"></i>
-                                                    View</a>
+                                            <li><a class="dropdown-item" routerLink="/tickets/details"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a>
                                             </li>
-                                            <li><a class="dropdown-item edit-item-btn" data-bs-toggle="modal" (click)="editDataGet($index,content)"><i class="ri-pencil-fill align-bottom me-2 text-muted float-start"></i>
+                                            <li><a class="dropdown-item edit-item-btn" data-bs-toggle="modal" (click)="editDataGet($index,content)"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i>
                                                     Edit</a></li>
                                             <li>
                                                 <a class="dropdown-item remove-item-btn" data-bs-toggle="modal" (click)="confirm(deleteModel,data._id)">
-                                                    <i class="ri-delete-bin-fill align-bottom me-2 text-muted float-start"></i>
+                                                    <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
                                                     Delete
                                                 </a>
                                             </li>
                                         </ul>
                                     </div>
                                 </td>
-                            </tr>
-                            }
+                            </tr>}
                         </tbody>
                     </table>
                 </div>
@@ -246,7 +243,7 @@
 <!--end row-->
 
 <ng-template #content role="document" let-modal>
-    <div class="modal-header p-3 bg-info-subtle">
+    <div class="modal-header p-3 bg-primary-subtle">
         <h5 class="modal-title" id="exampleModalLabel">Add Ticket</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal" (click)="modal.dismiss('Cross click')"></button>
     </div>
@@ -268,8 +265,7 @@
                             @if(form['title'].errors['required']){
                             <div>Title is required</div>
                             }
-                        </div>
-                        }
+                        </div>}
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -279,10 +275,8 @@
                         @if(submitted && form['client'].errors){
                         <div class="invalid-feedback" align="left">
                             @if(form['client'].errors['required']){
-                            <div>Client is required</div>
-                            }
-                        </div>
-                        }
+                            <div>Client is required</div>}
+                        </div>}
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -292,10 +286,8 @@
                         @if(submitted && form['assigned'].errors){
                         <div class="invalid-feedback" align="left">
                             @if(form['assigned'].errors['required']){
-                            <div>Assigned To is required</div>
-                            }
-                        </div>
-                        }
+                            <div>Assigned To is required</div>}
+                        </div>}
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -304,10 +296,8 @@
                     @if(submitted && form['create'].errors){
                     <div class="invalid-feedback" align="left">
                         @if(form['create'].errors['required']){
-                        <div>Create Date To is required</div>
-                        }
-                    </div>
-                    }
+                        <div>Create Date To is required</div>}
+                    </div>}
                 </div>
                 <div class="col-lg-6">
                     <label for="duedate-field" class="form-label">Due Date</label>
@@ -317,8 +307,7 @@
                         @if(form['due'].errors['required']){
                         <div>Due Date To is required</div>
                         }
-                    </div>
-                    }
+                    </div>}
                 </div>
                 <div class="col-lg-6">
                     <label for="ticket-status" class="form-label">Status</label>
@@ -332,10 +321,8 @@
                     @if(submitted && form['status'].errors){
                     <div class="invalid-feedback" align="left">
                         @if(form['status'].errors['required']){
-                        <div>Status To is required</div>
-                        }
-                    </div>
-                    }
+                        <div>Status To is required</div>}
+                    </div>}
                 </div>
                 <div class="col-lg-6">
                     <label for="priority-field" class="form-label">Priority</label>
@@ -348,10 +335,8 @@
                     @if(submitted && form['priority'].errors){
                     <div class="invalid-feedback" align="left">
                         @if(form['priority'].errors['required']){
-                        <div>Priority To is required</div>
-                        }
-                    </div>
-                    }
+                        <div>Priority To is required</div>}
+                    </div>}
                 </div>
             </div>
 
@@ -381,7 +366,7 @@
                 </div>
             </div>
             <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-                <button class="btn btn-link link-success fw-medium text-decoration-none" id="deleteRecord-close" data-bs-dismiss="modal" (click)="modal.close('Close click')"><i class="ri-close-line me-1 align-middle"></i> Close</button>
+                <button class="btn btn-link link-success fw-medium text-decoration-none" data-bs-dismiss="modal" (click)="modal.close('Close click')" id="deleteRecord-close"><i class="ri-close-line me-1 align-middle"></i> Close</button>
                 <button type="button" class="btn w-sm btn-danger " id="delete-product" (click)="deleteData(deleteId)" (click)="modal.close('Close click')">Yes, Delete It!</button>
             </div>
         </div>

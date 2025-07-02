@@ -20,11 +20,12 @@
                 <div class="d-flex align-items-end justify-content-between mt-4">
                     <div>
                         <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span [countUp]="559.25" class="counter-value" [options]="option"></span>k</h4>
-                        <span class="badge bg-warning me-1">2,258</span> <span class="text-muted"> Invoices sent</span>
+                        <span class="badge bg-secondary me-1">2,258</span> <span class="text-muted"> Invoices
+                            sent</span>
                     </div>
                     <div class="avatar-sm flex-shrink-0">
                         <span class="avatar-title bg-light rounded fs-3">
-                            <i-feather name="file-text" class="text-success icon-dual-success feather-icon-align">
+                            <i-feather name="file-text" class="text-primary icon-dual-primary feather-icon-align">
                             </i-feather>
                         </span>
                     </div>
@@ -50,12 +51,12 @@
                 <div class="d-flex align-items-end justify-content-between mt-4">
                     <div>
                         <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span [countUp]="409.66" class="counter-value" [options]="option"></span>k</h4>
-                        <span class="badge bg-warning me-1">1,958</span> <span class="text-muted"> Paid by
+                        <span class="badge bg-secondary me-1">1,958</span> <span class="text-muted"> Paid by
                             clients</span>
                     </div>
                     <div class="avatar-sm flex-shrink-0">
                         <span class="avatar-title bg-light rounded fs-3">
-                            <i-feather name="check-square" class="text-success icon-dual-success feather-icon-align">
+                            <i-feather name="check-square" class="text-primary icon-dual-primary feather-icon-align">
                             </i-feather>
                         </span>
                     </div>
@@ -81,12 +82,12 @@
                 <div class="d-flex align-items-end justify-content-between mt-4">
                     <div>
                         <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span [countUp]="136.98" class="counter-value" [options]="option"></span>k</h4>
-                        <span class="badge bg-warning me-1">338</span> <span class="text-muted"> Unpaid by
+                        <span class="badge bg-secondary me-1">338</span> <span class="text-muted"> Unpaid by
                             clients</span>
                     </div>
                     <div class="avatar-sm flex-shrink-0">
                         <span class="avatar-title bg-light rounded fs-3">
-                            <i-feather name="clock" class="text-success icon-dual-success feather-icon-align">
+                            <i-feather name="clock" class="text-primary icon-dual-primary feather-icon-align">
                             </i-feather>
                         </span>
                     </div>
@@ -112,12 +113,12 @@
                 <div class="d-flex align-items-end justify-content-between mt-4">
                     <div>
                         <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span [countUp]="84.20" class="counter-value" [options]="option"></span>k</h4>
-                        <span class="badge bg-warning me-1">502</span> <span class="text-muted"> Cancelled by
+                        <span class="badge bg-primary me-1">502</span> <span class="text-muted"> Cancelled by
                             clients</span>
                     </div>
                     <div class="avatar-sm flex-shrink-0">
                         <span class="avatar-title bg-light rounded fs-3">
-                            <i-feather name="x-octagon" class="text-success icon-dual-success feather-icon-align">
+                            <i-feather name="x-octagon" class="text-primary icon-dual-primary feather-icon-align">
                             </i-feather>
                         </span>
                     </div>
@@ -133,9 +134,9 @@
             <div class="card-header border-0">
                 <div class="d-flex align-items-center">
                     <h5 class="card-title mb-0 flex-grow-1">Invoices</h5>
-                    <div class="flex-shrink-0 d-flex gap-2 flex-wrap">
+                    <div class="flex-shrink-0 d-flex gap-1">
                         <button class="btn btn-primary" id="remove-actions" style="display: none" (click)="deleteMultiple(deleteModel)"><i class="ri-delete-bin-2-line"></i></button>
-                        <a routerLink="/invoices/create" class="btn btn-danger"><i class="ri-add-line align-bottom me-1"></i> Create Invoice</a>
+                        <a routerLink="/invoices/create" class="btn btn-soft-primary"><i class="ri-add-line align-bottom me-1"></i> Create Invoice</a>
                     </div>
                 </div>
             </div>
@@ -143,19 +144,19 @@
                 <div class="row g-3">
                     <div class="col-xxl-5 col-sm-12">
                         <div class="search-box">
-                            <input type="text" name="searchTerm" class="form-control search bg-light border-light" placeholder="Search for customer, email, country, status or something..." [(ngModel)]="searchTerm" (ngModelChange)="performSearch()">
+                            <input type="text" name="searchTerm" class="form-control search bg-light border-light" placeholder="Search for customer, email, country, status or something..." [(ngModel)]="searchTerm">
                             <i class="ri-search-line search-icon"></i>
                         </div>
                     </div>
                     <!--end col-->
                     <div class="col-xxl-3 col-sm-4">
-                        <input class="form-control bg-light border-light" type="text" mwlFlatpickr [altInput]="true" [convertModelValue]="true" placeholder="Select date" id="isDate" [(ngModel)]="date" mode="range">
+                        <input class="form-control bg-light border-light" type="text" mwlFlatpickr [altInput]="true" [convertModelValue]="true" placeholder="Select date" mode="range" [(ngModel)]="date">
                     </div>
                     <!--end col-->
                     <div class="col-xxl-3 col-sm-4">
                         <div class="input-light">
-                            <select class="form-control bg-light border-light" data-choices data-choices-search-false name="choices-single-default" id="idStatus" [(ngModel)]="status" (ngModelChange)="statusFilter()">
-                                <option value="" selected>Select Status</option>
+                            <select class="form-control bg-light border-light" data-choices data-choices-search-false name="choices-single-default" id="idStatus" [(ngModel)]="status">
+                                <option value="">Status</option>
                                 <option value="Unpaid">Unpaid</option>
                                 <option value="Paid">Paid</option>
                                 <option value="Cancel">Cancel</option>
@@ -166,7 +167,7 @@
                     <!--end col-->
 
                     <div class="col-xxl-1 col-sm-4">
-                        <button type="button" class="btn btn-primary w-100" (click)="SearchData();">
+                        <button type="button" class="btn btn-primary w-100">
                             <i class="ri-equalizer-fill me-1 align-bottom"></i> Filters
                         </button>
                     </div>
@@ -185,7 +186,7 @@
                                             <input class="form-check-input" type="checkbox" id="checkAll" value="option" [(ngModel)]="masterSelected" (change)="checkUncheckAll($event)">
                                         </div>
                                     </th>
-                                    <th class="sort text-uppercase">ID</th>
+                                    <th class="sort text-uppercase" (click)="onSort('')">ID</th>
                                     <th class="sort text-uppercase" (click)="onSort('name')">
                                         Customer
                                     </th>
@@ -212,17 +213,16 @@
                                             <input class="form-check-input" type="checkbox" name="checkAll" value="{{data._id}}" [(ngModel)]="data.state" (change)="onCheckboxChange($event)">
                                         </div>
                                     </th>
-                                    <td>
-                                        <ngb-highlight [result]="data.invoiceId" [term]="searchTerm">
-                                        </ngb-highlight>
-                                    </td>
+                                    <td><a routerLink="/invoices/details">
+                                            <ngb-highlight [result]="data.invoiceId" [term]="searchTerm">
+                                            </ngb-highlight>
+                                        </a></td>
                                     <td class="customer_name">
                                         @if(data.img){
                                         <div class="d-flex align-items-center">
                                             <img src="assets/images/users/{{data.img}}" class="avatar-xs rounded-circle me-2" alt="">
                                             {{data.name}}
-                                        </div>
-                                        }@else(){
+                                        </div>}@else{
                                         <div class="d-flex align-items-center">
                                             <div class="flex-shrink-0 avatar-xs me-2">
                                                 <div class="avatar-title bg-success-subtle text-success rounded-circle fs-13">
@@ -230,8 +230,7 @@
                                                 </div>
                                             </div>
                                             {{data.name}}
-                                        </div>
-                                        }
+                                        </div>}
                                     </td>
                                     <td>
                                         <ngb-highlight [result]="data.email" [term]="searchTerm">
@@ -246,7 +245,7 @@
                                         <ngb-highlight [result]="data.amount" [term]="searchTerm">
                                         </ngb-highlight>
                                     </td>
-                                    <td class="status"><span class="badge text-uppercase" [ngClass]=" { 'bg-success-subtle text-success': data.status === 'Paid', 'bg-warning-subtle text-warning': data.status === 'Unpaid', 'bg-primary-subtle text-primary': data.status === 'Refund', 'bg-danger-subtle text-danger': data.status === 'Cancel'}">{{data.status}}</span>
+                                    <td class="status"><span class="badge text-uppercase" [ngClass]=" { 'bg-success-subtle text-success': data.status === 'Paid', 'bg-info-subtle text-info': data.status === 'Active', 'bg-warning-subtle text-warning': data.status === 'Unpaid', 'bg-primary-subtle text-primary': data.status === 'Refund', 'bg-danger-subtle text-danger': data.status === 'Cancel'}">{{data.status}}</span>
                                     </td>
                                     <td>
                                         <div class="dropdown" ngbDropdown>
@@ -314,7 +313,7 @@
                 </div>
             </div>
             <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-                <button class="btn btn-link link-success fw-medium text-decoration-none" data-bs-dismiss="modal" id="deleteRecord-close" (click)="modal.close('Close click')"><i class="ri-close-line me-1 align-middle"></i> Close</button>
+                <button class="btn btn-link link-success fw-medium text-decoration-none" data-bs-dismiss="modal" (click)="modal.close('Close click')" id="deleteRecord-close"><i class="ri-close-line me-1 align-middle"></i> Close</button>
                 <button type="button" class="btn w-sm btn-danger " id="delete-product" (click)="deleteData(deleteId)" (click)="modal.close('Close click')">Yes, Delete It!</button>
             </div>
         </div>

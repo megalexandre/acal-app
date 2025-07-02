@@ -16,4 +16,5 @@ export interface ChartType {
     grid?: any;
     title?: any;
     responsive?: any;
+    desciption?: any
 }

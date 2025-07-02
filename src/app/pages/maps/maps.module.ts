@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 // Google Map
 import { GoogleMapsModule } from '@angular/google-maps';
-
 // Leaflet Map
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 

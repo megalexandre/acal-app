@@ -12,8 +12,8 @@ const AUTH_API = GlobalComponent.AUTH_API;
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-  
+};
+
 
 @Injectable({ providedIn: 'root' })
 
@@ -31,14 +31,14 @@ export class AuthenticationService {
     constructor(private http: HttpClient, private store: Store) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(sessionStorage.getItem('currentUser')!));
         // this.currentUser = this.currentUserSubject.asObservable();
-     }
+    }
 
     /**
      * Performs the register
      * @param email email
      * @param password password
      */
-    register(email: string, first_name: string, password: string) {        
+    register(email: string, first_name: string, password: string) {
         // return getFirebaseBackend()!.registerUser(email, password).then((response: any) => {
         //     const user = response;
         //     return user;
@@ -49,7 +49,7 @@ export class AuthenticationService {
             email,
             first_name,
             password,
-          }, httpOptions).pipe(
+        }, httpOptions).pipe(
             map((response: any) => {
                 const user = response;
                 return user;
@@ -76,8 +76,8 @@ export class AuthenticationService {
         return this.http.post(AUTH_API + 'signin', {
             email,
             password
-          }, httpOptions).pipe(
-              map((response: any) => {
+        }, httpOptions).pipe(
+            map((response: any) => {
                 const user = response;
                 return user;
             }),
@@ -107,7 +107,7 @@ export class AuthenticationService {
         this.currentUserSubject.next(null!);
 
         return of(undefined).pipe(
-        
+
         );
 
     }

@@ -39,10 +39,9 @@ export class CrmComponent implements OnInit {
         this.fetchData();
 
         // Chart Color Data Get Function
-        this._salesForecastChart('["--vz-primary", "--vz-success", "--vz-warning"]');
-        this._DealTypeChart('["--vz-warning", "--vz-danger", "--vz-success"]');
-        this._splineAreaChart('["--vz-success", "--vz-danger"]');
-
+        this._salesForecastChart('["--vz-primary-rgb, 0.75", "--vz-primary", "--vz-primary-rgb, 0.55"]');
+        this._DealTypeChart('["--vz-primary-rgb, 0.15", "--vz-primary-rgb, 0.35", "--vz-primary-rgb, 0.45"]');
+        this._splineAreaChart('["--vz-primary", "--vz-info"]');
     }
 
     // Chart Colors Set
@@ -123,6 +122,7 @@ export class CrmComponent implements OnInit {
             }]
         }
     }
+
     private _salesForecastChart(colors: any) {
         colors = this.getChartColorsArray(colors);
         this.salesForecastChart = {
@@ -165,7 +165,7 @@ export class CrmComponent implements OnInit {
                     offsetY: 0
                 },
                 title: {
-                    text: 'Forecasted',
+                    text: 'Total Forecasted Value',
                     offsetX: 0,
                     offsetY: -45,
                     style: {
@@ -391,6 +391,7 @@ export class CrmComponent implements OnInit {
         };
     }
 
+
     /**
      * Fetches the data
      */
@@ -400,5 +401,4 @@ export class CrmComponent implements OnInit {
         this.UpcomingActivities = UpcomingActivities;
         this.ClosingDeals = ClosingDeals;
     }
-
 }

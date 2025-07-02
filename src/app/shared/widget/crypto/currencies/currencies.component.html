@@ -10,7 +10,7 @@
         </tr>
     </thead><!-- end thead -->
     <tbody>
-        @for ( data of Currencies; track $index) {
+        @for (data of Currencies; track $index) {
         <tr>
             <td>
                 <div class="d-flex align-items-center">
@@ -29,7 +29,6 @@
             <td>${{data.balance}}</td>
             <td>{{data.coin}}</td>
             <td><a href="crypto/buy-sell" class="btn btn-sm btn-soft-secondary">Trade</a></td>
-        </tr><!-- end -->
-        }
+        </tr>}<!-- end -->
     </tbody><!-- end tbody -->
 </table><!-- end table -->

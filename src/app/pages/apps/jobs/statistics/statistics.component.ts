@@ -25,7 +25,7 @@ export class StatisticsComponent implements OnInit {
     this._interviewChart('["--vz-success" , "--vz-transparent"]');
     this._rejectedChart('["--vz-danger", "--vz-transparent"]');
     this._visitorChart('["--vz-primary", "--vz-secondary", "--vz-success", "--vz-info","--vz-warning", "--vz-danger"]');
-    this._simpleDonutChart('["--vz-primary", "--vz-warning", "--vz-info"]');
+    this._simpleDonutChart('["--vz-primary", "--vz-primary-rgb, 0.75", "--vz-primary-rgb, 0.5"]');
     this._DealTypeChart('["--vz-primary", "--vz-info"]');
     this._splineAreaChart('["--vz-success","--vz-primary", "--vz-info", "--vz-danger"]');
   }

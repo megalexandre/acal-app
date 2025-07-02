@@ -19,6 +19,7 @@ const routes: Routes = [
     path: "scrollbar",
     component: ScrollbarComponent
   },
+
   {
     path: "tour",
     component: TourComponent
@@ -42,7 +43,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
-export class AsvanceUiRoutingModule {}
+export class AsvanceUiRoutingModule { }

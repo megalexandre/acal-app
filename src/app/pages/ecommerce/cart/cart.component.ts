@@ -69,7 +69,6 @@ export class CartComponent implements OnInit {
     this.counter = (document.getElementById('cart-' + id) as HTMLInputElement).value;
     if (this.counter > 1) {
       this.counter--;
-
       (document.getElementById('cart-' + id) as HTMLInputElement).value = this.counter;
 
       var priceselection = event.target.closest('.card.product').querySelector('.product-line-price') as HTMLInputElement;
@@ -81,6 +80,7 @@ export class CartComponent implements OnInit {
 
       var subTotal: any = parseFloat(sub_total_get) - parseFloat(amount);
       (document.getElementById('cart-subtotal') as HTMLInputElement).innerHTML = subTotal.toFixed(2);
+
       this.updateQuantity(subTotal);
     }
   }

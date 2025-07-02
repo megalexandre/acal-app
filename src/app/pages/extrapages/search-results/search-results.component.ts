@@ -1,11 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 // Light Box
 import { Lightbox } from 'ngx-lightbox';
 
 import { swiperModel, GalleryModel, NewsModel, VideoModel } from './search-results.model';
 import { gallery, news, swiper, video } from 'src/app/core/data';
-
 @Component({
   selector: 'app-search-results',
   templateUrl: './search-results.component.html',
@@ -78,7 +77,6 @@ export class SearchResultsComponent implements OnInit {
     this.lightbox.open(this.images, index, {});
   }
 
-
   /**
    * Swiper setting
    */
@@ -90,6 +88,5 @@ export class SearchResultsComponent implements OnInit {
     autoplaySpeed: 100,
     arrows: false
   };
-
 
 }

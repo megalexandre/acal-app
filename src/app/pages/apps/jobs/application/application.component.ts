@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgbModal, NgbNavChangeEvent } from '@ng-bootstrap/ng-bootstrap';
-import { UntypedFormBuilder, Validators, UntypedFormGroup, UntypedFormArray, AbstractControl } from '@angular/forms';
-
+import { UntypedFormBuilder, Validators, UntypedFormGroup } from '@angular/forms';
 
 // Sweet Alert
 import Swal from 'sweetalert2';
@@ -12,12 +11,13 @@ import { selectJobsData, selectJobsLoading } from 'src/app/store/Jobs/jobs_selec
 import { cloneDeep } from 'lodash';
 import { PaginationService } from 'src/app/core/services/pagination.service';
 
+
 @Component({
   selector: 'app-application',
   templateUrl: './application.component.html',
   styleUrls: ['./application.component.scss']
 })
-export class ApplicationComponent implements OnInit {
+export class ApplicationComponent {
 
   // bread crumb items
   breadCrumbItems!: Array<{}>;
@@ -126,6 +126,7 @@ export class ApplicationComponent implements OnInit {
       this.applications = this.allapplications.filter((app: any) => app.status == 'Rejected');
     }
   }
+
 
   // Check Box Checked Value Get
   checkedValGet: any[] = [];
@@ -248,7 +249,6 @@ export class ApplicationComponent implements OnInit {
     }, 2000);
     this.submitted = true
   }
-
   /**
    * Delete Model Open
    */
@@ -261,12 +261,12 @@ export class ApplicationComponent implements OnInit {
   // Delete Data
   deleteData(id: any) {
     if (id) {
-      this.store.dispatch(deleteApplication({ id: this.deleteId.toString() }));
-    } else {
-      this.store.dispatch(deleteApplication({ id: this.checkedValGet.toString() }));
+      document.getElementById('a_' + id)?.remove();
     }
-    this.masterSelected = false;
-    this.deleteId = '';
+    this.checkedValGet.forEach((item: any) => {
+      document.getElementById('a_' + item)?.remove();
+      this.masterSelected = false;
+    });
     this.modalService.dismissAll('close click')
     let timerInterval: any;
     Swal.fire({

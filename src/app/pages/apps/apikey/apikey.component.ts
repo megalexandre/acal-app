@@ -1,7 +1,6 @@
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { UntypedFormBuilder, Validators, UntypedFormGroup } from '@angular/forms';
-
+import { UntypedFormBuilder, Validators, UntypedFormGroup, UntypedFormArray, AbstractControl } from '@angular/forms';
 // Sweet Alert
 import Swal from 'sweetalert2';
 import { RootReducerState } from 'src/app/store';
@@ -14,7 +13,7 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 @Component({
   selector: 'app-apikey',
   templateUrl: './apikey.component.html',
-  styleUrls: ['./apikey.component.scss'],
+  styleUrls: ['./apikey.component.scss']
 })
 export class ApikeyComponent implements OnInit {
 
@@ -89,6 +88,7 @@ export class ApikeyComponent implements OnInit {
 * @param content modal content
 */
   openModal(content: any) {
+    // this.submitted = false;
     this.modalService.open(content, { size: 'md', centered: true });
   }
 
@@ -139,7 +139,6 @@ export class ApikeyComponent implements OnInit {
     this.apikeys = this.service.onSort(column, this.allapikeys)
   }
 
-
   // Create New Api
   createApi() {
     if (this.apiname) {
@@ -183,7 +182,6 @@ export class ApikeyComponent implements OnInit {
     })
     this.apiname = ''
   }
-
   RenameModal(content: any, id: any) {
     this.modalService.open(content, { size: 'md', centered: true });
     var modelTitle = document.querySelector('.modal-title') as HTMLAreaElement;
@@ -195,6 +193,7 @@ export class ApikeyComponent implements OnInit {
     this.apiname = this.apikeys[id].name
     this.EditedData = this.apikeys[id]
   }
+
 
   // Edit Api
   editApi() {
@@ -241,12 +240,12 @@ export class ApikeyComponent implements OnInit {
   // Delete Data
   deleteData(id: any) {
     if (id) {
-      this.store.dispatch(deleteApikey({ id: this.deleteId.toString() }));
-    } else {
-      this.store.dispatch(deleteApikey({ id: this.checkedValGet.toString() }));
+      document.getElementById('a_' + id)?.remove();
     }
-    this.masterSelected = false;
-    this.deleteId = ''
+    this.checkedValGet.forEach((item: any) => {
+      document.getElementById('a_' + item)?.remove();
+      this.masterSelected = false;
+    });
     this.modalService.dismissAll('close click')
     let timerInterval: any;
     Swal.fire({

@@ -34,12 +34,12 @@ export class PieComponent implements OnInit {
     ];
 
     // Chart Color Data Get Function
-    this._simplePieChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger", "--vz-info"]');
-    this._simpleDonutChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger", "--vz-info"]');
-    this._updatingDonutChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger", "--vz-info"]');
+    this._simplePieChart('["--vz-primary", "--vz-primary-rgb, 0.85", "--vz-primary-rgb, 0.70", "--vz-primary-rgb, 0.55", "--vz-primary-rgb, 0.40"]');
+    this._simpleDonutChart('["--vz-primary", "--vz-primary-rgb, 0.85", "--vz-primary-rgb, 0.70", "--vz-primary-rgb, 0.55", "--vz-primary-rgb, 0.40"]');
+    this._updatingDonutChart('["--vz-primary", "--vz-primary-rgb, 0.85", "--vz-primary-rgb, 0.70", "--vz-primary-rgb, 0.55", "--vz-primary-rgb, 0.40"]');
     this._monochromePieChart('["--vz-primary"]');
-    this._gradientDonutChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger", "--vz-info"]');
-    this._patternedDonutChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger", "--vz-info"]');
+    this._gradientDonutChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-secondary", "--vz-info"]');
+    this._patternedDonutChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-secondary", "--vz-info"]');
     this._pieWithImageChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-info"]');
   }
 
@@ -139,6 +139,7 @@ export class PieComponent implements OnInit {
  */
   private _monochromePieChart(colors:any) {
     colors = this.getChartColorsArray(colors);
+    
     this.monochromePieChart = {
       series: [25, 15, 44, 55, 41, 17],
       chart: {
@@ -316,7 +317,7 @@ private _pieWithImageChart(colors:any) {
       opacity: 0.85,
       image: {
         src: [
-          'assets/images/small/img-3.jpg', 'assets/images/small/img-5.jpg', 'assets/images/small/img-2.jpg',
+          '../../../../../assets/images/small/img-3.jpg', '../../../../../assets/images/small/img-5.jpg', '../../../../../assets/images/small/img-2.jpg',
         ],
         width: 25,
       },
@@ -340,7 +341,4 @@ private _pieWithImageChart(colors:any) {
     },
   };
 }
-
-  
-
 }

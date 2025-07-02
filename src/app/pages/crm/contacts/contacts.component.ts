@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, QueryList, ViewChildren } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
+import { Observable } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { UntypedFormBuilder, UntypedFormGroup, UntypedFormArray, UntypedFormControl, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, UntypedFormArray, Validators, UntypedFormControl } from '@angular/forms';
+
 
 // Date Format
 import { DatePipe } from '@angular/common';
-// Csv File Export
-import { ngxCsv } from 'ngx-csv/ngx-csv';
-
-// Rest Api Service
-import { restApiService } from "../../../core/services/rest-api.service";
-import { GlobalComponent } from '../../../global-component';
 
 // Sweet Alert
 import Swal from 'sweetalert2';
@@ -20,6 +17,9 @@ import { addContact, deleteContact, fetchCrmContactData, updateContact } from 's
 import { selectCRMLoading, selectContactData } from 'src/app/store/CRM/crm_selector';
 import { cloneDeep } from 'lodash';
 import { PaginationService } from 'src/app/core/services/pagination.service';
+import { restApiService } from 'src/app/core/services/rest-api.service';
+import { ngxCsv } from 'ngx-csv';
+import { GlobalComponent } from 'src/app/global-component';
 
 @Component({
   selector: 'app-contacts',
@@ -30,7 +30,7 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 /**
  * Contacts Component
  */
-export class ContactsComponent implements OnInit {
+export class ContactsComponent {
 
   // bread crumb items
   breadCrumbItems!: Array<{}>;
@@ -56,6 +56,7 @@ export class ContactsComponent implements OnInit {
     private datePipe: DatePipe) {
   }
 
+
   ngOnInit(): void {
     /**
     * BreadCrumb
@@ -69,8 +70,8 @@ export class ContactsComponent implements OnInit {
      * Form Validation
      */
     this.contactsForm = this.formBuilder.group({
-      image_src: [''],
-      _id: [''],
+      image_src: ['avatar-8.jpg'],
+      ids: [''],
       name: ['', [Validators.required]],
       company: ['', [Validators.required]],
       designation: ['', [Validators.required]],
@@ -97,21 +98,6 @@ export class ContactsComponent implements OnInit {
       this.allcontacts = cloneDeep(data);
       this.contacts = this.service.changePage(this.allcontacts)
     });
-
-  }
-
-  changePage() {
-    this.contacts = this.service.changePage(this.allcontacts)
-  }
-
-  // Search Data
-  performSearch(): void {
-    this.searchResults = this.allcontacts.filter((item: any) => {
-      return (
-        item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
-    });
-    this.contacts = this.service.changePage(this.searchResults)
   }
 
   /**
@@ -124,8 +110,8 @@ export class ContactsComponent implements OnInit {
   }
 
   /**
-  * Form data get
-  */
+   * Form data get
+   */
   get form() {
     return this.contactsForm.controls;
   }
@@ -144,14 +130,26 @@ export class ContactsComponent implements OnInit {
     reader.onload = () => {
       this.imageURL = reader.result as string;
       (document.getElementById('customer-img') as HTMLImageElement).src = this.imageURL;
-      this.contactsForm.controls['image_src'].setValue('avatar-8.jpg');
     }
     reader.readAsDataURL(file)
   }
 
+  changePage() {
+    this.contacts = this.service.changePage(this.allcontacts)
+  }
+
+  // Search Data
+  performSearch(): void {
+    this.searchResults = this.allcontacts.filter((item: any) => {
+      return (
+        item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    });
+    this.contacts = this.service.changePage(this.searchResults)
+  }
   /**
-  * Save user
-  */
+ * Save user
+ */
   saveUser() {
     if (this.contactsForm.valid) {
       if (this.contactsForm.get('_id')?.value) {
@@ -186,10 +184,54 @@ export class ContactsComponent implements OnInit {
     this.submitted = true
   }
 
+
   /**
-   * Open Edit modal
-   * @param content modal content
-   */
+  * Multiple Default Select2
+  */
+  selectValue = ['Lead', 'Partner', 'Exiting', 'Long-term'];
+
+  // Select Checkbox value Get
+  onCheckboxChange(e: any) {
+    const checkArray: UntypedFormArray = this.contactsForm.get('subItem') as UntypedFormArray;
+    checkArray.push(new UntypedFormControl(e.target.value));
+    var checkedVal: any[] = [];
+    var result
+    for (var i = 0; i < this.contacts.length; i++) {
+      if (this.contacts[i].state == true) {
+        result = this.contacts[i];
+        checkedVal.push(result);
+      }
+    }
+    this.checkedValGet = checkedVal
+    checkedVal.length > 0 ? (document.getElementById("remove-actions") as HTMLElement).style.display = "block" : (document.getElementById("remove-actions") as HTMLElement).style.display = "none";
+  }
+
+  /**
+    * View Data Get
+    * @param content modal content
+    */
+  viewDataGet(id: any) {
+    this.econtent = this.allcontacts[id];
+    var img_data = document.querySelector('.contact-details img') as HTMLImageElement;
+    img_data.src = 'assets/images/users/' + this.econtent.image_src;
+    (document.querySelector('.contact-details h5') as HTMLImageElement).innerHTML = this.econtent.name;
+    (document.querySelector('.contact-details p') as HTMLImageElement).innerHTML = this.econtent.company;
+    (document.querySelector('.designation') as HTMLImageElement).innerHTML = this.econtent.designation;
+    (document.querySelector('.email') as HTMLImageElement).innerHTML = this.econtent.email;
+    (document.querySelector('.phone') as HTMLImageElement).innerHTML = this.econtent.phone;
+    (document.querySelector('.l_score') as HTMLImageElement).innerHTML = this.econtent.lead_score;
+    (document.querySelector('.tags-list .d-flex') as HTMLImageElement).innerHTML = '';
+    this.econtent.tags.forEach((item: any) => {
+      (document.querySelector('.tags-list .d-flex') as HTMLImageElement).innerHTML += `<span class="badge bg-primary-subtle text-primary">` + item + `</span>`;
+    });
+    var date: any = document.querySelector('.contacted_date') as HTMLImageElement;
+    date.innerHTML = this.datePipe.transform(new Date(this.econtent.last_contacted), "MMMM d, y");
+  }
+
+  /**
+     * Open Edit modal
+     * @param content modal content
+     */
   editDataGet(id: any, content: any) {
     this.submitted = false;
     this.modalService.open(content, { size: 'md', centered: true });
@@ -214,84 +256,6 @@ export class ContactsComponent implements OnInit {
   }
 
   /**
-   * View Data Get
-   * @param content modal content
-   */
-  viewDataGet(id: any) {
-    this.econtent = this.allcontacts[id];
-    var img_data = document.querySelector('.contact-details img') as HTMLImageElement;
-    img_data.src = 'assets/images/users/' + this.econtent.image_src;
-    (document.querySelector('.contact-details h5') as HTMLImageElement).innerHTML = this.econtent.name;
-    (document.querySelector('.contact-details p') as HTMLImageElement).innerHTML = this.econtent.company;
-    (document.querySelector('.designation') as HTMLImageElement).innerHTML = this.econtent.designation;
-    (document.querySelector('.email') as HTMLImageElement).innerHTML = this.econtent.email;
-    (document.querySelector('.phone') as HTMLImageElement).innerHTML = this.econtent.phone;
-    (document.querySelector('.l_score') as HTMLImageElement).innerHTML = this.econtent.lead_score;
-    (document.querySelector('.tags-list .d-flex') as HTMLImageElement).innerHTML = '';
-    this.econtent.tags.forEach((item: any) => {
-      (document.querySelector('.tags-list .d-flex') as HTMLImageElement).innerHTML += `<span class="badge bg-primary-subtle text-primary">` + item + `</span>`;
-    });
-    var date: any = document.querySelector('.contacted_date') as HTMLImageElement;
-    date.innerHTML = this.datePipe.transform(new Date(this.econtent.last_contacted), "MMMM d, y");
-  }
-
-  // The master checkbox will check/ uncheck all items
-  checkUncheckAll(ev: any) {
-    this.contacts.forEach((x: { state: any; }) => x.state = ev.target.checked)
-    var checkedVal: any[] = [];
-    var result
-    for (var i = 0; i < this.contacts.length; i++) {
-      if (this.contacts[i].state == true) {
-        result = this.contacts[i];
-        checkedVal.push(result);
-      }
-    }
-    this.checkedValGet = checkedVal
-    checkedVal.length > 0 ? (document.getElementById("remove-actions") as HTMLElement).style.display = "block" : (document.getElementById("remove-actions") as HTMLElement).style.display = "none";
-
-  }
-  isAllChecked() {
-    return this.content.every((_: { state: any; }) => _.state);
-  }
-
-  /**
-  * Multiple Default Select2
-  */
-  selectValue = ['Lead', 'Partner', 'Exiting', 'Long-term'];
-
-  // Csv File Export
-  csvFileExport() {
-    var orders = {
-      fieldSeparator: ',',
-      quoteStrings: '"',
-      decimalseparator: '.',
-      showLabels: true,
-      showTitle: true,
-      title: 'Contact Data',
-      useBom: true,
-      noDownload: false,
-      headers: ["Id", "Image src", "Name", "Company", "Designation", "Email", "Phone", "Tags", "Lead Score", "Last Contacted"]
-    };
-    new ngxCsv(this.content, "Contact", orders);
-  }
-
-  // Select Checkbox value Get
-  onCheckboxChange(e: any) {
-    const checkArray: UntypedFormArray = this.contactsForm.get('subItem') as UntypedFormArray;
-    checkArray.push(new UntypedFormControl(e.target.value));
-    var checkedVal: any[] = [];
-    var result
-    for (var i = 0; i < this.contacts.length; i++) {
-      if (this.contacts[i].state == true) {
-        result = this.contacts[i];
-        checkedVal.push(result);
-      }
-    }
-    this.checkedValGet = checkedVal
-    checkedVal.length > 0 ? (document.getElementById("remove-actions") as HTMLElement).style.display = "block" : (document.getElementById("remove-actions") as HTMLElement).style.display = "none";
-  }
-
-  /**
    * Confirmation mail model
    */
   deleteId: any;
@@ -310,7 +274,6 @@ export class ContactsComponent implements OnInit {
     this.deleteId = '';
     this.masterSelected = false;
   }
-
   /**
    * Multiple Delete
    */
@@ -329,9 +292,40 @@ export class ContactsComponent implements OnInit {
       this.modalService.open(content, { centered: true });
     }
     else {
-      Swal.fire({ text: 'Please select at least one checkbox', confirmButtonColor: '#299cdb', });
+      Swal.fire({ text: 'Please select at least one checkbox', confirmButtonColor: '#239eba', });
     }
     this.checkedValGet = checkedVal;
+  }
+
+  // The master checkbox will check/ uncheck all items
+  checkUncheckAll(ev: any) {
+    this.contacts.forEach((x: { state: any; }) => x.state = ev.target.checked)
+    var checkedVal: any[] = [];
+    var result
+    for (var i = 0; i < this.contacts.length; i++) {
+      if (this.contacts[i].state == true) {
+        result = this.contacts[i];
+        checkedVal.push(result);
+      }
+    }
+    this.checkedValGet = checkedVal
+    checkedVal.length > 0 ? (document.getElementById("remove-actions") as HTMLElement).style.display = "block" : (document.getElementById("remove-actions") as HTMLElement).style.display = "none";
+  }
+
+  // Csv File Export
+  csvFileExport() {
+    var orders = {
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      showLabels: true,
+      showTitle: true,
+      title: 'Contact Data',
+      useBom: true,
+      noDownload: false,
+      headers: ["Id", "Image src", "Name", "Company", "Designation", "Email", "Phone", "Tags", "Lead Score", "Last Contacted"]
+    };
+    new ngxCsv(this.content, "Contact", orders);
   }
 
   // Sort filter
@@ -353,5 +347,6 @@ export class ContactsComponent implements OnInit {
   onSort(column: any) {
     this.contacts = this.service.onSort(column, this.contacts)
   }
+
 
 }

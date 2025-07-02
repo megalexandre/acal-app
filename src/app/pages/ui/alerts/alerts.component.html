@@ -244,28 +244,26 @@
           <div class="row">
             <div class="col-xl-6">
               <div class="d-flex flex-column gap-3">
-                @for ( color of defaultData; track $index) {
+                @for (color of defaultData; track $index) {
                 <div>
                   <h6>{{color.color}} Alert</h6>
                   <ngb-alert type="{{color.color}}" (close)="close(color, defaultData)" class="custom-alert">
                     A simple {{color.color}} alert—check it out!
                   </ngb-alert>
-                </div>
-                }
+                </div>}
               </div>
             </div>
 
             <div class="col-xl-6">
               <div class="d-flex flex-column gap-3">
-                @for ( color of dismissingData; track $index) {
+                @for (color of dismissingData ; track $index){
                 <div>
                   <h6>{{color.color}} Alert</h6>
                   <ngb-alert type="{{color.color}}" (close)="close(color, defaultData)" class="custom-alert">
                     <!-- A simple {{color.color}} alert—check it out! -->
                     <strong>Hi!</strong> A simple <b>Dismissible {{color.color}} alert</b> —check it out!
                   </ngb-alert>
-                </div>
-                }
+                </div>}
               </div>
             </div>
           </div>
@@ -501,28 +499,26 @@ A simple &lt;b&gt;Dark alert&lt;/b&gt; with &lt;a href=&quot;#&quot; class=&quot
         <div class="live-preview">
           <div class="row">
             <div class="col-xl-6">
-              <div class="d-flex flex-column gap-3">+
-                @for ( color of defaultData; track $index) {
+              <div class="d-flex flex-column gap-3">
+                @for (color of defaultData; track $index) {
                 <div>
                   <h6>{{color.color}} Alert</h6>
                   <ngb-alert type="{{color.color}}" (close)="close(color, defaultData)" class="alert-dismissible border-2 bg-body-secondary fade show custom-alert mb-0">
                     <strong> Hi! </strong> - Outline <b>{{color.color}} alert</b> example
                   </ngb-alert>
-                </div>
-                }
+                </div>}
               </div>
             </div>
 
             <div class="col-xl-6">
               <div class="d-flex flex-column gap-3">
-                @for ( color of dismissingData; track $index) {
+                @for (color of dismissingData ; track $index){
                 <div>
                   <h6>{{color.color}} Alert</h6>
                   <ngb-alert type="{{color.color}}" (close)="close(color, defaultData)" class="alert-dismissible border-2 bg-body-secondary fade show custom-alert mb-0">
                     <strong> Hi! </strong> - Outline <b>{{color.color}} alert</b> example
                   </ngb-alert>
-                </div>
-                }
+                </div>}
               </div>
             </div>
           </div>
@@ -599,29 +595,27 @@ A simple &lt;b&gt;Dark alert&lt;/b&gt; with &lt;a href=&quot;#&quot; class=&quot
           <div class="row">
             <div class="col-xl-6">
               <div class="d-flex flex-column gap-3">
-                @for ( color of defaultData; track $index) {
+                @for (color of defaultData; track $index) {
                 <div>
                   <h6>{{color.color}} Alert</h6>
                   <ngb-alert type="{{color.color}}" (close)="close(color, defaultData)" class="alert alert-primary alert-border-left alert-dismissible fade show custom-alert">
                     <i class="{{color.icon}} me-3 align-middle fs-16"></i><strong>{{color.color}}</strong>
                     - Left border alert
                   </ngb-alert>
-                </div>
-                }
+                </div>}
               </div>
             </div>
 
             <div class="col-xl-6">
               <div class="d-flex flex-column gap-3">
-                @for ( color of dismissingData; track $index) {
+                @for (color of dismissingData ; track $index){
                 <div>
                   <h6>{{color.color}} Alert</h6>
                   <ngb-alert type="{{color.color}}" (close)="close(color, defaultData)" class="alert alert-primary alert-border-left alert-dismissible fade show custom-alert">
                     <i class="{{color.icon}} me-3 align-middle fs-16"></i><strong>{{color.color}}</strong>
                     - Left border alert
                   </ngb-alert>
-                </div>
-                }
+                </div>}
               </div>
             </div>
           </div>
@@ -702,29 +696,27 @@ A simple &lt;b&gt;Dark alert&lt;/b&gt; with &lt;a href=&quot;#&quot; class=&quot
           <div class="row">
             <div class="col-xl-6">
               <div class="d-flex flex-column gap-3">
-                @for ( color of defaultData; track $index) {
+                @for (color of defaultData; track $index) {
                 <div>
                   <h6>{{color.color}} Alert</h6>
                   <ngb-alert type="{{color.color}}" (close)="close(color, defaultData)" class="alert-dismissible bg-{{color.color}}  text-{{color.text}} alert-label-icon fade show custom-alert">
                     <i class="{{color.icon}} label-icon"></i><strong>{{color.color}}</strong>
                     - Left border alert
                   </ngb-alert>
-                </div>
-                }
+                </div>}
               </div>
             </div>
 
             <div class="col-xl-6">
               <div class="d-flex flex-column gap-3">
-                @for ( color of dismissingData; track $index) {
+                @for (color of dismissingData ; track $index){
                 <div>
                   <h6>{{color.color}} Alert</h6>
                   <ngb-alert type="{{color.color}}" (close)="close(color, defaultData)" class="alert-dismissible bg-{{color.color}} text-{{color.text}} alert-label-icon fade show custom-alert">
                     <i class="{{color.icon}} label-icon"></i><strong>{{color.color}}</strong>
                     - Left border alert
                   </ngb-alert>
-                </div>
-                }
+                </div>}
               </div>
             </div>
           </div>
@@ -807,7 +799,7 @@ A simple &lt;b&gt;Dark alert&lt;/b&gt; with &lt;a href=&quot;#&quot; class=&quot
           <div class="row">
             <div class="col-xl-6">
               <div class="d-flex flex-column gap-3">
-                @for ( color of defaultData; track $index) {
+                @for (color of defaultData; track $index) {
                 <div>
                   <h6>{{color.color}} Alert</h6>
                   <ngb-alert type="{{color.color}}" (close)="close(color, defaultData)" class="alert-dismissible alert-additional fade show custom-alert">
@@ -827,14 +819,13 @@ A simple &lt;b&gt;Dark alert&lt;/b&gt; with &lt;a href=&quot;#&quot; class=&quot
                         utilities to keep things nice and tidy.</p>
                     </div>
                   </ngb-alert>
-                </div>
-                }
+                </div>}
               </div>
             </div>
 
             <div class="col-xl-6">
               <div class="d-flex flex-column gap-3">
-                @for ( color of dismissingData; track $index) {
+                @for (color of dismissingData ; track $index){
                 <div>
                   <h6>{{color.color}} Alert</h6>
                   <ngb-alert type="{{color.color}}" (close)="close(color, defaultData)" class="alert-dismissible alert-additional fade show custom-alert">
@@ -854,10 +845,8 @@ A simple &lt;b&gt;Dark alert&lt;/b&gt; with &lt;a href=&quot;#&quot; class=&quot
                         utilities to keep things nice and tidy.</p>
                     </div>
                   </ngb-alert>
-                </div>
-                }
+                </div>}
               </div>
-
             </div>
           </div>
         </div>
@@ -965,29 +954,27 @@ A simple &lt;b&gt;Dark alert&lt;/b&gt; with &lt;a href=&quot;#&quot; class=&quot
           <div class="row">
             <div class="col-xl-6">
               <div class="d-flex flex-column gap-3">
-                @for ( color of defaultData; track $index) {
+                @for (color of defaultData; track $index) {
                 <div>
                   <h6>{{color.color}} Alert</h6>
                   <ngb-alert type="{{color.color}}" (close)="close(color, defaultData)" class="alert-top-border alert-dismissible fade show custom-alert">
                     <i class="{{color.icon}} me-3 align-middle fs-16 text-{{color.color}}"></i><strong>{{color.color}}</strong>
                     - Top border alert
                   </ngb-alert>
-                </div>
-                }
+                </div>}
               </div>
             </div>
 
             <div class="col-xl-6">
               <div class="d-flex flex-column gap-3">
-                @for ( color of dismissingData; track $index) {
+                @for (color of dismissingData ; track $index){
                 <div>
                   <h6>{{color.color}} Alert</h6>
                   <ngb-alert type="{{color.color}}" (close)="close(color, defaultData)" class="alert-top-border alert-dismissible fade show custom-alert">
                     <i class="{{color.icon}} me-3 align-middle fs-16 text-warning"></i><strong>{{color.color}}</strong>
                     - Top border alert
                   </ngb-alert>
-                </div>
-                }
+                </div>}
               </div>
             </div>
           </div>
@@ -1070,29 +1057,27 @@ A simple &lt;b&gt;Dark alert&lt;/b&gt; with &lt;a href=&quot;#&quot; class=&quot
           <div class="row">
             <div class="col-xl-6">
               <div class="d-flex flex-column gap-3">
-                @for ( color of defaultData; track $index) {
+                @for (color of defaultData; track $index) {
                 <div>
                   <h6>{{color.color}} Alert</h6>
                   <ngb-alert type="{{color.color}}" (close)="close(color, defaultData)" class="alert-dismissible alert-label-icon label-arrow fade show custom-alert">
                     <i class="{{color.icon}} label-icon"></i><strong>{{color.color}}</strong> -
                     Label icon arrow alert
                   </ngb-alert>
-                </div>
-                }
+                </div>}
               </div>
             </div>
 
             <div class="col-xl-6">
               <div class="d-flex flex-column gap-3">
-                @for ( color of defaultData; track $index) {
+                @for (color of dismissingData ; track $index){
                 <div>
                   <h6>{{color.color}} Alert</h6>
                   <ngb-alert type="{{color.color}}" (close)="close(color, defaultData)" class="alert-dismissible alert-label-icon label-arrow fade show custom-alert">
                     <i class="{{color.icon}} label-icon"></i><strong>{{color.color}}</strong> -
                     Label icon arrow alert
                   </ngb-alert>
-                </div>
-                }
+                </div>}
               </div>
             </div>
           </div>
@@ -1175,29 +1160,27 @@ A simple &lt;b&gt;Dark alert&lt;/b&gt; with &lt;a href=&quot;#&quot; class=&quot
           <div class="row">
             <div class="col-xl-6">
               <div class="d-flex flex-column gap-3">
-                @for ( color of defaultData; track $index) {
+                @for (color of defaultData; track $index) {
                 <div>
                   <h6>{{color.color}} Alert</h6>
                   <ngb-alert type="{{color.color}}" (close)="close(color, defaultData)" class="alert-dismissible alert-label-icon rounded-label fade show custom-alert">
                     <i class="{{color.icon}} label-icon"></i><strong>{{color.color}}</strong> -
                     Rounded label alert
                   </ngb-alert>
-                </div>
-                }
+                </div>}
               </div>
             </div>
 
             <div class="col-xl-6">
               <div class="d-flex flex-column gap-3">
-                @for ( color of dismissingData; track $index) {
+                @for (color of dismissingData ; track $index){
                 <div>
                   <h6>{{color.color}} Alert</h6>
                   <ngb-alert type="{{color.color}}" (close)="close(color, defaultData)" class="alert-dismissible alert-label-icon rounded-label fade show custom-alert">
                     <i class="{{color.icon}} label-icon"></i><strong>{{color.color}}</strong> -
                     Rounded label alert
                   </ngb-alert>
-                </div>
-                }
+                </div>}
               </div>
             </div>
 

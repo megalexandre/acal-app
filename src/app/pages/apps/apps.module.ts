@@ -2,17 +2,22 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { NgbTooltipModule, NgbDropdownModule, NgbTypeaheadModule, NgbAccordionModule, NgbProgressbarModule, NgbNavModule, NgbPaginationModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
-
-// search module
-import { NgPipesModule } from 'ngx-pipes';
+import { NgbTooltipModule, NgbDropdownModule, NgbAccordionModule, NgbProgressbarModule, NgbNavModule, NgbPaginationModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Feather Icon
 import { FeatherModule } from 'angular-feather';
 import { allIcons } from 'angular-feather/icons';
 
+// Emoji Picker
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
+
+// Load Icon
+import { defineElement } from "@lordicon/element";
+import lottie from 'lottie-web';
+
 // Calendar package
 import { FullCalendarModule } from '@fullcalendar/angular';
+
 // Flat Picker
 import { FlatpickrModule } from 'angularx-flatpickr';
 // Simplebar
@@ -25,43 +30,37 @@ import { CountUpModule } from 'ngx-countup';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
-// Routing
-import { JobsModule } from './jobs/jobs.module';
-
-// Emoji Picker
-import { PickerModule } from '@ctrl/ngx-emoji-mart';
-
 //  Drag and drop
 import { DndModule } from 'ngx-drag-drop';
-
-// Drag and Droup Row
-import { DragDropModule } from '@angular/cdk/drag-drop';
-import { MatTableModule } from '@angular/material/table';
 
 // Select Droup down
 import { NgSelectModule } from '@ng-select/ng-select';
 
+// NG2 Search Filter
+import { NgPipesModule } from 'ngx-pipes';
+
+// drag and droup row table
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatTableModule } from '@angular/material/table';
+
 // Component Pages
 import { AppsRoutingModule } from "./apps-routing.module";
 import { SharedModule } from '../../shared/shared.module';
+import { MainCalendarComponent } from './calendar/main-calendar/main-calendar.component';
+import { MonthGridComponent } from './calendar/month-grid/month-grid.component';
 import { ChatComponent } from './chat/chat.component';
 import { MailboxComponent } from './mailbox/mailbox.component';
 import { WidgetsComponent } from './widgets/widgets.component';
 import { EmailBasicComponent } from './email/email-basic/email-basic.component';
 import { EmailEcommerceComponent } from './email/email-ecommerce/email-ecommerce.component';
-
-// Load Icon
-import { defineElement } from "@lordicon/element";
-import lottie from 'lottie-web';
-
-import { DatePipe } from '@angular/common';
 import { FileManagerComponent } from './file-manager/file-manager.component';
 import { TodoComponent } from './todo/todo.component';
-import { MonthGridComponent } from './calendar/month-grid/month-grid.component';
-import { CalendarComponent } from './calendar/calendar/calendar.component';
+
+import { DatePipe } from '@angular/common';
 
 import { SortByPipe } from '../apps/sort-by.pipe';
 import { ApikeyComponent } from './apikey/apikey.component';
+
 
 // Mask
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask, IConfig } from 'ngx-mask';
@@ -71,6 +70,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
   declarations: [
+    MainCalendarComponent,
+    MonthGridComponent,
     ChatComponent,
     MailboxComponent,
     WidgetsComponent,
@@ -80,8 +81,6 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     TodoComponent,
     SortByPipe,
     ApikeyComponent,
-    MonthGridComponent,
-    CalendarComponent
   ],
   imports: [
     CommonModule,
@@ -94,7 +93,6 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     NgbNavModule,
     NgbPaginationModule,
     NgbCollapseModule,
-    NgPipesModule,
     FeatherModule.pick(allIcons),
     FullCalendarModule,
     FlatpickrModule.forRoot(),
@@ -107,17 +105,17 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     SharedModule,
     PickerModule,
     DndModule,
+    NgSelectModule,
     DragDropModule,
     MatTableModule,
-    NgSelectModule,
-    NgbTypeaheadModule,
-    JobsModule,
-    SlickCarouselModule,
-    NgxMaskDirective, NgxMaskPipe
+    NgPipesModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
+    SlickCarouselModule
   ],
   providers: [
     provideNgxMask(),
-    DatePipe
+    DatePipe,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

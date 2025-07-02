@@ -11,18 +11,17 @@
         </div><!-- end row -->
 
         <div class="row g-4">
-            @for ( data of walletData; track $index) {
+            @for (data of walletData; track $index) {
             <div class="col-lg-4">
                 <div class="card text-center border shadow-none">
                     <div class="card-body py-5 px-4">
                         <img src="{{data.image}}" alt="" height="55" class="mb-3 pb-2">
                         <h5>{{data.title}}</h5>
                         <p class="text-muted pb-1">{{data.content}}</p>
-                        <a href="javascript:void(0);" class="btn {{data.btn_color}}">Connect Wallet</a>
+                        <a href="#!" class="btn {{data.btn_color}}">Connect Wallet</a>
                     </div>
                 </div>
-            </div><!-- end col -->
-            }
+            </div>}<!-- end col -->
         </div><!-- end row -->
     </div><!-- end container -->
 </section><!-- end wallet -->

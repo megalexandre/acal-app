@@ -225,10 +225,10 @@ export class CandlestickComponent implements OnInit {
     ];
 
     // Chart Color Data Get Function
-    this._basicCandlestickChart('["--vz-success", "--vz-danger"]');
-    this._chartCandleOptions('["--vz-info", "--vz-danger"]');
-    this._chartBarOptions('["--vz-warning", "--vz-danger"]');
-    this._categoryXAxisChart('["--vz-success", "--vz-danger"]');
+    this._basicCandlestickChart('["--vz-success", "--vz-primary"]');
+    this._chartCandleOptions('["--vz-info", "--vz-primary"]');
+    this._chartBarOptions('["--vz-success", "--vz-primary"]');
+    this._categoryXAxisChart('["--vz-success-rgb, 0.65", "--vz-danger-rgb, 0.65"]');
     this._candlestickLineChart('["--vz-success", "--vz-danger", "--vz-info", "--vz-warning"]');
   }
 
@@ -553,7 +553,7 @@ export class CandlestickComponent implements OnInit {
       ],
       chart: {
         type: "candlestick",
-        height: 185,
+        height: 200,
         id: "candles",
         toolbar: {
           autoSelected: "pan",
@@ -933,11 +933,11 @@ export class CandlestickComponent implements OnInit {
       }
     };
   }
-
- /**
+  
+  /**
  * Category X-Axis
  */
-  private _candlestickLineChart(colors:any) {
+   private _candlestickLineChart(colors:any) {
     colors = this.getChartColorsArray(colors);
     this.candlestickLineChart = {
       series: [{
@@ -1182,5 +1182,5 @@ export class CandlestickComponent implements OnInit {
       }
     };
   }
- 
+
 }

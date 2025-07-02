@@ -464,12 +464,12 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Load More Buttons</h4>
+                <h4 class="card-title mb-0 flex-grow-1">Loading Buttons</h4>
+                <h4 class="card-title mb-0 flex-grow-1"> </h4>
                 <div class="flex-shrink-0">
                     <div class="form-check form-switch form-switch-right form-switch-md">
                         <label for="load-button" class="form-label text-muted">Show Code</label>
-                        <input class="form-check-input code-switcher" type="checkbox" id="load-button"
-                            (click)="ShowCode($event)">
+                        <input class="form-check-input code-switcher" type="checkbox" id="load-button">
                     </div>
                 </div>
             </div><!-- end card header -->
@@ -1018,6 +1018,7 @@ Loading...
 </div>
 
 <div class="row">
+    div class="row">
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header align-items-center d-flex">
@@ -1071,7 +1072,7 @@ Loading...
                 </div>
                 <div class="d-none code-view">
                     <pre class="language-markup"><code>&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; style=&quot;--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;&quot;&gt;
-Custom button
+    Custom button
 &lt;/button&gt;</code></pre>
                 </div>
             </div><!-- end card-body -->
@@ -1080,7 +1081,6 @@ Custom button
     <!--end col-->
 </div>
 <!--end row-->
-
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
@@ -1585,9 +1585,7 @@ Dropdown
         </div><!-- end card -->
     </div><!--end col-->
 </div><!--end row-->
-
-
-<div class="row">
+\ <div class="row">
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header align-items-center d-flex">
@@ -1595,7 +1593,8 @@ Dropdown
                 <div class="flex-shrink-0">
                     <div class="form-check form-switch form-switch-right form-switch-md">
                         <label for="focus-ring" class="form-label text-muted">Show Code</label>
-                        <input class="form-check-input code-switcher" type="checkbox" id="focus-ring">
+                        <input (click)="ShowCode($event)" class="form-check-input code-switcher" type="checkbox"
+                            id="focus-ring">
                     </div>
                 </div>
             </div><!-- end card header -->
@@ -1604,16 +1603,19 @@ Dropdown
                     example below and then press <kbd>Tab</kbd>.</p>
                 <div class="live-preview">
                     <div class="d-flex gap-3">
-                        <a href="javascript:void(0);" class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2">
+                        <a href="javascript:void(0);"
+                            class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2">
                             Focus ring
                         </a>
                         <!--custom focus ring color-->
-                        <a href="javascript:void(0);" class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2"
+                        <a href="javascript:void(0);"
+                            class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2"
                             style="--vz-focus-ring-color: rgba(118, 93, 255, .25)">
                             Custom focus ring
                         </a>
                         <!---custom blurry offset focus ring-->
-                        <a href="javascript:void(0);" class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2"
+                        <a href="javascript:void(0);"
+                            class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2"
                             style="--vz-focus-ring-x: 10px; --vz-focus-ring-y: 10px; --vz-focus-ring-blur: 4px">
                             Blurry offset focus ring
                         </a>
@@ -1649,7 +1651,8 @@ Blurry offset focus ring
                 <div class="flex-shrink-0">
                     <div class="form-check form-switch form-switch-right form-switch-md">
                         <label for="focus-ring-utilities" class="form-label text-muted">Show Code</label>
-                        <input class="form-check-input code-switcher" type="checkbox" id="focus-ring-utilities">
+                        <input (click)="ShowCode($event)" class="form-check-input code-switcher" type="checkbox"
+                            id="focus-ring-utilities">
                     </div>
                 </div>
             </div><!-- end card header -->
@@ -1713,4 +1716,5 @@ Blurry offset focus ring
         </div><!-- end card -->
     </div>
     <!--end col-->
-    <!--end row-->
+</div>
+<!--end row-->

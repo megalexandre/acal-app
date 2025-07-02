@@ -18,7 +18,7 @@
                             <div class="row">
                                 @for (data of MonthlyPlan; track $index) {
                                 <div class="col-xxl-3 col-lg-6">
-                                    <div class=" card pricing-box" [ngClass]=" { 'ribbon-box right': data.ribbon === true}">
+                                    <div class="card pricing-box" [ngClass]=" { 'ribbon-box right': data.ribbon === true}">
                                         <div class="card-body bg-light m-2 p-4">
                                             <div class="ribbon-two ribbon-two-danger" [ngClass]=" { 'd-none': data.ribbon !== true}"><span>Popular</span>
                                             </div>
@@ -105,13 +105,11 @@
                                                 </li>
                                             </ul>
                                             <div class="mt-3 pt-2">
-                                                <a href="javascript:void(0);" class="btn btn-{{data.planButtonClassname}} w-100" [ngClass]=" { 'disabled': data.planButtonClassname === 'danger'}">Your
-                                                    Current Plan</a>
+                                                <a href="javascript:void(0);" class="btn btn-{{data.planButtonClassname}} w-100" [ngClass]=" { 'disabled': data.planButtonClassname === 'success'}">{{data.plan}}</a>
                                             </div>
                                         </div>
                                     </div>
-                                </div><!--end col-->
-                                }
+                                </div>}<!--end col-->
                             </div>
                         </ng-template>
                     </li>
@@ -132,8 +130,8 @@
                                                     <h5 class="mb-0 fw-semibold">{{data.type}}</h5>
                                                 </div>
                                                 <div class="ms-auto">
-                                                    <h2 class="annual mb-0"><small class="fs-16"><del>${{data.price}}</del></small>${{data.rate}}
-                                                        <small class="fs-13 text-muted">/Year</small>
+                                                    <h2 class="annual mb-0"><small class="fs-16"><del>${{data.price}}</del></small>
+                                                        ${{data.rate}} <small class="fs-13 text-muted">/Year</small>
                                                     </h2>
                                                 </div>
                                             </div>
@@ -212,13 +210,11 @@
                                                 </li>
                                             </ul>
                                             <div class="mt-3 pt-2">
-                                                <a href="javascript:void(0);" class="btn btn-{{data.planButtonClassname}} w-100" [ngClass]=" { 'disabled': data.planButtonClassname === 'danger'}">Your
-                                                    Current Plan</a>
+                                                <a href="javascript:void(0);" class="btn btn-{{data.planButtonClassname}} w-100" [ngClass]=" { 'disabled': data.planButtonClassname === 'success'}">{{data.plan}}</a>
                                             </div>
                                         </div>
                                     </div>
-                                </div><!--end col-->
-                                }
+                                </div>}<!--end col-->
                             </div>
                         </ng-template>
                     </li>
@@ -246,7 +242,7 @@
         <div class="row">
             @for (data of pricingPlan; track $index) {
             <div class="col-lg-4">
-                <div class=" card pricing-box" [ngClass]=" { 'ribbon-box right': data.ribbon === true}">
+                <div class="card pricing-box" [ngClass]=" { 'ribbon-box right': data.ribbon === true}">
                     <div class="card-body p-4 m-2">
                         <div class="ribbon-two ribbon-two-danger" [ngClass]=" { 'd-none': data.ribbon !== true}">
                             <span>Popular</span>
@@ -341,16 +337,13 @@
                                 </li>
                             </ul>
                             <div class="mt-4">
-                                <a href="javascript:void(0);" class="btn btn-{{data.planButtonClassname}} w-100 waves-effect waves-light">Sign up
-                                    free</a>
+                                <a href="javascript:void(0);" class="btn btn-{{data.planButtonClassname}} w-100 waves-effect waves-light">{{data.plan}}</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div><!--end col-->
-            }
+            </div>}<!--end col-->
         </div><!--end row-->
-
     </div><!--end col-->
 </div><!--end row-->
 
@@ -365,7 +358,7 @@
 </div><!--end row-->
 
 <div class="row">
-    @for ( data of SimplePlan; track $index) {
+    @for (data of SimplePlan; track $index) {
     <div class="col-lg-6">
         <div class="card pricing-box text-center" [ngClass]=" { 'ribbon-box ribbon-fill': data.ribbon === true}">
             <div class="ribbon ribbon-primary" [ngClass]=" { 'd-none': data.ribbon !== true}">New</div>
@@ -383,7 +376,7 @@
                         </div>
 
                         <div class="text-center plan-btn mt-2">
-                            <a href="javascript:void(0);" class="btn btn-success w-sm waves-effect waves-light">Sign
+                            <a href="javascript:void(0);" class="btn btn-primary w-sm waves-effect waves-light">Sign
                                 up</a>
                         </div>
                     </div>
@@ -405,6 +398,5 @@
                 </div><!--end col-->
             </div><!--end row-->
         </div>
-    </div><!--end row-->
-    }
+    </div>}<!--end row-->
 </div><!--end row-->

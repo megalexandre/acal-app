@@ -46,7 +46,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     CollectionsComponent,
     ItemDetailsComponent,
     MarketplaceComponent,
-    RankingComponent
+    RankingComponent,
   ],
   imports: [
     CommonModule,

@@ -3,20 +3,20 @@ import { CommonModule } from '@angular/common';
 import { NgbPaginationModule, NgbDropdownModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-// Flat Picker
-import { FlatpickrModule } from 'angularx-flatpickr';
-
 // routing
 import { JobListsRoutingModule } from './job-lists-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 
-// component
+// Flat Picker
+import { FlatpickrModule } from 'angularx-flatpickr';
+
+// Component
 import { ListComponent } from './list/list.component';
+import { GridComponent } from './grid/grid.component';
+import { OverviewComponent } from './overview/overview.component';
 
 // Apex Chart Package
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { GridComponent } from './grid/grid.component';
-import { OverviewComponent } from './overview/overview.component';
 
 @NgModule({
   declarations: [
@@ -32,9 +32,9 @@ import { OverviewComponent } from './overview/overview.component';
     NgApexchartsModule,
     FormsModule,
     ReactiveFormsModule,
-    FlatpickrModule.forRoot(),
     NgbDropdownModule,
-    NgbTooltipModule
+    NgbTooltipModule,
+    FlatpickrModule.forRoot(),
   ]
 })
 export class JobListsModule { }

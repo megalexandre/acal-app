@@ -1,16 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+// Date Format
+import { Observable } from 'rxjs';
+import { DecimalPipe } from '@angular/common';
 
 // Data Get
-import { candidateModel } from './job.model';
+import { Recommendedjob, candidate } from './data';
+import { JobModel, candidateModel } from './job.model';
+import { JobService } from './job.service';
+import { NgbdJobSortableHeader } from './job-sortable.directive';
 
 import { circle, latLng, tileLayer } from 'leaflet';
-import { Recommendedjob, jobcandidate } from 'src/app/core/data';
-import { PaginationService } from 'src/app/core/services/pagination.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-job',
   templateUrl: './job.component.html',
   styleUrls: ['./job.component.scss'],
+  providers: [JobService, DecimalPipe]
 })
 export class JobComponent implements OnInit {
 
@@ -25,16 +31,19 @@ export class JobComponent implements OnInit {
   rejectedChart: any;
   dashedLineChart: any;
   Recommendedjobs: any;
-  candidatelist!: candidateModel[]
+  candidatelist!: candidateModel[];
   followbtn: any = 1;
   followtxt: any = 'Follow';
-
+  filter = new FormControl('', { nonNullable: true });
+  
+  // Table data
+  jobList!: Observable<JobModel[]>;
+  total: Observable<number>;
   candidatedetail: any;
-  searchTerm: any;
-  searchResults: any;
-  allRecommendedjobs: any;
 
-  constructor(public service: PaginationService,) {
+  constructor(public service: JobService,) {
+    this.jobList = service.countries$;
+    this.total = service.total$;
   }
 
   ngOnInit(): void {
@@ -53,15 +62,15 @@ export class JobComponent implements OnInit {
     this._InterviewChart('["--vz-danger"]');
     this._HiredChart('["--vz-success"]');
     this._RejectedChart('["--vz-danger"]');
-    this._dashedLineChart('["--vz-success", "--vz-info", "--vz-primary"]');
+    this._dashedLineChart('["--vz-success", "--vz-primary", "--vz-secondary"]');
 
     // Fetch Data
     setTimeout(() => {
-      this.Recommendedjobs = Recommendedjob
-      this.allRecommendedjobs = Recommendedjob
-      this.candidatelist = jobcandidate;
-      this.candidatedetail = jobcandidate[0]
-      this.Recommendedjobs = this.service.changePage(Recommendedjob)
+      this.jobList.subscribe(x => {
+        this.Recommendedjobs = Object.assign([], x);
+      });
+      this.candidatelist = candidate;
+      this.candidatedetail = candidate[0]
       document.getElementById('elmLoader')?.classList.add('d-none')
     }, 1200)
   }
@@ -73,27 +82,6 @@ export class JobComponent implements OnInit {
     duration: 2,
     decimalPlaces: 2,
   };
-
-  // PAgination
-  changePage() {
-    this.Recommendedjobs = this.service.changePage(Recommendedjob)
-  }
-
-  // Search Data
-  performSearch(): void {
-    this.searchResults = Recommendedjob.filter((item: any) => {
-      return (
-        item.id.toLowerCase().includes(this.searchTerm.toLowerCase())
-        || item.c_name.toLowerCase().includes(this.searchTerm.toLowerCase())
-        || item.position.toLowerCase().includes(this.searchTerm.toLowerCase())
-        || item.location.toLowerCase().includes(this.searchTerm.toLowerCase())
-        || item.salary.toLowerCase().includes(this.searchTerm.toLowerCase())
-        || item.experience.toLowerCase().includes(this.searchTerm.toLowerCase())
-        || item.job_type.toLowerCase().includes(this.searchTerm.toLowerCase())
-      )
-    })
-    this.Recommendedjobs = this.service.changePage(this.searchResults)
-  }
 
   // Chart Colors Set
   private getChartColorsArray(colors: any) {
@@ -376,70 +364,6 @@ export class JobComponent implements OnInit {
 
   //  Dashed line chart
 
-  setapplicationvalue(value: any) {
-    if (value == 'All') {
-      this.dashedLineChart.series = [{
-        name: 'New Application',
-        data: [89, 56, 74, 98, 72, 38, 64, 46, 84, 58, 46, 49]
-      },
-      {
-        name: "Interview",
-        data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10]
-      },
-      {
-        name: " Hired",
-        data: [36, 42, 60, 42, 13, 18, 29, 37, 36, 51, 32, 35]
-      }
-      ]
-    }
-    if (value == '1M') {
-      this.dashedLineChart.series = [{
-        name: 'New Application',
-        data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10]
-      },
-      {
-        name: "Interview",
-        data: [36, 42, 60, 42, 13, 18, 29, 37, 36, 51, 32, 35]
-      },
-      {
-        name: " Hired",
-        data: [89, 56, 74, 98, 72, 38, 64, 46, 84, 58, 46, 49]
-      }
-      ]
-    }
-    if (value == '6M') {
-      this.dashedLineChart.series = [{
-        name: 'New Application',
-        data: [36, 42, 60, 42, 13, 18, 29, 37, 36, 51, 32, 35]
-      },
-      {
-        name: "Interview",
-        data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10]
-      },
-      {
-        name: " Hired",
-        data: [89, 56, 74, 98, 72, 38, 64, 46, 84, 58, 46, 49]
-      }
-      ]
-    }
-    if (value == '1Y') {
-      this.dashedLineChart.series = [{
-        name: 'New Application',
-        data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10]
-      },
-      {
-        name: "Interview",
-        data: [36, 42, 60, 42, 13, 18, 29, 37, 36, 51, 32, 35]
-      },
-      {
-        name: " Hired",
-        data: [89, 56, 74, 98, 72, 38, 64, 46, 84, 58, 46, 49]
-      }
-      ]
-    }
-  }
-
-
   private _dashedLineChart(colors: any) {
     colors = this.getChartColorsArray(colors);
     this.dashedLineChart = {
@@ -514,13 +438,8 @@ export class JobComponent implements OnInit {
     circle([1.3, 103.8], { color: "#435fe3", opacity: 0.5, weight: 10, fillColor: "#435fe3", fillOpacity: 1, radius: 400000, }),
   ];
 
-  // open candidate detail
-  opendetail(id: any) {
-    this.candidatedetail = this.candidatelist[id]
-  }
-
   // Follow - unfollow
-  followClick(ev: any) {
+  follow(ev: any) {
     if (this.followbtn == '1') {
       this.followbtn = '2'
       this.followtxt = 'Unfollow'
@@ -528,6 +447,11 @@ export class JobComponent implements OnInit {
       this.followbtn = '1'
       this.followtxt = 'Follow'
     }
+  }
+
+  // open candidate detail
+  opendetail(id: any) {
+    this.candidatedetail = this.candidatelist[id]
   }
 
 }

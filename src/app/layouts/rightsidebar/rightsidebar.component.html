@@ -10,9 +10,8 @@
         </div>
     </div>
 </div>
-
 <div class="customizer-setting d-none d-md-block">
-    <div class="btn-info rounded-pill shadow-lg btn btn-icon btn-lg p-2" data-bs-toggle="offcanvas" data-bs-target="#theme-settings-offcanvas" aria-controls="theme-settings-offcanvas" (click)="openEnd(filtetcontent)">
+,    <div class="btn-primary rounded-pill shadow-lg btn btn-icon btn-lg p-2">
         <i class='mdi mdi-spin mdi-cog-outline fs-22'></i>
     </div>
 </div>
@@ -130,6 +129,7 @@
                         <h5 class="fs-13 text-center mt-2">Semi Box</h5>
                     </div>
                     <!-- end col -->
+
                 </div>
 
                 <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Color Scheme</h6>
@@ -138,7 +138,7 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-check card-radio">
-                                <input class="form-check-input" type="radio" name="data-layout-mode" id="layout-mode-light" value="light" [checked]="mode === 'light'" (change)="changeLayoutMode('light')">
+                                <input class="form-check-input" type="radio" name="data-bs-theme" id="layout-mode-light" value="light" [checked]="mode === 'light'" (change)="changeMode('light')">
                                 <label class="form-check-label p-0 avatar-md w-100" for="layout-mode-light">
                                     <span class="d-flex gap-1 h-100">
                                         <span class="flex-shrink-0">
@@ -163,7 +163,7 @@
 
                         <div class="col-4">
                             <div class="form-check card-radio dark">
-                                <input class="form-check-input" type="radio" name="data-layout-mode" id="layout-mode-dark" value="dark" [checked]="mode === 'dark'" (change)="changeLayoutMode('dark')">
+                                <input class="form-check-input" type="radio" name="data-bs-theme" id="layout-mode-dark" value="dark" [checked]="mode === 'dark'" (change)="changeMode('dark')">
                                 <label class="form-check-label p-0 avatar-md w-100 bg-dark" for="layout-mode-dark">
                                     <span class="d-flex gap-1 h-100">
                                         <span class="flex-shrink-0">
@@ -653,26 +653,26 @@
                                 </div>
 
                                 <div class="form-check sidebar-setting card-radio">
-                                    <input class="form-check-input" type="radio" name="data-sidebar-image" id="sidebarimg-01" value="img-1" [checked]="sidebarImage === 'img-1'" (change)="changeSidebarImage('img-1')">
+                                    <input class="form-check-input" type="radio" name="data-sidebar-image" id="sidebarimg-01" value="img-1" [checked]="sidebarImage === 'img-1'" (change)="changeSidebarImage('img-1')" onchange="document.documentElement.setAttribute('data-sidebar-image', 'img-1')">
                                     <label class="form-check-label p-0 avatar-sm h-auto" for="sidebarimg-01">
                                         <img src="assets/images/sidebar/img-1.jpg" alt="" class="avatar-md w-auto object-fit-cover">
                                     </label>
                                 </div>
 
                                 <div class="form-check sidebar-setting card-radio">
-                                    <input class="form-check-input" type="radio" name="data-sidebar-image" id="sidebarimg-02" value="img-2" [checked]="sidebarImage === 'img-2'" (change)="changeSidebarImage('img-2')">
+                                    <input class="form-check-input" type="radio" name="data-sidebar-image" id="sidebarimg-02" value="img-2" [checked]="sidebarImage === 'img-2'" (change)="changeSidebarImage('img-2')" onchange="document.documentElement.setAttribute('data-sidebar-image', 'img-2')">
                                     <label class="form-check-label p-0 avatar-sm h-auto" for="sidebarimg-02">
                                         <img src="assets/images/sidebar/img-2.jpg" alt="" class="avatar-md w-auto object-fit-cover">
                                     </label>
                                 </div>
                                 <div class="form-check sidebar-setting card-radio">
-                                    <input class="form-check-input" type="radio" name="data-sidebar-image" id="sidebarimg-03" value="img-3" [checked]="sidebarImage === 'img-3'" (change)="changeSidebarImage('img-3')">
+                                    <input class="form-check-input" type="radio" name="data-sidebar-image" id="sidebarimg-03" value="img-3" [checked]="sidebarImage === 'img-3'" (change)="changeSidebarImage('img-3')" onchange="document.documentElement.setAttribute('data-sidebar-image', 'img-3')">
                                     <label class="form-check-label p-0 avatar-sm h-auto" for="sidebarimg-03">
                                         <img src="assets/images/sidebar/img-3.jpg" alt="" class="avatar-md w-auto object-fit-cover">
                                     </label>
                                 </div>
                                 <div class="form-check sidebar-setting card-radio">
-                                    <input class="form-check-input" type="radio" name="data-sidebar-image" id="sidebarimg-04" value="img-4" [checked]="sidebarImage === 'img-4'" (change)="changeSidebarImage('img-4')">
+                                    <input class="form-check-input" type="radio" name="data-sidebar-image" id="sidebarimg-04" value="img-4" [checked]="sidebarImage === 'img-4'" (change)="changeSidebarImage('img-4')" onchange="document.documentElement.setAttribute('data-sidebar-image', 'img-4')">
                                     <label class="form-check-label p-0 avatar-sm h-auto" for="sidebarimg-04">
                                         <img src="assets/images/sidebar/img-4.jpg" alt="" class="avatar-md w-auto object-fit-cover">
                                     </label>

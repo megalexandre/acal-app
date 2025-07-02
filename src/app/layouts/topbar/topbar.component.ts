@@ -279,6 +279,7 @@ export class TopbarComponent implements OnInit {
           checkedVal.push(result);
         }
       }
+      console.log(checkedVal)
       this.checkedValGet = checkedVal;
     }
     checkedVal.length > 0 ? (document.getElementById("notification-actions") as HTMLElement).style.display = 'block' : (document.getElementById("notification-actions") as HTMLElement).style.display = 'none';

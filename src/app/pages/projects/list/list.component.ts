@@ -52,8 +52,8 @@ export class ListComponent implements OnInit {
   }
 
   /**
-   * Fetches the data
-   */
+  * Fetches the data
+  */
   private fetchData() {
 
     this.store.dispatch(fetchProjectListData());
@@ -69,9 +69,10 @@ export class ListComponent implements OnInit {
     });
   }
 
+
   /**
-  * Confirmation mail model
-  */
+ * Confirmation mail model
+ */
   deleteId: any;
   confirm(content: any, id: any) {
     this.deleteId = id;

@@ -11,7 +11,7 @@
             </div>
         </div><!-- end row -->
         <div class="row">
-            @for ( data of creatorData; track $index) {
+            @for (data of creatorData; track $index) {
             <div class="col-xl-4 col-md-6">
                 <div class="card">
                     <div class="card-body">
@@ -28,7 +28,7 @@
                             </div>
                             <div>
                                 <div class="dropdown float-end" ngbDropdown>
-                                    <button class="btn btn-ghost-primary btn-icon dropdown arrow-none d-block" type="button" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
+                                    <button class="btn btn-ghost-primary btn-icon dropdown arrow-none" type="button" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
                                         <i class="ri-more-fill align-middle fs-16"></i>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
@@ -41,8 +41,7 @@
                         </div>
                     </div>
                 </div>
-            </div><!--end col-->
-            }
+            </div>}<!--end col-->
         </div>
     </div><!-- end container -->
 </section><!-- end Work Process -->
@@ -54,14 +53,17 @@
         <div class="row align-items-center gy-4">
             <div class="col-sm">
                 <div>
-                    <h4 class="text-white mb-0 fw-semibold">Create and Sell Your NFT's</h4>
+                    <h4 class="text-white mb-0 fw-semibold">
+                        Create and Sell Your NFT's</h4>
                 </div>
             </div>
             <!-- end col -->
             <div class="col-sm-auto">
                 <div>
-                    <a routerLink="/marletplace/create" class="btn bg-gradient btn-danger me-1">Create NFT</a>
-                    <a routerLink="/marletplace/explore" class="btn bg-gradient btn-info">Discover More</a>
+                    <a href="/marletplace/create" class="btn bg-gradient btn-danger me-1">Create
+                        NFT</a>
+                    <a href="/marletplace/explore" class="btn btn-secondary">Discover
+                        More</a>
                 </div>
             </div>
             <!-- end col -->

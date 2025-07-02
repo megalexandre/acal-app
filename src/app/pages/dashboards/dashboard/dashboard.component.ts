@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ToastService } from './toast-service';
 
 import { circle, latLng, tileLayer } from 'leaflet';
@@ -25,9 +25,9 @@ export class DashboardComponent implements OnInit {
   Recentelling: any;
   SalesCategoryChart!: ChartType;
   statData!: any;
-  currentDate: any;
+
   // Current Date
-  // currentDate: Date = new Date();
+  currentDate: any;
 
   constructor(public toastService: ToastService) {
     var date = new Date();
@@ -56,18 +56,9 @@ export class DashboardComponent implements OnInit {
     this.fetchData();
 
     // Chart Color Data Get Function
-    this._analyticsChart('["--vz-primary", "--vz-success", "--vz-danger"]');
-    this._SalesCategoryChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger", "--vz-info"]');
+    this._analyticsChart('["--vz-light", "--vz-primary", "--vz-info"]');
+    this._SalesCategoryChart('["--vz-primary", "--vz-primary-rgb, 0.85", "--vz-primary-rgb, 0.70", "--vz-primary-rgb, 0.60", "--vz-primary-rgb, 0.45"]');
   }
-
-
-  num: number = 0;
-  option = {
-    startVal: this.num,
-    useEasing: true,
-    duration: 2,
-    decimalPlaces: 2,
-  };
 
   // Chart Colors Set
   private getChartColorsArray(colors: any) {
@@ -93,6 +84,7 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
+
 
   /**
  * Sales Analytics Chart
@@ -169,9 +161,6 @@ export class DashboardComponent implements OnInit {
         toolbar: {
           show: false,
         },
-        style: {
-          direction: 'rtl'
-        }
       },
       stroke: {
         curve: "straight",
@@ -182,16 +171,15 @@ export class DashboardComponent implements OnInit {
       series: [{
         name: 'Orders',
         type: 'area',
-        data: [34, 65, 46, 68, 49, 61, 42, 44, 78, 52, 63, 67]
+        data: [24, 75, 16, 98, 19, 41, 52, 34, 28, 52, 63, 67]
       }, {
         name: 'Earnings',
         type: 'bar',
-        data: [89.25, 98.58, 68.74, 108.87, 77.54, 84.03, 51.24, 28.57, 92.57, 42.36,
-          88.51, 36.57]
+        data: [99.25, 28.58, 98.74, 12.87, 107.54, 94.03, 11.24, 48.57, 22.57, 42.36, 88.51, 36.57]
       }, {
         name: 'Refunds',
         type: 'line',
-        data: [8, 12, 7, 17, 21, 11, 5, 9, 7, 29, 12, 35]
+        data: [28, 22, 17, 27, 21, 11, 5, 9, 17, 29, 12, 15]
       }],
       fill: {
         opacity: [0.1, 0.9, 1],
@@ -327,8 +315,16 @@ export class DashboardComponent implements OnInit {
     circle([1.3, 103.8], { color: "#435fe3", opacity: 0.5, weight: 10, fillColor: "#435fe3", fillOpacity: 1, radius: 400000, }),
   ];
 
+  num: number = 0;
+  option = {
+    startVal: this.num,
+    useEasing: true,
+    duration: 2,
+    decimalPlaces: 2,
+  };
+
   /**
- * Swiper Vertical  
+  * Swiper Vertical  
    */
   Vertical = {
     infinite: true,

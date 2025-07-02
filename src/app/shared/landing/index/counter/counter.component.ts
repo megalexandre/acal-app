@@ -23,5 +23,5 @@ export class CounterComponent implements OnInit {
     duration: 2,
     decimalPlaces: 2,
   };
-
+  
 }

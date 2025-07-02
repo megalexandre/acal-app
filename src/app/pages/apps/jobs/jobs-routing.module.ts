@@ -5,8 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { ApplicationComponent } from './application/application.component';
 import { NewjobComponent } from './newjob/newjob.component';
-import { CompaniesListComponent } from './companies-list/companies-list.component';
-import { JobCategoriesComponent } from './job-categories/job-categories.component';
+import { CompanieslistComponent } from './companieslist/companieslist.component';
+import { JobcategoriesComponent } from './jobcategories/jobcategories.component';
 
 const routes: Routes = [
   {
@@ -23,11 +23,11 @@ const routes: Routes = [
   },
   {
     path: "companies-list",
-    component: CompaniesListComponent
+    component: CompanieslistComponent
   },
   {
     path: "job-categories",
-    component: JobCategoriesComponent
+    component: JobcategoriesComponent
   },
   {
     path: 'job-lists', loadChildren: () => import('./job-lists/job-lists.module').then(m => m.JobListsModule)

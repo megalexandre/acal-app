@@ -146,7 +146,7 @@ Agree to terms and conditions
                 </p>
 
                 <div class="live-preview">
-                    <form class="row g-3 needs-validation custom-form" novalidate (ngSubmit)="validSubmit()" [formGroup]="validationform">
+                    <form class="row g-3 needs-validation" novalidate (ngSubmit)="validSubmit()" [formGroup]="validationform">
                         <div class="col-md-4">
                             <label for="validationCustom01" class="form-label">First name</label>
                             <input type="text" class="form-control" id="validationCustom01" value="Mark" required formControlName="firstName" [ngClass]="{'is-valid': submit && form['firstName'].errors}">
@@ -179,8 +179,7 @@ Agree to terms and conditions
                                 @if(form['city'].errors){
                                 <span>Please provide a valid city.</span>
                                 }
-                            </div>
-                            }
+                            </div>}
                         </div>
                         <div class="col-md-3">
                             <label for="validationCustom04" class="form-label">State</label>
@@ -309,13 +308,13 @@ You must agree before submitting.
                     </p>
 
                     <div class="live-preview">
-                        <form class="was-validated" [formGroup]="validationform">
+                        <form class="was-validated">
                             <div class="mb-3">
                                 <label for="validationTextarea" class="form-label">Textarea</label>
                                 <textarea class="form-control" id="validationTextarea" placeholder="Required example textarea" required formControlName="firstName" placeholder="First name"></textarea>
                                 @if(submit && form['firstName'].errors){
                                 <div class="valid-feedback">
-                                    @if(form['firstName'].errors){
+                                    @if(submit && form['firstName'].errors){
                                     <span>Looks good!</span>
                                     }
                                 </div>

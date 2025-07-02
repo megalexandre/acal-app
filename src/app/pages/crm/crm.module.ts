@@ -21,9 +21,9 @@ import { CompaniesComponent } from './companies/companies.component';
 import { DealsComponent } from './deals/deals.component';
 import { LeadsComponent } from './leads/leads.component';
 
+import { DatePipe } from '@angular/common';
 import { SortByCrmPipe } from "../crm/sort-by.pipe";
 
-import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { DatePipe } from '@angular/common';
     CompaniesComponent,
     DealsComponent,
     LeadsComponent,
-    SortByCrmPipe
+    SortByCrmPipe,
   ],
   imports: [
     CommonModule,

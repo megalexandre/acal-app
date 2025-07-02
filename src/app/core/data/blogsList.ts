@@ -67,5 +67,4 @@ const blogList = [
         "tags": ["#BrandDesign", "#IdentityCreation"]
     }
 ]
-
 export { blogList }

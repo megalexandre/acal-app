@@ -6,7 +6,7 @@
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
-                    @for ( item of breadcrumbItems; track $index) {
+                    @for (item of breadcrumbItems; track $index) {
                     <ng-container>
                         <li class="breadcrumb-item" [ngClass]="{'active': item.active == true}">{{ item.label }}
                         </li>

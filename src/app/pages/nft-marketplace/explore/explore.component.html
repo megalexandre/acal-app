@@ -83,7 +83,7 @@
 <div class="row row-cols-xxl-5 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-1" id="explorecard-list">
     @for (data of basicData; track $index) {
     <div class="col list-element">
-        <div class="card explore-box card-animate">
+        <div class=" card explore-box card-animate">
             <div class="explore-place-bid-img">
                 <input type="hidden" class="form-control" id="1">
                 <div class="d-none">undefined</div>
@@ -107,9 +107,9 @@
             <div class="card-footer border-top border-top-dashed">
                 <div class="d-flex align-items-center">
                     <div class="flex-grow-1 fs-14">
-                        <i class="ri-price-tag-3-fill text-warning align-bottom mx-1"></i> Highest: <span class="fw-medium">{{data.highestBid}}</span>
+                        <i class="ri-price-tag-3-fill text-warning align-bottom me-1"></i> Highest: <span class="fw-medium">{{data.highestBid}}ETH</span>
                     </div>
-                    <h5 class="flex-shrink-0 fs-14 text-primary mb-0">{{data.price}}</h5>
+                    <h5 class="flex-shrink-0 fs-14 text-primary mb-0">{{data.price}}ETH</h5>
                 </div>
             </div>
         </div>

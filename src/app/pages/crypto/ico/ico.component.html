@@ -11,7 +11,7 @@
                     <h6 class="text-muted fs-13 mb-0">ICOs Published</h6>
                 </div>
                 <div class="flex-shrink-0 avatar-sm">
-                    <div class="avatar-title bg-warning-subtle text-warning fs-22 rounded">
+                    <div class="avatar-title bg-primary-subtle text-primary fs-22 rounded">
                         <i class="ri-upload-2-line"></i>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                     <h6 class="text-muted fs-13 mb-0">Active ICOs</h6>
                 </div>
                 <div class="flex-shrink-0 avatar-sm">
-                    <div class="avatar-title bg-success-subtle text-success fs-22 rounded">
+                    <div class="avatar-title bg-primary-subtle text-primary fs-22 rounded">
                         <i class="ri-remote-control-line"></i>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                     <h6 class="text-muted fs-13 mb-0">ICOs Trading</h6>
                 </div>
                 <div class="flex-shrink-0 avatar-sm">
-                    <div class="avatar-title bg-info-subtle text-info fs-22 rounded">
+                    <div class="avatar-title bg-primary-subtle text-primary fs-22 rounded">
                         <i class="ri-flashlight-fill"></i>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                     <h6 class="text-muted fs-13 mb-0">Funded ICOs</h6>
                 </div>
                 <div class="flex-shrink-0 avatar-sm">
-                    <div class="avatar-title bg-danger-subtle text-danger fs-22 rounded">
+                    <div class="avatar-title bg-primary-subtle text-primary fs-22 rounded">
                         <i class="ri-hand-coin-line"></i>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
             </div>
             <div class="col-xxl-2 col-lg-4">
                 <select class="form-control" data-choices data-choices-search-false name="choices-single-default2" id="choices-single-default2">
-                    <option value="">Select Status</option>
+                    <option value="all" selected>Status</option>
                     <option value="Active">Active</option>
                     <option value="Ended">Ended</option>
                     <option value="Upcoming">Upcoming</option>
@@ -102,7 +102,7 @@
             </div><!--end col-->
             <div class="col-xxl-2 col-lg-4">
                 <select class="form-control" data-choices data-choices-search-false name="choices-single-default" id="choices-single-default">
-                    <option value="">Select Rating</option>
+                    <option value="all">Select Rating</option>
                     <option value="1">1 star</option>
                     <option value="2">2 star</option>
                     <option value="3">3 star</option>
@@ -111,7 +111,7 @@
                 </select>
             </div><!--end col-->
             <div class="col-xxl-1 col-lg-4">
-                <button class="btn btn-primary w-100" (click)="SearchData();"><i class="ri-equalizer-line align-bottom mx-1"></i> Filters</button>
+                <button class="btn btn-primary w-100" (click)="SearchData();"><i class="ri-equalizer-line align-bottom me-1"></i> Filters</button>
             </div>
         </div><!--end row-->
     </div>
@@ -119,12 +119,12 @@
 
 <div class="row">
     <div class="col-xxl-3 col-md-6">
-        <div class="card overflow-hidden">
-            <div class="card-body bg-success-subtle">
+        <div class="card overflow-hidden border-0">
+            <div class="card-body bg-primary-subtle">
                 <h5 class="fs-17 text-center mb-0">Active ICOs</h5>
             </div>
         </div>
-        @for (data of chatMessageDatas| filterBy:['label','caption']:term; track $index) {
+        @for( data of chatMessageDatas | filterBy:['label','caption']:term;track $index){
         <div>
             @if(data.status == 'Active'){
             <div class="card mb-2">
@@ -140,7 +140,7 @@
                             <p class="text-muted mb-2">{{data.caption}}</p>
                         </div>
                         <div>
-                            <a href="javascript:void(0);" class="badge bg-primary-subtle text-primary">Visit Website <i class="ri-arrow-right-up-line align-bottom"></i></a>
+                            <a href="javascript:void(0);" class="badge bg-secondary-subtle text-secondary">Visit Website <i class="ri-arrow-right-up-line align-bottom"></i></a>
                         </div>
                     </div>
                     <h6 class="text-muted mb-0">{{data.amount}} <span class="badge bg-success-subtle text-success">{{data.percentage}}</span></h6>
@@ -151,24 +151,22 @@
                         <div class="flex-grow-1">
                             <h6 class="mb-0">{{data.rating}} <i class="ri-star-fill align-bottom text-warning"></i></h6>
                         </div>
-                        <h6 class="flex-shrink-0 text-{{data.dateClass}} mb-0"><i class="ri-time-line align-bottom"></i>
-                            {{data.date | date :'longDate'}}</h6>
+                        <h6 class="flex-shrink-0 text-{{data.dateClass}} mb-0"><i class="ri-time-line align-bottom"></i> {{data.date | date :'longDate'}}</h6>
                     </div>
                 </div>
                 }
-            </div><!--end card-->
-            }
+            </div>}<!--end card-->
         </div>
         }
     </div><!--end col-->
 
     <div class="col-xxl-3 col-md-6">
-        <div class="card overflow-hidden">
-            <div class="card-body bg-danger-subtle">
+        <div class="card overflow-hidden border-0">
+            <div class="card-body bg-primary-subtle">
                 <h5 class="fs-17 text-center mb-0">Ended ICOs</h5>
             </div>
         </div>
-        @for (data of chatMessageDatas | filterBy:['label','caption']:term; track $index) {
+        @for( data of chatMessageDatas | filterBy:['label','caption']:term;track $index){
         <div>
             @if(data.status == 'Ended'){
             <div class="card mb-2">
@@ -184,7 +182,7 @@
                             <p class="text-muted mb-2">{{data.caption}}</p>
                         </div>
                         <div>
-                            <a href="javascript:void(0);" class="badge bg-primary-subtle text-primary">Visit Website <i class="ri-arrow-right-up-line align-bottom"></i></a>
+                            <a href="javascript:void(0);" class="badge bg-secondary-subtle text-secondary">Visit Website <i class="ri-arrow-right-up-line align-bottom"></i></a>
                         </div>
                     </div>
                     <h6 class="text-muted mb-0">{{data.amount}} <span class="badge bg-success-subtle text-success">{{data.percentage}}</span></h6>
@@ -194,25 +192,22 @@
                         <div class="flex-grow-1">
                             <h6 class="mb-0">{{data.rating}} <i class="ri-star-fill align-bottom text-warning"></i></h6>
                         </div>
-                        <h6 class="flex-shrink-0 text-{{data.dateClass}} mb-0"><i class="ri-time-line align-bottom"></i>
-                            {{data.date | date :'longDate'}}</h6>
+                        <h6 class="flex-shrink-0 text-{{data.dateClass}} mb-0"><i class="ri-time-line align-bottom"></i> {{data.date | date :'longDate'}}</h6>
                     </div>
                 </div>
-            </div><!--end card-->
-            }
-        </div>
-        }
+            </div>}<!--end card-->
+        </div>}
     </div><!--end col-->
 
     <div class="col-xxl-3 col-md-6">
-        <div class="card overflow-hidden">
+        <div class="card overflow-hidden border-0">
             <div class="card-body bg-primary-subtle">
                 <h5 class="fs-17 text-center mb-0">Upcoming ICOs</h5>
             </div>
         </div>
-        @for(data of chatMessageDatas | filterBy:['label','caption']:term;track $index){
+        @for( data of chatMessageDatas | filterBy:['label','caption']:term;track $index){
         <div>
-            @if (data.status == 'Upcoming') {
+            @if(data.status == 'Upcoming'){
             <div class="card mb-2">
                 <div class="card-body">
                     <div class="d-flex mb-3">
@@ -226,7 +221,7 @@
                             <p class="text-muted mb-2">{{data.caption}}</p>
                         </div>
                         <div>
-                            <a href="javascript:void(0);" class="badge bg-primary-subtle text-primary">Visit Website <i class="ri-arrow-right-up-line align-bottom"></i></a>
+                            <a href="javascript:void(0);" class="badge bg-secondary-subtle text-secondary">Visit Website <i class="ri-arrow-right-up-line align-bottom"></i></a>
                         </div>
                     </div>
                     <h6 class="text-muted mb-0">{{data.amount}} <span class="badge bg-success-subtle text-success">{{data.percentage}}</span></h6>
@@ -236,29 +231,26 @@
                         <div class="flex-grow-1">
                             <h6 class="mb-0">{{data.rating}} <i class="ri-star-fill align-bottom text-warning"></i></h6>
                         </div>
-                        <h6 class="flex-shrink-0 text-{{data.dateClass}} mb-0"><i class="ri-time-line align-bottom"></i>
-                            {{data.date | date :'longDate'}}</h6>
+                        <h6 class="flex-shrink-0 text-{{data.dateClass}} mb-0"><i class="ri-time-line align-bottom"></i> {{data.date | date :'longDate'}}</h6>
                     </div>
                 </div>
-            </div><!--end card-->
-            }
+            </div>}<!--end card-->
         </div>
         }
 
     </div><!--end col-->
 
     <div class="col-xxl-3 col-md-6">
-        <div class="card overflow-hidden">
-            <div class="card-body bg-info-subtle">
+        <div class="card overflow-hidden border-0">
+            <div class="card-body bg-primary-subtle">
                 <h5 class="fs-17 text-center mb-0">Trading ICOs</h5>
             </div>
         </div>
-        @for(data of chatMessageDatas | filterBy:['label','caption']:term ; track $index){
+        @for(data of chatMessageDatas | filterBy:['label','caption']:term;track $index){
         <div>
             @if(data.status == 'Trading'){
             <div class="card mb-2 ribbon-box ribbon-fill right">
-                <div class="ribbon ribbon-info shadow-none"><i class="ri-flashlight-fill me-1"></i>
-                    {{data.ribbonNumber}}</div>
+                <div class=" ribbon ribbon-primary shadow-none"><i class="ri-flashlight-fill me-1"></i> {{data.ribbonNumber}}</div>
                 <div class="card-body">
                     <div class="d-flex mb-3">
                         <div class="flex-shrink-0 avatar-sm">
@@ -271,7 +263,7 @@
                             <p class="text-muted mb-2">{{data.caption}}</p>
                         </div>
                         <div class="me-4">
-                            <a href="javascript:void(0);" class="badge bg-primary-subtle text-primary">Visit Website <i class="ri-arrow-right-up-line align-bottom"></i></a>
+                            <a href="javascript:void(0);" class="badge bg-secondary-subtle text-secondary">Visit Website <i class="ri-arrow-right-up-line align-bottom"></i></a>
                         </div>
                     </div>
                     <h6 class="text-muted mb-0">{{data.amount}} <span class="badge bg-success-subtle text-success">{{data.percentage}}</span></h6>
@@ -281,12 +273,10 @@
                         <div class="flex-grow-1">
                             <h6 class="mb-0">{{data.rating}} <i class="ri-star-fill align-bottom text-warning"></i></h6>
                         </div>
-                        <h6 class="flex-shrink-0 text-{{data.dateClass}} mb-0"><i class="ri-time-line align-bottom"></i>
-                            {{data.date | date :'longDate'}}</h6>
+                        <h6 class="flex-shrink-0 text-{{data.dateClass}} mb-0"><i class="ri-time-line align-bottom"></i> {{data.date | date :'longDate'}}</h6>
                     </div>
                 </div>
-            </div><!--end card-->
-            }
+            </div>}<!--end card-->
         </div>
         }
     </div><!--end col-->

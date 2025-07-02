@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/adjacent-overload-signatures */
-import {Injectable, PipeTransform} from '@angular/core';
+import { Injectable, PipeTransform } from '@angular/core';
 
-import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
+import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 
-import {ListJsModel} from './listjs.model';
-import {DecimalPipe} from '@angular/common';
-import {debounceTime, delay, switchMap, tap} from 'rxjs/operators';
-import {SortColumn, SortDirection} from './listjs-sortable.directive';
+import { ListJsModel } from './listjs.model';
+import { DecimalPipe } from '@angular/common';
+import { debounceTime, delay, switchMap, tap } from 'rxjs/operators';
+import { SortColumn, SortDirection } from './listjs-sortable.directive';
 import { ListJs } from 'src/app/core/data';
 
 interface SearchResult {
@@ -40,14 +40,14 @@ function sort(countries: ListJsModel[], column: SortColumn, direction: string): 
 
 function matches(country: ListJsModel, term: string, pipe: PipeTransform) {
   return country.customer_name.toLowerCase().includes(term.toLowerCase())
-  || country.email.toLowerCase().includes(term.toLowerCase())
-  || country.phone.toLowerCase().includes(term.toLowerCase())
-  || country.date.toLowerCase().includes(term.toLowerCase())
-  || country.status.toLowerCase().includes(term.toLowerCase());
+    || country.email.toLowerCase().includes(term.toLowerCase())
+    || country.phone.toLowerCase().includes(term.toLowerCase())
+    || country.date.toLowerCase().includes(term.toLowerCase())
+    || country.status.toLowerCase().includes(term.toLowerCase());
 
 }
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class OrdersService {
   private _loading$ = new BehaviorSubject<boolean>(true);
   private _search$ = new Subject<void>();
@@ -92,11 +92,11 @@ export class OrdersService {
   get endIndex() { return this._state.endIndex; }
   get totalRecords() { return this._state.totalRecords; }
 
-  set page(page: number) { this._set({page}); }
-  set pageSize(pageSize: number) { this._set({pageSize}); }
-  set searchTerm(searchTerm: string) { this._set({searchTerm}); }
-  set sortColumn(sortColumn: SortColumn) { this._set({sortColumn}); }
-  set sortDirection(sortDirection: SortDirection) { this._set({sortDirection}); }
+  set page(page: number) { this._set({ page }); }
+  set pageSize(pageSize: number) { this._set({ pageSize }); }
+  set searchTerm(searchTerm: string) { this._set({ searchTerm }); }
+  set sortColumn(sortColumn: SortColumn) { this._set({ sortColumn }); }
+  set sortDirection(sortDirection: SortDirection) { this._set({ sortDirection }); }
   set startIndex(startIndex: number) { this._set({ startIndex }); }
   set endIndex(endIndex: number) { this._set({ endIndex }); }
   set totalRecords(totalRecords: number) { this._set({ totalRecords }); }
@@ -107,7 +107,7 @@ export class OrdersService {
   }
 
   private _search(): Observable<SearchResult> {
-    const {sortColumn, sortDirection, pageSize, page, searchTerm} = this._state;
+    const { sortColumn, sortDirection, pageSize, page, searchTerm } = this._state;
 
     // 1. sort
     let countries = sort(this.products, sortColumn, sortDirection);
@@ -121,9 +121,9 @@ export class OrdersService {
     this._state.startIndex = (page - 1) * this.pageSize + 1;
     this._state.endIndex = (page - 1) * this.pageSize + this.pageSize;
     if (this.endIndex > this.totalRecords) {
-        this.endIndex = this.totalRecords;
+      this.endIndex = this.totalRecords;
     }
     countries = countries.slice(this._state.startIndex - 1, this._state.endIndex);
-    return of({countries, total});
+    return of({ countries, total });
   }
 }

@@ -8,15 +8,15 @@
             <div class="card-header">
                 <div class="d-flex align-items-center flex-wrap gap-2">
                     <div class="flex-grow-1">
-                        <button class="btn btn-info add-btn" data-bs-toggle="modal" data-bs-target="#showModal" (click)="openModal(content)"><i class="ri-add-fill me-1 align-bottom"></i> Add
+                        <button class="btn btn-primary add-btn" data-bs-toggle="modal" data-bs-target="#showModal" (click)="openModal(content)"><i class="ri-add-fill me-1 align-bottom"></i> Add
                             Contacts</button>
                     </div>
                     <div class="flex-shrink-0">
                         <div class="hstack text-nowrap gap-2" ngbDropdown>
                             <button class="btn btn-soft-danger" id="remove-actions" style="display: none" (click)="deleteMultiple(deleteModel)"><i class="ri-delete-bin-2-line"></i></button>
-                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#addmembers"><i class="ri-filter-2-line me-1 align-bottom"></i> Filters</button>
+                            <button class="btn btn-soft-primary"><i class="ri-filter-2-line me-1 align-bottom"></i> Filters</button>
                             <button class="btn btn-soft-success" (click)="csvFileExport()">Export</button>
-                            <button type="button" id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false" class="btn btn-soft-info arrow-none" ngbDropdownToggle><i class="ri-more-2-fill"></i></button>
+                            <button type="button" id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false" class="btn btn-soft-danger arrow-none" ngbDropdownToggle><i class="ri-more-2-fill"></i></button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1" ngbDropdownMenu>
                                 <li><a class="dropdown-item" href="javascript:void(0);">All</a></li>
                                 <li><a class="dropdown-item" href="javascript:void(0);">Last Week</a></li>
@@ -55,7 +55,7 @@
             <div class="card-body">
                 <div>
                     <div class="table-responsive table-card mb-2">
-                        <table class="table">
+                        <table class="table table-nowrap">
                             <thead>
                                 <tr class="bg-light">
                                     <th scope="col" style="width: 50px;">
@@ -79,8 +79,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @for (data of contacts | sortBy:sortBy:sortField; track $index) {
-                                <tr id="c_{{data._id}}">
+                                @for( data of contacts | sortBy:sortBy:sortField;track $index){
+                                <tr id=" c_{{data._id}}">
                                     <th scope="row">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="checkAll" value="{{data._id}}" (change)="onCheckboxChange($event)" [(ngModel)]="data.state">
@@ -110,7 +110,7 @@
                                     </td>
                                     <td class="tags">
                                         <div class="d-flex gap-1">
-                                            @for (tag of data.tags; track $index) {
+                                            @for( tag of data.tags;track $index){
                                             <span class="badge bg-primary-subtle text-primary">{{tag}}</span>
                                             }
                                         </div>
@@ -134,13 +134,13 @@
                                                         <i class="ri-more-fill align-middle"></i>
                                                     </button>
                                                     <ul class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
-                                                        <li><a class="dropdown-item" href="javascript:void(0);" (click)="viewDataGet($index)"><i class="ri-eye-fill align-bottom me-2 text-muted float-start"></i>
+                                                        <li><a class="dropdown-item" href="javascript:void(0);" (click)="viewDataGet(data._id)"><i class="ri-eye-fill align-bottom me-2 text-muted"></i>
                                                                 View</a></li>
-                                                        <li><a class="dropdown-item edit-item-btn" data-bs-toggle="modal" (click)="editDataGet($index,content)"><i class="ri-pencil-fill align-bottom me-2 text-muted float-start"></i>
+                                                        <li><a class="dropdown-item edit-item-btn" data-bs-toggle="modal" (click)="editDataGet($index,content)"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i>
                                                                 Edit</a></li>
                                                         <li>
                                                             <a class="dropdown-item remove-item-btn" data-bs-toggle="modal" (click)="confirm(deleteModel,data._id)">
-                                                                <i class="ri-delete-bin-fill align-bottom me-2 text-muted float-start"></i>
+                                                                <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
                                                                 Delete
                                                             </a>
                                                         </li>
@@ -149,8 +149,7 @@
                                             </li>
                                         </ul>
                                     </td>
-                                </tr>
-                                }
+                                </tr>}
                             </tbody>
                         </table>
                     </div>
@@ -180,7 +179,7 @@
                                 <div class="col-lg-12">
                                     <div class="text-center">
                                         <div class="position-relative d-inline-block">
-                                            <input type="hidden" name="id" value="" formControlName="_id" />
+                                            <input type="hidden" name="id" value="" formControlName="ids" />
                                             <div class="position-absolute  bottom-0 end-0">
                                                 <label for="customer-image-input" class="mb-0" data-bs-toggle="tooltip" data-bs-placement="right" title="Select Image">
                                                     <div class="avatar-xs cursor-pointer">
@@ -189,14 +188,13 @@
                                                         </div>
                                                     </div>
                                                 </label>
-                                                <input class="form-control d-none" id="customer-image-input" type="file" accept="image/png, image/gif, image/jpeg" [ngClass]="{ 'is-invalid': submitted && form['image_src'].errors }" (change)="fileChange($event)">
-                                                @if (submitted && form['image_src'].errors) {
+                                                <input class="form-control d-none" id="customer-image-input" type="file" accept="image/png, image/gif, image/jpeg" formControlName="image_src" [ngClass]="{ 'is-invalid': submitted && form['image_src'].errors }" (change)="fileChange($event)">
+                                                @if(submitted && form['image_src'].errors){
                                                 <div class="invalid-feedback" align="left">
-                                                    @if (form['image_src'].errors['required']) {
+                                                    @if(form['image_src'].errors['required']){
                                                     <div>Profile is
                                                         required</div>}
-                                                </div>
-                                                }
+                                                </div>}
                                             </div>
                                             <div class="avatar-lg p-1">
                                                 <div class="avatar-title bg-light rounded-circle">
@@ -208,11 +206,10 @@
                                     <div>
                                         <label for="name-field" class="form-label">Name</label>
                                         <input type="text" id="customername-field" class="form-control" placeholder="Enter name" required formControlName="name" [ngClass]="{ 'is-invalid': submitted && form['name'].errors }" />
-                                        @if (submitted && form['image_src'].errors) {
+                                        @if(submitted && form['name'].errors){
                                         <div class="invalid-feedback" align="left">
-                                            @if (form['image_src'].errors['required']) {
-                                            <div>Name is required</div>
-                                            }
+                                            @if(submitted && form['name'].errors){
+                                            <div>Name is required</div>}
                                         </div>}
                                     </div>
                                 </div>
@@ -220,9 +217,9 @@
                                     <div>
                                         <label for="company_name-field" class="form-label">Company Name</label>
                                         <input type="text" id="company_name-field" class="form-control" placeholder="Enter company name" required formControlName="company" [ngClass]="{ 'is-invalid': submitted && form['company'].errors }" />
-                                        @if (submitted && form['company'].errors) {
+                                        @if(submitted && form['company'].errors){
                                         <div class="invalid-feedback" align="left">
-                                            @if (form['company'].errors['required']) {
+                                            @if(form['company'].errors['required']){
                                             <div>Company Name is required
                                             </div>}
                                         </div>}
@@ -232,13 +229,11 @@
                                     <div>
                                         <label for="designation-field" class="form-label">Designation</label>
                                         <input type="text" id="designation-field" class="form-control" placeholder="Enter Designation" required formControlName="designation" [ngClass]="{ 'is-invalid': submitted && form['designation'].errors }" />
-                                        @if (submitted && form['designation'].errors) {
+                                        @if(submitted && form['designation'].errors){
                                         <div class="invalid-feedback" align="left">
-                                            @if (form['designation'].errors['required']) {
+                                            @if(form['designation'].errors['required']){
                                             <div>Designation is required
-                                            </div>
-                                            }
-
+                                            </div>}
                                         </div>}
                                     </div>
                                 </div>
@@ -246,11 +241,10 @@
                                     <div>
                                         <label for="email_id-field" class="form-label">Email ID</label>
                                         <input type="text" id="email_id-field" class="form-control" placeholder="Enter email" required formControlName="email" [ngClass]="{ 'is-invalid': submitted && form['email'].errors }" />
-                                        @if (submitted && form['email'].errors) {
+                                        @if(submitted && form['email'].errors){
                                         <div class="invalid-feedback" align="left">
-                                            @if (form['email'].errors['required']) {
-                                            <div>Email ID is required</div>
-                                            }
+                                            @if(form['email'].errors['required']){
+                                            <div>Email ID is required</div>}
                                         </div>}
                                     </div>
                                 </div>
@@ -258,10 +252,11 @@
                                     <div>
                                         <label for="phone-field" class="form-label">Phone</label>
                                         <input type="text" id="phone-field" class="form-control" placeholder="Enter phone no" required formControlName="phone" [ngClass]="{ 'is-invalid': submitted && form['phone'].errors }" />
-                                        @if (submitted && form['phone'].errors) {
+                                        @if(submitted && form['phone'].errors){
                                         <div class="invalid-feedback" align="left">
-                                            @if (form['phone'].errors['required']) {
-                                            <div *>Phone is required</div>}
+                                            @if(form['phone'].errors['required']){
+                                            <div>Phone is required</div>
+                                            }
                                         </div>}
                                     </div>
                                 </div>
@@ -269,13 +264,12 @@
                                     <div>
                                         <label for="lead_score-field" class="form-label">Lead Score</label>
                                         <input type="text" id="lead_score-field" class="form-control" placeholder="Enter value" required formControlName="lead_score" [ngClass]="{ 'is-invalid': submitted && form['lead_score'].errors }" />
-                                        @if (submitted && form['lead_score'].errors) {
+                                        @if(submitted && form['lead_score'].errors){
                                         <div class="invalid-feedback" align="left">
-                                            @if (form['lead_score'].errors['required']) {s
+                                            @if(form['lead_score'].errors['required']){
                                             <div>Lead Score is required
                                             </div>}
-                                        </div>
-                                        }
+                                        </div>}
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
@@ -287,13 +281,12 @@
                                 <div class="mb-3">
                                     <label for="date-field" class="form-label">Contacted</label>
                                     <input class="form-control flatpickr-input" type="text" mwlFlatpickr [altInput]="true" [convertModelValue]="true" formControlName="last_contacted" [ngClass]="{ 'is-invalid': submitted && form['last_contacted'].errors }">
-                                    @if (submitted && form['last_contacted'].errors) {
+                                    @if(submitted && form['last_contacted'].errors){
                                     <div class="invalid-feedback" align="left">
-                                        @if (form['last_contacted'].errors['required']) {
+                                        @if(form['last_contacted'].errors['required']){
                                         <div>Contacted Date is
                                             required</div>}
                                     </div>}
-
                                 </div>
                             </div>
                         </div>
@@ -312,7 +305,7 @@
     </div>
     <!--end col-->
     <div class="col-xxl-3">
-        <div class="card">
+        <div class="card" id="contact-view-detail">
             <div class="card-body text-center contact-details">
                 <div class="position-relative d-inline-block">
                     <img src="assets/images/users/avatar-10.jpg" alt="" class="avatar-lg rounded-circle img-thumbnail">
@@ -333,7 +326,7 @@
                         </a>
                     </li>
                     <li class="list-inline-item avatar-xs">
-                        <a href="javascript:void(0);" class="avatar-title bg-warning-subtle text-warning fs-15 rounded">
+                        <a href="javascript:void(0);" class="avatar-title bg-primary-subtle text-primary fs-15 rounded">
                             <i class="ri-question-answer-line"></i>
                         </a>
                     </li>
@@ -367,8 +360,8 @@
                                 <td class="fw-medium" scope="row">Tags</td>
                                 <td class="tags-list">
                                     <div class="d-flex gap-1">
-                                        <span class="badge bg-primary-subtle text-primary">Lead</span>
-                                        <span class="badge bg-primary-subtle text-primary">Partner</span>
+                                        <span class="badge bg-secondary-subtle text-secondary">Lead</span>
+                                        <span class="badge bg-secondary-subtle text-secondary">Partner</span>
                                     </div>
                                 </td>
                             </tr>
@@ -403,7 +396,7 @@
                 </div>
             </div>
             <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-                <button class="btn btn-link link-success fw-medium text-decoration-none" data-bs-dismiss="modal" id="deleteRecord-close" (click)="modal.close('Close click')"><i class="ri-close-line me-1 align-middle"></i> Close</button>
+                <button class="btn btn-link link-success fw-medium text-decoration-none" data-bs-dismiss="modal" (click)="modal.close('Close click')" id="deleteRecord-close"><i class="ri-close-line me-1 align-middle"></i> Close</button>
                 <button type="button" class="btn w-sm btn-danger " id="delete-product" (click)="deleteData(deleteId)" (click)="modal.close('Close click')">Yes, Delete It!</button>
             </div>
         </div>

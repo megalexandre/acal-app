@@ -11,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-        @for ( data of Recentelling; track $index) {
+        @for (data of RecentSelling; track $index) {
         <tr>
             <td>
                 <a href="ecommerce/order-details" class="fw-medium link-primary">{{data.id}}</a>
@@ -35,7 +35,6 @@
             <td>
                 <h5 class="fs-14 fw-medium mb-0">{{data.rating}}<span class="text-muted fs-11 ms-1">({{data.average}} votes)</span></h5>
             </td>
-        </tr><!-- end tr -->
-        }
+        </tr>}<!-- end tr -->
     </tbody><!-- end tbody -->
 </table><!-- end table -->

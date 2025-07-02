@@ -7,8 +7,7 @@
         <div>
             <h5 class="mb-0">Top Collections</h5>
         </div>
-    </div>
-    <!--end col-->
+    </div><!--end col-->
     <div class="col-sm-auto">
         <div class="d-flex justify-content-sm-end gap-2">
             <div class="search-box ms-2">
@@ -26,36 +25,28 @@
                 <option value="Last Year">Last Year</option>
             </select>
         </div>
-    </div>
-    <!--end col-->
-</div>
-<!--end row-->
+    </div><!--end col-->
+</div><!--end row-->
 
 <div class="row">
-    @for ( data of collectionData; track $index) {
+    @for (data of collectionData; track $index) {
     <div class="col-xl-3 col-md-4 col-sm-6">
         <div class="card">
             <div class="card-body">
                 <div class="row g-1 mb-3">
                     @for (user of data.images; track $index) {
                     <div class="col-6">
-                        @for ( user of user.image; track $index) {
+                        @for (user of user.image; track $index) {
                         <img src="{{user.img}}" alt="" class="img-fluid rounded  mt-1">
                         }
-                    </div>
-                    }
-                    <!--end col-->
-                </div>
-                <!--end row-->
+                    </div>}<!--end col-->
+                </div><!--end row-->
                 <a href="javascript:void(0);" class="float-end"> View All <i class="ri-arrow-right-line align-bottom"></i></a>
-                <h5 class="mb-0 fs-16"><a href="javascript:void(0);">{{data.title}} <span class="badge bg-success-subtle text-success">{{data.count}}</span></a></h5>
+                <h5 class="mb-0 fs-15"><a href="javascript:void(0);" class="text-body">{{data.title}} <span class="badge bg-primary-subtle text-primary">{{data.count}}</span></a></h5>
             </div>
         </div>
-    </div>
-    }
-    <!--end col-->
-</div>
-<!--end row-->
+    </div>}<!--end col-->
+</div><!--end row-->
 
 <div class="row g-0 text-center text-sm-start align-items-center mb-4">
     <div class="col-sm-6">
@@ -78,4 +69,3 @@
         <!-- End Pagination -->
     </div><!-- end col -->
 </div>
-<!--end row-->

@@ -10,9 +10,10 @@ import listPlugin from '@fullcalendar/list';
 import multiMonthPlugin from '@fullcalendar/multimonth'
 import Swal from 'sweetalert2';
 import { DatePipe } from '@angular/common';
+import { calendarEvents, category } from 'src/app/core/data';
+import { createEventId } from 'src/app/core/data/calendar';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { restApiService } from "../../../../core/services/rest-api.service";
-import { calendarEvents, category, createEventId } from 'src/app/core/data/calendar';
 
 @Component({
   selector: 'app-month-grid',
@@ -77,10 +78,14 @@ export class MonthGridComponent {
     // Event category
     this.category = category;
     // Calender Event Data
+
+    console.log('calendarEvents', calendarEvents)
     this.restApiService.getCalendarData().subscribe(
       data => {
 
         const users = JSON.parse(data);
+        // console.log('users', users.data)
+        // this.calendarEvents = users.data;
         this.calendarOptions.initialEvents = this.calendarEvents.map(
           (evt: any) => {
             return { date: evt.start, title: evt.title, className: evt.className, location: evt.location, description: evt.description }
@@ -278,8 +283,12 @@ export class MonthGridComponent {
         const dd = new Date(date).getDate();
 
         const start = new Date(mm + '-' + dd + '-' + yy);
+        // start.setHours((starttime.split(' ')[0]).split(':')[0]);
+        // start.setMinutes((starttime.split(' ')[0]).split(':')[1]);
 
         const end = new Date(endtime).toTimeString().split(' ')[0];
+        // end.setHours((endtime.split(' ')[0]).split(':')[0]);
+        // end.setMinutes((endtime.split(' ')[0]).split(':')[1]);
         const calendarApi = this.newEventDate.view.calendar;
 
         calendarApi.addEvent({

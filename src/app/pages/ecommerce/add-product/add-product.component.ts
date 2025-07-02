@@ -34,7 +34,6 @@ export class AddProductComponent implements OnInit {
   * Multiple Default Select2
   */
   selectValue = ['Choice 1', 'Choice 2', 'Choice 3'];
-
   // File Upload
   imageURL: string | undefined;
   fileChange(event: any) {

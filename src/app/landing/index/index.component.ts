@@ -39,6 +39,7 @@ export class IndexComponent implements OnInit {
     } else {
       (document.getElementById("back-to-top") as HTMLElement).style.display = "none"
     }
+
   }
 
    /**
@@ -49,7 +50,7 @@ export class IndexComponent implements OnInit {
       this.currentSection = sectionId;
     }
 
-  /**
+     /**
    * Toggle navbar
    */
   toggleMenu() {

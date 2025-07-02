@@ -8,13 +8,13 @@
                 <div class="row g-3">
                     <div class="col-xxl-4 col-sm-12">
                         <div class="search-box">
-                            <input type="text" class="form-control search bg-light border-light" id="searchJob" autocomplete="off" placeholder="Search for jobs or companies..." [(ngModel)]="searchTerm" (ngModelChange)="performSearch()"> 
+                            <input type="text" class="form-control search bg-light border-light" id="searchJob" autocomplete="off" placeholder="Search for jobs or companies..." [(ngModel)]="searchTerm" (ngModelChange)="performSearch()">
                             <i class="ri-search-line search-icon"></i>
                         </div>
                     </div>
                     <!--end col-->
                     <div class="col-xxl-3 col-sm-4">
-                        <input type="text" class="form-control bg-light border-light" id="datepicker" placeholder="Select date" mwlFlatpickr [altInput]="true" [(ngModel)]="date" [convertModelValue]="true" [dateFormat]="'d M, Y'" mode="range">
+                        <input type="text" class="form-control bg-light border-light" id="datepicker" mwlFlatpickr [altInput]="true" [(ngModel)]="date" [convertModelValue]="true" [dateFormat]="'d M, Y'" mode="range" placeholder="Select date">
                     </div>
                     <!--end col-->
                     <div class="col-xxl-2 col-sm-4">
@@ -44,7 +44,7 @@
 
                     <div class="col-xxl-1 col-sm-4">
                         <button type="button" class="btn btn-primary w-100" onclick="filterData();">
-                            <i class="ri-equalizer-fill mx-1 align-bottom"></i> Filters
+                            <i class="ri-equalizer-fill me-1 align-bottom"></i> Filters
                         </button>
                     </div>
                     <!--end col-->
@@ -79,7 +79,17 @@
 </div>
 <!-- end row -->
 <div class="row" id="job-list">
-    @for (grid of jobgrids; track $index) {
+    <!-- <div class="col-lg-3 col-md-6" id="job-widget" style="display: block;">
+        <div class="card card-height-100 bg-info bg-job">
+            <div class="card-body p-5">
+                <h2 class="lh-base text-white">Velzon invites young professionals for an Internship!</h2>
+                <p class="text-white text-opacity-75 mb-0 fs-14">Don't miss your opportunity to improve your skills!</p>
+                <div class="mt-5 pt-2"> <button type="button" class="btn btn-light w-100">View More <i
+                            class="ri-arrow-right-line align-bottom"></i></button> </div>
+            </div>
+        </div>
+    </div> -->
+    @for( grid of jobgrids;track $index){
     <div class="col-lg-3 col-md-6">
         @if(grid.id == '0'){
         <div>
@@ -92,7 +102,7 @@
             </div>
         </div>
         }
-        @if(grid.id > '0'){
+        @else if (grid.id > '0') {
         <div class="card">
             <div class="card-body"> <button type="button" class="btn btn-icon btn-soft-primary float-end" data-bs-toggle="button" aria-pressed="true"><i class="mdi mdi-cards-heart fs-16"></i></button>
                 <div class="avatar-sm mb-4">
@@ -108,17 +118,16 @@
                 </div>
                 <p class="text-muted">{{grid.content}}</p>
                 <div class="hstack gap-2">
-                    @for (type of grid.type; track $index) {
+                    @for( type of grid.type;track $index){
                     <span class="badge" [ngClass]="{ 'bg-success-subtle text-success': type === 'Full Time', 'bg-primary-subtle text-primary': type === 'Freelance', 'bg-danger-subtle text-danger': type === 'Urgent', 'bg-warning-subtle text-warning': type === 'Part Time', 'bg-info-subtle text-info': type === 'Private'}">{{type}}</span>
                     }
                 </div>
                 <div class="mt-4 hstack gap-2"> <a href="javascript:void(0);" class="btn btn-soft-primary w-100">Apply
-                        Job</a> <a routerLink="/overview" class="btn btn-soft-success w-100">Overview</a> </div>
+                        Job</a> <a routerLink="/jobs/overview" class="btn btn-soft-success w-100">Overview</a> </div>
             </div>
         </div>
         }
-    </div>
-    }
+    </div>}
     <!-- pagination -->
     <ngb-pagination class="d-flex justify-content-end pt-2" [collectionSize]="alljobgrids?.length" [(page)]="service.page" [pageSize]="service.pageSize" aria-label="Custom pagination" (pageChange)="changePage()">
         <ng-template ngbPaginationPrevious let-page let-pages="pages">

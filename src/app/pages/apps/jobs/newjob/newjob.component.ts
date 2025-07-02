@@ -7,7 +7,6 @@ import { UntypedFormBuilder, Validators, UntypedFormGroup, UntypedFormArray, Abs
   styleUrls: ['./newjob.component.scss']
 })
 export class NewjobComponent implements OnInit {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   tags: any;
@@ -19,8 +18,8 @@ export class NewjobComponent implements OnInit {
 
   ngOnInit(): void {
     /**
-* BreadCrumb
-*/
+  * BreadCrumb
+  */
     this.breadCrumbItems = [
       { label: 'Jobs' },
       { label: 'New Job', active: true }
@@ -44,11 +43,22 @@ export class NewjobComponent implements OnInit {
       tags: ['', [Validators.required]],
     });
 
+    /**
+   * Default Select2
+   */
+    // multiDefaultOption1 = 'Watches';
+    // Default1 = [
+    //   { name: 'Watches' },
+    //   { name: 'Headset' },
+    //   { name: 'Sweatshirt' },
+    // ];
+
+
   }
 
   /**
-* Returns form
-*/
+  * Returns form
+  */
   get form() {
     return this.itemData.controls;
   }
@@ -58,5 +68,4 @@ export class NewjobComponent implements OnInit {
     }
     this.submitted = true;
   }
-
 }

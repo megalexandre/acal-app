@@ -4,7 +4,7 @@
 <div class="row g-4 mb-3">
     <div class="col-sm">
         <div>
-            <a href="javascript:void(0);" class="btn btn-success"><i class="ri-add-line align-bottom me-1"></i> Add
+            <a href="javascript:void(0);" class="btn btn-primary"><i class="ri-add-line align-bottom me-1"></i> Add
                 Candidate</a>
         </div>
     </div>
@@ -29,7 +29,7 @@
 </div>
 
 <div class="row job-list-row" id="candidate-list">
-    @for ( grid of gridview; track $index) {
+    @for( grid of gridview;track $index){
     <div class="col-xxl-3 col-md-6">
         <div class="card">
             <div class="card-body">
@@ -37,18 +37,16 @@
                     <div class="flex-shrink-0">
                         <div class="avatar-lg rounded"><img src="{{grid.img}}" alt="" class="member-img img-fluid d-block rounded"></div>
                     </div>
-
                     <div class="flex-grow-1 ms-3"> <a routerLink="/pages/profile">
                             <h5 class="fs-16 mb-1">{{grid.name}}</h5>
                         </a>
                         <p class="text-muted mb-2">{{grid.designation}}</p>
                         <div class="d-flex flex-wrap gap-2 align-items-center">
-                            <div class="badge text-bg-success"><i class="mdi mdi-star me-1"></i>{{grid.rating}}</div>
+                            <div class="badge bg-success"><i class="mdi mdi-star me-1"></i>{{grid.rating}}</div>
                             <div class="text-muted">{{grid.ratingCount}} Ratings</div>
                         </div>
                         <div class="d-flex gap-4 mt-2 text-muted">
-                            <div> <i class="ri-map-pin-2-line text-primary me-1 align-bottom float-start"></i>
-                                {{grid.location}}
+                            <div> <i class="ri-map-pin-2-line text-primary me-1 align-bottom"></i> {{grid.location}}
                             </div>
                             <div> <i class="ri-time-line text-primary me-1 align-bottom"></i>
                                 <span class="badge" [ngClass]="{'bg-danger-subtle text-danger': grid.type == 'Part Time' ,
@@ -60,8 +58,7 @@
                 </div>
             </div>
         </div>
-    </div>
-    }
+    </div>}
     <!-- pagination -->
     <ngb-pagination class="d-flex justify-content-end pt-2" [collectionSize]="allgridList?.length" [(page)]="service.page" [pageSize]="service.pageSize" aria-label="Custom pagination" (pageChange)="changePage()">
         <ng-template ngbPaginationPrevious let-page let-pages="pages">
@@ -73,6 +70,7 @@
             <i class="ci-arrow-right ms-2"></i>
         </ng-template>
     </ngb-pagination>
+
 
     <div id="elmLoader">
         <div class="spinner-border text-primary avatar-sm" role="status">

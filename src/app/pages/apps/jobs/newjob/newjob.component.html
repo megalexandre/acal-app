@@ -81,12 +81,12 @@
 
                         <div class="col-md-6">
                             <div>
-                                <label for="Vacancy-Input" class="form-label">No. of Vacancy <span
+                                <label for="vancancy-Input" class="form-label">No. of Vancancy <span
                                         class="text-danger">*</span></label>
-                                <input type="number" class="form-control" id="Vacancy-Input"
-                                    placeholder="No. of Vacancy" required formControlName="vacancy"
+                                <input type="number" class="form-control" id="vancancy-Input"
+                                    placeholder="No. of vancancy" required formControlName="vacancy"
                                     [ngClass]="{ 'is-invalid': submitted && form['vacancy'].errors }" />
-                                <div class="invalid-feedback">Please, enter the No. of Vacancy.</div>
+                                <div class="invalid-feedback">Please, enter the No. of Vancancy.</div>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -98,7 +98,7 @@
                                     [ngClass]="{ 'is-invalid': submitted && form['experience'].errors }">
                                     <option value="">Select Experience</option>
                                     <option value="0 Year">0 Year</option>
-                                    <option value="2 Yeasr">2 Years</option>
+                                    <option value="2 Years">2 Years</option>
                                     <option value="3 Years">3 Years</option>
                                     <option value="4 Years">4 Years</option>
                                     <option value="5 Years">5 Years</option>
@@ -176,6 +176,14 @@
                                     id="choices-text-unique-values" data-choices data-choices-text-unique-true
                                     type="text" value="Design, Remote" required formControlName="tags" />
                             </div>
+
+                            <!-- <div class="filter-choices-input">
+                                <ng-select [items]="Default1" [multiple]="true" bindLabel="name" [(ngModel)]="multiDefaultOption1">
+                                    <ng-template ng-optgroup-tmp let-item="item">
+                                        {{item.country || 'Unnamed group'}}
+                                    </ng-template>
+                                </ng-select>
+                            </div> -->
 
                         </div>
 

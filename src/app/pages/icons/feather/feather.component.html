@@ -10,9 +10,9 @@
                 <p class="text-muted mb-0">Use <code>&lt;i data-feather="**">&lt;/i></code> class.</p>
             </div>
             <div class="card-body pt-0">
-                <app-toast aria-live="polite" aria-atomic="true"></app-toast>
+                <app-toastss aria-live="polite" aria-atomic="true"></app-toastss>
                 <div class="row icon-demo-content">
-                    @for ( data of IconsData; track $index) {
+                    @for (data of IconsData; track $index) {
                     <div class="col-xl-3 col-lg-4 col-sm-6" (click)="copytext(data.name)">
                         <i-feather name="{{data.name}}"></i-feather> {{data.name}}
                     </div>
@@ -39,27 +39,27 @@
             <div class="card-body pt-0">
                 <div class="row icon-demo-content">
 
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <div class="col-xl-3 col-lg-4 col-sm-6" (click)="copytext('airplay')">
                         <i-feather name="airplay" class="icon-xs"></i-feather> airplay
                     </div>
 
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <div class="col-xl-3 col-lg-4 col-sm-6" (click)="copytext('airplay')">
                         <i-feather name="airplay" class="icon-sm"></i-feather> airplay
                     </div>
 
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <div class="col-xl-3 col-lg-4 col-sm-6" (click)="copytext('airplay')">
                         <i-feather name="airplay" class="icon-md"></i-feather> airplay
                     </div>
 
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <div class="col-xl-3 col-lg-4 col-sm-6" (click)="copytext('airplay')">
                         <i-feather name="airplay" class="icon-lg"></i-feather> airplay
                     </div>
 
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <div class="col-xl-3 col-lg-4 col-sm-6" (click)="copytext('airplay')">
                         <i-feather name="airplay" class="icon-xl"></i-feather> airplay
                     </div>
 
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <div class="col-xl-3 col-lg-4 col-sm-6" (click)="copytext('airplay')">
                         <i-feather name="airplay" class="icon-xxl"></i-feather> airplay
                     </div>
 
@@ -84,35 +84,35 @@
             <div class="card-body pt-0">
 
                 <div class="row icon-demo-content">
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <div class="col-xl-3 col-lg-4 col-sm-6" (click)="copytext('airplay')">
                         <i-feather name="airplay" class="icon-dual"></i-feather> airplay
                     </div>
 
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <div class="col-xl-3 col-lg-4 col-sm-6" (click)="copytext('alert-circle')">
                         <i-feather name="alert-circle" class="icon-dual-primary"></i-feather> alert-circle
                     </div>
 
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <div class="col-xl-3 col-lg-4 col-sm-6" (click)="copytext('alert-octagon')">
                         <i-feather name="alert-octagon" class="icon-dual-success"></i-feather> alert-octagon
                     </div>
 
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <div class="col-xl-3 col-lg-4 col-sm-6" (click)="copytext('alert-triangle')">
                         <i-feather name="alert-triangle" class="icon-dual-info"></i-feather> alert-triangle
                     </div>
 
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <div class="col-xl-3 col-lg-4 col-sm-6" (click)="copytext('anchor')">
                         <i-feather name="anchor" class="icon-dual-warning"></i-feather> anchor
                     </div>
 
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <div class="col-xl-3 col-lg-4 col-sm-6" (click)="copytext('aperture')">
                         <i-feather name="aperture" class="icon-dual-danger"></i-feather> aperture
                     </div>
 
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <div class="col-xl-3 col-lg-4 col-sm-6" (click)="copytext('archive')">
                         <i-feather name="archive" class="icon-dual-dark"></i-feather> archive
                     </div>
 
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <div class="col-xl-3 col-lg-4 col-sm-6" (click)="copytext('clock')">
                         <i-feather name="clock" class="icon-dual-secondary"></i-feather> clock
                     </div>
 

@@ -1,5 +1,4 @@
 import { Component, QueryList, ViewChildren } from '@angular/core';
-
 import { RootReducerState } from 'src/app/store';
 import { Store } from '@ngrx/store';
 import { fetchCryptoOrderData } from 'src/app/store/Crypto/crypto_action';
@@ -31,8 +30,8 @@ export class OrdersComponent {
   orders: any;
   searchResults: any;
   searchTerm: any;
-  type: any ='';
-  status: any='';
+  type: any = '';
+  status: any = '';
   date: any;
 
   constructor(public service: PaginationService,
@@ -48,7 +47,6 @@ export class OrdersComponent {
       { label: 'Crypto' },
       { label: 'Orders', active: true }
     ];
-
     // Fetch Data
     this.store.dispatch(fetchCryptoOrderData());
     this.store.select(selectCryptoLoading).subscribe((data) => {

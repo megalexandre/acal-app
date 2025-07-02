@@ -35,7 +35,7 @@ export class SweetalertsComponent implements OnInit {
    * @param basicMessage modal content
    */
    basicMessage() {
-    Swal.fire({text:'Any fool can use a computer',confirmButtonColor: '#364574',});
+    Swal.fire({text:'Any fool can use a computer',confirmButtonColor: 'rgb(3, 142, 220)',});
   }
 
   /**
@@ -47,7 +47,7 @@ export class SweetalertsComponent implements OnInit {
       title: 'The Internet?',
       text: 'That thing is still around?',
       icon: 'question',
-      confirmButtonColor: '#364574',
+      confirmButtonColor: 'rgb(3, 142, 220)',
       confirmButtonText: 'OK'
     });
   }
@@ -62,7 +62,7 @@ export class SweetalertsComponent implements OnInit {
       text: 'You clicked the button!',
       icon: 'success',
       showCancelButton: true,
-      confirmButtonColor: '#364574',
+      confirmButtonColor: 'rgb(3, 142, 220)',
       cancelButtonColor: 'rgb(243, 78, 78)',
       confirmButtonText: 'OK'
     });
@@ -78,12 +78,12 @@ export class SweetalertsComponent implements OnInit {
       text: 'Something went wrong!',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#364574',
+      confirmButtonColor: 'rgb(3, 142, 220)',
       cancelButtonColor: 'rgb(243, 78, 78)',
       confirmButtonText: 'Yes, delete it!'
     }).then(result => {
       if (result.value) {
-        Swal.fire({title: 'Deleted!', text:'Your file has been deleted.', confirmButtonColor: '#364574',icon: 'success',});
+        Swal.fire({title: 'Deleted!', text:'Your file has been deleted.', confirmButtonColor: 'rgb(3, 142, 220)',icon: 'success',});
       }
     });
   }
@@ -98,12 +98,12 @@ export class SweetalertsComponent implements OnInit {
       text: 'You won\'t be able to revert this!',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#364574',
+      confirmButtonColor: 'rgb(3, 142, 220)',
       cancelButtonColor: 'rgb(243, 78, 78)',
       confirmButtonText: 'Yes, delete it!'
     }).then(result => {
       if (result.value) {
-        Swal.fire({title: 'Deleted!', text:'Your file has been deleted.', confirmButtonColor: '#364574', icon: 'success',});
+        Swal.fire({title: 'Deleted!', text:'Your file has been deleted.', confirmButtonColor: 'rgb(3, 142, 220)',icon: 'success',});
       }
     });
   }
@@ -128,7 +128,6 @@ export class SweetalertsComponent implements OnInit {
         icon: 'warning',
         confirmButtonText: 'Yes, delete it!',
         cancelButtonText: 'No, cancel!',
-        confirmButtonColor: '#364574',
         showCancelButton: true
       })
       .then(result => {
@@ -136,7 +135,7 @@ export class SweetalertsComponent implements OnInit {
           Swal.fire({
             title: 'Deleted!',
             text:'Your file has been deleted.',
-            confirmButtonColor: '#364574',
+            confirmButtonColor: 'rgb(3, 142, 220)',
             icon:'success',
           }
           );
@@ -147,7 +146,7 @@ export class SweetalertsComponent implements OnInit {
           Swal.fire({
             title:'Cancelled',
             text:'Your imaginary file is safe :)',
-            confirmButtonColor: '#364574',
+            confirmButtonColor: 'rgb(3, 142, 220)',
             icon:'error',
           }
           );
@@ -165,7 +164,7 @@ export class SweetalertsComponent implements OnInit {
       text: 'Modal with a custom image.',
       imageUrl: 'assets/images/logo-sm.png',
       imageHeight: 50,
-      confirmButtonColor: '#364574',
+      confirmButtonColor: 'rgb(3, 142, 220)'
     });
   }
 
@@ -181,7 +180,6 @@ export class SweetalertsComponent implements OnInit {
       timer: 2000,
       timerProgressBar: true,
       didOpen: () => {
-        // Swal.showLoading();
         timerInterval = setInterval(() => {
           const content = Swal.getHtmlContainer();
           if (content) {
@@ -248,7 +246,7 @@ export class SweetalertsComponent implements OnInit {
         title: 'Custom width, padding, background.',
         width: 600,
         padding: 100,
-        confirmButtonColor: '#364574',
+        confirmButtonColor: '#556ee6',
         background: 'rgb(224, 225, 243) url(assets/images/chat-bg-pattern.png)',
       });
     }
@@ -283,7 +281,7 @@ export class SweetalertsComponent implements OnInit {
       Swal.fire({
         icon: 'success',
         title: 'Ajax request finished!',
-        confirmButtonColor: '#364574',
+        confirmButtonColor: 'rgb(3, 142, 220)',
         html: 'Submitted email: ' + email,
       });
     });
@@ -313,7 +311,7 @@ export class SweetalertsComponent implements OnInit {
         if (result.value) {
           Swal.fire({
             title: 'Saved!',
-            confirmButtonColor: '#364574',
+            confirmButtonColor: 'rgb(3, 142, 220)',
             icon:'success',
           }
           );
@@ -323,7 +321,7 @@ export class SweetalertsComponent implements OnInit {
         ) {
           Swal.fire({
             title:'Cancelled',
-            confirmButtonColor: '#364574',
+            confirmButtonColor: 'rgb(3, 142, 220)',
             icon:'error',
           }
           );
@@ -354,48 +352,10 @@ export class SweetalertsComponent implements OnInit {
       title: 'Well done !',
       text: 'Aww yeah, you successfully read this important message.',
       icon: 'success',
-      confirmButtonColor: '#364574',
+      confirmButtonColor: 'rgb(54, 69, 116)',
       confirmButtonText: 'Back'
     });
   }
-
-
-
-    /**
-   * ajax sweet alert
-   * @param ajax modal content
-   */
-     JoinCompany() {
-      Swal.fire({
-        imageUrl: 'assets/images/logo-sm.png',
-        imageHeight: 50,
-        confirmButtonColor: 'rgb(3, 142, 220)',
-        title: 'Join Our Community',
-        input: 'email',
-        confirmButtonText: 'Register',
-        showLoaderOnConfirm: true,
-        preConfirm: (email) => {
-          // eslint-disable-next-line no-unused-vars
-          return new Promise<void>((resolve, reject) => {
-            setTimeout(() => {
-              if (email === 'taken@example.com') {
-                Promise.reject(new Error('This email is already taken.'));
-              } else {
-                resolve();
-              }
-            }, 2000);
-          });
-        },
-        allowOutsideClick: false,
-      }).then((email) => {
-        Swal.fire({
-          icon: 'success',
-          title: 'Ajax request finished!',
-          confirmButtonColor: 'rgb(3, 142, 220)',
-          html: 'Submitted email: ' + email,
-        });
-      });
-    }
 
   /**
   * Title sweet alert

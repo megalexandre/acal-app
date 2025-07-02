@@ -16,7 +16,7 @@ import { FolderModel } from 'src/app/store/File Manager/filemanager_model';
 @Component({
   selector: 'app-file-manager',
   templateUrl: './file-manager.component.html',
-  styleUrls: ['./file-manager.component.scss'],
+  styleUrls: ['./file-manager.component.scss']
 })
 
 /**
@@ -36,12 +36,10 @@ export class FileManagerComponent implements OnInit {
   listData: any;
   folderList: any;
 
-
   constructor(private modalService: NgbModal, public service: PaginationService, private formBuilder: UntypedFormBuilder,
     private store: Store<{ data: RootReducerState }>) {
     this.service.pageSize = 5
   }
-
   ngOnInit(): void {
 
     document.body.classList.add('file-detail-show');
@@ -50,7 +48,6 @@ export class FileManagerComponent implements OnInit {
      * Form Validation
     */
     this.folderForm = this.formBuilder.group({
-      id: [''],
       title: ['', [Validators.required]]
     });
 
@@ -58,14 +55,14 @@ export class FileManagerComponent implements OnInit {
      * Recent Validation
     */
     this.recentForm = this.formBuilder.group({
-      id: [''],
+      ids: [''],
       icon_name: ['', [Validators.required]]
     });
 
     // Data Get Function
     this._fetchData();
 
-    this._simpleDonutChart('["--vz-info", "--vz-danger", "--vz-primary", "--vz-success"]');
+    this._simpleDonutChart('["--vz-info", "--vz-warning", "--vz-primary", "--vz-success"]');
 
     // Compose Model Hide/Show
     var isShowMenu = false;
@@ -83,30 +80,6 @@ export class FileManagerComponent implements OnInit {
         }
         isShowMenu = false;
       }
-    });
-  }
-
-  // Chat Data Fetch
-  private _fetchData() {
-
-    this.store.dispatch(fetchFolderData());
-    this.store.dispatch(fetchFileData());
-    this.store.select(selectFileLoading).subscribe((data) => {
-      if (data == false) {
-        document.getElementById('elmLoader')?.classList.add('d-none');
-      }
-    });
-
-    this.store.select(selectFolderData).subscribe((data) => {
-      this.folderData = data;
-      this.allfolder = cloneDeep(data);
-      this.folderData = this.service.changePage(this.allfolder)
-    });
-
-    this.store.select(selectFileData).subscribe((data) => {
-      this.files = data;
-      this.recentData = cloneDeep(data);
-      this.files = this.service.changePage(this.recentData)
     });
   }
 
@@ -135,8 +108,29 @@ export class FileManagerComponent implements OnInit {
     });
   }
 
+  // Chat Data Fetch
+  private _fetchData() {
 
+    this.store.dispatch(fetchFolderData());
+    this.store.dispatch(fetchFileData());
+    this.store.select(selectFileLoading).subscribe((data) => {
+      if (data == false) {
+        document.getElementById('elmLoader')?.classList.add('d-none');
+      }
+    });
 
+    this.store.select(selectFolderData).subscribe((data) => {
+      this.folderData = data;
+      this.allfolder = cloneDeep(data);
+      this.folderData = this.service.changePage(this.allfolder)
+    });
+
+    this.store.select(selectFileData).subscribe((data) => {
+      this.files = data;
+      this.recentData = cloneDeep(data);
+      this.files = this.service.changePage(this.recentData)
+    });
+  }
   /**
    * Open modal
    * @param content modal content
@@ -158,28 +152,21 @@ export class FileManagerComponent implements OnInit {
   */
   saveFolder() {
     if (this.folderForm.valid) {
-      if (this.folderForm.get('id')?.value) {
-        this.folderList.title = this.folderForm.get('title')?.value;
-        const updatedData = this.folderList;
-        this.store.dispatch(updateFolder({ updatedData }));
-        this.modalService.dismissAll();
-      } else {
-        const title = this.folderForm.get('title')?.value;
-        const id = (this.allfolder.length + 1).toString();
-        const files = '349';
-        const gb = "4.10";
-        const newData = {
-          id,
-          title,
-          files,
-          gb
-        };
-        this.store.dispatch(addFolder({ newData }));
-        this.modalService.dismissAll();
-      }
+      const title = this.folderForm.get('title')?.value;
+      const id = 5;
+      const files = '349';
+      const gb = "4.10";
+      this.folderData.push({
+        id,
+        title,
+        files,
+        gb
+      });
+      this.modalService.dismissAll()
     }
-    this.modalService.dismissAll();
-    this.folderForm.reset();
+    setTimeout(() => {
+      this.folderForm.reset();
+    }, 2000);
     this.submitted = true
   }
 
@@ -194,12 +181,12 @@ export class FileManagerComponent implements OnInit {
 
   // Delete Data
   deleteData(id: any) {
-    this.store.dispatch(deleteFolder({ id: this.deleteId.toString() }));
+    document.getElementById('f-' + id)?.remove();
   }
 
   // Delete Recent Data
   deleteRecentData(id: any) {
-    this.store.dispatch(deleteFile({ id: this.deleteId.toString() }));
+    document.getElementById('r-' + id)?.remove();
   }
 
   // Folder Filter
@@ -275,18 +262,10 @@ export class FileManagerComponent implements OnInit {
     this.recentForm.reset();
     this.submitted = true
   }
-
-  EditFolderModal(content: any, id: any) {
-    this.submitted = false;
-    this.modalService.open(content, { size: 'md', centered: true });
-    this.folderList = this.allfolder[id];
-    this.folderForm.controls['title'].setValue(this.folderList.title);
-    this.folderForm.controls['id'].setValue(this.folderList.id);
-  }
   /**
-   * Open modal
-   * @param content modal content
-   */
+* Open modal
+* @param content modal content
+*/
   editModal(recentContent: any, id: any) {
     this.submitted = false;
     this.modalService.open(recentContent, { size: 'md', centered: true });
@@ -350,8 +329,8 @@ export class FileManagerComponent implements OnInit {
   }
 
   /**
-  * Product Filtering  
-  */
+     * Product Filtering  
+     */
   changeProducts(e: any, name: any) {
 
     (document.getElementById("folder-list") as HTMLElement).style.display = "none";
@@ -366,5 +345,4 @@ export class FileManagerComponent implements OnInit {
   changePage() {
     this.files = this.service.changePage(this.recentData)
   }
-
 }

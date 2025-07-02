@@ -8,7 +8,6 @@
     @if(isTwoColumnLayoutRequested()){
     <app-two-column-sidebar></app-two-column-sidebar>
     }
-    <app-sidebar id="side-bar" class="d-none"></app-sidebar>
     <div class="main-content">
         <div class="page-content">
             <div class="container-fluid">
@@ -20,5 +19,3 @@
         <app-footer></app-footer>
     </div>
 </div>
-<!-- Right Side Bar -->
-<app-rightsidebar (settingsButtonClicked)="onSettingsButtonClicked()"></app-rightsidebar>

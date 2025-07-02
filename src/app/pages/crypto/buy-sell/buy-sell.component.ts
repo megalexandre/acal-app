@@ -22,6 +22,7 @@ export class BuySellComponent {
   buysellList!: MarketModel[];
   searchResults: any;
 
+
   constructor(public service: PaginationService) {
   }
 
@@ -34,12 +35,13 @@ export class BuySellComponent {
       { label: 'Buy & Sell', active: true }
     ];
 
+    // Chart Color Data Get Function
+    this._marketGraphChart('["--vz-primary", "--vz-success"]');
+
     // fetch Data
     this.buysellList = Market;
     this.buysellList = this.service.changePage(Market)
 
-    // Chart Color Data Get Function
-    this._marketGraphChart('["--vz-success", "--vz-danger"]');
   }
 
   num: number = 0;
@@ -357,6 +359,7 @@ export class BuySellComponent {
     };
   }
 
+
   // Pagination
   changePage() {
     this.buysellList = this.service.changePage(Market)
@@ -376,5 +379,4 @@ export class BuySellComponent {
     });
     this.buysellList = this.service.changePage(this.searchResults)
   }
-
 }

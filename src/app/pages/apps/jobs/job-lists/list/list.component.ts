@@ -5,13 +5,13 @@ import { UntypedFormBuilder, Validators, UntypedFormGroup } from '@angular/forms
 import { PaginationService } from 'src/app/core/services/pagination.service';
 import { joblist } from 'src/app/core/data';
 
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss'],
+  styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   joblists: any;
@@ -62,29 +62,9 @@ export class ListComponent implements OnInit {
       document.getElementById('job-overview')?.classList.remove('d-none')
     }, 1200)
 
+
     // Chart Color Data Get Function
-    this._portfolioChart('["--vz-info", "--vz-primary", "--vz-danger", "--vz-danger", "--vz-info"]');
-  }
-
-  // Pagination
-  changePage() {
-    this.joblists = this.service.changePage(this.alljoblist)
-  }
-
-  // Search Data
-  performSearch(): void {
-    this.searchResults = this.alljoblist.filter((item: any) => {
-      return (
-        item.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        item.companyname.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        item.location.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        item.content.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        item.applied.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        item.type.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        item.date.toLowerCase().includes(this.searchTerm.toLowerCase())
-      )
-    });
-    this.joblists = this.service.changePage(this.searchResults)
+    this._portfolioChart('["--vz-primary", "--vz-primary-rgb, 0.75", "--vz-danger"]');
   }
 
   // Chart Colors Set
@@ -114,8 +94,8 @@ export class ListComponent implements OnInit {
 
 
   /**
-* My Portfolio Chart
-*/
+ * My Portfolio Chart
+ */
   private _portfolioChart(colors: any) {
     colors = this.getChartColorsArray(colors);
     this.portfolioChart = {
@@ -143,17 +123,17 @@ export class ListComponent implements OnInit {
   }
 
   /**
-* Open modal
-* @param content modal content
-*/
+ * Open modal
+ * @param content modal content
+ */
   openModal(content: any) {
     // this.submitted = false;
     this.modalService.open(content, { size: 'lg', centered: true });
   }
 
   /**
-* Returns form
-*/
+ * Returns form
+ */
   get form() {
     return this.jobData.controls;
   }
@@ -203,6 +183,7 @@ export class ListComponent implements OnInit {
     this.submitted = true
   }
 
+
   // File Upload
   imageURL: string | undefined;
   fileChange(event: any) {
@@ -231,13 +212,24 @@ export class ListComponent implements OnInit {
     }
     reader.readAsDataURL(file)
   }
-
-  bookmarklist(id: any) {
-    if (this.joblists[id].bookmark == true) {
-      this.joblists[id].bookmark = false
-    } else {
-      this.joblists[id].bookmark = true
-    }
+  // Pagination
+  changePage() {
+    this.joblists = this.service.changePage(this.alljoblist)
   }
 
+  // Search Data
+  performSearch(): void {
+    this.searchResults = this.alljoblist.filter((item: any) => {
+      return (
+        item.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        item.companyname.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        item.location.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        item.content.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        item.applied.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        item.type.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        item.date.toLowerCase().includes(this.searchTerm.toLowerCase())
+      )
+    });
+    this.joblists = this.service.changePage(this.searchResults)
+  }
 }

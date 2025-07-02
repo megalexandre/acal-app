@@ -3,16 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbPaginationModule, NgbTypeaheadModule, NgbDropdownModule, NgbNavModule, NgbAccordionModule, NgbRatingModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
-// Mask
-import { NgxMaskDirective, NgxMaskPipe, provideNgxMask, IConfig } from 'ngx-mask'
-
 // Range Slider
 import { NgxSliderModule } from 'ngx-slider-v2';
 // Simple bar
 import { SimplebarAngularModule } from 'simplebar-angular';
 // Swiper Slider
 import { SlickCarouselModule } from 'ngx-slick-carousel';
-
 // Ck Editer
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 // File Uploads
@@ -23,7 +19,6 @@ import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 import { FlatpickrModule } from 'angularx-flatpickr';
 // Ng Select
 import { NgSelectModule } from '@ng-select/ng-select';
-
 // Apex Chart Package
 import { NgApexchartsModule } from 'ng-apexcharts';
 // Count
@@ -46,8 +41,8 @@ import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { SellersComponent } from './sellers/sellers.component';
 import { SellerDetailsComponent } from './seller-details/seller-details.component';
-
 import { DatePipe } from '@angular/common';
+
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   url: 'https://httpbin.org/post',
@@ -66,7 +61,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     CartComponent,
     CheckoutComponent,
     SellersComponent,
-    SellerDetailsComponent
+    SellerDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -89,12 +84,9 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     NgApexchartsModule,
     CountUpModule,
     EcommerceRoutingModule,
-    SharedModule,
-    NgxMaskDirective,
-    NgxMaskPipe
+    SharedModule
   ],
   providers: [
-    provideNgxMask(),
     DatePipe,
     {
       provide: DROPZONE_CONFIG,

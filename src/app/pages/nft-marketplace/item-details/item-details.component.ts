@@ -35,19 +35,19 @@ export class ItemDetailsComponent implements OnInit {
     /**
      * Count date set
      */
-    interval(1000).pipe(map((x) => {
+     interval(1000).pipe(map((x) => {
       this._diff = Date.parse(this._trialEndsAt) - Date.parse(new Date().toString());
-    })).subscribe((x) => {
-      this._days = this.getDays(this._diff);
-      this._hours = this.getHours(this._diff);
-      this._minutes = this.getMinutes(this._diff);
-      this._seconds = this.getSeconds(this._diff);
-    });
+      })).subscribe((x) => {
+          this._days = this.getDays(this._diff);
+          this._hours = this.getHours(this._diff);
+          this._minutes = this.getMinutes(this._diff);
+          this._seconds = this.getSeconds(this._diff);
+      });
 
     /**
     * BreadCrumb
     */
-    this.breadCrumbItems = [
+     this.breadCrumbItems = [
       { label: 'NFT Marketplace' },
       { label: 'Item Details', active: true }
     ];
@@ -56,7 +56,7 @@ export class ItemDetailsComponent implements OnInit {
   /**
    * Day Set
    */
-  getDays(t: number) {
+   getDays(t: number) {
     return Math.floor(t / (1000 * 60 * 60 * 24));
   }
 

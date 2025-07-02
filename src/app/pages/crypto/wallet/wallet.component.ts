@@ -1,10 +1,9 @@
 import { Component, QueryList, ViewChildren } from '@angular/core';
-
-
-import { BinanceChart, BitcoinChart, DashChart, EatherreumChart, NeoChart, TetherChart, Wallets, litecoinChart } from 'src/app/core/data';
-
+import { DecimalPipe } from '@angular/common';
+import { Observable } from 'rxjs';
 import { PaginationService } from 'src/app/core/services/pagination.service';
 import { WalletModel } from 'src/app/store/Crypto/crypto_model';
+import { BinanceChart, BitcoinChart, DashChart, EatherreumChart, NeoChart, TetherChart, Wallets, litecoinChart } from 'src/app/core/data';
 
 
 @Component({
@@ -17,7 +16,6 @@ import { WalletModel } from 'src/app/store/Crypto/crypto_model';
  * Wallet Component
  */
 export class WalletComponent {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   marketGraphChart: any;
@@ -37,6 +35,7 @@ export class WalletComponent {
   constructor(public service: PaginationService) {
     this.WalletList = Wallets;
   }
+
 
   ngOnInit(): void {
     /**
@@ -82,8 +81,8 @@ export class WalletComponent {
   }
 
   /**
- * Market Graph Chart
- */
+* Market Graph Chart
+*/
   private _marketGraphChart(colors: any) {
     colors = this.getChartColorsArray(colors);
     this.marketGraphChart = {
@@ -434,6 +433,7 @@ export class WalletComponent {
     this.NeoChart = NeoChart;
   }
 
+
   /**
     * Swiper setting
     */
@@ -444,7 +444,6 @@ export class WalletComponent {
     autoplay: true,
     arrows: false
   };
-
 
   // Pagination
   changePage() {
@@ -465,5 +464,5 @@ export class WalletComponent {
     });
     this.WalletList = this.service.changePage(this.searchResults)
   }
-}
 
+}

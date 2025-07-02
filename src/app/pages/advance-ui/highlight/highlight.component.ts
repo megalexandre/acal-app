@@ -21,13 +21,13 @@ export class HighlightComponent implements OnInit {
     /**
     * BreadCrumb
     */
-     this.breadCrumbItems = [
+    this.breadCrumbItems = [
       { label: 'Advance UI' },
       { label: 'Highlight', active: true }
     ];
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     Prism.highlightAll();
   }
 

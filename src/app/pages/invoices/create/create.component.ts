@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, UntypedFormArray, Validators, AbstractControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-create',
@@ -15,17 +15,17 @@ export class CreateComponent implements OnInit {
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   submitted = false;
-  InvoicesForm!: UntypedFormGroup;
+  InvoicesForm!: FormGroup;
   paymentSign = "$";
   subtotal = 0;
   taxRate = 0.125;
   shippingRate = 65.0;
   discountRate = 0.15;
 
-  userForm: UntypedFormGroup;
+  userForm: FormGroup;
   
 
-  constructor(private formBuilder: UntypedFormBuilder) { 
+  constructor(private formBuilder: FormBuilder) { 
 
     this.userForm = this.formBuilder.group({
       items: this.formBuilder.array([
@@ -42,7 +42,7 @@ export class CreateComponent implements OnInit {
       registrationNumber: ['', [Validators.required]],
       companyEmail: ['', [Validators.required]],
       companyWebsite: ['', [Validators.required]],
-      companyContactno: ['', [Validators.required]],
+      compnayContactno: ['', [Validators.required]],
       billingName: ['', [Validators.required]],
       billingAddress: ['', [Validators.required]],
       billingPhoneno: ['', [Validators.required]],
@@ -134,19 +134,19 @@ export class CreateComponent implements OnInit {
 
   // Add Item
   addItem(): void {
-    (this.userForm.get('items') as UntypedFormArray).push(
+    (this.userForm.get('items') as FormArray).push(
       this.formBuilder.control(null)
     );
   }
 
   // Get Item Data 
   getItemFormControls(): AbstractControl[] {
-    return (<UntypedFormArray> this.userForm.get('items')).controls
+    return (<FormArray> this.userForm.get('items')).controls
   }
 
   // Remove Item
   removeItem(index:any) {
-    (this.userForm.get('items') as UntypedFormArray).removeAt(index);
+    (this.userForm.get('items') as FormArray).removeAt(index);
   }
 
 }

@@ -19,6 +19,7 @@ export class RadialbarComponent implements OnInit {
   gradientCircleChart: any;
   strokedCircleChart: any;
   radialbarsChart: any;
+
   semiCircleChart: any;
 
   constructor() { }
@@ -33,11 +34,11 @@ export class RadialbarComponent implements OnInit {
     ];
 
     // Chart Color Data Get Function
-    this._basicRadialbarChart('["--vz-success"]');
-    this._multipleRadialbarChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger"]');
-    this._customAngleChart('["--vz-primary", "--vz-info", "--vz-danger", "--vz-success"]');
+    this._basicRadialbarChart('["--vz-primary"]');
+    this._multipleRadialbarChart('["--vz-primary", "--vz-success", "--vz-secondary", "--vz-info"]');
+    this._customAngleChart('["--vz-primary", "--vz-primary-rgb, 0.65", "--vz-primary-rgb, 0.45", "--vz-primary-rgb, 0.30"]');
     this._gradientCircleChart('["--vz-success"]');
-    this._strokedCircleChart('["--vz-success"]');
+    this._strokedCircleChart('["--vz-primary"]');
     this._radialbarsChart('["--vz-success"]');
     this._semiCircleChart('["--vz-primary"]');
   }
@@ -187,7 +188,7 @@ export class RadialbarComponent implements OnInit {
     };
   }
 
-/**
+  /**
  * Gradient Circle Chart
  */
   private _gradientCircleChart(colors:any) {
@@ -254,7 +255,7 @@ export class RadialbarComponent implements OnInit {
     };
   }
 
-/**
+  /**
  * Stroked Circular Gauge
  */
   private _strokedCircleChart(colors:any) {
@@ -306,7 +307,7 @@ export class RadialbarComponent implements OnInit {
     };
   }
 
-/**
+  /**
  * Stroked Circular Gauge
  */
  private _radialbarsChart(colors:any) {
@@ -354,7 +355,7 @@ export class RadialbarComponent implements OnInit {
     };
  }
 
-/**
+  /**
  * Semi Circular Gauge
  */
   private _semiCircleChart(colors:any) {

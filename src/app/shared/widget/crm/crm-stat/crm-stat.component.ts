@@ -17,7 +17,6 @@ export class CrmStatComponent implements OnInit {
   @Input() profit: string | undefined;
   @Input() sign: string | undefined;
   @Input() percentage: string | undefined;
-
   constructor() { }
 
   ngOnInit(): void {
@@ -30,5 +29,5 @@ export class CrmStatComponent implements OnInit {
     duration: 2,
     decimalPlaces: 2,
   };
-
+  
 }

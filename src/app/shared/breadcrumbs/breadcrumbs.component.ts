@@ -18,10 +18,6 @@ export class BreadcrumbsComponent implements OnInit {
     label?: string;
   }>;
 
-  Item!: Array<{
-    label?: string;
-  }>;
-
   constructor() { }
 
   ngOnInit(): void {

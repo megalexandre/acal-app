@@ -1,4 +1,4 @@
-@for ( data of UpcomingActivities; track $index) {
+@for (data of UpcomingActivities; track $index) {
 <li class="list-group-item ps-0">
     <div class="row align-items-center g-3">
         <div class="col-auto">
@@ -15,26 +15,24 @@
         </div>
         <div class="col-sm-auto">
             <div class="avatar-group">
-                @for (user of data.users; track $index){
+                @for (user of data.users; track $index) {
                 <div class="avatar-group-item">
                     @if(user.profile){
                     <a href="javascript: void(0);" class="d-block" ngbTooltip="{{user.name}}" placement="top">
                         <img :src="{{user.profile}}" alt="" class="rounded-circle avatar-xxs">
                     </a>
-                    }@else(){
+                    }@else{
                     <a href="javascript: void(0);" class="d-block">
-                        <div class="avatar-xxs">
+                        <div class=" avatar-xxs">
                             <span class="avatar-title rounded-circle {{user.variant}}">
                                 {{user.name?.charAt(0)}}
                             </span>
                         </div>
                     </a>
                     }
-                </div>
-                }
+                </div>}
             </div>
         </div>
     </div>
     <!-- end row -->
-</li><!-- end -->
-}
+</li>}<!-- end -->

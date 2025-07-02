@@ -17,7 +17,7 @@ export interface Assigned {
 export interface project {
   id?: any;
   title?: any;
-  coll?: any;
+  coll?:any;
   subItem?: Array<{
     version?: any;
     color?: any;

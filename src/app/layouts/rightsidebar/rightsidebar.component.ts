@@ -1,11 +1,10 @@
-import { Component, OnInit, Output, EventEmitter, TemplateRef, ViewChild } from '@angular/core';
-import { EventService } from '../../core/services/event.service';
+import { Component, EventEmitter, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
-import { RootReducerState } from 'src/app/store';
 import { Store } from '@ngrx/store';
-import { initialState } from 'src/app/store/layouts/layout-reducers';
-import { getLayoutMode, getLayoutPosition, getLayoutTheme, getLayoutWith, getPreloader, getSidebarColor, getSidebarImage, getSidebarSize, getSidebarView, getSidebarVisibilitye, getTopbarColor } from 'src/app/store/layouts/layout-selector';
+import { RootReducerState } from 'src/app/store';
 import { changeDataPreloader, changeLayoutPosition, changeLayoutWidth, changeMode, changeSidebarColor, changeSidebarImage, changeSidebarSize, changeSidebarView, changeSidebarVisibility, changeTopbar, changelayout } from 'src/app/store/layouts/layout-action';
+import { getLayoutMode, getLayoutPosition, getLayoutTheme, getLayoutWith, getPreloader, getSidebarColor, getSidebarImage, getSidebarSize, getSidebarView, getSidebarVisibilitye, getTopbarColor } from 'src/app/store/layouts/layout-selector';
+import { EventService } from '../../core/services/event.service';
 
 @Component({
   selector: 'app-rightsidebar',
@@ -17,7 +16,6 @@ import { changeDataPreloader, changeLayoutPosition, changeLayoutWidth, changeMod
  * Right Sidebar component
  */
 export class RightsidebarComponent implements OnInit {
-
   layout: string | undefined;
   mode: string | undefined;
   width: string | undefined;
@@ -35,7 +33,7 @@ export class RightsidebarComponent implements OnInit {
   @ViewChild('filtetcontent') filtetcontent!: TemplateRef<any>;
   @Output() settingsButtonClicked = new EventEmitter();
 
-  constructor(private eventService: EventService, private offcanvasService: NgbOffcanvas, private store: Store<RootReducerState>) { }
+  constructor(private offcanvasService: NgbOffcanvas, private store: Store<RootReducerState>) { }
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -131,15 +129,13 @@ export class RightsidebarComponent implements OnInit {
     }, 100);
   }
 
-
   // Mode Change
-  changeLayoutMode(mode: string) {
+  changeMode(mode: string) {
     this.mode = mode;
     this.store.dispatch(changeMode({ mode }));
     this.store.select(getLayoutMode).subscribe((mode) => {
       document.documentElement.setAttribute('data-bs-theme', mode)
     })
-    // document.documentElement.setAttribute('data-bs-theme', mode)
   }
 
   // Visibility Change
@@ -150,6 +146,7 @@ export class RightsidebarComponent implements OnInit {
       document.documentElement.setAttribute('data-sidebar-visibility', visibility)
     })
   }
+
 
   // Width Change
   changeWidth(layoutWidth: string, size: string) {
@@ -236,5 +233,5 @@ export class RightsidebarComponent implements OnInit {
       }, 1000);
     }
   }
-
 }
+

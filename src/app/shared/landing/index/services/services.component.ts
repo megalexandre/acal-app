@@ -25,7 +25,7 @@ export class ServicesComponent implements OnInit {
      this._fetchData();
   }
 
-  /**
+   /**
  * User grid data fetches
  */
     private _fetchData() {

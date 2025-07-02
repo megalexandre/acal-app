@@ -39,25 +39,25 @@ export class EchartComponent implements OnInit {
     this.breadCrumbItems = [{ label: 'Charts' }, { label: 'E - Chart', active: true }];
 
     // Chart Color Data Get Function
-    this._lineAreaChart('["--vz-success"]');
-    this._StackedLineChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger", "--vz-info"]');
-    this._AreaChart('["--vz-success"]');
-    this._StackedAreaChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger", "--vz-info"]');
-    this._StepLineChart('["--vz-primary", "--vz-success", "--vz-warning"]');
-    this._LineYChart('["--vz-success"]');
-    this._BasicBarChart('["--vz-success"]');
-    this._HorizontalBarChart('["--vz-primary", "--vz-success"]');
-    this._StackedHorizontalBarChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger", "--vz-info"]');
-    this._PieChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger", "--vz-info"]');
-    this._DoughnutChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger", "--vz-info"]');
-    this._CandleStickChart('["--vz-danger", "--vz-success"]');
+    this._lineAreaChart('["--vz-primary"]');
+    this._StackedLineChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-secondary", "--vz-info"]');
+    this._AreaChart('["--vz-primary"]');
+    this._StackedAreaChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-light", "--vz-info"]');
+    this._StepLineChart('["--vz-primary", "--vz-light", "--vz-info"]');
+    this._LineYChart('["--vz-primary"]');
+    this._BasicBarChart('["--vz-primary"]');
+    this._HorizontalBarChart('["--vz-primary", "--vz-info"]');
+    this._StackedHorizontalBarChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-light", "--vz-info"]');
+    this._PieChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-light", "--vz-info"]');
+    this._DoughnutChart('["--vz-primary", "--vz-primary-rgb, 0.80", "--vz-primary-rgb, 0.70", "--vz-primary-rgb, 0.60", "--vz-primary-rgb, 0.45"]');
+    this._CandleStickChart('["--vz-primary", "--vz-info"]');
     this._GraphChart('["--vz-primary"]');
-    this._TreemapChart('["--vz-primary", "--vz-success"]');
-    this._sunburstChart('["--vz-warning", "--vz-success"]');
-    this._ParallelChart('["--vz-success"]');
+    this._TreemapChart('["--vz-primary", "--vz-info"]');
+    this._sunburstChart('["--vz-info", "--vz-primary"]');
+    this._ParallelChart('["--vz-primary"]');
     this._SankeyChart('["--vz-info", "--vz-success", "--vz-warning", "--vz-danger", "--vz-primary"]');
     this._FunnelChart('["--vz-info", "--vz-success", "--vz-warning", "--vz-danger", "--vz-primary"]');
-    this._GaugeChart('["--vz-primary", "--vz-warning"]');
+    this._GaugeChart('["--vz-primary"]');
   }
 
     // Chart Colors Set
@@ -922,7 +922,7 @@ export class EchartComponent implements OnInit {
                 itemStyle: {
 
                 }
-            }]
+            }],
         };
     }
 

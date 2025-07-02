@@ -18,7 +18,7 @@ export interface listSortEvent {
     '(click)': 'rotate()'
   }
 })
-export class NgbdListSortableHeader {
+export class NgbdOrdersSortableHeader {
 
   @Input() listsortable: SortColumn = '';
   @Input() direction: SortDirection = '';

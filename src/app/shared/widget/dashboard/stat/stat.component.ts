@@ -12,7 +12,8 @@ export class StatComponent implements OnInit {
   @Input() icon: string | undefined;
   @Input() persantage: string | undefined;
   @Input() profit: string | undefined;
-  @Input() link: string | undefined;
+  @Input() desciption: string | undefined;
+
 
   constructor() { }
 
@@ -26,5 +27,5 @@ export class StatComponent implements OnInit {
     duration: 2,
     decimalPlaces: 2,
   };
-
+  
 }

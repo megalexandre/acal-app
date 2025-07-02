@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Observable } from 'rxjs';
 import { PaginationService } from 'src/app/core/services/pagination.service';
 import { candidatelist } from 'src/app/core/data';
+
 
 @Component({
   selector: 'app-grid-view',
@@ -17,7 +18,6 @@ export class GridViewComponent implements OnInit {
   searchResults: any;
   searchTerm: any;
 
-
   constructor(public service: PaginationService) {
     this.service.pageSize = 20
   }
@@ -30,6 +30,7 @@ export class GridViewComponent implements OnInit {
       { label: 'Candidate Lists' },
       { label: 'Grid View', active: true }
     ];
+    // Fetch Data
     // Fetch Data
     setTimeout(() => {
       this.gridview = this.service.changePage(candidatelist);
@@ -63,4 +64,6 @@ export class GridViewComponent implements OnInit {
     });
     this.gridview = this.service.changePage(this.searchResults)
   }
+
+
 }

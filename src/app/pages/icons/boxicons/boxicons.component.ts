@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastService } from './toast-service';
-
+import { ToastService } from '../toast-service';
 
 @Component({
   selector: 'app-boxicons',
@@ -27,7 +26,6 @@ export class BoxiconsComponent implements OnInit {
       { label: 'Boxicons', active: true }
     ];
   }
-
 
   copytext(event: any) {
     var element = event.target.querySelector('i').className

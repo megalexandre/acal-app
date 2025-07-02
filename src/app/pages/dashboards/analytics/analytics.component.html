@@ -4,49 +4,49 @@
 
 <div class="row">
     <div class="col-xxl-5">
-
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body p-0">
-                        <div class="alert alert-warning border-0 rounded-0 m-0 d-flex align-items-center" role="alert">
-                            <i-feather name="alert-triangle" class="text-warning me-2 icon-sm"></i-feather>
-                            <div class="flex-grow-1 text-truncate">
-                                Your free trial expired in <b>17</b> days.
+        <div class="d-flex flex-column h-100">
+            <div class="row h-100">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <div class="alert alert-primary border-0 rounded-0 m-0 d-flex align-items-center" role="alert">
+                                <i-feather name="alert-triangle" class="text-primary me-2 icon-sm"></i-feather>
+                                <div class="flex-grow-1 text-truncate">
+                                    Your free trial expired in <b>17</b> days.
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <a routerLink="/pages/pricing" class="text-reset text-decoration-underline"><b>Upgrade</b></a>
+                                </div>
                             </div>
-                            <div class="flex-shrink-0">
-                                <a routerLink="/pages/pricing" class="text-reset text-decoration-underline"><b>Upgrade</b></a>
-                            </div>
-                        </div>
 
-                        <div class="row align-items-end">
-                            <div class="col-sm-8">
-                                <div class="p-3">
-                                    <p class="fs-16 lh-base">Upgrade your plan from a <span class="fw-semibold">Free
-                                            trial</span>, to ‘Premium Plan’ <i class="mdi mdi-arrow-right"></i></p>
-                                    <div class="mt-3">
-                                        <a routerLink="/pages/pricing" class="btn btn-success">Upgrade Account!</a>
+                            <div class="row align-items-end">
+                                <div class="col-sm-8">
+                                    <div class="p-3">
+                                        <p class="fs-16 lh-base">Upgrade your plan from a <span class="fw-semibold">Free
+                                                trial</span>, to ‘Premium Plan’ <i class="mdi mdi-arrow-right"></i></p>
+                                        <div class="mt-3">
+                                            <a routerLink="/pages/pricing" class="btn btn-primary">Upgrade Account!</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="px-3">
+                                        <img src="assets/images/user-illustarator-2.png" class="img-fluid" alt="">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-4">
-                                <div class="px-3">
-                                    <img src="assets/images/user-illustarator-2.png" class="img-fluid" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- end card-body-->
+                        </div> <!-- end card-body-->
+                    </div>
+                </div> <!-- end col-->
+            </div> <!-- end row-->
+
+            <div class="row">
+                @for (stat of statData; track $index) {
+                <div class="col-md-6">
+                    <app-analatics-stat [title]="stat.title" [value]="stat.value" [icon]="stat.icon" [persantage]="stat.persantage" [profit]="stat.profit"></app-analatics-stat>
                 </div>
-            </div> <!-- end col-->
-        </div> <!-- end row-->
-
-
-        <div class="row">
-            @for ( stat of statData; track $index) {
-            <div class="col-md-6">
-                <app-analatics-stat [title]="stat.title" [value]="stat.value" [icon]="stat.icon" [persantage]="stat.persantage" [profit]="stat.profit"></app-analatics-stat>
+                }
             </div>
-            }
         </div>
     </div> <!-- end col-->
 
@@ -124,7 +124,7 @@
                     </div>
                     <div class="card-body p-0">
                         <div>
-                            <apx-chart [series]="basicBarChart.series" [colors]="basicBarChart.colors" [chart]="basicBarChart.chart" [dataLabels]="basicBarChart.dataLabels" [plotOptions]="basicBarChart.plotOptions" [xaxis]="basicBarChart.xaxis" [legend]="basicBarChart.legend" dir="ltr"></apx-chart>
+                            <apx-chart [series]="basicBarChart.series" [colors]="basicBarChart.colors" [chart]="basicBarChart.chart" [dataLabels]="basicBarChart.dataLabels" [plotOptions]="basicBarChart.plotOptions" [xaxis]="basicBarChart.xaxis" dir="ltr" [legend]="basicBarChart.legend"></apx-chart>
                         </div>
                     </div><!-- end card body -->
                 </div><!-- end card -->
@@ -158,14 +158,12 @@
                 <div class="row g-0 text-center">
                     <div class="col-6 col-sm-4">
                         <div class="p-3 border border-dashed border-start-0">
-                            <h5 class="mb-1">
-                                <span [countUp]="854" class="counter-value" [options]="option"></span>
+                            <h5 class="mb-1"><span [countUp]="854" class="counter-value" [options]="option"></span>
                                 <span class="text-success mx-1 fs-12">49%<i class="ri-arrow-right-up-line ms-1 align-middle"></i></span>
                             </h5>
                             <p class="text-muted mb-0">Avg. Session</p>
                         </div>
-                    </div>
-                    <!--end col-->
+                    </div><!--end col-->
                     <div class="col-6 col-sm-4">
                         <div class="p-3 border border-dashed border-start-0">
                             <h5 class="mb-1"><span [countUp]="1278" class="counter-value" [options]="option"></span>
@@ -173,8 +171,7 @@
                             </h5>
                             <p class="text-muted mb-0">Conversion Rate</p>
                         </div>
-                    </div>
-                    <!--end col-->
+                    </div><!--end col-->
                     <div class="col-6 col-sm-4">
                         <div class="p-3 border border-dashed border-start-0 border-end-0">
                             <h5 class="mb-1"><span [countUp]="3" class="counter-value" [options]="option"></span>m <span [countUp]="40" class="counter-value" [options]="option"></span>sec
@@ -182,13 +179,12 @@
                             </h5>
                             <p class="text-muted mb-0">Avg. Session Duration</p>
                         </div>
-                    </div>
-                    <!--end col-->
+                    </div><!--end col-->
                 </div>
             </div><!-- end card header -->
             <div class="card-body p-0 pb-2">
                 <div class="mb-n2">
-                    <apx-chart [series]="basicColumnChart.series" [chart]="basicColumnChart.chart" [colors]="basicColumnChart.colors" [dataLabels]="basicColumnChart.dataLabels" [plotOptions]="basicColumnChart.plotOptions" [yaxis]="basicColumnChart.yaxis" [legend]="basicColumnChart.legend" [fill]="basicColumnChart.fill" [stroke]="basicColumnChart.stroke" [tooltip]="basicColumnChart.tooltip" [xaxis]="basicColumnChart.xaxis" [yaxis]="basicColumnChart.yaxis" dir="ltr"></apx-chart>
+                    <apx-chart [series]="basicColumnChart.series" [chart]="basicColumnChart.chart" [colors]="basicColumnChart.colors" [dataLabels]="basicColumnChart.dataLabels" [plotOptions]="basicColumnChart.plotOptions" [yaxis]="basicColumnChart.yaxis" [legend]="basicColumnChart.legend" [fill]="basicColumnChart.fill" [stroke]="basicColumnChart.stroke" [tooltip]="basicColumnChart.tooltip" [xaxis]="basicColumnChart.xaxis" dir="ltr"></apx-chart>
                 </div>
             </div><!-- end card body -->
         </div><!-- end card -->
@@ -232,10 +228,10 @@
                             <span class="text-muted fs-16"><i class="mdi mdi-dots-vertical align-middle"></i></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
-                            <a class="dropdown-item" href="javascript:void(0);">Today</a>
-                            <a class="dropdown-item" href="javascript:void(0);">Last Week</a>
-                            <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
-                            <a class="dropdown-item" href="javascript:void(0);">Current Year</a>
+                            <a class="dropdown-item" href="javascript:void(0);" (click)="setdevicevalue('today')">Today</a>
+                            <a class="dropdown-item" href="javascript:void(0);" (click)="setdevicevalue('last_week')">Last Week</a>
+                            <a class="dropdown-item" href="javascript:void(0);" (click)="setdevicevalue('last_month')">Last Month</a>
+                            <a class="dropdown-item" href="javascript:void(0);" (click)="setdevicevalue('current_year')">Current Year</a>
                         </div>
                     </div>
                 </div>
@@ -252,9 +248,7 @@
                                     </h4>
                                 </td>
                                 <td>
-                                    <p class="text-muted mb-0">
-                                        <i-feather name="users" class="me-2 icon-sm"></i-feather>78.56k
-                                    </p>
+                                    <p class="text-muted mb-0"><i-feather name="users" class="me-2 icon-sm"></i-feather>78.56k</p>
                                 </td>
                                 <td class="text-end">
                                     <p class="text-success fw-medium fs-12 mb-0"><i class="ri-arrow-up-s-fill fs-5 align-middle"></i>2.08%</p>
@@ -262,13 +256,11 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <h4 class="text-truncate fs-14 fs-medium mb-0"><i class="ri-stop-fill align-middle fs-18 text-warning me-2"></i>Mobile Users
+                                    <h4 class="text-truncate fs-14 fs-medium mb-0"><i class="ri-stop-fill align-middle fs-18 text-success me-2"></i>Mobile Users
                                     </h4>
                                 </td>
                                 <td>
-                                    <p class="text-muted mb-0">
-                                        <i-feather name="users" class="me-2 icon-sm"></i-feather>105.02k
-                                    </p>
+                                    <p class="text-muted mb-0"><i-feather name="users" class="me-2 icon-sm"></i-feather>105.02k</p>
                                 </td>
                                 <td class="text-end">
                                     <p class="text-danger fw-medium fs-12 mb-0"><i class="ri-arrow-down-s-fill fs-5 align-middle"></i>10.52%</p>
@@ -276,12 +268,11 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <h4 class="text-truncate fs-14 fs-medium mb-0"><i class="ri-stop-fill align-middle fs-18 text-info me-2"></i>Tablet Users</h4>
+                                    <h4 class="text-truncate fs-14 fs-medium mb-0"><i class="ri-stop-fill align-middle fs-18 text-primary me-2"></i>Tablet Users
+                                    </h4>
                                 </td>
                                 <td>
-                                    <p class="text-muted mb-0">
-                                        <i-feather name="users" class="me-2 icon-sm"></i-feather>42.89k
-                                    </p>
+                                    <p class="text-muted mb-0"><i-feather name="users" class="me-2 icon-sm"></i-feather>42.89k</p>
                                 </td>
                                 <td class="text-end">
                                     <p class="text-danger fw-medium fs-12 mb-0"><i class="ri-arrow-down-s-fill fs-5 align-middle"></i>7.36%</p>
@@ -325,7 +316,7 @@
                 <div class="mt-3 pt-2">
                     <div class="progress progress-lg rounded-pill">
                         <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        <div class="progress-bar bg-info" role="progressbar" style="width: 18%" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-secondary" role="progressbar" style="width: 18%" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100"></div>
                         <div class="progress-bar bg-success" role="progressbar" style="width: 22%" aria-valuenow="22" aria-valuemin="0" aria-valuemax="100"></div>
                         <div class="progress-bar bg-warning" role="progressbar" style="width: 16%" aria-valuenow="16" aria-valuemin="0" aria-valuemax="100"></div>
                         <div class="progress-bar bg-danger" role="progressbar" style="width: 19%" aria-valuenow="19" aria-valuemin="0" aria-valuemax="100"></div>
@@ -343,7 +334,7 @@
                     </div><!-- end -->
                     <div class="d-flex mb-2">
                         <div class="flex-grow-1">
-                            <p class="text-truncate text-muted fs-14 mb-0"><i class="mdi mdi-circle align-middle text-info me-2"></i>www.youtube.com</p>
+                            <p class="text-truncate text-muted fs-14 mb-0"><i class="mdi mdi-circle align-middle text-secondary me-2"></i>www.youtube.com</p>
                         </div>
                         <div class="flex-shrink-0">
                             <p class="mb-0">17.51%</p>

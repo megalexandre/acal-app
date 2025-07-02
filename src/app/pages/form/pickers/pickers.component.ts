@@ -17,8 +17,6 @@ export class PickersComponent implements OnInit {
   monolith!: string;
   nano!: string;
 
-  modelValueAsDate: Date = new Date();
-
   constructor() { }
 
   ngOnInit(): void {
@@ -30,7 +28,5 @@ export class PickersComponent implements OnInit {
       { label: 'Pickers', active: true }
     ];
   }
-
-  inlineDatePicker: Date = new Date();
 
 }

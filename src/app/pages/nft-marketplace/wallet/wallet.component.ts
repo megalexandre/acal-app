@@ -43,4 +43,5 @@ export class WalletComponent implements OnInit {
     this.walletData = nftwalletData;
   }
 
+
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
-import { UntypedFormBuilder, Validators, UntypedFormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { GroupUser, ChatUser, ChatMessage, ContactModel } from './chat.model';
+import { MessagesData, chatData, chatMessagesData, contactData, groupData } from 'src/app/core/data';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 
 // Date Format
@@ -8,7 +9,6 @@ import { DatePipe } from '@angular/common';
 
 // Light Box
 import { Lightbox } from 'ngx-lightbox';
-import { MessagesData, chatData, chatMessagesData, contactData, groupData } from 'src/app/core/data';
 
 @Component({
   selector: 'app-chat',
@@ -20,13 +20,12 @@ import { MessagesData, chatData, chatMessagesData, contactData, groupData } from
  * Chat Component
  */
 export class ChatComponent implements OnInit {
-  searchText: any;
-  searchMsgText: any;
+
   chatData!: ChatUser[];
   groupData!: GroupUser[];
   chatMessagesData!: ChatMessage[];
   contactData!: ContactModel[];
-  formData!: UntypedFormGroup;
+  formData!: FormGroup;
   usermessage!: string;
   isFlag: boolean = false;
   submitted = false;
@@ -34,11 +33,12 @@ export class ChatComponent implements OnInit {
   isProfile: string = 'assets/images/users/avatar-2.jpg';
   username: any = 'Lisa Parker';
   @ViewChild('scrollRef') scrollRef: any;
-  images: { src: string; thumb: string; caption: string }[] = [];
   isreplyMessage = false;
   emoji = '';
 
-  constructor(public formBuilder: UntypedFormBuilder, private lightbox: Lightbox, private datePipe: DatePipe, private offcanvasService: NgbOffcanvas) {
+  images: { src: string; thumb: string; caption: string }[] = [];
+
+  constructor(public formBuilder: FormBuilder, private lightbox: Lightbox, private offcanvasService: NgbOffcanvas, private datePipe: DatePipe) {
     for (let i = 1; i <= 24; i++) {
       const src = '../../../../assets/images/small/img-' + i + '.jpg';
       const caption = 'Image ' + i + ' caption here';
@@ -53,9 +53,6 @@ export class ChatComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Chat Data Get Function
-    this._fetchData();
-
     // Validation
     this.formData = this.formBuilder.group({
       message: ['', [Validators.required]],
@@ -66,8 +63,6 @@ export class ChatComponent implements OnInit {
 
     this.onListScroll();
   }
-
-
 
   ngAfterViewInit() {
     this.scrollRef.SimpleBar.getScrollElement().scrollTop = 300;
@@ -82,19 +77,19 @@ export class ChatComponent implements OnInit {
     this.contactData = contactData;
   }
 
-  /**
-   * Returns form
-   */
-  get form() {
-    return this.formData.controls;
-  }
-
   onListScroll() {
     if (this.scrollRef !== undefined) {
       setTimeout(() => {
         this.scrollRef.SimpleBar.getScrollElement().scrollTop = this.scrollRef.SimpleBar.getScrollElement().scrollHeight;
       }, 500);
     }
+  }
+
+  /**
+   * Returns form
+   */
+  get form() {
+    return this.formData.controls;
   }
 
   /**
@@ -163,52 +158,21 @@ export class ChatComponent implements OnInit {
     }
   }
 
+  /**
+  * SidebarHide modal
+  * @param content modal content
+  */
+  SidebarHide() {
+    const recentActivity = document.querySelector('.user-chat');
+    if (recentActivity != null) {
+      recentActivity.classList.remove('user-chat-show');
+    }
+  }
+
   open(index: number): void {
     // open lightbox
     this.lightbox.open(this.images, index, {});
   }
-
-  close(): void {
-    // close lightbox programmatically
-    this.lightbox.close();
-  }
-
-  // Copy Message
-  copyMessage(event: any) {
-    navigator.clipboard.writeText(event.target.closest('.chat-list').querySelector('.ctext-content').innerHTML);
-    (document.getElementById("copyClipBoard") as HTMLElement).style.display = "block";
-    setTimeout(() => {
-      (document.getElementById("copyClipBoard") as HTMLElement).style.display = "none";
-    }, 1000);
-  }
-
-  // Delete Message
-  deleteMessage(event: any) {
-    event.target.closest('.chat-list').remove();
-  }
-
-  // Replay Message
-  replyMessage(event: any, align: any) {
-    this.isreplyMessage = true;
-    document.querySelector('.replyCard')?.classList.add('show');
-    var copyText = event.target.closest('.chat-list').querySelector('.ctext-content').innerHTML;
-    (document.querySelector(".replyCard .replymessage-block .flex-grow-1 .mb-0") as HTMLAreaElement).innerHTML = copyText;
-    var msgOwnerName: any = event.target.closest(".chat-list").classList.contains("right") == true ? 'You' : document.querySelector('.username')?.innerHTML;
-    (document.querySelector(".replyCard .replymessage-block .flex-grow-1 .conversation-name") as HTMLAreaElement).innerHTML = msgOwnerName;
-  }
-
-  closeReplay() {
-    document.querySelector('.replyCard')?.classList.remove('show');
-  }
-
-  // Delete All Message
-  deleteAllMessage(event: any) {
-    var allMsgDelete: any = document.getElementById('users-conversation')?.querySelectorAll('.chat-list');
-    allMsgDelete.forEach((item: any) => {
-      item.remove();
-    })
-  }
-
 
   // Contact Search
   ContactSearch() {
@@ -228,7 +192,6 @@ export class ChatComponent implements OnInit {
         }
       }
     })
-
   }
 
   // Message Search
@@ -249,11 +212,42 @@ export class ChatComponent implements OnInit {
     }
   }
 
-  //  Filter Offcanvas Set
-  openEnd(content: TemplateRef<any>) {
+  // Filter Offcanvas Set
+  onChatInfoClicked(content: TemplateRef<any>) {
     this.offcanvasService.open(content, { position: 'end' });
   }
 
+  // Replay Message
+  replyMessage(event: any, align: any) {
+    this.isreplyMessage = true;
+    document.querySelector('.replyCard')?.classList.add('show');
+    var copyText = event.target.closest('.chat-list').querySelector('.ctext-content').innerHTML;
+    (document.querySelector(".replyCard .replymessage-block .flex-grow-1 .mb-0") as HTMLAreaElement).innerHTML = copyText;
+    var msgOwnerName: any = event.target.closest(".chat-list").classList.contains("right") == true ? 'You' : document.querySelector('.username')?.innerHTML;
+    (document.querySelector(".replyCard .replymessage-block .flex-grow-1 .conversation-name") as HTMLAreaElement).innerHTML = msgOwnerName;
+  }
+
+  // Copy Message
+  copyMessage(event: any) {
+    navigator.clipboard.writeText(event.target.closest('.chat-list').querySelector('.ctext-content').innerHTML);
+    document.getElementById('copyClipBoard')?.classList.add('show');
+    setTimeout(() => {
+      document.getElementById('copyClipBoard')?.classList.remove('show');
+    }, 1000);
+  }
+
+  // Delete Message
+  deleteMessage(event: any) {
+    event.target.closest('.chat-list').remove();
+  }
+
+  // Delete All Message
+  deleteAllMessage(event: any) {
+    var allMsgDelete: any = document.getElementById('users-conversation')?.querySelectorAll('.chat-list');
+    allMsgDelete.forEach((item: any) => {
+      item.remove();
+    })
+  }
 
   // Emoji Picker
   showEmojiPicker = false;
@@ -284,18 +278,15 @@ export class ChatComponent implements OnInit {
   onBlur() {
   }
 
+  closeReplay() {
+    document.querySelector('.replyCard')?.classList.remove('show');
+  }
+
   /**
    * Delete Chat Contact Data 
    */
   delete(event: any) {
     event.target.closest('li')?.remove();
-  }
-
-  hideChat() {
-    const userChatShow = document.querySelector('.user-chat');
-    if (userChatShow != null) {
-      userChatShow.classList.remove('user-chat-show');
-    }
   }
 
 }

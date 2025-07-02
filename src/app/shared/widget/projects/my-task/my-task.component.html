@@ -8,7 +8,7 @@
         </tr>
     </thead><!-- end thead -->
     <tbody>
-        @for ( data of MyTask; track $index) {
+        @for (data of MyTask; track $index) {
         <tr>
             <td>
                 <div class="form-check">
@@ -25,7 +25,6 @@
                     <img src="{{data.assignee.profile}}" alt="" class="rounded-circle avatar-xxs">
                 </a>
             </td>
-        </tr><!-- end -->
-        }
+        </tr>}<!-- end -->
     </tbody><!-- end tbody -->
 </table><!-- end table -->

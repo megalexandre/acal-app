@@ -218,8 +218,6 @@ export class CustomersComponent {
     this.submitted = true
   }
 
-
-
   // The master checkbox will check/ uncheck all items
   checkUncheckAll(ev: any) {
     this.customers.forEach((x: { state: any; }) => x.state = ev.target.checked)
@@ -285,7 +283,7 @@ export class CustomersComponent {
       noDownload: false,
       headers: ["id", "customer Id", "customer", "email", "phone", "date", "status"]
     };
-    new ngxCsv(this.content, "customers", customer);
+    new ngxCsv(this.customers, "customers", customer);
   }
   /**
   * Sort table data

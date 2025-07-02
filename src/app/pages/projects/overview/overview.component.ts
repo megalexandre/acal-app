@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, QueryList, ViewChildren } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
+import { Observable } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { projectDocument, ProjectTeam } from 'src/app/core/data';
@@ -6,7 +8,7 @@ import { projectDocument, ProjectTeam } from 'src/app/core/data';
 @Component({
   selector: 'app-overview',
   templateUrl: './overview.component.html',
-  styleUrls: ['./overview.component.scss'],
+  styleUrls: ['./overview.component.scss']
 })
 
 /**
@@ -21,13 +23,15 @@ export class OverviewComponent {
   constructor(private modalService: NgbModal) {
   }
 
+
   ngOnInit(): void {
     /**
-     * Fetches the data
-     */
+      * Fetches the data
+      */
     this.projectListWidgets = projectDocument;
     this.teamOverviewList = ProjectTeam;
   }
+
 
 
   /**
@@ -38,7 +42,6 @@ export class OverviewComponent {
     this.submitted = false;
     this.modalService.open(content, { size: 'md', centered: true });
   }
-
 
   /**
   * Active Toggle navbar

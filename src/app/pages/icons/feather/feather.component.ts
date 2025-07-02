@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Icons } from './feather-icons.model';
-import { ToastService } from './toast-service';
 import { IconsData } from 'src/app/core/data';
+import { ToastService } from '../toast-service';
 
 @Component({
   selector: 'app-feather',
@@ -44,9 +44,9 @@ export class FeatherComponent implements OnInit {
     this.IconsData = IconsData;
   }
 
-
   copytext(icon: any) {
     navigator.clipboard.writeText(icon);
     this.toastService.show(icon + ' icon Copied Successfully !!!', { classname: 'bg-success text-center text-white', delay: 5000 });
   }
+
 }

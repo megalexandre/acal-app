@@ -7,7 +7,7 @@ import { AuthfakeauthenticationService } from '../services/authfake.service';
 import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
-export class AuthGuard  {
+export class AuthGuard {
     constructor(
         private router: Router,
         private authenticationService: AuthenticationService,
@@ -28,7 +28,7 @@ export class AuthGuard  {
                 return true;
             }
             // check if user data is in storage is logged in via API.
-            if(sessionStorage.getItem('currentUser')) {
+            if (sessionStorage.getItem('currentUser')) {
                 return true;
             }
         }

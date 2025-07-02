@@ -30,10 +30,10 @@ export class TreemapComponent implements OnInit {
     ];
 
     // Chart Color Data Get Function
-    this._differentColorChart('["--vz-success"]');
-    this._MultiDimensionalChart('["--vz-primary","--vz-success"]');
-    this._distributedTreemapChart('["--vz-primary", "--vz-secondary", "--vz-success", "--vz-info","--vz-warning", "--vz-danger"]');
-    this._colorRangesChart('["--vz-info","--vz-danger"]');
+    this._differentColorChart('["--vz-primary"]');
+    this._MultiDimensionalChart('["--vz-primary","--vz-info"]');
+    this._distributedTreemapChart('["--vz-primary", "--vz-success", "--vz-info","--vz-light"]');
+    this._colorRangesChart('["--vz-info","--vz-primary"]');
   }
 
   // Chart Colors Set

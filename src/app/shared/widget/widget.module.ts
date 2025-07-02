@@ -49,7 +49,7 @@ import { NftStatComponent } from './nft/nft-stat/nft-stat.component';
     ActiveProjectComponent,
     MyTaskComponent,
     TeamMembersComponent,
-    NftStatComponent,
+    NftStatComponent
   ],
   imports: [
     CommonModule,
@@ -60,7 +60,6 @@ import { NftStatComponent } from './nft/nft-stat/nft-stat.component';
     FeatherModule.pick(allIcons),
     NgApexchartsModule,
   ],
-  exports: [BestSellingComponent, TopSellingComponent, RecentOrdersComponent, TopPagesComponent, StatComponent, AnalaticsStatComponent, CrmStatComponent, DealsStatusComponent, UpcomingActivitiesComponent, ClosingDealsComponent, CryptoStatComponent, CurrenciesComponent, TopPerformersComponent, NewsFeedComponent, ProjectsStatComponent, ActiveProjectComponent, MyTaskComponent, TeamMembersComponent,
-    NftStatComponent]
+  exports: [BestSellingComponent, TopSellingComponent, RecentOrdersComponent, TopPagesComponent, StatComponent, AnalaticsStatComponent, CrmStatComponent, DealsStatusComponent, UpcomingActivitiesComponent, ClosingDealsComponent, CryptoStatComponent, CurrenciesComponent, TopPerformersComponent, NewsFeedComponent, ProjectsStatComponent, ActiveProjectComponent, MyTaskComponent, TeamMembersComponent, NftStatComponent]
 })
 export class WidgetModule { }

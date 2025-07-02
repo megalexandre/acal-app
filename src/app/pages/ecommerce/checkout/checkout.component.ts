@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgbModal, NgbNav } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 // Sweet Alert
 import Swal from 'sweetalert2';
@@ -7,8 +7,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.scss'],
-  providers: [NgbNav],
+  styleUrls: ['./checkout.component.scss']
 })
 
 /**
@@ -19,8 +18,6 @@ export class CheckoutComponent implements OnInit {
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   submitted = false;
-
-  @ViewChild(NgbNav) nav!: NgbNav;
 
   constructor(private modalService: NgbModal) { }
 
@@ -36,8 +33,8 @@ export class CheckoutComponent implements OnInit {
 
   /**
    * Confirmation mail model
-   */
-  confirm(content:any) {
+  */
+   confirm(content:any) {
     this.modalService.open(content, { centered: true });
   }
 
@@ -48,10 +45,6 @@ export class CheckoutComponent implements OnInit {
   openModal(content: any) {
     this.submitted = false;
     this.modalService.open(content, { size: 'md', centered: true });
-  }
-
-  changeActiveTab(tabId: any) {
-    this.nav.select(tabId);
   }
 
 }

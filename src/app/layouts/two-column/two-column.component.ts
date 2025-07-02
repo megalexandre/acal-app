@@ -45,17 +45,12 @@ export class TwoColumnComponent implements OnInit {
     })
   }
 
+
   /**
    * On mobile toggle button clicked
    */
   onToggleMobileMenu() {
-    if (document.documentElement.clientWidth <= 767) {
-      document.body.classList.toggle('vertical-sidebar-enable');
-      document.getElementById('side-bar')?.classList.remove('d-none')
-    } else {
-      document.body.classList.toggle('twocolumn-panel');
-      document.getElementById('side-bar')?.classList.add('d-none')
-    }
+    document.body.classList.toggle('twocolumn-panel');
   }
 
   /**
@@ -70,15 +65,6 @@ export class TwoColumnComponent implements OnInit {
     }
   }
 
-  isTwoColumnLayoutRequested() {
-    return 'twocolumn' === document.documentElement.getAttribute('data-layout');
-
-  }
-
-  issemiboxLayoutRequested() {
-    return 'semibox' === document.documentElement.getAttribute('data-layout');
-  }
-
   onResize(event: any) {
     if (document.body.getAttribute('layout') == "twocolumn") {
       if (event.target.innerWidth <= 767) {
@@ -90,4 +76,14 @@ export class TwoColumnComponent implements OnInit {
       }
     }
   }
+
+  isTwoColumnLayoutRequested() {
+    return 'twocolumn' === document.documentElement.getAttribute('data-layout');
+
+  }
+
+  issemiboxLayoutRequested() {
+    return 'semibox' === document.documentElement.getAttribute('data-layout');
+  }
+
 }

@@ -1,17 +1,16 @@
-import { Component, PipeTransform, QueryList, ViewChildren } from '@angular/core';
+import { Component, QueryList, ViewChildren } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { UntypedFormBuilder, UntypedFormGroup, FormArray, Validators, FormControl } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, FormArray, Validators } from '@angular/forms';
 
 // Sweet Alert
 import Swal from 'sweetalert2';
 
 import { ListJsModel, paginationModel } from './listjs.model';
-import { OrdersService } from './listjs.service';
-import { NgbdListSortableHeader, listSortEvent } from './listjs-sortable.directive';
 import { FuzzyList, dataattribute, existingList, paginationlist } from 'src/app/core/data';
+import { OrdersService } from './listjs.service';
+import { NgbdOrdersSortableHeader, listSortEvent } from './listjs-sortable.directive';
 
 @Component({
   selector: 'app-listjs',
@@ -54,9 +53,9 @@ export class ListjsComponent {
   // Table data
   ListJsList!: Observable<ListJsModel[]>;
   total: Observable<number>;
-  @ViewChildren(NgbdListSortableHeader) headers!: QueryList<NgbdListSortableHeader>;
+  @ViewChildren(NgbdOrdersSortableHeader) headers!: QueryList<NgbdOrdersSortableHeader>;
 
-  constructor(private modalService: NgbModal, public service: OrdersService, private formBuilder: UntypedFormBuilder, private pipe: DecimalPipe) {
+  constructor(private modalService: NgbModal, public service: OrdersService, private formBuilder: UntypedFormBuilder) {
     this.ListJsList = service.countries$;
     this.total = service.total$;
   }
@@ -84,8 +83,8 @@ export class ListjsComponent {
 
 
     /**
-     * fetches data
-     */
+    * fetches data
+    */
     this.ListJsList.subscribe(x => {
       this.ListJsDatas = Object.assign([], x);
     });
@@ -103,15 +102,8 @@ export class ListjsComponent {
       this.endIndex = this.totalRecords;
     }
     this.paginationDatas = paginationlist.slice(this.startIndex - 1, this.endIndex);
-  }
 
-  /**
- * User grid data fetches
- */
-  //  private _fetchData() {
-  //   this.ListJsData = ListJs;
-  //   this.ListJsDatas = Object.assign([], this.ListJsData);
-  // }
+  }
 
   /**
    * Open modal
@@ -130,8 +122,8 @@ export class ListjsComponent {
   }
 
   /**
-  * Pagination
-  */
+* Pagination
+*/
   loadPage() {
     this.startIndex = (this.page - 1) * this.pageSize + 1;
     this.endIndex = (this.page - 1) * this.pageSize + this.pageSize;
@@ -142,13 +134,12 @@ export class ListjsComponent {
   }
 
   /**
-    * Save saveListJs
-    */
+  * Save saveListJs
+  */
   saveListJs() {
     if (this.listJsForm.valid) {
       if (this.listJsForm.get('ids')?.value) {
         this.ListJsDatas = this.ListJsDatas.map((data: { id: any; }) => data.id === this.listJsForm.get('ids')?.value ? { ...data, ...this.listJsForm.value } : data)
-        // ListJs = this.ListJsDatas    
       } else {
         const customer_name = this.listJsForm.get('customer_name')?.value;
         const email = this.listJsForm.get('email')?.value;
@@ -174,7 +165,6 @@ export class ListjsComponent {
     this.submitted = true
   }
 
-
   // The master checkbox will check/ uncheck all items
   checkUncheckAll(ev: any) {
     this.ListJsDatas.forEach((x: { state: any; }) => x.state = ev.target.checked)
@@ -187,6 +177,18 @@ export class ListjsComponent {
   confirm(content: any, id: any) {
     this.deleteId = id;
     this.modalService.open(content, { centered: true });
+  }
+
+  // Delete Data
+  deleteData(id: any) {
+    if (id) {
+      document.getElementById('lj_' + id)?.remove();
+    }
+    else {
+      this.checkedValGet.forEach((item: any) => {
+        document.getElementById('lj_' + item)?.remove();
+      });
+    }
   }
 
   /**
@@ -207,22 +209,9 @@ export class ListjsComponent {
       this.modalService.open(content, { centered: true });
     }
     else {
-      Swal.fire({ text: 'Please select at least one checkbox', confirmButtonColor: '#299cdb', });
+      Swal.fire({ text: 'Please select at least one checkbox', confirmButtonColor: '#239eba', });
     }
     this.checkedValGet = checkedVal;
-
-  }
-
-  // Delete Data
-  deleteData(id: any) {
-    if (id) {
-      document.getElementById('lj_' + id)?.remove();
-    }
-    else {
-      this.checkedValGet.forEach((item: any) => {
-        document.getElementById('lj_' + item)?.remove();
-      });
-    }
   }
 
   /**
@@ -232,9 +221,9 @@ export class ListjsComponent {
   editModal(content: any, id: any) {
     this.submitted = false;
     this.modalService.open(content, { size: 'md', centered: true });
-    var updateBtn = document.getElementById('add-btn') as HTMLAreaElement;
-    updateBtn.innerHTML = "Update";
     var listData = this.ListJsDatas.filter((data: { id: any; }) => data.id === id);
+    var updatebtn = document.getElementById('add-btn') as HTMLElement;
+    updatebtn.innerHTML = 'Update';
     this.listJsForm.controls['customer_name'].setValue(listData[0].customer_name);
     this.listJsForm.controls['email'].setValue(listData[0].email);
     this.listJsForm.controls['phone'].setValue(listData[0].phone);
@@ -258,6 +247,5 @@ export class ListjsComponent {
     this.service.sortColumn = column;
     this.service.sortDirection = direction;
   }
-
 
 }

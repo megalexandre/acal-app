@@ -11,15 +11,13 @@ import { BasicComponent } from './basic/basic.component';
 import { CoverComponent } from './cover/cover.component';
 import { AltComponent } from './alt/alt.component';
 import { Page500Component } from './page500/page500.component';
-import { OfflineComponent } from './offline/offline.component';
 
 @NgModule({
   declarations: [
     BasicComponent,
     CoverComponent,
     AltComponent,
-    Page500Component,
-    OfflineComponent
+    Page500Component
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // Register Auth
 import { environment } from '../../../environments/environment';
@@ -20,14 +20,14 @@ import { first } from 'rxjs/operators';
 export class RegisterComponent implements OnInit {
 
   // Login Form
-  signupForm!: UntypedFormGroup;
+  signupForm!: FormGroup;
   submitted = false;
   successmsg = false;
   error = '';
   // set the current year
   year: number = new Date().getFullYear();
 
-  constructor(private formBuilder: UntypedFormBuilder, private router: Router,
+  constructor(private formBuilder: FormBuilder, private router: Router,
     private authenticationService: AuthenticationService,
     private userService: UserProfileService) { }
 
@@ -50,9 +50,9 @@ export class RegisterComponent implements OnInit {
    */
    onSubmit() {
     this.submitted = true;
-    
-    //Register Api
-    this.authenticationService.register(this.f['email'].value, this.f['name'].value, this.f['password'].value).pipe(first()).subscribe(
+
+     //Register Api
+     this.authenticationService.register(this.f['email'].value, this.f['name'].value, this.f['password'].value).pipe(first()).subscribe(
       (data: any) => {
       this.successmsg = true;
       if (this.successmsg) {

@@ -1,15 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, QueryList, ViewChildren } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
+import { Observable } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { UntypedFormBuilder, UntypedFormGroup, UntypedFormArray, UntypedFormControl, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, UntypedFormArray, Validators, UntypedFormControl } from '@angular/forms';
 
 // Sweet Alert
 import Swal from 'sweetalert2';
 
 // Date Format
 import { DatePipe } from '@angular/common';
-
-// Rest Api Service
-import { restApiService } from "../../../core/services/rest-api.service";
 import { GlobalComponent } from '../../../global-component';
 import { RootReducerState } from 'src/app/store';
 import { Store } from '@ngrx/store';
@@ -19,10 +18,12 @@ import { selectTaskData, selectTaskLoading } from 'src/app/store/Task/task_selec
 import { cloneDeep } from 'lodash';
 import { AssignedData } from 'src/app/core/data';
 
+
 @Component({
   selector: 'app-list-view',
   templateUrl: './list-view.component.html',
   styleUrls: ['./list-view.component.scss'],
+  providers: [DecimalPipe]
 })
 
 /**
@@ -73,19 +74,20 @@ export class ListViewComponent {
      * Form Validation
      */
     this.tasksForm = this.formBuilder.group({
-      taskId: [''],
+      taskId: "#VLZ1",
       ids: [''],
       project: ['', [Validators.required]],
       task: ['', [Validators.required]],
       creater: ['', [Validators.required]],
+      subItem: this.formBuilder.array([]),
       dueDate: ['', [Validators.required]],
       status: ['', [Validators.required]],
       priority: ['', [Validators.required]]
     });
 
     /**
-     * fetches data
-     */
+    * fetches data
+    */
 
     this.store.dispatch(fetchTaskListData());
     this.store.select(selectTaskLoading).subscribe((data) => {
@@ -104,6 +106,7 @@ export class ListViewComponent {
 
   }
 
+
   num: number = 0;
   option = {
     startVal: this.num,
@@ -111,6 +114,7 @@ export class ListViewComponent {
     duration: 2,
     decimalPlaces: 2,
   };
+
 
   changePage() {
     this.tasks = this.service.changePage(this.alltasks)
@@ -135,6 +139,7 @@ export class ListViewComponent {
   get form() {
     return this.tasksForm.controls;
   }
+
 
   /**
   * Save user
@@ -171,22 +176,26 @@ export class ListViewComponent {
     this.submitted = true
   }
 
-  onCheckboxChange(e: any) {
-    for (var i = 0; i < this.AssignedData.length; i++) {
-      if (this.AssignedData[i].img == e.target.value) {
-        if (this.subItem && this.subItem.includes(this.AssignedData[i])) {
-          this.subItem = this.subItem.filter((item: any) => item !== this.AssignedData[i]);
-        } else {
-          this.subItem.push(this.AssignedData[i])
-        }
+  // The master checkbox will check/ uncheck all items
+  checkUncheckAll(ev: any) {
+    this.tasks.forEach((x: { state: any; }) => x.state = ev.target.checked)
+    var checkedVal: any[] = [];
+    var result
+    for (var i = 0; i < this.tasks.length; i++) {
+      if (this.tasks[i].state == true) {
+        result = this.tasks[i];
+        checkedVal.push(result);
       }
     }
+    this.checkedValGet = checkedVal
+    checkedVal.length > 0 ? (document.getElementById("remove-actions") as HTMLElement).style.display = "block" : (document.getElementById("remove-actions") as HTMLElement).style.display = "none";
   }
 
+
   /**
-   * Open Edit modal
-   * @param content modal content
-   */
+  * Open Edit modal
+  * @param content modal content
+  */
   editDataGet(id: any, content: any) {
     this.submitted = false;
     this.modalService.open(content, { size: 'md', centered: true });
@@ -225,6 +234,7 @@ export class ListViewComponent {
     this.masterSelected = false
   }
 
+
   /**
   * Multiple Delete
   */
@@ -243,15 +253,14 @@ export class ListViewComponent {
       this.modalService.open(content, { centered: true });
     }
     else {
-      Swal.fire({ text: 'Please select at least one checkbox', confirmButtonColor: '#299cdb', });
+      Swal.fire({ text: 'Please select at least one checkbox', confirmButtonColor: '#239eba', });
     }
     this.checkedValGet = checkedVal;
   }
 
-
-  // The master checkbox will check/ uncheck all items
-  checkUncheckAll(ev: any) {
-    this.tasks.forEach((x: { state: any; }) => x.state = ev.target.checked)
+  onCheckboxChange(e: any) {
+    const checkArray: UntypedFormArray = this.tasksForm.get('subItem') as UntypedFormArray;
+    checkArray.push(new UntypedFormControl(e.target.value));
     var checkedVal: any[] = [];
     var result
     for (var i = 0; i < this.tasks.length; i++) {
@@ -262,46 +271,6 @@ export class ListViewComponent {
     }
     this.checkedValGet = checkedVal
     checkedVal.length > 0 ? (document.getElementById("remove-actions") as HTMLElement).style.display = "block" : (document.getElementById("remove-actions") as HTMLElement).style.display = "none";
-  }
-
-  // Filtering
-  isstatus?: any
-  SearchData() {
-    var status = document.getElementById("idStatus") as HTMLInputElement;
-    var payment = document.getElementById("idPayment") as HTMLInputElement;
-    var date = document.getElementById("isDate") as HTMLInputElement;
-    var dateVal = date.value ? this.datePipe.transform(new Date(date.value), "yyyy-MM-dd") : '';
-    if (status.value != 'all' && status.value != '' || dateVal != '') {
-      this.tasks = this.content.filter((task: any) => {
-        return task.status === status.value || this.datePipe.transform(new Date(task.dueDate), "yyyy-MM-dd") == dateVal;
-      });
-    }
-    else {
-      this.tasks = this.content;
-    }
-  }
-
-  performSearch() {
-    this.searchResults = this.alltasks.filter((item: any) => {
-      return (
-        item.project.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        item.task.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        item.creater.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        item.priority.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        item.status.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
-    });
-    this.tasks = this.service.changePage(this.searchResults)
-  }
-
-  statusFilter() {
-    if (this.status != '') {
-      this.tasks = this.alltasks.filter((task: any) => {
-        return task.status === this.status;
-      });
-    } else {
-      this.tasks = this.service.changePage(this.alltasks)
-    }
   }
 
 }

@@ -13,7 +13,7 @@
                     <!-- Swiper -->
                     <div class="swiper navigation-swiper rounded testimonial-slider" dir="ltr">
                         <ngx-slick-carousel class="carousel" [config]="review">
-                            @for ( data of ClientLogo; track $index) {
+                            @for (data of ClientLogo; track $index) {
                             <div class="swiper-slide" ngxSlickItem>
                                 <div class="row justify-content-center g-0">
                                     <div class="col-10">
@@ -28,11 +28,9 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            }
+                            </div>}
                             <!-- end slide -->
                         </ngx-slick-carousel>
-                        <div class="swiper-pagination position-relative mt-2"></div>
                     </div>
                     <!-- end slider -->
                 </div>

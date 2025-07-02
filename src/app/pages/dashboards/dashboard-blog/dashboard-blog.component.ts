@@ -123,7 +123,7 @@ export class DashboardBlogComponent {
     this.gradientCircleChart = {
       series: [44, 55, 24],
       chart: {
-        height: 229,
+        height: 255,
         type: 'donut',
       },
       plotOptions: {

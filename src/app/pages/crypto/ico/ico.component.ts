@@ -20,6 +20,7 @@ export class IcoComponent implements OnInit {
   chatMessageDatas: any;
   term: any;
 
+
   constructor() { }
 
   ngOnInit(): void {
@@ -41,24 +42,16 @@ export class IcoComponent implements OnInit {
     this.chatMessageDatas = Object.assign([], this.chatMessagesData);
   }
 
+
   // Filtering
   isstatus?: any
   SearchData() {
-    var status = (document.getElementById("choices-single-default2") as HTMLInputElement).value;
-    var rating = (document.getElementById("choices-single-default") as HTMLInputElement).value;
-    var date = (document.getElementById("isDate") as HTMLInputElement).value;
-
-    if (date != '') {
+    var status = document.getElementById("choices-single-default2") as HTMLInputElement;
+    var rating = document.getElementById("choices-single-default") as HTMLInputElement;
+    var date = document.getElementById("isDate") as HTMLInputElement;
+    if (status.value != 'all' && status.value != '' || rating.value != 'all' && rating.value != '' || date.value != '') {
       this.chatMessageDatas = this.chatMessagesData.filter((ico: any) => {
-        return ico.date === date;
-      });
-    } else if (status != '') {
-      this.chatMessageDatas = this.chatMessagesData.filter((ico: any) => {
-        return ico.status === status;
-      });
-    } else if (rating != '') {
-      this.chatMessageDatas = this.chatMessagesData.filter((ico: any) => {
-        return ico.rating >= rating;
+        return ico.date === date.value || ico.status === status.value || ico.rating >= rating.value;
       });
     }
     else {

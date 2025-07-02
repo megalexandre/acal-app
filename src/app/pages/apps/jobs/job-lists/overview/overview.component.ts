@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { joboverview } from 'src/app/core/data/jobList';
 
-// Data Get
-
 @Component({
   selector: 'app-overview',
   templateUrl: './overview.component.html',

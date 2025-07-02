@@ -20,7 +20,6 @@ import { SharedModule } from '../../shared/shared.module';
 import { ListComponent } from './list/list.component';
 import { DetailsComponent } from './details/details.component';
 
-
 import { DatePipe } from '@angular/common';
 
 @NgModule({

@@ -13,7 +13,7 @@
                             <p class="mb-0 mt-2 pt-1 text-muted">The world's first and largest digital marketplace.</p>
                             <div class="d-flex gap-3 mt-4">
                                 <a href="javascript:void(0);" class="btn btn-primary">Discover Now </a>
-                                <a href="javascript:void(0);" class="btn btn-success">Create Your Own</a>
+                                <a href="javascript:void(0);" class="btn btn-secondary">Create Your Own</a>
                             </div>
                         </div>
                         <img src="assets/images/bg-d.png" alt="" class="img-fluid" />
@@ -99,19 +99,19 @@
                                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton5" ngbDropdownMenu>
                                                     <li>
                                                         <a href="javascript:void(0);" class="dropdown-item">
-                                                            <i class="ri-twitter-fill text-primary align-bottom me-1 float-start"></i>
+                                                            <i class="ri-twitter-fill text-primary align-bottom me-1"></i>
                                                             Twitter
                                                         </a>
                                                     </li>
                                                     <li>
                                                         <a href="javascript:void(0);" class="dropdown-item">
-                                                            <i class="ri-facebook-circle-fill text-info align-bottom me-1 float-start"></i>
+                                                            <i class="ri-facebook-circle-fill text-info align-bottom me-1"></i>
                                                             Facebook
                                                         </a>
                                                     </li>
                                                     <li>
                                                         <a href="javascript:void(0);" class="dropdown-item">
-                                                            <i class="ri-google-fill text-danger align-bottom me-1 float-start"></i>
+                                                            <i class="ri-google-fill text-danger align-bottom me-1"></i>
                                                             Google
                                                         </a>
                                                     </li>
@@ -588,7 +588,7 @@
                             </tr>
                         </thead><!-- end thead -->
                         <tbody>
-                            @for ( data of recentData; track $index) {
+                            @for (data of recentData; track $index) {
                             <tr>
                                 <td>
                                     <div class="d-flex align-items-center">
@@ -608,8 +608,7 @@
                                 </td>
                                 <td>{{data.creators}}</td>
                                 <td>{{data.items}}</td>
-                            </tr><!-- end -->
-                            }
+                            </tr>}<!-- end -->
                         </tbody><!-- end tbody -->
                     </table><!-- end table -->
                 </div><!-- end tbody -->
@@ -663,7 +662,7 @@
             </div>
             <div class="card-body" dir="ltr">
                 <ngx-slick-carousel [config]="collection" class="carousel">
-                    @for ( data of topCollectionData; track $index) {
+                    @for (data of topCollectionData; track $index) {
                     <div class="swiper-slide" ngxSlickItem>
                         <div class="dash-collection overflow-hidden rounded-top position-relative">
                             <img src="{{data.img}}" alt="" height="220" class="object-fit-cover w-100" />
@@ -681,8 +680,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    }
+                    </div>}
                 </ngx-slick-carousel>
                 <!--end swiper-->
             </div>
@@ -696,7 +694,7 @@
             </div>
             <div class="card-body" dir="ltr">
                 <ngx-slick-carousel [config]="collection" class="carousel">
-                    @for ( data of popularData; track $index) {
+                    @for (data of popularData; track $index) {
                     <div class="swiper-slide" ngxSlickItem>
                         <div class="d-flex">
                             <div class="flex-shink-0">
@@ -722,8 +720,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    }
+                    </div>}
                 </ngx-slick-carousel>
                 <!--end swiper-->
             </div>

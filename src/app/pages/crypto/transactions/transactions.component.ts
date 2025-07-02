@@ -43,7 +43,6 @@ export class TransactionsComponent {
       { label: 'Crypto' },
       { label: 'Transactions', active: true }
     ];
-    // this.service.currency = 'All'
 
     // Fetch Data
     this.store.dispatch(fetchCryptoTransactionData());
@@ -60,6 +59,9 @@ export class TransactionsComponent {
     });
   }
 
+  /**
+   * Swiper setting
+   */
   num: number = 0;
   option = {
     startVal: this.num,
@@ -72,8 +74,11 @@ export class TransactionsComponent {
    * Swiper setting
    */
   config = {
-    initialSlide: 0,
-    slidesPerView: 1
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    arrows: false
   };
 
   CurrencyFilter() {
@@ -112,5 +117,5 @@ export class TransactionsComponent {
   onSort(column: any) {
     this.transactions = this.service.onSort(column, this.transactions)
   }
-}
 
+}

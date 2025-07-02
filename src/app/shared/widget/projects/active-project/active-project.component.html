@@ -21,24 +21,22 @@
             <td>
                 <div class="d-flex align-items-center">
                     <div class="flex-shrink-0 me-1 text-muted fs-13">{{data.progress}}%</div>
-                    <ngb-progressbar [value]="data.progress" [striped]="true" class="progress progress-sm  flex-grow-1" style="height: 6px;"></ngb-progressbar>
+                    <ngb-progressbar [value]="data.progress" class="progress progress-sm  flex-grow-1" [striped]="true" style="height: 6px;"></ngb-progressbar>
                 </div>
             </td>
             <td>
                 <div class="avatar-group flex-nowrap">
-                    @for ( user of data.assignee; track $index) {
+                    @for (user of data.assignee; track $index) {
                     <div class="avatar-group-item">
                         <a href="javascript: void(0);" class="d-inline-block">
                             <img src="{{user.profile}}" alt="" class="rounded-circle avatar-xxs">
                         </a>
-                    </div>
-                    }
+                    </div>}
                 </div>
             </td>
             <td><span class="badge" [ngClass]=" {'bg-warning-subtle text-warning': data.status === 'Progress', 'bg-danger-subtle text-danger': data.status === 'Pending', 'bg-success-subtle text-success': data.status === 'Completed'}">{{data.status}}</span>
             </td>
             <td class="text-muted">{{data.date}}</td>
-        </tr><!-- end tr -->
-        }
+        </tr>}<!-- end tr -->
     </tbody><!-- end tbody -->
 </table><!-- end table -->

@@ -36,16 +36,16 @@ export class BarComponent implements OnInit {
     ];
 
      // Chart Color Data Get Function
-     this._basicBarChart('["--vz-success"]');
-     this._customDataLabelsChart('["--vz-primary", "--vz-secondary", "--vz-success", "--vz-info", "--vz-warning", "--vz-danger", "--vz-body-color", "--vz-primary", "--vz-success", "--vz-secondary"]');
+     this._basicBarChart('["--vz-primary"]');
+     this._customDataLabelsChart('["--vz-primary", "--vz-secondary", "--vz-success", "--vz-info", "--vz-primary-rgb, 0.5", "--vz-light", "--vz-danger-rgb, 0.7", "--vz-warning-rgb, 0.5", "--vz-primary", "--vz-info"]');
      this._stackedBarChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger", "--vz-info"]');
      this._stacked100BarChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger", "--vz-info"]');
-     this._barWithNegativeChart('["--vz-primary", "--vz-success"]');
-     this._barWithMarkersChart('["--vz-success", "--vz-primary"]');
-     this._reversedBarChart('["--vz-info"]');
-     this._patternedChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger"]');
-     this._groupedBarChart('["--vz-primary", "--vz-success"]');
-     this._barWithImageChart('["--vz-success"]');
+     this._barWithNegativeChart('["--vz-primary", "--vz-info"]');
+     this._barWithMarkersChart('["--vz-primary", "--vz-info"]');
+     this._reversedBarChart('["--vz-primary"]');
+     this._patternedChart('["--vz-primary", "--vz-info", "--vz-success", "--vz-light"]');
+     this._groupedBarChart('["--vz-primary", "--vz-info"]');
+     this._barWithImageChart('["--vz-primary"]');
   }
 
   // Chart Colors Set
@@ -917,7 +917,7 @@ export class BarComponent implements OnInit {
         type: "image",
         opacity: .87,
         image: {
-          src: ["assets/images/small/img-4.jpg"],
+          src: ["../../../../../assets/images/small/img-4.jpg"],
           width: 466,
           height: 406
         }

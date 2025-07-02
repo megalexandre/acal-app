@@ -11,6 +11,7 @@ import { MenuItem } from './menu.model';
   styleUrls: ['./two-column-sidebar.component.scss']
 })
 export class TwoColumnSidebarComponent implements OnInit {
+
   menu: any;
   toggle: any = true;
   menuItems: MenuItem[] = [];
@@ -20,6 +21,7 @@ export class TwoColumnSidebarComponent implements OnInit {
   constructor(private router: Router, public translate: TranslateService) {
     translate.setDefaultLang('en');
   }
+
 
   ngOnInit(): void {
     // Menu Items
@@ -39,46 +41,28 @@ export class TwoColumnSidebarComponent implements OnInit {
       this.initActiveMenu();
     }, 0);
   }
+  toggleSubItem(event: any) {
+    let isCurrentMenuId = event.target.closest('a.nav-link');
+    let isMenu = isCurrentMenuId.nextElementSibling as any;
+    if (isMenu.classList.contains("show")) {
+      isMenu.classList.remove("show");
+      isCurrentMenuId.setAttribute("aria-expanded", "false");
+    } else {
+      let dropDowns = Array.from(document.querySelectorAll('.menu-dropdown .show'));
+      dropDowns.forEach((node: any) => {
+        node.classList.remove('show');
+      });
 
-  toggleSubItem(item: any) {
-    this.menuItems.forEach((menuItem: any) => {
-      if (menuItem.subItems) {
-        menuItem.subItems.forEach((subItem: any) => {
+      let subDropDowns = Array.from(document.querySelectorAll('.menu-dropdown .nav-link'));
+      subDropDowns.forEach((submenu: any) => {
+        submenu.setAttribute('aria-expanded', "false");
+      });
 
-          if (subItem == item) {
-            menuItem.isCollapsed = !menuItem.isCollapsed
-            subItem.isCollapsed = !subItem.isCollapsed
-          } else {
-            subItem.isCollapsed = true
-          }
-          if (subItem.subItems) {
-            subItem.subItems.forEach((childitem: any) => {
-
-              if (childitem == item) {
-                childitem.isCollapsed = !childitem.isCollapsed
-                subItem.isCollapsed = !subItem.isCollapsed
-                menuItem.isCollapsed = !menuItem.isCollapsed
-              } else {
-                childitem.isCollapsed = true
-              }
-              if (childitem.subItems) {
-                childitem.subItems.forEach((childrenitem: any) => {
-                  if (childrenitem == item) {
-                    childrenitem.isCollapsed = false
-                    childitem.isCollapsed = false
-                    subItem.isCollapsed = false
-                    menuItem.isCollapsed = false
-                  } else {
-                    childrenitem.isCollapsed = true
-                  }
-                })
-              }
-
-            })
-          }
-        })
+      if (event.target && event.target.nextElementSibling) {
+        isCurrentMenuId.setAttribute("aria-expanded", "true");
+        event.target.nextElementSibling.classList.toggle("show");
       }
-    });
+    }
   };
 
   toggleExtraSubItem(event: any) {
@@ -136,7 +120,7 @@ export class TwoColumnSidebarComponent implements OnInit {
     document.body.classList.add('twocolumn-panel')
   }
 
-  toggleItem(event: any) { // show navbar-nav menu on click of icon sidebar menu    
+  toggleItem(event: any) { // show navbar-nav menu on click of icon sidebar menu
     let isCurrentMenuId = event.target.getAttribute('subitems');
     let isMenu = document.getElementById(isCurrentMenuId) as any;
     let dropDowns = Array.from(document.querySelectorAll('#navbar-nav .show'));
@@ -207,16 +191,19 @@ export class TwoColumnSidebarComponent implements OnInit {
 
   initActiveMenu() {
     const pathName = window.location.pathname;
-
     // Active Main Single Menu
     const mainItems = Array.from(document.querySelectorAll(".twocolumn-iconview li a"));
     let matchingMainMenuItem = mainItems.find((x: any) => {
+      if (x.classList.contains('active')) {
+        x.classList.remove('active')
+      }
       return x.pathname === pathName;
     });
     if (matchingMainMenuItem) {
       this.activateParentDropdown(matchingMainMenuItem);
     }
 
+    // Active Sub Menu
     const ul = document.getElementById("navbar-nav");
     if (ul) {
       const items = Array.from(ul.querySelectorAll("a.nav-link"));
@@ -236,7 +223,6 @@ export class TwoColumnSidebarComponent implements OnInit {
       }
     }
   }
-
 
   /**
    * Returns true or false if given menu item has child or not

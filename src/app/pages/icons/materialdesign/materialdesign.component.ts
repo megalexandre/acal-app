@@ -39,7 +39,6 @@ export class MaterialdesignComponent implements OnInit {
       this.icons.forEach((icon) => {
         var item = this.getIconItem(icon, this.isNew(icon));
         document.getElementById('icons')?.appendChild(item);
-
         if (this.isNew(icon)) {
           var newItem = this.getIconItem(icon, false);
           document.getElementById('newIcons')?.appendChild(newItem);
@@ -49,6 +48,7 @@ export class MaterialdesignComponent implements OnInit {
         this.iconsCount++;
       });
     }, 300);
+
 
   }
 
@@ -75,7 +75,6 @@ export class MaterialdesignComponent implements OnInit {
     var span = document.createElement('span');
     span.appendChild(document.createTextNode('mdi-' + icon.name));
     div.appendChild(span);
-
     return div;
   }
 

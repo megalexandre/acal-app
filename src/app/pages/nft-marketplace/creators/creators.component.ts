@@ -1,7 +1,6 @@
 import { Component, QueryList, ViewChildren } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { Observable } from 'rxjs';
-
 import { creatorsModel, creatorsListModel } from './creators.model';
 import { PaginationService } from 'src/app/core/services/pagination.service';
 import { creatorsData, creatorsListData } from 'src/app/core/data';

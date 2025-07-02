@@ -56,6 +56,7 @@ export class HorizontalTopbarComponent implements OnInit {
 
   // remove active items of two-column-menu
   activateParentDropdown(item: any) { // navbar-nav menu add active
+   
     item.classList.add("active");
     let parentCollapseDiv = item.closest(".collapse.menu-dropdown");
     if (parentCollapseDiv) {      

@@ -66,6 +66,7 @@ export class RemixComponent implements OnInit {
     }, 300);
   }
 
+
   /***
    * change icon version
    */
@@ -73,9 +74,6 @@ export class RemixComponent implements OnInit {
     return icon.version === 'Buildings';
   }
 
-
-  geticon() {
-  }
 
 
   /***

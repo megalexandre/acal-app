@@ -17,7 +17,7 @@
                 <div class="row mt-3 gy-3">
                     <div class="col-xxl-10 col-md-6">
                         <div class="search-box">
-                            <input type="text" class="form-control search bg-light border-light" id="searchJob" autocomplete="off" placeholder="Search for jobs or companies..." [(ngModel)]="searchTerm" (ngModelChange)="performSearch()">
+                            <input type="text" class="form-control search bg-light border-light" id="searchJob" autocomplete="off" placeholder="Search for jobs or companies..." [(ngModel)]="searchTerm">
                             <i class="ri-search-line search-icon"></i>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
 <div class="row">
     <div class="col-xxl-9">
         <!-- <div id="job-list"></div> -->
-        @for (list of joblists; track $index) {
+        @for( list of joblists;track $index){
         <div class="card joblist-card">
             <div class="card-body">
                 <div class="d-flex mb-4">
@@ -70,21 +70,21 @@
                 </div>
                 <p class="text-muted job-description">{{list.content}}</p>
                 <div>
-                    @for (tag of list.tags; track $index) {
+                    @for( tag of list.tags;track $index){
                     <span class="badge bg-primary-subtle text-primary me-1">{{tag}}</span>
                     }
                 </div>
             </div>
             <div class="card-footer border-top-dashed">
                 <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
-                    <div><i class="ri-briefcase-2-line align-bottom mx-1"></i> <span class="job-type">
+                    <div><i class="ri-briefcase-2-line align-bottom me-1"></i> <span class="job-type">
                             {{list.type}}</span>
                     </div>
                     <div class="d-none"><span class="job-experience">{{list.experience}}</span></div>
-                    <div><i class="ri-map-pin-2-line align-bottom mx-1"></i> <span class="job-location">
+                    <div><i class="ri-map-pin-2-line align-bottom me-1"></i> <span class="job-location">
                             {{list.location}}</span></div>
-                    <div><i class="ri-user-3-line align-bottom mx-1"></i> {{list.applied}} Applied</div>
-                    <div><i class="ri-time-line align-bottom mx-1"></i> <span class="job-postdate"> {{list.date}}</span>
+                    <div><i class="ri-user-3-line align-bottom me-1"></i> {{list.applied}} Applied</div>
+                    <div><i class="ri-time-line align-bottom me-1"></i> <span class="job-postdate"> {{list.date}}</span>
                     </div>
                     <div><a href="javascript:void(0);" class="btn btn-primary viewjob-list" (click)="viewmore($index)">View
                             More <i class="ri-arrow-right-line align-bottom ms-1"></i></a></div>
@@ -108,7 +108,7 @@
     </div>
     <!--end col-->
     <div class="col-xxl-3">
-        @if (jobdetail) {
+        @if(jobdetail){
         <div class="card job-list-view-card overflow-hidden" id="job-overview">
             <img src="{{jobdetail.coverimage}}" alt="" id="cover-img" class="img-fluid background object-fit-cover">
             <div class="card-body">
@@ -161,8 +161,7 @@
                     <button type="button" class="btn btn-success w-100">Apply Now</button>
                 </div>
             </div>
-        </div>
-        }
+        </div>}
     </div>
     <div id="elmLoader">
         <div class="spinner-border text-primary avatar-sm" role="status">
@@ -288,7 +287,7 @@
             <div class="modal-footer">
                 <div class="hstack gap-2 justify-content-end">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal" (click)="modal.dismiss('close click')">Close</button>
-                    <button type="submit" class="btn btn-success" id="add-btn">Add Job</button>
+                    <button type="submit" class="btn btn-success" id="add-btn">Add Company</button>
                 </div>
             </div>
         </form>

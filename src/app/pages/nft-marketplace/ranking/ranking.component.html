@@ -40,7 +40,8 @@
                     <table class="table align-middle table-nowrap table-hover" id="customerTable">
                         <thead class="table-light text-muted">
                             <tr>
-                                <th class="sort" (click)="onSort('ranking')" style="width: 98px;">Ranking</th>
+                                <th class="sort" (click)="onSort('ranking')" style="width: 98px;">Ranking
+                                </th>
                                 <th class="sort" (click)="onSort('collection')">Collection</th>
                                 <th class="sort" (click)="onSort('volume_price')">Volume (USD)</th>
                                 <th class="sort">24h%</th>
@@ -51,9 +52,9 @@
                             <!--end tr-->
                         </thead>
                         <tbody class="list form-check-all">
-                            @for ( data of rankingData; track $index) {
+                            @for (data of rankingData; track $index) {
                             <tr>
-                                <td class="ranking text-info fw-semibold">
+                                <td class="ranking text-danger fw-semibold">
                                     {{data.ranking}}
                                 </td>
                                 <td class="collection">
@@ -63,15 +64,16 @@
                                 </td>
                                 <td class="volume_price">{{data.volume_price}}</td>
                                 <td>
-                                    <h6 class="text-success mb-1 24h" [ngClass]=" {'text-danger': data.hours < 0}">{{data.hours}} ETH</h6>
+                                    <h6 class="text-success mb-1 24h" [ngClass]=" {'text-danger': data.hours < 0}">
+                                        {{data.hours}} ETH</h6>
                                 </td>
                                 <td>
-                                    <h6 class="text-success mb-1 7d" [ngClass]=" {'text-danger': data.day < 0}">{{data.day}} ETH</h6>
+                                    <h6 class="text-success mb-1 7d" [ngClass]=" {'text-danger': data.day < 0}">
+                                        {{data.day}} ETH</h6>
                                 </td>
                                 <td class="item">{{data.item}}</td>
                                 <td class="floor-price">{{data.floor_price}}</td>
-                            </tr>
-                            }
+                            </tr>}
                             <!--end tr-->
                         </tbody>
                     </table>

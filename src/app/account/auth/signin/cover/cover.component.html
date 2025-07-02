@@ -6,14 +6,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="card overflow-hidden">
+                    <div class="card overflow-hidden border-0">
                         <div class="row g-0">
                             <div class="col-lg-6">
                                 <div class="p-lg-5 p-4 auth-one-bg h-100">
                                     <div class="bg-overlay"></div>
                                     <div class="position-relative h-100 d-flex flex-column">
                                         <div class="mb-4">
-                                            <a routerLink="" class="d-block">
+                                            <a routerLink="/" class="d-block">
                                                 <img src="assets/images/logo-light.png" alt="" height="18">
                                             </a>
                                         </div>
@@ -24,21 +24,21 @@
 
                                             <ngb-carousel [showNavigationArrows]="showNavigationArrows">
                                                 <ng-template ngbSlide>
-                                                    <div class="carousel-inner text-center text-white-50 pb-5">
+                                                    <div class="carousel-inner text-center text-white pb-5">
                                                         <div class="carousel-item active">
                                                             <p class="fs-15 fst-italic">" Great! Clean code, clean design, easy for customization. Thanks very much! "</p>
                                                         </div>
                                                     </div>
                                                 </ng-template>
                                                 <ng-template ngbSlide>
-                                                    <div class="carousel-inner text-center text-white-50 pb-5">
+                                                    <div class="carousel-inner text-center text-white pb-5">
                                                         <div class="carousel-item active">
                                                             <p class="fs-15 fst-italic">" The theme is really great with an amazing customer support."</p>
                                                         </div>
                                                     </div>
                                                 </ng-template>
                                                 <ng-template ngbSlide>
-                                                    <div class="carousel-inner text-center text-white-50 pb-5">
+                                                    <div class="carousel-inner text-center text-white pb-5">
                                                         <div class="carousel-item active">
                                                             <p class="fs-15 fst-italic">" Great! Clean code, clean design, easy for customization. Thanks very much! "</p>
                                                         </div>
@@ -65,13 +65,11 @@
                                             <div class="mb-3">
                                                 <label for="username" class="form-label">Username</label>
                                                 <input type="text" class="form-control" id="username" placeholder="Enter username" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
-                                                @if (submitted && f['name'].errors) {
+                                                @if(submitted && f['name'].errors){
                                                 <div class="invalid-feedback" align="left">
                                                     @if(f['name'].errors['required']){
-                                                    <div>Username is required</div>
-                                                    }
-                                                </div>
-                                                }
+                                                    <div>Username is required</div>}
+                                                </div>}
                                             </div>
 
                                             <div class="mb-3">
@@ -81,16 +79,14 @@
                                                 <label class="form-label" for="password-input">Password</label>
                                                 <div class="position-relative auth-pass-inputgroup mb-3">
                                                     <input [type]="fieldTextType ? 'text' : 'password'" class="form-control pe-5 password-input" placeholder="Enter password" id="password-input" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
-                                                    <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="mdi align-middle" [ngClass]="{'mdi-eye-off-outline': !fieldTextType, 'mdi-eye-outline': fieldTextType
+                                                    <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-input" type="button" id="password-addon"><i class="mdi align-middle" [ngClass]="{'mdi-eye-off-outline': !fieldTextType, 'mdi-eye-outline': fieldTextType
                                                 }" (click)="toggleFieldTextType()"></i></button>
-                                                    @if (submitted && f['password'].errors) {
+                                                    @if(submitted && f['password'].errors){
                                                     <div class="invalid-feedback">
                                                         @if(f['password'].errors['required']){
-                                                        <span>Password is required</span>
-                                                        }
-                                                    </div>
-                                                    }
+                                                        <span>Password is required</span>}
 
+                                                    </div>}
                                                 </div>
                                             </div>
 

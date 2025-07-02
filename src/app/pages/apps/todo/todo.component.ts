@@ -3,15 +3,14 @@ import { UntypedFormBuilder, UntypedFormGroup, UntypedFormArray, Validators, Unt
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MatTable } from '@angular/material/table';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+// Drag and drop
+import { DndDropEvent } from 'ngx-drag-drop';
 
 // Todo Services
 import { restApiService } from "../../../core/services/rest-api.service";
 
 // Sweet Alert
 import Swal from 'sweetalert2';
-
-// Drag and drop
-import { DndDropEvent } from 'ngx-drag-drop';
 
 import { Todo, Assigned, project } from './todo.model';
 import { RootReducerState } from 'src/app/store';
@@ -54,25 +53,26 @@ export class TodoComponent {
   subItem: any = [];
 
 
+  constructor(private modalService: NgbModal, private formBuilder: UntypedFormBuilder, private service: PaginationService,
+    private store: Store<{ data: RootReducerState }>) {
+  }
+
   @ViewChild('dataTable')
   table!: MatTable<Todo>;
   displayedColumns: string[] = ['task', 'subItem', 'dueDate', 'status', 'priority', 'action'];
 
-  constructor(private modalService: NgbModal, private formBuilder: UntypedFormBuilder, private service: PaginationService,
-    private store: Store<{ data: RootReducerState }>) {
-  }
   ngOnInit(): void {
     /**
      * Form Validation
      */
     this.todoForm = this.formBuilder.group({
-      _id: [''],
+      ids: [''],
       title: ['', [Validators.required]],
       status: ['New', [Validators.required]],
       priority: ['', [Validators.required]],
       due_date: ['', [Validators.required]],
-    });
 
+    });
     // Project Data
     this.projectList = Object.assign([], todoProject);
     this.AssignedData = todoAssigned;
@@ -89,7 +89,6 @@ export class TodoComponent {
       this.todoDatas = data;
       this.dataSource = cloneDeep(data);
     });
-
 
     /**
      * Recent Validation
@@ -159,7 +158,6 @@ export class TodoComponent {
 
   // Delete Data
   deleteData(id: any) {
-    this.deleteId = id;
     document.getElementById('row-' + id)?.remove();
   }
 
@@ -223,9 +221,6 @@ export class TodoComponent {
     this.submitted = true
   }
 
-  selectAssignee(id: any) {
-    this.subItem.push(this.AssignedData[id])
-  }
 
   /**
    * Open modal
@@ -329,5 +324,6 @@ export class TodoComponent {
     }, 2000);
     this.submitted = true
   }
+
 
 }

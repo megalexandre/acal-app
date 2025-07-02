@@ -29,9 +29,9 @@ export class RadarComponent implements OnInit {
     ];
 
     // Chart Color Data Get Function
-    this._basicRadarChart('["--vz-success"]');
-    this._multipleSeriesChart('["--vz-danger", "--vz-success", "--vz-primary"]');
-    this._polygonFillChart('["--vz-info"]');
+    this._basicRadarChart('["--vz-primary"]');
+    this._multipleSeriesChart('["--vz-primary-rgb, 0.35", "--vz-primary-rgb, 0.25", "--vz-primary-rgb, 0.50"]');
+    this._polygonFillChart('["--vz-primary"]');
     
   }
 

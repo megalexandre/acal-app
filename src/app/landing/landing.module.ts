@@ -17,7 +17,7 @@ import { JobComponent } from './job/job.component';
   declarations: [
     IndexComponent,
     NftComponent,
-    JobComponent,
+    JobComponent
   ],
   imports: [
     CommonModule,

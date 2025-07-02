@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-basic',
@@ -13,13 +13,14 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 export class BasicComponent implements OnInit {
 
   // Login Form
-  SignupForm!: UntypedFormGroup;
+  SignupForm!: FormGroup;
   submitted = false;
-  fieldTextType!: boolean;
   // set the current year
   year: number = new Date().getFullYear();
+  fieldTextType!: boolean;
 
-  constructor(private formBuilder: UntypedFormBuilder) { }
+
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     /**
@@ -91,7 +92,6 @@ export class BasicComponent implements OnInit {
           length?.classList.add("invalid");
       }
     };
-
   }
 
   // convenience getter for easy access to form fields

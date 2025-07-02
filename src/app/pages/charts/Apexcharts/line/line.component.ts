@@ -391,18 +391,18 @@ export class LineComponent implements OnInit {
 
     // Chart Color Data Get Function
     this._basicLineChart('["--vz-primary"]');
-    this._zoomableTimeseriesChart('["--vz-success"]');
-    this._lineWithDataLabelsChart('["--vz-primary", "--vz-success"]');
-    this._dashedLineChart('["--vz-primary", "--vz-danger", "--vz-success"]');
+    this._zoomableTimeseriesChart('["--vz-primary"]');
+    this._lineWithDataLabelsChart('["--vz-primary", "--vz-info"]');
+    this._dashedLineChart('["--vz-primary", "--vz-info", "--vz-success"]');
     this._lineAnnotationsChart('["--vz-primary"]');
     this._SyncingLineChart('["--vz-primary"]');
     this._Syncingline2Chart('["--vz-warning"]');
     this._SyncingAreaChart('["--vz-success"]');
-    this._brushLineChart('["--vz-danger"]');
+    this._brushLineChart('["--vz-primary"]');
     this._brushAreaChart('["--vz-info"]');
-    this._stepLineChart('["--vz-success"]');
+    this._stepLineChart('["--vz-primary"]');
     this._gradientChart('["--vz-success"]');
-    this._missingDataChart('["--vz-primary", "--vz-danger", "--vz-success"]');
+    this._missingDataChart('["--vz-primary", "--vz-info", "--vz-success"]');
   }
 
   // Chart Colors Set
@@ -431,15 +431,16 @@ export class LineComponent implements OnInit {
   }
 
   private generateDayWiseTimeSeries(baseval: number, count: number, yrange: { max: number; min: number; }): any[] {
-    var i = 0;
-    var series = [];
+    let i = 0;
+    let series = [];
     while (i < count) {
-        var x = baseval;
-        var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
-
-        series.push([x, y]);
-        baseval += 86400000;
-        i++;
+      var x = baseval;
+      var y =
+        Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+  
+      series.push([x, y]);
+      baseval += 86400000;
+      i++;
     }
     return series;
   }
@@ -1246,200 +1247,200 @@ export class LineComponent implements OnInit {
 /**
 * Syncing Line Charts
 */
-  private _SyncingLineChart(colors:any) {
-    colors = this.getChartColorsArray(colors);
-    this.SyncingLineChart = {
-      series: [{
-        data: this.generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 20, {
+private _SyncingLineChart(colors:any) {
+  colors = this.getChartColorsArray(colors);
+  this.SyncingLineChart = {
+    series: [{
+      data: this.generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 20, {
+        min: 10,
+        max: 60
+      })
+    }],
+    chart: {
+      id: 'fb',
+      group: 'social',
+      type: 'line',
+      height: 160,
+      toolbar: {
+          show: false
+      },
+    },
+    colors: colors,
+    dataLabels: {
+      enabled: false
+    },
+    stroke: {
+        curve: 'straight',
+        width: 3,
+    },
+    toolbar: {
+        tools: {
+            selection: false
+        }
+    },
+    markers: {
+        size: 4,
+        hover: {
+            size: 6
+        }
+    },
+    tooltip: {
+        followCursor: false,
+        x: {
+            show: false
+        },
+        marker: {
+            show: false
+        },
+        y: {
+            title: {
+                formatter: function () {
+                    return ''
+                }
+            }
+        }
+    },
+    grid: {
+        clipMarkers: false
+    },
+    yaxis: {
+        tickAmount: 2
+    },
+    xaxis: {
+        type: 'datetime'
+    }
+  };
+}
+
+private _Syncingline2Chart(colors:any) {
+  colors = this.getChartColorsArray(colors);
+  this.Syncingline2Chart = {
+    series: [{
+      data: this.generateDayWiseTimeSeriesline(new Date('11 Feb 2017').getTime(), 20, {
           min: 10,
-          max: 60
-        })
-      }],
-      chart: {
-        id: 'fb',
+          max: 30
+      })
+    }],
+    chart: {
+        id: 'tw',
         group: 'social',
         type: 'line',
         height: 160,
         toolbar: {
             show: false
         },
-      },
-      colors: colors,
-      dataLabels: {
+    },
+    colors: colors,
+    dataLabels: {
         enabled: false
-      },
-      stroke: {
-          curve: 'straight',
-          width: 3,
-      },
-      toolbar: {
-          tools: {
-              selection: false
-          }
-      },
-      markers: {
-          size: 4,
-          hover: {
-              size: 6
-          }
-      },
-      tooltip: {
-          followCursor: false,
-          x: {
-              show: false
-          },
-          marker: {
-              show: false
-          },
-          y: {
-              title: {
-                  formatter: function () {
-                      return ''
-                  }
-              }
-          }
-      },
-      grid: {
-          clipMarkers: false
-      },
-      yaxis: {
-          tickAmount: 2
-      },
-      xaxis: {
-          type: 'datetime'
-      }
-    };
-  }
+    },
+    stroke: {
+        curve: 'straight',
+        width: 3,
+    },
+    toolbar: {
+        tools: {
+            selection: false
+        }
+    },
+    markers: {
+        size: 4,
+        hover: {
+            size: 6
+        }
+    },
+    tooltip: {
+        followCursor: false,
+        x: {
+            show: false
+        },
+        marker: {
+            show: false
+        },
+        y: {
+            title: {
+                formatter: function () {
+                    return ''
+                }
+            }
+        }
+    },
+    grid: {
+        clipMarkers: false
+    },
+    yaxis: {
+        tickAmount: 2
+    },
+    xaxis: {
+        type: 'datetime'
+    }
+  };
+}
 
-  private _Syncingline2Chart(colors:any) {
-    colors = this.getChartColorsArray(colors);
-    this.Syncingline2Chart = {
-      series: [{
-        data: this.generateDayWiseTimeSeriesline(new Date('11 Feb 2017').getTime(), 20, {
-            min: 10,
-            max: 30
-        })
-      }],
-      chart: {
-          id: 'tw',
-          group: 'social',
-          type: 'line',
-          height: 160,
-          toolbar: {
-              show: false
-          },
-      },
-      colors: colors,
-      dataLabels: {
-          enabled: false
-      },
-      stroke: {
-          curve: 'straight',
-          width: 3,
-      },
-      toolbar: {
-          tools: {
-              selection: false
-          }
-      },
-      markers: {
-          size: 4,
-          hover: {
-              size: 6
-          }
-      },
-      tooltip: {
-          followCursor: false,
-          x: {
-              show: false
-          },
-          marker: {
-              show: false
-          },
-          y: {
-              title: {
-                  formatter: function () {
-                      return ''
-                  }
-              }
-          }
-      },
-      grid: {
-          clipMarkers: false
-      },
-      yaxis: {
-          tickAmount: 2
-      },
-      xaxis: {
-          type: 'datetime'
-      }
-    };
-  }
-
-  private _SyncingAreaChart(colors:any) {
-    colors = this.getChartColorsArray(colors);
-    this.SyncingAreaChart = {
-      series: [{
-        data: this.generateDayWiseTimeSeriesline(new Date('11 Feb 2017').getTime(), 20, {
-            min: 10,
-            max: 60
-        })
-      }],
-      chart: {
-          id: 'yt',
-          group: 'social',
-          type: 'area',
-          height: 160,
-          toolbar: {
-              show: false
-          },
-      },
-      colors: colors,
-      dataLabels: {
-          enabled: false
-      },
-      stroke: {
-          curve: 'straight',
-          width: 3,
-      },
-      toolbar: {
-          tools: {
-              selection: false
-          }
-      },
-      markers: {
-          size: 4,
-          hover: {
-              size: 6
-          }
-      },
-      tooltip: {
-          followCursor: false,
-          x: {
-              show: false
-          },
-          marker: {
-              show: false
-          },
-          y: {
-              title: {
-                  formatter: function () {
-                      return ''
-                  }
-              }
-          }
-      },
-      grid: {
-          clipMarkers: false
-      },
-      yaxis: {
-          tickAmount: 2
-      },
-      xaxis: {
-          type: 'datetime'
-      }
-    };
-  }
+private _SyncingAreaChart(colors:any) {
+  colors = this.getChartColorsArray(colors);
+  this.SyncingAreaChart = {
+    series: [{
+      data: this.generateDayWiseTimeSeriesline(new Date('11 Feb 2017').getTime(), 20, {
+          min: 10,
+          max: 60
+      })
+    }],
+    chart: {
+        id: 'yt',
+        group: 'social',
+        type: 'area',
+        height: 160,
+        toolbar: {
+            show: false
+        },
+    },
+    colors: colors,
+    dataLabels: {
+        enabled: false
+    },
+    stroke: {
+        curve: 'straight',
+        width: 3,
+    },
+    toolbar: {
+        tools: {
+            selection: false
+        }
+    },
+    markers: {
+        size: 4,
+        hover: {
+            size: 6
+        }
+    },
+    tooltip: {
+        followCursor: false,
+        x: {
+            show: false
+        },
+        marker: {
+            show: false
+        },
+        y: {
+            title: {
+                formatter: function () {
+                    return ''
+                }
+            }
+        }
+    },
+    grid: {
+        clipMarkers: false
+    },
+    yaxis: {
+        tickAmount: 2
+    },
+    xaxis: {
+        type: 'datetime'
+    }
+  };
+}
 
   /**
   * Brush Area Charts

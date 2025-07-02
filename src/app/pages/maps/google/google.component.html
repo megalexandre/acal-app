@@ -24,7 +24,7 @@
 
       <div class="card-body">
         <google-map height="300px" width="100%" [options]="mapOptions">
-          @for ( marker of markers; track $index) {
+          @for (marker of markers; track $index) {
           <map-marker [position]="marker.position"></map-marker>
           }
         </google-map>

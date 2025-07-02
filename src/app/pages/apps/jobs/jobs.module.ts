@@ -3,18 +3,18 @@ import { CommonModule } from '@angular/common';
 import { NgbDropdownModule, NgbTooltipModule, NgbPaginationModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+// Component
+import { ApplicationComponent } from './application/application.component';
+import { StatisticsComponent } from './statistics/statistics.component';
+import { NewjobComponent } from './newjob/newjob.component';
+import { CompanieslistComponent } from './companieslist/companieslist.component';
+import { JobcategoriesComponent } from './jobcategories/jobcategories.component';
+
 // Routing
 import { JobsRoutingModule } from './jobs-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { JobListsModule } from './job-lists/job-lists.module';
 import { CandidateListsModule } from './candidate-lists/candidate-lists.module';
-
-// Component
-import { StatisticsComponent } from './statistics/statistics.component';
-import { ApplicationComponent } from './application/application.component';
-import { NewjobComponent } from './newjob/newjob.component';
-import { CompaniesListComponent } from './companies-list/companies-list.component';
-import { JobCategoriesComponent } from './job-categories/job-categories.component';
 
 // Apex Chart Package
 import { NgApexchartsModule } from 'ng-apexcharts';
@@ -33,13 +33,14 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { defineElement } from "@lordicon/element";
 import lottie from 'lottie-web';
 
+
 @NgModule({
   declarations: [
-    StatisticsComponent,
     ApplicationComponent,
+    StatisticsComponent,
     NewjobComponent,
-    CompaniesListComponent,
-    JobCategoriesComponent
+    CompanieslistComponent,
+    JobcategoriesComponent,
   ],
   imports: [
     CommonModule,
@@ -49,14 +50,14 @@ import lottie from 'lottie-web';
     FeatherModule.pick(allIcons),
     NgbDropdownModule,
     JobListsModule,
-    CandidateListsModule,
     NgbTooltipModule,
     FormsModule,
     ReactiveFormsModule,
     FlatpickrModule,
     NgSelectModule,
     NgbPaginationModule,
-    NgbNavModule
+    NgbNavModule,
+    CandidateListsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

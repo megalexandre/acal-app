@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-select',
@@ -15,7 +15,7 @@ export class SelectComponent implements OnInit {
  // bread crumb items
  breadCrumbItems!: Array<{}>;
 
- constructor(private formBuilder: UntypedFormBuilder) { }
+ constructor(private formBuilder: FormBuilder) { }
 
  ngOnInit(): void {
    /**

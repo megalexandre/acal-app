@@ -10,7 +10,7 @@
                     <div class="col-lg-6">
                         <div class="row g-2">
                             <div class="col">
-                                <div class="position-relative mb-3 search-form">
+                                <div class="position-relative mb-3">
                                     <input type="text" class="form-control form-control-lg bg-light border-light" placeholder="Search here.." value="Admin Dashboard">
                                     <a class="btn btn-link link-success btn-lg position-absolute end-0 top-0" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"><i class="ri-mic-fill"></i></a>
                                 </div>
@@ -27,7 +27,7 @@
 
                 <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
                     <div class="offcanvas-body">
-                        <button type="button" class="btn-close text-body float-end" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        <button type="button" class="btn-close text-reset float-end" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         <div class="d-flex flex-column h-100 justify-content-center align-items-center">
                             <div class="search-voice">
                                 <i class="ri-mic-fill align-middle"></i>
@@ -58,8 +58,8 @@
                                     design in your existing project using Velzon it is very quick and easy as it is
                                     beautiful, adroit, and delivers the ultimate user experience.</p>
                                 <ul class="list-inline d-flex align-items-center g-3 text-muted fs-14 mb-0">
-                                    <li class="list-inline-item me-3"><i class="ri-thumb-up-line align-middle mx-1"></i>10</li>
-                                    <li class="list-inline-item me-3"><i class="ri-question-answer-line align-middle mx-1"></i>8</li>
+                                    <li class="list-inline-item me-3"><i class="ri-thumb-up-line align-middle me-1"></i>10</li>
+                                    <li class="list-inline-item me-3"><i class="ri-question-answer-line align-middle me-1"></i>8</li>
                                     <li class="list-inline-item">
                                         <div class="d-flex align-items-center">
                                             <div class="flex-shrink-0">
@@ -80,14 +80,13 @@
                                 <div class="row">
                                     <div class="col-xl-4 col-lg-10">
                                         <div class="row g-2">
-                                            @for(data of images; track $index){
+                                            @for (data of images; track $index) {
                                             <div class="col-md-3 col-sm-6">
                                                 <div [ngClass]="$index ==3?'search-more-results rounded':''">
                                                     <a class="image-popup d-block">
-                                                        @if ($index
-                                                        <= 3) { <img src="{{data.src}}" alt="" class="img-fluid d-block rounded" (click)="open($index)" />
-                                                        }
-                                                        @else if($index == 3){
+                                                        @if($index
+                                                        <= 3){ <img src="{{data.src}}" alt="" class="img-fluid d-block rounded" (click)="open($index)" />
+                                                        }@else () {
                                                         <div class="bg-overlay"></div>
                                                         <div class="nav-icon">
                                                             <i class="ri-image-fill align-middle me-1"></i> 99+
@@ -95,8 +94,8 @@
                                                         }
                                                     </a>
                                                 </div>
-                                            </div><!--end col-->
-                                            }
+                                            </div>
+                                            }<!--end col-->
                                         </div><!--end row-->
                                     </div><!--end col-->
                                 </div><!--end row-->
@@ -113,8 +112,8 @@
                                     options. You can build any type of web application like Saas based interface,
                                     eCommerce, Crypto, CRM, CMS, Project management apps, Admin Panels, etc.</p>
                                 <ul class="list-inline d-flex align-items-center g-3 text-muted fs-14 mb-0">
-                                    <li class="list-inline-item me-3"><i class="ri-thumb-up-line align-middle mx-1"></i>485</li>
-                                    <li class="list-inline-item me-3"><i class="ri-question-answer-line align-middle mx-1"></i>167</li>
+                                    <li class="list-inline-item me-3"><i class="ri-thumb-up-line align-middle me-1"></i>485</li>
+                                    <li class="list-inline-item me-3"><i class="ri-question-answer-line align-middle me-1"></i>167</li>
                                     <li class="list-inline-item">
                                         <div class="d-flex align-items-center">
                                             <div class="flex-shrink-0">
@@ -139,8 +138,8 @@
                                         modes</span> ( Dark, Light & RTL ) which are managed by SCSS only. You can
                                     simply change to any layouts or mode by changing a couple of lines code.</p>
                                 <ul class="list-inline d-flex align-items-center g-3 text-muted fs-14 mb-0">
-                                    <li class="list-inline-item me-3"><i class="ri-thumb-up-line align-middle mx-1"></i>69</li>
-                                    <li class="list-inline-item me-3"><i class="ri-question-answer-line align-middle mx-1"></i>43</li>
+                                    <li class="list-inline-item me-3"><i class="ri-thumb-up-line align-middle me-1"></i>69</li>
+                                    <li class="list-inline-item me-3"><i class="ri-question-answer-line align-middle me-1"></i>43</li>
                                     <li class="list-inline-item">
                                         <div class="d-flex align-items-center">
                                             <div class="flex-shrink-0">
@@ -165,8 +164,8 @@
                                     which are managed by SCSS only. You can simply change to any layouts or mode by
                                     changing a couple of lines code.</p>
                                 <ul class="list-inline d-flex align-items-center g-3 text-muted fs-14 mb-0">
-                                    <li class="list-inline-item me-3"><i class="ri-thumb-up-line align-middle mx-1"></i>102</li>
-                                    <li class="list-inline-item me-3"><i class="ri-question-answer-line align-middle mx-1"></i>36</li>
+                                    <li class="list-inline-item me-3"><i class="ri-thumb-up-line align-middle me-1"></i>102</li>
+                                    <li class="list-inline-item me-3"><i class="ri-question-answer-line align-middle me-1"></i>36</li>
                                     <li class="list-inline-item">
                                         <div class="d-flex align-items-center">
                                             <div class="flex-shrink-0">
@@ -216,7 +215,7 @@
                                 <div class="col-lg-12" dir="ltr">
                                     <ngx-slick-carousel class="carousel space" [config]="slideConfig">
                                         @for (data of swiper; track $index) {
-                                        <div class="swiper-slide">
+                                        <div class="swiper-slide" ngxSlickItem>
                                             <div class="d-flex align-items-center border border-dashed rounded p-2">
                                                 <div class="flex-shrink-0">
                                                     <img src="{{data.img}}" alt="" width="65" class="rounded" />
@@ -232,13 +231,13 @@
                             </div>
                             <div class="gallery-light">
                                 <div class="row">
-                                    @for ( data of gallery; track $index) {
+                                    @for (data of gallery; track $index) {
                                     <div class="col-xl-3 col-lg-4 col-sm-6">
                                         <div class="gallery-box card">
                                             <div class="gallery-container">
                                                 <a class="image-popup" title="">
                                                     <img class="gallery-img img-fluid mx-auto" src="{{data.img}}" alt="" />
-                                                    <div class="gallery-overlay" (click)="open( $index)">
+                                                    <div class="gallery-overlay" (click)="open($index)">
                                                         <h5 class="overlay-caption">{{data.title}}</h5>
                                                     </div>
                                                 </a>
@@ -261,8 +260,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div><!--end col-->
-                                    }
+                                    </div>}<!--end col-->
                                 </div><!--end row-->
                                 <div class="mt-4">
                                     <ul class="pagination pagination-separated justify-content-center mb-0">
@@ -298,9 +296,9 @@
                         </a>
                         <ng-template ngbNavContent>
                             <div class="row">
-                                @for ( data of news; track $index) {
+                                @for (data of news; track $index) {
                                 <div class="col-lg-6">
-                                    <div class="card border">
+                                    <div class=" card border">
                                         <div class="card-body">
                                             <div class="d-sm-flex">
                                                 <div class="flex-shrink-0">
@@ -322,8 +320,8 @@
                                             </div>
                                         </div>
                                     </div><!--end card-->
-                                </div><!--end col-->
-                                }
+                                </div>
+                                }<!--end col-->
                             </div><!--end row-->
 
                             <div class="mt-4">
@@ -360,7 +358,7 @@
                         <ng-template ngbNavContent>
                             <div class="row">
                                 <div class="col-lg-12 video-list">
-                                    @for ( data of video; track $index) {
+                                    @for (data of video; track $index) {
                                     <div class="list-element mt-4">
                                         <h5 class="mb-1"><a href="javascript:void(0);">{{data.title}}</a></h5>
                                         <p class="text-success">{{data.siteLink}}</p>
@@ -372,9 +370,9 @@
                                                 <p class="text-muted mb-0">{{data.description}}</p>
                                                 <div class="border border-dashed mb-1 mt-3"></div>
                                                 <ul class="list-inline d-flex align-items-center g-3 text-muted fs-14 mb-0">
-                                                    <li class="list-inline-item me-3"><i class="ri-thumb-up-line align-middle mx-1"></i>{{data.likes}}
+                                                    <li class="list-inline-item me-3"><i class="ri-thumb-up-line align-middle me-1"></i>{{data.likes}}
                                                     </li>
-                                                    <li class="list-inline-item me-3"><i class="ri-question-answer-line align-middle mx-1"></i>{{data.comments}}
+                                                    <li class="list-inline-item me-3"><i class="ri-question-answer-line align-middle me-1"></i>{{data.comments}}
                                                     </li>
                                                     <li class="list-inline-item">
                                                         <div class="d-flex align-items-center">
@@ -389,8 +387,8 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                    </div><!--end list-element-->
-                                    }
+                                    </div>
+                                    }<!--end list-element-->
 
                                 </div><!--end col-->
                                 <div class="text-center">
@@ -402,7 +400,7 @@
                     </li>
                     <li class="nav-item ms-auto">
                         <div class="dropdown" ngbDropdown>
-                            <a class="nav-link fw-medium text-body mb-n1" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
+                            <a class="nav-link fw-medium text-reset mb-n1" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
                                 <i class="ri-settings-4-line align-middle me-1"></i> Settings
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1" ngbDropdownMenu>

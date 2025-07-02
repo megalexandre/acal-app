@@ -10,14 +10,14 @@
             </div>
         </div><!-- end row -->
         <div class="row">
-            @for ( data of discoverData; track $index) {
+            @for (data of discoverData; track $index) {
             <div class="col-lg-4">
                 <div class="card explore-box card-animate border">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-3">
                             <img src="{{data.cardImg}}" alt="" class="avatar-xs rounded-circle">
                             <div class="ms-2 flex-grow-1">
-                                <a href="javascript:void(0);">
+                                <a href="#!">
                                     <h6 class="mb-0 fs-15">{{data.author}}</h6>
                                 </a>
                                 <p class="mb-0 text-muted fs-13">{{data.title}}</p>
@@ -30,7 +30,7 @@
                             <img src="{{data.img}}" alt="" class="explore-img w-100">
                             <div class="bg-overlay"></div>
                             <div class="place-bid-btn">
-                                <a href="javascript:void(0);" class="btn btn-success"><i class="ri-auction-fill align-bottom me-1"></i> Place Bid</a>
+                                <a href="#!" class="btn btn-success"><i class="ri-auction-fill align-bottom me-1"></i> Place Bid</a>
                             </div>
                         </div>
                         <div class="mt-3">
@@ -40,8 +40,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            }
+            </div>}
         </div><!--end row-->
     </div><!--end container-->
 </section>

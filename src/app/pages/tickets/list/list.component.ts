@@ -1,16 +1,8 @@
-import { Component, QueryList, ViewChildren } from '@angular/core';
-import { DecimalPipe } from '@angular/common';
-import { Observable } from 'rxjs';
+import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { UntypedFormBuilder, UntypedFormGroup, FormArray, Validators } from '@angular/forms';
-
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 // Sweet Alert
 import Swal from 'sweetalert2';
-// Date Format
-import { DatePipe } from '@angular/common';
-
-// Rest Api Service
-import { restApiService } from "../../../core/services/rest-api.service";
 import { RootReducerState } from 'src/app/store';
 import { Store } from '@ngrx/store';
 import { addTicket, deleteTicket, fetchTicketListData, updateTicket } from 'src/app/store/Ticket/ticket_action';
@@ -18,6 +10,7 @@ import { selectTicketData, selectTicketLoading } from 'src/app/store/Ticket/tick
 import { cloneDeep } from 'lodash';
 import { PaginationService } from 'src/app/core/services/pagination.service';
 import { TicketListModel } from 'src/app/store/Ticket/ticket_model';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-list',
@@ -55,7 +48,6 @@ export class ListComponent {
     private datePipe: DatePipe) {
   }
 
-
   ngOnInit(): void {
     /**
     * BreadCrumb
@@ -66,8 +58,8 @@ export class ListComponent {
     ];
 
     /**
-     * Form Validation
-     */
+   * Form Validation
+   */
     this.ordersForm = this.formBuilder.group({
       id: [''],
       ids: [''],
@@ -107,8 +99,8 @@ export class ListComponent {
   };
 
   /**
-  * Confirmation mail model
-  */
+ * Confirmation mail model
+ */
   deleteId: any;
   confirm(content: any, id: any) {
     this.deleteId = id;
@@ -164,7 +156,6 @@ export class ListComponent {
     checkedVal.length > 0 ? (document.getElementById("remove-actions") as HTMLElement).style.display = "block" : (document.getElementById("remove-actions") as HTMLElement).style.display = "none";
   }
 
-
   // Select Checkbox value Get
   onCheckboxChange(e: any) {
     var checkedVal: any[] = [];
@@ -196,8 +187,11 @@ export class ListComponent {
   }
 
   /**
-  * Save user
-  */
+   * Save user
+   */
+  /**
+   * Save user
+   */
   saveUser() {
     if (this.ordersForm.valid) {
       if (this.ordersForm.get('id')?.value) {
@@ -231,9 +225,9 @@ export class ListComponent {
   }
 
   /**
-   * Open Edit modal
-   * @param content modal content
-   */
+    * Open Edit modal
+    * @param content modal content
+    */
   editDataGet(id: any, content: any) {
     this.submitted = false;
     this.modalService.open(content, { size: 'md', centered: true });
@@ -252,6 +246,7 @@ export class ListComponent {
     this.ordersForm.controls['priority'].setValue(this.econtent.priority);
     this.ordersForm.controls['ids'].setValue(this.econtent._id);
   }
+
 
   // Filtering
   isstatus?: any
@@ -299,6 +294,5 @@ export class ListComponent {
   onSort(column: any) {
     this.lists = this.service.onSort(column, this.lists)
   }
-
 
 }

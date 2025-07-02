@@ -56,7 +56,7 @@
                                 </div>
                             </div>
                             <div>
-                                <input type="text" class="form-control bg-light border-0" data-plugin="cleave-phone" id="companyContactno" placeholder="Contact No" required formControlName="companyContactno" [ngClass]="{ 'is-invalid': submitted && form['companyContactno'].errors }" />
+                                <input type="text" class="form-control bg-light border-0" data-plugin="cleave-phone" id="compnayContactno" placeholder="Contact No" required formControlName="compnayContactno" [ngClass]="{ 'is-invalid': submitted && form['compnayContactno'].errors }" />
                                 <div class="invalid-feedback">
                                     Please enter a contact number
                                 </div>
@@ -195,7 +195,7 @@
                                 </tr>
                             </thead>
                             <tbody id="newlink">
-                                @for ( phone of getItemFormControls(); track $index) {
+                                @for (phone of getItemFormControls(); track $index) {
                                 <tr id="1" class="product">
                                     <th scope="row" class="product-id">{{$index}}</th>
                                     <td class="text-start">
@@ -314,10 +314,10 @@
                         <textarea class="form-control alert alert-info" id="exampleFormControlTextarea1" placeholder="Notes" rows="2" required>All accounts are to be paid within 7 days from receipt of invoice. To be paid by cheque or credit card or direct payment online. If account is not paid within 7 days the credits details supplied as confirmation of work undertaken will be charged the agreed quoted fee noted above.</textarea>
                     </div>
                     <div class="hstack gap-2 justify-content-end d-print-none mt-4 flex-wrap">
-                        <button type="submit" class="btn btn-success"><i class="ri-printer-line align-bottom mx-1"></i>
+                        <button type="submit" class="btn btn-success"><i class="ri-printer-line align-bottom me-1"></i>
                             Save</button>
-                        <a href="javascript:void(0);" class="btn btn-primary"><i class="ri-download-2-line align-bottom mx-1"></i> Download Invoice</a>
-                        <a href="javascript:void(0);" class="btn btn-danger"><i class="ri-send-plane-fill align-bottom mx-1"></i> Send Invoice</a>
+                        <a href="javascript:void(0);" class="btn btn-primary"><i class="ri-download-2-line align-bottom me-1"></i> Download Invoice</a>
+                        <a href="javascript:void(0);" class="btn btn-danger"><i class="ri-send-plane-fill align-bottom me-1"></i> Send Invoice</a>
                     </div>
                 </div>
             </form>

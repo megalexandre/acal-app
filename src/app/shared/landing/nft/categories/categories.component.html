@@ -17,24 +17,22 @@
                 <div class="swiper mySwiper pb-4" dir="ltr">
                     <ngx-slick-carousel class="carousel space" [config]="Responsive" id="landingnft">
                         @for (data of ClientLogo; track $index) {
-                        <div class="swiper-slide" ngxSlickItem>
+                        <div class=" swiper-slide" ngxSlickItem>
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row g-1 mb-3">
-                                        @for ( user of data.images; track $index) {
+                                        @for (user of data.images; track $index) {
                                         <div class="col-6">
-                                            @for ( user of user.image; track $index) {
+                                            @for (user of user.image; track $index) {
                                             <img src="{{user.img}}" alt="" class="img-fluid rounded mt-1">
                                             }
-                                        </div><!--end col-->
-                                        }
+                                        </div><!--end col-->}
                                     </div><!--end row-->
-                                    <a href="javascript:void(0);" class="float-end"> View All <i class="ri-arrow-right-line align-bottom"></i></a>
+                                    <a href=" javascript:void(0);" class="float-end"> View All <i class="ri-arrow-right-line align-bottom"></i></a>
                                     <h5 class="mb-0 fs-16"><a href="javascript:void(0);">Artwork <span class="badge bg-success-subtle text-success">206</span></a></h5>
                                 </div>
                             </div>
-                        </div>
-                        }
+                        </div>}
                     </ngx-slick-carousel>
                 </div>
             </div>

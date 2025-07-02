@@ -4,12 +4,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 // Ck Editer
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-// Sweet Alert
-import Swal from 'sweetalert2';
-
 // Email Data Get
 import { Email } from './mailbox.model';
 import { emailData } from 'src/app/core/data';
+
 
 @Component({
   selector: 'app-mailbox',
@@ -25,13 +23,12 @@ export class MailboxComponent implements OnInit {
   public Editor = ClassicEditor;
   emailData!: Email[];
   emailIds: number[] = [];
-  isShowMenu: boolean = true;
   emailDatas: any;
   dataCount: any;
   masterSelected!: boolean;
   cat: any;
-  public CcRecipientsCollapse = true;
-  public BccRecipientsCollapse = true;
+  userName: any = 'Scott Median';
+  profile: any = 'avatar-2.jpg';
 
   constructor(private modalService: NgbModal) { }
 
@@ -58,6 +55,9 @@ export class MailboxComponent implements OnInit {
         isShowMenu = false;
       }
     });
+
+    //open chat model
+    (document.getElementById("emailchat-detailElem") as HTMLElement).style.display = "block";
   }
 
   /**
@@ -104,8 +104,8 @@ export class MailboxComponent implements OnInit {
   }
 
   /**
-   * Confirmation mail model
-   */
+ * Confirmation mail model
+ */
   confirm(content: any) {
     this.modalService.open(content, { centered: true });
     var checkboxes: any = document.getElementsByName('checkAll');
@@ -152,25 +152,14 @@ export class MailboxComponent implements OnInit {
     this.emailIds.length > 0 ? (document.getElementById("email-topbar-actions") as HTMLElement).style.display = "block" : (document.getElementById("email-topbar-actions") as HTMLElement).style.display = "none";
   }
 
-  /**
-   * Show Mail modal
-   * @param content modal content
-   */
-  showMail() {
-    const showMail = document.querySelector('.email-wrapper .email-menu-sidebar');
-    if (showMail != null) {
-      showMail.classList.add('menubar-show');
+  // The master checkbox will check/ uncheck all items
+  checkUncheckAll(ev: any) {
+    this.emailDatas.forEach((x: { state: any; }) => x.state = ev.target.checked)
+    if (ev.target.checked) {
+      (document.getElementById("email-topbar-actions") as HTMLElement).style.display = "block"
     }
-  }
-
-  /**
-   * SidebarHide modal
-   * @param content modal content
-   */
-  SidebarHide() {
-    const recentActivity = document.querySelector('.email-wrapper .email-menu-sidebar');
-    if (recentActivity != null) {
-      recentActivity.classList.remove('menubar-show');
+    else {
+      (document.getElementById("email-topbar-actions") as HTMLElement).style.display = "none"
     }
   }
 
@@ -219,10 +208,8 @@ export class MailboxComponent implements OnInit {
   }
 
   /**
-   * Chat Filtering  
-   */
-  userName: any
-  profile: any = 'user-dummy-img.jpg';
+  * Chat Filtering  
+  */
   chatFilter(e: any, name: any, image: any) {
     (document.getElementById("emailchat-detailElem") as HTMLElement).style.display = "block";
     this.userName = name;
@@ -232,17 +219,6 @@ export class MailboxComponent implements OnInit {
   // Close Chat
   closeChat() {
     (document.getElementById("emailchat-detailElem") as HTMLElement).style.display = "none";
-  }
-
-  // The master checkbox will check/ uncheck all items
-  checkUncheckAll(ev: any) {
-    this.emailDatas.forEach((x: { state: any; }) => x.state = ev.target.checked)
-    if (ev.target.checked) {
-      (document.getElementById("email-topbar-actions") as HTMLElement).style.display = "block"
-    }
-    else {
-      (document.getElementById("email-topbar-actions") as HTMLElement).style.display = "none"
-    }
   }
 
 

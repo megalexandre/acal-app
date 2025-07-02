@@ -31,10 +31,10 @@ export class MixedComponent implements OnInit {
     ];
 
     // Chart Color Data Get Function
-    this._lineChart('["--vz-primary", "--vz-success"]');
-    this._multipleYAxisChart('["--vz-primary", "--vz-info", "--vz-success"]');
-    this._lineAreaChart('["--vz-primary", "--vz-success"]');
-    this._lineColumnAreaChart('["--vz-primary", "--vz-success", "--vz-danger"]');
+    this._lineChart('["--vz-primary", "--vz-info"]');
+    this._multipleYAxisChart('["--vz-primary", "--vz-info", "--vz-light"]');
+    this._lineAreaChart('["--vz-primary", "--vz-info"]');
+    this._lineColumnAreaChart('["--vz-primary", "--vz-info", "--vz-success"]');
   }
 
   // Chart Colors Set

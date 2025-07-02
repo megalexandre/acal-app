@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, QueryList, ViewChildren } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
+import { Observable } from 'rxjs';
 import { NgbModal, NgbNavChangeEvent } from '@ng-bootstrap/ng-bootstrap';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 // Range Slider
 import { Options } from 'ngx-slider-v2';
-
 
 // Products Services
 import { restApiService } from "../../../core/services/rest-api.service";
@@ -19,13 +20,14 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss'],
+  styleUrls: ['./products.component.scss']
 })
 
 /**
  * Products Components
  */
 export class ProductsComponent {
+
 
   // bread crumb items
   breadCrumbItems!: Array<{}>;
@@ -67,7 +69,6 @@ export class ProductsComponent {
   productPrice: any;
   searchResults: any;
 
-
   constructor(private modalService: NgbModal,
     private router: Router,
     public service: PaginationService,
@@ -83,6 +84,7 @@ export class ProductsComponent {
       { label: 'Ecommerce' },
       { label: 'Products', active: true }
     ];
+
 
     // Fetch Data
     this.store.dispatch(fetchProductListData());
@@ -173,6 +175,7 @@ export class ProductsComponent {
   onSort(column: any) {
     this.products = this.service.onSort(column, this.products)
   }
+
 
   /**
   * Delete Model Open
@@ -268,6 +271,7 @@ export class ProductsComponent {
   }
 
 
+
   /**
    * Rating Filter
    */
@@ -287,8 +291,6 @@ export class ProductsComponent {
     this.totalrate = this.Rating.length
   }
 
-
-
   /**
    * Product Filtering  
    */
@@ -307,6 +309,7 @@ export class ProductsComponent {
     });
     this.products = this.allproduct.filter((product: any) => product.category == category);
   }
+
 
 
   /**
@@ -358,6 +361,7 @@ export class ProductsComponent {
     }
   }
 
+
   clearall(ev: any) {
     this.minValue = 0;
     this.maxValue = 1000;
@@ -386,12 +390,13 @@ export class ProductsComponent {
     this.products = this.allproduct
   }
 
+
   godetail(id: any) {
-    this.router.navigate(['/ecommerce/product-detail'])
+    this.router.navigate(['/ecommerce/product-detail/1', this.products[id]])
   }
 
   gopublishdetail(id: any) {
-    this.router.navigate(['/ecommerce/product-detail/'])
+    this.router.navigate(['/ecommerce/product-detail/1', this.publishedproduct[id]])
   }
 
 }

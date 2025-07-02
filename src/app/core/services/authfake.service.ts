@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { User } from 'src/app/store/Authentication/auth.models';
+import { User } from '../models/auth.models';
 
 @Injectable({ providedIn: 'root' })
 export class AuthfakeauthenticationService {
@@ -28,16 +28,18 @@ export class AuthfakeauthenticationService {
      * @param password password of user
      */
     login(email: string, password: string) {
-        return this.http.post<any>(`/users/authenticate`, { email, password }).pipe(map(user => {
-            // login successful if there's a jwt token in the response
-            if (user && user.token) {                    
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                sessionStorage.setItem('toast', 'true');
-                sessionStorage.setItem('currentUser', JSON.stringify(user));
-                this.currentUserSubject.next(user);
-            }
-            return user;
-        }));
+
+        return this.http.post<any>(`/users/authenticate`, { email, password })
+
+            .pipe(map(user => {
+                // login successful if there's a jwt token in the response
+                if (user && user.token) {
+                    // store user details and jwt token in local storage to keep user logged in between page refreshes
+                    sessionStorage.setItem('currentUser', JSON.stringify(user));
+                    this.currentUserSubject.next(user);
+                }
+                return user;
+            }));
     }
 
     /**

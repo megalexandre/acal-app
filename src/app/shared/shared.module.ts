@@ -1,10 +1,10 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbNavModule, NgbAccordionModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Swiper Slider
 import { SlickCarouselModule } from 'ngx-slick-carousel';
-
+import { RouterModule } from '@angular/router';
 // Counter
 import { CountUpModule } from 'ngx-countup';
 
@@ -23,7 +23,6 @@ import { TeamComponent } from './landing/index/team/team.component';
 import { ContactComponent } from './landing/index/contact/contact.component';
 import { FooterComponent } from './landing/index/footer/footer.component';
 import { ScrollspyDirective } from './scrollspy.directive';
-import { LandingScrollspyDirective } from './landingscrollspy.directive';
 
 // NFT Landing 
 import { MarketPlaceComponent } from './landing/nft/market-place/market-place.component';
@@ -34,13 +33,13 @@ import { DiscoverComponent } from './landing/nft/discover/discover.component';
 import { TopCreatorComponent } from './landing/nft/top-creator/top-creator.component';
 
 // Job Landing 
-import { ProcessComponent } from './landing/job/process/process.component';
-import { FindjobsComponent } from './landing/job/findjobs/findjobs.component';
-import { CandidatesComponent } from './landing/job/candidates/candidates.component';
 import { BlogComponent } from './landing/job/blog/blog.component';
-import { JobcategoriesComponent } from './landing/job/jobcategories/jobcategories.component';
+import { CandidateComponent } from './landing/job/candidate/candidate.component';
+import { FindjobsComponent } from './landing/job/findjobs/findjobs.component';
 import { JobFooterComponent } from './landing/job/job-footer/job-footer.component';
-
+import { JobcategoriesComponent } from './landing/job/jobcategories/jobcategories.component';
+import { ProgressComponent } from './landing/job/progress/progress.component';
+import { LandingScrollspyDirective } from './landingscrollspy.directive';
 
 @NgModule({
   declarations: [
@@ -58,20 +57,20 @@ import { JobFooterComponent } from './landing/job/job-footer/job-footer.componen
     TeamComponent,
     ContactComponent,
     FooterComponent,
+    ScrollspyDirective,
+    LandingScrollspyDirective,
     MarketPlaceComponent,
     WalletComponent,
     FeaturesComponent,
     CategoriesComponent,
     DiscoverComponent,
     TopCreatorComponent,
-    ProcessComponent,
-    FindjobsComponent,
-    CandidatesComponent,
     BlogComponent,
-    JobcategoriesComponent,
+    CandidateComponent,
+    FindjobsComponent,
     JobFooterComponent,
-    ScrollspyDirective,
-    LandingScrollspyDirective
+    JobcategoriesComponent,
+    ProgressComponent
   ],
   imports: [
     CommonModule,
@@ -79,11 +78,36 @@ import { JobFooterComponent } from './landing/job/job-footer/job-footer.componen
     NgbAccordionModule,
     NgbDropdownModule,
     SlickCarouselModule,
-    CountUpModule
+    CountUpModule,
+    RouterModule
   ],
-  schemas:[CUSTOM_ELEMENTS_SCHEMA],
-  exports: [BreadcrumbsComponent, ClientLogoComponent, ServicesComponent, CollectionComponent, CtaComponent, DesignedComponent, PlanComponent, FaqsComponent, ReviewComponent, CounterComponent, WorkProcessComponent, TeamComponent, ContactComponent, FooterComponent, 
-    WalletComponent, MarketPlaceComponent, FeaturesComponent, CategoriesComponent, DiscoverComponent, TopCreatorComponent,   ScrollspyDirective,
-    LandingScrollspyDirective, ProcessComponent, FindjobsComponent, CandidatesComponent, BlogComponent, JobcategoriesComponent, JobFooterComponent]
+  exports: [BreadcrumbsComponent,
+    ClientLogoComponent,
+    ServicesComponent,
+    CollectionComponent,
+    CtaComponent,
+    DesignedComponent,
+    PlanComponent,
+    FaqsComponent,
+    ReviewComponent,
+    CounterComponent,
+    WorkProcessComponent,
+    TeamComponent,
+    ContactComponent,
+    FooterComponent,
+    ScrollspyDirective,
+    LandingScrollspyDirective,
+    WalletComponent,
+    MarketPlaceComponent,
+    FeaturesComponent,
+    CategoriesComponent,
+    DiscoverComponent,
+    TopCreatorComponent,
+    ProgressComponent,
+    FindjobsComponent,
+    CandidateComponent,
+    BlogComponent,
+    JobcategoriesComponent,
+    JobFooterComponent]
 })
 export class SharedModule { }

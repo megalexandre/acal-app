@@ -19,7 +19,7 @@
                         <div class="mt-3">
                             <label class="form-label">Select input flag with img & name</label>
                             <ng-select appearance="outline" [searchable]="false" [clearable]="false" labelForId="heroId">
-                                @for ( data of Default; track $index) {
+                                @for (data of Default; track $index) {
                                 <ng-option value="batman">
                                     <img src="{{data.flagImg}}" alt="country flag" class="options-flagimg" height="20">
                                     {{data.countryName}}

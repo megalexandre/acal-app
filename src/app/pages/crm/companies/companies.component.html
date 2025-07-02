@@ -8,15 +8,16 @@
             <div class="card-header">
                 <div class="d-flex align-items-center flex-wrap gap-2">
                     <div class="flex-grow-1">
-                        <button class="btn btn-info add-btn" data-bs-toggle="modal" data-bs-target="#showModal" (click)="openModal(content)"><i class="ri-add-fill me-1 align-bottom"></i> Add
+                        <button class="btn btn-primary add-btn" data-bs-toggle="modal" data-bs-target="#showModal" (click)="openModal(content)"><i class="ri-add-fill me-1 align-bottom"></i> Add
                             Company</button>
                     </div>
                     <div class="flex-shrink-0">
                         <div class="hstack text-nowrap gap-2" ngbDropdown>
                             <button class="btn btn-soft-danger" id="remove-actions" style="display: none" (click)="deleteMultiple(deleteModel)"><i class="ri-delete-bin-2-line"></i></button>
-                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#addmembers"><i class="ri-filter-2-line me-1 align-bottom"></i> Filters</button>
+                            <button class="btn btn-soft-primary"><i class="ri-filter-2-line me-1 align-bottom"></i>
+                                Filters</button>
                             <button class="btn btn-soft-success" (click)="csvFileExport()">Export</button>
-                            <button type="button" id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false" class="btn btn-soft-info arrow-none" ngbDropdownToggle><i class="ri-more-2-fill"></i></button>
+                            <button type="button" id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false" class="btn btn-soft-danger arrow-none" ngbDropdownToggle><i class="ri-more-2-fill"></i></button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1" ngbDropdownMenu>
                                 <li><a class="dropdown-item" href="javascript:void(0);">All</a></li>
                                 <li><a class="dropdown-item" href="javascript:void(0);">Last Week</a></li>
@@ -76,7 +77,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @for (data of company | sortBy:sortBy:sortField; track $index) {
+                                @for(data of company | sortBy:sortBy:sortField;track $index){
                                 <tr id="c_{{data._id}}">
                                     <th scope="row">
                                         <div class="form-check">
@@ -117,7 +118,7 @@
                                                 </a>
                                             </li>
                                             <li class="list-inline-item" ngbTooltip="View" placement="top">
-                                                <a href="javascript:void(0);" (click)="viewDataGet($index)"><i class="ri-eye-fill align-bottom text-muted"></i></a>
+                                                <a href="javascript:void(0);" (click)="viewDataGet(data._id)"><i class="ri-eye-fill align-bottom text-muted"></i></a>
                                             </li>
                                             <li class="list-inline-item" ngbTooltip="Edit" placement="top">
                                                 <a class="edit-item-btn" data-bs-toggle="modal" (click)="editDataGet($index,content)"><i class="ri-pencil-fill align-bottom text-muted"></i></a>
@@ -129,8 +130,7 @@
                                             </li>
                                         </ul>
                                     </td>
-                                </tr>
-                                }
+                                </tr>}
                             </tbody>
                         </table>
                     </div>
@@ -150,16 +150,15 @@
                 <!-- Companies Model -->
                 <ng-template #content role="document" let-modal>
                     <div class="modal-header bg-info-subtle p-3">
-                        <h5 class="modal-title" class="tablelist-form" autocomplete="off" id="exampleModalLabel">Add
-                            Company</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Add Company</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal" (click)="modal.dismiss('Cross click')"></button>
                     </div>
-                    <form (ngSubmit)="saveUser()" [formGroup]="companiesForm">
+                    <form (ngSubmit)="saveUser()" [formGroup]="companiesForm" class="tablelist-form" autocomplete="off">
                         <div class="modal-body">
                             <input type="hidden" id="id-field" />
                             <div class="row g-3">
                                 <div class="col-lg-12">
-                                    <input type="hidden" name="id" value="" formControlName="_id" />
+                                    <input type="hidden" name="id" value="" formControlName="ids" />
                                     <div class="text-center">
                                         <div class="position-relative d-inline-block">
                                             <div class="position-absolute bottom-0 end-0">
@@ -186,10 +185,8 @@
                                         @if(submitted && form['name'].errors){
                                         <div class="invalid-feedback" align="left">
                                             @if(form['name'].errors['required']){
-                                            <div>Name is required</div>
-                                            }
-                                        </div>
-                                        }
+                                            <div>Name is required</div>}
+                                        </div>}
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -199,10 +196,9 @@
                                         @if(submitted && form['owner'].errors){
                                         <div class="invalid-feedback" align="left">
                                             @if(form['owner'].errors['required']){
-                                            <div>Owner Name is required</div>
-                                            }
-                                        </div>
-                                        }
+
+                                            <div>Owner Name is required</div>}
+                                        </div>}
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -222,8 +218,7 @@
                                         <div class="invalid-feedback" align="left">
                                             @if(form['industry_type'].errors['required']){
                                             <div>Industry Type is
-                                                required</div>
-                                            }
+                                                required</div>}
                                         </div>}
                                     </div>
                                 </div>
@@ -235,16 +230,14 @@
                                         <div class="invalid-feedback" align="left">
                                             @if(form['star_value'].errors['required']){
                                             <div>Rating Type is required
-                                            </div>
-                                            }
-                                        </div>
-                                        }
+                                            </div>}
+                                        </div>}
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div>
                                         <label for="location-field" class="form-label">location</label>
-                                        <input type="text" id="location-field" class="form-control" placeholder="Enter loation" required formControlName="location" [ngClass]="{ 'is-invalid': submitted && form['location'].errors }" />
+                                        <input type="text" id="location-field" class="form-control" placeholder="Enter location" required formControlName="location" [ngClass]="{ 'is-invalid': submitted && form['location'].errors }" />
                                         @if(submitted && form['location'].errors){
                                         <div class="invalid-feedback" align="left">
                                             @if(form['location'].errors['required']){
@@ -285,8 +278,7 @@
                                         <div class="invalid-feedback" align="left">
                                             @if(form['contact_email'].errors['required']){
                                             <div>Contact Email Type is
-                                                required</div>
-                                            }
+                                                required</div>}
                                         </div>}
                                     </div>
                                 </div>
@@ -297,10 +289,9 @@
                                         @if(submitted && form['since'].errors){
                                         <div class="invalid-feedback" align="left">
                                             @if(form['since'].errors['required']){
-                                            <div>Since Type is required</div>
-                                            }
-                                        </div>
-                                        }
+                                            <div>Since Type is required</div>}
+
+                                        </div>}
                                     </div>
                                 </div>
                             </div>
@@ -325,7 +316,7 @@
                 <div class="position-relative d-inline-block">
                     <div class="avatar-md">
                         <div class="avatar-title bg-light rounded-circle">
-                            <img src="assets/images/brands/mail_chimp.png" alt="" class="avatar-sm rounded-circle object-fit-cover">
+                            <img src="assets/images/brands/mail_chimp.png" alt="" class="avatar-xs">
                         </div>
                     </div>
                 </div>
@@ -344,14 +335,14 @@
                         </a>
                     </li>
                     <li class="list-inline-item avatar-xs">
-                        <a href="javascript:void(0);" class="avatar-title bg-warning-subtle text-warning fs-15 rounded">
+                        <a href="javascript:void(0);" class="avatar-title bg-primary-subtle text-primary fs-15 rounded">
                             <i class="ri-question-answer-line"></i>
                         </a>
                     </li>
                 </ul>
             </div>
             <div class="card-body">
-                <h6 class="text-muted text-uppercase fw-semibold mb-3">Information</h6>
+                <h6 class="text-muted text-uppercase fw-medium mb-3">Information</h6>
                 <p class="text-muted mb-4">A company incurs fixed and variable costs such as the purchase of raw
                     materials, salaries and overhead, as explained by AccountingTools, Inc. Business owners have the
                     discretion to determine the actions.</p>

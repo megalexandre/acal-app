@@ -13,13 +13,12 @@ import { Store } from '@ngrx/store';
 export class VerticalComponent implements OnInit {
 
   isCondensed = false;
-  getsize:any;
+  getsize: any;
 
-  constructor(private eventService: EventService, private router: Router, private activatedRoute: ActivatedRoute,private store: Store<RootReducerState>) {
+  constructor(private eventService: EventService, private router: Router, private activatedRoute: ActivatedRoute, private store: Store<RootReducerState>) {
   }
 
   ngOnInit(): void {
-
     this.router.events.subscribe((event: any) => {
       if (document.documentElement.getAttribute('data-preloader') == 'enable') {
         if (event instanceof NavigationEnd) {
@@ -43,7 +42,7 @@ export class VerticalComponent implements OnInit {
     if (document.documentElement.getAttribute('data-sidebar-size') == 'lg') {
       this.store.select(getSidebarSize).subscribe((size) => {
         this.getsize = size
-        })
+      })
       window.addEventListener('resize', () => {
         var self = this;
         if (document.documentElement.clientWidth <= 767) {
@@ -55,7 +54,7 @@ export class VerticalComponent implements OnInit {
           document.querySelector('.hamburger-icon')?.classList.add('open')
         }
         else if (document.documentElement.clientWidth >= 1024) {
-          if(document.documentElement.getAttribute('data-layout-width') == 'fluid'){
+          if (document.documentElement.getAttribute('data-layout-width') == 'fluid') {
             document.documentElement.setAttribute('data-sidebar-size', self.getsize);
             document.querySelector('.hamburger-icon')?.classList.remove('open')
           }
@@ -76,6 +75,7 @@ export class VerticalComponent implements OnInit {
       (document.getElementById("preloader") as HTMLElement).style.visibility = "hidden";
     }
   }
+
 
 
   /**
@@ -122,6 +122,7 @@ export class VerticalComponent implements OnInit {
         document.body.classList.remove('vertical-sidebar-enable');
       }
     }
+
   }
 
 }

@@ -3,11 +3,18 @@
 <!-- End Breadcrumbs -->
 
 <div class="row">
-    @for (data of tileBoxs1; track $index) {
+    <div class="col-12">
+        <h5 class="text-decoration-underline mb-3 pb-1">Tile Boxs</h5>
+    </div>
+</div>
+<!-- end row-->
+
+<div class="row">
+    @for( data of tileBoxs1;track $index){
     <div class="col-xl-3 col-md-6">
         <!-- card -->
         <div class="card card-animate">
-            <div class="card-body" [ngClass]=" { 'bg-info': data.bgColor}">
+            <div class="card-body" [ngClass]=" { 'bg-primary': data.bgColor}">
                 <div class="d-flex align-items-center">
                     <div class="flex-grow-1">
                         <p class="text-uppercase fw-medium text-{{data.labelClass}} mb-0">{{data.label}}</p>
@@ -25,15 +32,14 @@
                         <a href="javascript:void(0);" class="text-decoration-underline" [ngClass]=" { 'text-white-50': data.captionClass}">{{data.caption}}</a>
                     </div>
                     <div class="avatar-sm flex-shrink-0">
-                        <span class="avatar-title {{data.iconClass}}  rounded fs-3">
+                        <span class="avatar-title {{data.iconClass}} rounded fs-3">
                             <i class="{{data.icon}} text-{{data.iconClass}}"></i>
                         </span>
                     </div>
                 </div>
             </div><!-- end card body -->
         </div><!-- end card -->
-    </div><!-- end col -->
-    }
+    </div>}<!-- end col -->
 </div> <!-- end row-->
 
 <div class="row">
@@ -41,7 +47,7 @@
         <div class="card crm-widget">
             <div class="card-body p-0">
                 <div class="row row-cols-md-3 row-cols-1">
-                    @for (data of tileBoxs2; track $index) {
+                    @for( data of tileBoxs2;track $index){
                     <div class="col col-lg border-end">
                         <div class="py-4 px-3">
                             <h5 class="text-muted text-uppercase fs-13">{{data.label}} <i class="{{data.badge}} fs-18 float-end align-middle"></i></h5>
@@ -54,8 +60,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div><!-- end col -->
-                    }
+                    </div>}<!-- end col -->
                 </div><!-- end row -->
             </div><!-- end card body -->
         </div><!-- end card -->
@@ -63,7 +68,7 @@
 </div><!-- end row -->
 
 <div class="row">
-    @for (data of tileBoxs3; track $index) {
+    @for( data of tileBoxs3;track $index){
     <div class="col-xl-3 col-md-6">
         <div class="card card-animate" [ngClass]=" { 'bg-primary': data.bgColor}">
             <div class="card-body">
@@ -71,7 +76,7 @@
                     <div>
                         <p class="fw-medium text-{{data.labelClass}} mb-0">{{data.label}}</p>
                         <h2 class="mt-4 ff-secondary fw-semibold" [ngClass]=" { 'text-white': data.counterClass}">
-                            @for (user of data.subCounter; track $index) {
+                            @for( user of data.subCounter;track $index){
                             <span><span [countUp]="user.counter" class="counter-value" [options]="option"></span>{{user.suffix}}</span>
                             }
                         </h2>
@@ -90,18 +95,17 @@
                 </div>
             </div><!-- end card body -->
         </div> <!-- end card-->
-    </div> <!-- end col-->
-    }
+    </div>} <!-- end col-->
 </div> <!-- end row-->
 
 <div class="row">
-    @for (data of tileBoxs4; track $index) {
+    @for( data of tileBoxs4;track $index){
     <div class="col-xl-3 col-md-6">
-        <div class="card  card-height-100" [ngClass]=" { 'bg-success': data.bgColor}">
+        <div class="card  card-height-100" [ngClass]=" { 'bg-primary': data.bgColor}">
             <div class="card-body">
                 <div class="d-flex align-items-center">
                     <div class="avatar-sm flex-shrink-0">
-                        <span class="avatar-title {{data.iconClass}} rounded-2 fs-2">
+                        <span class="avatar-title {{data.iconClass}} text-{{data.iconClass}} rounded-2 fs-2">
                             <i class="{{data.icon}}"></i>
                         </span>
                     </div>
@@ -111,18 +115,17 @@
                         <p class="text-{{data.captionClass}} mb-0">{{data.caption}}</p>
                     </div>
                     <div class="flex-shrink-0 align-self-center">
-                        <span class="badge {{data.percentageClass}} text-{{data.percentageClass}} fs-12"><i class="{{data.badge}} fs-13 align-middle me-1"></i>{{data.percentage}}<span>
+                        <span class="badge {{data.percentageClass}} fs-12"><i class="{{data.badge}} fs-13 align-middle me-1"></i>{{data.percentage}}<span>
                             </span></span>
                     </div>
                 </div>
             </div><!-- end card body -->
         </div>
-    </div> <!-- end col-->
-    }
+    </div> }<!-- end col-->
 </div> <!-- end row-->
 
 <div class="row">
-    @for( data of tileBoxs5 ; track $index){
+    @for( data of tileBoxs5;track $index){
     <div class="col-xl-3 col-md-6">
         <div class="card card-height-100 {{data.bgColor}} shadow-none bg-opacity-10">
             <div class="card-body">
@@ -144,8 +147,7 @@
                 <p class="text-muted mb-0"><i class="ri-building-line align-bottom"></i> {{data.companyname}} <span class="ms-2"><i class="ri-map-pin-2-line align-bottom"></i> {{data.location}}</span></p>
             </div>
         </div>
-    </div><!-- end col-->
-    }
+    </div>}<!-- end col-->
 </div> <!-- end row-->
 
 <div class="row">
@@ -159,8 +161,8 @@
     <div class="col-xl-4">
         <div class="card">
             <div class="card-body p-0">
-                <div class="alert alert-warning border-0 rounded-top rounded-0 m-0 d-flex align-items-center" role="alert">
-                    <i-feather name="alert-triangle" class="text-warning me-2 icon-sm"></i-feather>
+                <div class="alert alert-primary border-0 rounded-top rounded-0 m-0 d-flex align-items-center" role="alert">
+                    <i-feather name="alert-triangle" class="text-primary me-2 icon-sm"></i-feather>
                     <div class="flex-grow-1 text-truncate">
                         Your free trial expired in <b>17</b> days.
                     </div>
@@ -175,7 +177,7 @@
                             <p class="fs-16 lh-base">Upgrade your plan from a <span class="fw-semibold">Free
                                     trial</span>, to ‘Premium Plan’ <i class="mdi mdi-arrow-right"></i></p>
                             <div class="mt-3">
-                                <a routerLink="/pages/pricing" class="btn btn-success">Upgrade Account!</a>
+                                <a routerLink="/pages/pricing" class="btn btn-primary">Upgrade Account!</a>
                             </div>
                         </div>
                     </div>
@@ -191,7 +193,7 @@
     <div class="col-xl-4">
         <div class="card bg-primary">
             <div class="card-body p-0">
-                <div class="alert alert-danger rounded-top alert-solid alert-label-icon border-0 rounded-0 m-0 d-flex align-items-center" role="alert">
+                <div class="alert alert-success rounded-top alert-solid alert-label-icon border-0 rounded-0 m-0 d-flex align-items-center" role="alert">
                     <i class="ri-error-warning-line label-icon"></i>
                     <div class="flex-grow-1 text-truncate">
                         Your free trial expired in <b>17</b> days.
@@ -223,7 +225,7 @@
     <div class="col-xl-4">
         <div class="card">
             <div class="card-body p-0">
-                <div class="alert alert-warning border-0 rounded-top rounded-0 m-0 d-flex align-items-center" role="alert">
+                <div class="alert alert-primary border-0 rounded-top rounded-0 m-0 d-flex align-items-center" role="alert">
                     <div class="flex-grow-1 text-truncate">
                         We will choose a gift for you in <b>5</b> days.
                     </div>
@@ -235,8 +237,8 @@
                 <div class="d-flex p-3">
                     <div class="flex-shrink-0">
                         <div class="avatar-md me-3">
-                            <span class="avatar-title bg-danger-subtle rounded-circle fs-1">
-                                <i class="ri-gift-2-line text-danger"></i>
+                            <span class="avatar-title bg-primary-subtle rounded-circle fs-1">
+                                <i class="ri-gift-2-line text-primary"></i>
                             </span>
                         </div>
                     </div>
@@ -254,27 +256,25 @@
 </div> <!-- end row-->
 
 <div class="row">
-    @for (data of otherWidgets; track $index) {
+    @for( data of otherWidgets;track $index){
     <div class="col-lg-4">
         <div class="card">
             <div class="card-body">
                 <h5 class="fs-15 fw-semibold">{{data.title}}</h5>
                 <p class="text-muted">{{data.subTitle}}</p>
                 <div class="d-flex flex-wrap justify-content-evenly">
-                    @for (item of data.subItem; track $index) {
+                    @for( item of data.subItem;track $index){
                     <p class="text-muted mb-0"><i class="{{item.icon}} text-{{item.iconClass}} fs-18 align-middle me-2"></i>{{item.label}}</p>
                     }
                 </div>
             </div>
             <div class="progress animated-progess rounded-bottom rounded-0" style="height: 6px;">
-                @for (progress of data.progressBar; track $index) {
+                @for( progress of data.progressBar;track $index){
                 <div class="progress-bar {{progress.bgColor}} rounded-0" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
-                </div>
-                }
+                </div>}
             </div>
         </div>
-    </div><!-- end col -->
-    }
+    </div>}<!-- end col -->
 </div> <!-- end row-->
 
 <div class="row">
@@ -296,7 +296,7 @@
             </div><!-- end card header -->
             <div class="card-body pt-0">
                 <ul class="list-group list-group-flush border-dashed">
-                    @for(data of widgetsActivities; track $index){
+                    @for( data of widgetsActivities;track $index){
                     <li class="list-group-item ps-0">
                         <div class="row align-items-center g-3">
                             <div class="col-auto">
@@ -313,30 +313,25 @@
                             </div>
                             <div class="col-sm-auto">
                                 <div class="avatar-group">
-                                    @for(item of data.subItem; track $index){
-
+                                    @for( item of data.subItem;track $index){
                                     <div class="avatar-group-item">
-                                        @if (item.img) {
-                                        <a href="javascript: void(0);" class="d-inline-block" ngbTooltip="{{item.name}}" placement="top">
+                                        @if(item.img){
+                                        <a href="javascript:void(0);" class="d-inline-block" ngbTooltip="{{item.name}}" placement="top">
                                             <img src="{{item.img}}" alt="" class="rounded-circle avatar-xxs">
-                                        </a>}
-                                        @else () {
-                                        <a href="javascript: void(0);">
+                                        </a>}@else{
+                                        <a href="javascript:void(0);">
                                             <div class="avatar-xxs">
                                                 <span class="avatar-title rounded-circle {{item.bgcolor}} text-white">
                                                     {{item.imgNumber}}
                                                 </span>
                                             </div>
-                                        </a>
-                                        }
-                                    </div>
-                                    }
+                                        </a>}
+                                    </div>}
                                 </div>
                             </div>
                         </div>
                         <!-- end row -->
-                    </li><!-- end -->
-                    }
+                    </li>}<!-- end -->
                 </ul><!-- end -->
                 <div class="align-items-center mt-2 row text-center text-sm-start">
                     <div class="col-sm">
@@ -375,7 +370,7 @@
                         <div class="flex-shrink-0">
                             <div class="dropdown card-header-dropdown" ngbDropdown>
                                 <a class="text-reset dropdown-btn arrow-none" href="javascript:void(0);" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>
-                                    <span class="text-muted"><i class="ri-settings-4-line align-middle me-1 fs-15"></i>Settings</span>
+                                    <span class="text-muted"><i class="ri-settings-4-line align-middle mx-1 fs-15"></i>Settings</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
                                     <a class="dropdown-item" href="javascript:void(0);">Edit</a>
@@ -397,7 +392,7 @@
 
                         <ngx-simplebar style="max-height: 257px;">
                             <ul class="list-group list-group-flush border-dashed px-3">
-                                @for (data of widgetsTasks; track $index) {
+                                @for( data of widgetsTasks;track $index){
                                 <li class="list-group-item ps-0">
                                     <div class="d-flex align-items-start">
                                         <div class="form-check ps-0 flex-sharink-0">
@@ -410,8 +405,7 @@
                                             <p class="text-muted fs-12 mb-0">{{data.date}}</p>
                                         </div>
                                     </div>
-                                </li>
-                                }
+                                </li>}
                             </ul><!-- end ul -->
                         </ngx-simplebar>
 
@@ -457,13 +451,13 @@
                                         </h6>
                                         <p class="text-muted mb-1">By Nesta Technologies</p>
                                         <div class="d-inline-flex gap-2 border border-dashed p-2 mb-2 w-75">
-                                            <a href="ecommerce/product-detail" class="bg-light rounded p-1">
+                                            <a routerLink="/ecommerce/product-detail/1" class="bg-light rounded p-1">
                                                 <img src="assets/images/products/img-8.png" alt="" class="img-fluid d-block" />
                                             </a>
-                                            <a href="ecommerce/product-detail" class="bg-light rounded p-1">
+                                            <a routerLink="/ecommerce/product-detail/1" class="bg-light rounded p-1">
                                                 <img src="assets/images/products/img-2.png" alt="" class="img-fluid d-block" />
                                             </a>
-                                            <a href="ecommerce/product-detail" class="bg-light rounded p-1">
+                                            <a routerLink="/ecommerce/product-detail/1" class="bg-light rounded p-1">
                                                 <img src="assets/images/products/img-10.png" alt="" class="img-fluid d-block" />
                                             </a>
                                         </div>
@@ -490,7 +484,7 @@
                                         </div>
                                     </div>
                                     <div class="flex-grow-1 ms-3">
-                                        <h6 class="mb-1">Today offers by <a href="ecommerce/seller-details" class="link-secondary">Digitech Galaxy</a></h6>
+                                        <h6 class="mb-1">Today offers by <a routerLink="/ecommerce/seller-details" class="link-secondary">Digitech Galaxy</a></h6>
                                         <p class="text-muted mb-2">Offer is valid on orders of Rs.500 Or above for
                                             selected products only.</p>
                                         <small class="mb-0 text-muted">12 Dec, 2021</small>
@@ -609,6 +603,7 @@
     </div>
 </div>
 
+
 <div class="row">
     <div class="col-12">
         <h5 class="text-decoration-underline mb-3 mt-2 pb-3">Chart & Map Widgets</h5>
@@ -687,7 +682,7 @@
             </div>
             <div class="card-body p-0">
                 <div>
-                    <apx-chart [series]="basicBarChart.series" [colors]="basicBarChart.colors" [chart]="basicBarChart.chart" [dataLabels]="basicBarChart.dataLabels" [plotOptions]="basicBarChart.plotOptions" [xaxis]="basicBarChart.xaxis" dir="ltr"></apx-chart>
+                    <apx-chart [series]="basicBarChart.series" [colors]="basicBarChart.colors" [chart]="basicBarChart.chart" [dataLabels]="basicBarChart.dataLabels" [plotOptions]="basicBarChart.plotOptions" [xaxis]="basicBarChart.xaxis" [legend]="basicBarChart.legend" dir="ltr"></apx-chart>
                 </div>
             </div><!-- end card body -->
         </div><!-- end card -->
@@ -713,7 +708,7 @@
                 </div>
             </div><!-- end card header -->
             <div class="card-header p-0">
-                <div class="alert alert-warning alert-solid alert-label-icon border-0 rounded-0 m-0 d-flex align-items-center" role="alert">
+                <div class="alert alert-primary alert-solid alert-label-icon border-0 rounded-0 m-0 d-flex align-items-center" role="alert">
                     <i class="ri-error-warning-line label-icon"></i>
                     <div class="flex-grow-1 text-truncate">
                         Your free trial expired in <b>17</b> days.
@@ -728,8 +723,7 @@
                     <div class="col-6 col-sm-4">
                         <div class="p-3 border border-dashed border-start-0">
                             <h5 class="mb-1"><span [countUp]="854" class="counter-value" [options]="option"></span>
-                                <span class="text-success ms-1 fs-13">49%</span>
-
+                                <span class="text-success ms-1 fs-12">49%<i class="ri-arrow-right-up-line ms-1 align-middle"></i></span>
                             </h5>
                             <p class="text-muted mb-0">Avg. Session</p>
                         </div>
@@ -738,7 +732,7 @@
                     <div class="col-6 col-sm-4">
                         <div class="p-3 border border-dashed border-start-0">
                             <h5 class="mb-1"><span [countUp]="1278" class="counter-value" [options]="option"></span>
-                                <span class="text-success ms-1 fs-13">60%<i class="ri-arrow-right-up-line ms-1 align-middle"></i></span>
+                                <span class="text-success ms-1 fs-12">60%<i class="ri-arrow-right-up-line ms-1 align-middle"></i></span>
                             </h5>
                             <p class="text-muted mb-0">Conversion Rate</p>
                         </div>
@@ -989,7 +983,7 @@
             <div class="card-body" dir="ltr">
                 <!-- Swiper -->
                 <ngx-slick-carousel class="carousel space" [config]="Responsive">
-                    @for (product of hotproducts; track $index) {
+                    @for( product of hotproducts;track $index){
                     <div class="swiper-slide" style="overflow: hidden;" ngxSlickItem>
                         <div>
                             <div class="bg-info-subtle rounded">
@@ -1103,7 +1097,7 @@
                 <h5 class="mb-3">Select Bank</h5>
                 <form class="needs-validation" method="post" (ngSubmit)="confirmcard()" [formGroup]="cardForm">
                     <div class="vstack gap-2">
-                        @for (card of bankcards; track $index) {
+                        @for(card of bankcards;track $index){
                         <div class="form-check card-radio">
                             <input id="listGroupRadioGrid{{card.id}}" value="{{card.amount}}" type="radio" class="form-check-input" formControlName="amount">
                             <label class="form-check-label" for="listGroupRadioGrid{{card.id}}">
@@ -1132,9 +1126,8 @@
                             Select at list one item
                         </div>
                     </div>
+                    <!-- notification-warning -->
                 </form>
-                <!-- notification-warning -->
-
                 <div class="notification-elem" id="notification-overlay">
                     <div class="text-center">
                         <lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" colors="primary:#0ab39c,secondary:#405189" style="width:120px;height:120px"></lord-icon>
@@ -1259,7 +1252,7 @@
                         </div>
                         <ngx-simplebar data-simplebar style="max-height: 190px" class="px-3 mx-n3">
                             <ul class="list-unstyled mb-0 pt-2" id="candidate-list">
-                                @for (data of candidates; track $index) {
+                                @for( data of candidates;track $index){
                                 <li (click)="opendetail($index)">
                                     <a href="javascript:void(0);" class="d-flex align-items-center py-2">
                                         <div class="flex-shrink-0 me-2">
@@ -1272,8 +1265,7 @@
                                             <div class="d-none candidate-position">{{data.designation}}</div>
                                         </div>
                                     </a>
-                                </li>
-                                }
+                                </li>}
                             </ul>
                         </ngx-simplebar>
                     </div>
@@ -1307,7 +1299,7 @@
                         </div>
 
                         <div>
-                            <button type="button" class="btn btn-danger rounded-pill w-sm"><i class="ri-add-fill me-1 align-bottom"></i> Follow</button>
+                            <button type="button" class="btn btn-success rounded-pill w-sm"><i class="ri-add-fill me-1 align-bottom"></i> Follow</button>
                         </div>
                     </div>
                 </div>
@@ -1333,7 +1325,7 @@
             </div>
             <div class="card-body">
                 <div class="mx-auto" style="max-width: 350px">
-                    <div class="text-bg-info bg-gradient p-4 rounded-3 mb-3">
+                    <div class="bg-info bg-gradient p-4 rounded-3 mb-3">
                         <div class="d-flex">
                             <div class="flex-grow-1">
                                 <i class="bx bx-chip h1 text-warning"></i>
@@ -1455,123 +1447,149 @@
                 <h5 class="card-title mb-0">Credit Card - card js plugin</h5>
             </div>
             <div class="card-body">
-                <!-- <div class="card-wrapper mb-3"></div> -->
+                <div class="mx-auto" style="max-width: 350px">
+                    <div class="bg-success bg-gradient p-4 rounded-3 mb-3">
+                        <div class="d-flex">
+                            <div class="flex-grow-1">
+                                <i class="bx bx-chip h1 text-warning"></i>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <i class="bx bxl-visa display-2 mt-n3"></i>
+                            </div>
+                        </div>
+                        <div class="card-number fs-20" id="card-num-elem">
+                            XXXX XXXX XXXX XXXX
+                        </div>
 
-                <div class="card-body">
-                    <div class="mx-auto" style="max-width: 350px">
-                        <div class="text-bg-success bg-gradient p-4 rounded-3 mb-3">
-                            <div class="d-flex">
-                                <div class="flex-grow-1">
-                                    <i class="bx bx-chip h1 text-warning"></i>
-                                </div>
-                                <div class="flex-shrink-0">
-                                    <i class="bx bxl-visa display-2 mt-n3"></i>
+                        <div class="row mt-4">
+                            <div class="col-4">
+                                <div>
+                                    <div class="text-white-50">Card Holder</div>
+                                    <div id="card-holder-elem" class="fw-medium fs-14">Full Name</div>
                                 </div>
                             </div>
-                            <div class="card-number fs-20" id="card-num-elem">
-                                XXXX XXXX XXXX XXXX
+                            <div class="col-4">
+                                <div class="expiry">
+                                    <div class="text-white-50">Expires</div>
+                                    <div class="fw-medium fs-14">
+                                        <span id="expiry-month-elem">00</span>
+                                        /
+                                        <span id="expiry-year-elem">0000</span>
+                                    </div>
+                                </div>
                             </div>
-
-                            <div class="row mt-4">
-                                <div class="col-4">
-                                    <div>
-                                        <div class="text-white-50">Card Holder</div>
-                                        <div id="card-holder-elem" class="fw-medium fs-14">Full Name</div>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="expiry">
-                                        <div class="text-white-50">Expires</div>
-                                        <div class="fw-medium fs-14">
-                                            <span id="expiry-month-elem">00</span>
-                                            /
-                                            <span id="expiry-year-elem">0000</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div>
-                                        <div class="text-white-50">CVC</div>
-                                        <div id="cvc-elem" class="fw-medium fs-14">---</div>
-                                    </div>
+                            <div class="col-4">
+                                <div>
+                                    <div class="text-white-50">CVC</div>
+                                    <div id="cvc-elem" class="fw-medium fs-14">---</div>
                                 </div>
                             </div>
                         </div>
-                        <!-- end card div elem -->
+                    </div>
+                    <!-- end card div elem -->
+                </div>
+
+
+                <form id="custom-card-form" (ngSubmit)="custompay()" [formGroup]="customcardData" autocomplete="off">
+                    <div class="mb-3">
+                        <label for="card-num-input" class="form-label">Card Number</label>
+                        <input id="card-num-input" class="form-control" maxlength="19" placeholder="0000 0000 0000 0000" formControlName="card_no" (change)="setcardnumber($event)" />
                     </div>
 
+                    <div class="mb-3">
+                        <label for="card-holder-input" class="form-label">Card Holder</label>
+                        <input type="text" class="form-control" id="card-holder-input" placeholder="Enter holder name" formControlName="cardholder" (keyup)="setname($event)" />
+                    </div>
 
-                    <form id="custom-card-form" autocomplete="off">
-                        <div class="mb-3">
-                            <label for="card-num-input" class="form-label">Card Number</label>
-                            <input id="card-num-input" class="form-control" maxlength="19" placeholder="0000 0000 0000 0000" />
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="card-holder-input" class="form-label">Card Holder</label>
-                            <input type="text" class="form-control" id="card-holder-input" placeholder="Enter holder name" />
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div>
-                                    <label for="expiry-month-input" class="form-label">Expiry Month</label>
-                                    <select class="form-select" id="expiry-month-input">
-                                        <option></option>
-                                        <option value="01">01</option>
-                                        <option value="02">02</option>
-                                        <option value="03">03</option>
-                                        <option value="04">04</option>
-                                        <option value="05">05</option>
-                                        <option value="06">06</option>
-                                        <option value="07">07</option>
-                                        <option value="08">08</option>
-                                        <option value="09">09</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                    </select>
-                                </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div>
+                                <label for="expiry-month-input" class="form-label">Expiry Month</label>
+                                <select class="form-select" id="expiry-month-input" formControlName="month">
+                                    <option></option>
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
                             </div>
-                            <!-- end col -->
-
-                            <div class="col-lg-4">
-                                <div>
-                                    <label for="expiry-year-input" class="form-label">Expiry Year</label>
-                                    <select class="form-select" id="expiry-year-input">
-                                        <option></option>
-                                        <option value="2020">2020</option>
-                                        <option value="2021">2021</option>
-                                        <option value="2022">2022</option>
-                                        <option value="2023">2023</option>
-                                        <option value="2024">2024</option>
-                                        <option value="2025">2025</option>
-                                        <option value="2026">2026</option>
-                                        <option value="2027">2027</option>
-                                        <option value="2028">2028</option>
-                                        <option value="2029">2029</option>
-                                        <option value="2030">2030</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <!-- end col -->
-
-                            <div class="col-lg-4">
-                                <div class="cvc">
-                                    <label for="cvc-input" class="form-label">CVC</label>
-                                    <input type="text" id="cvc-input" class="form-control" maxlength="3" />
-                                </div>
-                            </div>
-                            <!-- end col -->
                         </div>
-                        <!-- end row -->
+                        <!-- end col -->
 
-                        <button class="btn btn-danger w-100 mt-3" type="submit">Pay Now</button>
-                    </form>
-                    <!-- end card form elem -->
-                </div>
-             
+                        <div class="col-lg-4">
+                            <div>
+                                <label for="expiry-year-input" class="form-label">Expiry Year</label>
+                                <select class="form-select" id="expiry-year-input" formControlName="year">
+                                    <option></option>
+                                    <option value="2020">2020</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2026">2026</option>
+                                    <option value="2027">2027</option>
+                                    <option value="2028">2028</option>
+                                    <option value="2029">2029</option>
+                                    <option value="2030">2030</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- end col -->
+
+                        <div class="col-lg-4">
+                            <div class="cvc">
+                                <label for="cvc-input" class="form-label">CVC</label>
+                                <input type="text" id="cvc-input" class="form-control" maxlength="3" formControlName="cvc" />
+                            </div>
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+
+                    <button class="btn btn-danger w-100 mt-3" type="submit">Pay Now</button>
+                </form>
+                <!-- end card form elem -->
             </div>
+            <!-- <div class="card-body">
+                <div class="card-wrapper mb-3"></div>
+
+                <div class="form-container active">
+                    <form action="" id="card-form-elem" autocomplete="off">
+                        <div class="mb-3">
+                            <label for="card-number-input" class="form-label">Card Number</label>
+                            <input class="form-control" placeholder="Card number" type="tel" id="card-number-input">
+                        </div>
+                        <div class="mb-3">
+                            <label for="card-name-input" class="form-label">Card Holder</label>
+                            <input class="form-control" placeholder="Full name" type="text" id="card-name-input">
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label for="card-expiry-input" class="form-label">Expiry</label>
+                                    <input class="form-control" placeholder="MM/YY" type="tel" id="card-expiry-input">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label for="card-cvc-input" class="form-label">CVC</label>
+                                    <input class="form-control" placeholder="CVC" type="number" id="card-cvc-input">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-danger w-100" type="submit">Pay Now</button>
+                    </form>
+                </div>
+            </div> -->
             <!-- end card-body -->
         </div>
         <!-- end card -->

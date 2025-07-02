@@ -10,17 +10,18 @@
           <div class="col-sm">
             <h5 class="card-title mb-0">Order History</h5>
           </div>
-          <div class="col-sm-auto hstack gap-2">
-            <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal" (click)="openModal(content)"><i class="ri-add-line align-bottom me-1"></i>
-              Create
-              Order</button>
-            <button type="button" class="btn btn-info" (click)="csvFileExport()"><i class="ri-file-download-line align-bottom me-1"></i> Export</button>
-            <button class="btn btn-soft-danger" id="remove-actions" style="display: none" (click)="deleteMultiple(deleteModel)"><i class="ri-delete-bin-2-line"></i></button>
+          <div class="col-sm-auto">
+            <div class="flex-shrink-0 hstack gap-2">
+              <button type="button" class="btn btn-primary add-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal" (click)="openModal(content)"><i class="ri-add-line align-bottom me-1"></i>
+                Create
+                Order</button>
+              <button type="button" class="btn btn-soft-info" (click)="csvFileExport()"><i class="ri-file-download-line align-bottom me-1"></i> Export</button>
+              <button class="btn btn-soft-danger" id="remove-actions" style="display: none" (click)="deleteMultiple(deleteModel)"><i class="ri-delete-bin-2-line"></i></button>
+            </div>
           </div>
         </div>
       </div>
       <div class="card-body border border-dashed border-end-0 border-start-0">
-
         <div class="row g-3">
           <div class="col-xxl-5 col-sm-6">
             <div class="search-box">
@@ -31,8 +32,7 @@
           <!--end col-->
           <div class="col-xxl-2 col-sm-6">
             <div>
-              <input class="form-control flatpickr-input" type="text" mwlFlatpickr [altInput]="true" [convertModelValue]="true" placeholder="Select date" id="isDate" [(ngModel)]="date" mode="range">
-
+              <input class="form-control flatpickr-input" type="text" mwlFlatpickr [altInput]="true" [convertModelValue]="true" placeholder="Select date" id="isDate" mode="range" [(ngModel)]="date">
             </div>
           </div>
           <!--end col-->
@@ -64,7 +64,7 @@
           <!--end col-->
           <div class="col-xxl-1 col-sm-4">
             <div>
-              <button type="button" class="btn btn-primary w-100"> <i class="ri-equalizer-fill mx-1 align-bottom"></i>
+              <button type="button" class="btn btn-primary w-100"> <i class="ri-equalizer-fill me-1 align-bottom"></i>
                 Filters
               </button>
             </div>
@@ -72,12 +72,11 @@
           <!--end col-->
         </div>
         <!--end row-->
-
       </div>
       <div class="card-body pt-0">
         <div>
           <!-- Nav tabs -->
-          <ul ngbNav #nav="ngbNav" [activeId]="1" (navChange)="onNavChange($event)" class="nav nav-tabs nav-tabs-custom nav-success mb-3">
+          <ul ngbNav #nav="ngbNav" [activeId]="1" (navChange)="onNavChange($event)" class="nav nav-tabs nav-tabs-custom nav-primary mb-3">
             <li [ngbNavItem]="1">
               <a ngbNavLink>
                 <i class="ri-store-2-fill me-1 align-bottom"></i> All Orders
@@ -150,8 +149,7 @@
                             </li>
                           </ul>
                         </td>
-                      </tr>
-                      }
+                      </tr>}
                     </tbody>
                   </table>
                 </div>
@@ -202,53 +200,54 @@
                     <tbody>
                       @for (data of orderes; track $index) {
                       <tr>
-                        <th scope="row">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="checkAll" value="{{data._id}}" [(ngModel)]="data.state">
-                          </div>
-                        </th>
-                        <td><a routerLink="/ecommerce/order-details">
-                            <ngb-highlight [result]="data.orderId" [term]="searchTerm"></ngb-highlight>
-                          </a></td>
-                        <td>
-                          <ngb-highlight [result]="data.customer" [term]="searchTerm"></ngb-highlight>
-                        </td>
-                        <td>
-                          <ngb-highlight [result]="data.product" [term]="searchTerm"></ngb-highlight>
-                        </td>
-                        <td>
-                          <ngb-highlight [result]="data.orderDate | date :'longDate'" [term]="searchTerm">
-                          </ngb-highlight>
-                        </td>
-                        <td>
-                          <ngb-highlight [result]="data.amount" [term]="searchTerm"></ngb-highlight>
-                        </td>
-                        <td>
-                          <ngb-highlight [result]="data.payment" [term]="searchTerm"></ngb-highlight>
-                        </td>
-                        <td class="status"><span class="badge text-uppercase" [ngClass]=" { 'bg-warning-subtle text-warning': data.status === 'Pending', 'bg-danger-subtle text-danger': data.status === 'Cancelled', 'bg-secondary-subtle text-secondary': data.status === 'Inprogress', 'bg-info-subtle text-info': data.status === 'Pickups', 'bg-primary-subtle text-primary': data.status === 'Returns', 'bg-success-subtle text-success': data.status === 'Delivered' }">{{data.status}}</span>
-                        </td>
-                        <td>
-                          <ul class="list-inline hstack gap-2 mb-0">
-                            <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" ngbTooltip="View" placement="top">
-                              <a routerLink="/ecommerce/order-details" class="text-primary d-inline-block">
-                                <i class="ri-eye-fill fs-16"></i>
-                              </a>
-                            </li>
-                            <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" ngbTooltip="Edit" placement="top">
-                              <a href="javascript:void(0);" data-bs-toggle="modal" class="text-primary d-inline-block edit-item-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal" (click)="editDataGet($index,content)">
-                                <i class="ri-pencil-fill fs-16"></i>
-                              </a>
-                            </li>
-                            <li class="list-inline-item" ngbTooltip="Remove" placement="top" data-bs-toggle="tooltip" data-bs-trigger="hover" (click)="confirm(deleteModel,data._id)">
-                              <a class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteOrder">
-                                <i class="ri-delete-bin-5-fill fs-16"></i>
-                              </a>
-                            </li>
-                          </ul>
-                        </td>
-                      </tr>
-                      }
+                        <ng-template [ngIf]="data.status == 'Delivered'">
+                          <th scope="row">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" name="checkAll" value="{{data._id}}" [(ngModel)]="data.state">
+                            </div>
+                          </th>
+                          <td><a routerLink="/ecommerce/order-details">
+                              <ngb-highlight [result]="data.orderId" [term]="searchTerm"></ngb-highlight>
+                            </a></td>
+                          <td>
+                            <ngb-highlight [result]="data.customer" [term]="searchTerm"></ngb-highlight>
+                          </td>
+                          <td>
+                            <ngb-highlight [result]="data.product" [term]="searchTerm"></ngb-highlight>
+                          </td>
+                          <td>
+                            <ngb-highlight [result]="data.orderDate | date :'longDate'" [term]="searchTerm">
+                            </ngb-highlight>
+                          </td>
+                          <td>
+                            <ngb-highlight [result]="data.amount" [term]="searchTerm"></ngb-highlight>
+                          </td>
+                          <td>
+                            <ngb-highlight [result]="data.payment" [term]="searchTerm"></ngb-highlight>
+                          </td>
+                          <td class="status"><span class="badge text-uppercase" [ngClass]=" { 'bg-warning-subtle text-warning': data.status === 'Pending', 'bg-danger-subtle text-danger': data.status === 'Cancelled', 'bg-secondary-subtle text-secondary': data.status === 'Inprogress', 'bg-info-subtle text-info': data.status === 'Pickups', 'bg-primary-subtle text-primary': data.status === 'Returns', 'bg-success-subtle text-success': data.status === 'Delivered' }">{{data.status}}</span>
+                          </td>
+                          <td>
+                            <ul class="list-inline hstack gap-2 mb-0">
+                              <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" ngbTooltip="View" placement="top">
+                                <a routerLink="/ecommerce/order-details" class="text-primary d-inline-block">
+                                  <i class="ri-eye-fill fs-16"></i>
+                                </a>
+                              </li>
+                              <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" ngbTooltip="Edit" placement="top">
+                                <a href="javascript:void(0);" data-bs-toggle="modal" class="text-primary d-inline-block edit-item-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal" (click)="editDataGet(data._id,content)">
+                                  <i class="ri-pencil-fill fs-16"></i>
+                                </a>
+                              </li>
+                              <li class="list-inline-item" ngbTooltip="Remove" placement="top" data-bs-toggle="tooltip" data-bs-trigger="hover" (click)="confirm(deleteModel,data._id)">
+                                <a class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteOrder">
+                                  <i class="ri-delete-bin-5-fill fs-16"></i>
+                                </a>
+                              </li>
+                            </ul>
+                          </td>
+                        </ng-template>
+                      </tr>}
                     </tbody>
                   </table>
                 </div>
@@ -299,53 +298,54 @@
                     <tbody>
                       @for (data of orderes; track $index) {
                       <tr>
-                        <th scope="row">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="checkAll" value="{{data._id}}" [(ngModel)]="data.state">
-                          </div>
-                        </th>
-                        <td><a routerLink="/ecommerce/order-details">
-                            <ngb-highlight [result]="data.orderId" [term]="searchTerm"></ngb-highlight>
-                          </a></td>
-                        <td>
-                          <ngb-highlight [result]="data.customer" [term]="searchTerm"></ngb-highlight>
-                        </td>
-                        <td>
-                          <ngb-highlight [result]="data.product" [term]="searchTerm"></ngb-highlight>
-                        </td>
-                        <td>
-                          <ngb-highlight [result]="data.orderDate | date :'longDate'" [term]="searchTerm">
-                          </ngb-highlight>
-                        </td>
-                        <td>
-                          <ngb-highlight [result]="data.amount" [term]="searchTerm"></ngb-highlight>
-                        </td>
-                        <td>
-                          <ngb-highlight [result]="data.payment" [term]="searchTerm"></ngb-highlight>
-                        </td>
-                        <td class="status"><span class="badge text-uppercase" [ngClass]=" { 'bg-warning-subtle text-warning': data.status === 'Pending', 'bg-danger-subtle text-danger': data.status === 'Cancelled', 'bg-secondary-subtle text-secondary': data.status === 'Inprogress', 'bg-info-subtle text-info': data.status === 'Pickups', 'bg-primary-subtle text-primary': data.status === 'Returns', 'bg-success-subtle text-success': data.status === 'Delivered' }">{{data.status}}</span>
-                        </td>
-                        <td>
-                          <ul class="list-inline hstack gap-2 mb-0">
-                            <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" ngbTooltip="View" placement="top">
-                              <a routerLink="/ecommerce/order-details" class="text-primary d-inline-block">
-                                <i class="ri-eye-fill fs-16"></i>
-                              </a>
-                            </li>
-                            <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" ngbTooltip="Edit" placement="top">
-                              <a href="javascript:void(0);" data-bs-toggle="modal" class="text-primary d-inline-block edit-item-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal" (click)="editDataGet($index,content)">
-                                <i class="ri-pencil-fill fs-16"></i>
-                              </a>
-                            </li>
-                            <li class="list-inline-item" ngbTooltip="Remove" placement="top" data-bs-toggle="tooltip" data-bs-trigger="hover" (click)="confirm(deleteModel,data._id)">
-                              <a class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteOrder">
-                                <i class="ri-delete-bin-5-fill fs-16"></i>
-                              </a>
-                            </li>
-                          </ul>
-                        </td>
-                      </tr>
-                      }
+                        <ng-template [ngIf]="data.status == 'Pickups'">
+                          <th scope="row">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" name="checkAll" value="{{data._id}}" [(ngModel)]="data.state">
+                            </div>
+                          </th>
+                          <td><a routerLink="/ecommerce/order-details">
+                              <ngb-highlight [result]="data.orderId" [term]="searchTerm"></ngb-highlight>
+                            </a></td>
+                          <td>
+                            <ngb-highlight [result]="data.customer" [term]="searchTerm"></ngb-highlight>
+                          </td>
+                          <td>
+                            <ngb-highlight [result]="data.product" [term]="searchTerm"></ngb-highlight>
+                          </td>
+                          <td>
+                            <ngb-highlight [result]="data.orderDate | date :'longDate'" [term]="searchTerm">
+                            </ngb-highlight>
+                          </td>
+                          <td>
+                            <ngb-highlight [result]="data.amount" [term]="searchTerm"></ngb-highlight>
+                          </td>
+                          <td>
+                            <ngb-highlight [result]="data.payment" [term]="searchTerm"></ngb-highlight>
+                          </td>
+                          <td class="status"><span class="badge text-uppercase" [ngClass]=" { 'bg-warning-subtle text-warning': data.status === 'Pending', 'bg-danger-subtle text-danger': data.status === 'Cancelled', 'bg-secondary-subtle text-secondary': data.status === 'Inprogress', 'bg-info-subtle text-info': data.status === 'Pickups', 'bg-primary-subtle text-primary': data.status === 'Returns', 'bg-success-subtle text-success': data.status === 'Delivered' }">{{data.status}}</span>
+                          </td>
+                          <td>
+                            <ul class="list-inline hstack gap-2 mb-0">
+                              <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" ngbTooltip="View" placement="top">
+                                <a routerLink="/ecommerce/order-details" class="text-primary d-inline-block">
+                                  <i class="ri-eye-fill fs-16"></i>
+                                </a>
+                              </li>
+                              <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" ngbTooltip="Edit" placement="top">
+                                <a href="javascript:void(0);" data-bs-toggle="modal" class="text-primary d-inline-block edit-item-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal" (click)="editDataGet(data._id,content)">
+                                  <i class="ri-pencil-fill fs-16"></i>
+                                </a>
+                              </li>
+                              <li class="list-inline-item" ngbTooltip="Remove" placement="top" data-bs-toggle="tooltip" data-bs-trigger="hover" (click)="confirm(deleteModel,data._id)">
+                                <a class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteOrder">
+                                  <i class="ri-delete-bin-5-fill fs-16"></i>
+                                </a>
+                              </li>
+                            </ul>
+                          </td>
+                        </ng-template>
+                      </tr>}
                     </tbody>
                   </table>
                 </div>
@@ -396,53 +396,54 @@
                     <tbody>
                       @for (data of orderes; track $index) {
                       <tr>
-                        <th scope="row">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="checkAll" value="{{data._id}}" [(ngModel)]="data.state">
-                          </div>
-                        </th>
-                        <td><a routerLink="/ecommerce/order-details">
-                            <ngb-highlight [result]="data.orderId" [term]="searchTerm"></ngb-highlight>
-                          </a></td>
-                        <td>
-                          <ngb-highlight [result]="data.customer" [term]="searchTerm"></ngb-highlight>
-                        </td>
-                        <td>
-                          <ngb-highlight [result]="data.product" [term]="searchTerm"></ngb-highlight>
-                        </td>
-                        <td>
-                          <ngb-highlight [result]="data.orderDate | date :'longDate'" [term]="searchTerm">
-                          </ngb-highlight>
-                        </td>
-                        <td>
-                          <ngb-highlight [result]="data.amount" [term]="searchTerm"></ngb-highlight>
-                        </td>
-                        <td>
-                          <ngb-highlight [result]="data.payment" [term]="searchTerm"></ngb-highlight>
-                        </td>
-                        <td class="status"><span class="badge text-uppercase" [ngClass]=" { 'bg-warning-subtle text-warning': data.status === 'Pending', 'bg-danger-subtle text-danger': data.status === 'Cancelled', 'bg-secondary-subtle text-secondary': data.status === 'Inprogress', 'bg-info-subtle text-info': data.status === 'Pickups', 'bg-primary-subtle text-primary': data.status === 'Returns', 'bg-success-subtle text-success': data.status === 'Delivered' }">{{data.status}}</span>
-                        </td>
-                        <td>
-                          <ul class="list-inline hstack gap-2 mb-0">
-                            <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" ngbTooltip="View" placement="top">
-                              <a routerLink="/ecommerce/order-details" class="text-primary d-inline-block">
-                                <i class="ri-eye-fill fs-16"></i>
-                              </a>
-                            </li>
-                            <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" ngbTooltip="Edit" placement="top">
-                              <a href="javascript:void(0);" data-bs-toggle="modal" class="text-primary d-inline-block edit-item-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal" (click)="editDataGet($index,content)">
-                                <i class="ri-pencil-fill fs-16"></i>
-                              </a>
-                            </li>
-                            <li class="list-inline-item" ngbTooltip="Remove" placement="top" data-bs-toggle="tooltip" data-bs-trigger="hover" (click)="confirm(deleteModel,data._id)">
-                              <a class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteOrder">
-                                <i class="ri-delete-bin-5-fill fs-16"></i>
-                              </a>
-                            </li>
-                          </ul>
-                        </td>
-                      </tr>
-                      }
+                        <ng-template [ngIf]="data.status == 'Returns'">
+                          <th scope="row">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" name="checkAll" value="{{data._id}}" [(ngModel)]="data.state">
+                            </div>
+                          </th>
+                          <td><a routerLink="/ecommerce/order-details">
+                              <ngb-highlight [result]="data.orderId" [term]="searchTerm"></ngb-highlight>
+                            </a></td>
+                          <td>
+                            <ngb-highlight [result]="data.customer" [term]="searchTerm"></ngb-highlight>
+                          </td>
+                          <td>
+                            <ngb-highlight [result]="data.product" [term]="searchTerm"></ngb-highlight>
+                          </td>
+                          <td>
+                            <ngb-highlight [result]="data.orderDate | date :'longDate'" [term]="searchTerm">
+                            </ngb-highlight>
+                          </td>
+                          <td>
+                            <ngb-highlight [result]="data.amount" [term]="searchTerm"></ngb-highlight>
+                          </td>
+                          <td>
+                            <ngb-highlight [result]="data.payment" [term]="searchTerm"></ngb-highlight>
+                          </td>
+                          <td class="status"><span class="badge text-uppercase" [ngClass]=" { 'bg-warning-subtle text-warning': data.status === 'Pending', 'bg-danger-subtle text-danger': data.status === 'Cancelled', 'bg-secondary-subtle text-secondary': data.status === 'Inprogress', 'bg-info-subtle text-info': data.status === 'Pickups', 'bg-primary-subtle text-primary': data.status === 'Returns', 'bg-success-subtle text-success': data.status === 'Delivered' }">{{data.status}}</span>
+                          </td>
+                          <td>
+                            <ul class="list-inline hstack gap-2 mb-0">
+                              <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" ngbTooltip="View" placement="top">
+                                <a routerLink="/ecommerce/order-details" class="text-primary d-inline-block">
+                                  <i class="ri-eye-fill fs-16"></i>
+                                </a>
+                              </li>
+                              <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" ngbTooltip="Edit" placement="top">
+                                <a href="javascript:void(0);" data-bs-toggle="modal" class="text-primary d-inline-block edit-item-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal" (click)="editDataGet(data._id,content)">
+                                  <i class="ri-pencil-fill fs-16"></i>
+                                </a>
+                              </li>
+                              <li class="list-inline-item" ngbTooltip="Remove" placement="top" data-bs-toggle="tooltip" data-bs-trigger="hover" (click)="confirm(deleteModel,data._id)">
+                                <a class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteOrder">
+                                  <i class="ri-delete-bin-5-fill fs-16"></i>
+                                </a>
+                              </li>
+                            </ul>
+                          </td>
+                        </ng-template>
+                      </tr>}
                     </tbody>
                   </table>
                 </div>
@@ -493,53 +494,54 @@
                     <tbody>
                       @for (data of orderes; track $index) {
                       <tr>
-                        <th scope="row">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="checkAll" value="{{data._id}}" [(ngModel)]="data.state">
-                          </div>
-                        </th>
-                        <td><a routerLink="/ecommerce/order-details">
-                            <ngb-highlight [result]="data.orderId" [term]="searchTerm"></ngb-highlight>
-                          </a></td>
-                        <td>
-                          <ngb-highlight [result]="data.customer" [term]="searchTerm"></ngb-highlight>
-                        </td>
-                        <td>
-                          <ngb-highlight [result]="data.product" [term]="searchTerm"></ngb-highlight>
-                        </td>
-                        <td>
-                          <ngb-highlight [result]="data.orderDate | date :'longDate'" [term]="searchTerm">
-                          </ngb-highlight>
-                        </td>
-                        <td>
-                          <ngb-highlight [result]="data.amount" [term]="searchTerm"></ngb-highlight>
-                        </td>
-                        <td>
-                          <ngb-highlight [result]="data.payment" [term]="searchTerm"></ngb-highlight>
-                        </td>
-                        <td class="status"><span class="badge text-uppercase" [ngClass]=" { 'bg-warning-subtle text-warning': data.status === 'Pending', 'bg-danger-subtle text-danger': data.status === 'Cancelled', 'bg-secondary-subtle text-secondary': data.status === 'Inprogress', 'bg-info-subtle text-info': data.status === 'Pickups', 'bg-primary-subtle text-primary': data.status === 'Returns', 'bg-success-subtle text-success': data.status === 'Delivered' }">{{data.status}}</span>
-                        </td>
-                        <td>
-                          <ul class="list-inline hstack gap-2 mb-0">
-                            <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" ngbTooltip="View" placement="top">
-                              <a routerLink="/ecommerce/order-details" class="text-primary d-inline-block">
-                                <i class="ri-eye-fill fs-16"></i>
-                              </a>
-                            </li>
-                            <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" ngbTooltip="Edit" placement="top">
-                              <a href="javascript:void(0);" data-bs-toggle="modal" class="text-primary d-inline-block edit-item-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal" (click)="editDataGet($index,content)">
-                                <i class="ri-pencil-fill fs-16"></i>
-                              </a>
-                            </li>
-                            <li class="list-inline-item" ngbTooltip="Remove" placement="top" data-bs-toggle="tooltip" data-bs-trigger="hover" (click)="confirm(deleteModel,data._id)">
-                              <a class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteOrder">
-                                <i class="ri-delete-bin-5-fill fs-16"></i>
-                              </a>
-                            </li>
-                          </ul>
-                        </td>
-                      </tr>
-                      }
+                        <ng-template [ngIf]="data.status == 'Cancelled'">
+                          <th scope="row">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" name="checkAll" value="{{data._id}}" [(ngModel)]="data.state">
+                            </div>
+                          </th>
+                          <td><a routerLink="/ecommerce/order-details">
+                              <ngb-highlight [result]="data.orderId" [term]="searchTerm"></ngb-highlight>
+                            </a></td>
+                          <td>
+                            <ngb-highlight [result]="data.customer" [term]="searchTerm"></ngb-highlight>
+                          </td>
+                          <td>
+                            <ngb-highlight [result]="data.product" [term]="searchTerm"></ngb-highlight>
+                          </td>
+                          <td>
+                            <ngb-highlight [result]="data.orderDate | date :'longDate'" [term]="searchTerm">
+                            </ngb-highlight>
+                          </td>
+                          <td>
+                            <ngb-highlight [result]="data.amount" [term]="searchTerm"></ngb-highlight>
+                          </td>
+                          <td>
+                            <ngb-highlight [result]="data.payment" [term]="searchTerm"></ngb-highlight>
+                          </td>
+                          <td class="status"><span class="badge text-uppercase" [ngClass]=" { 'bg-warning-subtle text-warning': data.status === 'Pending', 'bg-danger-subtle text-danger': data.status === 'Cancelled', 'bg-secondary-subtle text-secondary': data.status === 'Inprogress', 'bg-info-subtle text-info': data.status === 'Pickups', 'bg-primary-subtle text-primary': data.status === 'Returns', 'bg-success-subtle text-success': data.status === 'Delivered' }">{{data.status}}</span>
+                          </td>
+                          <td>
+                            <ul class="list-inline hstack gap-2 mb-0">
+                              <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" ngbTooltip="View" placement="top">
+                                <a routerLink="/ecommerce/order-details" class="text-primary d-inline-block">
+                                  <i class="ri-eye-fill fs-16"></i>
+                                </a>
+                              </li>
+                              <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" ngbTooltip="Edit" placement="top">
+                                <a href="javascript:void(0);" data-bs-toggle="modal" class="text-primary d-inline-block edit-item-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal" (click)="editDataGet(data._id,content)">
+                                  <i class="ri-pencil-fill fs-16"></i>
+                                </a>
+                              </li>
+                              <li class="list-inline-item" ngbTooltip="Remove" placement="top" data-bs-toggle="tooltip" data-bs-trigger="hover" (click)="confirm(deleteModel,data._id)">
+                                <a class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteOrder">
+                                  <i class="ri-delete-bin-5-fill fs-16"></i>
+                                </a>
+                              </li>
+                            </ul>
+                          </td>
+                        </ng-template>
+                      </tr>}
                     </tbody>
                   </table>
                 </div>
@@ -567,6 +569,11 @@
 
           <!-- Tab panes -->
           <div class="tab-content text-muted">
+            <div id="elmLoader">
+              <div class="spinner-border text-primary avatar-sm" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
             <div [ngbNavOutlet]="nav"></div>
           </div>
 
@@ -578,17 +585,16 @@
             </div>
             <form (ngSubmit)="saveUser()" [formGroup]="ordersForm" class="tablelist-form" autocomplete="off">
               <div class="modal-body">
-                <input type="hidden" name="id" value="" formControlName="_id" />
+                <input type="hidden" name="id" value="" formControlName="ids" />
                 <div class="mb-3">
                   <label for="customername-field" class="form-label">Customer Name</label>
                   <input type="text" id="customername-field" class="form-control" placeholder="Enter Name" required formControlName="customer" [ngClass]="{ 'is-invalid': submitted && form['customer'].errors }" />
                   @if(submitted && form['customer'].errors){
                   <div class="invalid-feedback" align="left">
                     @if(form['customer'].errors['required']){
-                    <div>Customer Name is required</div>
-                    }
-                  </div>
-                  }
+                    <div>Customer name is required</div>}
+
+                  </div>}
                 </div>
 
                 <div class="mb-3">
@@ -612,10 +618,8 @@
                   @if(submitted && form['product'].errors){
                   <div class="invalid-feedback" align="left">
                     @if(form['product'].errors['required']){
-                    <div>product Name is required</div>
-                    }
-                  </div>
-                  }
+                    <div>product Name is required</div>}
+                  </div>}
                 </div>
 
                 <div class="mb-3">
@@ -624,10 +628,8 @@
                   @if(submitted && form['orderDate'].errors){
                   <div class="invalid-feedback" align="left">
                     @if(form['orderDate'].errors['required']){
-                    <div>Order Date is required</div>
-                    }
-                  </div>
-                  }
+                    <div>Order Date is required</div>}
+                  </div>}
                 </div>
 
                 <div class="row gy-4 mb-3">
@@ -638,10 +640,8 @@
                       @if(submitted && form['amount'].errors){
                       <div class="invalid-feedback" align="left">
                         @if(form['amount'].errors['required']){
-                        <div>Amount is required</div>
-                        }
-                      </div>
-                      }
+                        <div>Amount is required</div>}
+                      </div>}
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -658,10 +658,8 @@
                       @if(submitted && form['payment'].errors){
                       <div class="invalid-feedback" align="left">
                         @if(form['payment'].errors['required']){
-                        <div>Payment Method is required</div>
-                        }
-                      </div>
-                      }
+                        <div>Payment Method is required</div>}
+                      </div>}
                     </div>
                   </div>
                 </div>
@@ -680,10 +678,8 @@
                   @if(submitted && form['status'].errors){
                   <div class="invalid-feedback" align="left">
                     @if(form['status'].errors['required']){
-                    <div>Delivered Status is required</div>
-                    }
-                  </div>
-                  }
+                    <div>Delivered Status is required</div>}
+                  </div>}
                 </div>
               </div>
               <div class="modal-footer">
@@ -695,11 +691,6 @@
             </form>
           </ng-template>
           <!--End Modal -->
-          <div id="elmLoader">
-            <div class="spinner-border text-primary avatar-sm" role="status">
-              <span class="visually-hidden">Loading...</span>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -724,7 +715,7 @@
           </div>
         </div>
         <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-          <button class="btn btn-link link-success fw-medium text-decoration-none" data-bs-dismiss="modal" id="deleteRecord-close" (click)="modal.close('Close click')"><i class="ri-close-line me-1 align-middle"></i>
+          <button class="btn btn-link link-success fw-medium text-decoration-none" data-bs-dismiss="modal" (click)="modal.close('Close click')" id="deleteRecord-close"><i class="ri-close-line me-1 align-middle"></i>
             Close</button>
           <button type="button" class="btn w-sm btn-danger " id="delete-product" (click)="deleteData(deleteId)" (click)="modal.close('Close click')">Yes, Delete It!</button>
         </div>

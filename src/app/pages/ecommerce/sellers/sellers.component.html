@@ -13,7 +13,7 @@
                 </div>
             </div>
             <!--end col-->
-            <div class="col-xl-3 ms-auto">
+            <div class="col-xxl-3 ms-auto">
                 <div>
                     <select class="form-control" data-choices data-choices-search-false [(ngModel)]="category" (ngModelChange)="categoryFilter()">
                         <option value="">Select Categories</option>
@@ -29,9 +29,9 @@
             <!--end col-->
             <div class="col-lg-auto">
                 <div class="hstack gap-2">
-                    <button type="button" class="btn btn-danger"><i class="ri-equalizer-fill me-1 align-bottom"></i>
+                    <button type="button" class="btn btn-soft-info"><i class="ri-equalizer-fill me-1 align-bottom"></i>
                         Filters</button>
-                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addSeller" (click)="openModal(content)"><i class="ri-add-fill me-1 align-bottom"></i> Add Seller</button>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addSeller" (click)="openModal(content)"><i class="ri-add-fill me-1 align-bottom"></i> Add Seller</button>
                 </div>
             </div>
             <!--end col-->
@@ -45,12 +45,11 @@
     <div class="col-xl-3 col-lg-6">
         <div class="card ribbon-box right overflow-hidden">
             <div class="card-body text-center p-4">
-                @if (data.ternding) {
-                <div class="ribbon ribbon-info ribbon-shape trending-ribbon"><i class="ri-flashlight-fill text-white align-bottom"></i> <span class="trending-ribbon-text">Trending</span></div>
+                @if(data.ternding){
+                <div class="ribbon ribbon-primary ribbon-shape trending-ribbon"><i class="ri-flashlight-fill text-white align-bottom"></i> <span class="trending-ribbon-text">Trending</span></div>
                 }
-                <!-- <img src="assets/images/companies/img-1.png" alt="" height="45"> -->
                 <img src="{{data.image}}" alt="" height="45">
-                <h5 class="mb-1 mt-4"><a routerLink="/ecommerce/seller-details" class="link-primary">{{data.name}}</a>
+                <h5 class="mb-1 mt-4"><a routerLink="/ecommerce/seller-details" class="link-secondary">{{data.name}}</a>
                 </h5>
                 <p class="text-muted mb-4">{{data.sellername}}</p>
                 <div class="row justify-content-center">
@@ -76,9 +75,9 @@
     </div>
     }
     <!--end col-->
-
 </div>
 <!--end row-->
+
 <div class="px-3 ">
     <div class="row justify-content-md-between align-items-md-center g-0 pagination">
         <div class="col-sm-12 col-md-5">
@@ -113,7 +112,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-content border-0 mt-3">
-        <ul ngbNav #customNav="ngbNav" [activeId]="1" class="nav nav-tabs nav-tabs-custom nav-success p-2 pb-0 bg-light" role="tablist">
+        <ul ngbNav #customNav="ngbNav" [activeId]="1" class="nav nav-tabs nav-tabs-custom nav-primary p-2 pb-0 bg-light" role="tablist">
             <li [ngbNavItem]="1" class="nav-item">
                 <a ngbNavLink class="nav-link" data-bs-toggle="tab" role="tab">
                     Personal Details

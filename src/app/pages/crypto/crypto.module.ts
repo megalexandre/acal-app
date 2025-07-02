@@ -14,13 +14,17 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 // Apex Chart Package
 import { NgApexchartsModule } from 'ng-apexcharts';
 
+// NG2 Search Filter
+import { NgPipesModule } from 'ngx-pipes';
+
 // File Uploads
 import { DropzoneModule } from 'ngx-dropzone-wrapper';
 import { DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 
-// NG2 Search Filter
-import { NgPipesModule } from 'ngx-pipes';
+// Load Icons
+import { defineElement } from "@lordicon/element";
+import lottie from 'lottie-web';
 
 // Component pages
 import { CryptoRoutingModule } from './crypto-routing.module';
@@ -31,13 +35,6 @@ import { OrdersComponent } from './orders/orders.component';
 import { WalletComponent } from './wallet/wallet.component';
 import { IcoComponent } from './ico/ico.component';
 import { KycComponent } from './kyc/kyc.component';
-
-
-import { DatePipe } from '@angular/common';
-
-// Load Icons
-import { defineElement } from "@lordicon/element";
-import lottie from 'lottie-web';
 
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
@@ -56,8 +53,6 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     IcoComponent,
     KycComponent,
   ],
-
-
   imports: [
     CommonModule,
     FormsModule,

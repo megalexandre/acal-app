@@ -28,7 +28,7 @@ export class PolarComponent implements OnInit {
     ];
 
     // Chart Color Data Get Function
-    this._basicPolarChart('["--vz-primary", "--vz-success", "--vz-warning","--vz-danger", "--vz-info", "--vz-success", "--vz-primary", "--vz-body-color", "--vz-secondary"]');
+    this._basicPolarChart('["--vz-primary", "--vz-success", "--vz-warning","--vz-light", "--vz-info", "--vz-primary", "--vz-danger", "--vz-dark", "--vz-secondary"]');
     this._monochromeChart('["--vz-primary"]');
 
   }

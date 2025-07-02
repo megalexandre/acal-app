@@ -18,32 +18,32 @@
                 <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed" class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto mt-2 mt-lg-0" id="navbar-example">
                         <li class="nav-item">
-                            <a class="nav-link active" href="javascript:void(0);"
+                            <a class="nav-link fs-14 active" href="javascript:void(0);"
                                 [ngClass]="{'active':currentSection === 'hero'}" [ngxScrollTo]="'#hero'">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0);"
+                            <a class="nav-link fs-14" href="javascript:void(0);"
                                 [ngClass]="{'active':currentSection === 'process'}"
                                 [ngxScrollTo]="'#process'">Process</a>
 
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0);"
+                            <a class="nav-link fs-14" href="javascript:void(0);"
                                 [ngClass]="{'active':currentSection === 'categories'}"
                                 [ngxScrollTo]="'#categories'">Categories</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0);"
+                            <a class="nav-link fs-14" href="javascript:void(0);"
                                 [ngClass]="{'active':currentSection === 'findJob'}" [ngxScrollTo]="'#findJob'">Find
                                 Jobs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0);"
+                            <a class="nav-link fs-14" href="javascript:void(0);"
                                 [ngClass]="{'active':currentSection === 'candidates'}"
                                 [ngxScrollTo]="'#candidates'">Candidates</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0);"
+                            <a class="nav-link fs-14" href="javascript:void(0);"
                                 [ngClass]="{'active':currentSection === 'blog'}" [ngxScrollTo]="'#blog'">Blog</a>
                         </li>
                     </ul>
@@ -65,8 +65,7 @@
                     <div class="col-lg-6">
                         <div>
                             <h1 class="display-6 fw-semibold text-capitalize mb-3 lh-base">Find your next job and build
-                                your
-                                dream here</h1>
+                                your dream here</h1>
                             <p class="lead text-muted lh-base mb-4">Find jobs, create trackable resumes and enrich your
                                 applications. Carefully crafted after analyzing the needs of different industries.</p>
                             <form action="#" class="job-panel-filter">
@@ -129,14 +128,14 @@
                                 <h5 class="fs-15 lh-base mb-3">Applications</h5>
                                 <div class="avatar-group">
                                     <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip"
-                                        data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="Brent Gonzalez">
+                                        data-bs-trigger="hover" data-bs-placement="top" title="Brent Gonzalez">
                                         <div class="avatar-xs">
                                             <img src="assets/images/users/avatar-3.jpg" alt=""
                                                 class="rounded-circle img-fluid">
                                         </div>
                                     </a>
                                     <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip"
-                                        data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="Ellen Smith">
+                                        data-bs-trigger="hover" data-bs-placement="top" title="Ellen Smith">
                                         <div class="avatar-xs">
                                             <div class="avatar-title rounded-circle bg-danger">
                                                 S
@@ -144,7 +143,7 @@
                                         </div>
                                     </a>
                                     <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip"
-                                        data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="Ellen Smith">
+                                        data-bs-trigger="hover" data-bs-placement="top" title="Ellen Smith">
                                         <div class="avatar-xs">
                                             <img src="assets/images/users/avatar-10.jpg" alt=""
                                                 class="rounded-circle img-fluid">
@@ -193,10 +192,10 @@
         </section>
         <!-- end hero section -->
 
-        <app-process></app-process>
+        <app-progress></app-progress>
         <app-jobcategories></app-jobcategories>
         <app-findjobs></app-findjobs>
-        <app-candidates></app-candidates>
+        <app-candidate></app-candidate>
         <app-blog></app-blog>
         <app-job-footer></app-job-footer>
 

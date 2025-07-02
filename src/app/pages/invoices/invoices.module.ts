@@ -7,12 +7,12 @@ import { NgbPaginationModule, NgbTypeaheadModule, NgbDropdownModule } from '@ng-
 // Counter
 import { CountUpModule } from 'ngx-countup';
 
-// Flat Picker
-import { FlatpickrModule } from 'angularx-flatpickr';
-
 // Feather Icon
 import { FeatherModule } from 'angular-feather';
 import { allIcons } from 'angular-feather/icons';
+
+// Flat Picker
+import { FlatpickrModule } from 'angularx-flatpickr';
 
 // Load Icons
 import { defineElement } from "@lordicon/element";
@@ -24,13 +24,14 @@ import { SharedModule } from '../../shared/shared.module';
 import { DetailsComponent } from './details/details.component';
 import { CreateComponent } from './create/create.component';
 
+
 import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
     ListComponent,
     DetailsComponent,
-    CreateComponent
+    CreateComponent,
   ],
   imports: [
     CommonModule,
@@ -40,8 +41,8 @@ import { DatePipe } from '@angular/common';
     NgbTypeaheadModule,
     NgbDropdownModule,
     CountUpModule,
-    FlatpickrModule,
     FeatherModule.pick(allIcons),
+    FlatpickrModule,
     InvoicesRoutingModule,
     SharedModule
   ],

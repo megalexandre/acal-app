@@ -8,7 +8,7 @@
         <div class="card crm-widget">
             <div class="card-body p-0">
                 <div class="row row-cols-xxl-5 row-cols-md-3 row-cols-1 g-0">
-                    @for ( stat of statData; track $index) {
+                    @for (stat of statData; track $index) {
                     <div>
                         <app-crm-stat [title]="stat.title" [value]="stat.value" [icon]="stat.icon" [profit]="stat.profit" [sign]="stat.sign" [percentage]="stat.percentage"></app-crm-stat>
                     </div>
@@ -167,7 +167,7 @@
                     <div class="flex-shrink-0">
                         <div class="text-muted"><span class="fw-semibold">4</span> of <span class="fw-semibold">10</span> remaining</div>
                     </div>
-                    <button type="button" class="btn btn-sm btn-success" routerLink="/tasks/list-view"><i class="ri-add-line align-middle me-1"></i> Add Task</button>
+                    <button type="button" class="btn btn-sm btn-primary" routerLink="/tasks/list-view"><i class="ri-add-line align-middle me-1"></i> Add Task</button>
                 </div><!-- end card header -->
 
                 <ngx-simplebar style="max-height: 219px;">
@@ -192,7 +192,8 @@
                                     <input type="checkbox" class="form-check-input ms-0" id="task_two">
                                 </div>
                                 <div class="flex-grow-1">
-                                    <label class="form-check-label mb-0 ps-2" for="task_two">Send meeting invites for
+                                    <label class="form-check-label mb-0 ps-2" for="task_two">Send meeting invites
+                                        for
                                         sales upcampaign</label>
                                 </div>
                                 <div class="flex-shrink-0 ms-2">
@@ -206,7 +207,8 @@
                                     <input type="checkbox" class="form-check-input ms-0" id="task_three">
                                 </div>
                                 <div class="flex-grow-1">
-                                    <label class="form-check-label mb-0 ps-2" for="task_three">Weekly closed sales won
+                                    <label class="form-check-label mb-0 ps-2" for="task_three">Weekly closed sales
+                                        won
                                         checking with sales team</label>
                                 </div>
                                 <div class="flex-shrink-0 ms-2">
@@ -248,7 +250,8 @@
                                     <input type="checkbox" class="form-check-input ms-0" id="task_six">
                                 </div>
                                 <div class="flex-grow-1">
-                                    <label class="form-check-label mb-0 ps-2" for="task_six">Styling wireframe design
+                                    <label class="form-check-label mb-0 ps-2" for="task_six">Styling wireframe
+                                        design
                                         and documentation for velzon admin</label>
                                 </div>
                                 <div class="flex-shrink-0 ms-2">
@@ -259,7 +262,7 @@
                     </ul><!-- end ul -->
                 </ngx-simplebar>
                 <div class="p-3 pt-2">
-                    <a routerLink="/tasks/list-view" class="text-muted text-decoration-underline">Show more...</a>
+                    <a href="javascript:void(0);" class="text-muted text-decoration-underline">Show more...</a>
                 </div>
             </div><!-- end card body -->
         </div><!-- end card -->

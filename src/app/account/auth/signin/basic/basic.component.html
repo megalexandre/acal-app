@@ -17,7 +17,7 @@
                 <div class="col-lg-12">
                     <div class="text-center mt-sm-5 mb-4 text-white-50">
                         <div>
-                            <a routerLink="" class="d-inline-block auth-logo">
+                            <a routerLink="/" class="d-inline-block auth-logo">
                                 <img src="assets/images/logo-light.png" alt="" height="20">
                             </a>
                         </div>
@@ -42,31 +42,27 @@
                                     <div class="mb-3">
                                         <label for="username" class="form-label">Username</label>
                                         <input type="text" class="form-control" id="username" placeholder="Enter username" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
-                                        @if (submitted && f['name'].errors) {
+                                        @if(submitted && f['name'].errors){
                                         <div class="invalid-feedback" align="left">
                                             @if(f['name'].errors['required']){
-                                            <div>Username is required</div>
-                                            }
-                                        </div>
-                                        }
+                                            <div>Username is required</div>}
+                                        </div>}
                                     </div>
 
                                     <div class="mb-3">
                                         <div class="float-end">
-                                            <a routerLink="/auth/pass-reset/basic" class="text-muted">Forgot
-                                                password?</a>
+                                            <a routerLink="/auth/pass-reset/basic" class="text-muted">Forgot password?</a>
                                         </div>
                                         <label class="form-label" for="password-input">Password</label>
                                         <div class="position-relative auth-pass-inputgroup mb-3">
                                             <input [type]="fieldTextType ? 'text' : 'password'" class="form-control pe-5 password-input" placeholder="Enter password" id="password-input" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
-                                            <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="mdi align-middle" [ngClass]="{'mdi-eye-off-outline': !fieldTextType, 'mdi-eye-outline': fieldTextType
+                                            <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-input" type="button" id="password-addon"><i class="mdi align-middle" [ngClass]="{'mdi-eye-off-outline': !fieldTextType, 'mdi-eye-outline': fieldTextType
                                           }" (click)="toggleFieldTextType()"></i></button>
-                                            @if (submitted && f['password'].errors) {
+                                            @if(submitted && f['password'].errors){
                                             <div class="invalid-feedback">
-                                                <span>Password is
-                                                    required</span>
-                                            </div>
-                                            }
+                                                @if(f['password'].errors['required']){
+                                                <span>Password is required</span>}
+                                            </div>}
                                         </div>
                                     </div>
 

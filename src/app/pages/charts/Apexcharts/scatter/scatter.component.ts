@@ -29,9 +29,9 @@ export class ScatterComponent implements OnInit {
     ];
     
     // Chart Color Data Get Function
-    this._basicScatterChart('["--vz-primary", "--vz-success", "--vz-warning"]');
-    this._dateTimeScatterChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-warning", "--vz-info"]');
-    this._ScatterImagesChart('["--vz-primary", "--vz-danger"]');
+    this._basicScatterChart('["--vz-primary", "--vz-success", "--vz-info"]');
+    this._dateTimeScatterChart('["--vz-primary", "--vz-success", "--vz-secondary", "--vz-warning", "--vz-info"]');
+    this._ScatterImagesChart('["--vz-primary", "--vz-info"]');
   }
 
   // Chart Colors Set
@@ -388,8 +388,8 @@ private generateDayWiseTimeSeries(baseval: number, count: number, yrange: { max:
             opacity: 1,
             image: {
                 src: [
-                    "assets/images/users/avatar-1.jpg",
-                    "assets/images/users/avatar-2.jpg"
+                    "../../../../../assets/images/users/avatar-1.jpg",
+                    "../../../../../assets/images/users/avatar-2.jpg"
                 ],
                 width: 40,
                 height: 40

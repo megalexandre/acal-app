@@ -12,9 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class HorizontalComponent implements OnInit {
 
   constructor() { }
-
   isCondensed = false;
-
   ngOnInit(): void {
   }
 

@@ -13,7 +13,7 @@
         <!-- end row -->
 
         <div class="row">
-            @for ( job of findjobs; track $index) {
+            @for (job of findjobs; track $index) {
             <div class="col-lg-6">
                 <div class="card shadow-lg">
                     <div class="card-body">
@@ -39,21 +39,26 @@
                                     </li>
                                 </ul>
                                 <div class="hstack gap-2">
-                                    @for ( skill of job.skill; track $index) {
-                                    <span class="badge" [ngClass]=" {'bg-success-subtle text-success': skill=='Design' || skill=='Manager' || skill=='Full Time' , 'bg-danger-subtle text-danger' : skill=='UI/UX' || skill=='HR' , 'bg-primary-subtle text-primary' :skill=='Adobe XD' || skill=='Sales' || skill=='Fashion' , 'bg-secondary-subtle text-secondary' : skill=='Product' ,'bg-info-subtle text-info': skill=='Bussiness' || skill=='Remote' , 'bg-warning-subtle text-warning' :skill=='Marketing' }">{{skill}}</span>
+                                    @for (skill of job.skill; track $index) {
+                                    <span class="badge" [ngClass]="{'bg-success-subtle text-success': skill == 'Design' || skill == 'Manager' || skill == 'Full Time',
+                                    'bg-danger-subtle text-danger': skill == 'UI/UX' || skill == 'HR',
+                                    'bg-primary-subtle text-primary':skill == 'Adobe XD' || skill == 'Sales' || skill == 'Fashion',
+                                    'bg-secondary-subtle text-secondary': skill == 'Product','bg-info-subtle text-info': skill == 'Bussiness' || skill == 'Remote',
+                                    'bg-warning-subtle text-warning':skill == 'Marketing'}">{{skill}}</span>
                                     }
                                 </div>
                             </div>
                             <div>
                                 <button type="button" class="btn btn-ghost-primary btn-icon custom-toggle" data-bs-toggle="button">
                                     <i class="icon-on" [ngClass]="job.bookmark == true ? 'ri-bookmark-fill':'ri-bookmark-line'"></i>
+                                    <!-- <span class="icon-on"><i class="ri-bookmark-line"></i></span>
+                                    <span class="icon-off"><i class="ri-bookmark-fill"></i></span> -->
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            }
+            </div>}
             <div class="col-lg-12">
                 <div class="text-center mt-4">
                     <a href="javascript:void(0);" class="btn btn-ghost-primary">View More Jobs <i class="ri-arrow-right-line align-bottom"></i></a>
