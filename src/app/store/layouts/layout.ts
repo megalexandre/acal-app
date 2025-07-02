@@ -25,16 +25,16 @@ const LAYOUT_TOPBAR_COLOR_TYPES = {
   DARK: "dark",
 }
 
-const SIDEBAR_SIZE ={
-  LARGE : "lg",
-  MEDIUM : "md",
-  SMALL : "sm",
-  SMALLHOVER : "sm-hover"
+const SIDEBAR_SIZE = {
+  LARGE: "lg",
+  MEDIUM: "md",
+  SMALL: "sm",
+  SMALLHOVER: "sm-hover"
 }
 
 const SIDEBAR_VIEW = {
   DEFAULT: "default",
-  DETACHED : "detached"
+  DETACHED: "detached"
 }
 
 const SIDEBAR_COLOR = {
@@ -48,10 +48,10 @@ const SIDEBAR_COLOR = {
 
 const SIDEBAR_IMAGE = {
   NONE: "none",
-  IMAGE1 : "image-1",
-  IMAGE2 : "image-2",
-  IMAGE3 : "image-3",
-  IMAGE4 : "image-4"
+  IMAGE1: "image-1",
+  IMAGE2: "image-2",
+  IMAGE3: "image-3",
+  IMAGE4: "image-4"
 }
 
 const SIDEBAR_VISIBILITY = {

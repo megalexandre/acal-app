@@ -158,6 +158,7 @@ export class TopbarComponent implements OnInit {
     { text: 'русский', flag: 'assets/images/flags/russia.svg', lang: 'ru' },
     { text: '中国人', flag: 'assets/images/flags/china.svg', lang: 'ch' },
     { text: 'français', flag: 'assets/images/flags/french.svg', lang: 'fr' },
+    { text: 'Português (Brasil)', flag: 'assets/images/flags/br.svg', lang: 'pt-br' },
     { text: 'Arabic', flag: 'assets/images/flags/ar.svg', lang: 'ar' },
   ];
 

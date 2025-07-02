@@ -13,6 +13,12 @@ export const MENU: MenuItem[] = [
     isCollapsed: true,
     subItems: [
       {
+        id: 300,
+        label: 'MENUITEMS.DASHBOARD.LIST.ADDRESS',
+        link: '/address',
+        parentId: 2
+      },
+      {
         id: 3,
         label: 'MENUITEMS.DASHBOARD.LIST.ANALYTICS',
         link: '/analytics',
