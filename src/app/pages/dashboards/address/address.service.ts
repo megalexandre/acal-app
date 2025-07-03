@@ -6,7 +6,7 @@ import { Address } from './address.model';
 
 @Injectable()
 export class AddressService {
-  private apiUrl = 'http://localhost:8080/address';
+  private apiUrl = `${environment.apiUrl}/address`;
 
   constructor(private http: HttpClient) {}
 

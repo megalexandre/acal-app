@@ -10,6 +10,7 @@ import { AddressService } from '../address.service';
 })
 export class AddressListComponent implements OnInit {
   addresses: Address[] = [];
+  loading = true;
 
   constructor(
     private addressService: AddressService,
@@ -19,8 +20,13 @@ export class AddressListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loading = true;
+    
     this.addressService.getAddresses().subscribe(addresses => {
       this.addresses = addresses;
+      this.loading = false;
+    }, () => {
+      this.loading = false;
     });
   }
 
