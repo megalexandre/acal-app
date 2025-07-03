@@ -1,0 +1,303 @@
+{
+  "PAGES":{
+    "ADDRESS": {
+      "TITLE": "ENDEREÇOS",
+      "NAME": "Nome"
+    
+    },
+
+    "ACTIONS":{
+        "SEARCH": "Pesquisar",
+        "SAVE": "Salvar",
+        "EDIT": "Editar",
+        "DELETE": "Excluir",
+        "ADD": "Adicionar",
+        "CANCEL": "Cancelar"
+    }
+
+  }, 
+  "HEADER": {
+    "MORE": { "TEXT": "Mais" }
+  },
+  "MENUITEMS": {
+    "MENU": { "TEXT": "MENU" },
+    "DASHBOARD": {
+      "TEXT": "Dashboards",
+      "BADGE": "Novo",
+      "LIST": {
+        "ANALYTICS": "Análises",
+        "ADDRESS": "Endereço",
+        "CRM": "CRM",
+        "ECOMMERCE": "E-commerce",
+        "CRYPTO": "Cripto",
+        "PROJECTS": "Projetos",
+        "NFT": "NFT",
+        "JOB": "Trabalho"
+      }
+    },
+    "APPS": {
+      "TEXT": "Aplicativos",
+      "LIST": {
+        "CALENDAR": "Calendário",
+        "MAINCALENDAR": "Calendário Principal",
+        "MONTHGRID": "Grade do Mês",
+        "CHAT": "Chat",
+        "EMAIL": "E-mail",
+        "MAILBOX": "Caixa de Entrada",
+        "MAILTEMPLATES": "Modelos de E-mail",
+        "BASICACTION": "Ação Básica",
+        "ECOMMERCEACTION": "Ação E-commerce",
+        "ECOMMERCE": "E-commerce",
+        "PRODUCTS": "Produtos",
+        "PRODUCTDETAILS": "Detalhes do Produto",
+        "CREATEPRODUCT": "Criar Produto",
+        "ORDERS": "Pedidos",
+        "ORDERDETAILS": "Detalhes do Pedido",
+        "CUSTOMERS": "Clientes",
+        "SHOPPINGCART": "Carrinho de Compras",
+        "CHECKOUT": "Finalizar Compra",
+        "SELLERS": "Vendedores",
+        "SELLERDETAILS": "Detalhes do Vendedor",
+        "PROJECTS": "Projetos",
+        "LIST": "Lista",
+        "OVERVIEW": "Visão Geral",
+        "CREATEPROJECT": "Criar Projeto",
+        "TASK": "Tarefas",
+        "KANBANBOARD": "Quadro Kanban",
+        "LISTVIEW": "Visualização em Lista",
+        "TASKDETAILS": "Detalhes da Tarefa",
+        "CRM": "CRM",
+        "CONTACTS": "Contatos",
+        "COMPANIES": "Empresas",
+        "DEALS": "Negócios",
+        "LEADS": "Leads",
+        "CRYPTO": "Cripto",
+        "TRANSACTIONS": "Transações",
+        "BUY&SELL": "Comprar & Vender",
+        "MYWALLET": "Minha Carteira",
+        "ICOLIST": "Lista ICO",
+        "KYCAPPLICATION": "Aplicação KYC",
+        "INVOICES": "Faturas",
+        "DETAILS": "Detalhes",
+        "CREATEINVOICE": "Criar Fatura",
+        "SUPPORTTICKETS": "Tickets de Suporte",
+        "TICKETDETAILS": "Detalhes do Ticket",
+        "NFTMARKETPLACE": "Marketplace NFT",
+        "MARKETPLACE": "Marketplace",
+        "EXPLORENOW": "Explorar Agora",
+        "LIVEAUCTION": "Leilão ao Vivo",
+        "ITEMDETAILS": "Detalhes do Item",
+        "COLLECTIONS": "Coleções",
+        "CREATORS": "Criadores",
+        "RANKING": "Ranking",
+        "WALLETCONNECT": "Conectar Carteira",
+        "CREATENFT": "Criar NFT",
+        "FILEMANAGER": "Gerenciador de Arquivos",
+        "TODO": "A Fazer",
+        "JOBS": "Vagas",
+        "STATISTICS": "Estatísticas",
+        "JOBLISTS": "Listas de Vagas",
+        "GRID": "Grade",
+        "CANDIDATELISTS": "Listas de Candidatos",
+        "GRIDVIEW": "Visualização em Grade",
+        "APPLICATION": "Aplicação",
+        "NEWJOB": "Nova Vaga",
+        "COMPANIESLIST": "Lista de Empresas",
+        "JOBCATEGORIES": "Categorias de Vagas",
+        "APIKEY": "Chave API"
+      }
+    },
+    "LAYOUTS": {
+      "TEXT": "Layouts",
+      "LIST": {
+        "HORIZONTAL": "Horizontal",
+        "DETACHED": "Destacado",
+        "TWOCOLUMN": "Duas Colunas",
+        "HOVERED": "Com Hover"
+      }
+    },
+    "PAGES": {
+      "TEXT": "Páginas",
+      "LIST": {
+        "STARTER": "Inicial",
+        "PROFILE": "Perfil",
+        "SIMPLEPAGE": "Página Simples",
+        "SETTINGS": "Configurações",
+        "TEAM": "Equipe",
+        "TIMELINE": "Linha do Tempo",
+        "FAQS": "FAQs",
+        "PRICING": "Preços",
+        "GALLERY": "Galeria",
+        "MAINTENANCE": "Manutenção",
+        "COMINGSOON": "Em Breve",
+        "SITEMAP": "Mapa do Site",
+        "SEARCHRESULTS": "Resultados da Busca",
+        "PRIVACYPOLICY": "Política de Privacidade",
+        "TERMS&CONDITIONS": "Termos & Condições",
+        "BLOG": "Blog",
+        "BLOGLIST": "Lista de Blogs",
+        "BLOGOVERVIEW": "Visão Geral",
+        "BLOGGRID": "Grade de Blogs"
+      }
+    },
+    "AUTHENTICATION": {
+      "TEXT": "Autenticação",
+      "LIST": {
+        "BASIC": "Básico",
+        "COVER": "Capa",
+        "SIGNIN": "Entrar",
+        "SIGNUP": "Cadastrar",
+        "PASSWORDRESET": "Redefinir Senha",
+        "PASSWORDCREATE": "Criar Senha",
+        "LOCKSCREEN": "Tela de Bloqueio",
+        "LOGOUT": "Sair",
+        "SUCCESSMESSAGE": "Mensagem de Sucesso",
+        "TWOSTEPVERIFICATION": "Verificação em Duas Etapas",
+        "ERRORS": "Erros",
+        "404BASIC": "404 Básico",
+        "404COVER": "404 Capa",
+        "404ALT": "404 Alternativo",
+        "500": "500",
+        "OFFLINE": "Página Offline"
+      }
+    },
+    "LANDING": {
+      "TEXT": "Landing",
+      "LIST": {
+        "ONEPAGE": "One Page",
+        "NFTLANDING": "NFT Landing",
+        "JOB": "Trabalho"
+      }
+    },
+    "COMPONENTS": { "TEXT": "Componentes" },
+    "BASEUI": {
+      "TEXT": "Base UI",
+      "LIST": {
+        "ALERTS": "Alertas",
+        "BADGES": "Badges",
+        "BUTTONS": "Botões",
+        "COLORS": "Cores",
+        "CARDS": "Cartões",
+        "CAROUSEL": "Carrossel",
+        "DROPDOWNS": "Dropdowns",
+        "GRID": "Grade",
+        "IMAGES": "Imagens",
+        "TABS": "Abas",
+        "ACCORDION&COLLAPSE": "Accordion & Collapse",
+        "MODALS": "Modais",
+        "OFFCANVAS": "Offcanvas",
+        "PLACEHOLDERS": "Placeholders",
+        "PROGRESS": "Progresso",
+        "NOTIFICATIONS": "Notificações",
+        "MEDIAOBJECT": "Objeto de Mídia",
+        "EMBEDVIDEO": "Incorporar Vídeo",
+        "TYPOGRAPHY": "Tipografia",
+        "LISTS": "Listas",
+        "LINKS": "Links",
+        "GENERAL": "Geral",
+        "RIBBONS": "Fitas",
+        "UTILITIES": "Utilitários"
+      }
+    },
+    "ADVANCEUI": {
+      "TEXT": "UI Avançada",
+      "LIST": {
+        "SWEETALERTS": "Sweet Alerts",
+        "NESTABLELIST": "Lista Aninhada",
+        "SCROLLBAR": "Barra de Rolagem",
+        "ANIMATION": "Animação",
+        "TOUR": "Tour",
+        "SWIPERSLIDER": "Swiper Slider",
+        "RATTINGS": "Avaliações",
+        "HIGHLIGHT": "Destaque",
+        "SCROLLSPY": "ScrollSpy"
+      }
+    },
+    "WIDGETS": { "TEXT": "Widgets" },
+    "FORMS": {
+      "TEXT": "Formulários",
+      "LIST": {
+        "BASICELEMENTS": "Elementos Básicos",
+        "FORMSELECT": "Selecionar Formulário",
+        "CHECKBOXS&RADIOS": "Checkboxs & Rádios",
+        "PICKERS": "Seletores",
+        "INPUTMASKS": "Máscaras de Entrada",
+        "ADVANCED": "Avançado",
+        "RANGESLIDER": "Range Slider",
+        "VALIDATION": "Validação",
+        "WIZARD": "Assistente",
+        "EDITORS": "Editores",
+        "FILEUPLOADS": "Upload de Arquivos",
+        "FORMLAYOUTS": "Layouts de Formulário"
+      }
+    },
+    "TABLES": {
+      "TEXT": "Tabelas",
+      "LIST": {
+        "BASICTABLES": "Tabelas Básicas",
+        "GRIDJS": "Grid Js",
+        "LISTJS": "List Js",
+        "DATATABLES": "Datatables"
+      }
+    },
+    "CHARTS": {
+      "TEXT": "Gráficos",
+      "LIST": {
+        "APEXCHARTS": "Apexcharts",
+        "LINE": "Linha",
+        "AREA": "Área",
+        "COLUMN": "Coluna",
+        "BAR": "Barra",
+        "MIXED": "Misto",
+        "TIMELINE": "Linha do Tempo",
+        "RANGEAREA": "Área de Alcance",
+        "FUNNEL": "Funil",
+        "SLOPE": "Inclinação",
+        "CANDLSTICK": "Candlestick",
+        "BOXPLOT": "Boxplot",
+        "BUBBLE": "Bolha",
+        "SCATTER": "Dispersão",
+        "HEATMAP": "Mapa de Calor",
+        "TREEMAP": "Mapa de Árvore",
+        "PIE": "Pizza",
+        "RADIALBAR": "Barra Radial",
+        "RADAR": "Radar",
+        "POLARAREA": "Área Polar",
+        "CHARTJS": "Chartjs",
+        "ECHARTS": "Echarts"
+      }
+    },
+    "ICONS": {
+      "TEXT": "Ícones",
+      "LIST": {
+        "REMIX": "Remix",
+        "BOXICONS": "Boxicons",
+        "MATERIALDESIGN": "Material Design",
+        "LINEAWESOME": "Line Awesome",
+        "FEATHER": "Feather",
+        "CRYPTOSVG": "Crypto SVG"
+      }
+    },
+    "MAPS": {
+      "TEXT": "Mapas",
+      "LIST": {
+        "GOOGLE": "Google",
+        "VECTOR": "Vetor",
+        "LEAFLET": "Leaflet"
+      }
+    },
+    "MULTILEVEL": {
+      "TEXT": "Multi Nível",
+      "LIST": {
+        "LEVEL1": {
+          "1": "Nível 1.1",
+          "2": "Nível 1.2",
+          "LEVEL2": {
+            "1": "Nível 2.1",
+            "2": "Nível 2.2"
+          }
+        }
+      }
+    }
+  }
+}
