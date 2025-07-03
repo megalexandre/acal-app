@@ -12,6 +12,11 @@ import { DashboardBlogComponent } from './dashboard-blog/dashboard-blog.componen
 
 const routes: Routes = [
   {
+    path: "address",
+    loadChildren: () => import('./address/address.module').then(m => m.AddressModule)
+  },
+
+  {
     path: "analytics",
     component: AnalyticsComponent
   },

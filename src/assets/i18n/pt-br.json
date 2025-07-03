@@ -1,4 +1,21 @@
 {
+  "PAGES":{
+    "ADDRESS": {
+      "TITLE": "ENDEREÇOS",
+      "NAME": "Nome"
+    
+    },
+
+    "ACTIONS":{
+        "SEARCH": "Pesquisar",
+        "SAVE": "Salvar",
+        "EDIT": "Editar",
+        "DELETE": "Excluir",
+        "ADD": "Adicionar",
+        "CANCEL": "Cancelar"
+    }
+
+  }, 
   "HEADER": {
     "MORE": { "TEXT": "Mais" }
   },
