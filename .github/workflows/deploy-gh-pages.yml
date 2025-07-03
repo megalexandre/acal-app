@@ -20,10 +20,6 @@ jobs:
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      - name: Replace API_URL in environment.prod.ts
-        run: |
-          sed -i "s|\${API_URL}|${{ secrets.API_URL }}|g" src/environments/environment.prod.ts
-  
       - name: Build Angular app
         run: npm run build -- --configuration production
 
