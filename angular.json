@@ -123,7 +123,8 @@
                   "minify": true,
                   "inlineCritical": false
                 }
-              }
+              },
+              "baseHref": "/acal-app/"
             },
             "development": {
               "buildOptimizer": false,
@@ -131,7 +132,8 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "baseHref": "/"
             }
           },
           "defaultConfiguration": "production"
