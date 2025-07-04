@@ -124,7 +124,7 @@
                   "inlineCritical": false
                 }
               },
-              "baseHref": "/acal-app/"
+              "baseHref": "/"
             },
             "development": {
               "buildOptimizer": false,
