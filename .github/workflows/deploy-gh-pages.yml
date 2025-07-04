@@ -17,8 +17,13 @@ jobs:
         with:
           node-version: 18
 
+      - name: Replace API URL in environment.prod.ts
+        run: |
+          sed -i "s|apiUrl: '.*'|apiUrl: '${{ vars.API_URL }}'|g" src/environments/environment.prod.ts
+
       - name: Install dependencies
         run: npm install --legacy-peer-deps
+
 
       - name: Build Angular app
         run: npm run build -- --configuration production
