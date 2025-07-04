@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AddressSharedService } from '../address-shared.service';
 import { Address } from '../address.model';
 import { AddressService } from '../address.service';
+import { PaginationService } from 'src/app/core/services/pagination.service';
 
 @Component({
   selector: 'app-address-list',
@@ -16,10 +17,12 @@ export class AddressListComponent implements OnInit {
     private addressService: AddressService,
     private shared: AddressSharedService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public service: PaginationService,
   ) {}
 
   ngOnInit(): void {
+  
     this.loading = true;
     
     this.addressService.getAddresses().subscribe(addresses => {

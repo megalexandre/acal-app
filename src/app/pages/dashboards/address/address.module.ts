@@ -11,6 +11,10 @@ import { AddressListComponent } from './list/address-list.component';
 import { AddressDeleteComponent } from './delete/address-delete.component';
 import { AddressEditComponent } from './edit/address-edit.component';
 import { AddressSharedService } from './address-shared.service';
+import { FeatherModule } from 'angular-feather';
+import { allIcons } from 'angular-feather/icons';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { PaginationService } from 'src/app/core/services/pagination.service';
 
 @NgModule({
   declarations: [
@@ -21,11 +25,13 @@ import { AddressSharedService } from './address-shared.service';
     AddressEditComponent
   ],
   imports: [
+    FeatherModule.pick(allIcons),
     CommonModule,
     AddressRoutingModule,
     SharedModule,
     TranslateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbPaginationModule,
   ],
   exports: [
   ],
