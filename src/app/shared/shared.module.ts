@@ -24,7 +24,7 @@ import { ContactComponent } from './landing/index/contact/contact.component';
 import { FooterComponent } from './landing/index/footer/footer.component';
 import { ScrollspyDirective } from './scrollspy.directive';
 
-// NFT Landing 
+// NFT Landing
 import { MarketPlaceComponent } from './landing/nft/market-place/market-place.component';
 import { WalletComponent } from './landing/nft/wallet/wallet.component';
 import { FeaturesComponent } from './landing/nft/features/features.component';
@@ -32,7 +32,7 @@ import { CategoriesComponent } from './landing/nft/categories/categories.compone
 import { DiscoverComponent } from './landing/nft/discover/discover.component';
 import { TopCreatorComponent } from './landing/nft/top-creator/top-creator.component';
 
-// Job Landing 
+// Job Landing
 import { BlogComponent } from './landing/job/blog/blog.component';
 import { CandidateComponent } from './landing/job/candidate/candidate.component';
 import { FindjobsComponent } from './landing/job/findjobs/findjobs.component';
@@ -70,18 +70,11 @@ import { LandingScrollspyDirective } from './landingscrollspy.directive';
     FindjobsComponent,
     JobFooterComponent,
     JobcategoriesComponent,
-    ProgressComponent
+    ProgressComponent,
   ],
-  imports: [
-    CommonModule,
-    NgbNavModule,
-    NgbAccordionModule,
-    NgbDropdownModule,
-    SlickCarouselModule,
-    CountUpModule,
-    RouterModule
-  ],
-  exports: [BreadcrumbsComponent,
+  imports: [CommonModule, NgbNavModule, NgbAccordionModule, NgbDropdownModule, SlickCarouselModule, CountUpModule, RouterModule],
+  exports: [
+    BreadcrumbsComponent,
     ClientLogoComponent,
     ServicesComponent,
     CollectionComponent,
@@ -108,6 +101,7 @@ import { LandingScrollspyDirective } from './landingscrollspy.directive';
     CandidateComponent,
     BlogComponent,
     JobcategoriesComponent,
-    JobFooterComponent]
+    JobFooterComponent,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

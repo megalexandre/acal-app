@@ -7,19 +7,19 @@ import { AddressDeleteComponent } from './delete/address-delete.component';
 import { AddressEditComponent } from './edit/address-edit.component';
 
 const routes: Routes = [
-    {
-      path: '',
-      component: AddressComponent,
-      children: [
-        { path: '', component: AddressListComponent },
-        { path: 'delete', component: AddressDeleteComponent },
-        { path: 'edit', component: AddressEditComponent },
-      ]
-  }
+  {
+    path: '',
+    component: AddressComponent,
+    children: [
+      { path: '', component: AddressListComponent },
+      { path: 'delete', component: AddressDeleteComponent },
+      { path: 'edit', component: AddressEditComponent },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AddressRoutingModule {}

@@ -1,17 +1,12 @@
 <div class="modal-body">
   <p class="mb-3">{{ 'PAGES.ADDRESS.CONFIRM' | translate }}:</p>
-    <div class="input-group mb-3">
-      
-        <input type="text" class="form-control" [value]="address?.name" disabled>
-      
-      <button class="btn btn-danger" type="button" (click)="confirmDelete()">
-        <i class="ri-delete-bin-2-line"></i> {{ 'PAGES.ACTIONS.DELETE' | translate }}
-      </button>
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" [value]="address?.name" disabled />
 
-      <button class="btn btn-secondary ms-2" type="button" routerLink="../">
-        {{ 'PAGES.ACTIONS.CANCEL' | translate }}
-      </button>
-    </div>
+    <button class="btn btn-danger" type="button" (click)="confirmDelete()"><i class="ri-delete-bin-2-line"></i> {{ 'PAGES.ACTIONS.DELETE' | translate }}</button>
+
+    <button class="btn btn-secondary ms-2" type="button" routerLink="../">
+      {{ 'PAGES.ACTIONS.CANCEL' | translate }}
+    </button>
+  </div>
 </div>
-
-

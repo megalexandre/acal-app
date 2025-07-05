@@ -8,9 +8,8 @@ describe('TypographyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TypographyComponent ]
-    })
-    .compileComponents();
+      declarations: [TypographyComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

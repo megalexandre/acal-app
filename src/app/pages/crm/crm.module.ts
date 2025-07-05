@@ -10,7 +10,7 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 import { NgSelectModule } from '@ng-select/ng-select';
 
 // Load Icons
-import { defineElement } from "@lordicon/element";
+import { defineElement } from '@lordicon/element';
 import lottie from 'lottie-web';
 
 // Component pages
@@ -22,35 +22,13 @@ import { DealsComponent } from './deals/deals.component';
 import { LeadsComponent } from './leads/leads.component';
 
 import { DatePipe } from '@angular/common';
-import { SortByCrmPipe } from "../crm/sort-by.pipe";
-
+import { SortByCrmPipe } from '../crm/sort-by.pipe';
 
 @NgModule({
-  declarations: [
-    ContactsComponent,
-    CompaniesComponent,
-    DealsComponent,
-    LeadsComponent,
-    SortByCrmPipe,
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgbPaginationModule,
-    NgbTypeaheadModule,
-    NgbTooltipModule,
-    NgbDropdownModule,
-    NgbAccordionModule,
-    FlatpickrModule,
-    NgSelectModule,
-    CRMRoutingModule,
-    SharedModule
-  ],
-  providers: [
-    DatePipe
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  declarations: [ContactsComponent, CompaniesComponent, DealsComponent, LeadsComponent, SortByCrmPipe],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, NgbPaginationModule, NgbTypeaheadModule, NgbTooltipModule, NgbDropdownModule, NgbAccordionModule, FlatpickrModule, NgSelectModule, CRMRoutingModule, SharedModule],
+  providers: [DatePipe],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CrmModule {
   constructor() {

@@ -8,9 +8,8 @@ describe('RadarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RadarComponent ]
-    })
-    .compileComponents();
+      declarations: [RadarComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

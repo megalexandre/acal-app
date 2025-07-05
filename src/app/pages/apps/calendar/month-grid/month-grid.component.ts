@@ -7,18 +7,18 @@ import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
-import multiMonthPlugin from '@fullcalendar/multimonth'
+import multiMonthPlugin from '@fullcalendar/multimonth';
 import Swal from 'sweetalert2';
 import { DatePipe } from '@angular/common';
 import { calendarEvents, category } from 'src/app/core/data';
 import { createEventId } from 'src/app/core/data/calendar';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { restApiService } from "../../../../core/services/rest-api.service";
+import { restApiService } from '../../../../core/services/rest-api.service';
 
 @Component({
   selector: 'app-month-grid',
   templateUrl: './month-grid.component.html',
-  styleUrls: ['./month-grid.component.scss']
+  styleUrls: ['./month-grid.component.scss'],
 })
 export class MonthGridComponent {
   // bread crumb items
@@ -35,26 +35,27 @@ export class MonthGridComponent {
   direction: any = 'ltr';
   selectedLocale: any = 'en';
   masterSelected: any = true;
-  category: any
+  category: any;
   // events$: Observable<EventInput[]>;
 
   @ViewChild('editmodalShow') editmodalShow!: TemplateRef<any>;
-  @ViewChild('modalShow') modalShow !: TemplateRef<any>;
+  @ViewChild('modalShow') modalShow!: TemplateRef<any>;
   filterArray: any;
   filterEvents: any = [];
   allcalendarEvents: any;
 
-  constructor(private formBuilder: UntypedFormBuilder, private datePipe: DatePipe, private modalService: NgbModal, private restApiService: restApiService) { }
+  constructor(
+    private formBuilder: UntypedFormBuilder,
+    private datePipe: DatePipe,
+    private modalService: NgbModal,
+    private restApiService: restApiService,
+  ) {}
 
   ngOnInit(): void {
     /**
-   * BreadCrumb
-   */
-    this.breadCrumbItems = [
-      { label: 'Apps' },
-      { label: 'Month Grid', active: true }
-    ];
-
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Apps' }, { label: 'Month Grid', active: true }];
 
     // Validation
     this.formData = this.formBuilder.group({
@@ -64,12 +65,11 @@ export class MonthGridComponent {
       description: ['', [Validators.required]],
       date: ['', Validators.required],
       start: ['', Validators.required],
-      end: ['', Validators.required]
+      end: ['', Validators.required],
     });
 
     this._fetchData();
   }
-
 
   /**
    * Fetches the data
@@ -79,35 +79,31 @@ export class MonthGridComponent {
     this.category = category;
     // Calender Event Data
 
-    console.log('calendarEvents', calendarEvents)
-    this.restApiService.getCalendarData().subscribe(
-      data => {
-
-        const users = JSON.parse(data);
-        // console.log('users', users.data)
-        // this.calendarEvents = users.data;
-        this.calendarOptions.initialEvents = this.calendarEvents.map(
-          (evt: any) => {
-            return { date: evt.start, title: evt.title, className: evt.className, location: evt.location, description: evt.description }
-          })
+    console.log('calendarEvents', calendarEvents);
+    this.restApiService.getCalendarData().subscribe((data) => {
+      const users = JSON.parse(data);
+      // console.log('users', users.data)
+      // this.calendarEvents = users.data;
+      this.calendarOptions.initialEvents = this.calendarEvents.map((evt: any) => {
+        return { date: evt.start, title: evt.title, className: evt.className, location: evt.location, description: evt.description };
       });
+    });
     this.calendarEvents = calendarEvents;
   }
 
-
   /***
- * Calender Set
- */
+   * Calender Set
+   */
   calendarOptions: CalendarOptions = {
     plugins: [dayGridPlugin, listPlugin, interactionPlugin, timeGridPlugin, multiMonthPlugin],
     headerToolbar: {
       right: 'multiMonthYear,dayGridMonth,dayGridWeek,dayGridDay,listWeek',
       center: 'title',
-      left: 'prev,next today'
+      left: 'prev,next today',
     },
     initialView: 'multiMonthYear',
     initialEvents: this.calendarEvents || calendarEvents,
-    themeSystem: "bootstrap",
+    themeSystem: 'bootstrap',
     weekends: true,
     droppable: true,
     editable: true,
@@ -124,12 +120,12 @@ export class MonthGridComponent {
 
   // Calender direction functionality
   changeDirection() {
-    this.calendarOptions.direction = this.direction
+    this.calendarOptions.direction = this.direction;
   }
 
   // Calender langulage functionality
   changeLocale() {
-    this.calendarOptions.locale = this.selectedLocale
+    this.calendarOptions.locale = this.selectedLocale;
   }
 
   // Calender filter functionality
@@ -139,18 +135,17 @@ export class MonthGridComponent {
       data.checked = this.masterSelected;
     });
     if (this.masterSelected == true) {
-      this.calendarEvents = this.allcalendarEvents
+      this.calendarEvents = this.allcalendarEvents;
     } else {
-      this.calendarEvents = []
+      this.calendarEvents = [];
     }
-
   }
   onCheckboxChange() {
-    this.filterEvents = []
+    this.filterEvents = [];
     this.filterEvents = this.allcalendarEvents.filter((event: any) => {
       return this.filterArray.some((filterItem: any) => filterItem.checked && filterItem.name === event.type);
     });
-    this.calendarEvents = this.filterEvents
+    this.calendarEvents = this.filterEvents;
   }
 
   openModal(events?: any) {
@@ -167,7 +162,6 @@ export class MonthGridComponent {
   }
   // }
 
-
   /**
    * Event click modal show
    */
@@ -178,7 +172,7 @@ export class MonthGridComponent {
       document.getElementById('form-event')?.classList.add('view-event');
       var modaltitle = document.querySelector('.modal-title') as HTMLAreaElement;
       modaltitle.innerHTML = this.editEvent.title;
-      (document.getElementById('btn-save-event') as HTMLElement).setAttribute("hidden", "true");
+      (document.getElementById('btn-save-event') as HTMLElement).setAttribute('hidden', 'true');
     }, 100);
 
     this.formData = this.formBuilder.group({
@@ -187,17 +181,16 @@ export class MonthGridComponent {
       location: clickInfo.event.extendedProps['location'],
       description: clickInfo.event.extendedProps['description'],
       date: clickInfo.event.start,
-      start: (clickInfo.event.start ? clickInfo.event.start : ''),
-      end: (clickInfo.event.end ? clickInfo.event.end : '')
+      start: clickInfo.event.start ? clickInfo.event.start : '',
+      end: clickInfo.event.end ? clickInfo.event.end : '',
     });
     this.modalService.open(this.modalShow, { centered: true });
   }
 
-
   /**
-  * Events bind in calander
-  * @param events events
-  */
+   * Events bind in calander
+   * @param events events
+   */
   handleEvents(events: EventApi[]) {
     this.currentEvents = events;
   }
@@ -207,21 +200,21 @@ export class MonthGridComponent {
       document.getElementById('form-event')?.classList.add('view-event');
       var editbtn = document.querySelector('#edit-event-btn') as HTMLAreaElement;
       editbtn.innerHTML = 'Edit';
-      (document.getElementById('btn-save-event') as HTMLElement).setAttribute("hidden", "true");
+      (document.getElementById('btn-save-event') as HTMLElement).setAttribute('hidden', 'true');
     } else {
       document.getElementById('form-event')?.classList.remove('view-event');
-      (document.getElementById('btn-save-event') as HTMLElement).removeAttribute("hidden");
+      (document.getElementById('btn-save-event') as HTMLElement).removeAttribute('hidden');
 
       var modalbtn = document.querySelector('#btn-save-event') as HTMLAreaElement;
-      modalbtn.innerHTML = "Update Event"
+      modalbtn.innerHTML = 'Update Event';
       var editbtn = document.querySelector('#edit-event-btn') as HTMLAreaElement;
-      editbtn.innerHTML = 'Cancel'
+      editbtn.innerHTML = 'Cancel';
     }
   }
 
   /**
-     * Close event modal
-     */
+   * Close event modal
+   */
   closeEventModal() {
     this.formData = this.formBuilder.group({
       title: '',
@@ -230,14 +223,14 @@ export class MonthGridComponent {
       description: '',
       date: '',
       start: '',
-      end: ''
+      end: '',
     });
     this.modalService.dismissAll();
   }
 
   /***
-  * Model Position Set
-  */
+   * Model Position Set
+   */
   position() {
     Swal.fire({
       position: 'center',
@@ -265,8 +258,8 @@ export class MonthGridComponent {
   editCancelButtonText: string = 'Edit';
 
   /**
-  * Save the event
-  */
+   * Save the event
+   */
 
   saveEvent() {
     if (document.querySelector('#btn-save-event')?.innerHTML == 'Add Event') {
@@ -274,8 +267,8 @@ export class MonthGridComponent {
         const className = this.formData.get('category')!.value;
         const title = this.formData.get('title')!.value;
         const location = this.formData.get('location')!.value;
-        const description = this.formData.get('description')!.value
-        const date = this.formData.get('date')!.value
+        const description = this.formData.get('description')!.value;
+        const date = this.formData.get('date')!.value;
         const starttime = this.formData.get('start')!.value;
         const endtime = this.formData.get('end')!.value;
         const yy = new Date(date).getFullYear();
@@ -299,7 +292,7 @@ export class MonthGridComponent {
           end,
           location,
           description,
-          className: className
+          className: className,
         });
         this.position();
         this.formData = this.formBuilder.group({
@@ -309,17 +302,15 @@ export class MonthGridComponent {
           description: '',
           date: '',
           start: '',
-          end: ''
+          end: '',
         });
         this.modalService.dismissAll();
         this.submitted = true;
       }
     } else {
-      this.editEventSave()
+      this.editEventSave();
     }
   }
-
-
 
   /**
    * Delete-confirm
@@ -327,7 +318,7 @@ export class MonthGridComponent {
   confirm() {
     Swal.fire({
       title: 'Are you sure?',
-      text: 'You won\'t be able to revert this!',
+      text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#34c38f',
@@ -345,7 +336,6 @@ export class MonthGridComponent {
    * save edit event data
    */
   editEventSave() {
-
     const editTitle = this.formData.get('title')!.value;
     const editCategory = this.formData.get('category')!.value;
     const editdate = this.formData.get('date')!.value;
@@ -354,9 +344,7 @@ export class MonthGridComponent {
     const editlocation = this.formData.get('location')!.value;
     const editdescription = this.formData.get('description')!.value;
 
-    const editId = this.calendarEvents.findIndex(
-      (x) => x.id + '' === this.editEvent.id + ''
-    );
+    const editId = this.calendarEvents.findIndex((x) => x.id + '' === this.editEvent.id + '');
 
     this.editEvent.setProp('title', editTitle);
     this.editEvent.setProp('classNames', editCategory);
@@ -382,7 +370,7 @@ export class MonthGridComponent {
       description: '',
       date: '',
       start: '',
-      end: ''
+      end: '',
     });
     this.modalService.dismissAll();
   }
@@ -394,5 +382,5 @@ export class MonthGridComponent {
     this.editEvent.remove();
     this.modalService.dismissAll();
   }
-  fetchEvents() { }
+  fetchEvents() {}
 }

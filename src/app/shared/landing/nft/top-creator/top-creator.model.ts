@@ -4,4 +4,3 @@ export interface creatorModel {
   title: string;
   price: string;
 }
-  

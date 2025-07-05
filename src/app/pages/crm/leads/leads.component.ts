@@ -15,17 +15,15 @@ import { selectCRMLoading, selectLeadData } from 'src/app/store/CRM/crm_selector
 import { cloneDeep } from 'lodash';
 import { PaginationService } from 'src/app/core/services/pagination.service';
 
-
 @Component({
   selector: 'app-leads',
   templateUrl: './leads.component.html',
-  styleUrls: ['./leads.component.scss']
+  styleUrls: ['./leads.component.scss'],
 })
 /**
  * Leads Component
  */
 export class LeadsComponent {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   submitted = false;
@@ -44,19 +42,20 @@ export class LeadsComponent {
   searchResults: any;
   searchTerm: any;
 
-  constructor(private modalService: NgbModal, public service: PaginationService, private formBuilder: UntypedFormBuilder, private store: Store<{ data: RootReducerState }>, private offcanvasService: NgbOffcanvas, private datePipe: DatePipe) {
-
-  }
-
+  constructor(
+    private modalService: NgbModal,
+    public service: PaginationService,
+    private formBuilder: UntypedFormBuilder,
+    private store: Store<{ data: RootReducerState }>,
+    private offcanvasService: NgbOffcanvas,
+    private datePipe: DatePipe,
+  ) {}
 
   ngOnInit(): void {
     /**
-    * BreadCrumb
-    */
-    this.breadCrumbItems = [
-      { label: 'CRM' },
-      { label: 'Leads', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'CRM' }, { label: 'Leads', active: true }];
 
     /**
      * Form Validation
@@ -70,9 +69,8 @@ export class LeadsComponent {
       phone: ['', [Validators.required]],
       location: ['', [Validators.required]],
       tags: ['', [Validators.required]],
-      date: ['', [Validators.required]]
+      date: ['', [Validators.required]],
     });
-
 
     /**
      * fetches data
@@ -87,10 +85,8 @@ export class LeadsComponent {
     this.store.select(selectLeadData).subscribe((data) => {
       this.leads = data;
       this.allleads = cloneDeep(data);
-      this.leads = this.service.changePage(this.allleads)
+      this.leads = this.service.changePage(this.allleads);
     });
-
-
   }
 
   /**
@@ -112,31 +108,30 @@ export class LeadsComponent {
   // File Upload
   imageURL: string | undefined;
   fileChange(event: any) {
-    let fileList: any = (event.target as HTMLInputElement);
+    let fileList: any = event.target as HTMLInputElement;
     let file: File = fileList.files[0];
-    document.getElementById('')
+    document.getElementById('');
     this.leadsForm.patchValue({
       // image_src: file.name
-      image_src: 'avatar-8.jpg'
+      image_src: 'avatar-8.jpg',
     });
     const reader = new FileReader();
     reader.onload = () => {
       this.imageURL = reader.result as string;
       (document.getElementById('lead-img') as HTMLImageElement).src = this.imageURL;
-    }
-    reader.readAsDataURL(file)
+    };
+    reader.readAsDataURL(file);
   }
   /**
-    * Save user
-    */
+   * Save user
+   */
   saveUser() {
     if (this.leadsForm.valid) {
       if (this.leadsForm.get('_id')?.value) {
         const updatedData = this.leadsForm.value;
         this.store.dispatch(updateLead({ updatedData }));
         this.modalService.dismissAll();
-      }
-      else {
+      } else {
         const contactId = (this.allleads.length + 1).toString();
         this.leadsForm.controls['_id'].setValue(contactId);
         const newData = this.leadsForm.value;
@@ -158,9 +153,8 @@ export class LeadsComponent {
     }
     this.modalService.dismissAll();
     this.leadsForm.reset();
-    this.submitted = true
+    this.submitted = true;
   }
-
 
   /**
    * Delete model
@@ -188,7 +182,7 @@ export class LeadsComponent {
   checkedValGet: any[] = [];
   deleteMultiple(content: any) {
     var checkboxes: any = document.getElementsByName('checkAll');
-    var result
+    var result;
     var checkedVal: any[] = [];
     for (var i = 0; i < checkboxes.length; i++) {
       if (checkboxes[i].checked) {
@@ -198,72 +192,70 @@ export class LeadsComponent {
     }
     if (checkedVal.length > 0) {
       this.modalService.open(content, { centered: true });
-    }
-    else {
-      Swal.fire({ text: 'Please select at least one checkbox', confirmButtonColor: '#239eba', });
+    } else {
+      Swal.fire({ text: 'Please select at least one checkbox', confirmButtonColor: '#239eba' });
     }
     this.checkedValGet = checkedVal;
   }
 
   // The master checkbox will check/ uncheck all items
   checkUncheckAll(ev: any) {
-    this.leads.forEach((x: { state: any; }) => x.state = ev.target.checked)
+    this.leads.forEach((x: { state: any }) => (x.state = ev.target.checked));
     var checkedVal: any[] = [];
-    var result
+    var result;
     for (var i = 0; i < this.leads.length; i++) {
       if (this.leads[i].state == true) {
         result = this.leads[i];
         checkedVal.push(result);
       }
     }
-    this.checkedValGet = checkedVal
-    checkedVal.length > 0 ? (document.getElementById("remove-actions") as HTMLElement).style.display = "block" : (document.getElementById("remove-actions") as HTMLElement).style.display = "none";
+    this.checkedValGet = checkedVal;
+    checkedVal.length > 0 ? ((document.getElementById('remove-actions') as HTMLElement).style.display = 'block') : ((document.getElementById('remove-actions') as HTMLElement).style.display = 'none');
   }
 
   // Select Checkbox value Get
   onCheckboxChange(e: any) {
     var checkedVal: any[] = [];
-    var result
+    var result;
     for (var i = 0; i < this.leads.length; i++) {
       if (this.leads[i].state == true) {
         result = this.leads[i];
         checkedVal.push(result);
       }
     }
-    this.checkedValGet = checkedVal
-    checkedVal.length > 0 ? (document.getElementById("remove-actions") as HTMLElement).style.display = "block" : (document.getElementById("remove-actions") as HTMLElement).style.display = "none";
+    this.checkedValGet = checkedVal;
+    checkedVal.length > 0 ? ((document.getElementById('remove-actions') as HTMLElement).style.display = 'block') : ((document.getElementById('remove-actions') as HTMLElement).style.display = 'none');
   }
 
   // Get List of Checked Items
   getCheckedItemList() {
     this.checkedList = [];
     for (var i = 0; i < this.CustomersData.length; i++) {
-      if (this.CustomersData[i].isSelected)
-        this.checkedList.push(this.CustomersData[i]);
+      if (this.CustomersData[i].isSelected) this.checkedList.push(this.CustomersData[i]);
     }
     this.checkedList = JSON.stringify(this.checkedList);
   }
 
   /**
-  * Multiple Default Select2
-  */
+   * Multiple Default Select2
+   */
   selectValue = ['Lead', 'Partner', 'Exiting', 'Long-term'];
 
   /**
-     * Open Edit modal
-     * @param content modal content
-     */
+   * Open Edit modal
+   * @param content modal content
+   */
   editDataGet(id: any, content: any) {
     this.submitted = false;
     this.modalService.open(content, { size: 'md', centered: true });
     var modelTitle = document.querySelector('.modal-title') as HTMLAreaElement;
     modelTitle.innerHTML = 'Edit Lead';
     var updateBtn = document.getElementById('add-btn') as HTMLAreaElement;
-    updateBtn.innerHTML = "Update";
+    updateBtn.innerHTML = 'Update';
 
     this.econtent = this.allleads[id];
     var img_data = document.getElementById('lead-img') as HTMLImageElement;
-    img_data.src = 'assets/images/users/' + this.econtent.image_src
+    img_data.src = 'assets/images/users/' + this.econtent.image_src;
     this.leadsForm.controls['name'].setValue(this.econtent.name);
     this.leadsForm.controls['company'].setValue(this.econtent.company);
     this.leadsForm.controls['score'].setValue(this.econtent.score);
@@ -281,36 +273,33 @@ export class LeadsComponent {
   }
 
   // Filtering
-  isstatus?: any
+  isstatus?: any;
   SearchData() {
-    var date = document.getElementById("isDate") as HTMLInputElement;
-    var dateVal = date.value ? this.datePipe.transform(new Date(date.value), "yyyy-MM-dd") : '';
+    var date = document.getElementById('isDate') as HTMLInputElement;
+    var dateVal = date.value ? this.datePipe.transform(new Date(date.value), 'yyyy-MM-dd') : '';
 
     if (dateVal != '') {
       this.leads = this.content.filter((order: any) => {
-        return this.datePipe.transform(new Date(order.date), "yyyy-MM-dd") == dateVal;
+        return this.datePipe.transform(new Date(order.date), 'yyyy-MM-dd') == dateVal;
       });
-    }
-    else {
+    } else {
       this.leads = this.content;
     }
   }
 
   changePage() {
-    this.leads = this.service.changePage(this.allleads)
+    this.leads = this.service.changePage(this.allleads);
   }
 
   // Search Data
   performSearch(): void {
     this.searchResults = this.allleads.filter((item: any) => {
-      return (
-        item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
+      return item.name.toLowerCase().includes(this.searchTerm.toLowerCase());
     });
-    this.leads = this.service.changePage(this.searchResults)
+    this.leads = this.service.changePage(this.searchResults);
   }
 
   onSort(column: any) {
-    this.leads = this.service.onSort(column, this.leads)
+    this.leads = this.service.onSort(column, this.leads);
   }
 }

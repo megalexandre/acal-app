@@ -5,23 +5,23 @@ export const builtInButtons = {
     classes: 'cancel-button',
     secondary: true,
     text: 'Exit',
-    type: 'cancel'
+    type: 'cancel',
   },
   next: {
     classes: 'btn btn-success',
     text: 'Next',
-    type: 'next'
+    type: 'next',
   },
   back: {
     classes: 'back-button',
     secondary: true,
     text: 'Back',
-    type: 'back'
+    type: 'back',
   },
   finish: {
     classes: 'btn btn-primary',
     text: 'Thank you!',
-    type: 'cancel'
+    type: 'cancel',
   },
 };
 
@@ -29,7 +29,7 @@ export const defaultStepOptions: Step.StepOptions = {
   classes: 'shepherd-theme-arrows custom-default-class',
   scrollTo: { behavior: 'smooth', block: 'center' },
   cancelIcon: {
-    enabled: true
+    enabled: true,
   },
   canClickTarget: false,
 };
@@ -38,70 +38,56 @@ export const steps: Step.StepOptions[] = [
   {
     attachTo: {
       element: '.actions',
-      on: 'bottom'
+      on: 'bottom',
     },
-    buttons: [
-      builtInButtons.next
-    ],
+    buttons: [builtInButtons.next],
     classes: 'custom-class-name-1 custom-class-name-2',
     id: 'intro',
     title: 'Welcome Back !',
-    text: ` This is Step 1`
+    text: ` This is Step 1`,
   },
   {
     attachTo: {
       element: '.get-started',
-      on: 'bottom'
+      on: 'bottom',
     },
-    buttons: [  
-      builtInButtons.back,
-      builtInButtons.next
-    ],
+    buttons: [builtInButtons.back, builtInButtons.next],
     classes: 'custom-class-name-1 custom-class-name-2',
     id: 'installation',
     title: 'Register your account',
-    text: 'Get your Free Velzon account now.'
+    text: 'Get your Free Velzon account now.',
   },
   {
     attachTo: {
       element: '.contributors',
-      on: 'bottom'
+      on: 'bottom',
     },
-    buttons: [
-      builtInButtons.back,
-      builtInButtons.next
-    ],
+    buttons: [builtInButtons.back, builtInButtons.next],
     classes: 'custom-class-name-1 custom-class-name-2',
     id: 'usage',
     title: 'Login your account',
-    text: 'Sign in to continue to Velzon.'
+    text: 'Sign in to continue to Velzon.',
   },
   {
     attachTo: {
       element: '.getProduct',
-      on: 'bottom'
+      on: 'bottom',
     },
-    buttons: [
-      builtInButtons.back,
-      builtInButtons.next
-    ],
+    buttons: [builtInButtons.back, builtInButtons.next],
     classes: 'custom-class-name-1 custom-class-name-2',
     id: 'usage',
     title: 'Login your account',
-    text: 'Sign in to continue to Velzon.'
+    text: 'Sign in to continue to Velzon.',
   },
   {
     attachTo: {
       element: '.ThankYou',
-      on: 'bottom'
+      on: 'bottom',
     },
-    buttons: [
-      builtInButtons.back,
-      builtInButtons.finish
-    ],
+    buttons: [builtInButtons.back, builtInButtons.finish],
     classes: 'custom-class-name-1 custom-class-name-2',
     id: 'usage',
     title: 'Thank you !',
-    text: 'Sign in to continue to Velzon.'
-  }
+    text: 'Sign in to continue to Velzon.',
+  },
 ];

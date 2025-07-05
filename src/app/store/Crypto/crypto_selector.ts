@@ -3,23 +3,10 @@ import { CryptoState } from './crypto_reducer';
 
 export const selectCryptoState = createFeatureSelector<CryptoState>('Crypto');
 
-export const selectCryptoOrderData = createSelector(
-    selectCryptoState,
-    (state: CryptoState) => state.CryptoOrder
-);
+export const selectCryptoOrderData = createSelector(selectCryptoState, (state: CryptoState) => state.CryptoOrder);
 
-export const selectTransacrionData = createSelector(
-    selectCryptoState,
-    (state: CryptoState) => state.Transaction
-);
+export const selectTransacrionData = createSelector(selectCryptoState, (state: CryptoState) => state.Transaction);
 
-export const selectCryptoLoading = createSelector(
-    selectCryptoState,
-    (state: CryptoState) => state.loading
-);
+export const selectCryptoLoading = createSelector(selectCryptoState, (state: CryptoState) => state.loading);
 
-export const selectCryptoError = createSelector(
-    selectCryptoState,
-    (state: CryptoState) => state.error
-);
-
+export const selectCryptoError = createSelector(selectCryptoState, (state: CryptoState) => state.error);

@@ -14,14 +14,13 @@ import { exploreData } from 'src/app/core/data';
 @Component({
   selector: 'app-explore',
   templateUrl: './explore.component.html',
-  styleUrls: ['./explore.component.scss']
+  styleUrls: ['./explore.component.scss'],
 })
 
 /**
  * Explore Component
  */
 export class ExploreComponent {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
 
@@ -35,28 +34,27 @@ export class ExploreComponent {
   type: any = '';
   sale_type: any = '';
 
-  constructor(private modalService: NgbModal, public service: PaginationService, private formBuilder: UntypedFormBuilder) {
-  }
+  constructor(
+    private modalService: NgbModal,
+    public service: PaginationService,
+    private formBuilder: UntypedFormBuilder,
+  ) {}
 
   ngOnInit(): void {
     /**
-    * BreadCrumb
-    */
-    this.breadCrumbItems = [
-      { label: 'NFT Marketplace' },
-      { label: 'Explore Now', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'NFT Marketplace' }, { label: 'Explore Now', active: true }];
     // FetchData
     this.basicData = exploreData;
   }
-
 
   // Range Slider Data
   value = 0;
   highValue = 1000;
   options: Options = {
     floor: 0,
-    ceil: 2000
+    ceil: 2000,
   };
 
   /**
@@ -68,13 +66,9 @@ export class ExploreComponent {
   // Search Data
   performSearch(): void {
     this.searchResults = exploreData.filter((item: any) => {
-      return (
-        item.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        item.category.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        item.type.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
+      return item.title.toLowerCase().includes(this.searchTerm.toLowerCase()) || item.category.toLowerCase().includes(this.searchTerm.toLowerCase()) || item.type.toLowerCase().includes(this.searchTerm.toLowerCase());
     });
-    this.basicData = this.service.changePage(this.searchResults)
+    this.basicData = this.service.changePage(this.searchResults);
   }
 
   categoryFilter() {

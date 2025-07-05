@@ -8,9 +8,8 @@ describe('SweetalertsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SweetalertsComponent ]
-    })
-    .compileComponents();
+      declarations: [SweetalertsComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

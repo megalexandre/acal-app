@@ -6,33 +6,29 @@ import { ToastService } from '../toast-service';
 @Component({
   selector: 'app-feather',
   templateUrl: './feather.component.html',
-  styleUrls: ['./feather.component.scss']
+  styleUrls: ['./feather.component.scss'],
 })
 
 /**
  * Feather Component
  */
 export class FeatherComponent implements OnInit {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   IconsData!: Icons[];
 
-  constructor(public toastService: ToastService) { }
+  constructor(public toastService: ToastService) {}
 
   ngOnInit(): void {
     /**
-    * BreadCrumb
-    */
-    this.breadCrumbItems = [
-      { label: 'Icons' },
-      { label: 'Feather', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Icons' }, { label: 'Feather', active: true }];
 
     setTimeout(() => {
       /***
-      * All Data Get
-      */
+       * All Data Get
+       */
       this.fetchData();
     }, 300);
   }
@@ -48,5 +44,4 @@ export class FeatherComponent implements OnInit {
     navigator.clipboard.writeText(icon);
     this.toastService.show(icon + ' icon Copied Successfully !!!', { classname: 'bg-success text-center text-white', delay: 5000 });
   }
-
 }

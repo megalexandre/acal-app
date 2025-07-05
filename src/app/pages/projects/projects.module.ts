@@ -20,7 +20,7 @@ import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 import { NgSelectModule } from '@ng-select/ng-select';
 
 // Load Icon
-import { defineElement } from "@lordicon/element";
+import { defineElement } from '@lordicon/element';
 import lottie from 'lottie-web';
 
 // Component Pages
@@ -33,15 +33,11 @@ import { CreateComponent } from './create/create.component';
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   url: 'https://httpbin.org/post',
   maxFilesize: 50,
-  acceptedFiles: 'image/*'
+  acceptedFiles: 'image/*',
 };
 
 @NgModule({
-  declarations: [
-    ListComponent,
-    OverviewComponent,
-    CreateComponent
-  ],
+  declarations: [ListComponent, OverviewComponent, CreateComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -58,9 +54,9 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     DropzoneModule,
     NgSelectModule,
     ProjectsRoutingModule,
-    SharedModule
+    SharedModule,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ProjectsModule {
   constructor() {

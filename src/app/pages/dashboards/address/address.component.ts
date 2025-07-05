@@ -8,12 +8,6 @@ export class AddressComponent implements OnInit {
   breadCrumbItems!: Array<{}>;
 
   ngOnInit(): void {
-    
-    this.breadCrumbItems = [
-      { label: 'Dashboards' },
-      { label: 'Endereços', active: true }
-    ];
-
+    this.breadCrumbItems = [{ label: 'Dashboards' }, { label: 'Endereços', active: true }];
   }
-
 }

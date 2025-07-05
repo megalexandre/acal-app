@@ -15,7 +15,7 @@ import { allIcons } from 'angular-feather/icons';
 import { FlatpickrModule } from 'angularx-flatpickr';
 
 // Load Icons
-import { defineElement } from "@lordicon/element";
+import { defineElement } from '@lordicon/element';
 import lottie from 'lottie-web';
 
 // Component pages
@@ -24,32 +24,13 @@ import { SharedModule } from '../../shared/shared.module';
 import { DetailsComponent } from './details/details.component';
 import { CreateComponent } from './create/create.component';
 
-
 import { DatePipe } from '@angular/common';
 
 @NgModule({
-  declarations: [
-    ListComponent,
-    DetailsComponent,
-    CreateComponent,
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgbPaginationModule,
-    NgbTypeaheadModule,
-    NgbDropdownModule,
-    CountUpModule,
-    FeatherModule.pick(allIcons),
-    FlatpickrModule,
-    InvoicesRoutingModule,
-    SharedModule
-  ],
-  providers: [
-    DatePipe
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  declarations: [ListComponent, DetailsComponent, CreateComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, NgbPaginationModule, NgbTypeaheadModule, NgbDropdownModule, CountUpModule, FeatherModule.pick(allIcons), FlatpickrModule, InvoicesRoutingModule, SharedModule],
+  providers: [DatePipe],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class InvoicesModule {
   constructor() {

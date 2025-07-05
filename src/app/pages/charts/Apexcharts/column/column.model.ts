@@ -14,8 +14,8 @@ import {
   ApexResponsive,
   ApexAnnotations,
   ApexGrid,
-  ApexStates
-} from "ng-apexcharts";
+  ApexStates,
+} from 'ng-apexcharts';
 
 export type ChartOptions = {
   series?: ApexAxisChartSeries | any;

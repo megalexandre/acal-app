@@ -8,21 +8,21 @@ import { OverviewComponent } from './overview/overview.component';
 
 const routes: Routes = [
   {
-    path: "list",
-    component: ListComponent
+    path: 'list',
+    component: ListComponent,
   },
   {
-    path: "grid",
-    component: GridComponent
+    path: 'grid',
+    component: GridComponent,
   },
   {
-    path: "overview",
-    component: OverviewComponent
+    path: 'overview',
+    component: OverviewComponent,
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class JobListsRoutingModule { }
+export class JobListsRoutingModule {}

@@ -8,9 +8,8 @@ describe('RemixComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RemixComponent ]
-    })
-    .compileComponents();
+      declarations: [RemixComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

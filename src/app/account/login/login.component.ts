@@ -12,14 +12,13 @@ import { ToastService } from './toast-service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 
 /**
  * Login Component
  */
 export class LoginComponent implements OnInit {
-
   // Login Form
   loginForm!: FormGroup;
   submitted = false;
@@ -29,8 +28,14 @@ export class LoginComponent implements OnInit {
   // set the current year
   year: number = new Date().getFullYear();
 
-  constructor(private formBuilder: FormBuilder, private authenticationService: AuthenticationService, private router: Router,
-    private authFackservice: AuthfakeauthenticationService, private route: ActivatedRoute, public toastService: ToastService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private authenticationService: AuthenticationService,
+    private router: Router,
+    private authFackservice: AuthfakeauthenticationService,
+    private route: ActivatedRoute,
+    public toastService: ToastService,
+  ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
       this.router.navigate(['/']);
@@ -53,7 +58,9 @@ export class LoginComponent implements OnInit {
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.loginForm.controls; }
+  get f() {
+    return this.loginForm.controls;
+  }
 
   /**
    * Form submit
@@ -101,5 +108,4 @@ export class LoginComponent implements OnInit {
   toggleFieldTextType() {
     this.fieldTextType = !this.fieldTextType;
   }
-
 }

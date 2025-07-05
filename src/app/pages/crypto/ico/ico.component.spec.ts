@@ -8,9 +8,8 @@ describe('IcoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ IcoComponent ]
-    })
-    .compileComponents();
+      declarations: [IcoComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

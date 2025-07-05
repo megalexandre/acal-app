@@ -6,31 +6,26 @@ import { ICOModel } from 'src/app/store/Crypto/crypto_model';
 @Component({
   selector: 'app-ico',
   templateUrl: './ico.component.html',
-  styleUrls: ['./ico.component.scss']
+  styleUrls: ['./ico.component.scss'],
 })
 
 /**
  * Ico Component
  */
 export class IcoComponent implements OnInit {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   chatMessagesData!: ICOModel[];
   chatMessageDatas: any;
   term: any;
 
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     /**
-    * BreadCrumb
-    */
-    this.breadCrumbItems = [
-      { label: 'Crypto' },
-      { label: 'ICO List', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Crypto' }, { label: 'ICO List', active: true }];
 
     // Chat Data Get Function
     this._fetchData();
@@ -42,21 +37,18 @@ export class IcoComponent implements OnInit {
     this.chatMessageDatas = Object.assign([], this.chatMessagesData);
   }
 
-
   // Filtering
-  isstatus?: any
+  isstatus?: any;
   SearchData() {
-    var status = document.getElementById("choices-single-default2") as HTMLInputElement;
-    var rating = document.getElementById("choices-single-default") as HTMLInputElement;
-    var date = document.getElementById("isDate") as HTMLInputElement;
-    if (status.value != 'all' && status.value != '' || rating.value != 'all' && rating.value != '' || date.value != '') {
+    var status = document.getElementById('choices-single-default2') as HTMLInputElement;
+    var rating = document.getElementById('choices-single-default') as HTMLInputElement;
+    var date = document.getElementById('isDate') as HTMLInputElement;
+    if ((status.value != 'all' && status.value != '') || (rating.value != 'all' && rating.value != '') || date.value != '') {
       this.chatMessageDatas = this.chatMessagesData.filter((ico: any) => {
         return ico.date === date.value || ico.status === status.value || ico.rating >= rating.value;
       });
-    }
-    else {
+    } else {
       this.chatMessageDatas = this.chatMessagesData;
     }
   }
-
 }

@@ -6,29 +6,25 @@ import { SlickCarouselComponent } from 'ngx-slick-carousel';
 @Component({
   selector: 'app-swiper',
   templateUrl: './swiper.component.html',
-  styleUrls: ['./swiper.component.scss']
+  styleUrls: ['./swiper.component.scss'],
 })
 
 /**
  * Swiper Component
  */
 export class SwipersComponent implements OnInit {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
 
   @ViewChild('slickCarousel') slickCarousel!: SlickCarouselComponent;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     /**
-    * BreadCrumb
-    */
-     this.breadCrumbItems = [
-      { label: 'Advance UI' },
-      { label: 'Swiper Slider', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Advance UI' }, { label: 'Swiper Slider', active: true }];
   }
 
   slideConfig = {
@@ -36,7 +32,7 @@ export class SwipersComponent implements OnInit {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    arrows: false
+    arrows: false,
   };
 
   Navigation = {
@@ -44,7 +40,7 @@ export class SwipersComponent implements OnInit {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    arrows: true
+    arrows: true,
   };
 
   Pagination = {
@@ -54,7 +50,7 @@ export class SwipersComponent implements OnInit {
     autoplay: true,
     dots: true,
     autoplaySpeed: 2000,
-    arrows: false
+    arrows: false,
   };
 
   PaginationFraction = {
@@ -70,8 +66,8 @@ export class SwipersComponent implements OnInit {
     customPaging: (slider: any, index: number) => {
       // Customize the pagination here
       return `<button>${index + 1}</button>`;
-    }
-  }
+    },
+  };
 
   verticalConfig = {
     infinite: true,
@@ -80,8 +76,8 @@ export class SwipersComponent implements OnInit {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
-    vertical: true // Enable vertical sliding
-  }
+    vertical: true, // Enable vertical sliding
+  };
 
   carouselConfig = {
     slidesToShow: 1,
@@ -89,7 +85,7 @@ export class SwipersComponent implements OnInit {
     autoplay: true,
     autoplaySpeed: 2000,
     vertical: true,
-    arrows: false
+    arrows: false,
   };
 
   fadeConfig = {
@@ -98,8 +94,8 @@ export class SwipersComponent implements OnInit {
     slidesToScroll: 1,
     autoplay: true,
     fade: true,
-    arrows: false
-  }
+    arrows: false,
+  };
 
   coverflowConfig = {
     slidesToShow: 3,
@@ -110,14 +106,14 @@ export class SwipersComponent implements OnInit {
     arrows: false,
     autoplay: true,
     autoplaySpeed: 2000,
-  }
+  };
 
   Responsive = {
     infinite: true,
     slidesToShow: 4,
     autoplay: true,
     dots: true,
-    arrows: false
+    arrows: false,
   };
 
   @HostListener('mousewheel', ['$event'])
@@ -131,5 +127,4 @@ export class SwipersComponent implements OnInit {
       this.slickCarousel.slickPrev();
     }
   }
-
 }

@@ -18,32 +18,26 @@ export class GridComponent implements OnInit {
   searchResults: any;
   date: any;
 
-  constructor(public service: PaginationService) {
-  }
+  constructor(public service: PaginationService) {}
 
   ngOnInit(): void {
     /**
- * BreadCrumb
- */
-    this.breadCrumbItems = [
-      { label: 'Jobs' },
-      { label: 'Job Grid Lists', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Jobs' }, { label: 'Job Grid Lists', active: true }];
 
     // Fetch Data
     setTimeout(() => {
       this.jobgrids = jobgrid;
       this.alljobgrids = jobgrid;
-      document.getElementById('elmLoader')?.classList.add('d-none')
-    }, 1200)
-
+      document.getElementById('elmLoader')?.classList.add('d-none');
+    }, 1200);
   }
 
   // Pagination
   changePage() {
-    this.jobgrids = this.service.changePage(this.alljobgrids)
+    this.jobgrids = this.service.changePage(this.alljobgrids);
   }
-
 
   // Search Data
   performSearch(): void {
@@ -56,8 +50,6 @@ export class GridComponent implements OnInit {
         item.date.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     });
-    this.jobgrids = this.service.changePage(this.searchResults)
+    this.jobgrids = this.service.changePage(this.searchResults);
   }
-
-
 }

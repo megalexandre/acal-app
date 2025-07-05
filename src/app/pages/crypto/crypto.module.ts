@@ -23,7 +23,7 @@ import { DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 
 // Load Icons
-import { defineElement } from "@lordicon/element";
+import { defineElement } from '@lordicon/element';
 import lottie from 'lottie-web';
 
 // Component pages
@@ -36,23 +36,14 @@ import { WalletComponent } from './wallet/wallet.component';
 import { IcoComponent } from './ico/ico.component';
 import { KycComponent } from './kyc/kyc.component';
 
-
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   url: 'https://httpbin.org/post',
   maxFilesize: 50,
-  acceptedFiles: 'image/*'
+  acceptedFiles: 'image/*',
 };
 
-
 @NgModule({
-  declarations: [
-    TransactionsComponent,
-    BuySellComponent,
-    OrdersComponent,
-    WalletComponent,
-    IcoComponent,
-    KycComponent,
-  ],
+  declarations: [TransactionsComponent, BuySellComponent, OrdersComponent, WalletComponent, IcoComponent, KycComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -68,9 +59,9 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     DropzoneModule,
     CryptoRoutingModule,
     SharedModule,
-    NgPipesModule
+    NgPipesModule,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CryptoModule {
   constructor() {

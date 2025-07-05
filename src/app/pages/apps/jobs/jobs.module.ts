@@ -23,25 +23,17 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { FeatherModule } from 'angular-feather';
 import { allIcons } from 'angular-feather/icons';
 
-
 // Flat Picker
 import { FlatpickrModule } from 'angularx-flatpickr';
 
 // Ng Select
 import { NgSelectModule } from '@ng-select/ng-select';
 // Load Icon
-import { defineElement } from "@lordicon/element";
+import { defineElement } from '@lordicon/element';
 import lottie from 'lottie-web';
 
-
 @NgModule({
-  declarations: [
-    ApplicationComponent,
-    StatisticsComponent,
-    NewjobComponent,
-    CompanieslistComponent,
-    JobcategoriesComponent,
-  ],
+  declarations: [ApplicationComponent, StatisticsComponent, NewjobComponent, CompanieslistComponent, JobcategoriesComponent],
   imports: [
     CommonModule,
     JobsRoutingModule,
@@ -57,9 +49,9 @@ import lottie from 'lottie-web';
     NgSelectModule,
     NgbPaginationModule,
     NgbNavModule,
-    CandidateListsModule
+    CandidateListsModule,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class JobsModule {
   constructor() {

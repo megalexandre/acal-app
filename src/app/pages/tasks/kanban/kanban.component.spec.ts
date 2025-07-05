@@ -8,9 +8,8 @@ describe('KanbanComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ KanbanComponent ]
-    })
-    .compileComponents();
+      declarations: [KanbanComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

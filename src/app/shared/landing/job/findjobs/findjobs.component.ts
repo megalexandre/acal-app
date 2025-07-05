@@ -6,17 +6,15 @@ import { findjob } from './data';
 @Component({
   selector: 'app-findjobs',
   templateUrl: './findjobs.component.html',
-  styleUrls: ['./findjobs.component.scss']
+  styleUrls: ['./findjobs.component.scss'],
 })
 export class FindjobsComponent implements OnInit {
-
   findjobs: any;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     // Fetch Data
-    this.findjobs = findjob
+    this.findjobs = findjob;
   }
-
 }

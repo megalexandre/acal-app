@@ -27,7 +27,7 @@ import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 
 // Load Icons
-import { defineElement } from "@lordicon/element";
+import { defineElement } from '@lordicon/element';
 import lottie from 'lottie-web';
 
 // Component pages
@@ -49,7 +49,7 @@ import { LayoutsComponent } from './layouts/layouts.component';
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   url: 'https://httpbin.org/post',
   maxFilesize: 50,
-  acceptedFiles: 'image/*'
+  acceptedFiles: 'image/*',
 };
 
 @NgModule({
@@ -65,7 +65,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     WizardComponent,
     EditorsComponent,
     FileUploadsComponent,
-    LayoutsComponent
+    LayoutsComponent,
   ],
   imports: [
     CommonModule,
@@ -86,12 +86,10 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     DropzoneModule,
     AutocompleteLibModule,
     FormRoutingModule,
-    SharedModule
+    SharedModule,
   ],
-  providers: [
-    provideNgxMask(),
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  providers: [provideNgxMask()],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class FormModule {
   constructor() {

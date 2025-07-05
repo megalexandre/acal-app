@@ -7,7 +7,7 @@ import { UntypedFormBuilder } from '@angular/forms';
 import Swal from 'sweetalert2';
 
 // Rest Api Service
-import { restApiService } from "../../../core/services/rest-api.service";
+import { restApiService } from '../../../core/services/rest-api.service';
 import { RootReducerState } from 'src/app/store';
 import { Store } from '@ngrx/store';
 import { deleteInvoice, fetchInvoiceListData } from 'src/app/store/Invoice/invoice_action';
@@ -16,18 +16,16 @@ import { cloneDeep } from 'lodash';
 import { PaginationService } from 'src/app/core/services/pagination.service';
 import { InvoiceListModel } from 'src/app/store/Invoice/invoice_model';
 
-
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  styleUrls: ['./list.component.scss'],
 })
 
 /**
  * List Component
  */
 export class ListComponent {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   CustomersData!: InvoiceListModel[];
@@ -43,19 +41,20 @@ export class ListComponent {
   date: any;
   status: any = '';
 
-  constructor(private modalService: NgbModal, public service: PaginationService,
-    private formBuilder: UntypedFormBuilder, private restApiService: restApiService,
-    private store: Store<{ data: RootReducerState }>, private datePipe: DatePipe) {
-  }
+  constructor(
+    private modalService: NgbModal,
+    public service: PaginationService,
+    private formBuilder: UntypedFormBuilder,
+    private restApiService: restApiService,
+    private store: Store<{ data: RootReducerState }>,
+    private datePipe: DatePipe,
+  ) {}
 
   ngOnInit(): void {
     /**
-    * BreadCrumb
-    */
-    this.breadCrumbItems = [
-      { label: 'Invoices' },
-      { label: 'Invoice List', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Invoices' }, { label: 'Invoice List', active: true }];
 
     /**
      * fetches data
@@ -70,7 +69,7 @@ export class ListComponent {
     this.store.select(selectInvoiceData).subscribe((data) => {
       this.invoices = data;
       this.allinvoices = cloneDeep(data);
-      this.invoices = this.service.changePage(this.allinvoices)
+      this.invoices = this.service.changePage(this.allinvoices);
     });
   }
 
@@ -103,14 +102,13 @@ export class ListComponent {
     this.masterSelected = false;
   }
 
-
   /**
-  * Multiple Delete
-  */
+   * Multiple Delete
+   */
   checkedValGet: any[] = [];
   deleteMultiple(content: any) {
     var checkboxes: any = document.getElementsByName('checkAll');
-    var result
+    var result;
     var checkedVal: any[] = [];
     for (var i = 0; i < checkboxes.length; i++) {
       if (checkboxes[i].checked) {
@@ -120,68 +118,64 @@ export class ListComponent {
     }
     if (checkedVal.length > 0) {
       this.modalService.open(content, { centered: true });
-    }
-    else {
-      Swal.fire({ text: 'Please select at least one checkbox', confirmButtonColor: '#299cdb', });
+    } else {
+      Swal.fire({ text: 'Please select at least one checkbox', confirmButtonColor: '#299cdb' });
     }
     this.checkedValGet = checkedVal;
   }
 
   // The master checkbox will check/ uncheck all items
   checkUncheckAll(ev: any) {
-    this.invoices.forEach((x: { state: any; }) => x.state = ev.target.checked)
+    this.invoices.forEach((x: { state: any }) => (x.state = ev.target.checked));
     var checkedVal: any[] = [];
-    var result
+    var result;
     for (var i = 0; i < this.invoices.length; i++) {
       if (this.invoices[i].state == true) {
         result = this.invoices[i];
         checkedVal.push(result);
       }
     }
-    this.checkedValGet = checkedVal
-    checkedVal.length > 0 ? (document.getElementById("remove-actions") as HTMLElement).style.display = "block" : (document.getElementById("remove-actions") as HTMLElement).style.display = "none";
+    this.checkedValGet = checkedVal;
+    checkedVal.length > 0 ? ((document.getElementById('remove-actions') as HTMLElement).style.display = 'block') : ((document.getElementById('remove-actions') as HTMLElement).style.display = 'none');
   }
 
   // Select Checkbox value Get
   onCheckboxChange(e: any) {
     var checkedVal: any[] = [];
-    var result
+    var result;
     for (var i = 0; i < this.invoices.length; i++) {
       if (this.invoices[i].state == true) {
         result = this.invoices[i];
         checkedVal.push(result);
       }
     }
-    this.checkedValGet = checkedVal
-    checkedVal.length > 0 ? (document.getElementById("remove-actions") as HTMLElement).style.display = "block" : (document.getElementById("remove-actions") as HTMLElement).style.display = "none";
+    this.checkedValGet = checkedVal;
+    checkedVal.length > 0 ? ((document.getElementById('remove-actions') as HTMLElement).style.display = 'block') : ((document.getElementById('remove-actions') as HTMLElement).style.display = 'none');
   }
 
   // Pagination
   changePage() {
-    this.invoices = this.service.changePage(this.allinvoices)
+    this.invoices = this.service.changePage(this.allinvoices);
   }
 
   // Search Data
   performSearch(): void {
     this.searchResults = this.allinvoices.filter((item: any) => {
-      return (
-        item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
+      return item.name.toLowerCase().includes(this.searchTerm.toLowerCase());
     });
-    this.invoices = this.service.changePage(this.searchResults)
+    this.invoices = this.service.changePage(this.searchResults);
   }
 
   // Sort Data
   onSort(column: any) {
-    this.invoices = this.service.onSort(column, this.invoices)
+    this.invoices = this.service.onSort(column, this.invoices);
   }
 
   statusFilter() {
     if (this.status != '') {
       this.invoices = this.allinvoices.filter((invoice: any) => invoice.status == this.status);
     } else {
-      this.invoices = this.allinvoices
+      this.invoices = this.allinvoices;
     }
   }
-
 }

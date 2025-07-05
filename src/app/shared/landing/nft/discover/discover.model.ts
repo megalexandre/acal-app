@@ -9,4 +9,3 @@ export interface discoverModel {
   category: string;
   isIcon?: any;
 }
-  

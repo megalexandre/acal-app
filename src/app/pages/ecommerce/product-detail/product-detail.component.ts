@@ -8,14 +8,13 @@ import { SlickCarouselComponent } from 'ngx-slick-carousel';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
-  styleUrls: ['./product-detail.component.scss']
+  styleUrls: ['./product-detail.component.scss'],
 })
 
 /**
  * ProductDetail Component
  */
 export class ProductDetailComponent implements OnInit {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   public productDetail!: productModel[];
@@ -26,37 +25,37 @@ export class ProductDetailComponent implements OnInit {
 
   @ViewChild('slickModal') slickModal!: SlickCarouselComponent;
 
-  constructor(private route: ActivatedRoute, private modalService: NgbModal) {
+  constructor(
+    private route: ActivatedRoute,
+    private modalService: NgbModal,
+  ) {
+    this.products = this.route.snapshot.params;
 
-    this.products = this.route.snapshot.params
-
-    this.route.params.subscribe(params =>
-      this.productDetail = productList.filter(function (product) {
-        return product.id == parseInt(params['id'])
-      })
+    this.route.params.subscribe(
+      (params) =>
+        (this.productDetail = productList.filter(function (product) {
+          return product.id == parseInt(params['id']);
+        })),
     );
     this.isImage = this.productDetail[0].images[0];
   }
 
   ngOnInit(): void {
     /**
-   * BreadCrumb
-   */
-    this.breadCrumbItems = [
-      { label: 'Ecommerce' },
-      { label: 'Product Details', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Ecommerce' }, { label: 'Product Details', active: true }];
   }
 
   /**
- * Swiper setting
- */
+   * Swiper setting
+   */
   config = {
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    arrows: false
+    arrows: false,
   };
 
   slidesConfig = {
@@ -65,20 +64,18 @@ export class ProductDetailComponent implements OnInit {
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
-  }
+  };
 
   slickChange(event: any) {
-    const swiper = document.querySelectorAll('.swiperlist')
+    const swiper = document.querySelectorAll('.swiperlist');
   }
 
   slidePreview(id: any, event: any) {
-    const swiper = document.querySelectorAll('.swiperlist')
+    const swiper = document.querySelectorAll('.swiperlist');
     swiper.forEach((el: any) => {
-      el.classList.remove('swiper-slide-thumb-active')
-    })
-    event.target.closest('.swiperlist').classList.add('swiper-slide-thumb-active')
-    this.slickModal.slickGoTo(id)
+      el.classList.remove('swiper-slide-thumb-active');
+    });
+    event.target.closest('.swiperlist').classList.add('swiper-slide-thumb-active');
+    this.slickModal.slickGoTo(id);
   }
-
-
 }

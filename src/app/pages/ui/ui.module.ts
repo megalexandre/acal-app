@@ -3,13 +3,22 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import {
-  NgbAlertModule, NgbCarouselModule, NgbDropdownModule, NgbModalModule, NgbProgressbarModule,
-  NgbTooltipModule, NgbPopoverModule, NgbPaginationModule, NgbNavModule, NgbAccordionModule,
-  NgbCollapseModule, NgbToastModule
+  NgbAlertModule,
+  NgbCarouselModule,
+  NgbDropdownModule,
+  NgbModalModule,
+  NgbProgressbarModule,
+  NgbTooltipModule,
+  NgbPopoverModule,
+  NgbPaginationModule,
+  NgbNavModule,
+  NgbAccordionModule,
+  NgbCollapseModule,
+  NgbToastModule,
 } from '@ng-bootstrap/ng-bootstrap';
 
 // Load Icons
-import { defineElement } from "@lordicon/element";
+import { defineElement } from '@lordicon/element';
 import lottie from 'lottie-web';
 
 import { SimplebarAngularModule } from 'simplebar-angular';
@@ -44,9 +53,31 @@ import { ToastsContainer } from './notifications/toasts-container.component';
 import { LinksComponent } from './links/links.component';
 
 @NgModule({
-  declarations: [AlertsComponent, ButtonsComponent, BadgesComponent, ColorsComponent, CardsComponent, CarouselComponent, DropdownsComponent, GridComponent, ImagesComponent, TabsComponent, AccordionsComponent, ModalsComponent, PlaceholderComponent, ProgressComponent, NotificationsComponent, MediaComponent, VideoComponent, TypographyComponent, ListComponent, GeneralComponent, RibbonsComponent, UtilitiesComponent,
+  declarations: [
+    AlertsComponent,
+    ButtonsComponent,
+    BadgesComponent,
+    ColorsComponent,
+    CardsComponent,
+    CarouselComponent,
+    DropdownsComponent,
+    GridComponent,
+    ImagesComponent,
+    TabsComponent,
+    AccordionsComponent,
+    ModalsComponent,
+    PlaceholderComponent,
+    ProgressComponent,
+    NotificationsComponent,
+    MediaComponent,
+    VideoComponent,
+    TypographyComponent,
+    ListComponent,
+    GeneralComponent,
+    RibbonsComponent,
+    UtilitiesComponent,
     ToastsContainer,
-    LinksComponent
+    LinksComponent,
   ],
   imports: [
     CommonModule,
@@ -66,9 +97,9 @@ import { LinksComponent } from './links/links.component';
     NgbCollapseModule,
     NgbToastModule,
     SimplebarAngularModule,
-    NgxMasonryModule
+    NgxMasonryModule,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class UiModule {
   constructor() {

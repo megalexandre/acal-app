@@ -1,7 +1,7 @@
 /**
  * Group User List
  */
- export interface teamModel {
+export interface teamModel {
   id: any;
   backgroundImg: string;
   userImage?: any;

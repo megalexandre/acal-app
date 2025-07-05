@@ -8,9 +8,8 @@ describe('SlopeareaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SlopeareaComponent]
-    })
-    .compileComponents();
+      imports: [SlopeareaComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SlopeareaComponent);
     component = fixture.componentInstance;

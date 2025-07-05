@@ -8,9 +8,8 @@ describe('RangeAreaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RangeAreaComponent ]
-    })
-    .compileComponents();
+      declarations: [RangeAreaComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(RangeAreaComponent);
     component = fixture.componentInstance;

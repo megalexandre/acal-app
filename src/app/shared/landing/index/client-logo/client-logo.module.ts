@@ -1,4 +1,3 @@
 export interface clientLogoModel {
-    image: string;
-  }
-  
+  image: string;
+}

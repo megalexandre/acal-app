@@ -9,14 +9,13 @@ import { BestSelling, Recentelling, TopSelling, statData } from 'src/app/core/da
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
 })
 
 /**
  * Ecommerce Component
  */
 export class DashboardComponent implements OnInit {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   analyticsChart!: ChartType;
@@ -33,17 +32,14 @@ export class DashboardComponent implements OnInit {
     var date = new Date();
     var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
     var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-    this.currentDate = { from: firstDay, to: lastDay }
+    this.currentDate = { from: firstDay, to: lastDay };
   }
 
   ngOnInit(): void {
     /**
      * BreadCrumb
      */
-    this.breadCrumbItems = [
-      { label: 'Dashboards' },
-      { label: 'Dashboard', active: true }
-    ];
+    this.breadCrumbItems = [{ label: 'Dashboards' }, { label: 'Dashboard', active: true }];
 
     if (sessionStorage.getItem('toast')) {
       this.toastService.show('Logged in Successfull.', { classname: 'bg-success text-center text-white', delay: 5000 });
@@ -51,8 +47,8 @@ export class DashboardComponent implements OnInit {
     }
 
     /**
-    * Fetches the data
-    */
+     * Fetches the data
+     */
     this.fetchData();
 
     // Chart Color Data Get Function
@@ -64,19 +60,18 @@ export class DashboardComponent implements OnInit {
   private getChartColorsArray(colors: any) {
     colors = JSON.parse(colors);
     return colors.map(function (value: any) {
-      var newValue = value.replace(" ", "");
-      if (newValue.indexOf(",") === -1) {
+      var newValue = value.replace(' ', '');
+      if (newValue.indexOf(',') === -1) {
         var color = getComputedStyle(document.documentElement).getPropertyValue(newValue);
         if (color) {
-          color = color.replace(" ", "");
+          color = color.replace(' ', '');
           return color;
-        }
-        else return newValue;;
+        } else return newValue;
       } else {
         var val = value.split(',');
         if (val.length == 2) {
           var rgbaColor = getComputedStyle(document.documentElement).getPropertyValue(val[0]);
-          rgbaColor = "rgba(" + rgbaColor + "," + val[1] + ")";
+          rgbaColor = 'rgba(' + rgbaColor + ',' + val[1] + ')';
           return rgbaColor;
         } else {
           return newValue;
@@ -85,70 +80,85 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-
   /**
- * Sales Analytics Chart
- */
+   * Sales Analytics Chart
+   */
   setrevenuevalue(value: any) {
     if (value == 'all') {
-      this.analyticsChart.series = [{
-        name: 'Orders',
-        type: 'area',
-        data: [34, 65, 46, 68, 49, 61, 42, 44, 78, 52, 63, 67]
-      }, {
-        name: 'Earnings',
-        type: 'bar',
-        data: [89.25, 98.58, 68.74, 108.87, 77.54, 84.03, 51.24, 28.57, 92.57, 42.36, 88.51, 36.57]
-      }, {
-        name: 'Refunds',
-        type: 'line',
-        data: [8, 12, 7, 17, 21, 11, 5, 9, 7, 29, 12, 35]
-      }]
+      this.analyticsChart.series = [
+        {
+          name: 'Orders',
+          type: 'area',
+          data: [34, 65, 46, 68, 49, 61, 42, 44, 78, 52, 63, 67],
+        },
+        {
+          name: 'Earnings',
+          type: 'bar',
+          data: [89.25, 98.58, 68.74, 108.87, 77.54, 84.03, 51.24, 28.57, 92.57, 42.36, 88.51, 36.57],
+        },
+        {
+          name: 'Refunds',
+          type: 'line',
+          data: [8, 12, 7, 17, 21, 11, 5, 9, 7, 29, 12, 35],
+        },
+      ];
     }
     if (value == '1M') {
-      this.analyticsChart.series = [{
-        name: 'Orders',
-        type: 'area',
-        data: [24, 75, 16, 98, 19, 41, 52, 34, 28, 52, 63, 67]
-      }, {
-        name: 'Earnings',
-        type: 'bar',
-        data: [99.25, 28.58, 98.74, 12.87, 107.54, 94.03, 11.24, 48.57, 22.57, 42.36, 88.51, 36.57]
-      }, {
-        name: 'Refunds',
-        type: 'line',
-        data: [28, 22, 17, 27, 21, 11, 5, 9, 17, 29, 12, 15]
-      }]
+      this.analyticsChart.series = [
+        {
+          name: 'Orders',
+          type: 'area',
+          data: [24, 75, 16, 98, 19, 41, 52, 34, 28, 52, 63, 67],
+        },
+        {
+          name: 'Earnings',
+          type: 'bar',
+          data: [99.25, 28.58, 98.74, 12.87, 107.54, 94.03, 11.24, 48.57, 22.57, 42.36, 88.51, 36.57],
+        },
+        {
+          name: 'Refunds',
+          type: 'line',
+          data: [28, 22, 17, 27, 21, 11, 5, 9, 17, 29, 12, 15],
+        },
+      ];
     }
     if (value == '6M') {
-      this.analyticsChart.series = [{
-        name: 'Orders',
-        type: 'area',
-        data: [34, 75, 66, 78, 29, 41, 32, 44, 58, 52, 43, 77]
-      }, {
-        name: 'Earnings',
-        type: 'bar',
-        data: [109.25, 48.58, 38.74, 57.87, 77.54, 84.03, 31.24, 18.57, 92.57, 42.36, 48.51, 56.57]
-      }, {
-        name: 'Refunds',
-        type: 'line',
-        data: [12, 22, 17, 27, 1, 51, 5, 9, 7, 29, 12, 35]
-      }]
+      this.analyticsChart.series = [
+        {
+          name: 'Orders',
+          type: 'area',
+          data: [34, 75, 66, 78, 29, 41, 32, 44, 58, 52, 43, 77],
+        },
+        {
+          name: 'Earnings',
+          type: 'bar',
+          data: [109.25, 48.58, 38.74, 57.87, 77.54, 84.03, 31.24, 18.57, 92.57, 42.36, 48.51, 56.57],
+        },
+        {
+          name: 'Refunds',
+          type: 'line',
+          data: [12, 22, 17, 27, 1, 51, 5, 9, 7, 29, 12, 35],
+        },
+      ];
     }
     if (value == '1Y') {
-      this.analyticsChart.series = [{
-        name: 'Orders',
-        type: 'area',
-        data: [34, 65, 46, 68, 49, 61, 42, 44, 78, 52, 63, 67]
-      }, {
-        name: 'Earnings',
-        type: 'bar',
-        data: [89.25, 98.58, 68.74, 108.87, 77.54, 84.03, 51.24, 28.57, 92.57, 42.36, 88.51, 36.57]
-      }, {
-        name: 'Refunds',
-        type: 'line',
-        data: [8, 12, 7, 17, 21, 11, 5, 9, 7, 29, 12, 35]
-      }]
+      this.analyticsChart.series = [
+        {
+          name: 'Orders',
+          type: 'area',
+          data: [34, 65, 46, 68, 49, 61, 42, 44, 78, 52, 63, 67],
+        },
+        {
+          name: 'Earnings',
+          type: 'bar',
+          data: [89.25, 98.58, 68.74, 108.87, 77.54, 84.03, 51.24, 28.57, 92.57, 42.36, 88.51, 36.57],
+        },
+        {
+          name: 'Refunds',
+          type: 'line',
+          data: [8, 12, 7, 17, 21, 11, 5, 9, 7, 29, 12, 35],
+        },
+      ];
     }
   }
 
@@ -157,30 +167,34 @@ export class DashboardComponent implements OnInit {
     this.analyticsChart = {
       chart: {
         height: 370,
-        type: "line",
+        type: 'line',
         toolbar: {
           show: false,
         },
       },
       stroke: {
-        curve: "straight",
+        curve: 'straight',
         dashArray: [0, 0, 8],
         width: [2, 0, 2.2],
       },
       colors: colors,
-      series: [{
-        name: 'Orders',
-        type: 'area',
-        data: [24, 75, 16, 98, 19, 41, 52, 34, 28, 52, 63, 67]
-      }, {
-        name: 'Earnings',
-        type: 'bar',
-        data: [99.25, 28.58, 98.74, 12.87, 107.54, 94.03, 11.24, 48.57, 22.57, 42.36, 88.51, 36.57]
-      }, {
-        name: 'Refunds',
-        type: 'line',
-        data: [28, 22, 17, 27, 21, 11, 5, 9, 17, 29, 12, 15]
-      }],
+      series: [
+        {
+          name: 'Orders',
+          type: 'area',
+          data: [24, 75, 16, 98, 19, 41, 52, 34, 28, 52, 63, 67],
+        },
+        {
+          name: 'Earnings',
+          type: 'bar',
+          data: [99.25, 28.58, 98.74, 12.87, 107.54, 94.03, 11.24, 48.57, 22.57, 42.36, 88.51, 36.57],
+        },
+        {
+          name: 'Refunds',
+          type: 'line',
+          data: [28, 22, 17, 27, 21, 11, 5, 9, 17, 29, 12, 15],
+        },
+      ],
       fill: {
         opacity: [0.1, 0.9, 1],
       },
@@ -193,20 +207,7 @@ export class DashboardComponent implements OnInit {
         },
       },
       xaxis: {
-        categories: [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec",
-        ],
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         axisTicks: {
           show: false,
         },
@@ -235,7 +236,7 @@ export class DashboardComponent implements OnInit {
       },
       legend: {
         show: true,
-        horizontalAlign: "center",
+        horizontalAlign: 'center',
         offsetX: 0,
         offsetY: -5,
         markers: {
@@ -250,43 +251,43 @@ export class DashboardComponent implements OnInit {
       },
       plotOptions: {
         bar: {
-          columnWidth: "30%",
-          barHeight: "70%",
+          columnWidth: '30%',
+          barHeight: '70%',
         },
       },
     };
   }
 
   /**
- *  Sales Category
- */
+   *  Sales Category
+   */
   private _SalesCategoryChart(colors: any) {
     colors = this.getChartColorsArray(colors);
     this.SalesCategoryChart = {
       series: [44, 55, 41, 17, 15],
-      labels: ["Direct", "Social", "Email", "Other", "Referrals"],
+      labels: ['Direct', 'Social', 'Email', 'Other', 'Referrals'],
       chart: {
         height: 333,
-        type: "donut",
+        type: 'donut',
       },
       legend: {
-        position: "bottom",
+        position: 'bottom',
       },
       stroke: {
-        show: false
+        show: false,
       },
       dataLabels: {
         dropShadow: {
           enabled: false,
         },
       },
-      colors: colors
+      colors: colors,
     };
   }
 
   /**
-  * Fetches the data
-  */
+   * Fetches the data
+   */
   private fetchData() {
     this.BestSelling = BestSelling;
     this.TopSelling = TopSelling;
@@ -295,24 +296,24 @@ export class DashboardComponent implements OnInit {
   }
 
   /**
- * Sale Location Map
- */
+   * Sale Location Map
+   */
   options = {
     layers: [
-      tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoidGhlbWVzYnJhbmQiLCJhIjoiY2xmbmc3bTV4MGw1ejNzbnJqOWpubzhnciJ9.DNkdZVKLnQ6I9NOz7EED-w", {
-        id: "mapbox/light-v9",
+      tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoidGhlbWVzYnJhbmQiLCJhIjoiY2xmbmc3bTV4MGw1ejNzbnJqOWpubzhnciJ9.DNkdZVKLnQ6I9NOz7EED-w', {
+        id: 'mapbox/light-v9',
         tileSize: 512,
         zoomOffset: 0,
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-      })
+      }),
     ],
     zoom: 1.1,
-    center: latLng(28, 1.5)
+    center: latLng(28, 1.5),
   };
   layers = [
-    circle([41.9, 12.45], { color: "#435fe3", opacity: 0.5, weight: 10, fillColor: "#435fe3", fillOpacity: 1, radius: 400000, }),
-    circle([12.05, -61.75], { color: "#435fe3", opacity: 0.5, weight: 10, fillColor: "#435fe3", fillOpacity: 1, radius: 400000, }),
-    circle([1.3, 103.8], { color: "#435fe3", opacity: 0.5, weight: 10, fillColor: "#435fe3", fillOpacity: 1, radius: 400000, }),
+    circle([41.9, 12.45], { color: '#435fe3', opacity: 0.5, weight: 10, fillColor: '#435fe3', fillOpacity: 1, radius: 400000 }),
+    circle([12.05, -61.75], { color: '#435fe3', opacity: 0.5, weight: 10, fillColor: '#435fe3', fillOpacity: 1, radius: 400000 }),
+    circle([1.3, 103.8], { color: '#435fe3', opacity: 0.5, weight: 10, fillColor: '#435fe3', fillOpacity: 1, radius: 400000 }),
   ];
 
   num: number = 0;
@@ -324,7 +325,7 @@ export class DashboardComponent implements OnInit {
   };
 
   /**
-  * Swiper Vertical  
+   * Swiper Vertical
    */
   Vertical = {
     infinite: true,
@@ -333,7 +334,7 @@ export class DashboardComponent implements OnInit {
     slidesToShow: 2,
     slidesToScroll: 1,
     arrows: false,
-    vertical: true // Enable vertical sliding
+    vertical: true, // Enable vertical sliding
   };
 
   /**
@@ -364,5 +365,4 @@ export class DashboardComponent implements OnInit {
       recentActivity.classList.remove('d-block');
     }
   }
-
 }

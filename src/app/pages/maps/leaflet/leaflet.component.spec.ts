@@ -8,9 +8,8 @@ describe('LeafletComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LeafletComponent ]
-    })
-    .compileComponents();
+      declarations: [LeafletComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

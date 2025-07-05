@@ -3,9 +3,9 @@
 //
 
 .leaflet-map {
-    height: 300px;
-    &.leaflet-container{
-        z-index: 0;
-        font-family: $font-family-primary;
-    }
+  height: 300px;
+  &.leaflet-container {
+    z-index: 0;
+    font-family: $font-family-primary;
+  }
 }

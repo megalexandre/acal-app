@@ -8,9 +8,8 @@ describe('TourComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TourComponent ]
-    })
-    .compileComponents();
+      declarations: [TourComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

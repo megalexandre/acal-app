@@ -8,7 +8,7 @@ describe('MonthGridComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MonthGridComponent]
+      declarations: [MonthGridComponent],
     });
     fixture = TestBed.createComponent(MonthGridComponent);
     component = fixture.componentInstance;

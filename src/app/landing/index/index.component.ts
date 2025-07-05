@@ -3,22 +3,20 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
-  styleUrls: ['./index.component.scss']
+  styleUrls: ['./index.component.scss'],
 })
 
 /**
  * Index Component
  */
 export class IndexComponent implements OnInit {
-
   currentSection = 'home';
   showNavigationArrows: any;
   showNavigationIndicators: any;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   /**
    * Window scroll method
@@ -28,29 +26,27 @@ export class IndexComponent implements OnInit {
     const navbar = document.getElementById('navbar');
     if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40) {
       navbar?.classList.add('is-sticky');
-    }
-    else {
+    } else {
       navbar?.classList.remove('is-sticky');
     }
 
     // Top Btn Set
     if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-      (document.getElementById("back-to-top") as HTMLElement).style.display = "block"
+      (document.getElementById('back-to-top') as HTMLElement).style.display = 'block';
     } else {
-      (document.getElementById("back-to-top") as HTMLElement).style.display = "none"
+      (document.getElementById('back-to-top') as HTMLElement).style.display = 'none';
     }
-
   }
 
-   /**
+  /**
    * Section changed method
    * @param sectionId specify the current sectionID
    */
-    onSectionChange(sectionId: string) {
-      this.currentSection = sectionId;
-    }
+  onSectionChange(sectionId: string) {
+    this.currentSection = sectionId;
+  }
 
-     /**
+  /**
    * Toggle navbar
    */
   toggleMenu() {
@@ -62,5 +58,4 @@ export class IndexComponent implements OnInit {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   }
-
 }

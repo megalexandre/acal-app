@@ -1,7 +1,6 @@
 export const environment = {
   production: false,
 
-  
   apiUrl: 'http://localhost:8080',
 
   defaultauth: 'fackbackend',
@@ -13,6 +12,6 @@ export const environment = {
     storageBucket: '',
     messagingSenderId: '',
     appId: '',
-    measurementId: ''
-  }
+    measurementId: '',
+  },
 };

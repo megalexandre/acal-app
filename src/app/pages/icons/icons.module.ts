@@ -18,21 +18,7 @@ import { IconsCryptoComponent } from './icons-crypto/icons-crypto.component';
 import { ToastsContainerallicon } from './toasts-container.component';
 
 @NgModule({
-  declarations: [
-    BoxiconsComponent,
-    MaterialdesignComponent,
-    FeatherComponent,
-    RemixComponent,
-    LineawesomeComponent,
-    IconsCryptoComponent,
-    ToastsContainerallicon
-  ],
-  imports: [
-    CommonModule,
-    NgbToastModule,
-    FeatherModule.pick(allIcons),
-    IconsRoutingModule,
-    SharedModule
-  ]
+  declarations: [BoxiconsComponent, MaterialdesignComponent, FeatherComponent, RemixComponent, LineawesomeComponent, IconsCryptoComponent, ToastsContainerallicon],
+  imports: [CommonModule, NgbToastModule, FeatherModule.pick(allIcons), IconsRoutingModule, SharedModule],
 })
-export class IconsModule { }
+export class IconsModule {}

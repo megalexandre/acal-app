@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 
 import {
   ArcElement,
@@ -19,7 +19,7 @@ import {
   RadialLinearScale,
   Title,
   Tooltip,
-} from "chart.js";
+} from 'chart.js';
 Chart.register(
   CategoryScale,
   LinearScale,
@@ -36,12 +36,12 @@ Chart.register(
   PolarAreaController,
   RadialLinearScale,
   PieController,
-  RadarController
+  RadarController,
 );
 @Component({
-  selector: "app-chartjs",
-  templateUrl: "./chartjs.component.html",
-  styleUrls: ["./chartjs.component.scss"],
+  selector: 'app-chartjs',
+  templateUrl: './chartjs.component.html',
+  styleUrls: ['./chartjs.component.scss'],
 })
 /**
  * Chartjs Component
@@ -68,46 +68,33 @@ export class ChartjsComponent implements OnInit {
     /**
      * BreadCrumb
      */
-    this.breadCrumbItems = [
-      { label: "Charts" },
-      { label: "Chartjs", active: true },
-    ];
+    this.breadCrumbItems = [{ label: 'Charts' }, { label: 'Chartjs', active: true }];
 
     // Chart Color Data Get Function
-    this._lineAreaChart(
-      '["--vz-primary-rgb, 0.2", "--vz-primary", "--vz-info-rgb, 0.2", "--vz-info"]'
-    );
+    this._lineAreaChart('["--vz-primary-rgb, 0.2", "--vz-primary", "--vz-info-rgb, 0.2", "--vz-info"]');
     this._lineBarChart('["--vz-primary"]');
     this._pieChart('["--vz-primary", "--vz-light"]');
     this._donutChart('["--vz-primary", "--vz-light"]');
-    this._polarChart(
-      '["--vz-info", "--vz-success", "--vz-light", "--vz-primary"]'
-    );
-    this._radarChart(
-      '["--vz-info-rgb, 0.2", "--vz-info", "--vz-primary-rgb, 0.2", "--vz-primary"]'
-    );
+    this._polarChart('["--vz-info", "--vz-success", "--vz-light", "--vz-primary"]');
+    this._radarChart('["--vz-info-rgb, 0.2", "--vz-info", "--vz-primary-rgb, 0.2", "--vz-primary"]');
   }
 
   // Chart Colors Set
   private getChartColorsArray(colors: any) {
     colors = JSON.parse(colors);
     return colors.map(function (value: any) {
-      var newValue = value.replace(" ", "");
-      if (newValue.indexOf(",") === -1) {
-        var color = getComputedStyle(document.documentElement).getPropertyValue(
-          newValue
-        );
+      var newValue = value.replace(' ', '');
+      if (newValue.indexOf(',') === -1) {
+        var color = getComputedStyle(document.documentElement).getPropertyValue(newValue);
         if (color) {
-          color = color.replace(" ", "");
+          color = color.replace(' ', '');
           return color;
         } else return newValue;
       } else {
-        var val = value.split(",");
+        var val = value.split(',');
         if (val.length == 2) {
-          var rgbaColor = getComputedStyle(
-            document.documentElement
-          ).getPropertyValue(val[0]);
-          rgbaColor = "rgba(" + rgbaColor + "," + val[1] + ")";
+          var rgbaColor = getComputedStyle(document.documentElement).getPropertyValue(val[0]);
+          rgbaColor = 'rgba(' + rgbaColor + ',' + val[1] + ')';
           return rgbaColor;
         } else {
           return newValue;
@@ -122,56 +109,45 @@ export class ChartjsComponent implements OnInit {
   private _lineAreaChart(colors: any) {
     colors = this.getChartColorsArray(colors);
     this.lineAreaChart = {
-      labels: [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-      ],
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October'],
       datasets: [
         {
-          label: "Sales Analytics",
+          label: 'Sales Analytics',
           fill: true,
           lineTension: 0.5,
           backgroundColor: colors[0],
           borderColor: colors[1],
-          borderCapStyle: "butt",
+          borderCapStyle: 'butt',
           borderDash: [],
           borderDashOffset: 0.0,
-          borderJoinStyle: "miter",
+          borderJoinStyle: 'miter',
           pointBorderColor: colors[1],
-          pointBackgroundColor: "#fff",
+          pointBackgroundColor: '#fff',
           pointBorderWidth: 1,
           pointHoverRadius: 5,
           pointHoverBackgroundColor: colors[1],
-          pointHoverBorderColor: "#fff",
+          pointHoverBorderColor: '#fff',
           pointHoverBorderWidth: 2,
           pointRadius: 1,
           pointHitRadius: 10,
           data: [65, 59, 80, 81, 56, 55, 40, 55, 30, 80],
         },
         {
-          label: "Monthly Earnings",
+          label: 'Monthly Earnings',
           fill: true,
           lineTension: 0.5,
           backgroundColor: colors[2],
           borderColor: colors[3],
-          borderCapStyle: "butt",
+          borderCapStyle: 'butt',
           borderDash: [],
           borderDashOffset: 0.0,
-          borderJoinStyle: "miter",
+          borderJoinStyle: 'miter',
           pointBorderColor: colors[3],
-          pointBackgroundColor: "#fff",
+          pointBackgroundColor: '#fff',
           pointBorderWidth: 1,
           pointHoverRadius: 5,
           pointHoverBackgroundColor: colors[3],
-          pointHoverBorderColor: "#eef0f2",
+          pointHoverBorderColor: '#eef0f2',
           pointHoverBorderWidth: 2,
           pointRadius: 1,
           pointHitRadius: 10,
@@ -179,14 +155,14 @@ export class ChartjsComponent implements OnInit {
         },
       ],
       options: {
-        defaultFontColor: "#8791af",
+        defaultFontColor: '#8791af',
         responsive: true,
         maintainAspectRatio: false,
         scales: {
           xAxes: [
             {
               gridLines: {
-                color: "rgba(166, 176, 207, 0.1)",
+                color: 'rgba(166, 176, 207, 0.1)',
               },
             },
           ],
@@ -198,7 +174,7 @@ export class ChartjsComponent implements OnInit {
                 stepSize: 10,
               },
               gridLines: {
-                color: "rgba(166, 176, 207, 0.1)",
+                color: 'rgba(166, 176, 207, 0.1)',
               },
             },
           ],
@@ -213,10 +189,10 @@ export class ChartjsComponent implements OnInit {
   private _lineBarChart(colors: any) {
     colors = this.getChartColorsArray(colors);
     this.lineBarChart = {
-      labels: ["January", "February", "March", "April", "May", "June", "July"],
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
       datasets: [
         {
-          label: "Sales Analytics",
+          label: 'Sales Analytics',
           backgroundColor: colors[0],
           borderColor: colors[0],
           borderWidth: 1,
@@ -231,14 +207,14 @@ export class ChartjsComponent implements OnInit {
           xAxes: [
             {
               gridLines: {
-                color: "rgba(166, 176, 207, 0.1)",
+                color: 'rgba(166, 176, 207, 0.1)',
               },
             },
           ],
           yAxes: [
             {
               gridLines: {
-                color: "rgba(166, 176, 207, 0.1)",
+                color: 'rgba(166, 176, 207, 0.1)',
               },
             },
           ],
@@ -253,19 +229,19 @@ export class ChartjsComponent implements OnInit {
   private _pieChart(colors: any) {
     colors = this.getChartColorsArray(colors);
     this.pieChart = {
-      labels: ["Desktops", "Tablets"],
+      labels: ['Desktops', 'Tablets'],
       datasets: [
         {
           data: [300, 180],
           backgroundColor: colors,
           hoverBackgroundColor: colors,
-          hoverBorderColor: "#fff",
+          hoverBorderColor: '#fff',
         },
       ],
       options: {
         maintainAspectRatio: false,
         legend: {
-          position: "top",
+          position: 'top',
         },
       },
     };
@@ -277,19 +253,19 @@ export class ChartjsComponent implements OnInit {
   private _donutChart(colors: any) {
     colors = this.getChartColorsArray(colors);
     this.donutChart = {
-      labels: ["Desktops", "Tablets"],
+      labels: ['Desktops', 'Tablets'],
       datasets: [
         {
           data: [300, 210],
           backgroundColor: colors,
           hoverBackgroundColor: colors,
-          hoverBorderColor: "#fff",
+          hoverBorderColor: '#fff',
         },
       ],
       options: {
         maintainAspectRatio: false,
         legend: {
-          position: "top",
+          position: 'top',
         },
       },
     };
@@ -301,19 +277,19 @@ export class ChartjsComponent implements OnInit {
   private _polarChart(colors: any) {
     colors = this.getChartColorsArray(colors);
     this.polarChart = {
-      labels: ["Series 1", "Series 2", "Series 3", "Series 4"],
+      labels: ['Series 1', 'Series 2', 'Series 3', 'Series 4'],
       datasets: [
         {
           data: [11, 16, 7, 18],
           backgroundColor: colors,
-          label: "My dataset", // for legend
-          hoverBorderColor: "#fff",
+          label: 'My dataset', // for legend
+          hoverBorderColor: '#fff',
         },
       ],
       options: {
         maintainAspectRatio: false,
         legend: {
-          position: "top",
+          position: 'top',
         },
       },
     };
@@ -325,33 +301,25 @@ export class ChartjsComponent implements OnInit {
   private _radarChart(colors: any) {
     colors = this.getChartColorsArray(colors);
     this.radarChart = {
-      labels: [
-        "Eating",
-        "Drinking",
-        "Sleeping",
-        "Designing",
-        "Coding",
-        "Cycling",
-        "Running",
-      ],
+      labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
       datasets: [
         {
-          label: "Desktops",
+          label: 'Desktops',
           backgroundColor: colors[0],
           borderColor: colors[1],
           pointBackgroundColor: colors[1],
-          pointBorderColor: "#fff",
-          pointHoverBackgroundColor: "#fff",
+          pointBorderColor: '#fff',
+          pointHoverBackgroundColor: '#fff',
           pointHoverBorderColor: colors[1],
           data: [65, 59, 90, 81, 56, 55, 40],
         },
         {
-          label: "Tablets",
+          label: 'Tablets',
           backgroundColor: colors[2],
           borderColor: colors[3],
           pointBackgroundColor: colors[3],
-          pointBorderColor: "#fff",
-          pointHoverBackgroundColor: "#fff",
+          pointBorderColor: '#fff',
+          pointHoverBackgroundColor: '#fff',
           pointHoverBorderColor: colors[3],
           data: [28, 48, 40, 19, 96, 27, 100],
         },
@@ -359,7 +327,7 @@ export class ChartjsComponent implements OnInit {
       options: {
         maintainAspectRatio: false,
         legend: {
-          position: "top",
+          position: 'top',
         },
       },
     };

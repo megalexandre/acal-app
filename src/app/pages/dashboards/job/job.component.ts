@@ -16,10 +16,9 @@ import { FormControl } from '@angular/forms';
   selector: 'app-job',
   templateUrl: './job.component.html',
   styleUrls: ['./job.component.scss'],
-  providers: [JobService, DecimalPipe]
+  providers: [JobService, DecimalPipe],
 })
 export class JobComponent implements OnInit {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
 
@@ -35,25 +34,22 @@ export class JobComponent implements OnInit {
   followbtn: any = 1;
   followtxt: any = 'Follow';
   filter = new FormControl('', { nonNullable: true });
-  
+
   // Table data
   jobList!: Observable<JobModel[]>;
   total: Observable<number>;
   candidatedetail: any;
 
-  constructor(public service: JobService,) {
+  constructor(public service: JobService) {
     this.jobList = service.countries$;
     this.total = service.total$;
   }
 
   ngOnInit(): void {
     /**
-       * BreadCrumb
-       */
-    this.breadCrumbItems = [
-      { label: 'Dashboards' },
-      { label: 'JOB Dashboard', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Dashboards' }, { label: 'JOB Dashboard', active: true }];
 
     // Chart Color Data Get Function
     this._basicRadialbarChart('["--vz-success"]');
@@ -66,13 +62,13 @@ export class JobComponent implements OnInit {
 
     // Fetch Data
     setTimeout(() => {
-      this.jobList.subscribe(x => {
+      this.jobList.subscribe((x) => {
         this.Recommendedjobs = Object.assign([], x);
       });
       this.candidatelist = candidate;
-      this.candidatedetail = candidate[0]
-      document.getElementById('elmLoader')?.classList.add('d-none')
-    }, 1200)
+      this.candidatedetail = candidate[0];
+      document.getElementById('elmLoader')?.classList.add('d-none');
+    }, 1200);
   }
 
   num: number = 0;
@@ -87,19 +83,18 @@ export class JobComponent implements OnInit {
   private getChartColorsArray(colors: any) {
     colors = JSON.parse(colors);
     return colors.map(function (value: any) {
-      var newValue = value.replace(" ", "");
-      if (newValue.indexOf(",") === -1) {
+      var newValue = value.replace(' ', '');
+      if (newValue.indexOf(',') === -1) {
         var color = getComputedStyle(document.documentElement).getPropertyValue(newValue);
         if (color) {
-          color = color.replace(" ", "");
+          color = color.replace(' ', '');
           return color;
-        }
-        else return newValue;;
+        } else return newValue;
       } else {
         var val = value.split(',');
         if (val.length == 2) {
           var rgbaColor = getComputedStyle(document.documentElement).getPropertyValue(val[0]);
-          rgbaColor = "rgba(" + rgbaColor + "," + val[1] + ")";
+          rgbaColor = 'rgba(' + rgbaColor + ',' + val[1] + ')';
           return rgbaColor;
         } else {
           return newValue;
@@ -109,8 +104,8 @@ export class JobComponent implements OnInit {
   }
 
   /**
-* TOTAL JOBS Chart
-*/
+   * TOTAL JOBS Chart
+   */
   private _basicRadialbarChart(colors: any) {
     colors = this.getChartColorsArray(colors);
     this.basicRadialbarChart = {
@@ -119,33 +114,33 @@ export class JobComponent implements OnInit {
         type: 'radialBar',
         width: 105,
         sparkline: {
-          enabled: true
-        }
+          enabled: true,
+        },
       },
       dataLabels: {
-        enabled: false
+        enabled: false,
       },
       plotOptions: {
         radialBar: {
           hollow: {
             margin: 0,
-            size: '70%'
+            size: '70%',
           },
           track: {
-            margin: 1
+            margin: 1,
           },
           dataLabels: {
             show: true,
             name: {
-              show: false
+              show: false,
             },
             value: {
               show: true,
               fontSize: '16px',
               fontWeight: 600,
               offsetY: 8,
-            }
-          }
+            },
+          },
         },
       },
       colors: colors,
@@ -161,33 +156,33 @@ export class JobComponent implements OnInit {
         type: 'radialBar',
         width: 105,
         sparkline: {
-          enabled: true
-        }
+          enabled: true,
+        },
       },
       dataLabels: {
-        enabled: false
+        enabled: false,
       },
       plotOptions: {
         radialBar: {
           hollow: {
             margin: 0,
-            size: '70%'
+            size: '70%',
           },
           track: {
-            margin: 1
+            margin: 1,
           },
           dataLabels: {
             show: true,
             name: {
-              show: false
+              show: false,
             },
             value: {
               show: true,
               fontSize: '16px',
               fontWeight: 600,
               offsetY: 8,
-            }
-          }
+            },
+          },
         },
       },
       colors: colors,
@@ -203,33 +198,33 @@ export class JobComponent implements OnInit {
         type: 'radialBar',
         width: 105,
         sparkline: {
-          enabled: true
-        }
+          enabled: true,
+        },
       },
       dataLabels: {
-        enabled: false
+        enabled: false,
       },
       plotOptions: {
         radialBar: {
           hollow: {
             margin: 0,
-            size: '70%'
+            size: '70%',
           },
           track: {
-            margin: 1
+            margin: 1,
           },
           dataLabels: {
             show: true,
             name: {
-              show: false
+              show: false,
             },
             value: {
               show: true,
               fontSize: '16px',
               fontWeight: 600,
               offsetY: 8,
-            }
-          }
+            },
+          },
         },
       },
       colors: colors,
@@ -245,33 +240,33 @@ export class JobComponent implements OnInit {
         type: 'radialBar',
         width: 105,
         sparkline: {
-          enabled: true
-        }
+          enabled: true,
+        },
       },
       dataLabels: {
-        enabled: false
+        enabled: false,
       },
       plotOptions: {
         radialBar: {
           hollow: {
             margin: 0,
-            size: '70%'
+            size: '70%',
           },
           track: {
-            margin: 1
+            margin: 1,
           },
           dataLabels: {
             show: true,
             name: {
-              show: false
+              show: false,
             },
             value: {
               show: true,
               fontSize: '16px',
               fontWeight: 600,
               offsetY: 8,
-            }
-          }
+            },
+          },
         },
       },
       colors: colors,
@@ -287,33 +282,33 @@ export class JobComponent implements OnInit {
         type: 'radialBar',
         width: 105,
         sparkline: {
-          enabled: true
-        }
+          enabled: true,
+        },
       },
       dataLabels: {
-        enabled: false
+        enabled: false,
       },
       plotOptions: {
         radialBar: {
           hollow: {
             margin: 0,
-            size: '70%'
+            size: '70%',
           },
           track: {
-            margin: 1
+            margin: 1,
           },
           dataLabels: {
             show: true,
             name: {
-              show: false
+              show: false,
             },
             value: {
               show: true,
               fontSize: '16px',
               fontWeight: 600,
               offsetY: 8,
-            }
-          }
+            },
+          },
         },
       },
       colors: colors,
@@ -329,33 +324,33 @@ export class JobComponent implements OnInit {
         type: 'radialBar',
         width: 105,
         sparkline: {
-          enabled: true
-        }
+          enabled: true,
+        },
       },
       dataLabels: {
-        enabled: false
+        enabled: false,
       },
       plotOptions: {
         radialBar: {
           hollow: {
             margin: 0,
-            size: '70%'
+            size: '70%',
           },
           track: {
-            margin: 1
+            margin: 1,
           },
           dataLabels: {
             show: true,
             name: {
-              show: false
+              show: false,
             },
             value: {
               show: true,
               fontSize: '16px',
               fontWeight: 600,
               offsetY: 8,
-            }
-          }
+            },
+          },
         },
       },
       colors: colors,
@@ -371,87 +366,85 @@ export class JobComponent implements OnInit {
         height: 345,
         type: 'line',
         zoom: {
-          enabled: false
+          enabled: false,
         },
         toolbar: {
           show: false,
-        }
+        },
       },
       colors: colors,
       dataLabels: {
-        enabled: false
+        enabled: false,
       },
       stroke: {
         width: [3, 4, 3],
         curve: 'straight',
-        dashArray: [0, 8, 5]
+        dashArray: [0, 8, 5],
       },
-      series: [{
-        name: 'New Application',
-        data: [89, 56, 74, 98, 72, 38, 64, 46, 84, 58, 46, 49]
-      },
-      {
-        name: "Interview",
-        data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10]
-      },
-      {
-        name: " Hired",
-        data: [36, 42, 60, 42, 13, 18, 29, 37, 36, 51, 32, 35]
-      }
+      series: [
+        {
+          name: 'New Application',
+          data: [89, 56, 74, 98, 72, 38, 64, 46, 84, 58, 46, 49],
+        },
+        {
+          name: 'Interview',
+          data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10],
+        },
+        {
+          name: ' Hired',
+          data: [36, 42, 60, 42, 13, 18, 29, 37, 36, 51, 32, 35],
+        },
       ],
       markers: {
         size: 0,
 
         hover: {
-          sizeOffset: 6
-        }
+          sizeOffset: 6,
+        },
       },
       xaxis: {
-        categories: ['01 Jan', '02 Jan', '03 Jan', '04 Jan', '05 Jan', '06 Jan', '07 Jan', '08 Jan', '09 Jan',
-          '10 Jan', '11 Jan', '12 Jan'
-        ],
+        categories: ['01 Jan', '02 Jan', '03 Jan', '04 Jan', '05 Jan', '06 Jan', '07 Jan', '08 Jan', '09 Jan', '10 Jan', '11 Jan', '12 Jan'],
       },
       grid: {
         borderColor: '#f1f1f1',
-      }
+      },
     };
   }
 
   /**
-     * Sale Location Map
-     */
+   * Sale Location Map
+   */
   options = {
     layers: [
-      tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoidGhlbWVzYnJhbmQiLCJhIjoiY2xmbmc3bTV4MGw1ejNzbnJqOWpubzhnciJ9.DNkdZVKLnQ6I9NOz7EED-w", {
-        id: "mapbox/light-v9",
+      tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoidGhlbWVzYnJhbmQiLCJhIjoiY2xmbmc3bTV4MGw1ejNzbnJqOWpubzhnciJ9.DNkdZVKLnQ6I9NOz7EED-w', {
+        id: 'mapbox/light-v9',
         tileSize: 512,
         zoomOffset: 0,
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-      })
+      }),
     ],
     zoom: 1.1,
-    center: latLng(28, 1.5)
+    center: latLng(28, 1.5),
   };
   layers = [
-    circle([41.9, 12.45], { color: "#435fe3", opacity: 0.5, weight: 10, fillColor: "#435fe3", fillOpacity: 1, radius: 400000, }),
-    circle([12.05, -61.75], { color: "#435fe3", opacity: 0.5, weight: 10, fillColor: "#435fe3", fillOpacity: 1, radius: 400000, }),
-    circle([1.3, 103.8], { color: "#435fe3", opacity: 0.5, weight: 10, fillColor: "#435fe3", fillOpacity: 1, radius: 400000, }),
+    circle([41.9, 12.45], { color: '#435fe3', opacity: 0.5, weight: 10, fillColor: '#435fe3', fillOpacity: 1, radius: 400000 }),
+    circle([12.05, -61.75], { color: '#435fe3', opacity: 0.5, weight: 10, fillColor: '#435fe3', fillOpacity: 1, radius: 400000 }),
+    circle([1.3, 103.8], { color: '#435fe3', opacity: 0.5, weight: 10, fillColor: '#435fe3', fillOpacity: 1, radius: 400000 }),
   ];
 
   // Follow - unfollow
   follow(ev: any) {
     if (this.followbtn == '1') {
-      this.followbtn = '2'
-      this.followtxt = 'Unfollow'
+      this.followbtn = '2';
+      this.followtxt = 'Unfollow';
     } else {
-      this.followbtn = '1'
-      this.followtxt = 'Follow'
+      this.followbtn = '1';
+      this.followtxt = 'Follow';
     }
   }
 
   // open candidate detail
   opendetail(id: any) {
-    this.candidatedetail = this.candidatelist[id]
+    this.candidatedetail = this.candidatelist[id];
   }
-
 }

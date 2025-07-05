@@ -2,14 +2,26 @@ import { Component, EventEmitter, OnInit, Output, TemplateRef, ViewChild } from 
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { RootReducerState } from 'src/app/store';
-import { changeDataPreloader, changeLayoutPosition, changeLayoutWidth, changeMode, changeSidebarColor, changeSidebarImage, changeSidebarSize, changeSidebarView, changeSidebarVisibility, changeTopbar, changelayout } from 'src/app/store/layouts/layout-action';
+import {
+  changeDataPreloader,
+  changeLayoutPosition,
+  changeLayoutWidth,
+  changeMode,
+  changeSidebarColor,
+  changeSidebarImage,
+  changeSidebarSize,
+  changeSidebarView,
+  changeSidebarVisibility,
+  changeTopbar,
+  changelayout,
+} from 'src/app/store/layouts/layout-action';
 import { getLayoutMode, getLayoutPosition, getLayoutTheme, getLayoutWith, getPreloader, getSidebarColor, getSidebarImage, getSidebarSize, getSidebarView, getSidebarVisibilitye, getTopbarColor } from 'src/app/store/layouts/layout-selector';
 import { EventService } from '../../core/services/event.service';
 
 @Component({
   selector: 'app-rightsidebar',
   templateUrl: './rightsidebar.component.html',
-  styleUrls: ['./rightsidebar.component.scss']
+  styleUrls: ['./rightsidebar.component.scss'],
 })
 
 /**
@@ -33,13 +45,16 @@ export class RightsidebarComponent implements OnInit {
   @ViewChild('filtetcontent') filtetcontent!: TemplateRef<any>;
   @Output() settingsButtonClicked = new EventEmitter();
 
-  constructor(private offcanvasService: NgbOffcanvas, private store: Store<RootReducerState>) { }
+  constructor(
+    private offcanvasService: NgbOffcanvas,
+    private store: Store<RootReducerState>,
+  ) {}
 
   ngOnInit(): void {
     setTimeout(() => {
       if (this.offcanvasService.hasOpenOffcanvas() == false) {
         this.openEnd(this.filtetcontent);
-      };
+      }
     }, 1000);
 
     this.store.select('layout').subscribe((data) => {
@@ -53,11 +68,11 @@ export class RightsidebarComponent implements OnInit {
       this.sidebar = data.SIDEBAR_COLOR;
       this.sidebarImage = data.SIDEBAR_IMAGE;
       this.preLoader = data.DATA_PRELOADER;
-      this.sidebarVisibility = data.SIDEBAR_VISIBILITY
-    })
+      this.sidebarVisibility = data.SIDEBAR_VISIBILITY;
+    });
   }
 
-  ngAfterViewInit() { }
+  ngAfterViewInit() {}
 
   /**
    * Change the layout onclick
@@ -67,18 +82,17 @@ export class RightsidebarComponent implements OnInit {
     this.attribute = layout;
     this.store.dispatch(changelayout({ layout }));
     this.store.select(getLayoutTheme).subscribe((layout) => {
-      document.documentElement.setAttribute('data-layout', layout)
-    })
+      document.documentElement.setAttribute('data-layout', layout);
+    });
     setTimeout(() => {
       window.dispatchEvent(new Event('resize'));
     }, 100);
   }
 
-
   // Add Active Class
   addActive(grdSidebar: any) {
     this.grd = grdSidebar;
-    document.documentElement.setAttribute('data-sidebar', grdSidebar)
+    document.documentElement.setAttribute('data-sidebar', grdSidebar);
     document.getElementById('collapseBgGradient')?.classList.toggle('show');
     document.getElementById('collapseBgGradient1')?.classList.add('active');
   }
@@ -101,7 +115,7 @@ export class RightsidebarComponent implements OnInit {
     this.offcanvasService.open(content, { position: 'end' });
 
     setTimeout(() => {
-      this.attribute = document.documentElement.getAttribute('data-layout')
+      this.attribute = document.documentElement.getAttribute('data-layout');
       if (this.attribute == 'vertical') {
         var vertical = document.getElementById('customizer-layout01') as HTMLInputElement;
         if (vertical != null) {
@@ -134,8 +148,8 @@ export class RightsidebarComponent implements OnInit {
     this.mode = mode;
     this.store.dispatch(changeMode({ mode }));
     this.store.select(getLayoutMode).subscribe((mode) => {
-      document.documentElement.setAttribute('data-bs-theme', mode)
-    })
+      document.documentElement.setAttribute('data-bs-theme', mode);
+    });
   }
 
   // Visibility Change
@@ -143,19 +157,18 @@ export class RightsidebarComponent implements OnInit {
     this.sidebarVisibility = sidebarvisibility;
     this.store.dispatch(changeSidebarVisibility({ sidebarvisibility }));
     this.store.select(getSidebarVisibilitye).subscribe((visibility) => {
-      document.documentElement.setAttribute('data-sidebar-visibility', visibility)
-    })
+      document.documentElement.setAttribute('data-sidebar-visibility', visibility);
+    });
   }
-
 
   // Width Change
   changeWidth(layoutWidth: string, size: string) {
     this.width = layoutWidth;
     this.store.dispatch(changeLayoutWidth({ layoutWidth }));
     this.store.select(getLayoutWith).subscribe((width) => {
-      document.documentElement.setAttribute('data-layout-width', width)
-      document.documentElement.setAttribute('data-sidebar-size', size)
-    })
+      document.documentElement.setAttribute('data-layout-width', width);
+      document.documentElement.setAttribute('data-sidebar-size', size);
+    });
 
     setTimeout(() => {
       window.dispatchEvent(new Event('resize'));
@@ -168,8 +181,7 @@ export class RightsidebarComponent implements OnInit {
     this.store.dispatch(changeLayoutPosition({ layoutPosition }));
     this.store.select(getLayoutPosition).subscribe((position) => {
       document.documentElement.setAttribute('data-layout-position', position);
-    })
-
+    });
   }
 
   // Topbar Change
@@ -177,8 +189,8 @@ export class RightsidebarComponent implements OnInit {
     this.topbar = topbarColor;
     this.store.dispatch(changeTopbar({ topbarColor }));
     this.store.select(getTopbarColor).subscribe((color) => {
-      document.documentElement.setAttribute('data-topbar', color)
-    })
+      document.documentElement.setAttribute('data-topbar', color);
+    });
   }
 
   // Sidebar Size Change
@@ -186,8 +198,8 @@ export class RightsidebarComponent implements OnInit {
     this.size = sidebarSize;
     this.store.dispatch(changeSidebarSize({ sidebarSize }));
     this.store.select(getSidebarSize).subscribe((size) => {
-      document.documentElement.setAttribute('data-sidebar-size', size)
-    })
+      document.documentElement.setAttribute('data-sidebar-size', size);
+    });
   }
 
   // Sidebar Size Change
@@ -196,7 +208,7 @@ export class RightsidebarComponent implements OnInit {
     this.store.dispatch(changeSidebarView({ sidebarView }));
     this.store.select(getSidebarView).subscribe((view) => {
       document.documentElement.setAttribute('data-layout-style', view);
-    })
+    });
   }
 
   // Sidebar Color Change
@@ -205,7 +217,7 @@ export class RightsidebarComponent implements OnInit {
     this.store.dispatch(changeSidebarColor({ sidebarColor }));
     this.store.select(getSidebarColor).subscribe((color) => {
       document.documentElement.setAttribute('data-sidebar', color);
-    })
+    });
   }
 
   // Sidebar Image Change
@@ -214,7 +226,7 @@ export class RightsidebarComponent implements OnInit {
     this.store.dispatch(changeSidebarImage({ sidebarImage }));
     this.store.select(getSidebarImage).subscribe((image) => {
       document.documentElement.setAttribute('data-sidebar-image', image);
-    })
+    });
   }
 
   // PreLoader Image Change
@@ -223,15 +235,14 @@ export class RightsidebarComponent implements OnInit {
     this.store.dispatch(changeDataPreloader({ Preloader }));
     this.store.select(getPreloader).subscribe((loader) => {
       document.documentElement.setAttribute('data-preloader', loader);
-    })
+    });
 
-    var preloader = document.getElementById("preloader");
+    var preloader = document.getElementById('preloader');
     if (preloader) {
       setTimeout(function () {
-        (document.getElementById("preloader") as HTMLElement).style.opacity = "0";
-        (document.getElementById("preloader") as HTMLElement).style.visibility = "hidden";
+        (document.getElementById('preloader') as HTMLElement).style.opacity = '0';
+        (document.getElementById('preloader') as HTMLElement).style.visibility = 'hidden';
       }, 1000);
     }
   }
 }
-

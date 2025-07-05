@@ -1,12 +1,12 @@
 export interface Email {
   id: number;
   forId: any;
-  unread?:any;
+  unread?: any;
   name: string;
   number: string;
   subject: string;
-  badge?:any;
-  badgeClass?:any;
+  badge?: any;
+  badgeClass?: any;
   teaser: string;
   date: string;
   type: string;

@@ -8,9 +8,8 @@ describe('IconsCryptoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ IconsCryptoComponent ]
-    })
-    .compileComponents();
+      declarations: [IconsCryptoComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(IconsCryptoComponent);
     component = fixture.componentInstance;

@@ -11,7 +11,7 @@ export interface creatorsListModel {
   img: string;
   title: string;
   products: string;
-  isFollowBtn?:any;
+  isFollowBtn?: any;
   followbtn: string;
   content: string;
 }

@@ -8,9 +8,8 @@ describe('LineawesomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LineawesomeComponent ]
-    })
-    .compileComponents();
+      declarations: [LineawesomeComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

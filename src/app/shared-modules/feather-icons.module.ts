@@ -5,6 +5,6 @@ import { allIcons } from 'angular-feather/icons';
 
 @NgModule({
   imports: [FeatherModule.pick(allIcons)],
-  exports: [FeatherModule]
+  exports: [FeatherModule],
 })
 export class FeatherIconsModule {}

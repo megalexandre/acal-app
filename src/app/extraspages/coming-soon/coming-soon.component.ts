@@ -5,14 +5,13 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-coming-soon',
   templateUrl: './coming-soon.component.html',
-  styleUrls: ['./coming-soon.component.scss']
+  styleUrls: ['./coming-soon.component.scss'],
 })
 
 /**
  * ComingSoon Component
  */
 export class ComingSoonComponent implements OnInit {
-
   // set the current year
   year: number = new Date().getFullYear();
   private _trialEndsAt: any;
@@ -22,7 +21,7 @@ export class ComingSoonComponent implements OnInit {
   _minutes?: number;
   _seconds?: number;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     // Date Set
@@ -33,16 +32,20 @@ export class ComingSoonComponent implements OnInit {
     /**
      * Count date set
      */
-    interval(1000).pipe(map((x) => {
-        this._diff = Date.parse(this._trialEndsAt) - Date.parse(new Date().toString());
-    })).subscribe((x) => {
+    interval(1000)
+      .pipe(
+        map((x) => {
+          this._diff = Date.parse(this._trialEndsAt) - Date.parse(new Date().toString());
+        }),
+      )
+      .subscribe((x) => {
         this._days = this.getDays(this._diff);
         this._hours = this.getHours(this._diff);
         this._minutes = this.getMinutes(this._diff);
         this._seconds = this.getSeconds(this._diff);
-    });
+      });
   }
- /**
+  /**
    * Day Set
    */
   getDays(t: number) {
@@ -69,5 +72,4 @@ export class ComingSoonComponent implements OnInit {
   getSeconds(t: number) {
     return Math.floor((t / 1000) % 60);
   }
-
 }

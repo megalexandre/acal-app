@@ -9,7 +9,7 @@ import { ba } from '@fullcalendar/core/internal-common';
 
 @Component({
   selector: 'app-address-edit',
-  templateUrl: './address-edit.component.html'
+  templateUrl: './address-edit.component.html',
 })
 export class AddressEditComponent implements OnInit {
   addressForm: FormGroup;
@@ -20,24 +20,23 @@ export class AddressEditComponent implements OnInit {
     private addressService: AddressService,
     private shared: AddressSharedService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {
     this.addressForm = this.fb.group({
-      name: ['', Validators.required]
+      name: ['', Validators.required],
     });
   }
 
-
-ngOnInit(): void {
-  this.shared.selectedAddress$.subscribe(address => {
-    if (address) {
-      this.address = address;
-      this.addressForm.patchValue({ name: this.address.name });
-    } else {
+  ngOnInit(): void {
+    this.shared.selectedAddress$.subscribe((address) => {
+      if (address) {
+        this.address = address;
+        this.addressForm.patchValue({ name: this.address.name });
+      } else {
         this.back();
-    }
-  });
-}
+      }
+    });
+  }
 
   onSubmit() {
     if (this.addressForm.valid && this.address) {
@@ -48,7 +47,7 @@ ngOnInit(): void {
     }
   }
 
-  back(){
-    this.router.navigate(['../'], { relativeTo: this.route })
+  back() {
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 }

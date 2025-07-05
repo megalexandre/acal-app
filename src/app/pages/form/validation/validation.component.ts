@@ -4,14 +4,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-validation',
   templateUrl: './validation.component.html',
-  styleUrls: ['./validation.component.scss']
+  styleUrls: ['./validation.component.scss'],
 })
 
 /**
  * Validation Component
  */
 export class ValidationComponent implements OnInit {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
 
@@ -21,21 +20,18 @@ export class ValidationComponent implements OnInit {
   submit!: boolean;
   formsubmit!: boolean;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     /**
-    * BreadCrumb
-    */
-     this.breadCrumbItems = [
-      { label: 'Forms' },
-      { label: 'Forms Validation', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Forms' }, { label: 'Forms Validation', active: true }];
 
     /**
      * Bootstrap validation form data
      */
-     this.validationform = this.formBuilder.group({
+    this.validationform = this.formBuilder.group({
       firstName: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
       lastName: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
       username: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
@@ -48,7 +44,7 @@ export class ValidationComponent implements OnInit {
     /**
      * Bootstrap tooltip validation form data
      */
-     this.tooltipvalidationform = this.formBuilder.group({
+    this.tooltipvalidationform = this.formBuilder.group({
       firstName: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
       lastName: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
       userName: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
@@ -56,27 +52,26 @@ export class ValidationComponent implements OnInit {
       state: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
       zip: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
     });
-
   }
 
   /**
-  * Bootsrap validation form submit method
-  */
-   validSubmit() {
+   * Bootsrap validation form submit method
+   */
+  validSubmit() {
     this.submit = true;
   }
 
   /**
    * Returns form
    */
-   get form() {
+  get form() {
     return this.validationform.controls;
   }
 
   /**
    * Bootstrap tooltip form validation submit method
    */
-   formSubmit() {
+  formSubmit() {
     this.formsubmit = true;
   }
 
@@ -87,20 +82,18 @@ export class ValidationComponent implements OnInit {
     return this.tooltipvalidationform.controls;
   }
 
-   /**
+  /**
    * Show Code Toggle
    */
-    ShowCode(event: any) {     
-      let card = event.target.closest('.card');
-      const preview = card.children[1].children[1];
-      const codeView = card.children[1].children[2];
-      if(codeView != null){
-        codeView.classList.toggle('d-none');
-      }
-      if(preview != null){
-        preview.classList.toggle('d-none');
-        
-      }
+  ShowCode(event: any) {
+    let card = event.target.closest('.card');
+    const preview = card.children[1].children[1];
+    const codeView = card.children[1].children[2];
+    if (codeView != null) {
+      codeView.classList.toggle('d-none');
     }
-
+    if (preview != null) {
+      preview.classList.toggle('d-none');
+    }
+  }
 }

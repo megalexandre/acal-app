@@ -1,13 +1,10 @@
 <form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
-  
-    <div class="input-group mb-3">
-    <input type="text" class="form-control" formControlName="name" placeholder="{{ 'PAGES.ADDRESS.NAME' | translate }}">
-    
-    <button class="btn btn-primary" type="submit" [disabled]="addressForm.invalid">
-      <i class="ri-check-line"></i> {{ 'PAGES.ACTIONS.SAVE' | translate }}
-    </button>
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" formControlName="name" placeholder="{{ 'PAGES.ADDRESS.NAME' | translate }}" />
 
-    <button class="btn btn-secondary ms-2" type="button" (click)="back()" >
+    <button class="btn btn-primary" type="submit" [disabled]="addressForm.invalid"><i class="ri-check-line"></i> {{ 'PAGES.ACTIONS.SAVE' | translate }}</button>
+
+    <button class="btn btn-secondary ms-2" type="button" (click)="back()">
       {{ 'PAGES.ACTIONS.CANCEL' | translate }}
     </button>
   </div>

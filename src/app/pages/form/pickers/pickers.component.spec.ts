@@ -8,9 +8,8 @@ describe('PickersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PickersComponent ]
-    })
-    .compileComponents();
+      declarations: [PickersComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

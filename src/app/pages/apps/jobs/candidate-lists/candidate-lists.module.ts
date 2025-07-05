@@ -11,17 +11,7 @@ import { ListViewComponent } from './list-view/list-view.component';
 import { GridViewComponent } from './grid-view/grid-view.component';
 
 @NgModule({
-  declarations: [
-    GridViewComponent,
-    ListViewComponent
-  ],
-  imports: [
-    CommonModule,
-    CandidateListsRoutingModule,
-    SharedModule,
-    NgbPaginationModule,
-    FormsModule,
-    ReactiveFormsModule
-  ]
+  declarations: [GridViewComponent, ListViewComponent],
+  imports: [CommonModule, CandidateListsRoutingModule, SharedModule, NgbPaginationModule, FormsModule, ReactiveFormsModule],
 })
-export class CandidateListsModule { }
+export class CandidateListsModule {}

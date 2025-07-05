@@ -13,10 +13,9 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 @Component({
   selector: 'app-apikey',
   templateUrl: './apikey.component.html',
-  styleUrls: ['./apikey.component.scss']
+  styleUrls: ['./apikey.component.scss'],
 })
 export class ApikeyComponent implements OnInit {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   apikeys: any;
@@ -31,20 +30,18 @@ export class ApikeyComponent implements OnInit {
   EditedData: any;
   allapikeys: any;
 
-  constructor(private modalService: NgbModal,
+  constructor(
+    private modalService: NgbModal,
     public formBuilder: UntypedFormBuilder,
     public service: PaginationService,
-    private store: Store<{ data: RootReducerState }>) {
-  }
+    private store: Store<{ data: RootReducerState }>,
+  ) {}
 
   ngOnInit(): void {
     /**
-       * BreadCrumb
-       */
-    this.breadCrumbItems = [
-      { label: 'Apps' },
-      { label: 'Api Key', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Apps' }, { label: 'Api Key', active: true }];
 
     // Validation
     this.ApiForm = this.formBuilder.group({
@@ -63,9 +60,8 @@ export class ApikeyComponent implements OnInit {
     this.store.select(selectApikeyData).subscribe((data) => {
       this.apikeys = data;
       this.allapikeys = cloneDeep(data);
-      this.apikeys = this.service.changePage(this.allapikeys)
+      this.apikeys = this.service.changePage(this.allapikeys);
     });
-
   }
 
   num: number = 0;
@@ -77,16 +73,16 @@ export class ApikeyComponent implements OnInit {
   };
 
   /**
-* Returns form
-*/
+   * Returns form
+   */
   get form() {
     return this.ApiForm.controls;
   }
 
   /**
-* Open modal
-* @param content modal content
-*/
+   * Open modal
+   * @param content modal content
+   */
   openModal(content: any) {
     // this.submitted = false;
     this.modalService.open(content, { size: 'md', centered: true });
@@ -96,67 +92,64 @@ export class ApikeyComponent implements OnInit {
   checkedValGet: any[] = [];
   // The master checkbox will check/ uncheck all items
   checkUncheckAll(ev: any) {
-    this.apikeys.forEach((x: { state: any; }) => x.state = ev.target.checked)
+    this.apikeys.forEach((x: { state: any }) => (x.state = ev.target.checked));
     var checkedVal: any[] = [];
-    var result
+    var result;
     for (var i = 0; i < this.apikeys.length; i++) {
       if (this.apikeys[i].state == true) {
         result = this.apikeys[i].id;
         checkedVal.push(result);
       }
     }
-    this.checkedValGet = checkedVal
-    checkedVal.length > 0 ? (document.getElementById("remove-actions") as HTMLElement).style.display = "block" : (document.getElementById("remove-actions") as HTMLElement).style.display = "none";
-
+    this.checkedValGet = checkedVal;
+    checkedVal.length > 0 ? ((document.getElementById('remove-actions') as HTMLElement).style.display = 'block') : ((document.getElementById('remove-actions') as HTMLElement).style.display = 'none');
   }
   isAllChecked() {
-    return this.apikeys.every((_: { state: any; }) => _.state);
+    return this.apikeys.every((_: { state: any }) => _.state);
   }
 
   // Select Checkbox value Get
   onCheckboxChange(e: any) {
     var checkedVal: any[] = [];
-    var result
+    var result;
     for (var i = 0; i < this.apikeys.length; i++) {
       if (this.apikeys[i].state == true) {
         result = this.apikeys[i].id;
         checkedVal.push(result);
       }
     }
-    this.checkedValGet = checkedVal
-    checkedVal.length > 0 ? (document.getElementById("remove-actions") as HTMLElement).style.display = "block" : (document.getElementById("remove-actions") as HTMLElement).style.display = "none";
+    this.checkedValGet = checkedVal;
+    checkedVal.length > 0 ? ((document.getElementById('remove-actions') as HTMLElement).style.display = 'block') : ((document.getElementById('remove-actions') as HTMLElement).style.display = 'none');
   }
-
 
   // Pagination
   changePage() {
-    this.apikeys = this.service.changePage(this.allapikeys)
+    this.apikeys = this.service.changePage(this.allapikeys);
   }
-
 
   // Sort Data
   onSort(column: any) {
-    this.apikeys = this.service.onSort(column, this.allapikeys)
+    this.apikeys = this.service.onSort(column, this.allapikeys);
   }
 
   // Create New Api
   createApi() {
     if (this.apiname) {
-      document.getElementById("api-key-error-msg")?.classList.add('d-none');
-      document.getElementById('apikey-element')?.classList.remove('d-none')
+      document.getElementById('api-key-error-msg')?.classList.add('d-none');
+      document.getElementById('apikey-element')?.classList.remove('d-none');
 
-      this.apikeyField = this.generateApiID()
-      document.getElementById("createApi-btn")?.classList.add('d-none')
-      document.getElementById("add-btn")?.classList.remove('d-none')
+      this.apikeyField = this.generateApiID();
+      document.getElementById('createApi-btn')?.classList.add('d-none');
+      document.getElementById('add-btn')?.classList.remove('d-none');
     } else {
-      document.getElementById("api-key-error-msg")?.classList.remove('d-none');
+      document.getElementById('api-key-error-msg')?.classList.remove('d-none');
     }
   }
 
   // Add Api
   addApi() {
-    const name = this.apiname
-    const key = this.apikeyField
+    const name = this.apiname;
+    const key = this.apikeyField;
 
     const newData = {
       id: this.allapikeys.length + 1,
@@ -166,7 +159,7 @@ export class ApikeyComponent implements OnInit {
       status: 'Active',
       color: 'success',
       create_date: '24 Sep 2022',
-      expiry_date: '24 Jan 2023'
+      expiry_date: '24 Jan 2023',
     };
     this.store.dispatch(addApikey({ newData }));
     let timerInterval: any;
@@ -179,8 +172,8 @@ export class ApikeyComponent implements OnInit {
       willClose: () => {
         clearInterval(timerInterval);
       },
-    })
-    this.apiname = ''
+    });
+    this.apiname = '';
   }
   RenameModal(content: any, id: any) {
     this.modalService.open(content, { size: 'md', centered: true });
@@ -188,12 +181,11 @@ export class ApikeyComponent implements OnInit {
     modelTitle.innerHTML = 'Rename API name';
     document.getElementById('createApi-btn')?.classList.add('d-none');
     document.getElementById('edit-btn')?.classList.remove('d-none');
-    document.querySelector('#apikey-element')?.classList.remove('d-none')
+    document.querySelector('#apikey-element')?.classList.remove('d-none');
     this.apikeyField = this.apikeys[id].key;
-    this.apiname = this.apikeys[id].name
-    this.EditedData = this.apikeys[id]
+    this.apiname = this.apikeys[id].name;
+    this.EditedData = this.apikeys[id];
   }
-
 
   // Edit Api
   editApi() {
@@ -205,8 +197,8 @@ export class ApikeyComponent implements OnInit {
       status: this.EditedData.status,
       color: this.EditedData.color,
       create_date: this.EditedData.create_date,
-      expiry_date: this.EditedData.expiry_date
-    }
+      expiry_date: this.EditedData.expiry_date,
+    };
     this.store.dispatch(updateApikey({ updatedData }));
     this.modalService.dismissAll();
     this.apiname = '';
@@ -216,21 +208,21 @@ export class ApikeyComponent implements OnInit {
   generateApiID() {
     var d = new Date().getTime();
 
-    if (window.performance && typeof window.performance.now === "function") {
+    if (window.performance && typeof window.performance.now === 'function') {
       d += performance.now();
     }
 
     var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
       var r = (d + Math.random() * 16) % 16 | 0;
       d = Math.floor(d / 16);
-      return (c == 'x' ? r : r & 0x3 | 0x8).toString(16);
+      return (c == 'x' ? r : (r & 0x3) | 0x8).toString(16);
     });
     return uuid;
   }
 
   /**
-  * Delete Model Open
-  */
+   * Delete Model Open
+   */
   deleteId: any;
   confirm(content: any, id: any) {
     this.deleteId = id;
@@ -246,7 +238,7 @@ export class ApikeyComponent implements OnInit {
       document.getElementById('a_' + item)?.remove();
       this.masterSelected = false;
     });
-    this.modalService.dismissAll('close click')
+    this.modalService.dismissAll('close click');
     let timerInterval: any;
     Swal.fire({
       title: 'Deleted!',
@@ -260,5 +252,4 @@ export class ApikeyComponent implements OnInit {
       },
     });
   }
-
 }

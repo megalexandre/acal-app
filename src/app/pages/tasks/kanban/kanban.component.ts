@@ -13,14 +13,13 @@ import { selectKanbanData, selectTaskLoading } from 'src/app/store/Task/task_sel
 @Component({
   selector: 'app-kanban',
   templateUrl: './kanban.component.html',
-  styleUrls: ['./kanban.component.scss']
+  styleUrls: ['./kanban.component.scss'],
 })
 
 /**
  * Kanban Component
  */
 export class KanbanComponent implements OnInit {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   submitted = false;
@@ -33,18 +32,16 @@ export class KanbanComponent implements OnInit {
   alltask?: any;
   searchTerm: any;
 
-  constructor(private modalService: NgbModal,
-    private store: Store<{ data: RootReducerState }>,) {
-  }
+  constructor(
+    private modalService: NgbModal,
+    private store: Store<{ data: RootReducerState }>,
+  ) {}
 
   ngOnInit(): void {
     /**
-    * BreadCrumb
-    */
-    this.breadCrumbItems = [
-      { label: 'Tasks' },
-      { label: 'Kanban Board', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Tasks' }, { label: 'Kanban Board', active: true }];
 
     /**
      * Data Get Function
@@ -62,7 +59,6 @@ export class KanbanComponent implements OnInit {
     list.splice(index, 1);
   }
 
-
   /**
    * On task drop event
    */
@@ -79,58 +75,56 @@ export class KanbanComponent implements OnInit {
   /**
    * Data Fetch
    */
-  // 
+  //
   private _fetchData() {
     this.store.dispatch(fetchKanbanListData());
     this.store.select(selectTaskLoading).subscribe((data) => {
       if (data == false) {
-        document.querySelectorAll('add-btn')
-        document.getElementById('add-btn')?.classList.remove('d-none')
-        document.getElementById('elmLoader')?.classList.add('d-none')
+        document.querySelectorAll('add-btn');
+        document.getElementById('add-btn')?.classList.remove('d-none');
+        document.getElementById('elmLoader')?.classList.add('d-none');
       }
     });
 
     this.store.select(selectKanbanData).subscribe((data) => {
-      this.inprogressTasks = data.filter(t => t.status === 'inprogress');
-      this.unassignedTasks = data.filter(t => t.status === 'Unassigned');
-      this.completedTasks = data.filter(t => t.status === 'completed');
-      this.todoTasks = data.filter(t => t.status === 'todo');
-      this.reviewsTasks = data.filter(t => t.status === 'reviews');
+      this.inprogressTasks = data.filter((t) => t.status === 'inprogress');
+      this.unassignedTasks = data.filter((t) => t.status === 'Unassigned');
+      this.completedTasks = data.filter((t) => t.status === 'completed');
+      this.todoTasks = data.filter((t) => t.status === 'todo');
+      this.reviewsTasks = data.filter((t) => t.status === 'reviews');
     });
-
   }
 
-
   /**
-  * Open modal
-  * @param content modal content
-  */
+   * Open modal
+   * @param content modal content
+   */
   openModal(content: any) {
     this.submitted = false;
     this.modalService.open(content, { size: 'md', centered: true });
   }
 
   /**
- * Open modal
- * @param content modal content
- */
+   * Open modal
+   * @param content modal content
+   */
   openMemberModal(content: any) {
     this.submitted = false;
     this.modalService.open(content, { size: 'md', centered: true });
   }
 
   /**
- * Open modal
- * @param content modal content
- */
+   * Open modal
+   * @param content modal content
+   */
   openAddModal(content: any) {
     this.submitted = false;
     this.modalService.open(content, { size: 'lg', centered: true });
   }
 
   /**
-* Confirmation mail model
-*/
+   * Confirmation mail model
+   */
   confirm(ev: any) {
     Swal.fire({
       title: 'Are you sure ?',
@@ -139,10 +133,10 @@ export class KanbanComponent implements OnInit {
       showCancelButton: true,
       confirmButtonColor: '#f46a6a',
       confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'Close'
-    }).then(result => {
+      cancelButtonText: 'Close',
+    }).then((result) => {
       if (result.value) {
-        ev.target.closest('.tasks .tasks-box').remove()
+        ev.target.closest('.tasks .tasks-box').remove();
         Swal.fire('Deleted!', 'Task has been deleted.', 'success');
       }
     });

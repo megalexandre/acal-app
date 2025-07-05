@@ -3,10 +3,9 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-stat',
   templateUrl: './stat.component.html',
-  styleUrls: ['./stat.component.scss']
+  styleUrls: ['./stat.component.scss'],
 })
 export class StatComponent implements OnInit {
-
   @Input() title: string | undefined;
   @Input() value: any | undefined;
   @Input() icon: string | undefined;
@@ -14,11 +13,9 @@ export class StatComponent implements OnInit {
   @Input() profit: string | undefined;
   @Input() desciption: string | undefined;
 
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   num: number = 0;
   option = {
@@ -27,5 +24,4 @@ export class StatComponent implements OnInit {
     duration: 2,
     decimalPlaces: 2,
   };
-  
 }

@@ -12,7 +12,7 @@ import { allIcons } from 'angular-feather/icons';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 
 // Load Icon
-import { defineElement } from "@lordicon/element";
+import { defineElement } from '@lordicon/element';
 import lottie from 'lottie-web';
 
 // Calendar package
@@ -44,7 +44,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatTableModule } from '@angular/material/table';
 
 // Component Pages
-import { AppsRoutingModule } from "./apps-routing.module";
+import { AppsRoutingModule } from './apps-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 import { MainCalendarComponent } from './calendar/main-calendar/main-calendar.component';
 import { MonthGridComponent } from './calendar/month-grid/month-grid.component';
@@ -61,7 +61,6 @@ import { DatePipe } from '@angular/common';
 import { SortByPipe } from '../apps/sort-by.pipe';
 import { ApikeyComponent } from './apikey/apikey.component';
 
-
 // Mask
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask, IConfig } from 'ngx-mask';
 
@@ -69,19 +68,7 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask, IConfig } from 'ngx-mask
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
-  declarations: [
-    MainCalendarComponent,
-    MonthGridComponent,
-    ChatComponent,
-    MailboxComponent,
-    WidgetsComponent,
-    EmailBasicComponent,
-    EmailEcommerceComponent,
-    FileManagerComponent,
-    TodoComponent,
-    SortByPipe,
-    ApikeyComponent,
-  ],
+  declarations: [MainCalendarComponent, MonthGridComponent, ChatComponent, MailboxComponent, WidgetsComponent, EmailBasicComponent, EmailEcommerceComponent, FileManagerComponent, TodoComponent, SortByPipe, ApikeyComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -111,13 +98,10 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     NgPipesModule,
     NgxMaskDirective,
     NgxMaskPipe,
-    SlickCarouselModule
+    SlickCarouselModule,
   ],
-  providers: [
-    provideNgxMask(),
-    DatePipe,
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  providers: [provideNgxMask(), DatePipe],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppsModule {
   constructor() {

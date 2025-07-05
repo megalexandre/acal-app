@@ -12,7 +12,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
-import { DashboardsRoutingModule } from "./dashboards-routing.module";
+import { DashboardsRoutingModule } from './dashboards-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 import { WidgetModule } from '../../shared/widget/widget.module';
 import { AnalyticsComponent } from './analytics/analytics.component';
@@ -23,14 +23,7 @@ import { NftComponent } from './nft/nft.component';
 import { JobComponent } from './job/job.component';
 
 @NgModule({
-  declarations: [
-    AnalyticsComponent,
-    CrmComponent,
-    CryptoComponent,
-    ProjectsComponent,
-    NftComponent,
-    JobComponent
-  ],
+  declarations: [AnalyticsComponent, CrmComponent, CryptoComponent, ProjectsComponent, NftComponent, JobComponent],
   imports: [
     CommonModule,
     FeatherModule.pick(allIcons),
@@ -49,7 +42,7 @@ import { JobComponent } from './job/job.component';
     NgbTypeaheadModule,
     NgbPaginationModule,
     FormsModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+  ],
 })
-export class DashboardsModule { }
+export class DashboardsModule {}

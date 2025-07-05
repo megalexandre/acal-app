@@ -6,6 +6,7 @@
     "start": "ng serve",
     "version": "git describe --tags --abbrev=0 > src/assets/version.txt",
     "build": "npm run version && ng build",
+    "format": "prettier --write \"src/**/*.{ts,html,css,scss,json,md}\"",
     "postbuild": "cp dist/velzon/index.html dist/velzon/404.html",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -113,6 +114,7 @@
     "@types/quill": "^2.0.14",
     "karma-jasmine": "^5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
+    "prettier": "^3.6.2",
     "typescript": "~5.4.5"
   },
   "browserslist": [

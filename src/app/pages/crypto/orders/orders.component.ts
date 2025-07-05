@@ -16,7 +16,6 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
  * Orders Component
  */
 export class OrdersComponent {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   Sell = 'Sell';
@@ -34,19 +33,16 @@ export class OrdersComponent {
   status: any = '';
   date: any;
 
-  constructor(public service: PaginationService,
-    private store: Store<{ data: RootReducerState }>) {
-
-  }
+  constructor(
+    public service: PaginationService,
+    private store: Store<{ data: RootReducerState }>,
+  ) {}
 
   ngOnInit(): void {
     /**
-    * BreadCrumb
-    */
-    this.breadCrumbItems = [
-      { label: 'Crypto' },
-      { label: 'Orders', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Crypto' }, { label: 'Orders', active: true }];
     // Fetch Data
     this.store.dispatch(fetchCryptoOrderData());
     this.store.select(selectCryptoLoading).subscribe((data) => {
@@ -58,13 +54,13 @@ export class OrdersComponent {
     this.store.select(selectCryptoOrderData).subscribe((data) => {
       this.orders = data;
       this.OrdersList = cloneDeep(data);
-      this.orders = this.service.changePage(this.OrdersList)
+      this.orders = this.service.changePage(this.OrdersList);
     });
   }
 
   // Pagination
   changePage() {
-    this.orders = this.service.changePage(this.OrdersList)
+    this.orders = this.service.changePage(this.OrdersList);
   }
 
   // Search Data
@@ -77,12 +73,12 @@ export class OrdersComponent {
         item.status.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     });
-    this.orders = this.service.changePage(this.searchResults)
+    this.orders = this.service.changePage(this.searchResults);
   }
 
   // Sort Data
   onSort(column: any) {
-    this.orders = this.service.onSort(column, this.orders)
+    this.orders = this.service.onSort(column, this.orders);
   }
 
   // Filter
@@ -90,7 +86,7 @@ export class OrdersComponent {
     if (this.type != '') {
       this.orders = this.OrdersList.filter((order: any) => order.type == this.type);
     } else {
-      this.orders = this.service.changePage(this.OrdersList)
+      this.orders = this.service.changePage(this.OrdersList);
     }
   }
 
@@ -98,7 +94,7 @@ export class OrdersComponent {
     if (this.status != '') {
       this.orders = this.OrdersList.filter((order: any) => order.status == this.status);
     } else {
-      this.orders = this.service.changePage(this.OrdersList)
+      this.orders = this.service.changePage(this.OrdersList);
     }
   }
 }

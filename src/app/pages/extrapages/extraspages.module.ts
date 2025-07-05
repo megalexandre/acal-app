@@ -11,10 +11,10 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { FlatpickrModule } from 'angularx-flatpickr';
 
 // Load Icon
-import { defineElement } from "@lordicon/element";
+import { defineElement } from '@lordicon/element';
 import lottie from 'lottie-web';
 
-// Ng Search 
+// Ng Search
 import { NgPipesModule } from 'ngx-pipes';
 
 // Component pages
@@ -46,24 +46,10 @@ import { TermsConditionComponent } from './terms-condition/terms-condition.compo
     SitemapComponent,
     SearchResultsComponent,
     PrivacyPolicyComponent,
-    TermsConditionComponent
+    TermsConditionComponent,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgbNavModule,
-    NgbDropdownModule,
-    NgbAccordionModule,
-    NgbTooltipModule,
-    SlickCarouselModule,
-    NgSelectModule,
-    FlatpickrModule,
-    ExtraPagesRoutingModule,
-    SharedModule,
-    NgPipesModule
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, NgbNavModule, NgbDropdownModule, NgbAccordionModule, NgbTooltipModule, SlickCarouselModule, NgSelectModule, FlatpickrModule, ExtraPagesRoutingModule, SharedModule, NgPipesModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ExtraspagesModule {
   constructor() {

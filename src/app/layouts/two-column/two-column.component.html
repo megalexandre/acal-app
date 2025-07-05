@@ -1,21 +1,21 @@
 <div id="layout-wrapper" (window:resize)="onResize($event)">
-    <!-- Top Bar -->
-    <app-topbar (mobileMenuButtonClicked)="onToggleMobileMenu()"></app-topbar>
-    <!-- Side Bar -->
-    @if(issemiboxLayoutRequested()){
+  <!-- Top Bar -->
+  <app-topbar (mobileMenuButtonClicked)="onToggleMobileMenu()"></app-topbar>
+  <!-- Side Bar -->
+  @if (issemiboxLayoutRequested()) {
     <app-sidebar></app-sidebar>
-    }
-    @if(isTwoColumnLayoutRequested()){
+  }
+  @if (isTwoColumnLayoutRequested()) {
     <app-two-column-sidebar></app-two-column-sidebar>
-    }
-    <div class="main-content">
-        <div class="page-content">
-            <div class="container-fluid">
-                <!-- Main Content -->
-                <router-outlet></router-outlet>
-            </div>
-        </div>
-        <!-- Footer -->
-        <app-footer></app-footer>
+  }
+  <div class="main-content">
+    <div class="page-content">
+      <div class="container-fluid">
+        <!-- Main Content -->
+        <router-outlet></router-outlet>
+      </div>
     </div>
+    <!-- Footer -->
+    <app-footer></app-footer>
+  </div>
 </div>

@@ -17,7 +17,7 @@ export interface MonthlyPlanModel {
   domainClassSymbol?: any;
   ribbon?: any;
   planButtonClassname?: any;
-  plan?: any
+  plan?: any;
 }
 
 /**
@@ -40,43 +40,43 @@ export interface YearlyPlanModel {
   domainClassSymbol?: any;
   ribbon?: any;
   planButtonClassname?: any;
-  plan?: any
+  plan?: any;
 }
 
 /**
  * Choose Plan
  */
 export interface PricingModel {
-  id: any,
-  type: any,
-  purpose: any,
-  planIcon: any,
-  rate: any,
-  projects: any,
-  Customers: any,
-  FTP: any,
-  supportClass: any,
-  supportClassSymbol: any,
-  storageClass: any,
-  storageClassSymbol: any,
-  domainClass: any,
-  domainClassSymbol: any,
-  ribbon: any,
+  id: any;
+  type: any;
+  purpose: any;
+  planIcon: any;
+  rate: any;
+  projects: any;
+  Customers: any;
+  FTP: any;
+  supportClass: any;
+  supportClassSymbol: any;
+  storageClass: any;
+  storageClassSymbol: any;
+  domainClass: any;
+  domainClassSymbol: any;
+  ribbon: any;
   planButtonClassname: any;
-  plan?: any
+  plan?: any;
 }
 
 /**
  * Simple Plan
  */
 export interface SimpleModel {
-  id: any,
-  type: string,
-  purpose: string,
-  rate: number,
-  users: number,
-  storage: String,
-  domain: string,
-  support: string,
-  ribbon: any
+  id: any;
+  type: string;
+  purpose: string;
+  rate: number;
+  users: number;
+  storage: String;
+  domain: string;
+  support: string;
+  ribbon: any;
 }

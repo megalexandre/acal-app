@@ -10,35 +10,37 @@ import { JobcategoriesComponent } from './jobcategories/jobcategories.component'
 
 const routes: Routes = [
   {
-    path: "statistics",
-    component: StatisticsComponent
+    path: 'statistics',
+    component: StatisticsComponent,
   },
   {
-    path: "application",
-    component: ApplicationComponent
+    path: 'application',
+    component: ApplicationComponent,
   },
   {
-    path: "newjob",
-    component: NewjobComponent
+    path: 'newjob',
+    component: NewjobComponent,
   },
   {
-    path: "companies-list",
-    component: CompanieslistComponent
+    path: 'companies-list',
+    component: CompanieslistComponent,
   },
   {
-    path: "job-categories",
-    component: JobcategoriesComponent
+    path: 'job-categories',
+    component: JobcategoriesComponent,
   },
   {
-    path: 'job-lists', loadChildren: () => import('./job-lists/job-lists.module').then(m => m.JobListsModule)
+    path: 'job-lists',
+    loadChildren: () => import('./job-lists/job-lists.module').then((m) => m.JobListsModule),
   },
   {
-    path: 'candidate-lists', loadChildren: () => import('./candidate-lists/candidate-lists.module').then(m => m.CandidateListsModule)
+    path: 'candidate-lists',
+    loadChildren: () => import('./candidate-lists/candidate-lists.module').then((m) => m.CandidateListsModule),
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class JobsRoutingModule { }
+export class JobsRoutingModule {}

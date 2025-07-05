@@ -8,9 +8,8 @@ describe('WorkProcessComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WorkProcessComponent ]
-    })
-    .compileComponents();
+      declarations: [WorkProcessComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

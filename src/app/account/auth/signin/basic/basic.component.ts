@@ -4,14 +4,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-basic',
   templateUrl: './basic.component.html',
-  styleUrls: ['./basic.component.scss']
+  styleUrls: ['./basic.component.scss'],
 })
 
 /**
  * Basic Component
  */
 export class BasicComponent implements OnInit {
-
   // Login Form
   loginForm!: FormGroup;
   submitted = false;
@@ -21,25 +20,27 @@ export class BasicComponent implements OnInit {
   // set the current year
   year: number = new Date().getFullYear();
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     /**
      * Form Validatyion
      */
-     this.loginForm = this.formBuilder.group({
+    this.loginForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       password: ['', Validators.required],
     });
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.loginForm.controls; }
+  get f() {
+    return this.loginForm.controls;
+  }
 
   /**
    * Form submit
    */
-   onSubmit() {
+  onSubmit() {
     this.submitted = true;
 
     // stop here if form is invalid
@@ -51,8 +52,7 @@ export class BasicComponent implements OnInit {
   /**
    * Password Hide/Show
    */
-   toggleFieldTextType() {
+  toggleFieldTextType() {
     this.fieldTextType = !this.fieldTextType;
   }
-
 }

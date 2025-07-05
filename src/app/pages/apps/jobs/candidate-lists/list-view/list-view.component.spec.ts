@@ -8,9 +8,8 @@ describe('ListViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListViewComponent ]
-    })
-    .compileComponents();
+      declarations: [ListViewComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ListViewComponent);
     component = fixture.componentInstance;

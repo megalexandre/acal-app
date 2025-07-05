@@ -6,42 +6,35 @@ import { nftwalletData } from 'src/app/core/data';
 @Component({
   selector: 'app-wallet',
   templateUrl: './wallet.component.html',
-  styleUrls: ['./wallet.component.scss']
+  styleUrls: ['./wallet.component.scss'],
 })
 
 /**
  * Wallet Component
  */
 export class WalletComponent implements OnInit {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   walletData!: walletModel[];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     /**
-   * BreadCrumb
-   */
-    this.breadCrumbItems = [
-      { label: 'NFT Marketplace' },
-      { label: 'Wallet Connect', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'NFT Marketplace' }, { label: 'Wallet Connect', active: true }];
 
     /**
      * fetches data
      */
     this._fetchData();
-
   }
 
   /**
-  * NFT Wallet data fetches
-  */
+   * NFT Wallet data fetches
+   */
   private _fetchData() {
     this.walletData = nftwalletData;
   }
-
-
 }

@@ -8,22 +8,17 @@ import { SharedModule } from 'src/app/shared/shared.module';
 @Component({
   selector: 'app-pages-blog-overview',
   standalone: true,
-  imports: [CommonModule, RouterModule,NgbPaginationModule,SharedModule,SimplebarAngularModule],
+  imports: [CommonModule, RouterModule, NgbPaginationModule, SharedModule, SimplebarAngularModule],
   templateUrl: './pages-blog-overview.component.html',
-  styleUrl: './pages-blog-overview.component.scss'
+  styleUrl: './pages-blog-overview.component.scss',
 })
 export class PagesBlogOverviewComponent {
-
   breadCrumbItems!: Array<{}>;
-  listview: any
+  listview: any;
   alllistview: any;
 
-
-  ngOnInIt(){
-    this.breadCrumbItems = [
-      { label: 'Blogs' },
-      { label: 'List View', active: true }
-    ];
+  ngOnInIt() {
+    this.breadCrumbItems = [{ label: 'Blogs' }, { label: 'List View', active: true }];
 
     // Fetch Data
     // setTimeout(() => {
@@ -32,5 +27,4 @@ export class PagesBlogOverviewComponent {
     //   document.getElementById('elmLoader')?.classList.add('d-none')
     // }, 1200)
   }
-
 }

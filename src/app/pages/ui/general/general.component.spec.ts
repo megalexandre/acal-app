@@ -8,9 +8,8 @@ describe('GeneralComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GeneralComponent ]
-    })
-    .compileComponents();
+      declarations: [GeneralComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

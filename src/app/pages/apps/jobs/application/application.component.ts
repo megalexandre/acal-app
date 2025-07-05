@@ -11,14 +11,12 @@ import { selectJobsData, selectJobsLoading } from 'src/app/store/Jobs/jobs_selec
 import { cloneDeep } from 'lodash';
 import { PaginationService } from 'src/app/core/services/pagination.service';
 
-
 @Component({
   selector: 'app-application',
   templateUrl: './application.component.html',
-  styleUrls: ['./application.component.scss']
+  styleUrls: ['./application.component.scss'],
 })
 export class ApplicationComponent {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   applications: any;
@@ -33,20 +31,18 @@ export class ApplicationComponent {
   status: any = '';
   type: any = '';
 
-  constructor(public service: PaginationService,
+  constructor(
+    public service: PaginationService,
     public formBuilder: UntypedFormBuilder,
     private store: Store<{ data: RootReducerState }>,
-    public modalService: NgbModal) {
-  }
+    public modalService: NgbModal,
+  ) {}
 
   ngOnInit(): void {
     /**
-* BreadCrumb
-*/
-    this.breadCrumbItems = [
-      { label: 'Jobs' },
-      { label: 'Application', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Jobs' }, { label: 'Application', active: true }];
 
     // Validation
     this.applicationData = this.formBuilder.group({
@@ -56,7 +52,7 @@ export class ApplicationComponent {
       type: ['', [Validators.required]],
       designation: ['', [Validators.required]],
       contacts: ['', [Validators.required]],
-      status: ['', [Validators.required]]
+      status: ['', [Validators.required]],
     });
 
     this.store.dispatch(fetchApplicationData());
@@ -69,13 +65,13 @@ export class ApplicationComponent {
     this.store.select(selectJobsData).subscribe((data) => {
       this.applications = data;
       this.allapplications = cloneDeep(data);
-      this.applications = this.service.changePage(this.allapplications)
+      this.applications = this.service.changePage(this.allapplications);
     });
   }
 
   // Pagination
   changePage() {
-    this.applications = this.service.changePage(this.allapplications)
+    this.applications = this.service.changePage(this.allapplications);
   }
 
   // Filter
@@ -85,7 +81,7 @@ export class ApplicationComponent {
         return app.status === this.status;
       });
     } else {
-      this.applications = this.service.changePage(this.allapplications)
+      this.applications = this.service.changePage(this.allapplications);
     }
   }
 
@@ -95,23 +91,21 @@ export class ApplicationComponent {
         return app.type === this.type;
       });
     } else {
-      this.applications = this.service.changePage(this.allapplications)
+      this.applications = this.service.changePage(this.allapplications);
     }
   }
 
   // Search Data
   performSearch(): void {
     this.searchResults = this.allapplications.filter((item: any) => {
-      return (
-        item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
+      return item.name.toLowerCase().includes(this.searchTerm.toLowerCase());
     });
-    this.applications = this.service.changePage(this.searchResults)
+    this.applications = this.service.changePage(this.searchResults);
   }
 
   onNavChange(changeEvent: NgbNavChangeEvent) {
     if (changeEvent.nextId === 1) {
-      this.applications = this.service.changePage(this.allapplications)
+      this.applications = this.service.changePage(this.allapplications);
     }
     if (changeEvent.nextId === 2) {
       this.applications = this.allapplications.filter((app: any) => app.status == 'New');
@@ -127,40 +121,38 @@ export class ApplicationComponent {
     }
   }
 
-
   // Check Box Checked Value Get
   checkedValGet: any[] = [];
   // The master checkbox will check/ uncheck all items
   checkUncheckAll(ev: any) {
-    this.applications.forEach((x: { state: any; }) => x.state = ev.target.checked)
+    this.applications.forEach((x: { state: any }) => (x.state = ev.target.checked));
     var checkedVal: any[] = [];
-    var result
+    var result;
     for (var i = 0; i < this.applications.length; i++) {
       if (this.applications[i].state == true) {
         result = this.applications[i].id;
         checkedVal.push(result);
       }
     }
-    this.checkedValGet = checkedVal
-    checkedVal.length > 0 ? (document.getElementById("remove-actions") as HTMLElement).style.display = "block" : (document.getElementById("remove-actions") as HTMLElement).style.display = "none";
-
+    this.checkedValGet = checkedVal;
+    checkedVal.length > 0 ? ((document.getElementById('remove-actions') as HTMLElement).style.display = 'block') : ((document.getElementById('remove-actions') as HTMLElement).style.display = 'none');
   }
   isAllChecked() {
-    return this.applications.every((_: { state: any; }) => _.state);
+    return this.applications.every((_: { state: any }) => _.state);
   }
 
   // Select Checkbox value Get
   onCheckboxChange(e: any) {
     var checkedVal: any[] = [];
-    var result
+    var result;
     for (var i = 0; i < this.applications.length; i++) {
       if (this.applications[i].state == true) {
         result = this.applications[i].id;
         checkedVal.push(result);
       }
     }
-    this.checkedValGet = checkedVal
-    checkedVal.length > 0 ? (document.getElementById("remove-actions") as HTMLElement).style.display = "block" : (document.getElementById("remove-actions") as HTMLElement).style.display = "none";
+    this.checkedValGet = checkedVal;
+    checkedVal.length > 0 ? ((document.getElementById('remove-actions') as HTMLElement).style.display = 'block') : ((document.getElementById('remove-actions') as HTMLElement).style.display = 'none');
   }
 
   // Open add Model
@@ -171,7 +163,7 @@ export class ApplicationComponent {
   // File Upload
   imageURL: string | undefined;
   fileChange(event: any) {
-    let fileList: any = (event.target as HTMLInputElement);
+    let fileList: any = event.target as HTMLInputElement;
     let file: File = fileList.files[0];
     const reader = new FileReader();
     reader.onload = () => {
@@ -179,23 +171,23 @@ export class ApplicationComponent {
       document.querySelectorAll('#companylogo-img').forEach((element: any) => {
         element.src = this.imageURL;
       });
-    }
-    reader.readAsDataURL(file)
+    };
+    reader.readAsDataURL(file);
   }
 
   /**
-  * Open modal
-  * @param content modal content
-  */
+   * Open modal
+   * @param content modal content
+   */
   singleData: any;
   editorder(content: any, id: any) {
     this.singleData = this.applications[id];
     this.submitted = false;
-    this.modalService.open(content, { size: ' md', centered: true })
+    this.modalService.open(content, { size: ' md', centered: true });
     var modelTitle = document.querySelector('.modal-title') as HTMLAreaElement;
     modelTitle.innerHTML = 'Edit Application';
-    var updatebtn = document.getElementById('add-btn') as HTMLAreaElement
-    updatebtn.innerHTML = "Update";
+    var updatebtn = document.getElementById('add-btn') as HTMLAreaElement;
+    updatebtn.innerHTML = 'Update';
     document.querySelectorAll('#companylogo-img').forEach((element: any) => {
       element.src = this.singleData.img;
     });
@@ -209,8 +201,8 @@ export class ApplicationComponent {
   }
 
   /**
-* Returns form
-*/
+   * Returns form
+   */
   get form() {
     return this.applicationData.controls;
   }
@@ -225,7 +217,7 @@ export class ApplicationComponent {
         const name = this.applicationData.get('name')?.value;
         const designation = this.applicationData.get('designation')?.value;
         const contacts = this.applicationData.get('contacts')?.value;
-        const img = "/assets/images/brands/slack.png";
+        const img = '/assets/images/brands/slack.png';
         const date = '26 Sep, 2022';
         const status = this.applicationData.get('status')?.value;
         const type = this.applicationData.get('type')?.value;
@@ -237,17 +229,17 @@ export class ApplicationComponent {
           date,
           contacts,
           type,
-          status
+          status,
         };
         this.store.dispatch(addApplication({ newData }));
-        this.modalService.dismissAll()
+        this.modalService.dismissAll();
       }
     }
     this.modalService.dismissAll();
     setTimeout(() => {
       this.applicationData.reset();
     }, 2000);
-    this.submitted = true
+    this.submitted = true;
   }
   /**
    * Delete Model Open
@@ -267,7 +259,7 @@ export class ApplicationComponent {
       document.getElementById('a_' + item)?.remove();
       this.masterSelected = false;
     });
-    this.modalService.dismissAll('close click')
+    this.modalService.dismissAll('close click');
     let timerInterval: any;
     Swal.fire({
       title: 'Deleted!',
@@ -284,6 +276,6 @@ export class ApplicationComponent {
 
   // Sort Data
   onSort(column: any) {
-    this.applications = this.service.onSort(column, this.allapplications)
+    this.applications = this.service.onSort(column, this.allapplications);
   }
 }

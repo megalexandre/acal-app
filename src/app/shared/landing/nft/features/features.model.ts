@@ -1,6 +1,5 @@
 export interface featuresModel {
-    image: string;
-    title: string;
-    content: string;
-  }
-  
+  image: string;
+  title: string;
+  content: string;
+}

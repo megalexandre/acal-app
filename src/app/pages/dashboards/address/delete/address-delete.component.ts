@@ -7,7 +7,7 @@ import { AddressSharedService } from '../address-shared.service';
 
 @Component({
   selector: 'app-address-delete',
-  templateUrl: './address-delete.component.html'
+  templateUrl: './address-delete.component.html',
 })
 export class AddressDeleteComponent {
   address: Address | null = null;
@@ -16,27 +16,26 @@ export class AddressDeleteComponent {
     private addressService: AddressService,
     private shared: AddressSharedService,
     private router: Router,
-    private route: ActivatedRoute    
-) {
-  this.shared.selectedAddress$.subscribe(address => {
-    if (address) {
-      this.address = address;
-    } else {
-      this.back()
-    }
-  });
+    private route: ActivatedRoute,
+  ) {
+    this.shared.selectedAddress$.subscribe((address) => {
+      if (address) {
+        this.address = address;
+      } else {
+        this.back();
+      }
+    });
   }
 
   confirmDelete() {
     if (this.address) {
-          this.addressService.deleteAddress(this.address.id).subscribe({
-            next: () => this.back(),
-        });
+      this.addressService.deleteAddress(this.address.id).subscribe({
+        next: () => this.back(),
+      });
     }
   }
 
-    back() {
-       this.router.navigate(['../'], { relativeTo: this.route })
-    }
-
+  back() {
+    this.router.navigate(['../'], { relativeTo: this.route });
+  }
 }

@@ -7,22 +7,22 @@
     <div class="card">
       <div class="card-header">
         <h4 class="card-title mb-0">Add, Edit & Remove</h4>
-      </div><!-- end card header -->
+      </div>
+      <!-- end card header -->
 
       <div class="card-body">
         <div id="customerList">
           <div class="row g-4 mb-3">
             <div class="col-sm-auto">
               <div class="d-flex gap-1">
-                <button type="button" class="btn btn-primary add-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal" (click)="openModal(content)"><i class="ri-add-line align-bottom me-1"></i>
-                  Add</button>
+                <button type="button" class="btn btn-primary add-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal" (click)="openModal(content)"><i class="ri-add-line align-bottom me-1"></i> Add</button>
                 <button class="btn btn-soft-danger" (click)="deleteMultiple(deleteModel)"><i class="ri-delete-bin-2-line"></i></button>
               </div>
             </div>
             <div class="col-sm">
               <div class="d-flex justify-content-sm-end">
                 <div class="search-box ms-2">
-                  <input type="text" class="form-control search" placeholder="Search..." [(ngModel)]="service.searchTerm">
+                  <input type="text" class="form-control search" placeholder="Search..." [(ngModel)]="service.searchTerm" />
                   <i class="ri-search-line search-icon"></i>
                 </div>
               </div>
@@ -33,9 +33,9 @@
             <table class="table">
               <thead>
                 <tr class="bg-light text-muted">
-                  <th scope="col" style="width: 50px;">
+                  <th scope="col" style="width: 50px">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="checkAll" value="option" [(ngModel)]="masterSelected" (change)="checkUncheckAll($event)">
+                      <input class="form-check-input" type="checkbox" id="checkAll" value="option" [(ngModel)]="masterSelected" (change)="checkUncheckAll($event)" />
                     </div>
                   </th>
                   <th class="sort" listsortable="customer_name" (listsort)="onSort($event)">Customer</th>
@@ -48,29 +48,30 @@
               </thead>
               <tbody>
                 @for (data of ListJsDatas; track $index) {
-                <tr id="lj_{{data.id}}">
-                  <th scope="row">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="checkAll" value="{{data.id}}" [(ngModel)]="data.state">
-                    </div>
-                  </th>
-                  <td><ngb-highlight [result]="data.customer_name" [term]="service.searchTerm"></ngb-highlight></td>
-                  <td><ngb-highlight [result]="data.email" [term]="service.searchTerm"></ngb-highlight></td>
-                  <td><ngb-highlight [result]="data.phone" [term]="service.searchTerm"></ngb-highlight></td>
-                  <td><ngb-highlight [result]="data.date" [term]="service.searchTerm"></ngb-highlight></td>
-                  <td class="status"><span class="badge bg-{{data.status_color}}-subtle text-{{data.status_color}}F text-uppercase">{{data.status}}</span>
-                  </td>
-                  <td>
-                    <div class="d-flex gap-2">
-                      <div class="edit">
-                        <button class="btn btn-sm btn-primary edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal" (click)="editModal(content,data.id)">Edit</button>
+                  <tr id="lj_{{ data.id }}">
+                    <th scope="row">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="checkAll" value="{{ data.id }}" [(ngModel)]="data.state" />
                       </div>
-                      <div class="remove">
-                        <button class="btn btn-sm btn-success remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal" (click)="confirm(deleteModel,data.id)">Remove</button>
+                    </th>
+                    <td><ngb-highlight [result]="data.customer_name" [term]="service.searchTerm"></ngb-highlight></td>
+                    <td><ngb-highlight [result]="data.email" [term]="service.searchTerm"></ngb-highlight></td>
+                    <td><ngb-highlight [result]="data.phone" [term]="service.searchTerm"></ngb-highlight></td>
+                    <td><ngb-highlight [result]="data.date" [term]="service.searchTerm"></ngb-highlight></td>
+                    <td class="status">
+                      <span class="badge bg-{{ data.status_color }}-subtle text-{{ data.status_color }}F text-uppercase">{{ data.status }}</span>
+                    </td>
+                    <td>
+                      <div class="d-flex gap-2">
+                        <div class="edit">
+                          <button class="btn btn-sm btn-primary edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal" (click)="editModal(content, data.id)">Edit</button>
+                        </div>
+                        <div class="remove">
+                          <button class="btn btn-sm btn-success remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal" (click)="confirm(deleteModel, data.id)">Remove</button>
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                </tr>
+                    </td>
+                  </tr>
                 }
               </tbody>
             </table>
@@ -80,22 +81,21 @@
             <div class="col col-sm-6">
               <div class="dataTables_info mb-2" id="tickets-table_info" role="status" aria-live="polite">
                 Showing
-                {{service.startIndex}} to
-                {{service.endIndex}} of {{service.totalRecords}}
+                {{ service.startIndex }} to {{ service.endIndex }} of {{ service.totalRecords }}
                 entries
               </div>
             </div>
             <!-- Pagination -->
             <div class="col col-sm-6">
               <div class="text-sm-right float-end listjs-pagination">
-                <ngb-pagination [collectionSize]="(total | async)!" [(page)]="service.page" [pageSize]="service.pageSize">
-                </ngb-pagination>
+                <ngb-pagination [collectionSize]="(total | async)!" [(page)]="service.page" [pageSize]="service.pageSize"> </ngb-pagination>
               </div>
             </div>
             <!-- End Pagination -->
           </div>
         </div>
-      </div><!-- end card -->
+      </div>
+      <!-- end card -->
     </div>
     <!-- end col -->
   </div>
@@ -108,7 +108,8 @@
     <div class="card">
       <div class="card-header">
         <h4 class="card-title mb-0">Data Attributes + Custom</h4>
-      </div><!-- end card header -->
+      </div>
+      <!-- end card header -->
 
       <div class="card-body">
         <p class="text-muted">Use data attributes and other custom attributes as keys</p>
@@ -120,33 +121,35 @@
               </div>
             </div>
             <div class="col-auto">
-              <button class="btn btn-light sort" data-sort="name">
-                Sort by name
-              </button>
+              <button class="btn btn-light sort" data-sort="name">Sort by name</button>
             </div>
           </div>
 
-          <ngx-simplebar style="height: 242px;" class="mx-n3">
+          <ngx-simplebar style="height: 242px" class="mx-n3">
             <ul class="list list-group list-group-flush mb-0">
-              @for (data of attributedata | filterBy:['name','year']:dataterm; track $index) {
-              <li class="list-group-item" data-id="1">
-                <div class="d-flex">
-                  <div class="flex-grow-1">
-                    <h5 class="fs-13 mb-1"><a href="#" class="link name text-body">{{data.name}}</a></h5>
-                    <p class="born timestamp text-muted mb-0" data-timestamp="12345">{{data.year}}</p>
-                  </div>
-                  <div class="flex-shrink-0">
-                    <div>
-                      <img class="image avatar-xs rounded-circle" alt="" src="{{data.img}}">
+              @for (data of attributedata | filterBy: ['name', 'year'] : dataterm; track $index) {
+                <li class="list-group-item" data-id="1">
+                  <div class="d-flex">
+                    <div class="flex-grow-1">
+                      <h5 class="fs-13 mb-1">
+                        <a href="#" class="link name text-body">{{ data.name }}</a>
+                      </h5>
+                      <p class="born timestamp text-muted mb-0" data-timestamp="12345">{{ data.year }}</p>
+                    </div>
+                    <div class="flex-shrink-0">
+                      <div>
+                        <img class="image avatar-xs rounded-circle" alt="" src="{{ data.img }}" />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </li>}
+                </li>
+              }
             </ul>
             <!-- end ul list -->
           </ngx-simplebar>
         </div>
-      </div><!-- end card body -->
+      </div>
+      <!-- end card body -->
     </div>
     <!-- end card -->
   </div>
@@ -156,7 +159,8 @@
     <div class="card">
       <div class="card-header">
         <h4 class="card-title mb-0">Existing List</h4>
-      </div><!-- end card header -->
+      </div>
+      <!-- end card header -->
 
       <div class="card-body">
         <p class="text-muted">Basic Example with Existing List</p>
@@ -168,39 +172,41 @@
               </div>
             </div>
             <div class="col-auto">
-              <button class="btn btn-light sort" data-sort="contact-name">
-                Sort by name
-              </button>
+              <button class="btn btn-light sort" data-sort="contact-name">Sort by name</button>
             </div>
           </div>
 
-          <ngx-simplebar data-simplebar style="height: 242px;" class="mx-n3">
+          <ngx-simplebar data-simplebar style="height: 242px" class="mx-n3">
             <ul class="list list-group list-group-flush mb-0">
-              @for (data of existingData | filterBy:['name','content']:existingTerm; track $index) {
-              <li class="list-group-item" data-id="01">
-                <div class="d-flex align-items-start">
-                  <div class="flex-shrink-0 me-3">
-                    <div>
-                      <img class="image avatar-xs rounded-circle" alt="" src="{{data.img}}">
+              @for (data of existingData | filterBy: ['name', 'content'] : existingTerm; track $index) {
+                <li class="list-group-item" data-id="01">
+                  <div class="d-flex align-items-start">
+                    <div class="flex-shrink-0 me-3">
+                      <div>
+                        <img class="image avatar-xs rounded-circle" alt="" src="{{ data.img }}" />
+                      </div>
+                    </div>
+
+                    <div class="flex-grow-1 overflow-hidden">
+                      <h5 class="contact-name fs-13 mb-1">
+                        <a href="#" class="link text-body">{{ data.name }}</a>
+                      </h5>
+                      <p class="contact-born text-muted mb-0">{{ data.content }}</p>
+                    </div>
+
+                    <div class="flex-shrink-0 ms-2">
+                      <div class="fs-11 text-muted">{{ data.time }}</div>
                     </div>
                   </div>
-
-                  <div class="flex-grow-1 overflow-hidden">
-                    <h5 class="contact-name fs-13 mb-1"><a href="#" class="link text-body">{{data.name}}</a></h5>
-                    <p class="contact-born text-muted mb-0">{{data.content}}</p>
-                  </div>
-
-                  <div class="flex-shrink-0 ms-2">
-                    <div class="fs-11 text-muted">{{data.time}}</div>
-                  </div>
-                </div>
-              </li>}
+                </li>
+              }
               <!-- end list item -->
             </ul>
             <!-- end ul list -->
           </ngx-simplebar>
         </div>
-      </div><!-- end card -->
+      </div>
+      <!-- end card -->
     </div>
     <!-- end col -->
   </div>
@@ -210,18 +216,19 @@
     <div class="card">
       <div class="card-header">
         <h4 class="card-title mb-0">Fuzzy Search</h4>
-      </div><!-- end card header -->
+      </div>
+      <!-- end card header -->
       <div class="card-body">
         <p class="text-muted">Example of how to use the fuzzy search plugin</p>
         <div id="fuzzysearch-list">
           <input type="text" class="fuzzy-search form-control mb-2" placeholder="Search" [(ngModel)]="fuzzyTerm" />
 
-          <ngx-simplebar style="height: 242px;">
+          <ngx-simplebar style="height: 242px">
             <ul class="list mb-0">
-              @for (data of fuzzyData | filterBy:['name']:fuzzyTerm; track $index) {
-              <li>
-                <p class="name">{{data.name}}</p>
-              </li>
+              @for (data of fuzzyData | filterBy: ['name'] : fuzzyTerm; track $index) {
+                <li>
+                  <p class="name">{{ data.name }}</p>
+                </li>
               }
             </ul>
           </ngx-simplebar>
@@ -239,7 +246,8 @@
     <div class="card">
       <div class="card-header">
         <h4 class="card-title mb-0">Pagination</h4>
-      </div><!-- end card header -->
+      </div>
+      <!-- end card header -->
 
       <div class="card-body">
         <p class="text-muted">Example of how to use the pagination plugin</p>
@@ -251,43 +259,48 @@
 
           <div class="mx-n3">
             <ul class="list list-group list-group-flush mb-0">
-              @for (data of paginationDatas | filterBy:['name','type']:term; track $index) {
-              <li class="list-group-item">
-                <div class="d-flex align-items-center pagi-list">
-                  <div class="flex-shrink-0 me-3">
-                    <div>
-                      <img class="image avatar-xs rounded-circle" alt="" src="
-                                              {{data.img}}">
+              @for (data of paginationDatas | filterBy: ['name', 'type'] : term; track $index) {
+                <li class="list-group-item">
+                  <div class="d-flex align-items-center pagi-list">
+                    <div class="flex-shrink-0 me-3">
+                      <div>
+                        <img
+                          class="image avatar-xs rounded-circle"
+                          alt=""
+                          src="
+                                              {{ data.img }}"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="flex-grow-1 overflow-hidden">
+                      <h5 class="fs-13 mb-1">
+                        <a href="#" class="link text-body">{{ data.name }}</a>
+                      </h5>
+                      <p class="born timestamp text-muted mb-0">{{ data.type }}</p>
+                    </div>
+
+                    <div class="flex-shrink-0 ms-2">
+                      <div>
+                        <button type="button" class="btn btn-sm btn-light"><i class="ri-mail-line align-bottom"></i> Message</button>
+                      </div>
                     </div>
                   </div>
-
-                  <div class="flex-grow-1 overflow-hidden">
-                    <h5 class="fs-13 mb-1"><a href="#" class="link text-body">{{data.name}}</a>
-                    </h5>
-                    <p class="born timestamp text-muted mb-0">{{data.type}}</p>
-                  </div>
-
-                  <div class="flex-shrink-0 ms-2">
-                    <div>
-                      <button type="button" class="btn btn-sm btn-light"><i class="ri-mail-line align-bottom"></i> Message</button>
-                    </div>
-                  </div>
-                </div>
-              </li>}
+                </li>
+              }
               <!-- end list item -->
             </ul>
             <!-- end ul list -->
 
             <div class="d-flex justify-content-center">
               <div class="text-sm-right float-sm-end listjs-pagination gap-2">
-                <ngb-pagination [collectionSize]="6" [(page)]="page" [pageSize]="pageSize" (pageChange)="loadPage()">
-                </ngb-pagination>
+                <ngb-pagination [collectionSize]="6" [(page)]="page" [pageSize]="pageSize" (pageChange)="loadPage()"> </ngb-pagination>
               </div>
             </div>
-
           </div>
         </div>
-      </div><!-- end card -->
+      </div>
+      <!-- end card -->
     </div>
     <!-- end col -->
   </div>
@@ -303,10 +316,9 @@
   </div>
   <form (ngSubmit)="saveListJs()" [formGroup]="listJsForm" class="tablelist-form" autocomplete="off">
     <div class="modal-body">
-
       <input type="hidden" name="id" value="" formControlName="ids" />
 
-      <div class="mb-3" id="modal-id" style="display: none;">
+      <div class="mb-3" id="modal-id" style="display: none">
         <label for="id-field" class="form-label">ID</label>
         <input type="text" id="id-field" class="form-control" placeholder="ID" readonly />
       </div>
@@ -331,7 +343,7 @@
 
       <div class="mb-3">
         <label for="date-field" class="form-label">Joining Date</label>
-        <input class="form-control flatpickr-input" type="text" mwlFlatpickr [altInput]="true" [convertModelValue]="true" formControlName="date" [ngClass]="{ 'is-invalid': submitted && form['date'].errors }">
+        <input class="form-control flatpickr-input" type="text" mwlFlatpickr [altInput]="true" [convertModelValue]="true" formControlName="date" [ngClass]="{ 'is-invalid': submitted && form['date'].errors }" />
         <div class="invalid-feedback">Please select a date.</div>
       </div>
 
@@ -342,12 +354,12 @@
           <option value="Active">Active</option>
           <option value="Block">Block</option>
         </select>
-        @if(submitted && form['status'].errors){
-        <div class="invalid-feedback" align="left">
-          @if(form['status'].errors['required']){
-          <div>status is required</div>
-          }
-        </div>
+        @if (submitted && form['status'].errors) {
+          <div class="invalid-feedback" align="left">
+            @if (form['status'].errors['required']) {
+              <div>status is required</div>
+            }
+          </div>
         }
       </div>
     </div>
@@ -368,7 +380,7 @@
     </div>
     <div class="modal-body">
       <div class="mt-2 text-center">
-        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop" colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
+        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop" colors="primary:#f7b84b,secondary:#f06548" style="width: 100px; height: 100px"></lord-icon>
         <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
           <h4>Are you Sure ?</h4>
           <p class="text-muted mx-4 mb-0">Are you Sure You want to Remove this Record ?</p>
@@ -379,5 +391,6 @@
         <button type="button" class="btn w-sm btn-danger" id="delete-product" (click)="deleteData(deleteId)" (click)="modal.close('Close click')">Yes, Delete It!</button>
       </div>
     </div>
-  </div><!-- /.modal-content -->
+  </div>
+  <!-- /.modal-content -->
 </ng-template>

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ExploreComponent } from './explore/explore.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-// Bootstrap 
+// Bootstrap
 import { NgbDropdownModule, NgbPaginationModule, NgbTypeaheadModule, NgbProgressbarModule, NgbNavModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Ngx Sliders
@@ -18,7 +18,7 @@ import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 import { SimplebarAngularModule } from 'simplebar-angular';
 
 // Component pages
-import { NftMarketplaceRoutingModule } from "./nft-marketplace-routing.module";
+import { NftMarketplaceRoutingModule } from './nft-marketplace-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 import { AuctionComponent } from './auction/auction.component';
 import { WalletComponent } from './wallet/wallet.component';
@@ -29,25 +29,14 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
 import { MarketplaceComponent } from './marketplace/marketplace.component';
 import { RankingComponent } from './ranking/ranking.component';
 
-
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   url: 'https://httpbin.org/post',
   maxFilesize: 50,
-  acceptedFiles: 'image/*'
+  acceptedFiles: 'image/*',
 };
 
 @NgModule({
-  declarations: [
-    ExploreComponent,
-    AuctionComponent,
-    WalletComponent,
-    CreatorsComponent,
-    CreateComponent,
-    CollectionsComponent,
-    ItemDetailsComponent,
-    MarketplaceComponent,
-    RankingComponent,
-  ],
+  declarations: [ExploreComponent, AuctionComponent, WalletComponent, CreatorsComponent, CreateComponent, CollectionsComponent, ItemDetailsComponent, MarketplaceComponent, RankingComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -63,6 +52,6 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     NgxSliderModule,
     DropzoneModule,
     SimplebarAngularModule,
-  ]
+  ],
 })
-export class NftMarketplaceModule { }
+export class NftMarketplaceModule {}

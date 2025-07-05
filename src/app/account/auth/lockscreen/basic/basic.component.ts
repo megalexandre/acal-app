@@ -4,14 +4,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-basic',
   templateUrl: './basic.component.html',
-  styleUrls: ['./basic.component.scss']
+  styleUrls: ['./basic.component.scss'],
 })
 
 /**
  * Lock Screen Basic Component
  */
 export class BasicComponent implements OnInit {
-
   // Login Form
   lockscreenForm!: FormGroup;
   submitted = false;
@@ -21,29 +20,30 @@ export class BasicComponent implements OnInit {
   // set the current year
   year: number = new Date().getFullYear();
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     /**
      * Form Validatyion
      */
-     this.lockscreenForm = this.formBuilder.group({
-      password: ['', [Validators.required]]
+    this.lockscreenForm = this.formBuilder.group({
+      password: ['', [Validators.required]],
     });
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.lockscreenForm.controls; }
+  get f() {
+    return this.lockscreenForm.controls;
+  }
 
   /**
    * Form submit
    */
-   onSubmit() {
+  onSubmit() {
     this.submitted = true;
     // stop here if form is invalid
     if (this.lockscreenForm.invalid) {
       return;
     }
   }
-
 }

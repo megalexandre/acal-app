@@ -3,18 +3,16 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-counter',
   templateUrl: './counter.component.html',
-  styleUrls: ['./counter.component.scss']
+  styleUrls: ['./counter.component.scss'],
 })
 
 /**
  * Counter Component
  */
 export class CounterComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   num: number = 0;
   option = {
@@ -23,5 +21,4 @@ export class CounterComponent implements OnInit {
     duration: 2,
     decimalPlaces: 2,
   };
-  
 }

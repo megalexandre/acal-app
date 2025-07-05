@@ -4,7 +4,7 @@ import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 // Load Icons
-import { defineElement } from "@lordicon/element";
+import { defineElement } from '@lordicon/element';
 import lottie from 'lottie-web';
 
 // Component
@@ -13,18 +13,9 @@ import { BasicComponent } from './basic/basic.component';
 import { CoverComponent } from './cover/cover.component';
 
 @NgModule({
-  declarations: [
-    BasicComponent,
-    CoverComponent
-  ],
-  imports: [
-    CommonModule,
-    NgbCarouselModule,
-    ReactiveFormsModule,
-    FormsModule,
-    LogoutRoutingModule
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  declarations: [BasicComponent, CoverComponent],
+  imports: [CommonModule, NgbCarouselModule, ReactiveFormsModule, FormsModule, LogoutRoutingModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class LogoutModule {
   constructor() {

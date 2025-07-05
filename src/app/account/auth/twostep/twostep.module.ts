@@ -7,22 +7,12 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgOtpInputModule } from 'ng-otp-input';
 
 // Component
-import { TwoStepRoutingModule } from "./twostep-routing.module";
+import { TwoStepRoutingModule } from './twostep-routing.module';
 import { BasicComponent } from './basic/basic.component';
 import { CoverComponent } from './cover/cover.component';
 
 @NgModule({
-  declarations: [
-    BasicComponent,
-    CoverComponent
-  ],
-  imports: [
-    CommonModule,
-    NgbCarouselModule,
-    ReactiveFormsModule,
-    FormsModule,
-    NgOtpInputModule,
-    TwoStepRoutingModule
-  ]
+  declarations: [BasicComponent, CoverComponent],
+  imports: [CommonModule, NgbCarouselModule, ReactiveFormsModule, FormsModule, NgOtpInputModule, TwoStepRoutingModule],
 })
-export class TwostepModule { }
+export class TwostepModule {}

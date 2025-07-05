@@ -9,10 +9,9 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 @Component({
   selector: 'app-list-view',
   templateUrl: './list-view.component.html',
-  styleUrls: ['./list-view.component.scss']
+  styleUrls: ['./list-view.component.scss'],
 })
 export class ListViewComponent implements OnInit {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   listview: any;
@@ -21,38 +20,34 @@ export class ListViewComponent implements OnInit {
   searchTerm: any;
 
   constructor(public service: PaginationService) {
-    this.service.pageSize = 8
+    this.service.pageSize = 8;
   }
 
   ngOnInit(): void {
     /**
-* BreadCrumb
-*/
-    this.breadCrumbItems = [
-      { label: 'Candidate Lists' },
-      { label: 'List View', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Candidate Lists' }, { label: 'List View', active: true }];
 
     setTimeout(() => {
       this.listview = this.service.changePage(candidatelist);
       this.alllistview = candidatelist;
-      document.getElementById('elmLoader')?.classList.add('d-none')
-    }, 1200)
+      document.getElementById('elmLoader')?.classList.add('d-none');
+    }, 1200);
   }
 
   bookmarklist(id: any) {
     if (this.listview[id].bookmark == true) {
-      this.listview[id].bookmark = false
+      this.listview[id].bookmark = false;
     } else {
-      this.listview[id].bookmark = true
+      this.listview[id].bookmark = true;
     }
   }
 
   // Pagination
   changePage() {
-    this.listview = this.service.changePage(this.alllistview)
+    this.listview = this.service.changePage(this.alllistview);
   }
-
 
   // Search Data
   performSearch(): void {
@@ -66,6 +61,6 @@ export class ListViewComponent implements OnInit {
         item.ratingCount.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     });
-    this.listview = this.service.changePage(this.searchResults)
+    this.listview = this.service.changePage(this.searchResults);
   }
 }

@@ -1,16 +1,15 @@
-
 //
 // _multijs.scss
 //
 
-.multi-wrapper{
+.multi-wrapper {
   border: none;
   position: relative;
 
-  &::before{
-    content: "\ea61";
+  &::before {
+    content: '\ea61';
     position: absolute;
-    font-family: "remixicon";
+    font-family: 'remixicon';
     left: 50%;
     transform: translateX(-50%);
     bottom: 86px;
@@ -25,58 +24,59 @@
     background-color: var(--#{$prefix}light);
     z-index: 1;
   }
-  
-  .non-selected-wrapper{
+
+  .non-selected-wrapper {
     border: 1px solid $input-border-color;
     background-color: $input-bg;
     border-top-left-radius: $border-radius;
     border-bottom-left-radius: $border-radius;
   }
 
-  .selected-wrapper, .non-selected-wrapper{
+  .selected-wrapper,
+  .non-selected-wrapper {
     &::-webkit-scrollbar {
       -webkit-appearance: none;
     }
-  
+
     &::-webkit-scrollbar:vertical {
       width: 10px;
     }
-  
+
     &::-webkit-scrollbar:horizontal {
       height: 9px;
     }
-  
+
     &::-webkit-scrollbar-thumb {
-      background-color: rgba(var(--#{$prefix}dark-rgb), .2);
+      background-color: rgba(var(--#{$prefix}dark-rgb), 0.2);
       border-radius: 10px;
       border: 2px solid $input-bg;
     }
-  
-    &::-webkit-scrollbar-track {
-      border-radius: 10px;  
-      background-color: $input-bg; 
-    }
-}
 
-  .item-group .group-label{
+    &::-webkit-scrollbar-track {
+      border-radius: 10px;
+      background-color: $input-bg;
+    }
+  }
+
+  .item-group .group-label {
     font-size: 12px;
   }
 
-  .item{
+  .item {
     color: $input-color;
-    &:hover{
+    &:hover {
       background-color: rgba($primary, 0.1);
     }
   }
 
-  .selected-wrapper{
+  .selected-wrapper {
     border: 1px solid $input-border-color;
     background: $input-bg;
     border-top-right-radius: $border-radius;
     border-bottom-right-radius: $border-radius;
   }
 
-  .search-input{
+  .search-input {
     flex: 0 0 auto;
     padding: $input-padding-y $input-padding-x;
     font-family: $input-font-family;
@@ -86,12 +86,12 @@
     border: $input-border-width solid $input-border-color;
     border-radius: $input-border-radius;
     margin-bottom: 16px;
-    &::placeholder{
+    &::placeholder {
       color: $input-placeholder-color;
     }
   }
 
-  .header{
+  .header {
     font-weight: $font-weight-semibold;
     color: var(--#{$prefix}gray-600);
   }

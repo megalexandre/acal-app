@@ -8,9 +8,8 @@ describe('MailboxComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MailboxComponent ]
-    })
-    .compileComponents();
+      declarations: [MailboxComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

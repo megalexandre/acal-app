@@ -5,7 +5,7 @@ import { Address } from './address.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AddressService {
   private apiUrl = `${environment.apiUrl}/address`;

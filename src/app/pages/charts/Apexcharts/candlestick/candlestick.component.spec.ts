@@ -8,9 +8,8 @@ describe('CandlestickComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CandlestickComponent ]
-    })
-    .compileComponents();
+      declarations: [CandlestickComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

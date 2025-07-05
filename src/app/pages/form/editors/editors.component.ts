@@ -6,28 +6,23 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 @Component({
   selector: 'app-editors',
   templateUrl: './editors.component.html',
-  styleUrls: ['./editors.component.scss']
+  styleUrls: ['./editors.component.scss'],
 })
 
 /**
  * Editors Component
  */
 export class EditorsComponent implements OnInit {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   public Editor = ClassicEditor;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     /**
-    * BreadCrumb
-    */
-     this.breadCrumbItems = [
-      { label: 'Forms' },
-      { label: 'Editors', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Forms' }, { label: 'Editors', active: true }];
   }
-
 }

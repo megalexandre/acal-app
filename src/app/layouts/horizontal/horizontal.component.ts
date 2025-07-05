@@ -3,18 +3,16 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-horizontal',
   templateUrl: './horizontal.component.html',
-  styleUrls: ['./horizontal.component.scss']
+  styleUrls: ['./horizontal.component.scss'],
 })
 
 /**
  * Horizontal Component
  */
 export class HorizontalComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
   isCondensed = false;
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   /**
    * on settings button clicked from topbar
@@ -24,7 +22,7 @@ export class HorizontalComponent implements OnInit {
     const rightBar = document.getElementById('theme-settings-offcanvas');
     if (rightBar != null) {
       rightBar.classList.toggle('show');
-      rightBar.setAttribute('style', "visibility: visible;");
+      rightBar.setAttribute('style', 'visibility: visible;');
     }
   }
 

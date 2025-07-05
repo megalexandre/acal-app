@@ -8,7 +8,7 @@ import { creatorsData, creatorsListData } from 'src/app/core/data';
 @Component({
   selector: 'app-creators',
   templateUrl: './creators.component.html',
-  styleUrls: ['./creators.component.scss']
+  styleUrls: ['./creators.component.scss'],
 })
 
 /**
@@ -23,19 +23,15 @@ export class CreatorsComponent {
   creatorsListData!: any[];
   allcreatorsListData!: any[];
 
-
   constructor(public service: PaginationService) {
     this.service.pageSize = 10;
   }
 
   ngOnInit(): void {
     /**
-    * BreadCrumb
-    */
-    this.breadCrumbItems = [
-      { label: 'NFT Marketplace' },
-      { label: 'Creators', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'NFT Marketplace' }, { label: 'Creators', active: true }];
 
     // FetchData
     this.creatorsData = creatorsData;
@@ -45,16 +41,14 @@ export class CreatorsComponent {
 
   // Pagination
   changePage() {
-    this.creatorsListData = this.service.changePage(this.allcreatorsListData)
+    this.creatorsListData = this.service.changePage(this.allcreatorsListData);
   }
 
   // Search Data
   performSearch(): void {
     this.searchResults = creatorsListData.filter((item: any) => {
-      return (
-        item.title.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
+      return item.title.toLowerCase().includes(this.searchTerm.toLowerCase());
     });
-    this.creatorsListData = this.service.changePage(this.searchResults)
+    this.creatorsListData = this.service.changePage(this.searchResults);
   }
 }

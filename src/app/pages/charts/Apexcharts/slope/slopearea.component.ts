@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-slopearea',
   templateUrl: './slopearea.component.html',
-  styleUrl: './slopearea.component.scss'
+  styleUrl: './slopearea.component.scss',
 })
 export class SlopeareaComponent {
   // bread crumb items
@@ -17,16 +17,13 @@ export class SlopeareaComponent {
 
   semiCircleChart: any;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     /**
-    * BreadCrumb
-    */
-    this.breadCrumbItems = [
-      { label: 'Apexcharts' },
-      { label: 'Radialbar Charts', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Apexcharts' }, { label: 'Radialbar Charts', active: true }];
 
     // Chart Color Data Get Function
     this._basic('["--vz-primary", "--vz-success", "--vz-danger"]');
@@ -37,19 +34,18 @@ export class SlopeareaComponent {
   private getChartColorsArray(colors: any) {
     colors = JSON.parse(colors);
     return colors.map(function (value: any) {
-      var newValue = value.replace(" ", "");
-      if (newValue.indexOf(",") === -1) {
+      var newValue = value.replace(' ', '');
+      if (newValue.indexOf(',') === -1) {
         var color = getComputedStyle(document.documentElement).getPropertyValue(newValue);
         if (color) {
-          color = color.replace(" ", "");
+          color = color.replace(' ', '');
           return color;
-        }
-        else return newValue;;
+        } else return newValue;
       } else {
         var val = value.split(',');
         if (val.length == 2) {
           var rgbaColor = getComputedStyle(document.documentElement).getPropertyValue(val[0]);
-          rgbaColor = "rgba(" + rgbaColor + "," + val[1] + ")";
+          rgbaColor = 'rgba(' + rgbaColor + ',' + val[1] + ')';
           return rgbaColor;
         } else {
           return newValue;
@@ -59,8 +55,8 @@ export class SlopeareaComponent {
   }
 
   /**
-  * Basic Chart
-  */
+   * Basic Chart
+   */
   private _basic(colors: any) {
     colors = this.getChartColorsArray(colors);
     this.basicRadialbarChart = {
@@ -125,13 +121,13 @@ export class SlopeareaComponent {
     });
     observer.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: [attributeToMonitor]
+      attributeFilter: [attributeToMonitor],
     });
   }
 
   /**
-  * Multiple Radialbar
-  */
+   * Multiple Radialbar
+   */
   private _multipleGroupChart(colors: any) {
     colors = this.getChartColorsArray(colors);
     this.multipleRadialbarChart = {
@@ -224,9 +220,9 @@ export class SlopeareaComponent {
         background: {
           enabled: true,
         },
-        formatter(val: null, opts: { w: { config: { series: { [x: string]: { name: any; }; }; }; }; seriesIndex: string | number; }) {
-          const seriesName = opts.w.config.series[opts.seriesIndex].name
-          return val !== null ? seriesName : ''
+        formatter(val: null, opts: { w: { config: { series: { [x: string]: { name: any } } } }; seriesIndex: string | number }) {
+          const seriesName = opts.w.config.series[opts.seriesIndex].name;
+          return val !== null ? seriesName : '';
         },
       },
       yaxis: {
@@ -258,8 +254,7 @@ export class SlopeareaComponent {
     });
     observer.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: [attributeToMonitor]
+      attributeFilter: [attributeToMonitor],
     });
   }
 }
-

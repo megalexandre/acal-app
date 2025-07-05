@@ -9,16 +9,7 @@ import { BasicComponent } from './basic/basic.component';
 import { CoverComponent } from './cover/cover.component';
 
 @NgModule({
-  declarations: [
-    BasicComponent,
-    CoverComponent
-  ],
-  imports: [
-    CommonModule,
-    NgbCarouselModule,
-    ReactiveFormsModule,
-    FormsModule,
-    SigninRoutingModule
-  ]
+  declarations: [BasicComponent, CoverComponent],
+  imports: [CommonModule, NgbCarouselModule, ReactiveFormsModule, FormsModule, SigninRoutingModule],
 })
-export class SigninModule { }
+export class SigninModule {}

@@ -3,14 +3,12 @@ import { Observable } from 'rxjs';
 import { PaginationService } from 'src/app/core/services/pagination.service';
 import { candidatelist } from 'src/app/core/data';
 
-
 @Component({
   selector: 'app-grid-view',
   templateUrl: './grid-view.component.html',
-  styleUrls: ['./grid-view.component.scss']
+  styleUrls: ['./grid-view.component.scss'],
 })
 export class GridViewComponent implements OnInit {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   gridview: any;
@@ -19,36 +17,31 @@ export class GridViewComponent implements OnInit {
   searchTerm: any;
 
   constructor(public service: PaginationService) {
-    this.service.pageSize = 20
+    this.service.pageSize = 20;
   }
 
   ngOnInit(): void {
     /**
-* BreadCrumb
-*/
-    this.breadCrumbItems = [
-      { label: 'Candidate Lists' },
-      { label: 'Grid View', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Candidate Lists' }, { label: 'Grid View', active: true }];
     // Fetch Data
     // Fetch Data
     setTimeout(() => {
       this.gridview = this.service.changePage(candidatelist);
       this.allgridList = candidatelist;
-      document.getElementById('elmLoader')?.classList.add('d-none')
-    }, 1200)
-
+      document.getElementById('elmLoader')?.classList.add('d-none');
+    }, 1200);
   }
 
   ngOnDestroy() {
-    this.service.pageSize = 8
+    this.service.pageSize = 8;
   }
 
   // Pagination
   changePage() {
-    this.gridview = this.service.changePage(this.allgridList)
+    this.gridview = this.service.changePage(this.allgridList);
   }
-
 
   // Search Data
   performSearch(): void {
@@ -62,8 +55,6 @@ export class GridViewComponent implements OnInit {
         item.ratingCount.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     });
-    this.gridview = this.service.changePage(this.searchResults)
+    this.gridview = this.service.changePage(this.searchResults);
   }
-
-
 }

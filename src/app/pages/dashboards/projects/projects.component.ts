@@ -4,14 +4,13 @@ import { ActiveProjects, MyTask, TeamMembers, projectstatData } from 'src/app/co
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss']
+  styleUrls: ['./projects.component.scss'],
 })
 
 /**
  * Projects Component
  */
 export class ProjectsComponent implements OnInit {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   statData!: any;
@@ -23,18 +22,13 @@ export class ProjectsComponent implements OnInit {
 
   @ViewChild('scrollRef') scrollRef: any;
 
-
-  constructor() {
-  }
+  constructor() {}
 
   ngOnInit(): void {
     /**
      * BreadCrumb
      */
-    this.breadCrumbItems = [
-      { label: 'Dashboards' },
-      { label: 'Projects', active: true }
-    ];
+    this.breadCrumbItems = [{ label: 'Dashboards' }, { label: 'Projects', active: true }];
 
     /**
      * Fetches the data
@@ -44,7 +38,6 @@ export class ProjectsComponent implements OnInit {
     // Chart Color Data Get Function
     this._OverviewChart('["--vz-primary", "--vz-primary-rgb, 0.1", "--vz-primary-rgb, 0.50"]');
     this._status7('["--vz-primary", "--vz-primary-rgb, 0.85", "--vz-primary-rgb, 0.70", "--vz-primary-rgb, 0.50"]');
-
   }
 
   ngAfterViewInit() {
@@ -63,19 +56,18 @@ export class ProjectsComponent implements OnInit {
   private getChartColorsArray(colors: any) {
     colors = JSON.parse(colors);
     return colors.map(function (value: any) {
-      var newValue = value.replace(" ", "");
-      if (newValue.indexOf(",") === -1) {
+      var newValue = value.replace(' ', '');
+      if (newValue.indexOf(',') === -1) {
         var color = getComputedStyle(document.documentElement).getPropertyValue(newValue);
         if (color) {
-          color = color.replace(" ", "");
+          color = color.replace(' ', '');
           return color;
-        }
-        else return newValue;;
+        } else return newValue;
       } else {
         var val = value.split(',');
         if (val.length == 2) {
           var rgbaColor = getComputedStyle(document.documentElement).getPropertyValue(val[0]);
-          rgbaColor = "rgba(" + rgbaColor + "," + val[1] + ")";
+          rgbaColor = 'rgba(' + rgbaColor + ',' + val[1] + ')';
           return rgbaColor;
         } else {
           return newValue;
@@ -84,95 +76,114 @@ export class ProjectsComponent implements OnInit {
     });
   }
 
-
   /**
- * Projects Overview
- */
+   * Projects Overview
+   */
   setprojectvalue(value: any) {
     if (value == 'all') {
-      this.OverviewChart.series = [{
-        name: 'Number of Projects',
-        type: 'bar',
-        data: [34, 65, 46, 68, 49, 61, 42, 44, 78, 52, 63, 67]
-      }, {
-        name: 'Revenue',
-        type: 'area',
-        data: [89.25, 98.58, 68.74, 108.87, 77.54, 84.03, 51.24, 28.57, 92.57, 42.36, 88.51, 36.57]
-      }, {
-        name: 'Active Projects',
-        type: 'bar',
-        data: [8, 12, 7, 17, 21, 11, 5, 9, 7, 29, 12, 35]
-      }]
+      this.OverviewChart.series = [
+        {
+          name: 'Number of Projects',
+          type: 'bar',
+          data: [34, 65, 46, 68, 49, 61, 42, 44, 78, 52, 63, 67],
+        },
+        {
+          name: 'Revenue',
+          type: 'area',
+          data: [89.25, 98.58, 68.74, 108.87, 77.54, 84.03, 51.24, 28.57, 92.57, 42.36, 88.51, 36.57],
+        },
+        {
+          name: 'Active Projects',
+          type: 'bar',
+          data: [8, 12, 7, 17, 21, 11, 5, 9, 7, 29, 12, 35],
+        },
+      ];
     }
     if (value == '1M') {
-      this.OverviewChart.series = [{
-        name: 'Number of Projects',
-        type: 'bar',
-        data: [24, 75, 16, 98, 19, 41, 52, 34, 28, 52, 63, 67]
-      }, {
-        name: 'Revenue',
-        type: 'area',
-        data: [99.25, 28.58, 98.74, 12.87, 107.54, 94.03, 11.24, 48.57, 22.57, 42.36, 88.51, 36.57]
-      }, {
-        name: 'Active Projects',
-        type: 'bar',
-        data: [28, 22, 17, 27, 21, 11, 5, 9, 17, 29, 12, 15]
-      }]
+      this.OverviewChart.series = [
+        {
+          name: 'Number of Projects',
+          type: 'bar',
+          data: [24, 75, 16, 98, 19, 41, 52, 34, 28, 52, 63, 67],
+        },
+        {
+          name: 'Revenue',
+          type: 'area',
+          data: [99.25, 28.58, 98.74, 12.87, 107.54, 94.03, 11.24, 48.57, 22.57, 42.36, 88.51, 36.57],
+        },
+        {
+          name: 'Active Projects',
+          type: 'bar',
+          data: [28, 22, 17, 27, 21, 11, 5, 9, 17, 29, 12, 15],
+        },
+      ];
     }
     if (value == '6M') {
-      this.OverviewChart.series = [{
-        name: 'Number of Projects',
-        type: 'bar',
-        data: [34, 75, 66, 78, 29, 41, 32, 44, 58, 52, 43, 77]
-      }, {
-        name: 'Revenue',
-        type: 'area',
-        data: [109.25, 48.58, 38.74, 57.87, 77.54, 84.03, 31.24, 18.57, 92.57, 42.36, 48.51, 56.57]
-      }, {
-        name: 'Active Projects',
-        type: 'bar',
-        data: [12, 22, 17, 27, 1, 51, 5, 9, 7, 29, 12, 35]
-      }]
+      this.OverviewChart.series = [
+        {
+          name: 'Number of Projects',
+          type: 'bar',
+          data: [34, 75, 66, 78, 29, 41, 32, 44, 58, 52, 43, 77],
+        },
+        {
+          name: 'Revenue',
+          type: 'area',
+          data: [109.25, 48.58, 38.74, 57.87, 77.54, 84.03, 31.24, 18.57, 92.57, 42.36, 48.51, 56.57],
+        },
+        {
+          name: 'Active Projects',
+          type: 'bar',
+          data: [12, 22, 17, 27, 1, 51, 5, 9, 7, 29, 12, 35],
+        },
+      ];
     }
     if (value == '1Y') {
-      this.OverviewChart.series = [{
-        name: 'Number of Projects',
-        type: 'bar',
-        data: [34, 65, 46, 68, 49, 61, 42, 44, 78, 52, 63, 67]
-      }, {
-        name: 'Revenue',
-        type: 'area',
-        data: [89.25, 98.58, 68.74, 108.87, 77.54, 84.03, 51.24, 28.57, 92.57, 42.36, 88.51, 36.57]
-      }, {
-        name: 'Active Projects',
-        type: 'bar',
-        data: [8, 12, 7, 17, 21, 11, 5, 9, 7, 29, 12, 35]
-      }]
+      this.OverviewChart.series = [
+        {
+          name: 'Number of Projects',
+          type: 'bar',
+          data: [34, 65, 46, 68, 49, 61, 42, 44, 78, 52, 63, 67],
+        },
+        {
+          name: 'Revenue',
+          type: 'area',
+          data: [89.25, 98.58, 68.74, 108.87, 77.54, 84.03, 51.24, 28.57, 92.57, 42.36, 88.51, 36.57],
+        },
+        {
+          name: 'Active Projects',
+          type: 'bar',
+          data: [8, 12, 7, 17, 21, 11, 5, 9, 7, 29, 12, 35],
+        },
+      ];
     }
   }
 
   private _OverviewChart(colors: any) {
     colors = this.getChartColorsArray(colors);
     this.OverviewChart = {
-      series: [{
-        name: 'Number of Projects',
-        type: 'bar',
-        data: [34, 65, 46, 68, 49, 61, 42, 44, 78, 52, 63, 67]
-      }, {
-        name: 'Revenue',
-        type: 'area',
-        data: [89.25, 98.58, 68.74, 108.87, 77.54, 84.03, 51.24, 28.57, 92.57, 42.36, 88.51, 36.57]
-      }, {
-        name: 'Active Projects',
-        type: 'bar',
-        data: [8, 12, 7, 17, 21, 11, 5, 9, 7, 29, 12, 35]
-      }],
+      series: [
+        {
+          name: 'Number of Projects',
+          type: 'bar',
+          data: [34, 65, 46, 68, 49, 61, 42, 44, 78, 52, 63, 67],
+        },
+        {
+          name: 'Revenue',
+          type: 'area',
+          data: [89.25, 98.58, 68.74, 108.87, 77.54, 84.03, 51.24, 28.57, 92.57, 42.36, 88.51, 36.57],
+        },
+        {
+          name: 'Active Projects',
+          type: 'bar',
+          data: [8, 12, 7, 17, 21, 11, 5, 9, 7, 29, 12, 35],
+        },
+      ],
       chart: {
         height: 374,
         type: 'line',
         toolbar: {
           show: false,
-        }
+        },
       },
       stroke: {
         curve: 'smooth',
@@ -180,41 +191,41 @@ export class ProjectsComponent implements OnInit {
         width: [0, 1, 0],
       },
       fill: {
-        opacity: [1, 0.1, 1]
+        opacity: [1, 0.1, 1],
       },
       markers: {
         size: [0, 4, 0],
         strokeWidth: 2,
         hover: {
           size: 4,
-        }
+        },
       },
       xaxis: {
         categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         axisTicks: {
-          show: false
+          show: false,
         },
         axisBorder: {
-          show: false
-        }
+          show: false,
+        },
       },
       grid: {
         show: true,
         xaxis: {
           lines: {
             show: true,
-          }
+          },
         },
         yaxis: {
           lines: {
             show: false,
-          }
+          },
         },
         padding: {
           top: 0,
           right: -2,
           bottom: 15,
-          left: 10
+          left: 10,
         },
       },
       legend: {
@@ -229,62 +240,63 @@ export class ProjectsComponent implements OnInit {
         },
         itemMargin: {
           horizontal: 10,
-          vertical: 0
+          vertical: 0,
         },
       },
       plotOptions: {
         bar: {
           columnWidth: '30%',
-          barHeight: '70%'
-        }
+          barHeight: '70%',
+        },
       },
       colors: colors,
       tooltip: {
         shared: true,
-        y: [{
-          formatter: function (y: any) {
-            if (typeof y !== "undefined") {
-              return y.toFixed(0);
-            }
-            return y;
-
-          }
-        }, {
-          formatter: function (y: any) {
-            if (typeof y !== "undefined") {
-              return "$" + y.toFixed(2) + "k";
-            }
-            return y;
-
-          }
-        }, {
-          formatter: function (y: any) {
-            if (typeof y !== "undefined") {
-              return y.toFixed(0);
-            }
-            return y;
-
-          }
-        }]
-      }
+        y: [
+          {
+            formatter: function (y: any) {
+              if (typeof y !== 'undefined') {
+                return y.toFixed(0);
+              }
+              return y;
+            },
+          },
+          {
+            formatter: function (y: any) {
+              if (typeof y !== 'undefined') {
+                return '$' + y.toFixed(2) + 'k';
+              }
+              return y;
+            },
+          },
+          {
+            formatter: function (y: any) {
+              if (typeof y !== 'undefined') {
+                return y.toFixed(0);
+              }
+              return y;
+            },
+          },
+        ],
+      },
     };
   }
 
   /**
-*  Status7
-*/
+   *  Status7
+   */
   setstatusvalue(value: any) {
     if (value == 'all') {
-      this.status7.series = [125, 42, 58, 89]
+      this.status7.series = [125, 42, 58, 89];
     }
     if (value == '7') {
-      this.status7.series = [25, 52, 158, 99]
+      this.status7.series = [25, 52, 158, 99];
     }
     if (value == '30') {
-      this.status7.series = [35, 22, 98, 99]
+      this.status7.series = [35, 22, 98, 99];
     }
     if (value == '90') {
-      this.status7.series = [105, 32, 68, 79]
+      this.status7.series = [105, 32, 68, 79];
     }
   }
 
@@ -292,9 +304,9 @@ export class ProjectsComponent implements OnInit {
     colors = this.getChartColorsArray(colors);
     this.status7 = {
       series: [125, 42, 58, 89],
-      labels: ["Completed", "In Progress", "Yet to Start", "Cancelled"],
+      labels: ['Completed', 'In Progress', 'Yet to Start', 'Cancelled'],
       chart: {
-        type: "donut",
+        type: 'donut',
         height: 230,
       },
       plotOptions: {
@@ -302,10 +314,10 @@ export class ProjectsComponent implements OnInit {
           offsetX: 0,
           offsetY: 0,
           donut: {
-            size: "90%",
+            size: '90%',
             labels: {
               show: false,
-            }
+            },
           },
         },
       },
@@ -316,10 +328,10 @@ export class ProjectsComponent implements OnInit {
         show: false,
       },
       stroke: {
-        lineCap: "round",
-        width: 0
+        lineCap: 'round',
+        width: 0,
       },
-      colors: colors
+      colors: colors,
     };
   }
 
@@ -332,5 +344,4 @@ export class ProjectsComponent implements OnInit {
     this.MyTask = MyTask;
     this.TeamMembers = TeamMembers;
   }
-
 }

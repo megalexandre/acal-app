@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 import { ngxCsv } from 'ngx-csv/ngx-csv';
 
 // Rest Api Service
-import { restApiService } from "../../../core/services/rest-api.service";
+import { restApiService } from '../../../core/services/rest-api.service';
 import { Store } from '@ngrx/store';
 import { RootReducerState } from 'src/app/store';
 import { addCustomer, deleteCustomer, fetchCustomerListData, updateCustomer } from 'src/app/store/Ecommerce/ecommerce_action';
@@ -29,7 +29,6 @@ import { cloneDeep } from 'lodash';
  * Customers Component
  */
 export class CustomersComponent {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   submitted = false;
@@ -46,30 +45,30 @@ export class CustomersComponent {
   status: any = '';
   searchResults: any;
 
-  constructor(private modalService: NgbModal, public service: PaginationService,
+  constructor(
+    private modalService: NgbModal,
+    public service: PaginationService,
     private formBuilder: UntypedFormBuilder,
-    private restApiService: restApiService, private store: Store<{ data: RootReducerState }>) {
-  }
+    private restApiService: restApiService,
+    private store: Store<{ data: RootReducerState }>,
+  ) {}
 
   ngOnInit(): void {
     /**
-    * BreadCrumb
-    */
-    this.breadCrumbItems = [
-      { label: 'Ecommerce' },
-      { label: 'Customers', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Ecommerce' }, { label: 'Customers', active: true }];
 
     /**
-    * Form Validation
-    */
+     * Form Validation
+     */
     this.customerForm = this.formBuilder.group({
       _id: [''],
       customer: ['', [Validators.required]],
       email: ['', [Validators.required]],
       phone: ['', [Validators.required]],
       date: ['', [Validators.required]],
-      status: ['', [Validators.required]]
+      status: ['', [Validators.required]],
     });
 
     // Fetch Data
@@ -83,29 +82,25 @@ export class CustomersComponent {
     this.store.select(selectCustomerData).subscribe((data) => {
       this.customers = data;
       this.customerList = cloneDeep(data);
-      this.customers = this.service.changePage(this.customerList)
+      this.customers = this.service.changePage(this.customerList);
     });
   }
 
   changePage() {
-    this.customers = this.service.changePage(this.customerList)
+    this.customers = this.service.changePage(this.customerList);
   }
 
   onSort(column: any) {
     // resetting other headers
-    this.customers = this.service.onSort(column, this.customers)
+    this.customers = this.service.onSort(column, this.customers);
   }
 
   // Search Data
   performSearch(): void {
     this.searchResults = this.customerList.filter((item: any) => {
-      return (
-        item.customer.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        item.email.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        item.status.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
+      return item.customer.toLowerCase().includes(this.searchTerm.toLowerCase()) || item.email.toLowerCase().includes(this.searchTerm.toLowerCase()) || item.status.toLowerCase().includes(this.searchTerm.toLowerCase());
     });
-    this.customers = this.service.changePage(this.searchResults)
+    this.customers = this.service.changePage(this.searchResults);
   }
 
   dateFilter() {
@@ -116,14 +111,13 @@ export class CustomersComponent {
     if (this.status != '') {
       this.customers = this.customerList.filter((customer: any) => customer.status == this.status);
     } else {
-      this.customers = this.customerList
+      this.customers = this.customerList;
     }
-
   }
 
   /**
-  * Confirmation mail model
-  */
+   * Confirmation mail model
+   */
   deleteId: any;
   confirm(content: any, id: any) {
     this.deleteId = id;
@@ -137,17 +131,17 @@ export class CustomersComponent {
     } else {
       this.store.dispatch(deleteCustomer({ id: this.checkedValGet.toString() }));
     }
-    this.deleteId = ''
-    this.masterSelected = false
+    this.deleteId = '';
+    this.masterSelected = false;
   }
 
   /**
-  * Multiple Delete
-  */
+   * Multiple Delete
+   */
   checkedValGet: any[] = [];
   deleteMultiple(content: any) {
     var checkboxes: any = document.getElementsByName('checkAll');
-    var result
+    var result;
     var checkedVal: any[] = [];
     for (var i = 0; i < checkboxes.length; i++) {
       if (checkboxes[i].checked) {
@@ -157,17 +151,16 @@ export class CustomersComponent {
     }
     if (checkedVal.length > 0) {
       this.modalService.open(content, { centered: true });
-    }
-    else {
-      Swal.fire({ text: 'Please select at least one checkbox', confirmButtonColor: '#299cdb', });
+    } else {
+      Swal.fire({ text: 'Please select at least one checkbox', confirmButtonColor: '#299cdb' });
     }
     this.checkedValGet = checkedVal;
   }
 
   /**
-* Open modal
-* @param content modal content
-*/
+   * Open modal
+   * @param content modal content
+   */
   openModal(content: any) {
     this.submitted = false;
     this.modalService.open(content, { size: 'md', centered: true });
@@ -181,16 +174,15 @@ export class CustomersComponent {
   }
 
   /**
- * Save user
- */
+   * Save user
+   */
   saveUser() {
     if (this.customerForm.valid) {
       if (this.customerForm.get('_id')?.value) {
         const updatedData = this.customerForm.value;
         this.store.dispatch(updateCustomer({ updatedData }));
         this.modalService.dismissAll();
-      }
-      else {
+      } else {
         const custId = (this.customerList.length + 1).toString();
         this.customerForm.controls['_id'].setValue(custId);
         const newData = this.customerForm.value;
@@ -215,36 +207,36 @@ export class CustomersComponent {
     setTimeout(() => {
       this.customerForm.reset();
     }, 2000);
-    this.submitted = true
+    this.submitted = true;
   }
 
   // The master checkbox will check/ uncheck all items
   checkUncheckAll(ev: any) {
-    this.customers.forEach((x: { state: any; }) => x.state = ev.target.checked)
+    this.customers.forEach((x: { state: any }) => (x.state = ev.target.checked));
     var checkedVal: any[] = [];
-    var result
+    var result;
     for (var i = 0; i < this.customers.length; i++) {
       if (this.customers[i].state == true) {
         result = this.customers[i];
         checkedVal.push(result);
       }
     }
-    this.checkedValGet = checkedVal
-    checkedVal.length > 0 ? (document.getElementById("remove-actions") as HTMLElement).style.display = "block" : (document.getElementById("remove-actions") as HTMLElement).style.display = "none";
+    this.checkedValGet = checkedVal;
+    checkedVal.length > 0 ? ((document.getElementById('remove-actions') as HTMLElement).style.display = 'block') : ((document.getElementById('remove-actions') as HTMLElement).style.display = 'none');
   }
 
   // Select Checkbox value Get
   onCheckboxChange(e: any) {
     var checkedVal: any[] = [];
-    var result
+    var result;
     for (var i = 0; i < this.customers.length; i++) {
       if (this.customers[i].state == true) {
         result = this.customers[i];
         checkedVal.push(result);
       }
     }
-    this.checkedValGet = checkedVal
-    checkedVal.length > 0 ? (document.getElementById("remove-actions") as HTMLElement).style.display = "block" : (document.getElementById("remove-actions") as HTMLElement).style.display = "none";
+    this.checkedValGet = checkedVal;
+    checkedVal.length > 0 ? ((document.getElementById('remove-actions') as HTMLElement).style.display = 'block') : ((document.getElementById('remove-actions') as HTMLElement).style.display = 'none');
   }
 
   /**
@@ -259,7 +251,7 @@ export class CustomersComponent {
     var modelTitle = document.querySelector('.modal-title') as HTMLAreaElement;
     modelTitle.innerHTML = 'Edit Customer';
     var updateBtn = document.getElementById('add-btn') as HTMLAreaElement;
-    updateBtn.innerHTML = "Update";
+    updateBtn.innerHTML = 'Update';
     this.econtent = this.customerList[id];
     this.customerForm.controls['customer'].setValue(this.econtent.customer);
     this.customerForm.controls['email'].setValue(this.econtent.email);
@@ -267,7 +259,6 @@ export class CustomersComponent {
     this.customerForm.controls['date'].setValue(this.econtent.date);
     this.customerForm.controls['status'].setValue(this.econtent.status);
     this.customerForm.controls['_id'].setValue(this.econtent._id);
-
   }
 
   // Csv File Export
@@ -281,14 +272,13 @@ export class CustomersComponent {
       title: 'Customer Data',
       useBom: true,
       noDownload: false,
-      headers: ["id", "customer Id", "customer", "email", "phone", "date", "status"]
+      headers: ['id', 'customer Id', 'customer', 'email', 'phone', 'date', 'status'],
     };
-    new ngxCsv(this.customers, "customers", customer);
+    new ngxCsv(this.customers, 'customers', customer);
   }
   /**
-  * Sort table data
-  * @param param0 sort the column
-  *
-  */
-
+   * Sort table data
+   * @param param0 sort the column
+   *
+   */
 }

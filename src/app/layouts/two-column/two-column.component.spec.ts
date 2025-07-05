@@ -8,9 +8,8 @@ describe('TwoColumnComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TwoColumnComponent ]
-    })
-    .compileComponents();
+      declarations: [TwoColumnComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

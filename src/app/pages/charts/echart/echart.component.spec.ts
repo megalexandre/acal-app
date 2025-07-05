@@ -8,9 +8,8 @@ describe('EchartComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ EchartComponent ]
-    })
-    .compileComponents();
+      declarations: [EchartComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

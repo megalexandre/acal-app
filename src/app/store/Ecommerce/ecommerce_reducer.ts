@@ -1,5 +1,25 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { addCustomerSuccess, addOrderSuccess, deleteCustomerSuccess, deleteOrderSuccess, deleteProductSuccess, fetchCustomerListData, fetchCustomerListFailure, fetchCustomerListSuccess, fetchProductListData, fetchProductListFailure, fetchProductListSuccess, fetchSellerListData, fetchSellerListFailure, fetchSellerListSuccess, fetchorderListData, fetchorderListFailure, fetchorderListSuccess, updateCustomerSuccess, updateOrderSuccess } from './ecommerce_action';
+import {
+  addCustomerSuccess,
+  addOrderSuccess,
+  deleteCustomerSuccess,
+  deleteOrderSuccess,
+  deleteProductSuccess,
+  fetchCustomerListData,
+  fetchCustomerListFailure,
+  fetchCustomerListSuccess,
+  fetchProductListData,
+  fetchProductListFailure,
+  fetchProductListSuccess,
+  fetchSellerListData,
+  fetchSellerListFailure,
+  fetchSellerListSuccess,
+  fetchorderListData,
+  fetchorderListFailure,
+  fetchorderListSuccess,
+  updateCustomerSuccess,
+  updateOrderSuccess,
+} from './ecommerce_action';
 
 export interface EcommerceState {
   order: any[];
@@ -54,7 +74,9 @@ export const ecommercerReducer = createReducer(
 
   on(updateOrderSuccess, (state, { updatedData }) => {
     return {
-      ...state, order: state.order.map((orders) => orders.orderId === updatedData.orderId ? updatedData : orders), error: null
+      ...state,
+      order: state.order.map((orders) => (orders.orderId === updatedData.orderId ? updatedData : orders)),
+      error: null,
     };
   }),
 
@@ -80,8 +102,9 @@ export const ecommercerReducer = createReducer(
 
   on(updateCustomerSuccess, (state, { updatedData }) => {
     return {
-   
-      ...state, Customer: state.Customer.map((customer) => customer._id === updatedData._id ? updatedData : customer), error: null
+      ...state,
+      Customer: state.Customer.map((customer) => (customer._id === updatedData._id ? updatedData : customer)),
+      error: null,
     };
   }),
 
@@ -100,7 +123,6 @@ export const ecommercerReducer = createReducer(
   on(fetchSellerListFailure, (state, { error }) => {
     return { ...state, error, loading: false };
   }),
-
 );
 
 // Selector

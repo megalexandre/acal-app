@@ -11,7 +11,7 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 import { SimplebarAngularModule } from 'simplebar-angular';
 
 // Load Icons
-import { defineElement } from "@lordicon/element";
+import { defineElement } from '@lordicon/element';
 import lottie from 'lottie-web';
 
 // Component pages
@@ -23,28 +23,10 @@ import { DetailsComponent } from './details/details.component';
 import { DatePipe } from '@angular/common';
 
 @NgModule({
-  declarations: [
-    ListComponent,
-    DetailsComponent,
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgbPaginationModule,
-    NgbTypeaheadModule,
-    NgbDropdownModule,
-    NgbTooltipModule,
-    CountUpModule,
-    FlatpickrModule,
-    SimplebarAngularModule,
-    TicketsRoutingModule,
-    SharedModule
-  ],
-  providers: [
-    DatePipe
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  declarations: [ListComponent, DetailsComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, NgbPaginationModule, NgbTypeaheadModule, NgbDropdownModule, NgbTooltipModule, CountUpModule, FlatpickrModule, SimplebarAngularModule, TicketsRoutingModule, SharedModule],
+  providers: [DatePipe],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class TicketsModule {
   constructor() {

@@ -8,9 +8,8 @@ describe('ScrollbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ScrollbarComponent ]
-    })
-    .compileComponents();
+      declarations: [ScrollbarComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

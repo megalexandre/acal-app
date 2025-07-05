@@ -8,9 +8,8 @@ describe('HighlightComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HighlightComponent ]
-    })
-    .compileComponents();
+      declarations: [HighlightComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

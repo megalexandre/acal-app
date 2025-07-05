@@ -22,18 +22,17 @@ interface State {
   totalRecords: number;
 }
 
-const compare = (v1: string | number, v2: string | number) => v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
-
+const compare = (v1: string | number, v2: string | number) => (v1 < v2 ? -1 : v1 > v2 ? 1 : 0);
 
 function matches(country: GridJsModel, term: string, pipe: PipeTransform) {
-  return country.id.toLowerCase().includes(term.toLowerCase())
-    || country.name.toLowerCase().includes(term.toLowerCase())
-    || country.email.toLowerCase().includes(term.toLowerCase())
-    || country.position.toLowerCase().includes(term.toLowerCase())
-    || country.company.toLowerCase().includes(term.toLowerCase())
-    || country.country.toLowerCase().includes(term.toLowerCase())
-    ;
-
+  return (
+    country.id.toLowerCase().includes(term.toLowerCase()) ||
+    country.name.toLowerCase().includes(term.toLowerCase()) ||
+    country.email.toLowerCase().includes(term.toLowerCase()) ||
+    country.position.toLowerCase().includes(term.toLowerCase()) ||
+    country.company.toLowerCase().includes(term.toLowerCase()) ||
+    country.country.toLowerCase().includes(term.toLowerCase())
+  );
 }
 
 @Injectable({ providedIn: 'root' })
@@ -49,40 +48,72 @@ export class GridJsService {
     searchTerm: '',
     startIndex: 0,
     endIndex: 9,
-    totalRecords: 0
+    totalRecords: 0,
   };
 
   constructor(private pipe: DecimalPipe) {
-    this._search$.pipe(
-      tap(() => this._loading$.next(true)),
-      debounceTime(200),
-      switchMap(() => this._search()),
-      delay(200),
-      tap(() => this._loading$.next(false))
-    ).subscribe(result => {
-      this._countries$.next(result.countries);
-      this._total$.next(result.total);
-    });
+    this._search$
+      .pipe(
+        tap(() => this._loading$.next(true)),
+        debounceTime(200),
+        switchMap(() => this._search()),
+        delay(200),
+        tap(() => this._loading$.next(false)),
+      )
+      .subscribe((result) => {
+        this._countries$.next(result.countries);
+        this._total$.next(result.total);
+      });
 
     this._search$.next();
   }
 
-  get countries$() { return this._countries$.asObservable(); }
-  get total$() { return this._total$.asObservable(); }
-  get loading$() { return this._loading$.asObservable(); }
-  get page() { return this._state.page; }
-  get pageSize() { return this._state.pageSize; }
-  get searchTerm() { return this._state.searchTerm; }
-  get startIndex() { return this._state.startIndex; }
-  get endIndex() { return this._state.endIndex; }
-  get totalRecords() { return this._state.totalRecords; }
+  get countries$() {
+    return this._countries$.asObservable();
+  }
+  get total$() {
+    return this._total$.asObservable();
+  }
+  get loading$() {
+    return this._loading$.asObservable();
+  }
+  get page() {
+    return this._state.page;
+  }
+  get pageSize() {
+    return this._state.pageSize;
+  }
+  get searchTerm() {
+    return this._state.searchTerm;
+  }
+  get startIndex() {
+    return this._state.startIndex;
+  }
+  get endIndex() {
+    return this._state.endIndex;
+  }
+  get totalRecords() {
+    return this._state.totalRecords;
+  }
 
-  set page(page: number) { this._set({ page }); }
-  set pageSize(pageSize: number) { this._set({ pageSize }); }
-  set searchTerm(searchTerm: string) { this._set({ searchTerm }); }
-  set startIndex(startIndex: number) { this._set({ startIndex }); }
-  set endIndex(endIndex: number) { this._set({ endIndex }); }
-  set totalRecords(totalRecords: number) { this._set({ totalRecords }); }
+  set page(page: number) {
+    this._set({ page });
+  }
+  set pageSize(pageSize: number) {
+    this._set({ pageSize });
+  }
+  set searchTerm(searchTerm: string) {
+    this._set({ searchTerm });
+  }
+  set startIndex(startIndex: number) {
+    this._set({ startIndex });
+  }
+  set endIndex(endIndex: number) {
+    this._set({ endIndex });
+  }
+  set totalRecords(totalRecords: number) {
+    this._set({ totalRecords });
+  }
 
   private _set(patch: Partial<State>) {
     Object.assign(this._state, patch);
@@ -96,7 +127,7 @@ export class GridJsService {
     let countries = GridJs;
 
     // 2. filter
-    countries = countries.filter(country => matches(country, searchTerm, this.pipe));
+    countries = countries.filter((country) => matches(country, searchTerm, this.pipe));
     const total = countries.length;
 
     // 3. paginate

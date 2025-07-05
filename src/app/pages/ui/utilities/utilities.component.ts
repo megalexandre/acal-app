@@ -3,44 +3,37 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-utilities',
   templateUrl: './utilities.component.html',
-  styleUrls: ['./utilities.component.scss']
+  styleUrls: ['./utilities.component.scss'],
 })
 
 /**
  * Utilities Component
  */
 export class UtilitiesComponent implements OnInit {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     /**
-    * BreadCrumb
-    */
-     this.breadCrumbItems = [
-      { label: 'Base UI' },
-      { label: 'Utilities', active: true }
-    ];
-
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Base UI' }, { label: 'Utilities', active: true }];
   }
 
   /**
    * Show Code Toggle
    */
-   ShowCode(event: any) {
+  ShowCode(event: any) {
     let card = event.target.closest('.card');
     const preview = card.children[1].children[1];
     const codeView = card.children[1].children[2];
-    if(codeView != null){
+    if (codeView != null) {
       codeView.classList.toggle('d-none');
     }
-    if(preview != null){
+    if (preview != null) {
       preview.classList.toggle('d-none');
-      
     }
   }
-
 }

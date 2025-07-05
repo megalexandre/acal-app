@@ -1,7 +1,7 @@
 export interface projectListModel {
   title?: string;
   updatedTime?: string;
-  badgeText ?: string;
+  badgeText?: string;
   badgeClass?: string;
   member: Array<{
     name?: string;
@@ -9,15 +9,15 @@ export interface projectListModel {
     img?: string;
     variant?: string;
   }>;
-  cardBorderColor:string;
+  cardBorderColor: string;
 }
 
 export interface documentModel {
-  id:any,
-  icon:string,
-  iconBackgroundClass:string,
-  fileName:string,
-  fileType:string,
-  fileSize:string,
-  updatedDate:string
+  id: any;
+  icon: string;
+  iconBackgroundClass: string;
+  fileName: string;
+  fileType: string;
+  fileSize: string;
+  updatedDate: string;
 }

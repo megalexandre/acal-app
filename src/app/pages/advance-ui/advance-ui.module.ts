@@ -12,7 +12,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 // Load Icon
-import { defineElement } from "@lordicon/element";
+import { defineElement } from '@lordicon/element';
 import lottie from 'lottie-web';
 
 // Component pages
@@ -27,26 +27,9 @@ import { HighlightComponent } from './highlight/highlight.component';
 import { ScrollspyComponent } from './scrollspy/scrollspy.component';
 
 @NgModule({
-  declarations: [
-    SweetalertsComponent,
-    ScrollbarComponent,
-    TourComponent,
-    SwipersComponent,
-    RatingsComponent,
-    HighlightComponent,
-    ScrollspyComponent
-  ],
-  imports: [
-    CommonModule,
-    NgbDropdownModule,
-    NgbRatingModule,
-    SimplebarAngularModule,
-    AsvanceUiRoutingModule,
-    SharedModule,
-    SlickCarouselModule,
-    ScrollToModule.forRoot()
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  declarations: [SweetalertsComponent, ScrollbarComponent, TourComponent, SwipersComponent, RatingsComponent, HighlightComponent, ScrollspyComponent],
+  imports: [CommonModule, NgbDropdownModule, NgbRatingModule, SimplebarAngularModule, AsvanceUiRoutingModule, SharedModule, SlickCarouselModule, ScrollToModule.forRoot()],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AdvanceUiModule {
   constructor() {

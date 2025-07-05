@@ -19,22 +19,7 @@ import { OverviewComponent } from './overview/overview.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 
 @NgModule({
-  declarations: [
-    ListComponent,
-    GridComponent,
-    OverviewComponent
-  ],
-  imports: [
-    CommonModule,
-    JobListsRoutingModule,
-    SharedModule,
-    NgbPaginationModule,
-    NgApexchartsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgbDropdownModule,
-    NgbTooltipModule,
-    FlatpickrModule.forRoot(),
-  ]
+  declarations: [ListComponent, GridComponent, OverviewComponent],
+  imports: [CommonModule, JobListsRoutingModule, SharedModule, NgbPaginationModule, NgApexchartsModule, FormsModule, ReactiveFormsModule, NgbDropdownModule, NgbTooltipModule, FlatpickrModule.forRoot()],
 })
-export class JobListsModule { }
+export class JobListsModule {}

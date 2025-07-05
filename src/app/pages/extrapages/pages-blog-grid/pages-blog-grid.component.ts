@@ -6,19 +6,13 @@ import { SharedModule } from 'src/app/shared/shared.module';
   standalone: true,
   imports: [SharedModule],
   templateUrl: './pages-blog-grid.component.html',
-  styleUrl: './pages-blog-grid.component.scss'
+  styleUrl: './pages-blog-grid.component.scss',
 })
 export class PagesBlogGridComponent {
   // bread crumb items
   breadCrumbItems!: Array<{}>;
 
-
-
   ngOnInit(): void {
-    this.breadCrumbItems = [
-      { label: 'Blogs' },
-      { label: 'List View', active: true }
-    ];
+    this.breadCrumbItems = [{ label: 'Blogs' }, { label: 'List View', active: true }];
   }
-
 }

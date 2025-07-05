@@ -8,9 +8,8 @@ describe('ApikeyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ApikeyComponent ]
-    })
-    .compileComponents();
+      declarations: [ApikeyComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ApikeyComponent);
     component = fixture.componentInstance;

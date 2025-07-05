@@ -25,7 +25,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { CountUpModule } from 'ngx-countup';
 
 // Load Icon
-import { defineElement } from "@lordicon/element";
+import { defineElement } from '@lordicon/element';
 import lottie from 'lottie-web';
 
 // Component Pages
@@ -43,26 +43,14 @@ import { SellersComponent } from './sellers/sellers.component';
 import { SellerDetailsComponent } from './seller-details/seller-details.component';
 import { DatePipe } from '@angular/common';
 
-
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   url: 'https://httpbin.org/post',
   maxFilesize: 50,
-  acceptedFiles: 'image/*'
+  acceptedFiles: 'image/*',
 };
 
 @NgModule({
-  declarations: [
-    ProductsComponent,
-    ProductDetailComponent,
-    AddProductComponent,
-    OrdersComponent,
-    OrdersDetailsComponent,
-    CustomersComponent,
-    CartComponent,
-    CheckoutComponent,
-    SellersComponent,
-    SellerDetailsComponent,
-  ],
+  declarations: [ProductsComponent, ProductDetailComponent, AddProductComponent, OrdersComponent, OrdersDetailsComponent, CustomersComponent, CartComponent, CheckoutComponent, SellersComponent, SellerDetailsComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -84,16 +72,16 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     NgApexchartsModule,
     CountUpModule,
     EcommerceRoutingModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [
     DatePipe,
     {
       provide: DROPZONE_CONFIG,
-      useValue: DEFAULT_DROPZONE_CONFIG
-    }
+      useValue: DEFAULT_DROPZONE_CONFIG,
+    },
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class EcommerceModule {
   constructor() {

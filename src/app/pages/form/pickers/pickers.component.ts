@@ -3,30 +3,25 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-pickers',
   templateUrl: './pickers.component.html',
-  styleUrls: ['./pickers.component.scss']
+  styleUrls: ['./pickers.component.scss'],
 })
 
 /**
  * Pickers Component
  */
 export class PickersComponent implements OnInit {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   componentcolor!: string;
   monolith!: string;
   nano!: string;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     /**
-    * BreadCrumb
-    */
-     this.breadCrumbItems = [
-      { label: 'Forms' },
-      { label: 'Pickers', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Forms' }, { label: 'Pickers', active: true }];
   }
-
 }

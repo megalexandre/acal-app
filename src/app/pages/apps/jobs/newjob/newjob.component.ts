@@ -4,7 +4,7 @@ import { UntypedFormBuilder, Validators, UntypedFormGroup, UntypedFormArray, Abs
 @Component({
   selector: 'app-newjob',
   templateUrl: './newjob.component.html',
-  styleUrls: ['./newjob.component.scss']
+  styleUrls: ['./newjob.component.scss'],
 })
 export class NewjobComponent implements OnInit {
   // bread crumb items
@@ -14,16 +14,13 @@ export class NewjobComponent implements OnInit {
   itemData!: UntypedFormGroup;
   submitted = false;
 
-  constructor(public formBuilder: UntypedFormBuilder) { }
+  constructor(public formBuilder: UntypedFormBuilder) {}
 
   ngOnInit(): void {
     /**
-  * BreadCrumb
-  */
-    this.breadCrumbItems = [
-      { label: 'Jobs' },
-      { label: 'New Job', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Jobs' }, { label: 'New Job', active: true }];
 
     // Validation
     this.itemData = this.formBuilder.group({
@@ -44,21 +41,19 @@ export class NewjobComponent implements OnInit {
     });
 
     /**
-   * Default Select2
-   */
+     * Default Select2
+     */
     // multiDefaultOption1 = 'Watches';
     // Default1 = [
     //   { name: 'Watches' },
     //   { name: 'Headset' },
     //   { name: 'Sweatshirt' },
     // ];
-
-
   }
 
   /**
-  * Returns form
-  */
+   * Returns form
+   */
   get form() {
     return this.itemData.controls;
   }

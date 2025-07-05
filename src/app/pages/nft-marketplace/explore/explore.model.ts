@@ -8,5 +8,5 @@ export interface exploreModel {
   sale_type: string;
   highestBid: string;
   price: string;
-  isIcon?:any;
+  isIcon?: any;
 }

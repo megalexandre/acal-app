@@ -12,14 +12,13 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  styleUrls: ['./list.component.scss'],
 })
 
 /**
  * List Component
  */
 export class ListComponent implements OnInit {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   projectListWidgets!: any;
@@ -29,21 +28,20 @@ export class ListComponent implements OnInit {
   searchResults: any;
   allProjectList: any;
 
-  constructor(private modalService: NgbModal,
+  constructor(
+    private modalService: NgbModal,
     public service: PaginationService,
-    private store: Store<{ data: RootReducerState }>,) {
+    private store: Store<{ data: RootReducerState }>,
+  ) {
     this.service.page = 1;
     this.service.pageSize = 12;
   }
 
   ngOnInit(): void {
     /**
-    * BreadCrumb
-    */
-    this.breadCrumbItems = [
-      { label: 'Projects' },
-      { label: 'Project List', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Projects' }, { label: 'Project List', active: true }];
 
     /**
      * Fetches the data
@@ -52,10 +50,9 @@ export class ListComponent implements OnInit {
   }
 
   /**
-  * Fetches the data
-  */
+   * Fetches the data
+   */
   private fetchData() {
-
     this.store.dispatch(fetchProjectListData());
     this.store.select(selectprojectLoading).subscribe((data) => {
       if (data == false) {
@@ -69,10 +66,9 @@ export class ListComponent implements OnInit {
     });
   }
 
-
   /**
- * Confirmation mail model
- */
+   * Confirmation mail model
+   */
   deleteId: any;
   confirm(content: any, id: any) {
     this.deleteId = id;
@@ -94,11 +90,8 @@ export class ListComponent implements OnInit {
   // Search
   performSearch() {
     this.searchResults = this.allProjectList.filter((item: any) => {
-      return (
-        item.label.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
+      return item.label.toLowerCase().includes(this.searchTerm.toLowerCase());
     });
-    this.projectListWidgets = this.service.changePage(this.searchResults)
-
+    this.projectListWidgets = this.service.changePage(this.searchResults);
   }
 }

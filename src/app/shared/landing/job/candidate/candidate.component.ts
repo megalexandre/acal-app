@@ -5,28 +5,26 @@ import { candidates } from './data';
 @Component({
   selector: 'app-candidate',
   templateUrl: './candidate.component.html',
-  styleUrls: ['./candidate.component.scss']
+  styleUrls: ['./candidate.component.scss'],
 })
 export class CandidateComponent implements OnInit {
-
   candidates: any;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     // Fetch Data
-    this.candidates = candidates
+    this.candidates = candidates;
   }
 
   /**
-  * Swiper Responsive setting
-  */
+   * Swiper Responsive setting
+   */
   public Responsive = {
     infinite: true,
     slidesToShow: 4,
     autoplay: true,
     dots: true,
-    arrows: false
+    arrows: false,
   };
-
 }

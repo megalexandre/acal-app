@@ -8,9 +8,8 @@ describe('CryptoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CryptoComponent ]
-    })
-    .compileComponents();
+      declarations: [CryptoComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

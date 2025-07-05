@@ -13,14 +13,13 @@ import { Lightbox } from 'ngx-lightbox';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.scss']
+  styleUrls: ['./chat.component.scss'],
 })
 
 /**
  * Chat Component
  */
 export class ChatComponent implements OnInit {
-
   chatData!: ChatUser[];
   groupData!: GroupUser[];
   chatMessagesData!: ChatMessage[];
@@ -38,7 +37,12 @@ export class ChatComponent implements OnInit {
 
   images: { src: string; thumb: string; caption: string }[] = [];
 
-  constructor(public formBuilder: FormBuilder, private lightbox: Lightbox, private offcanvasService: NgbOffcanvas, private datePipe: DatePipe) {
+  constructor(
+    public formBuilder: FormBuilder,
+    private lightbox: Lightbox,
+    private offcanvasService: NgbOffcanvas,
+    private datePipe: DatePipe,
+  ) {
     for (let i = 1; i <= 24; i++) {
       const src = '../../../../assets/images/small/img-' + i + '.jpg';
       const caption = 'Image ' + i + ' caption here';
@@ -46,7 +50,7 @@ export class ChatComponent implements OnInit {
       const item = {
         src: src,
         caption: caption,
-        thumb: thumb
+        thumb: thumb,
       };
       this.images.push(item);
     }
@@ -98,10 +102,10 @@ export class ChatComponent implements OnInit {
   messageSave() {
     const message = this.formData.get('message')!.value;
     if (this.isreplyMessage == true) {
-      var itemReplyList: any = document.getElementById("users-chat")?.querySelector(".chat-conversation-list");
-      var dateTime = this.datePipe.transform(new Date(), "h:mm a");
-      var chatReplyUser = (document.querySelector(".replyCard .replymessage-block .flex-grow-1 .conversation-name") as HTMLAreaElement).innerHTML;
-      var chatReplyMessage = (document.querySelector(".replyCard .replymessage-block .flex-grow-1 .mb-0") as HTMLAreaElement).innerText;
+      var itemReplyList: any = document.getElementById('users-chat')?.querySelector('.chat-conversation-list');
+      var dateTime = this.datePipe.transform(new Date(), 'h:mm a');
+      var chatReplyUser = (document.querySelector('.replyCard .replymessage-block .flex-grow-1 .conversation-name') as HTMLAreaElement).innerHTML;
+      var chatReplyMessage = (document.querySelector('.replyCard .replymessage-block .flex-grow-1 .mb-0') as HTMLAreaElement).innerText;
 
       this.chatMessagesData.push({
         align: 'right',
@@ -118,16 +122,14 @@ export class ChatComponent implements OnInit {
         message: null,
       });
       this.isreplyMessage = false;
-
-    }
-    else {
+    } else {
       if (this.formData.valid && message) {
         // Message Push in Chat
         this.chatMessagesData.push({
           align: 'right',
           name: 'Marcus',
           message,
-          time: this.datePipe.transform(new Date(), "h:mm a"),
+          time: this.datePipe.transform(new Date(), 'h:mm a'),
         });
         this.onListScroll();
         // Set Form Data Reset
@@ -143,15 +145,19 @@ export class ChatComponent implements OnInit {
   }
 
   /***
-  * OnClick User Chat show
-  */
+   * OnClick User Chat show
+   */
   chatUsername(name: string, profile: any, status: string) {
     this.isFlag = true;
     this.username = name;
     const currentDate = new Date();
     this.isStatus = status;
     this.isProfile = profile ? profile : 'assets/images/users/user-dummy-img.jpg';
-    this.chatMessagesData.map((chat) => { if (chat.profile) { chat.profile = this.isProfile } });
+    this.chatMessagesData.map((chat) => {
+      if (chat.profile) {
+        chat.profile = this.isProfile;
+      }
+    });
     const userChatShow = document.querySelector('.user-chat');
     if (userChatShow != null) {
       userChatShow.classList.add('user-chat-show');
@@ -159,9 +165,9 @@ export class ChatComponent implements OnInit {
   }
 
   /**
-  * SidebarHide modal
-  * @param content modal content
-  */
+   * SidebarHide modal
+   * @param content modal content
+   */
   SidebarHide() {
     const recentActivity = document.querySelector('.user-chat');
     if (recentActivity != null) {
@@ -177,37 +183,37 @@ export class ChatComponent implements OnInit {
   // Contact Search
   ContactSearch() {
     var input: any, filter: any, ul: any, li: any, a: any | undefined, i: any, txtValue: any;
-    input = document.getElementById("searchContact") as HTMLAreaElement;
+    input = document.getElementById('searchContact') as HTMLAreaElement;
     filter = input.value.toUpperCase();
-    ul = document.querySelectorAll(".chat-user-list");
+    ul = document.querySelectorAll('.chat-user-list');
     ul.forEach((item: any) => {
-      li = item.getElementsByTagName("li");
+      li = item.getElementsByTagName('li');
       for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("p")[0];
+        a = li[i].getElementsByTagName('p')[0];
         txtValue = a?.innerText;
         if (txtValue?.toUpperCase().indexOf(filter) > -1) {
-          li[i].style.display = "";
+          li[i].style.display = '';
         } else {
-          li[i].style.display = "none";
+          li[i].style.display = 'none';
         }
       }
-    })
+    });
   }
 
   // Message Search
   MessageSearch() {
     var input: any, filter: any, ul: any, li: any, a: any | undefined, i: any, txtValue: any;
-    input = document.getElementById("searchMessage") as HTMLAreaElement;
+    input = document.getElementById('searchMessage') as HTMLAreaElement;
     filter = input.value.toUpperCase();
-    ul = document.getElementById("users-conversation");
-    li = ul.getElementsByTagName("li");
+    ul = document.getElementById('users-conversation');
+    li = ul.getElementsByTagName('li');
     for (i = 0; i < li.length; i++) {
-      a = li[i].getElementsByTagName("p")[0];
+      a = li[i].getElementsByTagName('p')[0];
       txtValue = a?.innerText;
       if (txtValue?.toUpperCase().indexOf(filter) > -1) {
-        li[i].style.display = "";
+        li[i].style.display = '';
       } else {
-        li[i].style.display = "none";
+        li[i].style.display = 'none';
       }
     }
   }
@@ -222,9 +228,9 @@ export class ChatComponent implements OnInit {
     this.isreplyMessage = true;
     document.querySelector('.replyCard')?.classList.add('show');
     var copyText = event.target.closest('.chat-list').querySelector('.ctext-content').innerHTML;
-    (document.querySelector(".replyCard .replymessage-block .flex-grow-1 .mb-0") as HTMLAreaElement).innerHTML = copyText;
-    var msgOwnerName: any = event.target.closest(".chat-list").classList.contains("right") == true ? 'You' : document.querySelector('.username')?.innerHTML;
-    (document.querySelector(".replyCard .replymessage-block .flex-grow-1 .conversation-name") as HTMLAreaElement).innerHTML = msgOwnerName;
+    (document.querySelector('.replyCard .replymessage-block .flex-grow-1 .mb-0') as HTMLAreaElement).innerHTML = copyText;
+    var msgOwnerName: any = event.target.closest('.chat-list').classList.contains('right') == true ? 'You' : document.querySelector('.username')?.innerHTML;
+    (document.querySelector('.replyCard .replymessage-block .flex-grow-1 .conversation-name') as HTMLAreaElement).innerHTML = msgOwnerName;
   }
 
   // Copy Message
@@ -246,20 +252,12 @@ export class ChatComponent implements OnInit {
     var allMsgDelete: any = document.getElementById('users-conversation')?.querySelectorAll('.chat-list');
     allMsgDelete.forEach((item: any) => {
       item.remove();
-    })
+    });
   }
 
   // Emoji Picker
   showEmojiPicker = false;
-  sets: any = [
-    'native',
-    'google',
-    'twitter',
-    'facebook',
-    'emojione',
-    'apple',
-    'messenger'
-  ]
+  sets: any = ['native', 'google', 'twitter', 'facebook', 'emojione', 'apple', 'messenger'];
   set: any = 'twitter';
   toggleEmojiPicker() {
     this.showEmojiPicker = !this.showEmojiPicker;
@@ -275,18 +273,16 @@ export class ChatComponent implements OnInit {
   onFocus() {
     this.showEmojiPicker = false;
   }
-  onBlur() {
-  }
+  onBlur() {}
 
   closeReplay() {
     document.querySelector('.replyCard')?.classList.remove('show');
   }
 
   /**
-   * Delete Chat Contact Data 
+   * Delete Chat Contact Data
    */
   delete(event: any) {
     event.target.closest('li')?.remove();
   }
-
 }

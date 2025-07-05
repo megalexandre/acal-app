@@ -5,11 +5,10 @@ import { UntypedFormBuilder, Validators, UntypedFormGroup } from '@angular/forms
 import { PaginationService } from 'src/app/core/services/pagination.service';
 import { joblist } from 'src/app/core/data';
 
-
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
   // bread crumb items
@@ -26,19 +25,17 @@ export class ListComponent implements OnInit {
   searchResults: any;
   searchTerm: any;
 
-  constructor(public service: PaginationService,
+  constructor(
+    public service: PaginationService,
     public formBuilder: UntypedFormBuilder,
-    public modalService: NgbModal) {
-  }
+    public modalService: NgbModal,
+  ) {}
 
   ngOnInit(): void {
     /**
-  * BreadCrumb
-  */
-    this.breadCrumbItems = [
-      { label: 'Jobs' },
-      { label: 'Job Lists', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Jobs' }, { label: 'Job Lists', active: true }];
 
     // Validation
     this.jobData = this.formBuilder.group({
@@ -50,18 +47,17 @@ export class ListComponent implements OnInit {
       location: ['', [Validators.required]],
       salary: ['', [Validators.required]],
       tags: ['', [Validators.required]],
-      description: ['', [Validators.required]]
+      description: ['', [Validators.required]],
     });
 
     // Fetch Data
     setTimeout(() => {
       this.joblists = joblist;
       this.alljoblist = joblist;
-      this.jobdetail = this.joblists[0]
-      document.getElementById('elmLoader')?.classList.add('d-none')
-      document.getElementById('job-overview')?.classList.remove('d-none')
-    }, 1200)
-
+      this.jobdetail = this.joblists[0];
+      document.getElementById('elmLoader')?.classList.add('d-none');
+      document.getElementById('job-overview')?.classList.remove('d-none');
+    }, 1200);
 
     // Chart Color Data Get Function
     this._portfolioChart('["--vz-primary", "--vz-primary-rgb, 0.75", "--vz-danger"]');
@@ -71,19 +67,18 @@ export class ListComponent implements OnInit {
   private getChartColorsArray(colors: any) {
     colors = JSON.parse(colors);
     return colors.map(function (value: any) {
-      var newValue = value.replace(" ", "");
-      if (newValue.indexOf(",") === -1) {
+      var newValue = value.replace(' ', '');
+      if (newValue.indexOf(',') === -1) {
         var color = getComputedStyle(document.documentElement).getPropertyValue(newValue);
         if (color) {
-          color = color.replace(" ", "");
+          color = color.replace(' ', '');
           return color;
-        }
-        else return newValue;;
+        } else return newValue;
       } else {
         var val = value.split(',');
         if (val.length == 2) {
           var rgbaColor = getComputedStyle(document.documentElement).getPropertyValue(val[0]);
-          rgbaColor = "rgba(" + rgbaColor + "," + val[1] + ")";
+          rgbaColor = 'rgba(' + rgbaColor + ',' + val[1] + ')';
           return rgbaColor;
         } else {
           return newValue;
@@ -92,48 +87,47 @@ export class ListComponent implements OnInit {
     });
   }
 
-
   /**
- * My Portfolio Chart
- */
+   * My Portfolio Chart
+   */
   private _portfolioChart(colors: any) {
     colors = this.getChartColorsArray(colors);
     this.portfolioChart = {
       series: [98, 63, 35],
-      labels: ["New Application", "Approved", "Rejected"],
+      labels: ['New Application', 'Approved', 'Rejected'],
       chart: {
-        type: "donut",
+        type: 'donut',
         height: 300,
       },
       legend: {
-        position: 'bottom'
+        position: 'bottom',
       },
       dataLabels: {
         dropShadow: {
           enabled: false,
-        }
+        },
       },
-      colors: colors
+      colors: colors,
     };
   }
 
   //View detail
   viewmore(id: any) {
-    this.jobdetail = this.joblists[id]
+    this.jobdetail = this.joblists[id];
   }
 
   /**
- * Open modal
- * @param content modal content
- */
+   * Open modal
+   * @param content modal content
+   */
   openModal(content: any) {
     // this.submitted = false;
     this.modalService.open(content, { size: 'lg', centered: true });
   }
 
   /**
- * Returns form
- */
+   * Returns form
+   */
   get form() {
     return this.jobData.controls;
   }
@@ -142,11 +136,11 @@ export class ListComponent implements OnInit {
   createJob() {
     if (this.jobData.valid) {
       if (this.jobData.get('id')?.value) {
-        this.joblists = this.joblists.map((data: { id: any; }) => data.id === this.jobData.get('id')?.value ? { ...data, ...this.jobData.value } : data)
+        this.joblists = this.joblists.map((data: { id: any }) => (data.id === this.jobData.get('id')?.value ? { ...data, ...this.jobData.value } : data));
         // this.service.products = this.applications
       } else {
-        const logo = "/assets/images/brands/slack.png";
-        const coverimage = "assets/images/small/img-3.jpg";
+        const logo = '/assets/images/brands/slack.png';
+        const coverimage = 'assets/images/small/img-3.jpg';
         const title = this.jobData.get('jobtitle')?.value;
         const companyname = this.jobData.get('name')?.value;
         const content = this.jobData.get('description')?.value;
@@ -171,23 +165,22 @@ export class ListComponent implements OnInit {
           applied,
           date,
           tags,
-          bookmark
+          bookmark,
         });
-        this.modalService.dismissAll()
+        this.modalService.dismissAll();
       }
     }
     this.modalService.dismissAll();
     setTimeout(() => {
       this.jobData.reset();
     }, 2000);
-    this.submitted = true
+    this.submitted = true;
   }
-
 
   // File Upload
   imageURL: string | undefined;
   fileChange(event: any) {
-    let fileList: any = (event.target as HTMLInputElement);
+    let fileList: any = event.target as HTMLInputElement;
     let file: File = fileList.files[0];
     const reader = new FileReader();
     reader.onload = () => {
@@ -195,13 +188,13 @@ export class ListComponent implements OnInit {
       document.querySelectorAll('#companylogo-img').forEach((element: any) => {
         element.src = this.imageURL;
       });
-    }
-    reader.readAsDataURL(file)
+    };
+    reader.readAsDataURL(file);
   }
 
   coverURL: string | undefined;
   coverChange(event: any) {
-    let fileList: any = (event.target as HTMLInputElement);
+    let fileList: any = event.target as HTMLInputElement;
     let file: File = fileList.files[0];
     const reader = new FileReader();
     reader.onload = () => {
@@ -209,12 +202,12 @@ export class ListComponent implements OnInit {
       document.querySelectorAll('#modal-cover-img').forEach((element: any) => {
         element.src = this.coverURL;
       });
-    }
-    reader.readAsDataURL(file)
+    };
+    reader.readAsDataURL(file);
   }
   // Pagination
   changePage() {
-    this.joblists = this.service.changePage(this.alljoblist)
+    this.joblists = this.service.changePage(this.alljoblist);
   }
 
   // Search Data
@@ -228,8 +221,8 @@ export class ListComponent implements OnInit {
         item.applied.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
         item.type.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
         item.date.toLowerCase().includes(this.searchTerm.toLowerCase())
-      )
+      );
     });
-    this.joblists = this.service.changePage(this.searchResults)
+    this.joblists = this.service.changePage(this.searchResults);
   }
 }

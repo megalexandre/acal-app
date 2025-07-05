@@ -7,7 +7,7 @@
     <div class="row g-3">
       <div class="col-md-3">
         <div class="search-box">
-          <input type="text" class="form-control search" placeholder="Search for deals...">
+          <input type="text" class="form-control search" placeholder="Search for deals..." />
           <i class="ri-search-line search-icon"></i>
         </div>
       </div>
@@ -48,7 +48,6 @@
   <div class="col">
     <div ngbAccordion #acc="ngbAccordion" class="kanban-accordion" activeIds="lead-1" [closeOthers]="true">
       <div ngbAccordionItem [collapsed]="false" id="lead-1">
-
         <h2 ngbAccordionHeader>
           <button ngbAccordionButton class="card-header w-100 bg-primary-subtle p-3 text-start d-block" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="leadDiscovered">
             <h5 class="card-title text-uppercase mb-1 fs-14">Lead Discovered</h5>
@@ -249,7 +248,6 @@
       <!--end col-->
     </div>
   </div>
-
 
   <div class="col">
     <div ngbAccordion #acc="ngbAccordion" class="kanban-accordion" activeIds="lead-1" [closeOthers]="true">
@@ -465,7 +463,6 @@
                       </ng-template>
                     </div>
                   </div>
-
                 </div>
                 <div ngbAccordionItem id="static-3">
                   <h2 ngbAccordionHeader class="accordion-header">
@@ -647,10 +644,8 @@
                       <ng-template>
                         <ng-template [ngTemplateOutlet]="TabContent"></ng-template>
                       </ng-template>
-
                     </div>
                   </div>
-
                 </div>
                 <div ngbAccordionItem id="static-8">
                   <h2 ngbAccordionHeader class="accordion-header">
@@ -694,23 +689,23 @@
     <div class="modal-body">
       <div class="mb-3">
         <label for="dealTitle" class="form-label">Deal Title</label>
-        <input type="email" class="form-control" id="dealTitle" placeholder="Enter title">
+        <input type="email" class="form-control" id="dealTitle" placeholder="Enter title" />
       </div>
       <div class="mb-3">
         <label for="dealValue" class="form-label">Value (USD)</label>
-        <input type="text" class="form-control" id="dealValue" placeholder="Enter value">
+        <input type="text" class="form-control" id="dealValue" placeholder="Enter value" />
       </div>
       <div class="mb-3">
         <label for="dealOwner" class="form-label">Deals Owner</label>
-        <input type="text" class="form-control" id="dealOwner" placeholder="Enter owner name">
+        <input type="text" class="form-control" id="dealOwner" placeholder="Enter owner name" />
       </div>
       <div class="mb-3">
         <label for="dueDate" class="form-label">Due Date</label>
-        <input class="form-control flatpickr-input" type="text" mwlFlatpickr [altInput]="true" [convertModelValue]="true" placeholder="Select date">
+        <input class="form-control flatpickr-input" type="text" mwlFlatpickr [altInput]="true" [convertModelValue]="true" placeholder="Select date" />
       </div>
       <div class="mb-3">
         <label for="contactNumber" class="form-label">Contact</label>
-        <input type="text" class="form-control" id="contactNumber" placeholder="Enter contact number">
+        <input type="text" class="form-control" id="contactNumber" placeholder="Enter contact number" />
       </div>
       <div class="mb-3">
         <label for="contactNumber" class="form-label">Description</label>
@@ -766,7 +761,6 @@
   </div>
   <div class="card-footer hstack gap-2 p-3">
     <button class="btn btn-success btn-sm w-100"><i class="ri-phone-line align-bottom me-1"></i> Call</button>
-    <button class="btn btn-primary btn-sm w-100"><i class="ri-question-answer-line align-bottom me-1"></i>
-      Message</button>
+    <button class="btn btn-primary btn-sm w-100"><i class="ri-question-answer-line align-bottom me-1"></i> Message</button>
   </div>
 </ng-template>

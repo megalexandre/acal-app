@@ -22,7 +22,6 @@ import { DatePipe } from '@angular/common';
  * List Component
  */
 export class ListComponent {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   ordersForm!: UntypedFormGroup;
@@ -41,25 +40,23 @@ export class ListComponent {
   date: any;
   status: any = '';
 
-  constructor(private modalService: NgbModal,
+  constructor(
+    private modalService: NgbModal,
     public service: PaginationService,
     private formBuilder: UntypedFormBuilder,
     private store: Store<{ data: RootReducerState }>,
-    private datePipe: DatePipe) {
-  }
+    private datePipe: DatePipe,
+  ) {}
 
   ngOnInit(): void {
     /**
-    * BreadCrumb
-    */
-    this.breadCrumbItems = [
-      { label: 'Invoices' },
-      { label: 'Invoice List', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Invoices' }, { label: 'Invoice List', active: true }];
 
     /**
-   * Form Validation
-   */
+     * Form Validation
+     */
     this.ordersForm = this.formBuilder.group({
       id: [''],
       ids: [''],
@@ -69,9 +66,8 @@ export class ListComponent {
       create: ['', [Validators.required]],
       due: ['', [Validators.required]],
       status: ['', [Validators.required]],
-      priority: ['', [Validators.required]]
+      priority: ['', [Validators.required]],
     });
-
 
     /**
      * fetches data
@@ -86,7 +82,7 @@ export class ListComponent {
     this.store.select(selectTicketData).subscribe((data) => {
       this.lists = data;
       this.alllists = cloneDeep(data);
-      this.lists = this.service.changePage(this.alllists)
+      this.lists = this.service.changePage(this.alllists);
     });
   }
 
@@ -99,8 +95,8 @@ export class ListComponent {
   };
 
   /**
- * Confirmation mail model
- */
+   * Confirmation mail model
+   */
   deleteId: any;
   confirm(content: any, id: any) {
     this.deleteId = id;
@@ -114,17 +110,17 @@ export class ListComponent {
     } else {
       this.store.dispatch(deleteTicket({ id: this.checkedValGet.toString() }));
     }
-    this.deleteId = ''
+    this.deleteId = '';
     this.masterSelected = false;
   }
 
   /**
-  * Multiple Delete
-  */
+   * Multiple Delete
+   */
   checkedValGet: any[] = [];
   deleteMultiple(content: any) {
     var checkboxes: any = document.getElementsByName('checkAll');
-    var result
+    var result;
     var checkedVal: any[] = [];
     for (var i = 0; i < checkboxes.length; i++) {
       if (checkboxes[i].checked) {
@@ -134,40 +130,39 @@ export class ListComponent {
     }
     if (checkedVal.length > 0) {
       this.modalService.open(content, { centered: true });
-    }
-    else {
-      Swal.fire({ text: 'Please select at least one checkbox', confirmButtonColor: '#299cdb', });
+    } else {
+      Swal.fire({ text: 'Please select at least one checkbox', confirmButtonColor: '#299cdb' });
     }
     this.checkedValGet = checkedVal;
   }
 
   // The master checkbox will check/ uncheck all items
   checkUncheckAll(ev: any) {
-    this.lists.forEach((x: { state: any; }) => x.state = ev.target.checked)
+    this.lists.forEach((x: { state: any }) => (x.state = ev.target.checked));
     var checkedVal: any[] = [];
-    var result
+    var result;
     for (var i = 0; i < this.lists.length; i++) {
       if (this.lists[i].state == true) {
         result = this.lists[i];
         checkedVal.push(result);
       }
     }
-    this.checkedValGet = checkedVal
-    checkedVal.length > 0 ? (document.getElementById("remove-actions") as HTMLElement).style.display = "block" : (document.getElementById("remove-actions") as HTMLElement).style.display = "none";
+    this.checkedValGet = checkedVal;
+    checkedVal.length > 0 ? ((document.getElementById('remove-actions') as HTMLElement).style.display = 'block') : ((document.getElementById('remove-actions') as HTMLElement).style.display = 'none');
   }
 
   // Select Checkbox value Get
   onCheckboxChange(e: any) {
     var checkedVal: any[] = [];
-    var result
+    var result;
     for (var i = 0; i < this.lists.length; i++) {
       if (this.lists[i].state == true) {
         result = this.lists[i];
         checkedVal.push(result);
       }
     }
-    this.checkedValGet = checkedVal
-    checkedVal.length > 0 ? (document.getElementById("remove-actions") as HTMLElement).style.display = "block" : (document.getElementById("remove-actions") as HTMLElement).style.display = "none";
+    this.checkedValGet = checkedVal;
+    checkedVal.length > 0 ? ((document.getElementById('remove-actions') as HTMLElement).style.display = 'block') : ((document.getElementById('remove-actions') as HTMLElement).style.display = 'none');
   }
 
   /**
@@ -197,8 +192,7 @@ export class ListComponent {
       if (this.ordersForm.get('id')?.value) {
         const updatedData = this.ordersForm.value;
         this.store.dispatch(updateTicket({ updatedData }));
-      }
-      else {
+      } else {
         const ticketId = (this.alllists.length + 1).toString();
         this.ordersForm.controls['id'].setValue(ticketId);
         const newData = this.ordersForm.value;
@@ -221,20 +215,20 @@ export class ListComponent {
     }
     this.modalService.dismissAll();
     this.ordersForm.reset();
-    this.submitted = true
+    this.submitted = true;
   }
 
   /**
-    * Open Edit modal
-    * @param content modal content
-    */
+   * Open Edit modal
+   * @param content modal content
+   */
   editDataGet(id: any, content: any) {
     this.submitted = false;
     this.modalService.open(content, { size: 'md', centered: true });
     var modelTitle = document.querySelector('.modal-title') as HTMLAreaElement;
     modelTitle.innerHTML = 'Edit Ticket';
     var updateBtn = document.getElementById('add-btn') as HTMLAreaElement;
-    updateBtn.innerHTML = "Update";
+    updateBtn.innerHTML = 'Update';
     this.econtent = this.alllists[id];
     this.ordersForm.controls['id'].setValue(this.econtent.id);
     this.ordersForm.controls['title'].setValue(this.econtent.title);
@@ -247,38 +241,32 @@ export class ListComponent {
     this.ordersForm.controls['ids'].setValue(this.econtent._id);
   }
 
-
   // Filtering
-  isstatus?: any
+  isstatus?: any;
   SearchData() {
-    var status = document.getElementById("idStatus") as HTMLInputElement;
-    var date = document.getElementById("isDate") as HTMLInputElement;
-    var dateVal = date.value ? this.datePipe.transform(new Date(date.value), "yyyy-MM-dd") : '';
-    if (status.value != 'all' && status.value != '' || dateVal != '') {
+    var status = document.getElementById('idStatus') as HTMLInputElement;
+    var date = document.getElementById('isDate') as HTMLInputElement;
+    var dateVal = date.value ? this.datePipe.transform(new Date(date.value), 'yyyy-MM-dd') : '';
+    if ((status.value != 'all' && status.value != '') || dateVal != '') {
       this.lists = this.content.filter((ticket: any) => {
-        return this.datePipe.transform(new Date(ticket.create), "yyyy-MM-dd") == dateVal || ticket.status === status.value;
+        return this.datePipe.transform(new Date(ticket.create), 'yyyy-MM-dd') == dateVal || ticket.status === status.value;
       });
-    }
-    else {
+    } else {
       this.lists = this.content;
     }
   }
 
   // Pagination
   changePage() {
-    this.lists = this.service.changePage(this.alllists)
+    this.lists = this.service.changePage(this.alllists);
   }
 
   // Search Data
   performSearch(): void {
     this.searchResults = this.alllists.filter((item: any) => {
-      return (
-        item.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        item.client.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        item.assigned.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
+      return item.title.toLowerCase().includes(this.searchTerm.toLowerCase()) || item.client.toLowerCase().includes(this.searchTerm.toLowerCase()) || item.assigned.toLowerCase().includes(this.searchTerm.toLowerCase());
     });
-    this.lists = this.service.changePage(this.searchResults)
+    this.lists = this.service.changePage(this.searchResults);
   }
 
   // Filter
@@ -286,13 +274,12 @@ export class ListComponent {
     if (this.status != '') {
       this.lists = this.alllists.filter((ticket: any) => ticket.status == this.status);
     } else {
-      this.lists = this.service.changePage(this.alllists)
+      this.lists = this.service.changePage(this.alllists);
     }
   }
 
   // Sort Data
   onSort(column: any) {
-    this.lists = this.service.onSort(column, this.lists)
+    this.lists = this.service.onSort(column, this.lists);
   }
-
 }

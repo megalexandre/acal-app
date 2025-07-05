@@ -8,9 +8,8 @@ describe('ScrollspyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ScrollspyComponent ]
-    })
-    .compileComponents();
+      declarations: [ScrollspyComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

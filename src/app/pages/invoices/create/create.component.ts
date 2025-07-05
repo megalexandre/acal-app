@@ -4,39 +4,34 @@ import { FormBuilder, FormGroup, FormArray, Validators, AbstractControl } from '
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss']
+  styleUrls: ['./create.component.scss'],
 })
 
 /**
  * Create Component
  */
 export class CreateComponent implements OnInit {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   submitted = false;
   InvoicesForm!: FormGroup;
-  paymentSign = "$";
+  paymentSign = '$';
   subtotal = 0;
   taxRate = 0.125;
   shippingRate = 65.0;
   discountRate = 0.15;
 
   userForm: FormGroup;
-  
 
-  constructor(private formBuilder: FormBuilder) { 
-
+  constructor(private formBuilder: FormBuilder) {
     this.userForm = this.formBuilder.group({
-      items: this.formBuilder.array([
-        this.formBuilder.control(null)
-      ])
-    })
+      items: this.formBuilder.array([this.formBuilder.control(null)]),
+    });
 
     /**
      * Form Validation
      */
-     this.InvoicesForm = this.formBuilder.group({
+    this.InvoicesForm = this.formBuilder.group({
       companyAddress: ['', [Validators.required]],
       companyaddpostalcode: ['', [Validators.required]],
       registrationNumber: ['', [Validators.required]],
@@ -55,73 +50,66 @@ export class CreateComponent implements OnInit {
       productName: ['', [Validators.required]],
       rate: ['', [Validators.required]],
       items: [''],
-    });    
+    });
   }
 
   ngOnInit(): void {
     /**
-    * BreadCrumb
-    */
-     this.breadCrumbItems = [
-      { label: 'Invoices' },
-      { label: 'Invoice Details', active: true }
-    ];
-
-    
-
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Invoices' }, { label: 'Invoice Details', active: true }];
   }
 
   /**
    * Form data get
    */
-   get form() {
+  get form() {
     return this.InvoicesForm.controls;
   }
 
-
-   /**
-  * Save user
-  */
-    saveUser() {
-      this.submitted = true
-    }
+  /**
+   * Save user
+   */
+  saveUser() {
+    this.submitted = true;
+  }
 
   // Default
   counter = 0;
   increment() {
     this.counter++;
     var itemAmount = document.querySelector('.product-price') as HTMLInputElement;
-    var priceselection = document.querySelector(".product-line-price") as HTMLInputElement;
+    var priceselection = document.querySelector('.product-line-price') as HTMLInputElement;
     this.updateQuantity(itemAmount?.value, this.counter, priceselection);
   }
 
   decrement() {
     this.counter--;
     var itemAmount = document.querySelector('.product-price') as HTMLInputElement;
-    var priceselection = document.querySelector(".product-line-price") as HTMLInputElement;
+    var priceselection = document.querySelector('.product-line-price') as HTMLInputElement;
     this.updateQuantity(itemAmount?.value, this.counter, priceselection);
   }
 
-  updateQuantity(amount: any, itemQuntity: any, priceselection:any){
-    var linePrice = amount * itemQuntity;    
+  updateQuantity(amount: any, itemQuntity: any, priceselection: any) {
+    var linePrice = amount * itemQuntity;
     priceselection.value = linePrice;
     this.recalculateCart();
   }
 
-  recalculateCart(){
-    var priceselection = document.querySelector(".product-line-price") as HTMLInputElement;
+  recalculateCart() {
+    var priceselection = document.querySelector('.product-line-price') as HTMLInputElement;
     this.subtotal = parseFloat(priceselection.value);
     var tax = this.subtotal * this.taxRate;
-	  var discount = this.subtotal * this.discountRate;
-	  var shipping = this.subtotal > 0 ? this.shippingRate : 0;
-	  var total = this.subtotal + tax + shipping - discount;
-    var subTotal = document.getElementById("cart-subtotal") as HTMLInputElement;    
-    var cartTax = document.getElementById("cart-tax") as HTMLInputElement;
-    var cartShipping = document.getElementById("cart-shipping") as HTMLInputElement;
-    var cartTotal = document.getElementById("cart-total") as HTMLInputElement;
-    var cartDiscount = document.getElementById("cart-discount") as HTMLInputElement;
-    var totalamountInput = document.getElementById("totalamountInput") as HTMLInputElement;
-	  var amountTotalPay = document.getElementById("amountTotalPay") as HTMLInputElement;
+    var discount = this.subtotal * this.discountRate;
+    var shipping = this.subtotal > 0 ? this.shippingRate : 0;
+    var total = this.subtotal + tax + shipping - discount;
+    var subTotal = document.getElementById('cart-subtotal') as HTMLInputElement;
+    var cartTax = document.getElementById('cart-tax') as HTMLInputElement;
+    var cartShipping = document.getElementById('cart-shipping') as HTMLInputElement;
+    var cartTotal = document.getElementById('cart-total') as HTMLInputElement;
+    var cartDiscount = document.getElementById('cart-discount') as HTMLInputElement;
+    var totalamountInput = document.getElementById('totalamountInput') as HTMLInputElement;
+    var amountTotalPay = document.getElementById('amountTotalPay') as HTMLInputElement;
 
     subTotal.value = priceselection.value;
     cartTax.value = this.paymentSign + tax;
@@ -134,19 +122,16 @@ export class CreateComponent implements OnInit {
 
   // Add Item
   addItem(): void {
-    (this.userForm.get('items') as FormArray).push(
-      this.formBuilder.control(null)
-    );
+    (this.userForm.get('items') as FormArray).push(this.formBuilder.control(null));
   }
 
-  // Get Item Data 
+  // Get Item Data
   getItemFormControls(): AbstractControl[] {
-    return (<FormArray> this.userForm.get('items')).controls
+    return (<FormArray>this.userForm.get('items')).controls;
   }
 
   // Remove Item
-  removeItem(index:any) {
+  removeItem(index: any) {
     (this.userForm.get('items') as FormArray).removeAt(index);
   }
-
 }

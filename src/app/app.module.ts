@@ -4,8 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { LayoutsModule } from "./layouts/layouts.module";
-import { PagesModule } from "./pages/pages.module";
+import { LayoutsModule } from './layouts/layouts.module';
+import { PagesModule } from './pages/pages.module';
 
 // Auth
 import { HttpClient, HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
@@ -47,44 +47,35 @@ if (environment.defaultauth === 'firebase') {
   FakeBackendInterceptor;
 }
 
-@NgModule({ declarations: [
-        AppComponent
-    ],
-    bootstrap: [AppComponent], imports: [TranslateModule.forRoot({
-            defaultLanguage: 'en',
-            loader: {
-                provide: TranslateLoader,
-                useFactory: (createTranslateLoader),
-                deps: [HttpClient]
-            }
-        }),
-        StoreModule.forRoot(rootReducer),
-        StoreDevtoolsModule.instrument({
-            maxAge: 25,
-            logOnly: environment.production, 
-        }),
-        EffectsModule.forRoot([
-            AuthenticationEffects,
-            EcommerceEffects,
-            ProjectEffects,
-            TaskEffects,
-            CRMEffects,
-            CryptoEffects,
-            InvoiceEffects,
-            TicketEffects,
-            FileManagerEffects,
-            TodoEffects,
-            ApplicationEffects,
-            ApikeyEffects
-        ]),
-        BrowserAnimationsModule,
-        BrowserModule,
-        AppRoutingModule,
-        LayoutsModule,
-        PagesModule], providers: [
-        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-        { provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true },
-        provideHttpClient(withInterceptorsFromDi()),
-    ] })
-export class AppModule { }
+@NgModule({
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+  imports: [
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
+      },
+    }),
+    StoreModule.forRoot(rootReducer),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
+    EffectsModule.forRoot([AuthenticationEffects, EcommerceEffects, ProjectEffects, TaskEffects, CRMEffects, CryptoEffects, InvoiceEffects, TicketEffects, FileManagerEffects, TodoEffects, ApplicationEffects, ApikeyEffects]),
+    BrowserAnimationsModule,
+    BrowserModule,
+    AppRoutingModule,
+    LayoutsModule,
+    PagesModule,
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true },
+    provideHttpClient(withInterceptorsFromDi()),
+  ],
+})
+export class AppModule {}

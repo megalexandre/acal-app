@@ -26,101 +26,102 @@ import { UtilitiesComponent } from './utilities/utilities.component';
 import { LinksComponent } from './links/links.component';
 
 const routes: Routes = [
-    {
-        path: 'alerts',
-        component: AlertsComponent
-    },
-    {
-        path: 'badges',
-        component: BadgesComponent
-    },
-    {
-        path: 'buttons',
-        component: ButtonsComponent
-    },
-    {
-        path: 'cards',
-        component: CardsComponent
-    },
-    {
-        path: 'carousel',
-        component: CarouselComponent
-    },
-    {
-        path: 'dropdowns',
-        component: DropdownsComponent
-    },
-    {
-        path: 'grid',
-        component: GridComponent
-    },
-    {
-        path: 'images',
-        component: ImagesComponent
-    },
-    {
-        path: 'tabs',
-        component: TabsComponent
-    },
-    {
-        path: 'colors',
-        component: ColorsComponent
-    },
-    {
-        path: 'accordions',
-        component: AccordionsComponent
-    },
-    {
-        path: 'modals',
-        component: ModalsComponent
-    },
-    {
-        path: 'placeholder',
-        component: PlaceholderComponent
-    }, {
-        path: 'progress',
-        component: ProgressComponent
-    },
-    {
-        path: 'notifications',
-        component: NotificationsComponent
-    },
-    {
-        path: 'media',
-        component: MediaComponent
-    },
-    {
-        path: 'video',
-        component: VideoComponent
-    },
-    {
-        path: 'typography',
-        component: TypographyComponent
-    },
-    {
-        path: 'list',
-        component: ListComponent
-    },
-    {
-        path: 'general',
-        component: GeneralComponent
-    },
-    {
-        path: 'ribbons',
-        component: RibbonsComponent
-    },
-    {
-        path: 'utilities',
-        component: UtilitiesComponent
-    },
-    {
-        path: 'links',
-        component: LinksComponent
-    },
+  {
+    path: 'alerts',
+    component: AlertsComponent,
+  },
+  {
+    path: 'badges',
+    component: BadgesComponent,
+  },
+  {
+    path: 'buttons',
+    component: ButtonsComponent,
+  },
+  {
+    path: 'cards',
+    component: CardsComponent,
+  },
+  {
+    path: 'carousel',
+    component: CarouselComponent,
+  },
+  {
+    path: 'dropdowns',
+    component: DropdownsComponent,
+  },
+  {
+    path: 'grid',
+    component: GridComponent,
+  },
+  {
+    path: 'images',
+    component: ImagesComponent,
+  },
+  {
+    path: 'tabs',
+    component: TabsComponent,
+  },
+  {
+    path: 'colors',
+    component: ColorsComponent,
+  },
+  {
+    path: 'accordions',
+    component: AccordionsComponent,
+  },
+  {
+    path: 'modals',
+    component: ModalsComponent,
+  },
+  {
+    path: 'placeholder',
+    component: PlaceholderComponent,
+  },
+  {
+    path: 'progress',
+    component: ProgressComponent,
+  },
+  {
+    path: 'notifications',
+    component: NotificationsComponent,
+  },
+  {
+    path: 'media',
+    component: MediaComponent,
+  },
+  {
+    path: 'video',
+    component: VideoComponent,
+  },
+  {
+    path: 'typography',
+    component: TypographyComponent,
+  },
+  {
+    path: 'list',
+    component: ListComponent,
+  },
+  {
+    path: 'general',
+    component: GeneralComponent,
+  },
+  {
+    path: 'ribbons',
+    component: RibbonsComponent,
+  },
+  {
+    path: 'utilities',
+    component: UtilitiesComponent,
+  },
+  {
+    path: 'links',
+    component: LinksComponent,
+  },
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class UiRoutingModule { }
+export class UiRoutingModule {}

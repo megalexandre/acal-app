@@ -8,14 +8,13 @@ import { gallery, news, swiper, video } from 'src/app/core/data';
 @Component({
   selector: 'app-search-results',
   templateUrl: './search-results.component.html',
-  styleUrls: ['./search-results.component.scss']
+  styleUrls: ['./search-results.component.scss'],
 })
 
 /**
  * SearchResults Component
  */
 export class SearchResultsComponent implements OnInit {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   swiper!: swiperModel[];
@@ -33,7 +32,7 @@ export class SearchResultsComponent implements OnInit {
       const item = {
         src: src,
         caption: caption,
-        thumb: thumb
+        thumb: thumb,
       };
       this.images.push(item);
     }
@@ -41,12 +40,9 @@ export class SearchResultsComponent implements OnInit {
 
   ngOnInit(): void {
     /**
-    * BreadCrumb
-    */
-    this.breadCrumbItems = [
-      { label: 'Pages' },
-      { label: 'Search Results', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Pages' }, { label: 'Search Results', active: true }];
 
     // Chat Data Get Function
     this._fetchData();
@@ -58,7 +54,7 @@ export class SearchResultsComponent implements OnInit {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 100,
-        arrows: false
+        arrows: false,
       };
     }, 0);
   }
@@ -70,7 +66,6 @@ export class SearchResultsComponent implements OnInit {
     this.news = news;
     this.video = video;
   }
-
 
   open(index: number): void {
     // open lightbox
@@ -86,7 +81,6 @@ export class SearchResultsComponent implements OnInit {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 100,
-    arrows: false
+    arrows: false,
   };
-
 }

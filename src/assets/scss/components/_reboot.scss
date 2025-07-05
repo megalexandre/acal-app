@@ -1,30 +1,19 @@
-// 
+//
 // reboot.scss
 //
 
 html {
-    position: relative;
-    min-height: 100%;
+  position: relative;
+  min-height: 100%;
 }
 
-:is(.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6) {
-    font-family: $headings-font-family;
+:is(.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6) {
+  font-family: $headings-font-family;
 }
 
 label {
-    font-weight: $font-weight-medium;
-    margin-bottom: $form-label-margin-bottom;
+  font-weight: $font-weight-medium;
+  margin-bottom: $form-label-margin-bottom;
 }
 b,
 strong {
@@ -34,30 +23,25 @@ strong {
 // blockquote
 
 .blockquote {
-    padding: 10px 20px;
-    border-left: 4px solid var(--#{$prefix}border-color);
+  padding: 10px 20px;
+  border-left: 4px solid var(--#{$prefix}border-color);
 }
 
 .blockquote-reverse {
-    border-left: 0;
-    border-right: 4px solid var(--#{$prefix}border-color);
-    text-align: right;
+  border-left: 0;
+  border-right: 4px solid var(--#{$prefix}border-color);
+  text-align: right;
 }
 
 // container
 
-:is(.container,
-.container-lg,
-.container-md,
-.container-sm,
-.container-xl,
-.container-xxl) {
-    @media (min-width: 1200px) {
-        max-width: 1140px;
-    }
+:is(.container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl) {
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+  }
 }
 
 // row
-.row>*{
-    position: relative;
+.row > * {
+  position: relative;
 }

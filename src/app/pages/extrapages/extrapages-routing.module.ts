@@ -2,16 +2,16 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // Component pages
-import { StarterComponent } from "./starter/starter.component";
-import { ProfileComponent } from "./profile/profile/profile.component";
-import { SettingsComponent } from "./profile/settings/settings.component";
-import { TeamComponent } from "./team/team.component";
-import { TimelineComponent } from "./timeline/timeline.component";
-import { FaqsComponent } from "./faqs/faqs.component";
-import { PricingComponent } from "./pricing/pricing.component";
-import { GalleryComponent } from "./gallery/gallery.component";
-import { SitemapComponent } from "./sitemap/sitemap.component";
-import { SearchResultsComponent } from "./search-results/search-results.component";
+import { StarterComponent } from './starter/starter.component';
+import { ProfileComponent } from './profile/profile/profile.component';
+import { SettingsComponent } from './profile/settings/settings.component';
+import { TeamComponent } from './team/team.component';
+import { TimelineComponent } from './timeline/timeline.component';
+import { FaqsComponent } from './faqs/faqs.component';
+import { PricingComponent } from './pricing/pricing.component';
+import { GalleryComponent } from './gallery/gallery.component';
+import { SitemapComponent } from './sitemap/sitemap.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TermsConditionComponent } from './terms-condition/terms-condition.component';
 import { PagesBlogOverviewComponent } from './pages-blog-overview/pages-blog-overview.component';
@@ -21,68 +21,68 @@ import { PagesBlogListComponent } from './pages-blog-list/pages-blog-list.compon
 const routes: Routes = [
   {
     path: 'starter',
-    component: StarterComponent
+    component: StarterComponent,
   },
   {
     path: 'profile',
-    component: ProfileComponent
+    component: ProfileComponent,
   },
   {
     path: 'profile-setting',
-    component: SettingsComponent
+    component: SettingsComponent,
   },
   {
     path: 'team',
-    component: TeamComponent
+    component: TeamComponent,
   },
   {
     path: 'timeline',
-    component: TimelineComponent
+    component: TimelineComponent,
   },
   {
     path: 'faqs',
-    component: FaqsComponent
+    component: FaqsComponent,
   },
   {
     path: 'pricing',
-    component: PricingComponent
+    component: PricingComponent,
   },
   {
     path: 'gallery',
-    component: GalleryComponent
+    component: GalleryComponent,
   },
   {
     path: 'sitemap',
-    component: SitemapComponent
+    component: SitemapComponent,
   },
   {
     path: 'search-results',
-    component: SearchResultsComponent
+    component: SearchResultsComponent,
   },
   {
     path: 'privacy-policy',
-    component: PrivacyPolicyComponent
+    component: PrivacyPolicyComponent,
   },
   {
     path: 'terms-condition',
-    component: TermsConditionComponent
+    component: TermsConditionComponent,
   },
   {
     path: 'pages-blog-list',
-    component: PagesBlogListComponent
+    component: PagesBlogListComponent,
   },
   {
     path: 'pages-blog-grid',
-    component: PagesBlogGridComponent
+    component: PagesBlogGridComponent,
   },
   {
     path: 'pages-blog-overview',
-    component: PagesBlogOverviewComponent
-  }
+    component: PagesBlogOverviewComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ExtraPagesRoutingModule { }
+export class ExtraPagesRoutingModule {}

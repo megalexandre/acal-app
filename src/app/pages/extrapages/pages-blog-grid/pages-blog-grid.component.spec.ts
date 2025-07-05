@@ -8,9 +8,8 @@ describe('PagesBlogGridComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PagesBlogGridComponent]
-    })
-    .compileComponents();
+      imports: [PagesBlogGridComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PagesBlogGridComponent);
     component = fixture.componentInstance;

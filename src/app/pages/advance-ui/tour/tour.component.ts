@@ -1,20 +1,17 @@
-
 import { Component, OnInit, ChangeDetectionStrategy, AfterViewInit } from '@angular/core';
 import { ShepherdService } from 'angular-shepherd';
-import { steps as defaultSteps, defaultStepOptions} from './data';
+import { steps as defaultSteps, defaultStepOptions } from './data';
 @Component({
   selector: 'app-tour',
   templateUrl: './tour.component.html',
   styleUrls: ['./tour.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 /**
  * Tour Component
  */
 export class TourComponent implements OnInit, AfterViewInit {
-  
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
 
@@ -30,12 +27,8 @@ export class TourComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     /**
-    * BreadCrumb
-    */
-     this.breadCrumbItems = [
-      { label: 'Advance UI' },
-      { label: 'Tour', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Advance UI' }, { label: 'Tour', active: true }];
   }
-
 }

@@ -8,9 +8,8 @@ describe('BoxplotComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BoxplotComponent ]
-    })
-    .compileComponents();
+      declarations: [BoxplotComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

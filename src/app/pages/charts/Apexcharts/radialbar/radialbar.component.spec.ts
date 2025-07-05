@@ -8,9 +8,8 @@ describe('RadialbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RadialbarComponent ]
-    })
-    .compileComponents();
+      declarations: [RadialbarComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

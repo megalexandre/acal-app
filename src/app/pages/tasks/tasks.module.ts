@@ -14,7 +14,7 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 import { CountUpModule } from 'ngx-countup';
 
 // Load Icons
-import { defineElement } from "@lordicon/element";
+import { defineElement } from '@lordicon/element';
 import lottie from 'lottie-web';
 
 // Component Pages
@@ -25,11 +25,7 @@ import { ListViewComponent } from './list-view/list-view.component';
 import { DetailsComponent } from './details/details.component';
 
 @NgModule({
-  declarations: [
-    KanbanComponent,
-    ListViewComponent,
-    DetailsComponent
-  ],
+  declarations: [KanbanComponent, ListViewComponent, DetailsComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -45,9 +41,9 @@ import { DetailsComponent } from './details/details.component';
     FlatpickrModule,
     CountUpModule,
     TasksRoutingModule,
-    SharedModule
+    SharedModule,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class TasksModule {
   constructor() {

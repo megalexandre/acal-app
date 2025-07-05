@@ -1,6 +1,5 @@
 export interface ProcessModel {
-    icon: string;
-    title: string;
-    content: string;
-  }
-  
+  icon: string;
+  title: string;
+  content: string;
+}

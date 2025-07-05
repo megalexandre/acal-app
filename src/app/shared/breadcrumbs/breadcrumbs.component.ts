@@ -3,14 +3,13 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-breadcrumbs',
   templateUrl: './breadcrumbs.component.html',
-  styleUrls: ['./breadcrumbs.component.scss']
+  styleUrls: ['./breadcrumbs.component.scss'],
 })
 
 /**
  * Bread Crumbs Component
  */
 export class BreadcrumbsComponent implements OnInit {
-
   @Input() title: string | undefined;
   @Input()
   breadcrumbItems!: Array<{
@@ -18,9 +17,7 @@ export class BreadcrumbsComponent implements OnInit {
     label?: string;
   }>;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

@@ -29,9 +29,11 @@ export const TodoReducer = createReducer(
     return { ...state, Todo: [newData, ...state.Todo], error: null };
   }),
 
-    on(updateTodoSuccess, (state, { updatedData }) => {
+  on(updateTodoSuccess, (state, { updatedData }) => {
     return {
-      ...state, Todo: state.Todo.map((Todos) => Todos._id === updatedData._id ? updatedData : Todos), error: null
+      ...state,
+      Todo: state.Todo.map((Todos) => (Todos._id === updatedData._id ? updatedData : Todos)),
+      error: null,
     };
   }),
 
@@ -39,7 +41,6 @@ export const TodoReducer = createReducer(
     const updatedTodo = state.Todo.filter((Todo) => !id.includes(Todo._id));
     return { ...state, Todo: updatedTodo, error: null };
   }),
-
 );
 
 // Selector

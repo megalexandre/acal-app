@@ -8,9 +8,8 @@ describe('CheckboxsRadiosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CheckboxsRadiosComponent ]
-    })
-    .compileComponents();
+      declarations: [CheckboxsRadiosComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

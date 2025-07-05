@@ -7,18 +7,16 @@ import { fetchCryptoTransactionData } from 'src/app/store/Crypto/crypto_action';
 import { selectCryptoLoading, selectTransacrionData } from 'src/app/store/Crypto/crypto_selector';
 import { cloneDeep } from 'lodash';
 
-
 @Component({
   selector: 'app-transactions',
   templateUrl: './transactions.component.html',
-  styleUrls: ['./transactions.component.scss']
+  styleUrls: ['./transactions.component.scss'],
 })
 
 /**
  * Transactions Component
  */
 export class TransactionsComponent {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   masterSelected!: boolean;
@@ -31,18 +29,16 @@ export class TransactionsComponent {
   searchTerm: any;
   currency: any = '';
 
-  constructor(public service: PaginationService,
-    private store: Store<{ data: RootReducerState }>) {
-  }
+  constructor(
+    public service: PaginationService,
+    private store: Store<{ data: RootReducerState }>,
+  ) {}
 
   ngOnInit(): void {
     /**
-    * BreadCrumb
-    */
-    this.breadCrumbItems = [
-      { label: 'Crypto' },
-      { label: 'Transactions', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Crypto' }, { label: 'Transactions', active: true }];
 
     // Fetch Data
     this.store.dispatch(fetchCryptoTransactionData());
@@ -55,7 +51,7 @@ export class TransactionsComponent {
     this.store.select(selectTransacrionData).subscribe((data) => {
       this.transactions = data;
       this.TransactionList = cloneDeep(data);
-      this.transactions = this.service.changePage(this.TransactionList)
+      this.transactions = this.service.changePage(this.TransactionList);
     });
   }
 
@@ -78,14 +74,14 @@ export class TransactionsComponent {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    arrows: false
+    arrows: false,
   };
 
   CurrencyFilter() {
     if (this.currency != '') {
       this.transactions = this.TransactionList.filter((item: any) => item.currency == this.currency);
     } else {
-      this.transactions = this.service.changePage(this.TransactionList)
+      this.transactions = this.service.changePage(this.TransactionList);
     }
   }
 
@@ -95,7 +91,7 @@ export class TransactionsComponent {
 
   // Pagination
   changePage() {
-    this.transactions = this.service.changePage(this.TransactionList)
+    this.transactions = this.service.changePage(this.TransactionList);
   }
 
   // Search Data
@@ -110,12 +106,11 @@ export class TransactionsComponent {
         item.status.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     });
-    this.transactions = this.service.changePage(this.searchResults)
+    this.transactions = this.service.changePage(this.searchResults);
   }
 
   // Sort Data
   onSort(column: any) {
-    this.transactions = this.service.onSort(column, this.transactions)
+    this.transactions = this.service.onSort(column, this.transactions);
   }
-
 }

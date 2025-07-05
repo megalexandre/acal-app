@@ -6,30 +6,26 @@ import { CartModel } from 'src/app/store/Ecommerce/ecommerce_model';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  styleUrls: ['./cart.component.scss'],
 })
 
 /**
  * Cart Component
  */
 export class CartComponent implements OnInit {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   cartData!: CartModel[];
   deleteId: any;
   dataCount: any;
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal) {}
 
   ngOnInit(): void {
     /**
-    * BreadCrumb
-    */
-    this.breadCrumbItems = [
-      { label: 'Ecommerce' },
-      { label: 'Shopping Cart', active: true }
-    ];
+     * BreadCrumb
+     */
+    this.breadCrumbItems = [{ label: 'Ecommerce' }, { label: 'Shopping Cart', active: true }];
 
     /**
      * fetches the data
@@ -42,7 +38,7 @@ export class CartComponent implements OnInit {
    */
   private _fetchData() {
     this.cartData = cartData;
-    this.dataCount = this.cartData.length
+    this.dataCount = this.cartData.length;
   }
 
   // Default
@@ -95,7 +91,7 @@ export class CartComponent implements OnInit {
     // Shipping
     var shipping = parseFloat(subTotal) > 0 ? this.shippingRate : 0;
     (document.getElementById('cart-shipping') as HTMLInputElement).innerHTML = shipping.toFixed(2);
-    // Rate 
+    // Rate
     var tax = parseFloat(subTotal) * this.taxRate;
     (document.getElementById('cart-tax') as HTMLInputElement).innerHTML = tax.toFixed(2);
     // Total
@@ -118,8 +114,7 @@ export class CartComponent implements OnInit {
     var subTotal: any = parseFloat(Total) - parseFloat(itemTotal);
     (document.getElementById('cart-subtotal') as HTMLInputElement).innerHTML = subTotal.toFixed(2);
     this.updateQuantity(subTotal);
-    document.getElementById("cart-id" + id)?.remove();
+    document.getElementById('cart-id' + id)?.remove();
     this.dataCount = this.dataCount - 1;
   }
-
 }
