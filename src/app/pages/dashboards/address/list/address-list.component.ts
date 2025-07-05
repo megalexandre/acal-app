@@ -25,7 +25,10 @@ export class AddressListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-  
+    this.search();
+  }
+
+  search(){
     this.loading = true;
     
     this.addressService.getAddresses().subscribe({
@@ -40,7 +43,12 @@ export class AddressListComponent implements OnInit {
   }
 
   openAddressModal() {
-    this.modalService.open(AddressCreateComponent);
+    const modal = this.modalService.open(AddressCreateComponent);
+    const componentInstance = modal.componentInstance as AddressCreateComponent;
+
+    componentInstance.onSave.subscribe((mensagem: string) => {
+      this.search();
+    });
   }
 
   openModal(content: TemplateRef<any>) {

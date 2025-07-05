@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -11,6 +11,9 @@ import { el } from '@fullcalendar/core/internal-common';
 })
 export class AddressCreateComponent {
   
+  @Output() 
+  public onSave = new EventEmitter<string>();
+
   public addressForm: FormGroup;
   public submitted = false;
 
@@ -30,7 +33,10 @@ export class AddressCreateComponent {
 
     if (this.addressForm.valid) {
         this.addressService.createAddress(this.addressForm.value).subscribe({
-            next: () => this.close(),
+            next: () => {
+              this.onSave.emit();
+              this.close()
+            },
             error: () => this.addressForm.reset()
         });
     }
@@ -53,3 +59,5 @@ export class AddressCreateComponent {
   }
 
 }
+
+
