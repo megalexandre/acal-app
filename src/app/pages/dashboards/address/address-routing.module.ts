@@ -12,7 +12,6 @@ const routes: Routes = [
       component: AddressComponent,
       children: [
         { path: '', component: AddressListComponent },
-        { path: 'add', component: AddressCreateComponent },
         { path: 'delete', component: AddressDeleteComponent },
         { path: 'edit', component: AddressEditComponent },
       ]

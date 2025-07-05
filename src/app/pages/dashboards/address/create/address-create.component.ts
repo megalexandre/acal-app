@@ -1,39 +1,55 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Location } from '@angular/common';
-import { AddressService } from '../address.service';
+import { Component } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { AddressService } from '../address.service';
+import { el } from '@fullcalendar/core/internal-common';
 
 @Component({
   selector: 'app-address-create',
-  templateUrl: './address-create.component.html'
+  templateUrl: './address-create.component.html', 
 })
 export class AddressCreateComponent {
   
-  addressForm: FormGroup;
+  public addressForm: FormGroup;
+  public submitted = false;
 
   constructor(
       private fb: FormBuilder, 
       private addressService: AddressService,
-      private router: Router,
-      private route: ActivatedRoute  
+      public activeModal: NgbActiveModal,
   ) {
     this.addressForm = this.fb.group({
-      name: ['', Validators.required]
+      name: ['', [Validators.required, Validators.minLength(3)]]
     });
   }
 
   async onSubmit() {
+    this.submitted = true;
+    this.addressForm.markAllAsTouched();
+
     if (this.addressForm.valid) {
         this.addressService.createAddress(this.addressForm.value).subscribe({
-            next: () => this.back(),
+            next: () => this.close(),
             error: () => this.addressForm.reset()
         });
     }
   }
 
-  back(){
-    this.router.navigate(['../'], { relativeTo: this.route })
+  close() {
+    this.activeModal.close();
   }
-    
+
+  isValid(element: string): boolean{
+    return this.getControl(element)?.valid && this.submitted || false;
+  }
+
+  isInvalid(element: string): boolean{
+    return this.getControl(element)?.invalid && this.submitted || false;
+  }
+
+  getControl(field: string): AbstractControl | null {
+      return this.addressForm.get(field);
+  }
+
 }

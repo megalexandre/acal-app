@@ -1,20 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
-import { SharedModule } from 'src/app/shared/shared.module';
-import { AddressCreateComponent } from './create/address-create.component';
-import { AddressRoutingModule } from './address-routing.module';
-import { AddressComponent } from './address.component';
-import { AddressService } from './address.service';
-import { AddressListComponent } from './list/address-list.component';
-import { AddressDeleteComponent } from './delete/address-delete.component';
-import { AddressEditComponent } from './edit/address-edit.component';
-import { AddressSharedService } from './address-shared.service';
 import { FeatherModule } from 'angular-feather';
 import { allIcons } from 'angular-feather/icons';
-import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
-import { PaginationService } from 'src/app/core/services/pagination.service';
+import { AcalModule } from 'src/app/acal-shared/acal.module';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { AddressRoutingModule } from './address-routing.module';
+import { AddressSharedService } from './address-shared.service';
+import { AddressComponent } from './address.component';
+import { AddressService } from './address.service';
+import { AddressCreateComponent } from './create/address-create.component';
+import { AddressDeleteComponent } from './delete/address-delete.component';
+import { AddressEditComponent } from './edit/address-edit.component';
+import { AddressListComponent } from './list/address-list.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
     AddressCreateComponent, 
     AddressListComponent,
     AddressDeleteComponent,
-    AddressEditComponent
+    AddressEditComponent,
   ],
   imports: [
     FeatherModule.pick(allIcons),
@@ -32,8 +32,7 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
     TranslateModule,
     ReactiveFormsModule,
     NgbPaginationModule,
-  ],
-  exports: [
+    AcalModule
   ],
   providers: [
     AddressService,
