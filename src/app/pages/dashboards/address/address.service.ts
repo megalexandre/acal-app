@@ -4,7 +4,9 @@ import { Observable } from 'rxjs';
 import { Address } from './address.model';
 import { environment } from 'src/environments/environment';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AddressService {
   private apiUrl = `${environment.apiUrl}/address`;
 

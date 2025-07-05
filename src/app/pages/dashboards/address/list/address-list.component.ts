@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AddressSharedService } from '../address-shared.service';
 import { Address } from '../address.model';
 import { AddressService } from '../address.service';
 import { PaginationService } from 'src/app/core/services/pagination.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AddressCreateComponent } from '../create/address-create.component';
 
 @Component({
   selector: 'app-address-list',
@@ -19,18 +21,30 @@ export class AddressListComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     public service: PaginationService,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
   
     this.loading = true;
     
-    this.addressService.getAddresses().subscribe(addresses => {
-      this.addresses = addresses;
-      this.loading = false;
-    }, () => {
-      this.loading = false;
+    this.addressService.getAddresses().subscribe({
+      next: (addresses) => {
+        this.addresses = addresses;
+        this.loading = false;
+      },
+      error: () => {
+        this.loading = false;
+      }
     });
+  }
+
+  openAddressModal() {
+    this.modalService.open(AddressCreateComponent);
+  }
+
+  openModal(content: TemplateRef<any>) {
+    this.modalService.open(content);
   }
 
   edit(address: Address) {
