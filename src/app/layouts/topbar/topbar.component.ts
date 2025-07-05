@@ -17,6 +17,7 @@ import { allNotification, messages } from './data'
 import { CartModel } from './topbar.model';
 import { cartData } from './data';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TopbarService } from './topbar.service';
 
 @Component({
   selector: 'app-topbar',
@@ -24,6 +25,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./topbar.component.scss']
 })
 export class TopbarComponent implements OnInit {
+  version: string = '';
   messages: any
   element: any;
   mode: string | undefined;
@@ -44,9 +46,18 @@ export class TopbarComponent implements OnInit {
   @ViewChild('removenotification') removenotification !: TemplateRef<any>;
   notifyId: any;
 
-  constructor(@Inject(DOCUMENT) private document: any, private eventService: EventService, public languageService: LanguageService, private modalService: NgbModal,
-    public _cookiesService: CookieService, public translate: TranslateService, private authService: AuthenticationService, private authFackservice: AuthfakeauthenticationService,
-    private router: Router, private TokenStorageService: TokenStorageService) { }
+  constructor(
+    @Inject(DOCUMENT) private document: any,
+    private eventService: EventService, 
+    public languageService: LanguageService, 
+    private modalService: NgbModal,
+    public _cookiesService: CookieService, 
+    public translate: TranslateService, 
+    private authService: AuthenticationService, 
+    private router: Router, 
+    private TokenStorageService: TokenStorageService,
+    private topbarService: TopbarService
+  ) { }
 
   ngOnInit(): void {
     this.userData = this.TokenStorageService.getUser();
@@ -72,6 +83,8 @@ export class TopbarComponent implements OnInit {
       var item_price = item.quantity * item.price
       this.total += item_price
     });
+
+    this.topbarService.getVersion().subscribe(v => this.version = v);
   }
 
   /**

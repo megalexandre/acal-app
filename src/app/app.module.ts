@@ -60,8 +60,8 @@ if (environment.defaultauth === 'firebase') {
         }),
         StoreModule.forRoot(rootReducer),
         StoreDevtoolsModule.instrument({
-            maxAge: 25, // Retains last 25 states
-            logOnly: environment.production, // Restrict extension to log-only mode
+            maxAge: 25,
+            logOnly: environment.production, 
         }),
         EffectsModule.forRoot([
             AuthenticationEffects,

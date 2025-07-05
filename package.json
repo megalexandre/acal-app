@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "version": "git describe --tags --abbrev=0 > src/assets/version.txt",
+    "build": "npm run version && ng build",
     "postbuild": "cp dist/velzon/index.html dist/velzon/404.html",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
