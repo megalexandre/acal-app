@@ -46,7 +46,7 @@ export class AddressListComponent implements OnInit {
     const modal = this.modalService.open(AddressCreateComponent);
     const componentInstance = modal.componentInstance as AddressCreateComponent;
 
-    componentInstance.onSave.subscribe((mensagem: string) => {
+    componentInstance.onSave.subscribe(() => {
       this.search();
     });
   }
