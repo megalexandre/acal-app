@@ -2,7 +2,7 @@ export const environment = {
   production: false,
 
   
-  apiUrl: 'https://acalapp.shop',
+  apiUrl: 'https://www.acalapp.shop',
 
   defaultauth: 'fackbackend',
   firebaseConfig: {
