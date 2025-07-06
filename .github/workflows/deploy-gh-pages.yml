@@ -12,6 +12,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # para garantir que o version service funcione
+      - name: Fetch all tags
+        run: git fetch --tags
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -19,7 +23,6 @@ jobs:
 
       - name: Install dependencies
         run: npm install --legacy-peer-deps
-
 
       - name: Build Angular app
         run: npm run build -- --configuration production
