@@ -1,172 +1,60 @@
 <div class="row">
   <div class="col-lg-12">
-    <div class="card" id="apiKeyList">
-      <div class="card-header d-flex align-items-center">
-        <h5 class="card-title flex-grow-1 mb-0">Endereços</h5>
+    <app-card>
+        <app-card-header>
+            <h5 class="card-title flex-grow-1 mb-0">Endereços</h5>
+            
+            <div class="d-flex gap-1 flex-wrap">
+              <app-button btnType="success" outline (click)="create()"> Adicionar </app-button>
+            </div>
+        </app-card-header>
 
-        <div class="d-flex gap-1 flex-wrap">
-          <app-button btnType="success" outline (click)="openAddressModal()"> Adicionar </app-button>
-        </div>
-      </div>
+        <app-card-body>
+          <div class="table-responsive table-card">
+            <table class="table align-middle table-nowrap mb-0 table-gridjs">
+              <thead class="table-light">
+                <tr>
+                  <th class="col-11">Name</th>
+                  <th class="col-1 text-center">Action</th>
+                </tr>
+              </thead>
+              <tbody class="list form-check-all">
+                <tr *ngFor="let address of addresses">
+                  <td class="name">{{ address.name }}</td>
 
-      <div class="card-body">
-        <div class="search-box d-inline-block">
-          <input type="text" class="form-control search" placeholder="Search..." />
-          <i class="ri-search-line search-icon"></i>
-        </div>
+                  <td class="text-center">
+                      <ul class="list-inline hstack gap-2 mb-0">
 
-        <div class="table-responsive table-card mb-3 mt-3">
-          <table class="table align-middle table-nowrap mb-0 table-gridjs">
-            <thead class="table-light">
-              <tr>
-                <th class="col-11">Name</th>
-                <th class="col-1 text-center">Action</th>
-              </tr>
-            </thead>
-            <tbody class="list form-check-all">
-              <tr *ngFor="let address of addresses">
-                <td class="name">{{ address.name }}</td>
-
-                <td class="text-center">
-                    <ul class="list-inline hstack gap-2 mb-0">
-
-                        <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" ngbTooltip="Edit" placement="top">
-                          <a
-                            href="javascript:void(0);"
-                            data-bs-toggle="modal"
-                            class="text-primary d-inline-block edit-item-btn"
-                            data-bs-toggle="modal"
-                            id="create-btn"
-                            data-bs-target="#showModal"
+                          <li 
+                            class="list-inline-item edit" 
+                            data-bs-toggle="tooltip" 
+                            data-bs-trigger="hover" 
+                            ngbTooltip="Edit" 
+                            placement="top"
+                            (click)="edit(address)"
                             >
-                            <i class="ri-pencil-fill fs-16"></i>
-                          </a>
-                        </li>
-                        
-                        <li class="list-inline-item me-0" ngbTooltip="Remove" placement="top" data-bs-toggle="tooltip" data-bs-trigger="hover" 
-                          (click)="openAddressDeleteModal(address)">
-                          <a class="text-danger d-inline-block remove-item-btn">
-                            <i class="ri-delete-bin-5-fill fs-16"></i>
-                          </a>
-                        </li>
-                      </ul>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="noresult" style="display: none">
-            <div class="text-center">
-              <h5 class="mt-2">Sorry! No Result Found</h5>
-              <p class="text-muted mb-0">We've searched more than 150+ API Keys We did not find any API for you search.</p>
+                              <i class="ri-pencil-fill fs-16"></i>
+                          </li>
+                          
+                          <li class="list-inline-item me-0" ngbTooltip="Remove" placement="top" data-bs-toggle="tooltip" data-bs-trigger="hover" 
+                            (click)="delete(address)">
+                            <a class="text-danger d-inline-block remove-item-btn">
+                              <i class="ri-delete-bin-5-fill fs-16"></i>
+                            </a>
+                          </li>
+                        </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="noresult" style="display: none">
+              <div class="text-center">
+                <h5 class="mt-2">Sorry! No Result Found</h5>
+                <p class="text-muted mb-0">We've searched more than 150+ API Keys We did not find any API for you search.</p>
+              </div>
             </div>
           </div>
-        </div>
-        <ngb-pagination class="d-flex justify-content-end pt-2 hstack gap-2" [collectionSize]="addresses.length || 12" [(page)]="service.page" [pageSize]="service.pageSize" aria-label="Custom pagination">
-          <ng-template ngbPaginationPrevious let-page let-pages="pages">
-            <i class="ci-arrow-left me-2"></i>
-            Prev
-          </ng-template>
-          <ng-template ngbPaginationNext>
-            Next
-            <i class="ci-arrow-right ms-2"></i>
-          </ng-template>
-        </ngb-pagination>
-      </div>
-    </div>
+        </app-card-body>
+    </app-card>
   </div>
 </div>
-
-<!-- 
-<ng-template #deleteModel let-modal>
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btn-close" (click)="modal.dismiss('Cross click')"></button>
-        </div>
-        <div class="modal-body">
-            <div class="mt-2 text-center">
-                <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
-                    <h4>Are you sure ?</h4>
-                    <p class="text-muted mx-4 mb-0">Are you Sure You want to Remove this API Key ?</p>
-                </div>
-            </div>
-            <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-                <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal" (click)="modal.close('Close click')">Close</button>
-                <button type="button" class="btn w-sm btn-danger " id="delete-product" (click)="deleteData(deleteId)">Yes, Delete It!</button>
-            </div>
-        </div>
-    </div>
-</ng-template>
-
-<div class="row">
-    <div class="col-lg-4">
-        <div class="card card-height-100">
-            <div class="card-body">
-                <h5 class="card-title mb-3">Developer Plan</h5>
-                <div class="progress animated-progress custom-progress mb-1">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 38%" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="text-muted mb-2">You used 215 of 2000 of your API</p>
-                <div class="text-end">
-                    <button type="button" class="btn btn-primary btn-sm create-btn" data-bs-toggle="modal" data-bs-target="#api-key-modal" (click)="openModal(content)">Create API Key</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    end col
-    <div class="col-lg-4">
-        <div class="card card-animate card-height-100">
-            <div class="card-body">
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <p class="fw-medium text-muted mb-0">Successful conversions</p>
-                        <h2 class="mt-4 ff-secondary fw-bold">
-                            <span [countUp]="50" class="counter-value" [options]="option"></span>
-                        </h2>
-                        <p class="mb-0 text-muted"><span class="badge bg-light text-success mb-0"><i class="ri-arrow-up-line align-middle"></i> 8.24 % </span> 7 last week</p>
-                    </div>
-                    <div>
-                        <div class="avatar-sm flex-shrink-0">
-                            <span class="avatar-title bg-success-subtle rounded-circle fs-2">
-                                 <i data-feather="check-circle" class="text-success"></i> 
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle text-success">
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                </svg>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <div class="card card-animate card-height-100">
-            <div class="card-body">
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <p class="fw-medium text-muted mb-0">Failed conversions</p>
-                        <h2 class="mt-4 ff-secondary fw-bold">
-                            <span [countUp]="8" class="counter-value" [options]="option"></span>
-                        </h2>
-                        <p class="mb-0 text-muted"><span class="badge bg-light text-danger mb-0"><i class="ri-arrow-down-line align-middle"></i> 25.87 % </span> 7 last week</p>
-                    </div>
-                    <div>
-                        <div class="avatar-sm flex-shrink-0">
-                            <span class="avatar-title bg-danger-subtle rounded-circle fs-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-octagon text-danger">
-                                    <polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2">
-                                    </polygon>
-                                    <line x1="12" y1="8" x2="12" y2="12"></line>
-                                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                                </svg>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
--->

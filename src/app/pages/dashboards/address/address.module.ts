@@ -33,7 +33,6 @@ import { AddressListComponent } from './list/address-list.component';
     ReactiveFormsModule, 
     NgbPaginationModule, 
     AcalModule,
-    SharedModule
   ],
   providers: [
     AddressService,

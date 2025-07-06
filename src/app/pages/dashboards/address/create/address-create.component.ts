@@ -2,15 +2,16 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddressService } from '../address.service';
+import { ModalWithSent } from '../list/address-list.component'; 
 
 @Component({
   selector: 'app-address-create',
   templateUrl: './address-create.component.html',
 })
-export class AddressCreateComponent {
+export class AddressCreateComponent implements ModalWithSent {
  
   @Output()
-  public onSave = new EventEmitter<string>();
+  public sent = new EventEmitter<string>();
 
   public addressForm: FormGroup;
   public submitted = false;
@@ -32,7 +33,7 @@ export class AddressCreateComponent {
     if (this.addressForm.valid) {
       this.addressService.createAddress(this.addressForm.value).subscribe({
         next: () => {
-          this.onSave.emit();
+          this.sent.emit();
           this.close();
         },
         error: () => this.addressForm.reset(),

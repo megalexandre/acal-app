@@ -1,25 +1,28 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AddressSharedService } from '../address-shared.service';
+import { Component, EventEmitter, OnInit, TemplateRef, Type } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PaginationService } from 'src/app/core/services/pagination.service';
 import { Address } from '../address.model';
 import { AddressService } from '../address.service';
-import { PaginationService } from 'src/app/core/services/pagination.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddressCreateComponent } from '../create/address-create.component';
 import { AddressDeleteComponent } from '../delete/address-delete.component';
+import { AddressEditComponent } from '../edit/address-edit.component';
+
+
+export interface ModalWithSent {
+  sent: EventEmitter<any>;
+}
+
 @Component({
   selector: 'app-address-list',
   templateUrl: './address-list.component.html',
 })
+
 export class AddressListComponent implements OnInit {
   addresses: Address[] = [];
   loading = true;
 
   constructor(
     private addressService: AddressService,
-    private shared: AddressSharedService,
-    private router: Router,
-    private route: ActivatedRoute,
     public service: PaginationService,
     private modalService: NgbModal,
   ) {}
@@ -42,40 +45,27 @@ export class AddressListComponent implements OnInit {
     });
   }
 
-  openAddressModal() {
-    const modal = this.modalService.open(AddressCreateComponent);
-    const componentInstance = modal.componentInstance as AddressCreateComponent;
-
-    componentInstance.onSave.subscribe(() => {
-      this.search();
-    });
-  }
-
-  openAddressDeleteModal(address: Address) {
-
-    const componentInstance = this.modalService
-      .open(AddressDeleteComponent, { centered: true })
-      .componentInstance as AddressDeleteComponent;
-
-      componentInstance.address = address;
-
-    componentInstance.onDeleted.subscribe(() => {
-      this.search();
-    });
-
-  }
-
-  openModal(content: TemplateRef<any>) {
-    this.modalService.open(content);
-  }
-
-  edit(address: Address) {
-    this.shared.setSelected(address);
-    this.router.navigate(['edit'], { relativeTo: this.route.parent });
+  create() {
+    this.openModal(AddressCreateComponent);
   }
 
   delete(address: Address) {
-    this.shared.setSelected(address);
-    this.router.navigate(['delete'], { relativeTo: this.route.parent });
+    this.openModal(AddressDeleteComponent, { address });
   }
+
+  edit(address: Address) {
+    this.openModal(AddressEditComponent, { address });
+  }
+
+  openModal<T extends ModalWithSent>(component: Type<T>, data?: Partial<T>) {
+    const modalRef = this.modalService.open(component, { centered: true });
+    const componentInstance = modalRef.componentInstance;
+
+    if (data) {
+      Object.assign(componentInstance, data);
+    }
+
+    componentInstance.sent.subscribe(() => this.search());
+  }
+
 }

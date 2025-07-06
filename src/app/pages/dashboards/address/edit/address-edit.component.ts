@@ -1,59 +1,69 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddressService } from '../address.service';
+import { Address } from '../address.model';
+import { ModalWithSent } from '../list/address-list.component';
 
 @Component({
   selector: 'app-address-edit',
   templateUrl: './address-edit.component.html',
 })
-export class AddressEditComponent  {
+export class AddressEditComponent  implements OnInit, ModalWithSent {
   
-    @Output()
-    public onEdit = new EventEmitter<string>();
-    
-    public addressForm: FormGroup;
-    public submitted = false;
-  
-    constructor(
-      private fb: FormBuilder,
-      private addressService: AddressService,
-      public activeModal: NgbActiveModal,
-    ) {
-      this.addressForm = this.fb.group({
-        id: ['', [Validators.required]],
-        name: ['', [Validators.required, Validators.minLength(3)]],
+  @Input() 
+  public address!: Address;
+   
+  @Output() 
+  public sent = new EventEmitter<void>();
+
+  public addressForm!: FormGroup;
+  public submitted = false;
+
+  constructor(
+    private fb: FormBuilder,
+    private addressService: AddressService,
+    public activeModal: NgbActiveModal,
+  ) {
+
+
+  }
+
+  ngOnInit() {
+    this.addressForm = this.fb.group({
+      id: [this.address.id, [Validators.required]],
+      name: [this.address.name, [Validators.required, Validators.minLength(3)]],
+    });
+  }
+
+  async onSubmit() {
+    this.submitted = true;
+    this.addressForm.markAllAsTouched();
+
+    if (this.addressForm.valid) {
+      this.addressService.createAddress(this.addressForm.value).subscribe({
+        next: () => {
+          this.sent.emit();
+          this.close();
+        },
+        error: () => this.addressForm.reset(),
       });
     }
-  
-    async onSubmit() {
-      this.submitted = true;
-      this.addressForm.markAllAsTouched();
-  
-      if (this.addressForm.valid) {
-        this.addressService.updateAddress(this.addressForm.value).subscribe({
-          next: () => {
-            this.onEdit.emit();
-            this.close();
-          },
-          error: () => this.addressForm.reset(),
-        });
-      }
-    }
-  
-    close() {
-      this.activeModal.close();
-    }
-  
-    isValid(element: string): boolean {
-      return (this.getControl(element)?.valid && this.submitted) || false;
-    }
-  
-    isInvalid(element: string): boolean {
-      return (this.getControl(element)?.invalid && this.submitted) || false;
-    }
-  
-    getControl(field: string): AbstractControl | null {
-      return this.addressForm.get(field);
-    }
+  }
+
+  close() {
+    this.activeModal.close();
+  }
+
+  isValid(element: string): boolean {
+    return (this.getControl(element)?.valid && this.submitted) || false;
+  }
+
+  isInvalid(element: string): boolean {
+    return (this.getControl(element)?.invalid && this.submitted) || false;
+  }
+
+  getControl(field: string): AbstractControl | null {
+    return this.addressForm.get(field);
+  }
 }
