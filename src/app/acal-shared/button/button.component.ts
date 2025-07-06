@@ -27,8 +27,15 @@ export class ButtonComponent {
   @Input() type: 'button' | 'submit' | 'reset' = 'button';
   @Input() btnType: BootstrapButtonType = 'primary';
   @Input() disabled = false;
+  @Input() outline: boolean | string = false;
 
   get buttonClasses(): string[] {
-    return ['btn', `btn-${this.btnType}`];
+    const baseClass = this.isOutline ? 'btn-outline' : 'btn';
+
+    return ['btn', `${baseClass}-${this.btnType}`];
+  }
+
+  get isOutline(): boolean {
+    return this.outline === '' || this.outline === true || this.outline === 'true';
   }
 }

@@ -17,7 +17,13 @@ import { AddressEditComponent } from './edit/address-edit.component';
 import { AddressListComponent } from './list/address-list.component';
 
 @NgModule({
-  declarations: [AddressComponent, AddressCreateComponent, AddressListComponent, AddressDeleteComponent, AddressEditComponent],
+  declarations: [
+    AddressComponent, 
+    AddressCreateComponent, 
+    AddressListComponent, 
+    AddressDeleteComponent, 
+    AddressEditComponent
+  ],
   imports: [FeatherModule.pick(allIcons), CommonModule, AddressRoutingModule, SharedModule, TranslateModule, ReactiveFormsModule, NgbPaginationModule, AcalModule],
   providers: [AddressService, AddressSharedService],
 })

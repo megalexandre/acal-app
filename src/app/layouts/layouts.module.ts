@@ -26,11 +26,27 @@ import { TwoColumnSidebarComponent } from './two-column-sidebar/two-column-sideb
 // Load Icons
 import { defineElement } from '@lordicon/element';
 import lottie from 'lottie-web';
+import { TopbarService } from './topbar/topbar.service';
 
 @NgModule({
-  declarations: [LayoutComponent, VerticalComponent, TopbarComponent, SidebarComponent, FooterComponent, RightsidebarComponent, HorizontalComponent, HorizontalTopbarComponent, TwoColumnComponent, TwoColumnSidebarComponent],
+  declarations: [
+    LayoutComponent, 
+    VerticalComponent, 
+    TopbarComponent, 
+    SidebarComponent, 
+    FooterComponent, 
+    RightsidebarComponent, 
+    HorizontalComponent, 
+    HorizontalTopbarComponent, 
+    TwoColumnComponent, 
+    TwoColumnSidebarComponent
+  ],
   imports: [CommonModule, RouterModule, NgbDropdownModule, NgbNavModule, SimplebarAngularModule, TranslateModule, FormsModule, ReactiveFormsModule, NgbCollapseModule, FeatherModule.pick(allIcons)],
-  providers: [LanguageService],
+  providers: [
+    LanguageService,
+    TopbarService,
+  ],
+  
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class LayoutsModule {
