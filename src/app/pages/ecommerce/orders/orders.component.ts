@@ -1,8 +1,6 @@
-import { Component, QueryList, ViewChildren } from '@angular/core';
-import { DecimalPipe } from '@angular/common';
-import { Observable } from 'rxjs';
+import { Component } from '@angular/core';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { NgbModal, NgbNavChangeEvent } from '@ng-bootstrap/ng-bootstrap';
-import { UntypedFormBuilder, UntypedFormGroup, FormArray, Validators } from '@angular/forms';
 
 // Sweet Alert
 import Swal from 'sweetalert2';
@@ -11,13 +9,12 @@ import Swal from 'sweetalert2';
 import { ngxCsv } from 'ngx-csv/ngx-csv';
 
 // Rest Api Service
-import { restApiService } from '../../../core/services/rest-api.service';
-import { addOrder, deleteOrder, fetchorderListData, updateOrder } from 'src/app/store/Ecommerce/ecommerce_action';
-import { RootReducerState } from 'src/app/store';
 import { Store } from '@ngrx/store';
-import { selectDataLoading, selectOrderData } from 'src/app/store/Ecommerce/ecommerce_selector';
 import { cloneDeep } from 'lodash';
 import { PaginationService } from 'src/app/core/services/pagination.service';
+import { RootReducerState } from 'src/app/store';
+import { addOrder, deleteOrder, fetchorderListData, updateOrder } from 'src/app/store/Ecommerce/ecommerce_action';
+import { selectDataLoading, selectOrderData } from 'src/app/store/Ecommerce/ecommerce_selector';
 
 @Component({
   selector: 'app-orders',

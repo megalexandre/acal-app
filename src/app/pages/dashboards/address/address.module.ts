@@ -22,9 +22,22 @@ import { AddressListComponent } from './list/address-list.component';
     AddressCreateComponent, 
     AddressListComponent, 
     AddressDeleteComponent, 
-    AddressEditComponent
+    AddressEditComponent,
   ],
-  imports: [FeatherModule.pick(allIcons), CommonModule, AddressRoutingModule, SharedModule, TranslateModule, ReactiveFormsModule, NgbPaginationModule, AcalModule],
-  providers: [AddressService, AddressSharedService],
+  imports: [
+    FeatherModule.pick(allIcons), 
+    CommonModule, 
+    AddressRoutingModule, 
+    SharedModule, 
+    TranslateModule, 
+    ReactiveFormsModule, 
+    NgbPaginationModule, 
+    AcalModule,
+    SharedModule
+  ],
+  providers: [
+    AddressService,
+  ],
 })
-export class AddressModule {}
+export class AddressModule {
+}

@@ -1,6 +1,7 @@
 <form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
   <div class="modal-header">
     <h5 class="modal-title" id="exampleModalLabel">Criar Endereço</h5>
+
     <button type="button" outline class="btn-close" aria-label="Close" (click)="close()"></button>
   </div>
 
@@ -25,13 +26,15 @@
 
   <div class="modal-footer">
     <div class="d-flex justify-content-between col-12">
-      <button type="button" class="btn btn-secondary" (click)="close()">
+    
+      <app-button type="button" btnType="secondary" outline (click)="close()">
         {{ 'PAGES.ACTIONS.CANCEL' | translate }}
-      </button>
+      </app-button>
 
-      <button type="submit" class="btn btn-success">
+      <app-button type="submit"  btnType="success" outline >
         {{ 'PAGES.ACTIONS.SAVE' | translate }}
-      </button>
+      </app-button>
+
     </div>
   </div>
 </form>

@@ -1,11 +1,40 @@
 <form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" formControlName="name" placeholder="{{ 'PAGES.ADDRESS.NAME' | translate }}" />
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Criar Endereço</h5>
 
-    <button class="btn btn-primary" type="submit" [disabled]="addressForm.invalid"><i class="ri-check-line"></i> {{ 'PAGES.ACTIONS.SAVE' | translate }}</button>
+    <button type="button" outline class="btn-close" aria-label="Close" (click)="close()"></button>
+  </div>
 
-    <button class="btn btn-secondary ms-2" type="button" (click)="back()">
-      {{ 'PAGES.ACTIONS.CANCEL' | translate }}
-    </button>
+  <div class="modal-body">
+    <div class="mb-3">
+      <label class="form-label">{{ 'PAGES.ADDRESS.NAME' | translate }}: <span class="text-danger">*</span></label>
+      <input type="text" class="form-control" id="addressName" formControlName="name" [ngClass]="{ 'is-invalid': isInvalid('name'), 'is-valid': isValid('name') }" placeholder="{{ 'PAGES.ADDRESS.NAME' | translate }}" />
+
+      <div class="valid-feedback" *ngIf="isValid('name')">Válido</div>
+
+      <div class="invalid-feedback" *ngIf="isInvalid('name')">
+        <ng-container *ngIf="getControl('name')?.errors?.['required']"> Nome é obrigatório </ng-container>
+
+        <ng-container *ngIf="getControl('name')?.errors?.['minlength'] as minError">
+          Nome precisa ter pelo menos {{ minError.requiredLength }} letras.
+          <br />
+          Faltam: {{ minError.requiredLength - minError.actualLength }} letras.
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <div class="d-flex justify-content-between col-12">
+    
+      <app-button type="button" btnType="secondary" outline (click)="close()">
+        {{ 'PAGES.ACTIONS.CANCEL' | translate }}
+      </app-button>
+
+      <app-button type="submit"  btnType="success" outline >
+        {{ 'PAGES.ACTIONS.SAVE' | translate }}
+      </app-button>
+
+    </div>
   </div>
 </form>

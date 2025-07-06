@@ -6,7 +6,7 @@ import { AddressService } from '../address.service';
 import { PaginationService } from 'src/app/core/services/pagination.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddressCreateComponent } from '../create/address-create.component';
-
+import { AddressDeleteComponent } from '../delete/address-delete.component';
 @Component({
   selector: 'app-address-list',
   templateUrl: './address-list.component.html',
@@ -49,6 +49,20 @@ export class AddressListComponent implements OnInit {
     componentInstance.onSave.subscribe(() => {
       this.search();
     });
+  }
+
+  openAddressDeleteModal(address: Address) {
+
+    const componentInstance = this.modalService
+      .open(AddressDeleteComponent, { centered: true })
+      .componentInstance as AddressDeleteComponent;
+
+      componentInstance.address = address;
+
+    componentInstance.onDeleted.subscribe(() => {
+      this.search();
+    });
+
   }
 
   openModal(content: TemplateRef<any>) {

@@ -1,41 +1,39 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Address } from '../address.model';
 import { AddressService } from '../address.service';
-import { Location } from '@angular/common';
-import { AddressSharedService } from '../address-shared.service';
 
 @Component({
   selector: 'app-address-delete',
   templateUrl: './address-delete.component.html',
 })
 export class AddressDeleteComponent {
-  address: Address | null = null;
 
+  @Input() 
+  public address!: Address;
+  
+  @Output() 
+  public onDeleted = new EventEmitter<void>();
+  
   constructor(
     private addressService: AddressService,
-    private shared: AddressSharedService,
-    private router: Router,
-    private route: ActivatedRoute,
+    public activeModal: NgbActiveModal,
   ) {
-    this.shared.selectedAddress$.subscribe((address) => {
-      if (address) {
-        this.address = address;
-      } else {
-        this.back();
+
+  }
+
+  close() {
+    this.activeModal.dismiss('cancel');
+  }
+
+  confirm() {
+    this.addressService.deleteAddress(this.address.id).subscribe({
+      next: () => {
+        this.onDeleted.emit();
+        this.close();
       }
     });
   }
 
-  confirmDelete() {
-    if (this.address) {
-      this.addressService.deleteAddress(this.address.id).subscribe({
-        next: () => this.back(),
-      });
-    }
-  }
-
-  back() {
-    this.router.navigate(['../'], { relativeTo: this.route });
-  }
 }
+
