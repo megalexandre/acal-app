@@ -1,14 +1,12 @@
-
-
 .blog-grid-card {
+  .blog-img {
+    height: 230px;
+    width: 100%;
+    transition: all 0.8s ease;
+  }
+  &:hover {
     .blog-img {
-        height: 230px;
-        width: 100%;
-        transition: all 0.8s ease;
+      transform: scale(1.1);
     }
-    &:hover {
-        .blog-img {
-            transform: scale(1.1);
-        }
-    }
+  }
 }
