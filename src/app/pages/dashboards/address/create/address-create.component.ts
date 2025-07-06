@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddressService } from '../address.service';
-import { ModalWithSent } from '../list/address-list.component'; 
+import { ModalWithSent } from '../address.model';
 
 @Component({
   selector: 'app-address-create',

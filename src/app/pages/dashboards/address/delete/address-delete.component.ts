@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Address } from '../address.model';
+import { Address, ModalWithSent } from '../address.model';
 import { AddressService } from '../address.service';
-import { ModalWithSent } from '../list/address-list.component';
 
 @Component({
   selector: 'app-address-delete',

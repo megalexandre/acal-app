@@ -2,8 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddressService } from '../address.service';
-import { Address } from '../address.model';
-import { ModalWithSent } from '../list/address-list.component';
+import { Address, ModalWithSent } from '../address.model';
 
 @Component({
   selector: 'app-address-edit',
@@ -25,7 +24,6 @@ export class AddressEditComponent  implements OnInit, ModalWithSent {
     private addressService: AddressService,
     public activeModal: NgbActiveModal,
   ) {
-
 
   }
 
