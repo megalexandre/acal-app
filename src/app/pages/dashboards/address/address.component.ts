@@ -55,8 +55,9 @@ export class AddressComponent implements OnInit {
   }
 
   openModal<T extends ModalWithSent>(component: Type<T>, data?: Partial<T>): void {
-    const modalRef = this.modalService.open(component, { centered: true });
-    const componentInstance = modalRef.componentInstance;
+    const componentInstance = this.modalService
+      .open(component, { centered: true })
+      .componentInstance;
 
     if (data) {
       Object.assign(componentInstance, data);

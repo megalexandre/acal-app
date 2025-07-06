@@ -18,6 +18,7 @@ export class AddressEditComponent  implements OnInit, ModalWithSent {
 
   public addressForm!: FormGroup;
   public submitted = false;
+  public loading = false;
 
   constructor(
     private fb: FormBuilder,
@@ -37,14 +38,20 @@ export class AddressEditComponent  implements OnInit, ModalWithSent {
   async onSubmit() {
     this.submitted = true;
     this.addressForm.markAllAsTouched();
-
+    
     if (this.addressForm.valid) {
-      this.addressService.createAddress(this.addressForm.value).subscribe({
+      this.loading = true;
+
+      this.addressService.updateAddress(this.addressForm.value).subscribe({
         next: () => {
           this.sent.emit();
           this.close();
         },
-        error: () => this.addressForm.reset(),
+        error: () => {
+          this.loading = false;
+          this.addressForm.reset();
+        }
+          
       });
     }
   }

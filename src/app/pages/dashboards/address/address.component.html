@@ -13,51 +13,47 @@
         </app-card-header>
 
         <app-card-body>
-          <div class="table-responsive table-card">
-            <table class="table align-middle table-nowrap mb-0 table-gridjs">
-              <thead class="table-light">
+          
+          <app-table>
+             <thead class="table-light" table-header>
                 <tr>
                   <th class="col-11">Name</th>
                   <th class="col-1 text-center">Action</th>
                 </tr>
-              </thead>
-              <tbody class="list form-check-all">
-                <tr *ngFor="let address of addresses">
-                  <td class="name">{{ address.name }}</td>
+             </thead>
+          
+            <tbody class="list form-check-all" table-body>
+              <tr *ngFor="let address of addresses">
+                <td class="name">{{ address.name }}</td>
 
-                  <td class="text-center">
-                      <ul class="list-inline hstack gap-2 mb-0">
+                <td class="text-center">
+                  <ul class="list-inline hstack gap-2 mb-0">
 
-                          <li 
-                            class="list-inline-item edit" 
-                            data-bs-toggle="tooltip" 
-                            data-bs-trigger="hover" 
-                            ngbTooltip="Edit" 
-                            placement="top"
-                            (click)="edit(address)"
-                            >
-                              <i class="ri-pencil-fill fs-16"></i>
-                          </li>
-                          
-                          <li class="list-inline-item me-0" ngbTooltip="Remove" placement="top" data-bs-toggle="tooltip" data-bs-trigger="hover" 
-                            (click)="delete(address)">
-                            <a class="text-danger d-inline-block remove-item-btn">
-                              <i class="ri-delete-bin-5-fill fs-16"></i>
-                            </a>
-                          </li>
-                        </ul>
+                      <li 
+                        class="list-inline-item edit" 
+                        data-bs-toggle="tooltip" 
+                        data-bs-trigger="hover" 
+                        ngbTooltip="Edit" 
+                        placement="top"
+                        (click)="edit(address)"
+                        >
+                          <i class="ri-pencil-fill fs-16"></i>
+                      </li>
+                      
+                      <li class="list-inline-item me-0" ngbTooltip="Remove" placement="top" data-bs-toggle="tooltip" data-bs-trigger="hover" 
+                        (click)="delete(address)">
+                        <a class="text-danger d-inline-block remove-item-btn">
+                          <i class="ri-delete-bin-5-fill fs-16"></i>
+                        </a>
+                      </li>
+                    </ul>
                   </td>
                 </tr>
               </tbody>
-            </table>
-            <div class="noresult" style="display: none">
-              <div class="text-center">
-                <h5 class="mt-2">Sorry! No Result Found</h5>
-                <p class="text-muted mb-0">We've searched more than 150+ API Keys We did not find any API for you search.</p>
-              </div>
-            </div>
-          </div>
+          
+          </app-table>
         </app-card-body>
+
     </app-card>
   </div>
 </div>

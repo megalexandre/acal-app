@@ -1,19 +1,23 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 // Component Pages
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { CrmComponent } from './crm/crm.component';
 import { CryptoComponent } from './crypto/crypto.component';
-import { ProjectsComponent } from './projects/projects.component';
-import { NftComponent } from './nft/nft.component';
-import { JobComponent } from './job/job.component';
 import { DashboardBlogComponent } from './dashboard-blog/dashboard-blog.component';
+import { JobComponent } from './job/job.component';
+import { NftComponent } from './nft/nft.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 const routes: Routes = [
   {
     path: 'address',
     loadChildren: () => import('./address/address.module').then((m) => m.AddressModule),
+  },
+   {
+    path: 'places',
+    loadChildren: () => import('./place/place.module').then((m) => m.PlaceModule),
   },
 
   {
