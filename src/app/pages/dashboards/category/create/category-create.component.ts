@@ -1,15 +1,15 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { PlaceService } from '../category.service';
 import { Address, ModalWithSent } from '../../address/address.model';
 import { AddressService } from '../../address/address.service';
+import { CategoryService } from '../category.service';
 
 @Component({
-  selector: 'app-place-create',
-  templateUrl: './place-create.component.html',
+  selector: 'app-category-create',
+  templateUrl: './category-create.component.html',
 })
-export class PlaceCreateComponent implements OnInit, ModalWithSent {
+export class CategoryCreateComponent implements OnInit, ModalWithSent {
  
   @Output()
   public sent = new EventEmitter<string>();
@@ -20,7 +20,7 @@ export class PlaceCreateComponent implements OnInit, ModalWithSent {
 
   constructor(
     private fb: FormBuilder,
-    private service: PlaceService,
+    private service: CategoryService,
     private addressService: AddressService,
     public activeModal: NgbActiveModal,
   ) {

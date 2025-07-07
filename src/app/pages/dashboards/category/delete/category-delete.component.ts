@@ -1,23 +1,23 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Place } from '../category.model';
-import { PlaceService } from '../category.service';
+import { Category } from '../category.model';
+import { CategoryService } from '../category.service';
 import { ModalWithSent } from '../../address/address.model';
 
 @Component({
-  selector: 'app-place-delete',
-  templateUrl: './place-delete.component.html',
+  selector: 'app-category-delete',
+  templateUrl: './category-delete.component.html',
 })
-export class PlaceDeleteComponent implements ModalWithSent {
+export class CategoryDeleteComponent implements ModalWithSent {
 
   @Input() 
-  public place!: Place;
+  public category!: Category;
   
   @Output() 
   public sent = new EventEmitter<void>();
   
   constructor(
-    private placeService: PlaceService,
+    private categoryService: CategoryService,
     public activeModal: NgbActiveModal,
   ) {
 
@@ -28,7 +28,7 @@ export class PlaceDeleteComponent implements ModalWithSent {
   }
 
   confirm() {
-    this.placeService.delete(this.place.id).subscribe({
+    this.categoryService.delete(this.category.id).subscribe({
       next: () => {
         this.close();
         this.sent.emit();
