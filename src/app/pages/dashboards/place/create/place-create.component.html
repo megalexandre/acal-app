@@ -1,0 +1,66 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Criar Residência</h5>
+
+    <button type="button" outline class="btn-close" aria-label="Close" (click)="close()"></button>
+  </div>
+
+  <div class="modal-body">
+
+    <div class="mb-3">
+      <label class="form-label">Nome: <span class="text-danger">*</span></label>
+      
+      <select 
+        class="form-select"
+        id="address"
+        formControlName="address"
+        [ngClass]="{ 'is-invalid': isInvalid('address'), 'is-valid': isValid('address') }"
+      >
+        <option value="" disabled selected>Selecione um endereço</option>
+        <option *ngFor="let address of addresses" [value]="address.name">{{ address.name }}</option>
+      </select>
+
+      <div class="valid-feedback" *ngIf="isValid('address')">Válido</div>
+      <div class="invalid-feedback" *ngIf="isInvalid('address')">
+        <ng-container *ngIf="getControl('address')?.errors?.['required']">
+          Nome é obrigatório
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Número: <span class="text-danger">*</span></label>
+      <input type="text" class="form-control" id="number" formControlName="number" [ngClass]="{ 'is-invalid': isInvalid('number'), 'is-valid': isValid('number') }" placeholder="Número:" />
+      
+      <div class="valid-feedback" *ngIf="isValid('number')">Válido</div>
+      <div class="invalid-feedback" *ngIf="isInvalid('number')">
+        <ng-container *ngIf="getControl('number')?.errors?.['required']"> Número é obrigatório </ng-container>
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label class="form-label">Letra: <span class="text-danger">*</span></label>
+      <input type="text" class="form-control" id="letter" formControlName="letter" [ngClass]="{ 'is-invalid': isInvalid('letter'), 'is-valid': isValid('letter') }" placeholder="Letra:" />
+      
+      <div class="valid-feedback" *ngIf="isValid('letter')">Válido</div>
+      <div class="invalid-feedback" *ngIf="isInvalid('letter')">
+        <ng-container *ngIf="getControl('letter')?.errors?.['required']"> Letra é obrigatório </ng-container>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+    <div class="d-flex justify-content-between col-12">
+    
+      <app-button type="button" btnType="secondary" outline (click)="close()">
+        {{ 'PAGES.ACTIONS.CANCEL' }}
+      </app-button>
+
+      <app-button type="submit"  btnType="success" outline >
+        {{ 'PAGES.ACTIONS.SAVE' }}
+      </app-button>
+
+    </div>
+  </div>
+</form>
