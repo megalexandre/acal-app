@@ -31,7 +31,7 @@ export class PlaceComponent implements OnInit {
 
     this.service.get().subscribe({
       next: (places) => {
-        this.places = places.sort(this.sortPlaces);
+        this.places = places;
         this.loading = false;
       },
       error: () => {
@@ -40,14 +40,9 @@ export class PlaceComponent implements OnInit {
     });
   }
 
-  sortPlaces(a: any, b: any) {
-    const addressCompare = a.address.localeCompare(b.address);
-    if (addressCompare !== 0) return addressCompare;
 
-    const numberCompare = a.number.localeCompare(b.number);
-    if (numberCompare !== 0) return numberCompare;
-
-    return a.letter.localeCompare(b.letter);
+  trackById(index: number, item: Place): string {
+    return item.id;
   }
 
   create() {
