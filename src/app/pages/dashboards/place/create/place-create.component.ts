@@ -36,7 +36,7 @@ export class PlaceCreateComponent implements OnInit, ModalWithSent {
   ngOnInit(): void {
     this.addressService.getAddresses().subscribe({
       next: (addresses) => {
-        this.addresses = addresses;
+        this.addresses = addresses.sort((a, b) => a.name.localeCompare(b.name));;
       },
       error: () => {
         this.addresses = [];
