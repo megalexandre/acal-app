@@ -1,0 +1,35 @@
+.auth-page-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #7fb8c8 0%, #e89a9a 100%); // azul e rosa mais profundos
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  border: none;
+  border-radius: 1rem;
+  background-color: #ffffffee;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.login-card .card-body {
+  padding: 2rem;
+}
+
+.login-card .form-control {
+  border: 1px solid #d1a3a3;      // borda rosa escura suave
+  border-radius: 0.5rem;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.login-card .form-control:focus {
+  border-color: #e07373;          // rosa mais intenso ao focar
+  box-shadow: 0 0 0 0.2rem rgba(224, 115, 115, 0.4);
+}
+
+.btn-primary {
+  background-color: #e07373;      // botão rosa escuro
+}

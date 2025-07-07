@@ -15,9 +15,13 @@ const routes: Routes = [
     path: 'address',
     loadChildren: () => import('./address/address.module').then((m) => m.AddressModule),
   },
-   {
+  {
     path: 'places',
     loadChildren: () => import('./place/place.module').then((m) => m.PlaceModule),
+  },
+    {
+    path: 'categories',
+    loadChildren: () => import('./category/category.module').then((m) => m.CategoryModule),
   },
 
   {

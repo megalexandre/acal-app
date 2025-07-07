@@ -1,6 +1,61 @@
+<div class="auth-page-wrapper">
+  <div class="auth-page-content d-flex align-items-center justify-content-center">
+    <div class="card login-card shadow-lg">
+      <div class="card-body p-5">
+        <div class="text-center mb-4">
+          <h2 class="text-primary fw-bold">Acal</h2>
+          <p class="text-secondary">Faça seu login</p>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <!-- Email -->
+          <div class="form-group mb-4">
+            <label for="email" class="form-label">Email</label>
+            <input
+              id="email"
+              type="email"
+              class="form-control"
+              formControlName="email"
+              [ngClass]="{'is-invalid': submitted && f['email'].errors}"
+              placeholder="seu@email.com"
+            />
+            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+              <div *ngIf="f['email'].errors['required']">Email é obrigatório</div>
+              <div *ngIf="f['email'].errors['email']">Email inválido</div>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group mb-4 position-relative">
+            <label for="password-input" class="form-label">Senha</label>
+            <input
+              id="password-input"
+              [type]="fieldTextType ? 'text' : 'password'"
+              class="form-control pe-5"
+              formControlName="password"
+              [ngClass]="{'is-invalid': submitted && f['password'].errors}"
+              placeholder="••••••••"
+            />
+            <button
+              type="button"
+              class="btn btn-link password-toggle"
+              (click)="toggleFieldTextType()"
+            >
+              <i class="mdi" [ngClass]="fieldTextType ? 'mdi-eye-outline' : 'mdi-eye-off-outline'"></i>
+            </button>
+            <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+              <div *ngIf="f['password'].errors['required']">Senha é obrigatória</div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary w-100 btn-lg">Entrar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
 <div class="auth-page-wrapper pt-5">
 
-  <!-- auth page content -->
   <div class="auth-page-content">
     <div class="container">
 
@@ -68,31 +123,13 @@
                 </form>
               </div>
             </div>
-            <!-- end card body -->
           </div>
-          <!-- end card -->
 
         </div>
       </div>
-      <!-- end row -->
     </div>
-    <!-- end container -->
   </div>
-  <!-- end auth page content -->
 
-  <!-- footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="text-center">
-            <p class="mb-0 text-muted">Alexandre. Crafted with <i class="mdi mdi-heart text-danger"></i></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <!-- end Footer -->
 </div>
-<!-- end auth-page-wrapper -->
 <app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
+ -->
