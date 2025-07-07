@@ -23,7 +23,7 @@
                 </tr>
               </thead>
               <tbody class="list form-check-all">
-                <tr *ngFor="let place of places; ; trackBy: trackById">
+                <tr *ngFor="let place of places; trackBy: trackById">
                   <td>{{ place.address }}</td>
                   <td>{{ place.number }}</td>
                   <td>{{ place.letter }}</td>
