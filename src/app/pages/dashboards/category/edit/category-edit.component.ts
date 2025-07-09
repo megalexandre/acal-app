@@ -52,7 +52,7 @@ export class CategoryEditComponent implements OnInit, ModalWithSent {
     this.form.markAllAsTouched();
 
     if (this.form.valid) {
-      this.service.create(this.form.value).subscribe({
+      this.service.update(this.form.value).subscribe({
         next: () => {
           this.sent.emit();
           this.close();
