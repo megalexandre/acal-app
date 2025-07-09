@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: linear-gradient(135deg, #7fb8c8 0%, #e89a9a 100%); // azul e rosa mais profundos
+  background: linear-gradient(135deg, #5d9c7d 0%, #c0e6c3 100%);
 }
 
 .login-card {
@@ -20,16 +20,30 @@
 }
 
 .login-card .form-control {
-  border: 1px solid #d1a3a3;      // borda rosa escura suave
+  border: 1px solid #8fbf9f;
   border-radius: 0.5rem;
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .login-card .form-control:focus {
-  border-color: #e07373;          // rosa mais intenso ao focar
-  box-shadow: 0 0 0 0.2rem rgba(224, 115, 115, 0.4);
+  border-color: #5fa97c;
+  box-shadow: 0 0 0 0.2rem rgba(95, 169, 124, 0.4);
 }
 
 .btn-primary {
-  background-color: #e07373;      // botão rosa escuro
+  background-color: #5fa97c;
+  border-color: #5fa97c;
+}
+
+.btn-primary:hover {
+  background-color: #51956c;
+  border-color: #51956c;
+}
+
+.text-primary {
+  color: #3a5f4b !important;
+}
+
+.text-secondary {
+  color: #6c8f7a !important;
 }
