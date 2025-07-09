@@ -8,7 +8,7 @@ import { Address, ModalWithSent } from '../address.model';
   selector: 'app-address-edit',
   templateUrl: './address-edit.component.html',
 })
-export class AddressEditComponent  implements OnInit, ModalWithSent {
+export class AddressEditComponent implements OnInit, ModalWithSent {
   
   @Input() 
   public address!: Address;

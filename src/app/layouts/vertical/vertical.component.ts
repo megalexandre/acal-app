@@ -27,11 +27,11 @@ export class VerticalComponent implements OnInit {
         if (event instanceof NavigationEnd) {
           // Update the attribute state based on the current route or any other conditions
           if (event.url !== '/disabled-route') {
-            (document.getElementById('preloader') as HTMLElement).style.opacity = '1';
-            (document.getElementById('preloader') as HTMLElement).style.visibility = '';
+            //(document.getElementById('preloader') as HTMLElement).style.opacity = '1';
+            //(document.getElementById('preloader') as HTMLElement).style.visibility = '';
             setTimeout(() => {
-              (document.getElementById('preloader') as HTMLElement).style.opacity = '0';
-              (document.getElementById('preloader') as HTMLElement).style.visibility = 'hidden';
+              //(document.getElementById('preloader') as HTMLElement).style.opacity = '0';
+              //(document.getElementById('preloader') as HTMLElement).style.visibility = 'hidden';
             }, 1000);
           } else {
             (document.getElementById('preloader') as HTMLElement).style.opacity = '0';
@@ -65,11 +65,11 @@ export class VerticalComponent implements OnInit {
   }
   private handlePreloader(route: any) {
     if (route !== '/disabled-route') {
-      (document.getElementById('preloader') as HTMLElement).style.opacity = '1';
-      (document.getElementById('preloader') as HTMLElement).style.visibility = '';
+      //(document.getElementById('preloader') as HTMLElement).style.opacity = '1';
+      //(document.getElementById('preloader') as HTMLElement).style.visibility = '';
       setTimeout(() => {
-        (document.getElementById('preloader') as HTMLElement).style.opacity = '0';
-        (document.getElementById('preloader') as HTMLElement).style.visibility = 'hidden';
+        //(document.getElementById('preloader') as HTMLElement).style.opacity = '0';
+        //(document.getElementById('preloader') as HTMLElement).style.visibility = 'hidden';
       }, 1000);
     } else {
       (document.getElementById('preloader') as HTMLElement).style.opacity = '0';

@@ -10,20 +10,27 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { CategoryRoutingModule } from './category-routing.module';
 import { CategoryService } from './category.service';
 import { CategoryComponent } from './category.component';
+import { CategoryCreateComponent } from './create/category-create.component';
+import { CategoryDeleteComponent } from './delete/category-delete.component';
+import { C } from '@fullcalendar/core/internal-common';
+import { CategoryEditComponent } from './edit/category-edit.component';
 
 @NgModule({
   declarations: [
     CategoryComponent, 
+    CategoryCreateComponent,
+    CategoryEditComponent,
+    CategoryDeleteComponent,
   ],
   imports: [
+    CategoryRoutingModule,
     FeatherModule.pick(allIcons), 
+    NgbPaginationModule, 
     CommonModule, 
     SharedModule, 
     TranslateModule, 
     ReactiveFormsModule, 
-    NgbPaginationModule, 
     AcalModule,
-    CategoryRoutingModule, 
   ],
   providers: [
     CategoryService,

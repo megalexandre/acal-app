@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../../core/services/auth.service';
-import { AuthfakeauthenticationService } from '../../core/services/authfake.service';
 import { ToastService } from './toast-service';
 
 @Component({
@@ -23,7 +22,6 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
     private router: Router,
-    private authFackservice: AuthfakeauthenticationService,
     private route: ActivatedRoute,
     public toastService: ToastService,
   ) {

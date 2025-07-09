@@ -26,14 +26,26 @@
               </thead>
               <tbody class="list form-check-all">
                 <tr *ngFor="let category of categories">
-                  <td>{{ category.name + ' '+ category.group }}</td>
+                  <td>{{ (category.group | group) + ' ' + category.name}}</td>
                   <td>{{ category.water_value | currency }}</td>
                   <td>{{ category.partner_value | currency  }}</td>
                   <td>{{ category.total | currency }}</td>
-                  <td>{{ category.is_hydrometer }}</td>
+                  <td>{{ category.is_hydrometer | yesOrNo }}</td>
 
                   <td class="text-center">
                       <ul class="list-inline hstack gap-2 mb-0">
+
+                          <li 
+                            class="list-inline-item edit" 
+                            data-bs-toggle="tooltip" 
+                            data-bs-trigger="hover" 
+                            ngbTooltip="Edit" 
+                            placement="top"
+                            (click)="edit(category)"
+                            >
+                              <i class="ri-pencil-fill fs-16"></i>
+                          </li>
+                        
                           <li class="list-inline-item me-0" ngbTooltip="Remove" placement="top" data-bs-toggle="tooltip" data-bs-trigger="hover" 
                             (click)="delete(category)">
                             <a class="text-danger d-inline-block remove-item-btn">

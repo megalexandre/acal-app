@@ -3,6 +3,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalWithSent } from '../address/address.model';
 import { Category } from './category.model';
 import { CategoryService } from './category.service';
+import { CategoryCreateComponent } from './create/category-create.component';
+import { CategoryDeleteComponent } from './delete/category-delete.component';
+import { CategoryEditComponent } from './edit/category-edit.component';
 
 @Component({
   selector: 'app-category',
@@ -40,15 +43,15 @@ export class CategoryComponent implements OnInit {
 
 
   create() {
-    //this.openModal(CategoryCreateComponent);
+    this.openModal(CategoryCreateComponent);
   }
 
-  delete(place: Category) {
-    //this.openModal(CategoryDeleteComponent, { place });
+  delete(category: Category) {
+    this.openModal(CategoryDeleteComponent, { category });
   }
 
-  edit(data: Category) {
-    //this.openModal(AddressEditComponent, { address });
+  edit(category: Category) {
+    this.openModal(CategoryEditComponent, { category });
   }
 
   openModal<T extends ModalWithSent>(component: Type<T>, data?: Partial<T>): void {

@@ -6,6 +6,7 @@ import { AddressService } from './address.service';
 import { AddressCreateComponent } from './create/address-create.component';
 import { AddressDeleteComponent } from './delete/address-delete.component';
 import { AddressEditComponent } from './edit/address-edit.component';
+import { ToastService } from '../dashboard/toast-service';
 
 @Component({
   selector: 'app-address',
@@ -26,6 +27,7 @@ export class AddressComponent implements OnInit {
     private addressService: AddressService,
     public service: PaginationService,
     private modalService: NgbModal,
+    public toastService: ToastService,
   ) {}
 
   search() {
@@ -36,8 +38,11 @@ export class AddressComponent implements OnInit {
         this.addresses = addresses;
         this.loading = false;
       },
-      error: () => {
+      error: (error) => {
         this.loading = false;
+        this.toastService
+          .show("error", { classname: 'bg-danger text-white', delay: 15000 });
+ 
       },
     });
   }

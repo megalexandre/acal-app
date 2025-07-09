@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Category } from './category.model';
+import { Category, Group } from './category.model';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +14,14 @@ export class CategoryService {
 
   get(): Observable<Category[]> {
     return this.http.get<Category[]>(this.apiUrl);
+  }
+
+  getGroups(): Observable<Group[]> {
+    return of([
+      { name: 'Sócio Fundador', value: 'FOUNDER' },
+      { name: 'Sócio Efetivo', value: 'EFFECTIVE' },
+      { name: 'Temporário', value: 'TEMPORARY' },
+    ]);
   }
 
   create(Category: Omit<Category, 'id'>): Observable<Category> {
