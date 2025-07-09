@@ -1,0 +1,91 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Editar Usuários</h5>
+    <button type="button" outline class="btn-close" aria-label="Close" (click)="close()"></button>
+  </div>
+
+  <div class="modal-body">
+
+    <div class="mb-3">
+      <label class="form-label">Nome: <span class="text-danger">*</span></label>
+      <input type="text" class="form-control" id="name" formControlName="name" 
+        [ngClass]="{ 'is-invalid': isInvalid('name'), 'is-valid': isValid('name') }" placeholder="Name:" />
+      
+      <div class="valid-feedback" *ngIf="isValid('name')">Válido</div>
+      <div class="invalid-feedback" *ngIf="isInvalid('name')">
+        <ng-container *ngIf="getControl('name')?.errors?.['required']"> Nome é obrigatório </ng-container>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Identificação: <span class="text-danger">*</span></label>
+      <input type="text" class="form-control" id="identity_card" formControlName="identity_card" 
+        [ngClass]="{ 'is-invalid': isInvalid('identity_card'), 'is-valid': isValid('identity_card') }" placeholder="Name:" />
+      
+      <div class="valid-feedback" *ngIf="isValid('identity_card')">Válido</div>
+      <div class="invalid-feedback" *ngIf="isInvalid('identity_card')">
+        <ng-container *ngIf="getControl('identity_card')?.errors?.['required']"> Nome é obrigatório </ng-container>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Telefone:</label>
+      <input type="text" class="form-control" id="phone_number" formControlName="phone_number" 
+        [ngClass]="{ 'is-invalid': isInvalid('phone_number'), 'is-valid': isValid('phone_number') }" placeholder="Name:" />
+      
+      <div class="valid-feedback" *ngIf="isValid('phone_number')">Válido</div>
+      <div class="invalid-feedback" *ngIf="isInvalid('phone_number')">
+        <ng-container *ngIf="getControl('phone_number')?.errors?.['required']"> Nome é obrigatório </ng-container>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Número de Associado: </label>
+      <input type="text" class="form-control" id="partner_number" formControlName="partner_number" 
+        [ngClass]="{ 'is-invalid': isInvalid('partner_number'), 'is-valid': isValid('partner_number') }" placeholder="Name:" />
+      
+      <div class="valid-feedback" *ngIf="isValid('partner_number')">Válido</div>
+      <div class="invalid-feedback" *ngIf="isInvalid('partner_number')">
+        <ng-container *ngIf="getControl('partner_number')?.errors?.['required']"> Nome é obrigatório </ng-container>
+      </div>
+    </div>
+    
+
+    <div class="mb-3">
+      <label class="form-label">É Vontante?: <span class="text-danger">*</span></label>
+      
+      <select 
+        class="form-select"
+        id="voter"
+        formControlName="voter"
+        [ngClass]="{ 'is-invalid': isInvalid('voter'), 'is-valid': isValid('voter') }"
+      >
+        <option [value]="null">Selecione</option>
+        <option [value]="true">Sim</option>
+        <option [value]="false">Não</option>
+      </select>
+
+      <div class="valid-feedback" *ngIf="isValid('voter')">Válido</div>
+      <div class="invalid-feedback" *ngIf="isInvalid('voter')">
+        <ng-container *ngIf="getControl('voter')?.errors?.['required']">
+          Obrigatório
+        </ng-container>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="modal-footer">
+    <div class="d-flex justify-content-between col-12">
+    
+      <app-button type="button" btnType="secondary" outline (click)="close()">
+        Cancelar
+      </app-button>
+
+      <app-button type="submit"  btnType="success" outline >
+        Salvar
+      </app-button>
+
+    </div>
+  </div>
+</form>
