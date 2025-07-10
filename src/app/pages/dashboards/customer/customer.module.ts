@@ -13,6 +13,7 @@ import { CustomerRoutingModule } from './customer-routing.module';
 import { CustomerCreateComponent } from './create/customer-create.component';
 import { CustomerEditComponent } from './edit/customer-edit.component';
 import { CustomerDeleteComponent } from './delete/customer-delete.component';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CustomerDeleteComponent } from './delete/customer-delete.component';
     NgbPaginationModule, 
     AcalModule,
     FormsModule,
+    DataTablesModule,
   ],
   providers: [
     CustomerService,

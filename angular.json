@@ -46,11 +46,13 @@
               "node_modules/slick-carousel/slick/slick-theme.scss",
               "src/assets/scss/icons.scss",
               "src/assets/scss/config/minimal/bootstrap.scss",
-              "src/assets/scss/config/minimal/app.scss"
+              "src/assets/scss/config/minimal/app.scss",
+              "node_modules/datatables.net-dt/css/dataTables.dataTables.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/slick-carousel/slick/slick.min.js"
+              "node_modules/slick-carousel/slick/slick.min.js",
+              "node_modules/datatables.net/js/dataTables.js"
             ],
             "allowedCommonJsDependencies": [
               "ev-emitter/ev-emitter",
