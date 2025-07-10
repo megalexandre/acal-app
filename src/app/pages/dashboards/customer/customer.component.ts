@@ -10,9 +10,6 @@ import { CustomerCreateComponent } from './create/customer-create.component';
 import { CustomerEditComponent } from './edit/customer-edit.component';
 import { CustomerDeleteComponent } from './delete/customer-delete.component';
 
-// ✅ Se estiver usando @types/datatables.net instalado
-//import { Settings } from 'datatables.net';
-
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
