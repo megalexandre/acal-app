@@ -7,6 +7,8 @@ import { ModalWithSent } from '../address/address.model';
 import { CustomerCreateComponent } from './create/customer-create.component';
 import { CustomerEditComponent } from './edit/customer-edit.component';
 import { CustomerDeleteComponent } from './delete/customer-delete.component';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-customer',
@@ -15,13 +17,28 @@ import { CustomerDeleteComponent } from './delete/customer-delete.component';
 export class CustomerComponent implements OnInit {
   breadCrumbItems!: Array<{}>;
 
+  name: string | null = null;
+  identification: string | null = null;
+
   customeres: Customer[] = [];
+  filteredCustomeres: Customer[] = [];
   loading = true;
+
+  private filterSubject = new Subject<void>();
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Dashboards' }, { label: 'Usúarios', active: true }];
      this.search();
+
+      this.filterSubject.pipe(
+        debounceTime(300)  
+      ).subscribe(() => this.applyFilter());
   }
+
+  onFilterChange() {
+    this.filterSubject.next();
+  }
+
 
   constructor(
     private customerService: CustomerService,
@@ -35,6 +52,7 @@ export class CustomerComponent implements OnInit {
     this.customerService.get().subscribe({
       next: (customeres) => {
         this.customeres = customeres;
+        this.filteredCustomeres = customeres;
         this.loading = false;
       },
       error: (error) => {
@@ -45,6 +63,19 @@ export class CustomerComponent implements OnInit {
       },
     });
   }
+
+  applyFilter() {
+    this.filteredCustomeres = this.customeres.filter(customer => {
+      const matchesName = this.name ? customer.name.toLowerCase().includes(this.name.toLowerCase()) : true;
+      const matchesId = this.identification ? customer.identity_card.toLowerCase().includes(this.identification.toLowerCase()) : true;
+      return matchesName && matchesId;
+    });
+  }
+
+  trackById(index: number, item: Customer): string {
+    return item.id;
+  }
+  
 
   create() {
     this.openModal(CustomerCreateComponent);

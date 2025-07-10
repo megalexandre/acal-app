@@ -10,21 +10,37 @@
             <div class="d-flex gap-1 flex-wrap">
               <app-button btnType="success" outline (click)="create()"> Adicionar </app-button>
             </div>
+
         </app-card-header>
 
         <app-card-body>
-          
           <app-table>
+              <thead class="table-light" table-header>
+                <tr>
+                  <th class="col-9">Name</th>
+                  <th class="col-2">Identificação</th>
+                  <th class="col-1 text-center">Action</th>
+                </tr>
+             </thead>
+
              <thead class="table-light" table-header>
                 <tr>
-                  <th class="col-10">Name</th>
-                  <th class="col-1">Identificação</th>
-                  <th class="col-1 text-center">Action</th>
+                  
+                  <th>
+                    <input type="text" class="form-control search bg-light border-light" [(ngModel)]="name"  (ngModelChange)="onFilterChange()" />
+
+                  </th>
+
+                  <th>
+                    <input type="text" class="form-control search bg-light border-light" [(ngModel)]="identification" (ngModelChange)="onFilterChange()" />
+                  </th>
+                  
+                  <th></th>
                 </tr>
              </thead>
           
             <tbody class="list form-check-all" table-body>
-              <tr *ngFor="let customer of customeres">
+              <tr *ngFor="let customer of filteredCustomeres; trackBy: trackById">
                 <td class="name">{{ customer.name }}</td>
                 <td class="name">{{ customer.identity_card }}</td>
 

@@ -40,7 +40,6 @@ export class PlaceComponent implements OnInit {
     });
   }
 
-
   trackById(index: number, item: Place): string {
     return item.id;
   }
