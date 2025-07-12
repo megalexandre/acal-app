@@ -7114,7 +7114,7 @@ ngx-lightbox@^3.0.0:
     file-saver "^2.0.5"
     ngx-filesaver "14.0.0"
 
-ngx-mask@^17.0.8:
+ngx-mask@^17.1.8:
   version "17.1.8"
   resolved "https://registry.npmjs.org/ngx-mask/-/ngx-mask-17.1.8.tgz"
   integrity sha512-3VAZ9/8ikPPgccMSHjV3gi/kFYvFspOOk3SJxDR+ZQPAMdsq7foGiflGkDoGVTXeB0HKQYJ9QomdOOTpm6oSKg==

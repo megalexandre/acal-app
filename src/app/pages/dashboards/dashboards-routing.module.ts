@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'customers',
     loadChildren: () => import('./customer/customer.module').then((m) => m.CustomerModule),
   },
+  {
+    path: 'water-quality',
+    loadChildren: () => import('./water-quality/water-quality.module').then((m) => m.WaterQualityModule),
+  },
 
   {
     path: 'analytics',

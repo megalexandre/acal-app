@@ -39,6 +39,7 @@ import { AuthenticationEffects } from './store/Authentication/authentication.eff
 
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 
 registerLocaleData(localePt);
 
@@ -65,6 +66,7 @@ if (environment.defaultauth === 'firebase') {
         useFactory: createTranslateLoader,
         deps: [HttpClient],
       },
+
     }),
     StoreModule.forRoot(rootReducer),
     StoreDevtoolsModule.instrument({

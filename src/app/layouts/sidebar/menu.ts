@@ -2,6 +2,25 @@ import { MenuItem } from './menu.model';
 
 export const MENU: MenuItem[] = [
   {
+    id: 0,
+    label: 'Água',
+    isTitle: true,
+  },
+  {
+    id: 2,
+    label: 'Qualidade da Água',
+    icon: 'las la-tachometer-alt',
+    isCollapsed: true,
+    subItems: [
+      {
+        id: 300,
+        label: 'Coletas',
+        link: '/water-quality',
+        parentId: 2,
+      },
+    ]  
+  },
+  {
     id: 1,
     label: 'MENUITEMS.MENU.TEXT',
     isTitle: true,
@@ -36,6 +55,8 @@ export const MENU: MenuItem[] = [
         link: '/customers',
         parentId: 2,
       },
+
+
       {
         id: 3,
         label: 'MENUITEMS.DASHBOARD.LIST.ANALYTICS',
