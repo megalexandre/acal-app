@@ -31,7 +31,6 @@
     <div class="mb-3">
       <label class="form-label">Número: <span class="text-danger">*</span></label>
       <input type="text" class="form-control" id="number" formControlName="number" [ngClass]="{ 'is-invalid': isInvalid('number'), 'is-valid': isValid('number') }" placeholder="Número:" />
-      
       <div class="valid-feedback" *ngIf="isValid('number')">Válido</div>
       <div class="invalid-feedback" *ngIf="isInvalid('number')">
         <ng-container *ngIf="getControl('number')?.errors?.['required']"> Número é obrigatório </ng-container>

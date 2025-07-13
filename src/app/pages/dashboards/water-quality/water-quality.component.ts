@@ -1,13 +1,12 @@
-import { Component, OnDestroy, OnInit, Type } from '@angular/core';
+import { Component, OnInit, Type } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Subject } from 'rxjs';
 
-import { ToastService } from '../dashboard/toast-service';
 import { ModalWithSent } from '../address/address.model';
-import { WaterQuality } from './water-quality.model';
-import { WaterQualityService } from './water-quality.service';
+import { ToastService } from '../dashboard/toast-service';
 import { WaterQualityCreateComponent } from './create/water-quality-create.component';
 import { WaterQualityDeleteComponent } from './delete/water-quality-delete.component';
+import { WaterQuality } from './water-quality.model';
+import { WaterQualityService } from './water-quality.service';
 
 @Component({
   selector: 'app-water-quality',

@@ -3,5 +3,6 @@ export interface Place {
   number: string;
   letter: string;
   address: string;
+  has_hydrometer: boolean;
 }
 

@@ -28,9 +28,8 @@ export class PlaceCreateComponent implements OnInit, ModalWithSent {
     this.form = this.fb.group({
       address: ['', [Validators.required]],
       number: ['', [Validators.required]],
-      letter: ['', [Validators.required]],
+      letter: ['', [Validators.required]]
     });
-
   }
 
   ngOnInit(): void {
