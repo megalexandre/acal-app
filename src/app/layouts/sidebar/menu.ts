@@ -18,6 +18,12 @@ export const MENU: MenuItem[] = [
         link: '/water-quality',
         parentId: 2,
       },
+       {
+        id: 301,
+        label: 'Ligaçoes',
+        link: '/links',
+        parentId: 2,
+      },
     ]  
   },
   {

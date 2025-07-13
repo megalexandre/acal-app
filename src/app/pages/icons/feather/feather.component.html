@@ -13,7 +13,9 @@
         <app-toastss aria-live="polite" aria-atomic="true"></app-toastss>
         <div class="row icon-demo-content">
           @for (data of IconsData; track $index) {
-            <div class="col-xl-3 col-lg-4 col-sm-6" (click)="copytext(data.name)"><i-feather name="{{ data.name }}"></i-feather> {{ data.name }}</div>
+            <div class="col-xl-3 col-lg-4 col-sm-6" (click)="copytext(data.name)">
+              <i-feather name="{{ data.name }}"></i-feather>
+               {{ data.name }}</div>
           }
         </div>
         <!-- end row -->
