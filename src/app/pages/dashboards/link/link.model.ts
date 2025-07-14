@@ -9,6 +9,9 @@ export interface SortOrder {
 
 export interface LinkFilter {
   name?: string;
+  category?: string;
+  address?: string;
+  total?: number;
   page: number;
   size: number;
   sort_orders: SortOrder[];

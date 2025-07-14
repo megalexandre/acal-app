@@ -23,8 +23,6 @@ export class LinkComponent implements OnInit {
     ]
   };
 
-  
-
   loading = true;
 
   constructor(
@@ -36,6 +34,8 @@ export class LinkComponent implements OnInit {
     this.breadCrumbItems = [{ label: 'Dashboards' }, { label: 'Ligações', active: true }];
     this.search();
   }
+
+  
 
   search() {
     this.loading = true;

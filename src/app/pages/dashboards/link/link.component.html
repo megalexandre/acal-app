@@ -19,11 +19,12 @@
           <table class="table align-middle table-nowrap mb-0 table-gridjs">
             <thead class="table-light">
               <tr>
-                <th>Nome</th>
-                <th>Categoria</th>
-                <th>Local</th>
-                <th>Valor</th>
-                <th class="text-center">Ações</th>
+                <th class="col-3">Nome</th>
+                <th class="col-3">Categoria</th>
+                <th class="col-2">Local</th>
+                <th class="col-2">Numero</th>
+                <th class="col-1">Valor</th>
+                <th class="col-1 text-center">Ações</th>
               </tr>
             </thead>
             
@@ -32,9 +33,16 @@
                 <th>
                   <input type="text" class="form-control" [(ngModel)]="filter.name"  placeholder="Name:" (keydown.enter)="search()" />
                 </th>
-                <th>Categoria</th>
-                <th>Local</th>
-                <th>Valor</th>
+                <th>
+                  <input type="text" class="form-control" [(ngModel)]="filter.category"  placeholder="Name:" (keydown.enter)="search()" />
+                </th>
+                <th>
+                  <input type="text" class="form-control" [(ngModel)]="filter.address"  placeholder="Name:" (keydown.enter)="search()" />
+                </th>
+                <th>Numero</th>
+                <th>
+                  <monetary type="text" [(ngModel)]="filter.total"  placeholder="Valor:" (keydown.enter)="search()"></monetary>
+                </th>
                 <th>
                   <div class="d-grid gap-2">
                      <button
@@ -52,7 +60,8 @@
               <tr *ngFor="let l of page.content; trackBy: trackById">
                 <td>{{ l.customer.name }}</td>
                 <td>{{ l.category.name }}</td>
-                <td>{{ l.place.name }}</td>
+                <td>{{ l.place.address }}</td>
+                <td>{{ l.place.number + l.place.letter }}</td>
                 <td>{{ l.total | currency:'BRL' }}</td>
 
                 <td class="text-center">
@@ -77,10 +86,25 @@
       <app-card-footer>
 
         <div class="d-flex justify-content-between align-items-center mt-3" *ngIf="page">
+          
+          <div>
+              itens por pagina:
+              <select 
+                class="form-select"
+                [(ngModel)]="filter.size" 
+                 (change)="search()"
+                >
+                <option value="10" selected>10</option>
+                <option value="50" selected>50</option>
+                <option value="100" selected>100</option>
+              </select>
 
-          <div class="text-muted">
-            Página {{ page.number + 1 }} de {{ page.total_pages }}
+            <div class="text-muted">
+              Página {{ page.number + 1 }} de {{ page.total_pages }}
+            </div>
+
           </div>
+        
 
           <div>
             <app-button btnType="primary" outline [disabled]="page.first" (click)="loadPage(0)">

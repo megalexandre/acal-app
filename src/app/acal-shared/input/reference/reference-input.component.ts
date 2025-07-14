@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ReferenceValidators } from '../validator/reference.validator';
+import { ReferenceValidators } from '../../validator/reference.validator';
 
 @Component({
   selector: 'app-input-reference', 
