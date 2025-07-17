@@ -1,5 +1,5 @@
-import { Component, OnInit, EventEmitter, Output, Inject, ViewChild, TemplateRef } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, OnInit, EventEmitter, Output, Inject, ViewChild, TemplateRef, DOCUMENT } from '@angular/core';
+
 import { EventService } from '../../core/services/event.service';
 
 //Logout

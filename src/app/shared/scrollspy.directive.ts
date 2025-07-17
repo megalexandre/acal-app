@@ -1,5 +1,5 @@
-import { Directive, Input, EventEmitter, Inject, Output, ElementRef, HostListener } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Directive, Input, EventEmitter, Inject, Output, ElementRef, HostListener, DOCUMENT } from '@angular/core';
+
 
 @Directive({
     selector: '[appScrollspy]',
