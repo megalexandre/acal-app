@@ -35,6 +35,10 @@ const routes: Routes = [
     path: 'links',
     loadChildren: () => import('./link/link.module').then((m) => m.LinkModule),
   },
+  {
+    path: 'invoices',
+    loadChildren: () => import('./invoice/invoice.module').then((m) => m.InvoiceModule),
+  },
 
   {
     path: 'analytics',

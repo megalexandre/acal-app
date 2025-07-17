@@ -2,30 +2,84 @@ import { MenuItem } from './menu.model';
 
 export const MENU: MenuItem[] = [
   {
-    id: 0,
+    id: 1000,
     label: 'Água',
-    isTitle: true,
-  },
-  {
-    id: 2,
-    label: 'Qualidade da Água',
     icon: 'las la-tachometer-alt',
     isCollapsed: true,
     subItems: [
       {
-        id: 300,
+        id: 1001,
         label: 'Coletas',
         link: '/water-quality',
-        parentId: 2,
+        parentId: 1000,
       },
        {
-        id: 301,
+        id: 1002,
         label: 'Ligaçoes',
         link: '/links',
-        parentId: 2,
+        parentId: 1000,
       },
     ]  
   },
+
+  {
+    id: 2000,
+    label: 'Cadastros',
+    icon: 'las la-tachometer-alt',
+    isCollapsed: true,
+    subItems: [
+       {
+        id: 2001,
+        label: 'MENUITEMS.DASHBOARD.LIST.ADDRESS',
+        link: '/address',
+        parentId: 2000,
+      },
+      {
+        id: 2002,
+        label: 'MENUITEMS.DASHBOARD.LIST.PLACES',
+        link: '/places',
+        parentId: 2000,
+      },
+      {
+        id: 2003,
+        label: 'Categorias',
+        link: '/categories',
+        parentId: 2000,
+      },
+      {
+        id: 2004,
+        label: 'Usuários',
+        link: '/customers',
+        parentId: 2000,
+      },
+
+    ]  
+  },
+
+  {
+    id: 3000,
+    label: 'Financeiro',
+    icon: 'las la-tachometer-alt',
+    isCollapsed: true,
+    subItems: [
+      {
+        id: 3001,
+        label: 'Faturas',
+        link: '/invoices',
+        parentId: 3000,
+      },
+      {
+        id: 3002,
+        label: 'Caixa',
+        link: '/links',
+        parentId: 3000,
+      },
+    ]  
+  },
+
+
+
+
   {
     id: 1,
     label: 'MENUITEMS.MENU.TEXT',
@@ -37,32 +91,6 @@ export const MENU: MenuItem[] = [
     icon: 'las la-tachometer-alt',
     isCollapsed: true,
     subItems: [
-      {
-        id: 300,
-        label: 'MENUITEMS.DASHBOARD.LIST.ADDRESS',
-        link: '/address',
-        parentId: 2,
-      },
-      {
-        id: 301,
-        label: 'MENUITEMS.DASHBOARD.LIST.PLACES',
-        link: '/places',
-        parentId: 2,
-      },
-      {
-        id: 302,
-        label: 'Categorias',
-        link: '/categories',
-        parentId: 2,
-      },
-      {
-        id: 303,
-        label: 'Usuários',
-        link: '/customers',
-        parentId: 2,
-      },
-
-
       {
         id: 3,
         label: 'MENUITEMS.DASHBOARD.LIST.ANALYTICS',

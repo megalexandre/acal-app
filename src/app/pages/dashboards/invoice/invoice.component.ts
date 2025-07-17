@@ -1,0 +1,83 @@
+import { Component, OnDestroy, OnInit, Type } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Subject } from 'rxjs';
+
+import { InvoiceService } from './invoice.service';
+import { ToastService } from '../dashboard/toast-service';
+import { Invoice, InvoicePreview, InvoicesPreview } from './invoice.model';
+import { ModalWithSent } from '../address/address.model';
+import { ActivatedRoute, Router } from '@angular/router';
+
+@Component({
+  selector: 'app-invoice',
+  templateUrl: './invoice.component.html',
+})
+export class InvoiceComponent implements OnInit{
+
+  breadCrumbItems: Array<{ label: string; active?: boolean }> = [];
+
+  invoices: Invoice[] = [];
+
+  loading = true;
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private invoiceService: InvoiceService,
+    private modalService: NgbModal,
+    public toastService: ToastService
+  ) {}
+
+  ngOnInit(): void {
+    this.breadCrumbItems = [
+      { label: 'Dashboards' },
+      { label: 'Faturas', active: true }
+    ];
+
+
+    this.search();
+  }
+
+
+  search(): void {
+    this.loading = true;
+
+    this.invoiceService.get().subscribe({
+      next: (invoices) => {
+        this.invoices = invoices;
+        this.loading = false;
+      },
+      error: () => {
+        this.loading = false;
+      }
+    });
+  }
+
+
+  create(): void {
+     this.router.navigate(['create'], { relativeTo: this.route });
+  }
+
+  edit(invoice: Invoice): void {
+    //this.openModal(InvoiceEditComponent, { invoice });
+  }
+
+  delete(invoice: Invoice): void {
+    //this.openModal(InvoiceDeleteComponent, { invoice });
+  }
+
+  openModal<T extends ModalWithSent>(
+    component: Type<T>,
+    data?: Partial<T>
+  ): void {
+    const modalRef = this.modalService.open(component, { centered: true });
+    const componentInstance = modalRef.componentInstance;
+
+    if (data) {
+      Object.assign(componentInstance, data);
+    }
+
+    componentInstance.sent.subscribe(() => this.search());
+  }
+
+}

@@ -1,0 +1,43 @@
+<div class="table-responsive">
+  <table class="table table-striped align-middle  mb-0">
+
+    <thead >
+      <tr>
+        <th>Name</th>
+        <th>Categoria</th>
+        <th>Endereco</th>
+        <th>Selecionar</th>
+      </tr>
+    </thead>
+
+    <tbody class="list form-check-all" table-body>
+      <ng-container *ngFor="let item of preview">
+        
+        <tr class="bg-success">
+          <td class="text-center" colspan="3">{{ item.name }}</td>
+            <td class="text-center">
+            <input 
+              type="checkbox" 
+              [(ngModel)]="item.checked"
+            />
+          </td>
+        </tr>
+
+        <!-- Detalhes das faturas -->
+        <tr *ngFor="let i of item.InvoicePreviews">
+          <td>{{ i.customer.name }}</td>
+          <td>{{ i.category.name }}</td>
+          <td>{{ i.place.address }}</td>
+          <td class="text-center">
+            <input 
+              type="checkbox" 
+              [(ngModel)]="i.checked"
+            />
+          </td>
+        </tr>
+
+      </ng-container>
+    </tbody>
+
+  </table>
+</div>
