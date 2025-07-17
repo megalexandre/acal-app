@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-nft-stat',
-  templateUrl: './nft-stat.component.html',
-  styleUrls: ['./nft-stat.component.scss'],
+    selector: 'app-nft-stat',
+    templateUrl: './nft-stat.component.html',
+    styleUrls: ['./nft-stat.component.scss'],
+    standalone: false
 })
 
 /**

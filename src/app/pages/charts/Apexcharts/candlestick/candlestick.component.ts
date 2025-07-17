@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment';
+import moment from 'moment';
 
 /**
  * Series Data
@@ -195,9 +195,10 @@ export const seriesDataLinear = [
 ];
 
 @Component({
-  selector: 'app-candlestick',
-  templateUrl: './candlestick.component.html',
-  styleUrls: ['./candlestick.component.scss'],
+    selector: 'app-candlestick',
+    templateUrl: './candlestick.component.html',
+    styleUrls: ['./candlestick.component.scss'],
+    standalone: false
 })
 
 /**

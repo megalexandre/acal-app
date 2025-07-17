@@ -6,9 +6,10 @@ import { WalletModel } from 'src/app/store/Crypto/crypto_model';
 import { BinanceChart, BitcoinChart, DashChart, EatherreumChart, NeoChart, TetherChart, Wallets, litecoinChart } from 'src/app/core/data';
 
 @Component({
-  selector: 'app-wallet',
-  templateUrl: './wallet.component.html',
-  styleUrls: ['./wallet.component.scss'],
+    selector: 'app-wallet',
+    templateUrl: './wallet.component.html',
+    styleUrls: ['./wallet.component.scss'],
+    standalone: false
 })
 
 /**

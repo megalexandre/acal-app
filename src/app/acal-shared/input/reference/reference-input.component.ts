@@ -3,8 +3,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReferenceValidators } from '../../validator/reference.validator';
 
 @Component({
-  selector: 'app-input-reference', 
-  templateUrl: './reference-input.component.html',
+    selector: 'app-input-reference',
+    templateUrl: './reference-input.component.html',
+    standalone: false
 })
 export class ReferenceInputComponent implements OnChanges {
 

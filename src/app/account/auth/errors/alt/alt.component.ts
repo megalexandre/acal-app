@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-alt',
-  templateUrl: './alt.component.html',
-  styleUrls: ['./alt.component.scss'],
+    selector: 'app-alt',
+    templateUrl: './alt.component.html',
+    styleUrls: ['./alt.component.scss'],
+    standalone: false
 })
 
 /**

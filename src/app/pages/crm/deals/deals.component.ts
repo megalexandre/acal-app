@@ -3,9 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-deals',
-  templateUrl: './deals.component.html',
-  styleUrls: ['./deals.component.scss'],
+    selector: 'app-deals',
+    templateUrl: './deals.component.html',
+    styleUrls: ['./deals.component.scss'],
+    standalone: false
 })
 
 /**

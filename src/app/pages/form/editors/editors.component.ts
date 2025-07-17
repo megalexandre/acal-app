@@ -4,9 +4,10 @@ import { Component, OnInit } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
-  selector: 'app-editors',
-  templateUrl: './editors.component.html',
-  styleUrls: ['./editors.component.scss'],
+    selector: 'app-editors',
+    templateUrl: './editors.component.html',
+    styleUrls: ['./editors.component.scss'],
+    standalone: false
 })
 
 /**

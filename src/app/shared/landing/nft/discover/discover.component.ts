@@ -4,9 +4,10 @@ import { discoverModel } from './discover.model';
 import { discoverData } from './data';
 
 @Component({
-  selector: 'app-discover',
-  templateUrl: './discover.component.html',
-  styleUrls: ['./discover.component.scss'],
+    selector: 'app-discover',
+    templateUrl: './discover.component.html',
+    styleUrls: ['./discover.component.scss'],
+    standalone: false
 })
 
 /**

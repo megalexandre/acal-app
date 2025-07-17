@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import * as Prism from 'prismjs';
 
 @Component({
-  selector: 'app-highlight',
-  templateUrl: './highlight.component.html',
-  styleUrls: ['./highlight.component.scss'],
+    selector: 'app-highlight',
+    templateUrl: './highlight.component.html',
+    styleUrls: ['./highlight.component.scss'],
+    standalone: false
 })
 
 /**

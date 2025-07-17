@@ -5,8 +5,9 @@ import { CategoryService } from '../category.service';
 import { ModalWithSent } from '../../address/address.model';
 
 @Component({
-  selector: 'app-category-delete',
-  templateUrl: './category-delete.component.html',
+    selector: 'app-category-delete',
+    templateUrl: './category-delete.component.html',
+    standalone: false
 })
 export class CategoryDeleteComponent implements ModalWithSent {
 

@@ -3,9 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from '../../../../core/services/token-storage.service';
 
 @Component({
-  selector: 'app-settings',
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss'],
+    selector: 'app-settings',
+    templateUrl: './settings.component.html',
+    styleUrls: ['./settings.component.scss'],
+    standalone: false
 })
 
 /**

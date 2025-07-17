@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { latLng, tileLayer, circle, polygon, marker, icon, Layer } from 'leaflet';
 
 @Component({
-  selector: 'app-leaflet',
-  templateUrl: './leaflet.component.html',
-  styleUrls: ['./leaflet.component.scss'],
+    selector: 'app-leaflet',
+    templateUrl: './leaflet.component.html',
+    styleUrls: ['./leaflet.component.scss'],
+    standalone: false
 })
 
 /**

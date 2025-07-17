@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-active-project',
-  templateUrl: './active-project.component.html',
-  styleUrls: ['./active-project.component.scss'],
+    selector: 'app-active-project',
+    templateUrl: './active-project.component.html',
+    styleUrls: ['./active-project.component.scss'],
+    standalone: false
 })
 
 /**

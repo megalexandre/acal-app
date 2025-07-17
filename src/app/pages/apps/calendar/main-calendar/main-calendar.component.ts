@@ -20,9 +20,10 @@ import { createEventId } from 'src/app/core/data/calendar';
 import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-main-calendar',
-  templateUrl: './main-calendar.component.html',
-  styleUrls: ['./main-calendar.component.scss'],
+    selector: 'app-main-calendar',
+    templateUrl: './main-calendar.component.html',
+    styleUrls: ['./main-calendar.component.scss'],
+    standalone: false
 })
 export class MainCalendarComponent {
   // bread crumb items

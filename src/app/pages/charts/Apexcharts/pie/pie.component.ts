@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-pie',
-  templateUrl: './pie.component.html',
-  styleUrls: ['./pie.component.scss'],
+    selector: 'app-pie',
+    templateUrl: './pie.component.html',
+    styleUrls: ['./pie.component.scss'],
+    standalone: false
 })
 
 /**

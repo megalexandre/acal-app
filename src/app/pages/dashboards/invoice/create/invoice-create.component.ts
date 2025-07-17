@@ -4,8 +4,10 @@ import { Invoice, InvoicePreview, InvoicesPreview } from '../invoice.model';
 import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'app-invoice-create',
-  templateUrl: './invoice-create.component.html',
+    selector: 'app-invoice-create',
+    styleUrl: './invoice-create.component.scss',
+    templateUrl: './invoice-create.component.html',
+    standalone: false
 })
 export class InvoiceCreateComponent  implements OnInit {
 
@@ -19,7 +21,6 @@ export class InvoiceCreateComponent  implements OnInit {
   ngOnInit(): void {
     this.load();
   }
-
  
   public load(){
     this.loading = true;

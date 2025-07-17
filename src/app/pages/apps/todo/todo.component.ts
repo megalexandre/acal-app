@@ -22,9 +22,10 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 import { todoAssigned, todoProject } from 'src/app/core/data';
 
 @Component({
-  selector: 'app-todo',
-  templateUrl: './todo.component.html',
-  styleUrls: ['./todo.component.scss'],
+    selector: 'app-todo',
+    templateUrl: './todo.component.html',
+    styleUrls: ['./todo.component.scss'],
+    standalone: false
 })
 
 /**

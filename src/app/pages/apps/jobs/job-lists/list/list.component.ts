@@ -6,9 +6,10 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 import { joblist } from 'src/app/core/data';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss'],
+    selector: 'app-list',
+    templateUrl: './list.component.html',
+    styleUrls: ['./list.component.scss'],
+    standalone: false
 })
 export class ListComponent implements OnInit {
   // bread crumb items

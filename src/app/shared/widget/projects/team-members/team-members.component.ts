@@ -4,9 +4,10 @@ import { status1, status2, status3, status4, status5, status6, status7 } from '.
 import { ChartType } from './team-members.model';
 
 @Component({
-  selector: 'app-team-members',
-  templateUrl: './team-members.component.html',
-  styleUrls: ['./team-members.component.scss'],
+    selector: 'app-team-members',
+    templateUrl: './team-members.component.html',
+    styleUrls: ['./team-members.component.scss'],
+    standalone: false
 })
 
 /**

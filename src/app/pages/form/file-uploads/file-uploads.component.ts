@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-file-uploads',
-  templateUrl: './file-uploads.component.html',
-  styleUrls: ['./file-uploads.component.scss'],
+    selector: 'app-file-uploads',
+    templateUrl: './file-uploads.component.html',
+    styleUrls: ['./file-uploads.component.scss'],
+    standalone: false
 })
 
 /**

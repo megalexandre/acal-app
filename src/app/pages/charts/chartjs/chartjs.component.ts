@@ -39,9 +39,10 @@ Chart.register(
   RadarController,
 );
 @Component({
-  selector: 'app-chartjs',
-  templateUrl: './chartjs.component.html',
-  styleUrls: ['./chartjs.component.scss'],
+    selector: 'app-chartjs',
+    templateUrl: './chartjs.component.html',
+    styleUrls: ['./chartjs.component.scss'],
+    standalone: false
 })
 /**
  * Chartjs Component

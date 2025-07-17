@@ -9,9 +9,10 @@ import { Email } from './mailbox.model';
 import { emailData } from 'src/app/core/data';
 
 @Component({
-  selector: 'app-mailbox',
-  templateUrl: './mailbox.component.html',
-  styleUrls: ['./mailbox.component.scss'],
+    selector: 'app-mailbox',
+    templateUrl: './mailbox.component.html',
+    styleUrls: ['./mailbox.component.scss'],
+    standalone: false
 })
 
 /**

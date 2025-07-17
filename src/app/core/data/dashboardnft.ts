@@ -1,4 +1,3 @@
-import { color } from 'echarts';
 
 /**
  * Stat Counder Data

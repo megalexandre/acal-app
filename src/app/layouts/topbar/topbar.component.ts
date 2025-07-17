@@ -1,5 +1,5 @@
-import { Component, OnInit, EventEmitter, Output, Inject, ViewChild, TemplateRef } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, OnInit, EventEmitter, Output, Inject, ViewChild, TemplateRef, DOCUMENT } from '@angular/core';
+
 import { EventService } from '../../core/services/event.service';
 
 //Logout
@@ -20,9 +20,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TopbarService } from './topbar.service';
 
 @Component({
-  selector: 'app-topbar',
-  templateUrl: './topbar.component.html',
-  styleUrls: ['./topbar.component.scss'],
+    selector: 'app-topbar',
+    templateUrl: './topbar.component.html',
+    styleUrls: ['./topbar.component.scss'],
+    standalone: false
 })
 export class TopbarComponent implements OnInit {
   version: string = '';

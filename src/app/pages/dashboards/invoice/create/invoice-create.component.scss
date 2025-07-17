@@ -1,0 +1,38 @@
+$container-height: 80vh;
+$padding: 1rem;
+$radius: 12px;
+
+.container-main {
+  height: $container-height;
+  display: flex;
+  flex-direction: column;
+  padding: $padding;
+  border-radius: $radius;
+  overflow: hidden;
+
+  .invoice-body {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: $padding;
+
+    .table {
+      th, td {
+        vertical-align: middle;
+      }
+
+      input[type="checkbox"] {
+        transform: scale(1.2);
+        cursor: pointer;
+      }
+    }
+  }
+
+  .invoice-footer {
+    padding-top: $padding;
+    border-radius: 0 0 $radius $radius;
+
+    .btn {
+      min-width: 150px;
+    }
+  }
+}

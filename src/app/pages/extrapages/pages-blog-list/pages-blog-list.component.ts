@@ -7,11 +7,10 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
-  selector: 'app-pages-blog-list',
-  standalone: true,
-  imports: [CommonModule, RouterModule, NgbPaginationModule, SharedModule],
-  templateUrl: './pages-blog-list.component.html',
-  styleUrl: './pages-blog-list.component.scss',
+    selector: 'app-pages-blog-list',
+    imports: [CommonModule, RouterModule, NgbPaginationModule, SharedModule],
+    templateUrl: './pages-blog-list.component.html',
+    styleUrl: './pages-blog-list.component.scss'
 })
 export class PagesBlogListComponent {
   // bread crumb items

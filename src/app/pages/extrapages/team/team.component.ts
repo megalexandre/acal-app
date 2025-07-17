@@ -6,9 +6,10 @@ import { teamModel } from './team.model';
 import { Team } from 'src/app/core/data';
 
 @Component({
-  selector: 'app-team',
-  templateUrl: './team.component.html',
-  styleUrls: ['./team.component.scss'],
+    selector: 'app-team',
+    templateUrl: './team.component.html',
+    styleUrls: ['./team.component.scss'],
+    standalone: false
 })
 
 /**

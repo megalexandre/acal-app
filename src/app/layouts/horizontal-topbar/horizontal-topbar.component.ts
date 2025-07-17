@@ -9,9 +9,10 @@ import { MENU } from './menu';
 import { MenuItem } from './menu.model';
 
 @Component({
-  selector: 'app-horizontal-topbar',
-  templateUrl: './horizontal-topbar.component.html',
-  styleUrls: ['./horizontal-topbar.component.scss'],
+    selector: 'app-horizontal-topbar',
+    templateUrl: './horizontal-topbar.component.html',
+    styleUrls: ['./horizontal-topbar.component.scss'],
+    standalone: false
 })
 export class HorizontalTopbarComponent implements OnInit {
   menu: any;

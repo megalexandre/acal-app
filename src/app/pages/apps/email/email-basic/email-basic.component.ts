@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-email-basic',
-  templateUrl: './email-basic.component.html',
-  styleUrls: ['./email-basic.component.scss'],
+    selector: 'app-email-basic',
+    templateUrl: './email-basic.component.html',
+    styleUrls: ['./email-basic.component.scss'],
+    standalone: false
 })
 
 /**

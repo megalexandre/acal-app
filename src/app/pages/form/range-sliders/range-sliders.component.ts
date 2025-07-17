@@ -3,9 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { Options } from 'ngx-slider-v2';
 
 @Component({
-  selector: 'app-range-sliders',
-  templateUrl: './range-sliders.component.html',
-  styleUrls: ['./range-sliders.component.scss'],
+    selector: 'app-range-sliders',
+    templateUrl: './range-sliders.component.html',
+    styleUrls: ['./range-sliders.component.scss'],
+    standalone: false
 })
 
 /**

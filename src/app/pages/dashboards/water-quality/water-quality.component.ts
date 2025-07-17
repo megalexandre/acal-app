@@ -9,8 +9,9 @@ import { WaterQuality } from './water-quality.model';
 import { WaterQualityService } from './water-quality.service';
 
 @Component({
-  selector: 'app-water-quality',
-  templateUrl: './water-quality.component.html',
+    selector: 'app-water-quality',
+    templateUrl: './water-quality.component.html',
+    standalone: false
 })
 export class WaterQualityComponent implements OnInit{
 

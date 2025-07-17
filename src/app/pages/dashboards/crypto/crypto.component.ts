@@ -17,9 +17,10 @@ import {
 } from 'src/app/core/data';
 
 @Component({
-  selector: 'app-crypto',
-  templateUrl: './crypto.component.html',
-  styleUrls: ['./crypto.component.scss'],
+    selector: 'app-crypto',
+    templateUrl: './crypto.component.html',
+    styleUrls: ['./crypto.component.scss'],
+    standalone: false
 })
 
 /**

@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ToastService } from '../toast-service';
 
 @Component({
-  selector: 'app-boxicons',
-  templateUrl: './boxicons.component.html',
-  styleUrls: ['./boxicons.component.scss'],
+    selector: 'app-boxicons',
+    templateUrl: './boxicons.component.html',
+    styleUrls: ['./boxicons.component.scss'],
+    standalone: false
 })
 
 /**

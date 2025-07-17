@@ -13,10 +13,11 @@ import { OrdersService } from './listjs.service';
 import { NgbdOrdersSortableHeader, listSortEvent } from './listjs-sortable.directive';
 
 @Component({
-  selector: 'app-listjs',
-  templateUrl: './listjs.component.html',
-  styleUrls: ['./listjs.component.scss'],
-  providers: [OrdersService, DecimalPipe],
+    selector: 'app-listjs',
+    templateUrl: './listjs.component.html',
+    styleUrls: ['./listjs.component.scss'],
+    providers: [OrdersService, DecimalPipe],
+    standalone: false
 })
 
 /**
