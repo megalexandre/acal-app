@@ -1,49 +1,61 @@
-<div class="table-responsive border mb-0" style="max-height: 80vh; overflow-x: auto; overflow-y: auto;" *ngIf="!loading">
-  <table class="table table-hover table-striped mb-0" style="width: 1200px; min-width: 100%;">
-    <thead>
-      <tr>
-        <th style="width: 5%;">#</th>
-        <th style="width: 20%;">Name</th>
-        <th style="width: 20%;">Categoria</th>
-        <th style="width: 20%;">Endereco</th>
-        <th style="width: 5%;">Número</th>
-        <th style="width: 5%;">Valor</th>
-        <th style="width: 5%;">Selecionar</th>
-      </tr>
-    </thead>
+<div class="container-main">
+  <div class="invoice-body">
+    <div class="table-responsive border mb-0" *ngIf="!loading">
+      <table class="table table-hover table-striped mb-0">
+        <thead>
+          <tr>
+            <th style="width: 5%;">#</th>
+            <th style="width: 20%;">Name</th>
+            <th style="width: 20%;">Categoria</th>
+            <th style="width: 20%;">Endereco</th>
+            <th style="width: 5%;">Número</th>
+            <th style="width: 5%;">Valor</th>
+            <th style="width: 5%;">Selecionar</th>
+          </tr>
+        </thead>
 
-    <tbody class="list form-check-all" table-body>
-      <ng-container *ngFor="let item of preview; let a = index;">
-        <tr class="bg-primary ">
-          
-          <td colspan="6">{{ item.name }}</td>
-          
-          <td class="text-center">
-            <input 
-              type="checkbox" 
-              [(ngModel)]="item.checked"
-              (change)="onGroupCheckedChange(item)"
-            />
-          </td>
+        <tbody class="list form-check-all" table-body>
+          <ng-container *ngFor="let item of preview; let a = index;">
+            <tr class="bg-primary ">
+              
+              <td colspan="6">{{ item.name }}</td>
+              
+              <td class="text-center">
+                <input 
+                  type="checkbox" 
+                  [(ngModel)]="item.checked"
+                  (change)="onGroupCheckedChange(item)"
+                />
+              </td>
 
-        </tr>
+            </tr>
 
-        <tr *ngFor="let i of item.InvoicePreviews;">
-          <td>{{ i.count }}</td>
-          <td>{{ i.customer.name }}</td>
-          <td>{{ i.category.name }}</td>
-          <td>{{ i.place.address }}</td>
-          <td>{{ i.place.number + ' ' + i.place.letter }}</td>
-          <td>{{ i.total | currency }}</td>
-          <td class="text-center">
-            <input 
-              type="checkbox" 
-              [(ngModel)]="i.checked"
-              (change)="onInvoiceCheckedChange(item)"
-            />
-          </td>
-        </tr>
-      </ng-container>
-    </tbody>
-  </table>
+            <tr *ngFor="let i of item.InvoicePreviews;">
+              <td>{{ i.count }}</td>
+              <td>{{ i.customer.name }}</td>
+              <td>{{ i.category.name }}</td>
+              <td>{{ i.place.address }}</td>
+              <td>{{ i.place.number + ' ' + i.place.letter }}</td>
+              <td>{{ i.total | currency }}</td>
+              <td class="text-center">
+                <input 
+                  type="checkbox" 
+                  [(ngModel)]="i.checked"
+                  (change)="onInvoiceCheckedChange(item)"
+                />
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="invoice-footer">
+    
+    <div class="d-flex justify-content-between align-items-center">
+      item
+    </div>
+
+  </div>
 </div>
