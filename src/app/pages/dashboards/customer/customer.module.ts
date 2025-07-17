@@ -30,9 +30,9 @@ import { DataTablesModule } from 'angular-datatables';
     TranslateModule, 
     ReactiveFormsModule, 
     NgbPaginationModule, 
+    DataTablesModule,
     AcalModule,
     FormsModule,
-    DataTablesModule,
   ],
   providers: [
     CustomerService,

@@ -14,6 +14,7 @@ import { InvoicesRoutingModule } from '../../invoices/invoices-routing.module';
 import { InvoiceRoutingModule } from './invoice-routing.module';
 import { InvoiceComponent } from './invoice.component';
 import { InvoiceCreateComponent } from './create/invoice-create.component';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,8 @@ import { InvoiceCreateComponent } from './create/invoice-create.component';
     FeatherModule.pick(allIcons), 
     FlatpickrModule, 
     InvoicesRoutingModule, 
+
+    DataTablesModule,
   ],
   providers: [DatePipe],
 })
