@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-radialbar',
-  templateUrl: './radialbar.component.html',
-  styleUrls: ['./radialbar.component.scss'],
+    selector: 'app-radialbar',
+    templateUrl: './radialbar.component.html',
+    styleUrls: ['./radialbar.component.scss'],
+    standalone: false
 })
 
 /**

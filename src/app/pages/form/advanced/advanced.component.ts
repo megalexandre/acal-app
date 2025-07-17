@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { chatMessagesData } from 'src/app/core/data/advancedForm';
 
 @Component({
-  selector: 'app-advanced',
-  templateUrl: './advanced.component.html',
-  styleUrls: ['./advanced.component.scss'],
+    selector: 'app-advanced',
+    templateUrl: './advanced.component.html',
+    styleUrls: ['./advanced.component.scss'],
+    standalone: false
 })
 
 /**

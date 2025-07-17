@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, Validators, UntypedFormGroup, UntypedFormArray, AbstractControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-newjob',
-  templateUrl: './newjob.component.html',
-  styleUrls: ['./newjob.component.scss'],
+    selector: 'app-newjob',
+    templateUrl: './newjob.component.html',
+    styleUrls: ['./newjob.component.scss'],
+    standalone: false
 })
 export class NewjobComponent implements OnInit {
   // bread crumb items

@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-analatics-stat',
-  templateUrl: './analatics-stat.component.html',
-  styleUrls: ['./analatics-stat.component.scss'],
+    selector: 'app-analatics-stat',
+    templateUrl: './analatics-stat.component.html',
+    styleUrls: ['./analatics-stat.component.scss'],
+    standalone: false
 })
 
 /**

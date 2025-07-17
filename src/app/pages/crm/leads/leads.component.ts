@@ -16,9 +16,10 @@ import { cloneDeep } from 'lodash';
 import { PaginationService } from 'src/app/core/services/pagination.service';
 
 @Component({
-  selector: 'app-leads',
-  templateUrl: './leads.component.html',
-  styleUrls: ['./leads.component.scss'],
+    selector: 'app-leads',
+    templateUrl: './leads.component.html',
+    styleUrls: ['./leads.component.scss'],
+    standalone: false
 })
 /**
  * Leads Component

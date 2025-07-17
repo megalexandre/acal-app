@@ -6,9 +6,10 @@ import { RootReducerState } from 'src/app/store';
 import { Store } from '@ngrx/store';
 
 @Component({
-  selector: 'app-vertical',
-  templateUrl: './vertical.component.html',
-  styleUrls: ['./vertical.component.scss'],
+    selector: 'app-vertical',
+    templateUrl: './vertical.component.html',
+    styleUrls: ['./vertical.component.scss'],
+    standalone: false
 })
 export class VerticalComponent implements OnInit {
   isCondensed = false;

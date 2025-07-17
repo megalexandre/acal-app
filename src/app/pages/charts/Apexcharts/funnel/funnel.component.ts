@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-funnel',
-  templateUrl: './funnel.component.html',
-  styleUrls: ['./funnel.component.scss'],
+    selector: 'app-funnel',
+    templateUrl: './funnel.component.html',
+    styleUrls: ['./funnel.component.scss'],
+    standalone: false
 })
 export class FunnelComponent {
   // bread crumb items

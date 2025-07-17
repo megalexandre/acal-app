@@ -11,9 +11,10 @@ import { Store } from '@ngrx/store';
 import { selectKanbanData, selectTaskLoading } from 'src/app/store/Task/task_selector';
 
 @Component({
-  selector: 'app-kanban',
-  templateUrl: './kanban.component.html',
-  styleUrls: ['./kanban.component.scss'],
+    selector: 'app-kanban',
+    templateUrl: './kanban.component.html',
+    styleUrls: ['./kanban.component.scss'],
+    standalone: false
 })
 
 /**

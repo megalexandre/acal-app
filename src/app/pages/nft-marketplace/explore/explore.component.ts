@@ -12,9 +12,10 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 import { exploreData } from 'src/app/core/data';
 
 @Component({
-  selector: 'app-explore',
-  templateUrl: './explore.component.html',
-  styleUrls: ['./explore.component.scss'],
+    selector: 'app-explore',
+    templateUrl: './explore.component.html',
+    styleUrls: ['./explore.component.scss'],
+    standalone: false
 })
 
 /**

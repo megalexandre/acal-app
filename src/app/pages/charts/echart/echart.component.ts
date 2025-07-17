@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-echart',
-  templateUrl: './echart.component.html',
-  styleUrls: ['./echart.component.scss'],
+    selector: 'app-echart',
+    templateUrl: './echart.component.html',
+    styleUrls: ['./echart.component.scss'],
+    standalone: false
 })
 
 /**

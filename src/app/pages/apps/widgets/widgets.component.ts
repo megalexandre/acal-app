@@ -5,9 +5,10 @@ import { TitleBox1Model, TitleBox2Model, TitleBox3Model, TitleBox4Model, otherWi
 import { UntypedFormBuilder, Validators, UntypedFormGroup, UntypedFormArray, AbstractControl } from '@angular/forms';
 import { bank, candidate, hotproducts, otherWidgets, tileBoxs1, tileBoxs2, tileBoxs3, tileBoxs4, tileBoxs5, widgetsActivities, widgetsTasks } from 'src/app/core/data';
 @Component({
-  selector: 'app-widgets',
-  templateUrl: './widgets.component.html',
-  styleUrls: ['./widgets.component.scss'],
+    selector: 'app-widgets',
+    templateUrl: './widgets.component.html',
+    styleUrls: ['./widgets.component.scss'],
+    standalone: false
 })
 
 /**

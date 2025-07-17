@@ -4,9 +4,10 @@ import { marketplaceModel, tradingModel, recentModel, popularModel } from './mar
 import { marketplaceData, popularData, recentMarketData, tradingData } from 'src/app/core/data';
 
 @Component({
-  selector: 'app-marketplace',
-  templateUrl: './marketplace.component.html',
-  styleUrls: ['./marketplace.component.scss'],
+    selector: 'app-marketplace',
+    templateUrl: './marketplace.component.html',
+    styleUrls: ['./marketplace.component.scss'],
+    standalone: false
 })
 
 /**

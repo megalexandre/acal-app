@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-designed',
-  templateUrl: './designed.component.html',
-  styleUrls: ['./designed.component.scss'],
+    selector: 'app-designed',
+    templateUrl: './designed.component.html',
+    styleUrls: ['./designed.component.scss'],
+    standalone: false
 })
 
 /**

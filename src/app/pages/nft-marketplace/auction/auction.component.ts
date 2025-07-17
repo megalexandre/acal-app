@@ -3,9 +3,10 @@ import { interval } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-auction',
-  templateUrl: './auction.component.html',
-  styleUrls: ['./auction.component.scss'],
+    selector: 'app-auction',
+    templateUrl: './auction.component.html',
+    styleUrls: ['./auction.component.scss'],
+    standalone: false
 })
 
 /**

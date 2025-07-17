@@ -4,9 +4,10 @@ import { cartData } from 'src/app/core/data';
 import { CartModel } from 'src/app/store/Ecommerce/ecommerce_model';
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss'],
+    selector: 'app-cart',
+    templateUrl: './cart.component.html',
+    styleUrls: ['./cart.component.scss'],
+    standalone: false
 })
 
 /**

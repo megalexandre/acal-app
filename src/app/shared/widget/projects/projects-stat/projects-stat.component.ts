@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-projects-stat',
-  templateUrl: './projects-stat.component.html',
-  styleUrls: ['./projects-stat.component.scss'],
+    selector: 'app-projects-stat',
+    templateUrl: './projects-stat.component.html',
+    styleUrls: ['./projects-stat.component.scss'],
+    standalone: false
 })
 
 /**

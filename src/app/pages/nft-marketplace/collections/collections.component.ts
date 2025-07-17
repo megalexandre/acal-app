@@ -5,9 +5,10 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 import { collectionData } from 'src/app/core/data';
 
 @Component({
-  selector: 'app-collections',
-  templateUrl: './collections.component.html',
-  styleUrls: ['./collections.component.scss'],
+    selector: 'app-collections',
+    templateUrl: './collections.component.html',
+    styleUrls: ['./collections.component.scss'],
+    standalone: false
 })
 
 /**

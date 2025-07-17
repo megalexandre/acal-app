@@ -4,9 +4,10 @@ import { IconsData } from 'src/app/core/data';
 import { ToastService } from '../toast-service';
 
 @Component({
-  selector: 'app-feather',
-  templateUrl: './feather.component.html',
-  styleUrls: ['./feather.component.scss'],
+    selector: 'app-feather',
+    templateUrl: './feather.component.html',
+    styleUrls: ['./feather.component.scss'],
+    standalone: false
 })
 
 /**

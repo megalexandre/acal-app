@@ -5,8 +5,9 @@ import { Link, LinkFilter, Page } from './link.model';
 import { LinkService } from './link.service';
 
 @Component({
-  selector: 'app-link',
-  templateUrl: './link.component.html',
+    selector: 'app-link',
+    templateUrl: './link.component.html',
+    standalone: false
 })
 export class LinkComponent implements OnInit {
   breadCrumbItems!: Array<{}>;

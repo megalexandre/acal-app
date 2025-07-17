@@ -5,9 +5,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-sweetalerts',
-  templateUrl: './sweetalerts.component.html',
-  styleUrls: ['./sweetalerts.component.scss'],
+    selector: 'app-sweetalerts',
+    templateUrl: './sweetalerts.component.html',
+    styleUrls: ['./sweetalerts.component.scss'],
+    standalone: false
 })
 
 /**

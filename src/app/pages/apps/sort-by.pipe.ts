@@ -1,7 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { orderBy, sortBy } from 'lodash';
 
-@Pipe({ name: 'sortBy' })
+@Pipe({
+    name: 'sortBy',
+    standalone: false
+})
 export class SortByPipe implements PipeTransform {
   transform(value: any[], order: any = '', column: string = ''): any[] {
     if (!value || order === '' || !order) {

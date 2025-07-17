@@ -8,9 +8,10 @@ import { selectCryptoLoading, selectTransacrionData } from 'src/app/store/Crypto
 import { cloneDeep } from 'lodash';
 
 @Component({
-  selector: 'app-transactions',
-  templateUrl: './transactions.component.html',
-  styleUrls: ['./transactions.component.scss'],
+    selector: 'app-transactions',
+    templateUrl: './transactions.component.html',
+    styleUrls: ['./transactions.component.scss'],
+    standalone: false
 })
 
 /**

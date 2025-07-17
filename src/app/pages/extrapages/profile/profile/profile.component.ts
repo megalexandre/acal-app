@@ -9,9 +9,10 @@ import { document, projectList } from 'src/app/core/data';
 import { PaginationService } from 'src/app/core/services/pagination.service';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss'],
+    selector: 'app-profile',
+    templateUrl: './profile.component.html',
+    styleUrls: ['./profile.component.scss'],
+    standalone: false
 })
 
 /**

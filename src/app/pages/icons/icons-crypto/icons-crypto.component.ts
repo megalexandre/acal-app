@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ToastService } from '../toast-service';
 
 @Component({
-  selector: 'app-icons-crypto',
-  templateUrl: './icons-crypto.component.html',
-  styleUrls: ['./icons-crypto.component.scss'],
+    selector: 'app-icons-crypto',
+    templateUrl: './icons-crypto.component.html',
+    styleUrls: ['./icons-crypto.component.scss'],
+    standalone: false
 })
 
 /**

@@ -3656,9 +3656,10 @@ export const dataSeries = [
 ];
 
 @Component({
-  selector: 'app-area',
-  templateUrl: './area.component.html',
-  styleUrls: ['./area.component.scss'],
+    selector: 'app-area',
+    templateUrl: './area.component.html',
+    styleUrls: ['./area.component.scss'],
+    standalone: false
 })
 
 /**

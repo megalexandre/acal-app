@@ -6,8 +6,9 @@ import { Address, ModalWithSent } from '../../address/address.model';
 import { AddressService } from '../../address/address.service';
 
 @Component({
-  selector: 'app-place-create',
-  templateUrl: './place-create.component.html',
+    selector: 'app-place-create',
+    templateUrl: './place-create.component.html',
+    standalone: false
 })
 export class PlaceCreateComponent implements OnInit, ModalWithSent {
  

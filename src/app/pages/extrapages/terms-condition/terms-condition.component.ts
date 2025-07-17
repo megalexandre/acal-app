@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-terms-condition',
-  templateUrl: './terms-condition.component.html',
-  styleUrls: ['./terms-condition.component.scss'],
+    selector: 'app-terms-condition',
+    templateUrl: './terms-condition.component.html',
+    styleUrls: ['./terms-condition.component.scss'],
+    standalone: false
 })
 export class TermsConditionComponent implements OnInit {
   // bread crumb items

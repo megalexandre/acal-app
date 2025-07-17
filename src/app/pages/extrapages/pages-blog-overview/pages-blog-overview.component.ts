@@ -6,11 +6,10 @@ import { SimplebarAngularModule } from 'simplebar-angular';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
-  selector: 'app-pages-blog-overview',
-  standalone: true,
-  imports: [CommonModule, RouterModule, NgbPaginationModule, SharedModule, SimplebarAngularModule],
-  templateUrl: './pages-blog-overview.component.html',
-  styleUrl: './pages-blog-overview.component.scss',
+    selector: 'app-pages-blog-overview',
+    imports: [CommonModule, RouterModule, NgbPaginationModule, SharedModule, SimplebarAngularModule],
+    templateUrl: './pages-blog-overview.component.html',
+    styleUrl: './pages-blog-overview.component.scss'
 })
 export class PagesBlogOverviewComponent {
   breadCrumbItems!: Array<{}>;

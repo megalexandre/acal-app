@@ -4,9 +4,10 @@ import { cryptoICOList } from 'src/app/core/data';
 import { ICOModel } from 'src/app/store/Crypto/crypto_model';
 
 @Component({
-  selector: 'app-ico',
-  templateUrl: './ico.component.html',
-  styleUrls: ['./ico.component.scss'],
+    selector: 'app-ico',
+    templateUrl: './ico.component.html',
+    styleUrls: ['./ico.component.scss'],
+    standalone: false
 })
 
 /**

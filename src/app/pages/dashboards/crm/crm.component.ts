@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ClosingDeals, DealsStatus, UpcomingActivities, crmstatData } from 'src/app/core/data';
 
 @Component({
-  selector: 'app-crm',
-  templateUrl: './crm.component.html',
-  styleUrls: ['./crm.component.scss'],
+    selector: 'app-crm',
+    templateUrl: './crm.component.html',
+    styleUrls: ['./crm.component.scss'],
+    standalone: false
 })
 
 /**

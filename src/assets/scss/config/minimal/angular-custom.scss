@@ -7,10 +7,10 @@ File: Custom Css File
 */
 
 // Select 2
-@import '~@ng-select/ng-select/themes/default.theme.css';
+@import '@ng-select/ng-select/themes/default.theme.css';
 
 // Lightbox
-@import '~ngx-lightbox/lightbox.css';
+@import 'ngx-lightbox/lightbox.css';
 
 .emoji-mart {
   position: absolute;

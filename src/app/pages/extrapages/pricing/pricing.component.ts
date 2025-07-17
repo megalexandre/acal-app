@@ -4,9 +4,10 @@ import { MonthlyPlanModel, YearlyPlanModel, PricingModel, SimpleModel } from './
 import { MonthlyPlan, SimplePlan, YearlyPlan, pricingPlan } from 'src/app/core/data';
 
 @Component({
-  selector: 'app-pricing',
-  templateUrl: './pricing.component.html',
-  styleUrls: ['./pricing.component.scss'],
+    selector: 'app-pricing',
+    templateUrl: './pricing.component.html',
+    styleUrls: ['./pricing.component.scss'],
+    standalone: false
 })
 
 /**

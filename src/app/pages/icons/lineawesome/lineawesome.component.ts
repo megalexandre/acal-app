@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ToastService } from '../toast-service';
 
 @Component({
-  selector: 'app-lineawesome',
-  templateUrl: './lineawesome.component.html',
-  styleUrls: ['./lineawesome.component.scss'],
+    selector: 'app-lineawesome',
+    templateUrl: './lineawesome.component.html',
+    styleUrls: ['./lineawesome.component.scss'],
+    standalone: false
 })
 
 /**

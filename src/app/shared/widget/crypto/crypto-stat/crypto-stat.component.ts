@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-crypto-stat',
-  templateUrl: './crypto-stat.component.html',
-  styleUrls: ['./crypto-stat.component.scss'],
+    selector: 'app-crypto-stat',
+    templateUrl: './crypto-stat.component.html',
+    styleUrls: ['./crypto-stat.component.scss'],
+    standalone: false
 })
 
 /**

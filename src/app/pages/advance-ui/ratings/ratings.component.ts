@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-ratings',
-  templateUrl: './ratings.component.html',
-  styleUrls: ['./ratings.component.scss'],
+    selector: 'app-ratings',
+    templateUrl: './ratings.component.html',
+    styleUrls: ['./ratings.component.scss'],
+    standalone: false
 })
 
 /**

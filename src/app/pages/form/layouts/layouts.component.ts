@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-layouts',
-  templateUrl: './layouts.component.html',
-  styleUrls: ['./layouts.component.scss'],
+    selector: 'app-layouts',
+    templateUrl: './layouts.component.html',
+    styleUrls: ['./layouts.component.scss'],
+    standalone: false
 })
 
 /**

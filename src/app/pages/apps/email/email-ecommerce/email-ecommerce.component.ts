@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-email-ecommerce',
-  templateUrl: './email-ecommerce.component.html',
-  styleUrls: ['./email-ecommerce.component.scss'],
+    selector: 'app-email-ecommerce',
+    templateUrl: './email-ecommerce.component.html',
+    styleUrls: ['./email-ecommerce.component.scss'],
+    standalone: false
 })
 
 /**

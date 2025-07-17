@@ -6,9 +6,10 @@ import { MENU } from './menu';
 import { MenuItem } from './menu.model';
 
 @Component({
-  selector: 'app-two-column-sidebar',
-  templateUrl: './two-column-sidebar.component.html',
-  styleUrls: ['./two-column-sidebar.component.scss'],
+    selector: 'app-two-column-sidebar',
+    templateUrl: './two-column-sidebar.component.html',
+    styleUrls: ['./two-column-sidebar.component.scss'],
+    standalone: false
 })
 export class TwoColumnSidebarComponent implements OnInit {
   menu: any;

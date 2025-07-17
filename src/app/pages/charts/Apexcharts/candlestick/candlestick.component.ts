@@ -195,9 +195,10 @@ export const seriesDataLinear = [
 ];
 
 @Component({
-  selector: 'app-candlestick',
-  templateUrl: './candlestick.component.html',
-  styleUrls: ['./candlestick.component.scss'],
+    selector: 'app-candlestick',
+    templateUrl: './candlestick.component.html',
+    styleUrls: ['./candlestick.component.scss'],
+    standalone: false
 })
 
 /**

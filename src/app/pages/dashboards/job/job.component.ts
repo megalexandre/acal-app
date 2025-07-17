@@ -13,10 +13,11 @@ import { circle, latLng, tileLayer } from 'leaflet';
 import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-job',
-  templateUrl: './job.component.html',
-  styleUrls: ['./job.component.scss'],
-  providers: [JobService, DecimalPipe],
+    selector: 'app-job',
+    templateUrl: './job.component.html',
+    styleUrls: ['./job.component.scss'],
+    providers: [JobService, DecimalPipe],
+    standalone: false
 })
 export class JobComponent implements OnInit {
   // bread crumb items

@@ -11,9 +11,10 @@ import { DatePipe } from '@angular/common';
 import { Lightbox } from 'ngx-lightbox';
 
 @Component({
-  selector: 'app-chat',
-  templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.scss'],
+    selector: 'app-chat',
+    templateUrl: './chat.component.html',
+    styleUrls: ['./chat.component.scss'],
+    standalone: false
 })
 
 /**

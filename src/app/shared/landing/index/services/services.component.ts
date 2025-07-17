@@ -4,9 +4,10 @@ import { servicesModel } from './services.module';
 import { Services } from './data';
 
 @Component({
-  selector: 'app-services',
-  templateUrl: './services.component.html',
-  styleUrls: ['./services.component.scss'],
+    selector: 'app-services',
+    templateUrl: './services.component.html',
+    styleUrls: ['./services.component.scss'],
+    standalone: false
 })
 
 /**

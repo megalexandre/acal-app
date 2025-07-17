@@ -4,9 +4,10 @@ import { circle, latLng, tileLayer } from 'leaflet';
 import { analyticTopPages, analyticstatData, statData } from 'src/app/core/data';
 
 @Component({
-  selector: 'app-analytics',
-  templateUrl: './analytics.component.html',
-  styleUrls: ['./analytics.component.scss'],
+    selector: 'app-analytics',
+    templateUrl: './analytics.component.html',
+    styleUrls: ['./analytics.component.scss'],
+    standalone: false
 })
 
 /**

@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-crm-stat',
-  templateUrl: './crm-stat.component.html',
-  styleUrls: ['./crm-stat.component.scss'],
+    selector: 'app-crm-stat',
+    templateUrl: './crm-stat.component.html',
+    styleUrls: ['./crm-stat.component.scss'],
+    standalone: false
 })
 
 /**

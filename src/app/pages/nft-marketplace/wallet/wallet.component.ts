@@ -4,9 +4,10 @@ import { walletModel } from './wallet.model';
 import { nftwalletData } from 'src/app/core/data';
 
 @Component({
-  selector: 'app-wallet',
-  templateUrl: './wallet.component.html',
-  styleUrls: ['./wallet.component.scss'],
+    selector: 'app-wallet',
+    templateUrl: './wallet.component.html',
+    styleUrls: ['./wallet.component.scss'],
+    standalone: false
 })
 
 /**

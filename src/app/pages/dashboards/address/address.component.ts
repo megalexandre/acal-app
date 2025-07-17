@@ -9,8 +9,9 @@ import { AddressEditComponent } from './edit/address-edit.component';
 import { ToastService } from '../dashboard/toast-service';
 
 @Component({
-  selector: 'app-address',
-  templateUrl: './address.component.html',
+    selector: 'app-address',
+    templateUrl: './address.component.html',
+    standalone: false
 })
 export class AddressComponent implements OnInit {
   breadCrumbItems!: Array<{}>;

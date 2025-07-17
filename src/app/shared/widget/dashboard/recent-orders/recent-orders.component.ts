@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-recent-orders',
-  templateUrl: './recent-orders.component.html',
-  styleUrls: ['./recent-orders.component.scss'],
+    selector: 'app-recent-orders',
+    templateUrl: './recent-orders.component.html',
+    styleUrls: ['./recent-orders.component.scss'],
+    standalone: false
 })
 export class RecentOrdersComponent implements OnInit {
   // Recent Orders data
