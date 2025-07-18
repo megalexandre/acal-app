@@ -1,27 +1,83 @@
-# Velzon
+# Velzon Angular Admin & Dashboard
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.4.
+Velzon is a modern Angular admin and dashboard template, featuring a rich UI, modular SCSS, and integration with popular libraries.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Angular 18+ (CLI, Material, RxJS)
+- Modular SCSS structure
+- FullCalendar, CKEditor, Leaflet, ApexCharts, and more
+- Responsive layouts (vertical, horizontal, two-column)
+- Internationalization (i18n)
+- Authentication & user management
+- Rich UI components and widgets
 
-## Code scaffolding
+## Getting Started
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Prerequisites
 
-## Build
+- Node.js >= 18.x
+- npm >= 9.x
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Installation
 
-## Running unit tests
+```bash
+npm install
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Running the App
 
-## Running end-to-end tests
+```bash
+npm start
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+or
 
-## Further help
+```bash
+ng serve
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Building for Production
+
+```bash
+npm run build
+```
+
+### Running Tests
+
+```bash
+npm test
+```
+
+## Project Structure
+
+```
+src/
+  app/                # Angular app modules & components
+  assets/             # Images, fonts, SCSS, i18n
+  environments/       # Environment configs
+  styles.scss         # Global styles
+angular.json          # Angular CLI config
+package.json          # Project dependencies
+```
+
+## Main Technologies
+
+- Angular
+- RxJS
+- Angular Material
+- SCSS
+- FullCalendar
+- CKEditor
+- Leaflet
+- ApexCharts
+
+## Customization
+
+- Edit SCSS in `src/assets/scss/config/minimal/`
+- Add new pages/components in `src/app/pages/`
+- Update environment variables in `src/environments/`
+
+## License
+
+Commercial license by Themesbrand.
