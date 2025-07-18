@@ -1,10 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-    selector: 'app-deals-status',
-    templateUrl: './deals-status.component.html',
-    styleUrls: ['./deals-status.component.scss'],
-    standalone: false
+  selector: 'app-deals-status',
+  templateUrl: './deals-status.component.html',
+  styleUrls: ['./deals-status.component.scss'],
 })
 
 /**

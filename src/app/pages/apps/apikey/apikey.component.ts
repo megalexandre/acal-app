@@ -11,10 +11,9 @@ import { cloneDeep } from 'lodash';
 import { PaginationService } from 'src/app/core/services/pagination.service';
 
 @Component({
-    selector: 'app-apikey',
-    templateUrl: './apikey.component.html',
-    styleUrls: ['./apikey.component.scss'],
-    standalone: false
+  selector: 'app-apikey',
+  templateUrl: './apikey.component.html',
+  styleUrls: ['./apikey.component.scss'],
 })
 export class ApikeyComponent implements OnInit {
   // bread crumb items

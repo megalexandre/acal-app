@@ -6,10 +6,9 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 import { creatorsData, creatorsListData } from 'src/app/core/data';
 
 @Component({
-    selector: 'app-creators',
-    templateUrl: './creators.component.html',
-    styleUrls: ['./creators.component.scss'],
-    standalone: false
+  selector: 'app-creators',
+  templateUrl: './creators.component.html',
+  styleUrls: ['./creators.component.scss'],
 })
 
 /**

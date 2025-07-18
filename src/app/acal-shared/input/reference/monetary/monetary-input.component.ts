@@ -2,8 +2,8 @@ import { Component, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-    selector: 'monetary',
-    template: `
+  selector: 'monetary',
+  template: `
     <input
       type="text"
       mask="separator.2"
@@ -16,12 +16,11 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
       class="form-control"
     />
   `,
-    providers: [{
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => MonetaryInputComponent),
-            multi: true
-        }],
-    standalone: false
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => MonetaryInputComponent),
+    multi: true
+  }]
 })
 export class MonetaryInputComponent implements ControlValueAccessor {
 

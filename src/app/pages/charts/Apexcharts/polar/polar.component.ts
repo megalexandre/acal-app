@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-polar',
-    templateUrl: './polar.component.html',
-    styleUrls: ['./polar.component.scss'],
-    standalone: false
+  selector: 'app-polar',
+  templateUrl: './polar.component.html',
+  styleUrls: ['./polar.component.scss'],
 })
 
 /**

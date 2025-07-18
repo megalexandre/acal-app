@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-slopearea',
-    templateUrl: './slopearea.component.html',
-    styleUrl: './slopearea.component.scss',
-    standalone: false
+  selector: 'app-slopearea',
+  templateUrl: './slopearea.component.html',
+  styleUrl: './slopearea.component.scss',
 })
 export class SlopeareaComponent {
   // bread crumb items

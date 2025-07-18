@@ -4,10 +4,9 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 import { MarketModel } from 'src/app/store/Crypto/crypto_model';
 
 @Component({
-    selector: 'app-buy-sell',
-    templateUrl: './buy-sell.component.html',
-    styleUrls: ['./buy-sell.component.scss'],
-    standalone: false
+  selector: 'app-buy-sell',
+  templateUrl: './buy-sell.component.html',
+  styleUrls: ['./buy-sell.component.scss'],
 })
 
 /**

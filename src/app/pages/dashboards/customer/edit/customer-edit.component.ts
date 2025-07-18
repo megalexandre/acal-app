@@ -6,9 +6,8 @@ import { ModalWithSent } from '../../address/address.model';
 import { Customer } from '../customer.model';
 
 @Component({
-    selector: 'app-customer-edit',
-    templateUrl: './customer-edit.component.html',
-    standalone: false
+  selector: 'app-customer-edit',
+  templateUrl: './customer-edit.component.html',
 })
 export class CustomerEditComponent implements OnInit, ModalWithSent {
  

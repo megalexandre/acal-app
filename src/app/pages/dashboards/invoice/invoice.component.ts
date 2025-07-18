@@ -9,9 +9,8 @@ import { ModalWithSent } from '../address/address.model';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-    selector: 'app-invoice',
-    templateUrl: './invoice.component.html',
-    standalone: false
+  selector: 'app-invoice',
+  templateUrl: './invoice.component.html',
 })
 export class InvoiceComponent implements OnInit{
 

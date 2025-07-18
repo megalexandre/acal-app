@@ -11,13 +11,12 @@ export interface SortEvent {
 }
 
 @Directive({
-    selector: 'th[sortable]',
-    host: {
-        '[class.asc]': 'direction === "asc"',
-        '[class.desc]': 'direction === "desc"',
-        '(click)': 'rotate()',
-    },
-    standalone: false
+  selector: 'th[sortable]',
+  host: {
+    '[class.asc]': 'direction === "asc"',
+    '[class.desc]': 'direction === "desc"',
+    '(click)': 'rotate()',
+  },
 })
 export class NgbdJobSortableHeader {
   @Input() sortable: SortColumn = '';

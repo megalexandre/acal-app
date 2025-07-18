@@ -12,10 +12,9 @@ import { cloneDeep } from 'lodash';
 import { PaginationService } from 'src/app/core/services/pagination.service';
 
 @Component({
-    selector: 'app-application',
-    templateUrl: './application.component.html',
-    styleUrls: ['./application.component.scss'],
-    standalone: false
+  selector: 'app-application',
+  templateUrl: './application.component.html',
+  styleUrls: ['./application.component.scss'],
 })
 export class ApplicationComponent {
   // bread crumb items

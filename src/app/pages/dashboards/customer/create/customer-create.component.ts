@@ -5,9 +5,8 @@ import { CustomerService } from '../customer.service';
 import { ModalWithSent } from '../../address/address.model';
 
 @Component({
-    selector: 'app-customer-create',
-    templateUrl: './customer-create.component.html',
-    standalone: false
+  selector: 'app-customer-create',
+  templateUrl: './customer-create.component.html',
 })
 export class CustomerCreateComponent implements OnInit, ModalWithSent {
  

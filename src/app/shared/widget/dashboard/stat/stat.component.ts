@@ -1,10 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-    selector: 'app-stat',
-    templateUrl: './stat.component.html',
-    styleUrls: ['./stat.component.scss'],
-    standalone: false
+  selector: 'app-stat',
+  templateUrl: './stat.component.html',
+  styleUrls: ['./stat.component.scss'],
 })
 export class StatComponent implements OnInit {
   @Input() title: string | undefined;

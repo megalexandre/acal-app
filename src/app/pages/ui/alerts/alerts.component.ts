@@ -7,10 +7,9 @@ import { defaultData, dismissingData } from './data';
 import { AlertColor } from './alerts.model';
 
 @Component({
-    selector: 'app-alerts',
-    templateUrl: './alerts.component.html',
-    styleUrls: ['./alerts.component.scss'],
-    standalone: false
+  selector: 'app-alerts',
+  templateUrl: './alerts.component.html',
+  styleUrls: ['./alerts.component.scss'],
 })
 export class AlertsComponent implements OnInit {
   // bread crumb items

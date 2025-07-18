@@ -3,10 +3,9 @@ import { interval } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
-    selector: 'app-item-details',
-    templateUrl: './item-details.component.html',
-    styleUrls: ['./item-details.component.scss'],
-    standalone: false
+  selector: 'app-item-details',
+  templateUrl: './item-details.component.html',
+  styleUrls: ['./item-details.component.scss'],
 })
 
 /**

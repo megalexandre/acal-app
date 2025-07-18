@@ -3,10 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Lightbox } from 'ngx-lightbox';
 
 @Component({
-    selector: 'app-gallery',
-    templateUrl: './gallery.component.html',
-    styleUrls: ['./gallery.component.scss'],
-    standalone: false
+  selector: 'app-gallery',
+  templateUrl: './gallery.component.html',
+  styleUrls: ['./gallery.component.scss'],
 })
 
 /**

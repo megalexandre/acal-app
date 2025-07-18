@@ -4,9 +4,8 @@ import { Address, ModalWithSent } from '../address.model';
 import { AddressService } from '../address.service';
 
 @Component({
-    selector: 'app-address-delete',
-    templateUrl: './address-delete.component.html',
-    standalone: false
+  selector: 'app-address-delete',
+  templateUrl: './address-delete.component.html',
 })
 export class AddressDeleteComponent implements ModalWithSent {
 

@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-dropdowns',
-    templateUrl: './dropdowns.component.html',
-    styleUrls: ['./dropdowns.component.scss'],
-    standalone: false
+  selector: 'app-dropdowns',
+  templateUrl: './dropdowns.component.html',
+  styleUrls: ['./dropdowns.component.scss'],
 })
 
 /**

@@ -4,10 +4,9 @@ import { clientLogoModel } from './categories.model';
 import { ClientLogo } from './data';
 
 @Component({
-    selector: 'app-categories',
-    templateUrl: './categories.component.html',
-    styleUrls: ['./categories.component.scss'],
-    standalone: false
+  selector: 'app-categories',
+  templateUrl: './categories.component.html',
+  styleUrls: ['./categories.component.scss'],
 })
 
 /**

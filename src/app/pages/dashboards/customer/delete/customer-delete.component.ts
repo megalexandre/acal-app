@@ -5,9 +5,8 @@ import { Customer } from '../customer.model';
 import { CustomerService } from '../customer.service';
 
 @Component({
-    selector: 'app-customer-delete',
-    templateUrl: './customer-delete.component.html',
-    standalone: false
+  selector: 'app-customer-delete',
+  templateUrl: './customer-delete.component.html',
 })
 export class CustomerDeleteComponent implements ModalWithSent {
 

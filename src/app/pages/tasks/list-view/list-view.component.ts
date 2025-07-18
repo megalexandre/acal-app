@@ -19,11 +19,10 @@ import { cloneDeep } from 'lodash';
 import { AssignedData } from 'src/app/core/data';
 
 @Component({
-    selector: 'app-list-view',
-    templateUrl: './list-view.component.html',
-    styleUrls: ['./list-view.component.scss'],
-    providers: [DecimalPipe],
-    standalone: false
+  selector: 'app-list-view',
+  templateUrl: './list-view.component.html',
+  styleUrls: ['./list-view.component.scss'],
+  providers: [DecimalPipe],
 })
 
 /**

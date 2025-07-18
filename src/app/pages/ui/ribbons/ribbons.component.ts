@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-ribbons',
-    templateUrl: './ribbons.component.html',
-    styleUrls: ['./ribbons.component.scss'],
-    standalone: false
+  selector: 'app-ribbons',
+  templateUrl: './ribbons.component.html',
+  styleUrls: ['./ribbons.component.scss'],
 })
 
 /**

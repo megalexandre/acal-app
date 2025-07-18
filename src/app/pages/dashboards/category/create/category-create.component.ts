@@ -6,9 +6,8 @@ import { CategoryService } from '../category.service';
 import { Group } from '../category.model';
 
 @Component({
-    selector: 'app-category-create',
-    templateUrl: './category-create.component.html',
-    standalone: false
+  selector: 'app-category-create',
+  templateUrl: './category-create.component.html',
 })
 export class CategoryCreateComponent implements OnInit, ModalWithSent {
  

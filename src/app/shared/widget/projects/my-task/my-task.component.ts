@@ -1,10 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-    selector: 'app-my-task',
-    templateUrl: './my-task.component.html',
-    styleUrls: ['./my-task.component.scss'],
-    standalone: false
+  selector: 'app-my-task',
+  templateUrl: './my-task.component.html',
+  styleUrls: ['./my-task.component.scss'],
 })
 
 /**

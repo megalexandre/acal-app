@@ -8,9 +8,8 @@ import { CategoryDeleteComponent } from './delete/category-delete.component';
 import { CategoryEditComponent } from './edit/category-edit.component';
 
 @Component({
-    selector: 'app-category',
-    templateUrl: './category.component.html',
-    standalone: false
+  selector: 'app-category',
+  templateUrl: './category.component.html',
 })
 export class CategoryComponent implements OnInit {
   breadCrumbItems!: Array<{}>;

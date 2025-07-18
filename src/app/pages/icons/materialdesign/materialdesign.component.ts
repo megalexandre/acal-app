@@ -3,10 +3,9 @@ import { ToastService } from '../toast-service';
 import { icons } from 'src/app/core/data';
 
 @Component({
-    selector: 'app-materialdesign',
-    templateUrl: './materialdesign.component.html',
-    styleUrls: ['./materialdesign.component.scss'],
-    standalone: false
+  selector: 'app-materialdesign',
+  templateUrl: './materialdesign.component.html',
+  styleUrls: ['./materialdesign.component.scss'],
 })
 
 /**

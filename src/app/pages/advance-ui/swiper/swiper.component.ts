@@ -4,10 +4,9 @@ import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
 
 @Component({
-    selector: 'app-swiper',
-    templateUrl: './swiper.component.html',
-    styleUrls: ['./swiper.component.scss'],
-    standalone: false
+  selector: 'app-swiper',
+  templateUrl: './swiper.component.html',
+  styleUrls: ['./swiper.component.scss'],
 })
 
 /**

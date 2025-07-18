@@ -1,10 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-    selector: 'app-news-feed',
-    templateUrl: './news-feed.component.html',
-    styleUrls: ['./news-feed.component.scss'],
-    standalone: false
+  selector: 'app-news-feed',
+  templateUrl: './news-feed.component.html',
+  styleUrls: ['./news-feed.component.scss'],
 })
 
 /**

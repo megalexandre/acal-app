@@ -5,9 +5,8 @@ import { WaterQuality } from '../water-quality.model';
 import { WaterQualityService } from '../water-quality.service';
 
 @Component({
-    selector: 'app-water-quality-delete',
-    templateUrl: './water-quality-delete.component.html',
-    standalone: false
+  selector: 'app-water-quality-delete',
+  templateUrl: './water-quality-delete.component.html',
 })
 export class WaterQualityDeleteComponent implements ModalWithSent {
 

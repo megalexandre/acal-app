@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-sitemap',
-    templateUrl: './sitemap.component.html',
-    styleUrls: ['./sitemap.component.scss'],
-    standalone: false
+  selector: 'app-sitemap',
+  templateUrl: './sitemap.component.html',
+  styleUrls: ['./sitemap.component.scss'],
 })
 
 /**

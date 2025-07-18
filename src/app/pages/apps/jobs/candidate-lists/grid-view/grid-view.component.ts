@@ -4,10 +4,9 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 import { candidatelist } from 'src/app/core/data';
 
 @Component({
-    selector: 'app-grid-view',
-    templateUrl: './grid-view.component.html',
-    styleUrls: ['./grid-view.component.scss'],
-    standalone: false
+  selector: 'app-grid-view',
+  templateUrl: './grid-view.component.html',
+  styleUrls: ['./grid-view.component.scss'],
 })
 export class GridViewComponent implements OnInit {
   // bread crumb items

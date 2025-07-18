@@ -5,10 +5,9 @@ import { AuthenticationService } from '../../core/services/auth.service';
 import { ToastService } from './toast-service';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss'],
-    standalone: false
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
 })
 
 export class LoginComponent implements OnInit {

@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { remixicons } from 'src/app/core/data';
 
 @Component({
-    selector: 'app-remix',
-    templateUrl: './remix.component.html',
-    styleUrls: ['./remix.component.scss'],
-    standalone: false
+  selector: 'app-remix',
+  templateUrl: './remix.component.html',
+  styleUrls: ['./remix.component.scss'],
 })
 
 /**

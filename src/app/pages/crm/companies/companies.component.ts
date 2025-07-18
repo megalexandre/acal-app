@@ -20,10 +20,9 @@ import { restApiService } from '../../../core/services/rest-api.service';
 import { ngxCsv } from 'ngx-csv/ngx-csv';
 
 @Component({
-    selector: 'app-companies',
-    templateUrl: './companies.component.html',
-    styleUrls: ['./companies.component.scss'],
-    standalone: false
+  selector: 'app-companies',
+  templateUrl: './companies.component.html',
+  styleUrls: ['./companies.component.scss'],
 })
 
 /**

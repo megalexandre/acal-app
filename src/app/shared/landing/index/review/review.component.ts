@@ -4,10 +4,9 @@ import { clientLogoModel } from './review.module';
 import { ClientLogo } from './data';
 
 @Component({
-    selector: 'app-review',
-    templateUrl: './review.component.html',
-    styleUrls: ['./review.component.scss'],
-    standalone: false
+  selector: 'app-review',
+  templateUrl: './review.component.html',
+  styleUrls: ['./review.component.scss'],
 })
 
 /**

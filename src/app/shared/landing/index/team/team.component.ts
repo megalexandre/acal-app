@@ -4,10 +4,9 @@ import { TeamModel } from './team.module';
 import { Teams } from './data';
 
 @Component({
-    selector: 'app-team',
-    templateUrl: './team.component.html',
-    styleUrls: ['./team.component.scss'],
-    standalone: false
+  selector: 'app-team',
+  templateUrl: './team.component.html',
+  styleUrls: ['./team.component.scss'],
 })
 
 /**

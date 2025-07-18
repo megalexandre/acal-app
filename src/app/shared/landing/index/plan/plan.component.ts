@@ -4,10 +4,9 @@ import { MonthlyPlanModel, AnnualPlanModel } from './plan.module';
 import { MonthlyPlan, AnnualPlan } from './data';
 
 @Component({
-    selector: 'app-plan',
-    templateUrl: './plan.component.html',
-    styleUrls: ['./plan.component.scss'],
-    standalone: false
+  selector: 'app-plan',
+  templateUrl: './plan.component.html',
+  styleUrls: ['./plan.component.scss'],
 })
 
 /**

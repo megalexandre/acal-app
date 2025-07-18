@@ -5,9 +5,8 @@ import { PlaceService } from '../place.service';
 import { ModalWithSent } from '../../address/address.model';
 
 @Component({
-    selector: 'app-place-delete',
-    templateUrl: './place-delete.component.html',
-    standalone: false
+  selector: 'app-place-delete',
+  templateUrl: './place-delete.component.html',
 })
 export class PlaceDeleteComponent implements ModalWithSent {
 

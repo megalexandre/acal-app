@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-    selector: 'app-kyc',
-    templateUrl: './kyc.component.html',
-    styleUrls: ['./kyc.component.scss'],
-    standalone: false
+  selector: 'app-kyc',
+  templateUrl: './kyc.component.html',
+  styleUrls: ['./kyc.component.scss'],
 })
 
 /**

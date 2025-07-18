@@ -17,10 +17,9 @@ import { addOrder, deleteOrder, fetchorderListData, updateOrder } from 'src/app/
 import { selectDataLoading, selectOrderData } from 'src/app/store/Ecommerce/ecommerce_selector';
 
 @Component({
-    selector: 'app-orders',
-    templateUrl: './orders.component.html',
-    styleUrls: ['./orders.component.scss'],
-    standalone: false
+  selector: 'app-orders',
+  templateUrl: './orders.component.html',
+  styleUrls: ['./orders.component.scss'],
 })
 
 /**

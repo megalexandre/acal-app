@@ -4,10 +4,9 @@ import { creatorModel } from './top-creator.model';
 import { creatorData } from './data';
 
 @Component({
-    selector: 'app-top-creator',
-    templateUrl: './top-creator.component.html',
-    styleUrls: ['./top-creator.component.scss'],
-    standalone: false
+  selector: 'app-top-creator',
+  templateUrl: './top-creator.component.html',
+  styleUrls: ['./top-creator.component.scss'],
 })
 
 /**

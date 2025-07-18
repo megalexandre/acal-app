@@ -12,8 +12,8 @@ type BootstrapButtonType =
   | 'light';
 
 @Component({
-    selector: 'app-button',
-    template: `
+  selector: 'app-button',
+  template: `
     <button
       [type]="type"
       [ngClass]="buttonClasses"
@@ -22,7 +22,6 @@ type BootstrapButtonType =
       <ng-content></ng-content>
     </button>
   `,
-    standalone: false
 })
 export class ButtonComponent {
   @Input() type: 'button' | 'submit' | 'reset' = 'button';

@@ -7,9 +7,8 @@ import { ModalWithSent } from '../address/address.model';
 import { PlaceDeleteComponent } from './delete/place-delete.component';
 
 @Component({
-    selector: 'app-place',
-    templateUrl: './place.component.html',
-    standalone: false
+  selector: 'app-place',
+  templateUrl: './place.component.html',
 })
 export class PlaceComponent implements OnInit {
   breadCrumbItems!: Array<{}>;

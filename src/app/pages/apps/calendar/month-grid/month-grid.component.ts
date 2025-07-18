@@ -16,10 +16,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { restApiService } from '../../../../core/services/rest-api.service';
 
 @Component({
-    selector: 'app-month-grid',
-    templateUrl: './month-grid.component.html',
-    styleUrls: ['./month-grid.component.scss'],
-    standalone: false
+  selector: 'app-month-grid',
+  templateUrl: './month-grid.component.html',
+  styleUrls: ['./month-grid.component.scss'],
 })
 export class MonthGridComponent {
   // bread crumb items

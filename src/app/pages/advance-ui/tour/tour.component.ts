@@ -2,11 +2,10 @@ import { Component, OnInit, ChangeDetectionStrategy, AfterViewInit } from '@angu
 import { ShepherdService } from 'angular-shepherd';
 import { steps as defaultSteps, defaultStepOptions } from './data';
 @Component({
-    selector: 'app-tour',
-    templateUrl: './tour.component.html',
-    styleUrls: ['./tour.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'app-tour',
+  templateUrl: './tour.component.html',
+  styleUrls: ['./tour.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 /**

@@ -7,10 +7,9 @@ import { featuredModel, recentModel, topCollectionModel, popularModel } from './
 import { nftfeaturedData, nftpopularData, nftrecentData, nftstatData, nfttopCollectionData } from 'src/app/core/data';
 
 @Component({
-    selector: 'app-nft',
-    templateUrl: './nft.component.html',
-    styleUrls: ['./nft.component.scss'],
-    standalone: false
+  selector: 'app-nft',
+  templateUrl: './nft.component.html',
+  styleUrls: ['./nft.component.scss'],
 })
 
 /**

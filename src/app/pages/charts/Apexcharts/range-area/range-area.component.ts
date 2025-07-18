@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-range-area',
-    templateUrl: './range-area.component.html',
-    styleUrls: ['./range-area.component.scss'],
-    standalone: false
+  selector: 'app-range-area',
+  templateUrl: './range-area.component.html',
+  styleUrls: ['./range-area.component.scss'],
 })
 export class RangeAreaComponent {
   // bread crumb items

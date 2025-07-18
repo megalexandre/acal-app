@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-    selector: 'app-validation',
-    templateUrl: './validation.component.html',
-    styleUrls: ['./validation.component.scss'],
-    standalone: false
+  selector: 'app-validation',
+  templateUrl: './validation.component.html',
+  styleUrls: ['./validation.component.scss'],
 })
 
 /**

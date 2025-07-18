@@ -5,10 +5,9 @@ import { jobgrid } from 'src/app/core/data';
 import { PaginationService } from 'src/app/core/services/pagination.service';
 
 @Component({
-    selector: 'app-grid',
-    templateUrl: './grid.component.html',
-    styleUrls: ['./grid.component.scss'],
-    standalone: false
+  selector: 'app-grid',
+  templateUrl: './grid.component.html',
+  styleUrls: ['./grid.component.scss'],
 })
 export class GridComponent implements OnInit {
   // bread crumb items

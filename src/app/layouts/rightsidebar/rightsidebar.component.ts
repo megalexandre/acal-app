@@ -19,10 +19,9 @@ import { getLayoutMode, getLayoutPosition, getLayoutTheme, getLayoutWith, getPre
 import { EventService } from '../../core/services/event.service';
 
 @Component({
-    selector: 'app-rightsidebar',
-    templateUrl: './rightsidebar.component.html',
-    styleUrls: ['./rightsidebar.component.scss'],
-    standalone: false
+  selector: 'app-rightsidebar',
+  templateUrl: './rightsidebar.component.html',
+  styleUrls: ['./rightsidebar.component.scss'],
 })
 
 /**

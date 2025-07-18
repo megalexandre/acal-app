@@ -13,10 +13,9 @@ import { TicketListModel } from 'src/app/store/Ticket/ticket_model';
 import { DatePipe } from '@angular/common';
 
 @Component({
-    selector: 'app-list',
-    templateUrl: './list.component.html',
-    styleUrls: ['./list.component.scss'],
-    standalone: false
+  selector: 'app-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.scss'],
 })
 
 /**

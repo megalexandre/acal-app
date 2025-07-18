@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../core/services/event.service';
 
 @Component({
-    selector: 'app-two-column',
-    templateUrl: './two-column.component.html',
-    styleUrls: ['./two-column.component.scss'],
-    standalone: false
+  selector: 'app-two-column',
+  templateUrl: './two-column.component.html',
+  styleUrls: ['./two-column.component.scss'],
 })
 
 /**

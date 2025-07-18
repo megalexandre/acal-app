@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-links',
-    templateUrl: './links.component.html',
-    styleUrls: ['./links.component.scss'],
-    standalone: false
+  selector: 'app-links',
+  templateUrl: './links.component.html',
+  styleUrls: ['./links.component.scss'],
 })
 export class LinksComponent {
   // bread crumb items

@@ -8,10 +8,9 @@ interface MarkerProperties {
 }
 
 @Component({
-    selector: 'app-google',
-    templateUrl: './google.component.html',
-    styleUrls: ['./google.component.scss'],
-    standalone: false
+  selector: 'app-google',
+  templateUrl: './google.component.html',
+  styleUrls: ['./google.component.scss'],
 })
 
 /**

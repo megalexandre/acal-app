@@ -7,10 +7,9 @@ import { ChartType } from './dashboard.model';
 import { BestSelling, Recentelling, TopSelling, statData } from 'src/app/core/data';
 
 @Component({
-    selector: 'app-dashboard',
-    templateUrl: './dashboard.component.html',
-    styleUrls: ['./dashboard.component.scss'],
-    standalone: false
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss'],
 })
 
 /**

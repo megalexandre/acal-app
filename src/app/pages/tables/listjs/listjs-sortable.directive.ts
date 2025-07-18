@@ -11,13 +11,12 @@ export interface listSortEvent {
 }
 
 @Directive({
-    selector: 'th[listsortable]',
-    host: {
-        '[class.asc]': 'direction === "asc"',
-        '[class.desc]': 'direction === "desc"',
-        '(click)': 'rotate()',
-    },
-    standalone: false
+  selector: 'th[listsortable]',
+  host: {
+    '[class.asc]': 'direction === "asc"',
+    '[class.desc]': 'direction === "desc"',
+    '(click)': 'rotate()',
+  },
 })
 export class NgbdOrdersSortableHeader {
   @Input() listsortable: SortColumn = '';

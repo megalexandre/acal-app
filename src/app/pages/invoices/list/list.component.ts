@@ -17,10 +17,9 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 import { InvoiceListModel } from 'src/app/store/Invoice/invoice_model';
 
 @Component({
-    selector: 'app-list',
-    templateUrl: './list.component.html',
-    styleUrls: ['./list.component.scss'],
-    standalone: false
+  selector: 'app-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.scss'],
 })
 
 /**

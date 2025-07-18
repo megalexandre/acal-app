@@ -10,10 +10,9 @@ import { selectProjectData, selectprojectLoading } from 'src/app/store/Project/p
 import { PaginationService } from 'src/app/core/services/pagination.service';
 
 @Component({
-    selector: 'app-list',
-    templateUrl: './list.component.html',
-    styleUrls: ['./list.component.scss'],
-    standalone: false
+  selector: 'app-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.scss'],
 })
 
 /**

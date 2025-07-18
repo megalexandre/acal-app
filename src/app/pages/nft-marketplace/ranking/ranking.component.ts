@@ -9,10 +9,9 @@ import { rankingData } from 'src/app/core/data';
 import { PaginationService } from 'src/app/core/services/pagination.service';
 
 @Component({
-    selector: 'app-ranking',
-    templateUrl: './ranking.component.html',
-    styleUrls: ['./ranking.component.scss'],
-    standalone: false
+  selector: 'app-ranking',
+  templateUrl: './ranking.component.html',
+  styleUrls: ['./ranking.component.scss'],
 })
 
 /**

@@ -14,10 +14,9 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 import { FolderModel } from 'src/app/store/File Manager/filemanager_model';
 
 @Component({
-    selector: 'app-file-manager',
-    templateUrl: './file-manager.component.html',
-    styleUrls: ['./file-manager.component.scss'],
-    standalone: false
+  selector: 'app-file-manager',
+  templateUrl: './file-manager.component.html',
+  styleUrls: ['./file-manager.component.scss'],
 })
 
 /**

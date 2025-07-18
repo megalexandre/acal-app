@@ -1,8 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-    name: 'yesOrNo',
-    standalone: false
+  name: 'yesOrNo'
 })
 export class BooleanPipe implements PipeTransform {
 

@@ -5,9 +5,8 @@ import { AddressService } from '../address.service';
 import { ModalWithSent } from '../address.model';
 
 @Component({
-    selector: 'app-address-create',
-    templateUrl: './address-create.component.html',
-    standalone: false
+  selector: 'app-address-create',
+  templateUrl: './address-create.component.html',
 })
 export class AddressCreateComponent implements ModalWithSent {
  

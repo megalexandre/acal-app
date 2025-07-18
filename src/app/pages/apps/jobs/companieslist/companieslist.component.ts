@@ -4,10 +4,9 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 import { companieslist } from 'src/app/core/data';
 
 @Component({
-    selector: 'app-companieslist',
-    templateUrl: './companieslist.component.html',
-    styleUrls: ['./companieslist.component.scss'],
-    standalone: false
+  selector: 'app-companieslist',
+  templateUrl: './companieslist.component.html',
+  styleUrls: ['./companieslist.component.scss'],
 })
 export class CompanieslistComponent implements OnInit {
   // bread crumb items

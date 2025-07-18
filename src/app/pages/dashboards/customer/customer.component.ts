@@ -11,9 +11,8 @@ import { CustomerEditComponent } from './edit/customer-edit.component';
 import { CustomerDeleteComponent } from './delete/customer-delete.component';
 
 @Component({
-    selector: 'app-customer',
-    templateUrl: './customer.component.html',
-    standalone: false
+  selector: 'app-customer',
+  templateUrl: './customer.component.html',
 })
 export class CustomerComponent implements OnInit, OnDestroy {
 

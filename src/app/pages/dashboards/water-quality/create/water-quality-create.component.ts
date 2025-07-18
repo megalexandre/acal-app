@@ -6,9 +6,8 @@ import { WaterQualityService } from '../water-quality.service';
 import { WaterParam } from '../water-quality.model';
 
 @Component({
-    selector: 'app-water-quality-create',
-    templateUrl: './water-quality-create.component.html',
-    standalone: false
+  selector: 'app-water-quality-create',
+  templateUrl: './water-quality-create.component.html',
 })
 export class WaterQualityCreateComponent implements OnInit, ModalWithSent {
  

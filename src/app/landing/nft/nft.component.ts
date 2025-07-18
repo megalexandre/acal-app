@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-nft',
-    templateUrl: './nft.component.html',
-    styleUrls: ['./nft.component.scss'],
-    standalone: false
+  selector: 'app-nft',
+  templateUrl: './nft.component.html',
+  styleUrls: ['./nft.component.scss'],
 })
 
 /**

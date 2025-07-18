@@ -6,10 +6,9 @@ import { Lightbox } from 'ngx-lightbox';
 import { swiperModel, GalleryModel, NewsModel, VideoModel } from './search-results.model';
 import { gallery, news, swiper, video } from 'src/app/core/data';
 @Component({
-    selector: 'app-search-results',
-    templateUrl: './search-results.component.html',
-    styleUrls: ['./search-results.component.scss'],
-    standalone: false
+  selector: 'app-search-results',
+  templateUrl: './search-results.component.html',
+  styleUrls: ['./search-results.component.scss'],
 })
 
 /**

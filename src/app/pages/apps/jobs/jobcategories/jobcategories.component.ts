@@ -3,10 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { jobcategories } from 'src/app/core/data';
 
 @Component({
-    selector: 'app-jobcategories',
-    templateUrl: './jobcategories.component.html',
-    styleUrls: ['./jobcategories.component.scss'],
-    standalone: false
+  selector: 'app-jobcategories',
+  templateUrl: './jobcategories.component.html',
+  styleUrls: ['./jobcategories.component.scss'],
 })
 export class JobcategoriesComponent implements OnInit {
   // bread crumb items

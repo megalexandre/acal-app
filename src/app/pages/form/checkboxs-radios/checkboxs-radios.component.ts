@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-checkboxs-radios',
-    templateUrl: './checkboxs-radios.component.html',
-    styleUrls: ['./checkboxs-radios.component.scss'],
-    standalone: false
+  selector: 'app-checkboxs-radios',
+  templateUrl: './checkboxs-radios.component.html',
+  styleUrls: ['./checkboxs-radios.component.scss'],
 })
 
 /**

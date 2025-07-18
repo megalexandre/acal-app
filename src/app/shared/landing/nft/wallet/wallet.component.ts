@@ -4,10 +4,9 @@ import { walletModel } from './wallet.model';
 import { walletData } from './data';
 
 @Component({
-    selector: 'app-wallet',
-    templateUrl: './wallet.component.html',
-    styleUrls: ['./wallet.component.scss'],
-    standalone: false
+  selector: 'app-wallet',
+  templateUrl: './wallet.component.html',
+  styleUrls: ['./wallet.component.scss'],
 })
 
 /**

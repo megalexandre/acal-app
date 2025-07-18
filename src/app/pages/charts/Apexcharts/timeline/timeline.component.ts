@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import moment from 'moment';
+import * as moment from 'moment';
 
 @Component({
-    selector: 'app-timeline',
-    templateUrl: './timeline.component.html',
-    styleUrls: ['./timeline.component.scss'],
-    standalone: false
+  selector: 'app-timeline',
+  templateUrl: './timeline.component.html',
+  styleUrls: ['./timeline.component.scss'],
 })
 
 /**

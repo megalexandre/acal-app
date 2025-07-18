@@ -21,10 +21,9 @@ import { ngxCsv } from 'ngx-csv';
 import { GlobalComponent } from 'src/app/global-component';
 
 @Component({
-    selector: 'app-contacts',
-    templateUrl: './contacts.component.html',
-    styleUrls: ['./contacts.component.scss'],
-    standalone: false
+  selector: 'app-contacts',
+  templateUrl: './contacts.component.html',
+  styleUrls: ['./contacts.component.scss'],
 })
 
 /**

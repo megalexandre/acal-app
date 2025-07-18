@@ -1,10 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-    selector: 'app-upcoming-activities',
-    templateUrl: './upcoming-activities.component.html',
-    styleUrls: ['./upcoming-activities.component.scss'],
-    standalone: false
+  selector: 'app-upcoming-activities',
+  templateUrl: './upcoming-activities.component.html',
+  styleUrls: ['./upcoming-activities.component.scss'],
 })
 
 /**

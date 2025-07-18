@@ -1,9 +1,8 @@
-import { Directive, Input, EventEmitter, Inject, Output, ElementRef, HostListener, DOCUMENT } from '@angular/core';
-
+import { Directive, Input, EventEmitter, Inject, Output, ElementRef, HostListener } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 @Directive({
-    selector: '[appScrollspy]',
-    standalone: false
+  selector: '[appScrollspy]',
 })
 export class ScrollspyDirective {
   @Input() public spiedTags: string[] = [];

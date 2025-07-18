@@ -12,6 +12,7 @@ import { CategoryService } from './category.service';
 import { CategoryComponent } from './category.component';
 import { CategoryCreateComponent } from './create/category-create.component';
 import { CategoryDeleteComponent } from './delete/category-delete.component';
+import { C } from '@fullcalendar/core/internal-common';
 import { CategoryEditComponent } from './edit/category-edit.component';
 
 @NgModule({

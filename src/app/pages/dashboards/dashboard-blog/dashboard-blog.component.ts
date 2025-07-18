@@ -6,10 +6,11 @@ import { FeatherIconsModule } from 'src/app/shared-modules/feather-icons.module'
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
-    selector: 'app-dashboard-blog',
-    imports: [SharedModule, CommonModule, NgApexchartsModule, SimplebarAngularModule, FeatherIconsModule],
-    templateUrl: './dashboard-blog.component.html',
-    styleUrl: './dashboard-blog.component.scss'
+  selector: 'app-dashboard-blog',
+  standalone: true,
+  imports: [SharedModule, CommonModule, NgApexchartsModule, SimplebarAngularModule, FeatherIconsModule],
+  templateUrl: './dashboard-blog.component.html',
+  styleUrl: './dashboard-blog.component.scss',
 })
 export class DashboardBlogComponent {
   breadCrumbItems!: Array<{}>;

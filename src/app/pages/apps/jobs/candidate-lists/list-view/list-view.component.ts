@@ -7,10 +7,9 @@ import { candidatelist } from 'src/app/core/data';
 import { PaginationService } from 'src/app/core/services/pagination.service';
 
 @Component({
-    selector: 'app-list-view',
-    templateUrl: './list-view.component.html',
-    styleUrls: ['./list-view.component.scss'],
-    standalone: false
+  selector: 'app-list-view',
+  templateUrl: './list-view.component.html',
+  styleUrls: ['./list-view.component.scss'],
 })
 export class ListViewComponent implements OnInit {
   // bread crumb items
