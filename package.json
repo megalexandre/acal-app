@@ -36,6 +36,7 @@
     "@fullcalendar/multimonth": "^6.1.14",
     "@fullcalendar/timegrid": "^6.1.14",
     "@lordicon/element": "^1.6.0",
+    "@nebular/theme": "^15.0.0",
     "@ng-bootstrap/ng-bootstrap": "17.0.0",
     "@ng-select/ng-select": "^13.2.0",
     "@ngrx/effects": "^18.0.0",
