@@ -14,7 +14,7 @@ export class LinkComponent implements OnInit {
   page: Page<Link> | null = null;
   filter: LinkFilter = {
     page: 0,
-    size: 100,
+    size: 20,
     sort_orders: [
       {
         'property': 'customer.normalizedName',

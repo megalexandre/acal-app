@@ -40,7 +40,8 @@ export class CustomerComponent implements OnInit, OnDestroy {
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 100,
-      processing: true
+      processing: true,
+      responsive: true,
     };
 
     this.search();

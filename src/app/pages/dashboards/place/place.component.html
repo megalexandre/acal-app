@@ -16,14 +16,16 @@
             <table class="table align-middle table-nowrap mb-0 table-gridjs">
               <thead class="table-light">
                 <tr>
-                  <th class="col-9">Name</th>
-                  <th class="col-1">Número</th>
-                  <th class="col-1">Letra</th>
-                  <th class="col-1 text-center">Action</th>
+                  <th style="width: 3%;"> #:</th>
+                  <th style="width: 70%;"> Name:</th>
+                  <th style="width: 12%;"> Número:</th>
+                  <th style="width: 12%;"> Letra:</th>
+                  <th style="width: 3%;"> Ações:</th>
                 </tr>
               </thead>
               <tbody class="list form-check-all">
-                <tr *ngFor="let place of places; trackBy: trackById">
+                <tr *ngFor="let place of places; trackBy: trackById; let i = index;">
+                  <td>{{ i + 1}}</td>
                   <td>{{ place.address }}</td>
                   <td>{{ place.number }}</td>
                   <td>{{ place.letter }}</td>

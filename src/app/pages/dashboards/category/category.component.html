@@ -16,17 +16,21 @@
             <table class="table align-middle table-nowrap mb-0 table-gridjs">
               <thead class="table-light">
                 <tr>
-                  <th class="col-7">Nome</th>
-                  <th class="col-1">Água</th>
-                  <th class="col-1">Associação</th>
-                  <th class="col-1">Total</th>
-                  <th class="col-1">Hidrômetro</th>
-                  <th class="col-1 text-center">Action</th>
+                  <th style="width: 3%;" >#:</th>
+                  <th style="width: 52%;" >Grupo:</th>
+                  <th style="width: 10%;" >Categoria:</th>
+                  <th style="width: 5%;" >Água</th>
+                  <th style="width: 5%;" >Associação</th>
+                  <th style="width: 5%;" >Total</th>
+                  <th style="width: 5%;" >Hidrômetro</th>
+                  <th style="width: 5%;" class="text-center">Acões</th>
                 </tr>
               </thead>
               <tbody class="list form-check-all">
-                <tr *ngFor="let category of categories">
+                <tr *ngFor="let category of categories; let i = index">
+                  <td>{{ i + 1}}</td>
                   <td>{{ (category.group | group) + ' ' + category.name}}</td>
+                  <td>{{ (category.group | group)}}</td>
                   <td>{{ category.water_value | currency }}</td>
                   <td>{{ category.partner_value | currency  }}</td>
                   <td>{{ category.total | currency }}</td>

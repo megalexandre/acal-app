@@ -41,6 +41,8 @@ import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 
+import { NbThemeModule } from '@nebular/theme';
+
 registerLocaleData(localePt);
 
 export function createTranslateLoader(http: HttpClient): any {
@@ -90,6 +92,7 @@ if (environment.defaultauth === 'firebase') {
       useValue: 'BRL',
     },
     provideHttpClient(withInterceptorsFromDi()),
+    
   ],
 })
 export class AppModule {}

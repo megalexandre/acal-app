@@ -31,7 +31,7 @@
                 <ng-container *ngFor="let a of analise.analysis; let y = index">
                 
                   <tr>
-                    <td [attr.rowspan]="analise.analysis.length" *ngIf="y == 0">{{ analise.reference }}</td>
+                    <td [attr.rowspan]="analise.analysis.length" *ngIf="y == 0" class="text-center">{{ analise.reference }}</td>
                     
                     <td>{{ a.name }}</td>
                     <td>{{ a.analyzed }}</td>

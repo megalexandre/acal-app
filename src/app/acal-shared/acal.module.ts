@@ -9,6 +9,7 @@ import { ReferenceInputComponent } from './input/reference/reference-input.compo
 import { BooleanPipe } from './pipe/boolean.pipe';
 import { GroupPipe } from './pipe/group.pipe';
 import { TableModule } from './table/table.module';
+import { NbButtonModule, NbInputModule } from '@nebular/theme';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { TableModule } from './table/table.module';
     TableModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxMaskDirective
+    NgxMaskDirective,
   ],
 
   exports: [
