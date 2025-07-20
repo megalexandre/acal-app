@@ -4,12 +4,8 @@
   mask="0000-00"
   [formControl]="reference"
   [ngClass]="{ 'is-invalid': isInvalid(), 'is-valid': isValid() }"
-  
-  
   [placeholder]="placeholder"
 />
-
-{{submitted}}
 
 <div *ngIf="isInvalid()" class="invalid-feedback">
   <div *ngIf="reference.hasError('required')">Campo obrigatório</div>

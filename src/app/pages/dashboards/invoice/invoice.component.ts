@@ -1,12 +1,11 @@
-import { Component, OnDestroy, OnInit, Type } from '@angular/core';
+import { Component, OnInit, Type } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Subject } from 'rxjs';
 
-import { InvoiceService } from './invoice.service';
-import { ToastService } from '../dashboard/toast-service';
-import { Invoice, InvoicePreview, InvoicesPreview } from './invoice.model';
-import { ModalWithSent } from '../address/address.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ModalWithSent } from '../address/address.model';
+import { ToastService } from '../dashboard/toast-service';
+import { Invoice } from './invoice.model';
+import { InvoiceService } from './invoice.service';
 
 @Component({
   selector: 'app-invoice',
