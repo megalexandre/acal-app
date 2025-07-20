@@ -45,64 +45,70 @@ export class InvoiceCreateComponent  implements OnInit {
 
   }
 
+  private filterByHasMeter(invoices: Invoice[]): Invoice[] {
+    if (this.filter.hasMeter === null) return invoices;
+    return invoices.filter(invoice => invoice.category.is_hydrometer === this.filter.hasMeter);
+  }
+
+  private filterByAddress(invoices: Invoice[]): Invoice[] {
+    if (!this.filter.address) return invoices;
+    return invoices.filter(invoice => invoice.place.address === this.filter.address);
+  }
+
+  private filterByCategory(invoices: Invoice[]): Invoice[] {
+    if (!this.filter.category) return invoices;
+    return invoices.filter(invoice => invoice.category.name === this.filter.category);
+  }
+
   onchangeFilter() {
     let filteredInvoices = [...this.invoices];
-
-    if (this.filter.hasMeter !== null) {
-      filteredInvoices = filteredInvoices.filter(
-        invoice => invoice.category.is_hydrometer === this.filter.hasMeter
-      );
-    }
-
-    if(this.filter.address) {
-      filteredInvoices = filteredInvoices.filter(
-        invoice => invoice.place.address === this.filter.address
-      );
-    }
-
-    if(this.filter.category) {
-      filteredInvoices = filteredInvoices.filter(
-        invoice => invoice.category.name === this.filter.category
-      );
-    } 
+    
+    filteredInvoices = this.filterByHasMeter(filteredInvoices);
+    filteredInvoices = this.filterByAddress(filteredInvoices);
+    filteredInvoices = this.filterByCategory(filteredInvoices);
 
     this.preview = this.buildPreview(filteredInvoices);
   }
 
-  buildPreview(invoices: Invoice[]): InvoicePreviewTable {
-    const selectablesInvoice: SelectableInvoice[] = invoices.map((invoice): SelectableInvoice => {
-      return {checked: false, ...invoice}; 
-    });
-
-    const uniqueAddressesName = Array.from(
-      new Set(selectablesInvoice.map(invoice => invoice.place.address))
+  private getUniqueAddresses(invoices: SelectableInvoice[]): string[] {
+    return Array.from(
+      new Set(invoices.map(invoice => invoice.place.address))
     ).sort((a, b) => a.localeCompare(b));
+  }
 
-    const uniqueCategoriesName = Array.from(
-      new Set(selectablesInvoice.map(invoice => invoice.category.name))
+  private getUniqueCategories(invoices: SelectableInvoice[]): string[] {
+    return Array.from(
+      new Set(invoices.map(invoice => invoice.category.name))
     ).sort((a, b) => a.localeCompare(b));
+  }
 
-    const groups: SelectableInvoiceGroup[] = uniqueAddressesName.map(address => {
-      const items = selectablesInvoice.filter(invoice => invoice.place.address === address);
-      
-      return ({
-        name: address,
-        checked: false,
-        items: items,
-      });
-    });
+  private createSelectableInvoices(invoices: Invoice[]): SelectableInvoice[] {
+    return invoices.map((invoice): SelectableInvoice => ({
+      checked: false,
+      ...invoice
+    }));
+  }
 
+  private buildPreview(invoices: Invoice[]): InvoicePreviewTable {
+    const selectablesInvoice = this.createSelectableInvoices(invoices);
+    const uniqueAddressesName = this.getUniqueAddresses(selectablesInvoice);
+    const uniqueCategoriesName = this.getUniqueCategories(selectablesInvoice);
+
+    const groups: SelectableInvoiceGroup[] = uniqueAddressesName.map(address => ({
+      name: address,
+      checked: false,
+      items: selectablesInvoice.filter(invoice => invoice.place.address === address),
+    }));
 
     if(this.addresses.length === 0) {
       this.addresses = uniqueAddressesName;
     }
 
     if(this.categories.length === 0) {
-      this.categories = uniqueCategoriesName
+      this.categories = uniqueCategoriesName;
     }
 
-
-    return  {items: groups}
+    return {items: groups};
   }
 
 
