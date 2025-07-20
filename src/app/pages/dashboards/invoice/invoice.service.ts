@@ -28,7 +28,7 @@ export class InvoiceService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
-  view(reference: String): Observable<Invoice[]>{
-     return this.http.get<Invoice[]>(`${this.apiUrl}/view/${reference}`);
+  preview(reference: String): Observable<Invoice[]>{
+     return this.http.get<Invoice[]>(`${this.apiUrl}/preview/${reference}`);
   }
 }

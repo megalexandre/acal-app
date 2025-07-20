@@ -31,7 +31,7 @@ export class InvoiceCreateComponent  implements OnInit {
 
   public load(){
     this.loading = true;
-    this.service.view("2025-01").subscribe({
+    this.service.preview("2025-01").subscribe({
       next: (invoices) => {
         this.invoices = invoices;
         this.preview = this.buildPreview(invoices);
