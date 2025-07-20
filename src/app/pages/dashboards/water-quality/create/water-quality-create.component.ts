@@ -52,9 +52,9 @@ export class WaterQualityCreateComponent implements OnInit, ModalWithSent {
   createAnalysisGroup(param: WaterParam): FormGroup {
     return this.fb.group({
       name: [param.name, Validators.required],
-      analyzed: [10, Validators.required],
-      required: [10, Validators.required],
-      conformity: [10, Validators.required]
+      analyzed: [6, Validators.required],
+      required: [6, Validators.required],
+      conformity: [6, Validators.required]
     });
   }
 

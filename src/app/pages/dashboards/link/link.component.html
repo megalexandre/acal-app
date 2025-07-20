@@ -1,5 +1,3 @@
-<app-breadcrumbs title="Ligações" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
-
 <div class="row">
   <div class="col-lg-12">
     <app-card>
@@ -7,14 +5,11 @@
         <h5 class="card-title flex-grow-1 mb-0">Ligações</h5>
 
         <div class="d-flex gap-1 flex-wrap">
-          <app-button btnType="success" outline (click)="create()">
-            <i class="ri-add-line me-1"></i> Adicionar
-          </app-button>
+          <app-button btnType="success" outline (click)="create()"> <i class="ri-add-line me-1"></i> Adicionar </app-button>
         </div>
       </app-card-header>
 
       <app-card-body>
-
         <div class="table-responsive table-card" *ngIf="page">
           <table class="table table-hover align-middle table-nowrap mb-0 table-gridjs">
             <thead class="table-light">
@@ -27,108 +22,80 @@
                 <th class="col-1 text-center">Ações</th>
               </tr>
             </thead>
-            
+
             <thead class="table-light">
               <tr>
                 <th>
-                  <input type="text" class="form-control" [(ngModel)]="filter.name"  placeholder="Name:" (keydown.enter)="search()" />
+                  <input type="text" class="form-control" [(ngModel)]="filter.name" placeholder="Name:" (keydown.enter)="search()" />
                 </th>
                 <th>
-                  <input type="text" class="form-control" [(ngModel)]="filter.category"  placeholder="Name:" (keydown.enter)="search()" />
+                  <app-category-select [(ngModel)]="filter.category" (change)="search()"> </app-category-select>
                 </th>
                 <th>
-                  <input type="text" class="form-control" [(ngModel)]="filter.address"  placeholder="Name:" (keydown.enter)="search()" />
+                  <input type="text" class="form-control" [(ngModel)]="filter.address" placeholder="Name:" (keydown.enter)="search()" />
                 </th>
                 <th>Numero</th>
                 <th>
-                  <monetary type="text" [(ngModel)]="filter.total"  placeholder="Valor:" (keydown.enter)="search()"></monetary>
+                  <monetary type="text" [(ngModel)]="filter.total" placeholder="Valor:" (keydown.enter)="search()"></monetary>
                 </th>
                 <th>
                   <div class="d-grid gap-2">
-                     <button
-                        outline
-                        type="button"
-                        class="btn btn-outline-primary" (click)="search()">
-                      <i class="mdi-search-webt"></i> Buscar
-                    </button>
+                    <button outline type="button" class="btn btn-outline-primary" (click)="search()"><i class="mdi-search-webt"></i> Buscar</button>
                   </div>
                 </th>
               </tr>
             </thead>
-            
+
             <tbody class="list form-check-all">
               <tr *ngFor="let l of page.content; trackBy: trackById">
                 <td>{{ l.customer.name }}</td>
                 <td>{{ l.category.name }}</td>
                 <td>{{ l.place.address }}</td>
                 <td>{{ l.place.number + l.place.letter }}</td>
-                <td>{{ l.total | currency:'BRL' }}</td>
+                <td>{{ l.total | currency: 'BRL' }}</td>
 
                 <td class="text-center">
                   <ul class="list-inline hstack gap-2 mb-0 justify-content-center">
-
                     <li class="list-inline-item">
                       <a (click)="delete(l)" class="text-danger" ngbTooltip="Remover" placement="top">
                         <i class="ri-delete-bin-5-fill fs-16"></i>
                       </a>
                     </li>
-
                   </ul>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
-
-
       </app-card-body>
 
       <app-card-footer>
-
         <div class="d-flex justify-content-between align-items-center mt-3" *ngIf="page">
-          
           <div>
-              itens por pagina:
-              <select 
-                class="form-select"
-                [(ngModel)]="filter.size" 
-                 (change)="search()"
-                >
-                <option value="10" selected>10</option>
-                <option value="50" selected>50</option>
-                <option value="100" selected>100</option>
-              </select>
+            itens por pagina:
+            <select class="form-select" [(ngModel)]="filter.size" (change)="search()">
+              <option value="10" selected>10</option>
+              <option value="50" selected>50</option>
+              <option value="100" selected>100</option>
+            </select>
 
-            <div class="text-muted">
-              Página {{ page.number + 1 }} de {{ page.total_pages }}
-            </div>
-
+            <div class="text-muted">Página {{ page.number + 1 }} de {{ page.total_pages }}</div>
           </div>
-        
 
           <div>
-            <app-button btnType="primary" outline [disabled]="page.first" (click)="loadPage(0)">
-              <i class="mdi mdi-chevron-double-left"></i>Primeira
-            </app-button>
+            <app-button btnType="primary" outline [disabled]="page.first" (click)="loadPage(0)"> <i class="mdi mdi-chevron-double-left"></i>Primeira </app-button>
 
-            <app-button btnType="primary" outline [disabled]="page.first" (click)="loadPage(page.number - 1)">
-              <i class="mdi mdi-chevron-left"></i>Anterior
-            </app-button>
+            <app-button btnType="primary" outline [disabled]="page.first" (click)="loadPage(page.number - 1)"> <i class="mdi mdi-chevron-left"></i>Anterior </app-button>
 
-            <app-button btnType="primary" outline [disabled]="true" >
+            <app-button btnType="primary" outline [disabled]="true">
               <i class="mdi mdi-cellphone-link"></i>
-              {{page.number + 1}}
+              {{ page.number + 1 }}
             </app-button>
 
-            <app-button btnType="primary" outline  [disabled]="page.last" (click)="loadPage(page.number + 1)">
-               <i class="mdi mdi-chevron-right"></i>  Próxima 
-            </app-button>
+            <app-button btnType="primary" outline [disabled]="page.last" (click)="loadPage(page.number + 1)"> <i class="mdi mdi-chevron-right"></i> Próxima </app-button>
 
-            <app-button btnType="primary" outline [disabled]="page.last" (click)="loadPage(page.total_pages -1)">
-              <i class="mdi mdi-chevron-double-right"></i> Ultima
-            </app-button>
+            <app-button btnType="primary" outline [disabled]="page.last" (click)="loadPage(page.total_pages - 1)"> <i class="mdi mdi-chevron-double-right"></i> Ultima </app-button>
           </div>
-
         </div>
       </app-card-footer>
     </app-card>

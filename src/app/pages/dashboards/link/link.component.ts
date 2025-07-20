@@ -9,10 +9,10 @@ import { LinkService } from './link.service';
   templateUrl: './link.component.html',
 })
 export class LinkComponent implements OnInit {
-  breadCrumbItems!: Array<{}>;
 
   page: Page<Link> | null = null;
   filter: LinkFilter = {
+    category: null,
     page: 0,
     size: 20,
     sort_orders: [
@@ -31,10 +31,8 @@ export class LinkComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.breadCrumbItems = [{ label: 'Dashboards' }, { label: 'Ligações', active: true }];
     this.search();
   }
-
 
 
   search() {

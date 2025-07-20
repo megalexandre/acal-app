@@ -10,6 +10,7 @@ import { BooleanPipe } from './pipe/boolean.pipe';
 import { GroupPipe } from './pipe/group.pipe';
 import { TableModule } from './table/table.module';
 import { NbButtonModule, NbInputModule } from '@nebular/theme';
+import { CategorySelectComponent } from './select/category-select/category-select.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { NbButtonModule, NbInputModule } from '@nebular/theme';
     GroupPipe,
     BooleanPipe,
     ReferenceInputComponent,
+    CategorySelectComponent,
   ],
 
   imports: [
@@ -37,6 +39,7 @@ import { NbButtonModule, NbInputModule } from '@nebular/theme';
     GroupPipe,
     BooleanPipe,
     ReferenceInputComponent,
+    CategorySelectComponent,
   ],
   providers:[
     provideNgxMask(),

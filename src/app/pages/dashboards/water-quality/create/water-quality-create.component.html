@@ -1,74 +1,80 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div class="modal-header" *ngIf="loaded"> 
+  <div class="modal-header" *ngIf="loaded">
     <h5 class="modal-title">Coleta</h5>
 
     <button type="button" outline class="btn-close" aria-label="Close" (click)="close()"></button>
   </div>
   <div class="modal-body">
-
     <div class="mb-3">
       <label class="form-label">Referência: <span class="text-danger">*</span></label>
-      
-      <app-input-reference [reference]="reference" [submitted]="submitted" ></app-input-reference>
-      
+
+      <app-input-reference [reference]="reference" [submitted]="submitted"></app-input-reference>
+
       <div class="valid-feedback" *ngIf="isValid('referencia')">Válido</div>
-      
+
       <div class="invalid-feedback" *ngIf="isInvalid('referencia')">
         <ng-container *ngIf="reference?.errors?.['required']"> Número é obrigatório </ng-container>
       </div>
-
     </div>
 
-      <div class="table-responsive">
-        <table class="table table-bordered table-striped">
-          <thead class="table-dark">
-            <tr>
-              <th width="30%">Nome:</th>
-              <th width="20%">Exigido:</th>
-              <th width="20%">Analisado:</th>
-              <th width="20%">Conforme:</th>
-            </tr>
-          </thead>
-          <tbody formArrayName="analysis">
-            <tr *ngFor="let analysis of analysisArray.controls; let i = index" [formGroupName]="i">
-              <td>
-                  {{waterParams[i].name }}
-              </td>
-              <td>
-                <input type="text" class="form-control" formControlName="required" [ngClass]="{ 
-                  'is-invalid': isAnalysisInvalid(i, 'required') ,
-                  'is-valid': isAnalysisValid(i, 'required')
-                }">
-              </td>
-              <td>
-                <input type="text" class="form-control" formControlName="analyzed" [ngClass]="{ 
-                  'is-invalid': isAnalysisInvalid(i, 'analyzed') ,
-                  'is-valid': isAnalysisValid(i, 'analyzed')
-                }">
-              </td>
-              <td>
-                <input type="text" class="form-control" formControlName="conformity" [ngClass]="{ 
-                  'is-invalid': isAnalysisInvalid(i, 'conformity') ,
-                  'is-valid': isAnalysisValid(i, 'conformity')
-                }">
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th width="30%">Nome:</th>
+            <th width="20%">Exigido:</th>
+            <th width="20%">Analisado:</th>
+            <th width="20%">Conforme:</th>
+          </tr>
+        </thead>
+        <tbody formArrayName="analysis">
+          <tr *ngFor="let analysis of analysisArray.controls; let i = index" [formGroupName]="i">
+            <td>
+              {{ waterParams[i].name }}
+            </td>
+            <td>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="required"
+                [ngClass]="{
+                  'is-invalid': isAnalysisInvalid(i, 'required'),
+                  'is-valid': isAnalysisValid(i, 'required'),
+                }"
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="analyzed"
+                [ngClass]="{
+                  'is-invalid': isAnalysisInvalid(i, 'analyzed'),
+                  'is-valid': isAnalysisValid(i, 'analyzed'),
+                }"
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="conformity"
+                [ngClass]="{
+                  'is-invalid': isAnalysisInvalid(i, 'conformity'),
+                  'is-valid': isAnalysisValid(i, 'conformity'),
+                }"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
   <div class="modal-footer">
     <div class="d-flex justify-content-between col-12">
-    
-      <app-button type="button" btnType="secondary" outline (click)="close()">
-        Cancelar
-      </app-button>
+      <app-button type="button" btnType="secondary" outline (click)="close()"> Cancelar </app-button>
 
-      <app-button type="submit"  btnType="success" outline >
-        Salvar
-      </app-button>
-
+      <app-button type="submit" btnType="success" outline> Salvar </app-button>
     </div>
   </div>
 </form>

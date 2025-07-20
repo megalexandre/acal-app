@@ -106,7 +106,7 @@ export const MENU: MenuItem[] = [
       {
         id: 5,
         label: 'MENUITEMS.DASHBOARD.LIST.ECOMMERCE',
-        link: '/',
+        link: '/dashboard',
         parentId: 2,
       },
       {

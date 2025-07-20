@@ -9,7 +9,7 @@ export interface SortOrder {
 
 export interface LinkFilter {
   name?: string;
-  category?: string;
+  category?: string | null;
   address?: string;
   total?: number;
   page: number;

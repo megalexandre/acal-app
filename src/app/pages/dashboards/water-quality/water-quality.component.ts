@@ -14,10 +14,8 @@ import { WaterQualityService } from './water-quality.service';
 })
 export class WaterQualityComponent implements OnInit{
 
-  breadCrumbItems: Array<{ label: string; active?: boolean }> = [];
-
   analises: WaterQuality[] = [];
-  loaded = false;
+  ready = false;
 
   constructor(
     private service: WaterQualityService,
@@ -26,28 +24,19 @@ export class WaterQualityComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this.breadCrumbItems = [
-      { label: 'Dashboards' },
-      { label: 'Coletas', active: true }
-    ];
-
-
     this.search();
   }
 
   search(): void {
-    this.loaded = false;
+    this.ready = false;
 
     this.service.get().subscribe({
       next: (data) => {
         this.analises = data;
+        this.ready = true;
       },
       error: () => {
-        this.loaded = true;
-        this.toastService.show("Erro ao carregar dados.", {
-          classname: 'bg-danger text-white',
-          delay: 15000
-        });
+        this.ready = false;
       }
     });
   }
