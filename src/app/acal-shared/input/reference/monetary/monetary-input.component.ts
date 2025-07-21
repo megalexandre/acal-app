@@ -8,6 +8,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
       type="text"
       mask="separator.2"
       thousandSeparator="."
+      placeholder="0,00"
       decimalMarker=","
       [dropSpecialCharacters]="false"
       [ngModel]="value"

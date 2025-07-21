@@ -11,6 +11,7 @@ import { GroupPipe } from './pipe/group.pipe';
 import { TableModule } from './table/table.module';
 import { NbButtonModule, NbInputModule } from '@nebular/theme';
 import { CategorySelectComponent } from './select/category-select/category-select.component';
+import { AddressSelectComponent } from './select/address-select/address-select.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { CategorySelectComponent } from './select/category-select/category-selec
     BooleanPipe,
     ReferenceInputComponent,
     CategorySelectComponent,
+    AddressSelectComponent,
   ],
 
   imports: [
@@ -40,6 +42,7 @@ import { CategorySelectComponent } from './select/category-select/category-selec
     BooleanPipe,
     ReferenceInputComponent,
     CategorySelectComponent,
+    AddressSelectComponent,
   ],
   providers:[
     provideNgxMask(),

@@ -13,6 +13,9 @@ export class LinkComponent implements OnInit {
   page: Page<Link> | null = null;
   filter: LinkFilter = {
     category: null,
+    address: null,
+    letter: null,
+    number: null,
     page: 0,
     size: 20,
     sort_orders: [

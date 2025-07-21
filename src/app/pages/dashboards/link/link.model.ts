@@ -10,7 +10,9 @@ export interface SortOrder {
 export interface LinkFilter {
   name?: string;
   category?: string | null;
-  address?: string;
+  address?: string | null;
+  number?: string | null;
+  letter?: string | null;
   total?: number;
   page: number;
   size: number;
