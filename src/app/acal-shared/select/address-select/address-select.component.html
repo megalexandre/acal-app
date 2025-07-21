@@ -1,0 +1,7 @@
+<select class="form-select" [disabled]="disabled" [ngModel]="value" (ngModelChange)="onSelectionChange($event)">
+  <option [ngValue]="null">Selecione...</option>
+
+  <option *ngFor="let address of addresses" [ngValue]="address.name">
+    {{ address.name }}
+  </option>
+</select>
