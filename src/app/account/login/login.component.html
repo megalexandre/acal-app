@@ -11,14 +11,7 @@
           <!-- Email -->
           <div class="form-group mb-4">
             <label for="email" class="form-label">Email</label>
-            <input
-              id="email"
-              type="email"
-              class="form-control"
-              formControlName="email"
-              [ngClass]="{'is-invalid': submitted && f['email'].errors}"
-              placeholder="seu@email.com"
-            />
+            <input id="email" type="email" class="form-control" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" placeholder="seu@email.com" />
             <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
               <div *ngIf="f['email'].errors['required']">Email é obrigatório</div>
               <div *ngIf="f['email'].errors['email']">Email inválido</div>
@@ -28,19 +21,8 @@
           <!-- Password -->
           <div class="form-group mb-4 position-relative">
             <label for="password-input" class="form-label">Senha</label>
-            <input
-              id="password-input"
-              [type]="fieldTextType ? 'text' : 'password'"
-              class="form-control pe-5"
-              formControlName="password"
-              [ngClass]="{'is-invalid': submitted && f['password'].errors}"
-              placeholder="••••••••"
-            />
-            <button
-              type="button"
-              class="btn btn-link password-toggle"
-              (click)="toggleFieldTextType()"
-            >
+            <input id="password-input" [type]="fieldTextType ? 'text' : 'password'" class="form-control pe-5" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" placeholder="••••••••" />
+            <button type="button" class="btn btn-link password-toggle" (click)="toggleFieldTextType()">
               <i class="mdi" [ngClass]="fieldTextType ? 'mdi-eye-outline' : 'mdi-eye-off-outline'"></i>
             </button>
             <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
@@ -53,83 +35,3 @@
     </div>
   </div>
 </div>
-<!--
-<div class="auth-page-wrapper pt-5">
-
-  <div class="auth-page-content">
-    <div class="container">
-
-      <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6 col-xl-5 border border-dark">
-          <div class="card mt-4">
-            <div class="card-body p-4">
-              <div class="text-center mt-2">
-                <h5 class="text-primary">Acal Loja !</h5>
-                <p class="text-muted">Entrar</p>
-              </div>
-              <div class="p-2 mt-4">
-                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                  <div class="mb-3">
-                    <label class="form-label" for="username">Email</label>
-                    <input type="email" class="form-control" id="email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" placeholder="Enter email" />
-                    @if (submitted && f['email'].errors) {
-                      <div class="invalid-feedback">
-                        @if (f['email'].errors['required']) {
-                          <div>Email is required</div>
-                        }
-                        @if (f['email'].errors['email']) {
-                          <div>Email must be a valid email address</div>
-                        }
-                      </div>
-                    }
-                  </div>
-
-                  <div class="mb-3">
-                    <div class="float-end">
-                      <a routerLink="/pass-reset/basic" class="text-muted">Forgot password?</a>
-                    </div>
-                    <label class="form-label" for="password-input">Password</label>
-                    <div class="position-relative auth-pass-inputgroup mb-3">
-                      <input
-                        [type]="fieldTextType ? 'text' : 'password'"
-                        class="form-control pe-5"
-                        placeholder="Enter password"
-                        id="password-input"
-                        formControlName="password"
-                        [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
-                      />
-                      <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted" type="button" id="password-addon">
-                        <i class="mdi align-middle" [ngClass]="{ 'mdi-eye-off-outline': !fieldTextType, 'mdi-eye-outline': fieldTextType }" (click)="toggleFieldTextType()"></i>
-                      </button>
-                      @if (submitted && f['password'].errors) {
-                        <div class="invalid-feedback">
-                          @if (f['password'].errors['required']) {
-                            <span>Password is required</span>
-                          }
-                        </div>
-                      }
-                    </div>
-                  </div>
-
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="auth-remember-check" />
-                    <label class="form-check-label" for="auth-remember-check">Remember me</label>
-                  </div>
-
-                  <div class="mt-4">
-                    <button class="btn btn-success w-100" type="submit">Sign In</button>
-                  </div>
-
-                </form>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
- -->

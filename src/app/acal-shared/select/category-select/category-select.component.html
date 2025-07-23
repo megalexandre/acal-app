@@ -1,5 +1,5 @@
 <select class="form-select" [disabled]="disabled" [ngModel]="value" (ngModelChange)="onSelectionChange($event)">
-  <option [ngValue]="null">Selecione...</option>
+  <option [ngValue]="null" class="text-muted">Selecione...</option>
 
   <ng-container *ngFor="let group of groups">
     <optgroup [label]="group.group | group">

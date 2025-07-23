@@ -10,6 +10,7 @@ import { LinkService } from './link.service';
 })
 export class LinkComponent implements OnInit {
 
+  public reference: string | null = null;
   page: Page<Link> | null = null;
   filter: LinkFilter = {
     category: null,

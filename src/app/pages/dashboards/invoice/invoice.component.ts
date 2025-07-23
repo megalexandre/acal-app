@@ -4,8 +4,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalWithSent } from '../address/address.model';
 import { ToastService } from '../dashboard/toast-service';
-import { Invoice } from './invoice.model';
+import { Invoice, InvoiceFilter } from './invoice.model';
 import { InvoiceService } from './invoice.service';
+import { P } from '@fullcalendar/core/internal-common';
+import { Page } from '../link/link.model';
 
 @Component({
   selector: 'app-invoice',
@@ -13,7 +15,12 @@ import { InvoiceService } from './invoice.service';
 })
 export class InvoiceComponent implements OnInit{
 
-  breadCrumbItems: Array<{ label: string; active?: boolean }> = [];
+  page: any;
+  filter: InvoiceFilter = {
+    page: 0,
+    size: 10,
+    sort_orders: [{ property: 'created_at', direction: 'DESC' }]
+  };
 
   invoices: Invoice[] = [];
 
@@ -28,28 +35,26 @@ export class InvoiceComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this.breadCrumbItems = [
-      { label: 'Dashboards' },
-      { label: 'Faturas', active: true }
-    ];
-
-
     this.search();
   }
-
 
   search(): void {
     this.loading = true;
 
-    this.invoiceService.get().subscribe({
-      next: (invoices) => {
-        this.invoices = invoices;
+    this.invoiceService.paginate(this.filter).subscribe({
+      next: (page) => {
+        this.page = page;
         this.loading = false;
       },
       error: () => {
         this.loading = false;
       }
     });
+  }
+
+  onPageChange(newPage: number) {
+    this.filter.page = newPage -1 ; // Adjust for zero-based index
+    this.search();
   }
 
 

@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Invoice } from './invoice.model';
+import { Invoice, InvoiceFilter } from './invoice.model';
+import { Page } from '../link/link.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,8 +17,12 @@ export class InvoiceService {
     return this.http.get<Invoice[]>(this.apiUrl);
   }
 
-  create(invoice: Omit<Invoice, 'id'>): Observable<Invoice> {
-    return this.http.post<Invoice>(this.apiUrl, invoice);
+  paginate(filter: InvoiceFilter): Observable<Page<Invoice>> {
+    return this.http.post<Page<Invoice>>(`${this.apiUrl}/paginate`, filter);
+  }
+
+  create(invoices: Omit<Invoice, 'id'>[]): Observable<Invoice[]> {
+    return this.http.post<Invoice[]>(`${this.apiUrl}/all`, invoices);
   }
 
   update(invoice: Invoice): Observable<Invoice> {
@@ -28,7 +33,7 @@ export class InvoiceService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
-  preview(reference: String): Observable<Invoice[]>{
+  preview(reference: string): Observable<Invoice[]>{
      return this.http.get<Invoice[]>(`${this.apiUrl}/preview/${reference}`);
   }
 }

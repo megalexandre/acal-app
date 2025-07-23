@@ -1,7 +1,6 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Invoice, InvoicePreviewTable, SelectableInvoice, SelectableInvoiceGroup } from '../invoice.model';
 import { InvoiceService } from '../invoice.service';
-import { InvoicePreviewTable, Invoice, SelectableInvoice, SelectableInvoiceGroup } from '../invoice.model';
-import { Category } from '../../category/category.model';
 
 @Component({
   selector: 'app-invoice-create',
@@ -9,11 +8,15 @@ import { Category } from '../../category/category.model';
 })
 export class InvoiceCreateComponent  implements OnInit {
 
+  public reference: string | null = null;
+  public dueDate: Date | null = null;
+
   public preview: InvoicePreviewTable = {items: []};
   public loading = true;
-  private invoices: Invoice[] = [];
+  public invoices: Invoice[] = [];
   public addresses: string[] = [];
   public categories: string[] = [];
+
 
   public filter = {
     hasMeter: null as boolean | null,
@@ -26,24 +29,47 @@ export class InvoiceCreateComponent  implements OnInit {
   ){}
 
   ngOnInit(): void {
-    this.load();
   }
 
-  public load(){
+  public search(){
     this.loading = true;
-    this.service.preview("2025-01").subscribe({
-      next: (invoices) => {
-        this.invoices = invoices;
-        this.preview = this.buildPreview(invoices);
-        this.loading = false;
-      },
-      error: () => {
-        this.loading = false;
-        this.preview.items = [];
-      }
-    });
 
+    if (this.reference) {
+      this.service.preview(this.reference).subscribe({
+        next: (invoices) => {
+          this.invoices = invoices;
+          this.preview = this.buildPreview(invoices);
+          this.loading = false;
+        },
+        error: () => {
+          this.loading = false;
+          this.preview.items = [];
+        }
+      });
+    }
   }
+
+ public confirm() {
+
+  const selectedItems = this.preview.items
+  .flatMap(group => group.items) 
+  .filter(item => item.checked); 
+
+  selectedItems.forEach(item => {
+    item.due_date = this.dueDate!;
+  });
+
+  this.service.create(selectedItems).subscribe({
+    next: (invoices) => {
+      this.preview.items = this.preview.items.map(group => ({
+        ...group,
+        items: group.items.filter(item => !item.checked)
+      }));
+    },
+    error: () => {
+    }
+  });
+}
 
   private filterByHasMeter(invoices: Invoice[]): Invoice[] {
     if (this.filter.hasMeter === null) return invoices;

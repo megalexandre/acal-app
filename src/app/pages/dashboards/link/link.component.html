@@ -1,3 +1,60 @@
+<div class="row mb-3">
+  <div class="col-lg-12">
+    <div class="accordion w-100">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Filtros</button>
+        </h2>
+
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <div class="container-fluid">
+              <div class="row g-2 align-items-end">
+                <div class="col-md-8 col-12">
+                  <label class="form-label">Nome</label>
+                  <input type="text" class="form-control" [(ngModel)]="filter.name" placeholder="Nome" (keydown.enter)="search()" />
+                </div>
+
+                <div class="col-md-4 col-12">
+                  <label class="form-label">Categoria</label>
+                  <app-category-select [(ngModel)]="filter.category" (change)="search()"></app-category-select>
+                </div>
+
+                <div class="col-md-6 col-12">
+                  <label class="form-label">Endereço</label>
+                  <app-address-select [(ngModel)]="filter.address" (change)="search()"></app-address-select>
+                </div>
+
+                <div class="col-md-2 col-4">
+                  <label class="form-label">Número</label>
+                  <input type="text" class="form-control" [(ngModel)]="filter.number" placeholder="Nº" (keydown.enter)="search()" />
+                </div>
+
+                <div class="col-md-2 col-4">
+                  <label class="form-label">Letra</label>
+                  <input type="text" class="form-control" [(ngModel)]="filter.letter" placeholder="Letra" (keydown.enter)="search()" />
+                </div>
+
+                <div class="col-md-2 col-4">
+                  <label class="form-label">Valor</label>
+                  <monetary [(ngModel)]="filter.total" placeholder="Valor" (keydown.enter)="search()"></monetary>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12 col-md-3 offset-md-9 d-grid">
+                  <label class="form-label invisible">Buscar</label>
+                  <button type="button" class="btn btn-outline-primary" (click)="search()"><i class="mdi mdi-magnify"></i> Buscar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-lg-12">
     <app-card>
@@ -6,61 +63,6 @@
 
         <div class="d-flex gap-1 flex-wrap justify-content-end">
           <app-button btnType="success" outline (click)="create()"> <i class="ri-add-line me-1"></i> Adicionar </app-button>
-        </div>
-      </app-card-header>
-
-      <app-card-header>
-        <div class="accordion w-100">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Filtros</button>
-            </h2>
-
-            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                <div class="container-fluid">
-                  <div class="row g-2 align-items-end">
-                    <div class="col-md-8 col-12">
-                      <label class="form-label">Nome</label>
-                      <input type="text" class="form-control" [(ngModel)]="filter.name" placeholder="Nome" (keydown.enter)="search()" />
-                    </div>
-
-                    <div class="col-md-4 col-12">
-                      <label class="form-label">Categoria</label>
-                      <app-category-select [(ngModel)]="filter.category" (change)="search()"></app-category-select>
-                    </div>
-
-                    <div class="col-md-6 col-12">
-                      <label class="form-label">Endereço</label>
-                      <app-address-select [(ngModel)]="filter.address" (change)="search()"></app-address-select>
-                    </div>
-
-                    <div class="col-md-2 col-4">
-                      <label class="form-label">Número</label>
-                      <input type="text" class="form-control" [(ngModel)]="filter.number" placeholder="Nº" (keydown.enter)="search()" />
-                    </div>
-
-                    <div class="col-md-2 col-4">
-                      <label class="form-label">Letra</label>
-                      <input type="text" class="form-control" [(ngModel)]="filter.letter" placeholder="Letra" (keydown.enter)="search()" />
-                    </div>
-
-                    <div class="col-md-2 col-4">
-                      <label class="form-label">Valor</label>
-                      <monetary [(ngModel)]="filter.total" placeholder="Valor" (keydown.enter)="search()"></monetary>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-12 col-md-3 offset-md-9 d-grid">
-                      <label class="form-label invisible">Buscar</label>
-                      <button type="button" class="btn btn-outline-primary" (click)="search()"><i class="mdi mdi-magnify"></i> Buscar</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </app-card-header>
 
@@ -115,21 +117,25 @@
             </select>
 
             <div class="text-muted">Página {{ page.number + 1 }} de {{ page.total_pages }}</div>
+
+            <div class="text-muted">
+              — Exibindo itens {{ page.number * page.size + 1 }} a
+              {{ page.number * page.size + page.number_of_elements }}
+              de {{ page.total_elements }} no total
+            </div>
           </div>
 
           <div class="d-flex gap-2 flex-wrap">
-            <app-button btnType="primary" outline [disabled]="page.first" (click)="loadPage(0)"> <i class="mdi mdi-chevron-double-left"></i>Primeira </app-button>
-
-            <app-button btnType="primary" outline [disabled]="page.first" (click)="loadPage(page.number - 1)"> <i class="mdi mdi-chevron-left"></i>Anterior </app-button>
-
-            <app-button btnType="primary" outline [disabled]="true">
-              <i class="mdi mdi-cellphone-link"></i>
-              {{ page.number + 1 }}
-            </app-button>
-
-            <app-button btnType="primary" outline [disabled]="page.last" (click)="loadPage(page.number + 1)"> <i class="mdi mdi-chevron-right"></i> Próxima </app-button>
-
-            <app-button btnType="primary" outline [disabled]="page.last" (click)="loadPage(page.total_pages - 1)"> <i class="mdi mdi-chevron-double-right"></i> Ultima </app-button>
+            <div class="container-fluid">
+              <app-button btnType="primary" outline [disabled]="page.first" (click)="loadPage(0)"> <i class="mdi mdi-chevron-double-left"></i>Primeira </app-button>
+              <app-button btnType="primary" outline [disabled]="page.first" (click)="loadPage(page.number - 1)"> <i class="mdi mdi-chevron-left"></i>Anterior </app-button>
+              <app-button btnType="primary" outline [disabled]="true">
+                <i class="mdi mdi-cellphone-link"></i>
+                {{ page.number + 1 }}
+              </app-button>
+              <app-button btnType="primary" outline [disabled]="page.last" (click)="loadPage(page.number + 1)"> <i class="mdi mdi-chevron-right"></i> Próxima </app-button>
+              <app-button btnType="primary" outline [disabled]="page.last" (click)="loadPage(page.total_pages - 1)"> <i class="mdi mdi-chevron-double-right"></i> Ultima </app-button>
+            </div>
           </div>
         </div>
       </app-card-footer>

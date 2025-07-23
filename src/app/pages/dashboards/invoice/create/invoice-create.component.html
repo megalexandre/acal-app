@@ -1,4 +1,25 @@
-<div class="d-flex flex-column" style="height: 100vh">
+<app-card *ngIf="loading">
+  <app-card-body>
+    <div class="container-fluid">
+      <div class="row g-2 align-items-end">
+        <div class="col-md-6 col-12">
+          <label class="form-label">Referência</label>
+          <app-input-reference [(ngModel)]="reference" />
+        </div>
+      </div>
+
+      <hr />
+      <div class="row">
+        <div class="col-12 col-md-4 offset-md-8 d-grid">
+          <label class="form-label invisible">Buscar</label>
+          <button type="button" class="btn btn-outline-primary" (click)="search()"><i class="mdi mdi-magnify"></i> Buscar</button>
+        </div>
+      </div>
+    </div>
+  </app-card-body>
+</app-card>
+
+<div class="d-flex flex-column" style="height: 100vh" *ngIf="!loading">
   <div style="height: 10vh">
     <div class="border h-100">
       <div class="card">
@@ -40,47 +61,37 @@
   <div style="height: 60vh">
     <div class="border h-100 d-flex flex-column">
       <div class="border mb-0 flex-grow-1 overflow-auto">
-        <table class="table table-hover table-striped mb-0" style="min-width: 100%">
+        <table class="table table-hover table-bordered table-striped mb-0" style="min-width: 100%">
           <thead class="table-light" style="position: sticky; top: 0; z-index: 1">
             <tr style="cursor: pointer" (click)="toggleAll()">
-              <th style="width: 20%">Endereco</th>
-              <th style="width: 15%">Name</th>
-              <th style="width: 15%">Categoria</th>
-              <th style="width: 5%">Água/lt</th>
-              <th style="width: 5%">Água/Consumo</th>
               <th style="width: 5%">Número</th>
-              <th style="width: 5%">Valor</th>
-              <th style="width: 5%">Selecionar</th>
+              <th style="width: 20%">Categoria</th>
+              <th style="width: 35%">Name</th>
+              <th style="width: 10%">Água/lt</th>
+              <th style="width: 10%">Água/Consumo</th>
+              <th style="width: 10%" class="text-center">Valor</th>
             </tr>
           </thead>
 
           <tbody class="list form-check-all" table-body>
             <ng-container *ngFor="let item of preview.items; let a = index; trackBy: trackByGroupId">
               <tr class="bg-light" (click)="toggleGroup(item)" [ngClass]="{ 'table-success': item.checked }">
-                <td colspan="7">
+                <td colspan="6">
                   <div class="row">
                     <div class="text-center fw-bold" style="font-size: 16px">
                       {{ item.name }}
                     </div>
                   </div>
                 </td>
-
-                <td class="text-center">
-                  <input [(ngModel)]="item.checked" type="checkbox" (click)="$event.stopPropagation()" />
-                </td>
               </tr>
 
               <tr *ngFor="let i of item.items; trackBy: trackBySelectableId" [ngClass]="{ 'table-success': i.checked }" (click)="i.checked = !i.checked" style="cursor: pointer">
-                <td>{{ i.place.address }}</td>
-                <td>{{ i.category.name }}</td>
+                <td>{{ i.place.number }}</td>
                 <td>{{ i.customer.name }}</td>
-                <td>{{ i.place.number + ' ' + i.place.letter }}</td>
-                <td>{{ i.category.total | currency }}</td>
-                <td>{{ i.consumption }}</td>
+                <td>{{ i.category.name }}</td>
                 <td>{{ i.water_value | currency }}</td>
-                <td class="text-center">
-                  <input [(ngModel)]="i.checked" type="checkbox" (click)="$event.stopPropagation()" />
-                </td>
+                <td>{{ i.consumption }}</td>
+                <td class="text-center">{{ i.total | currency }}</td>
               </tr>
             </ng-container>
           </tbody>
@@ -91,16 +102,31 @@
 
   <div style="height: 20vh">
     <div class="border h-100">
-      <div class="card">
-        <div class="card-body">
+      <app-card>
+        <app-card-body>
           <div class="row">
             <div class="col-md-3 col-12">Total de items: {{ totalItems() }}</div>
             <div class="col-md-3 col-12">Valor Total: {{ totalValue() | currency }}</div>
             <div class="col-md-3 col-12">Items Selecionados: {{ totalISelectedtems() }}</div>
             <div class="col-md-3 col-12">Valor Selecionado: {{ totalSelectedValue() | currency }}</div>
           </div>
-        </div>
-      </div>
+        </app-card-body>
+        <app-card-body>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12 col-md-3 offset-md-9 d-grid">
+                <app-input-date [(ngModel)]="dueDate" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12 col-md-3 offset-md-9 d-grid">
+                <button type="button" class="btn btn-outline-primary" (click)="confirm()">Confirmar</button>
+              </div>
+            </div>
+          </div>
+        </app-card-body>
+      </app-card>
     </div>
   </div>
 </div>

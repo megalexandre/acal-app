@@ -9,14 +9,14 @@ export const MENU: MenuItem[] = [
     subItems: [
       {
         id: 1001,
-        label: 'Coletas',
-        link: '/water-quality',
-        parentId: 1000,
-      },
-       {
-        id: 1002,
         label: 'Ligaçoes',
         link: '/links',
+        parentId: 1000,
+      },
+      {
+        id: 1002,
+        label: 'Qualidade da Água',
+        link: '/water-quality',
         parentId: 1000,
       },
     ]  

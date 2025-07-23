@@ -1,15 +1,2 @@
-<input
-  type="text"
-  class="form-control"
-  mask="0000-00"
-  [formControl]="reference"
-  [ngClass]="{ 'is-invalid': isInvalid(), 'is-valid': isValid() }"
-  [placeholder]="placeholder"
-/>
-
-<div *ngIf="isInvalid()" class="invalid-feedback">
-  <div *ngIf="reference.hasError('required')">Campo obrigatório</div>
-  <div *ngIf="reference.hasError('pattern')">Formato inválido (use YYYY-MM)</div>
-  <div *ngIf="reference.hasError('invalidYear')">Ano deve ser maior que 1900</div>
-  <div *ngIf="reference.hasError('invalidMonth')">Mês deve ser entre 01 e 12</div>
-</div>
+<input type="text" mask="0000-00" class="form-control" [formControl]="reference" [placeholder]="placeholder" />
+<div *ngIf="isInvalid()" class="text-danger">Referência inválida</div>
