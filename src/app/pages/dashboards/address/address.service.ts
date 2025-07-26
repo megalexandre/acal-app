@@ -12,19 +12,19 @@ export class AddressService {
 
   constructor(private http: HttpClient) {}
 
-  getAddresses(): Observable<Address[]> {
+  get(): Observable<Address[]> {
     return this.http.get<Address[]>(this.apiUrl);
   }
 
-  createAddress(address: Omit<Address, 'id'>): Observable<Address> {
+  create(address: Omit<Address, 'id'>): Observable<Address> {
     return this.http.post<Address>(this.apiUrl, address);
   }
 
-  updateAddress(address: Address): Observable<Address> {
+  update(address: Address): Observable<Address> {
     return this.http.put<Address>(this.apiUrl, address);
   }
 
-  deleteAddress(id: string): Observable<void> {
+  delete(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

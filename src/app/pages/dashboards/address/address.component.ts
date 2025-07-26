@@ -33,7 +33,7 @@ export class AddressComponent implements OnInit {
   search() {
     this.loading = true;
 
-    this.addressService.getAddresses().subscribe({
+    this.addressService.get().subscribe({
       next: (addresses) => {
         this.addresses = addresses;
         this.loading = false;

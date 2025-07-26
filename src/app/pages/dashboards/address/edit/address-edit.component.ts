@@ -42,7 +42,7 @@ export class AddressEditComponent implements OnInit, ModalWithSent {
     if (this.addressForm.valid) {
       this.loading = true;
 
-      this.addressService.updateAddress(this.addressForm.value).subscribe({
+      this.addressService.update(this.addressForm.value).subscribe({
         next: () => {
           this.sent.emit();
           this.close();

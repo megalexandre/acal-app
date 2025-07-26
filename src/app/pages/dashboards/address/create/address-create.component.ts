@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { AddressService } from '../address.service';
 import { ModalWithSent } from '../address.model';
+import { AddressService } from '../address.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-address-create',
@@ -13,33 +14,55 @@ export class AddressCreateComponent implements ModalWithSent {
   @Output()
   public sent = new EventEmitter<string>();
 
-  public addressForm: FormGroup;
+  public form: FormGroup;
   public submitted = false;
 
   constructor(
     private fb: FormBuilder,
     private addressService: AddressService,
     public activeModal: NgbActiveModal,
+    private t: ToastrService,
   ) {
-    this.addressForm = this.fb.group({
+    this.form = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 
   async onSubmit() {
     this.submitted = true;
-    this.addressForm.markAllAsTouched();
+    this.form.markAllAsTouched();
 
-    if (this.addressForm.valid) {
-      this.addressService.createAddress(this.addressForm.value).subscribe({
+    if (this.form.valid) {
+      this.addressService.create(this.form.value).subscribe({
         next: () => {
           this.sent.emit();
           this.close();
         },
-        error: () => this.addressForm.reset(),
-      });
+        error: (error) => 
+          {
+            this.t.error(error.error.message || 'Erro ao criar endereço');
+            this.form.reset()
+          } 
+      }
+      );
     }
   }
+
+  getNameErrors(): string[] {
+    const control = this.getControl('name');
+    if (!control || !control.errors) return [];
+
+    const errors = [];
+    if (control.errors['required']) errors.push('Nome é obrigatório.');
+
+    if (control.errors['minlength']) {
+      const min = control.errors['minlength'];
+      errors.push(`Nome precisa de pelo menos ${min.requiredLength} letras. Faltam: ${min.requiredLength - min.actualLength}`);
+    }
+    
+    return errors;
+  }
+
 
   close() {
     this.activeModal.close();
@@ -54,6 +77,6 @@ export class AddressCreateComponent implements ModalWithSent {
   }
 
   getControl(field: string): AbstractControl | null {
-    return this.addressForm.get(field);
+    return this.form.get(field);
   }
 }

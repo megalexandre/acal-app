@@ -27,7 +27,7 @@ export class AddressDeleteComponent implements ModalWithSent {
   }
 
   confirm() {
-    this.addressService.deleteAddress(this.address.id).subscribe({
+    this.addressService.delete(this.address.id).subscribe({
       next: () => {
         this.close();
         this.sent.emit();

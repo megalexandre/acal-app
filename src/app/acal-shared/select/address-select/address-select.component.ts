@@ -29,7 +29,7 @@ export class AddressSelectComponent {
   }
 
   private loading() {
-    this.service.getAddresses().subscribe({
+    this.service.get().subscribe({
       next: (addresses) => {
         this.addresses = addresses ;
       }
