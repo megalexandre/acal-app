@@ -40,7 +40,7 @@ export class AddressCreateComponent implements ModalWithSent {
         },
         error: (error) => 
           {
-            this.t.error(error.error.message || 'Erro ao criar endereço');
+            this.t.error(error.message|| 'Erro ao criar endereço');
             this.form.reset()
           } 
       }
