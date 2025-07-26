@@ -4,6 +4,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { CustomerService } from '../customer.service';
 import { ModalWithSent } from '../../address/address.model';
 import { Customer } from '../customer.model';
+import { CpfCnpjValidator } from 'src/app/acal-shared/validator/cpf.cnpj-validator';
 
 @Component({
   selector: 'app-customer-edit',
@@ -26,14 +27,13 @@ export class CustomerEditComponent implements OnInit, ModalWithSent {
     public activeModal: NgbActiveModal,
   ) {
 
-
   }
 
   ngOnInit(): void {
     this.form = this.fb.group({
       id: [this.customer.id, [Validators.required]],
       name: [this.customer.name, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
-      identity_card: [this.customer.identity_card || ''],
+      identity_card: [this.customer.identity_card || '', [CpfCnpjValidator.valid(), Validators.required]],
       phone_number: [this.customer.phone_number || ''],
       partner_number: [this.customer.partner_number || ''],
       voter: [this.customer.voter,[Validators.required]],

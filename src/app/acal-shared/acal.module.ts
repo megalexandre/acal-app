@@ -13,6 +13,8 @@ import { AddressSelectComponent } from './select/address-select/address-select.c
 import { CategorySelectComponent } from './select/category-select/category-select.component';
 import { TableModule } from './table/table.module';
 import { PaginationComponent } from './pagination/pagination.component';
+import { CpfCnpjValidator } from './validator/cpf.cnpj-validator';
+import { CustomerSelectComponent } from './select/customer-select/customer-select.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { PaginationComponent } from './pagination/pagination.component';
     CategorySelectComponent,
     AddressSelectComponent,
     PaginationComponent,
+    CustomerSelectComponent,
   ],
 
   imports: [
@@ -47,10 +50,14 @@ import { PaginationComponent } from './pagination/pagination.component';
     ReferenceInputComponent,
     CategorySelectComponent,
     AddressSelectComponent,
-    PaginationComponent
+    PaginationComponent,
+
+    CustomerSelectComponent,
+
   ],
   providers:[
     provideNgxMask(),
+    CpfCnpjValidator,
   ]
   
 })

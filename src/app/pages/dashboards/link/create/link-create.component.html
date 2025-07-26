@@ -1,0 +1,19 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Criar Residência</h5>
+
+    <button type="button" outline class="btn-close" aria-label="Close" (click)="close()"></button>
+  </div>
+
+  <div class="modal-body">
+    <app-customer-select formControlName="customer" [control]="form.get('customer')"></app-customer-select>
+  </div>
+
+  <div class="modal-footer">
+    <div class="d-flex justify-content-between col-12">
+      <app-button type="button" btnType="secondary" outline (click)="close()"> Cancelar </app-button>
+
+      <app-button type="submit" btnType="success" outline> Salvar </app-button>
+    </div>
+  </div>
+</form>

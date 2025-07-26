@@ -6,8 +6,6 @@ import { ModalWithSent } from '../address/address.model';
 import { ToastService } from '../dashboard/toast-service';
 import { Invoice, InvoiceFilter } from './invoice.model';
 import { InvoiceService } from './invoice.service';
-import { P } from '@fullcalendar/core/internal-common';
-import { Page } from '../link/link.model';
 
 @Component({
   selector: 'app-invoice',
@@ -21,8 +19,6 @@ export class InvoiceComponent implements OnInit{
     size: 10,
     sort_orders: [{ property: 'created_at', direction: 'DESC' }]
   };
-
-  invoices: Invoice[] = [];
 
   loading = true;
 

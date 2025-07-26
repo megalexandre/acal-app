@@ -1,58 +1,46 @@
-<app-breadcrumbs title="Logradouros" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
-
 <div class="row">
   <div class="col-lg-12">
     <app-card>
-        <app-card-header>
-            <h5 class="card-title flex-grow-1 mb-0">Logradouros</h5>
-            
-            <div class="d-flex gap-1 flex-wrap">
-              <app-button btnType="success" outline (click)="create()"> Adicionar </app-button>
-            </div>
-        </app-card-header>
+      <app-card-header>
+        <h5 class="card-title flex-grow-1 mb-0">Logradouros</h5>
 
-        <app-card-body>
-          
-          <app-table>
-             <thead class="table-light" table-header>
-                <tr>
-                  <th class="col-11">Name</th>
-                  <th class="col-1 text-center">Action</th>
-                </tr>
-             </thead>
-          
-            <tbody class="list form-check-all" table-body>
-              <tr *ngFor="let address of addresses">
-                <td class="name">{{ address.name }}</td>
+        <div class="d-flex gap-1 flex-wrap">
+          <app-button btnType="success" outline (click)="create()"> Adicionar </app-button>
+        </div>
+      </app-card-header>
 
-                <td class="text-center">
-                  <ul class="list-inline hstack gap-2 mb-0">
+      <app-card-body>
+        <app-table>
+          <thead class="table-light" table-header>
+            <tr>
+              <th style="width: 05px">#</th>
+              <th style="width: 90px">Name</th>
+              <th style="width: 05px" class="text-center">Ações</th>
+            </tr>
+          </thead>
 
-                      <li 
-                        class="list-inline-item edit" 
-                        data-bs-toggle="tooltip" 
-                        data-bs-trigger="hover" 
-                        ngbTooltip="Edit" 
-                        placement="top"
-                        (click)="edit(address)"
-                        >
-                          <i class="ri-pencil-fill fs-16"></i>
-                      </li>
-                      
-                      <li class="list-inline-item me-0" ngbTooltip="Remove" placement="top" data-bs-toggle="tooltip" data-bs-trigger="hover" 
-                        (click)="delete(address)">
-                        <a class="text-danger d-inline-block remove-item-btn">
-                          <i class="ri-delete-bin-5-fill fs-16"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </td>
-                </tr>
-              </tbody>
-          
-          </app-table>
-        </app-card-body>
+          <tbody class="list form-check-all" table-body>
+            <tr *ngFor="let address of addresses; let i = index; trackBy: trackById">
+              <td class="name">{{ i + 1 }}</td>
+              <td class="name">{{ address.name }}</td>
 
+              <td class="text-center align-middle">
+                <ul class="list-inline hstack justify-content-center gap-2 mb-0">
+                  <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" ngbTooltip="Edit" placement="top" (click)="edit(address)">
+                    <i class="ri-pencil-fill fs-16"></i>
+                  </li>
+
+                  <li class="list-inline-item me-0" ngbTooltip="Remove" placement="top" data-bs-toggle="tooltip" data-bs-trigger="hover" (click)="delete(address)">
+                    <a class="text-danger d-inline-block remove-item-btn">
+                      <i class="ri-delete-bin-5-fill fs-16"></i>
+                    </a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </app-table>
+      </app-card-body>
     </app-card>
   </div>
 </div>

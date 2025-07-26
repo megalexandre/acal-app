@@ -1,0 +1,10 @@
+<div class="mb-3">
+  <label class="form-label">Usuário: <span class="text-danger">*</span></label>
+
+  <select class="form-select" [disabled]="disabled" [ngClass]="{ 'is-invalid': isInvalid(), 'is-valid': isValid() }" (change)="onSelectChange($event)">
+    <option value="" disabled [selected]="value === null">Selecione</option>
+    <option *ngFor="let customer of customers" [value]="customer.id">
+      {{ customer.name + ' ' + customer.identity_card }}
+    </option>
+  </select>
+</div>

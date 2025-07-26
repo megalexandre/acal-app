@@ -1,73 +1,64 @@
-import { Component, OnDestroy, OnInit, Type } from '@angular/core';
+import { Component, OnInit, Type } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Subject } from 'rxjs';
 
-import { CustomerService } from './customer.service';
-import { ToastService } from '../dashboard/toast-service';
-import { Customer } from './customer.model';
 import { ModalWithSent } from '../address/address.model';
+import { ToastService } from '../dashboard/toast-service';
 import { CustomerCreateComponent } from './create/customer-create.component';
-import { CustomerEditComponent } from './edit/customer-edit.component';
+import { Customer, CustomerFilter } from './customer.model';
+import { CustomerService } from './customer.service';
 import { CustomerDeleteComponent } from './delete/customer-delete.component';
+import { CustomerEditComponent } from './edit/customer-edit.component';
 
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
 })
-export class CustomerComponent implements OnInit, OnDestroy {
+export class CustomerComponent implements OnInit {
 
-  breadCrumbItems: Array<{ label: string; active?: boolean }> = [];
-
-  customeres: Customer[] = [];
-
-  dtOptions = {};
-  dtTrigger: Subject<void> = new Subject<void>();
+    page: any;
+    filter: CustomerFilter = {
+      name: null,
+      identity_card: null,
+      page: 0,
+      size: 10,
+      sort_orders: [{ property: 'name', direction: 'ASC' }]
+    };
+    
 
   loading = true;
 
   constructor(
-    private customerService: CustomerService,
+    private service: CustomerService,
     private modalService: NgbModal,
     public toastService: ToastService
   ) {}
 
   ngOnInit(): void {
-    this.breadCrumbItems = [
-      { label: 'Dashboards' },
-      { label: 'Usuários', active: true }
-    ];
-
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 100,
-      processing: true,
-      responsive: true,
-    };
 
     this.search();
   }
 
-  ngOnDestroy(): void {
-    this.dtTrigger.unsubscribe();
-  }
+  trackById(index: number, item: Customer): string {
+    return item.id;
+    }
 
-  search(): void {
+ search(): void {
     this.loading = true;
 
-    this.customerService.get().subscribe({
-      next: (customers) => {
-        this.customeres = customers;
-        this.dtTrigger.next();
+    this.service.paginate(this.filter).subscribe({
+      next: (page) => {
+        this.page = page;
         this.loading = false;
       },
       error: () => {
         this.loading = false;
-        this.toastService.show("Erro ao carregar dados.", {
-          classname: 'bg-danger text-white',
-          delay: 15000
-        });
       }
     });
+  }
+
+  onPageChange(newPage: number) {
+    this.filter.page = newPage -1;
+    this.search();
   }
 
   create(): void {

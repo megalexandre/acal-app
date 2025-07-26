@@ -1,50 +1,60 @@
-<app-breadcrumbs title="Residências" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
-
 <div class="row">
   <div class="col-lg-12">
     <app-card>
-        <app-card-header>
-            <h5 class="card-title flex-grow-1 mb-0">Residências</h5>
-            
-            <div class="d-flex gap-1 flex-wrap">
-              <app-button btnType="success" outline (click)="create()"> Adicionar </app-button>
+      <app-card-header>
+        <h5 class="card-title flex-grow-1 mb-0">Residências</h5>
+
+        <div class="d-flex gap-1 flex-wrap">
+          <app-button btnType="success" outline (click)="create()"> Adicionar </app-button>
+        </div>
+      </app-card-header>
+
+      <app-card-body>
+        <div class="table-responsive table-card">
+          <table class="table align-middle table-nowrap mb-0 table-gridjs">
+            <thead class="table-light">
+              <tr>
+                <th style="width: 73%">Name:</th>
+                <th style="width: 12%">Número:</th>
+                <th style="width: 12%">Letra:</th>
+                <th style="width: 3%">Ações:</th>
+              </tr>
+            </thead>
+            <tbody class="list form-check-all">
+              <tr *ngFor="let place of page.content; trackBy: trackById; let i = index">
+                <td>{{ place.name }}</td>
+                <td>{{ place.number }}</td>
+                <td>{{ place.letter }}</td>
+
+                <td class="text-center">
+                  <ul class="list-inline hstack gap-2 mb-0">
+                    <li class="list-inline-item me-0" ngbTooltip="Remove" placement="top" data-bs-toggle="tooltip" data-bs-trigger="hover" (click)="delete(place)">
+                      <a class="text-danger d-inline-block remove-item-btn">
+                        <i class="ri-delete-bin-5-fill fs-16"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </app-card-body>
+      <app-card-footer>
+        <div class="d-flex flex-wrap justify-content-between align-items-center mt-3" *ngIf="page">
+          <div class="mb-2">
+            <div class="text-muted">
+              Exibindo itens {{ page.number * page.size + 1 }} a
+              {{ page.number * page.size + page.number_of_elements }}
+              de {{ page.total_elements }} no total
             </div>
-        </app-card-header>
-
-        <app-card-body>
-          <div class="table-responsive table-card">
-            <table class="table align-middle table-nowrap mb-0 table-gridjs">
-              <thead class="table-light">
-                <tr>
-                  <th style="width: 3%;"> #:</th>
-                  <th style="width: 70%;"> Name:</th>
-                  <th style="width: 12%;"> Número:</th>
-                  <th style="width: 12%;"> Letra:</th>
-                  <th style="width: 3%;"> Ações:</th>
-                </tr>
-              </thead>
-              <tbody class="list form-check-all">
-                <tr *ngFor="let place of places; trackBy: trackById; let i = index;">
-                  <td>{{ i + 1}}</td>
-                  <td>{{ place.address }}</td>
-                  <td>{{ place.number }}</td>
-                  <td>{{ place.letter }}</td>
-
-                  <td class="text-center">
-                      <ul class="list-inline hstack gap-2 mb-0">
-                          <li class="list-inline-item me-0" ngbTooltip="Remove" placement="top" data-bs-toggle="tooltip" data-bs-trigger="hover" 
-                            (click)="delete(place)">
-                            <a class="text-danger d-inline-block remove-item-btn">
-                              <i class="ri-delete-bin-5-fill fs-16"></i>
-                            </a>
-                          </li>
-                        </ul>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
           </div>
-        </app-card-body>
+
+          <div class="d-flex gap-2 flex-wrap">
+            <app-pagination [page]="filter.page + 1" [pageSize]="filter.size" [totalItems]="page?.total_elements || 0" (pageChange)="onPageChange($event)"> </app-pagination>
+          </div>
+        </div>
+      </app-card-footer>
     </app-card>
   </div>
 </div>

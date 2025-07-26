@@ -1,7 +1,7 @@
 import { Component, OnInit, Type } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PlaceService } from './place.service';
-import { Place } from './place.model';
+import { Place, PlaceFilter } from './place.model';
 import { PlaceCreateComponent } from './create/place-create.component';
 import { ModalWithSent } from '../address/address.model';
 import { PlaceDeleteComponent } from './delete/place-delete.component';
@@ -11,13 +11,17 @@ import { PlaceDeleteComponent } from './delete/place-delete.component';
   templateUrl: './place.component.html',
 })
 export class PlaceComponent implements OnInit {
-  breadCrumbItems!: Array<{}>;
 
-  places: Place[] = [];
+  page: any;
+  filter: PlaceFilter = {
+    page: 0,
+    size: 10,
+    sort_orders: [{ property: 'name', direction: 'ASC' }]
+  };
+  
   loading = true;
 
   ngOnInit(): void {
-    this.breadCrumbItems = [{ label: 'Dashboards' }, { label: 'Residências', active: true }];
      this.search();
   }
 
@@ -26,18 +30,23 @@ export class PlaceComponent implements OnInit {
     private modalService: NgbModal,
   ) {}
 
-  search() {
+ search(): void {
     this.loading = true;
 
-    this.service.get().subscribe({
-      next: (places) => {
-        this.places = places;
+    this.service.paginate(this.filter).subscribe({
+      next: (page) => {
+        this.page = page;
         this.loading = false;
       },
       error: () => {
         this.loading = false;
-      },
+      }
     });
+  }
+
+  onPageChange(newPage: number) {
+    this.filter.page = newPage -1;
+    this.search();
   }
 
   trackById(index: number, item: Place): string {
@@ -68,5 +77,4 @@ export class PlaceComponent implements OnInit {
     componentInstance.sent.subscribe(() => this.search());
   }
 }
-
 

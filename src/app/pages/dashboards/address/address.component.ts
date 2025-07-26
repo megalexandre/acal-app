@@ -6,28 +6,26 @@ import { AddressService } from './address.service';
 import { AddressCreateComponent } from './create/address-create.component';
 import { AddressDeleteComponent } from './delete/address-delete.component';
 import { AddressEditComponent } from './edit/address-edit.component';
-import { ToastService } from '../dashboard/toast-service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-address',
   templateUrl: './address.component.html',
 })
 export class AddressComponent implements OnInit {
-  breadCrumbItems!: Array<{}>;
 
   addresses: Address[] = [];
   loading = true;
 
   ngOnInit(): void {
-    this.breadCrumbItems = [{ label: 'Dashboards' }, { label: 'Endereços', active: true }];
-     this.search();
+    this.search();
   }
 
   constructor(
     private addressService: AddressService,
     public service: PaginationService,
     private modalService: NgbModal,
-    public toastService: ToastService,
+    private t: ToastrService,
   ) {}
 
   search() {
@@ -40,11 +38,13 @@ export class AddressComponent implements OnInit {
       },
       error: (error) => {
         this.loading = false;
-        this.toastService
-          .show("error", { classname: 'bg-danger text-white', delay: 15000 });
- 
+        this.t.show("error");
       },
     });
+  }
+
+  trackById(index: number, item: Address): string {
+    return item.id;
   }
 
   create() {

@@ -1,41 +1,56 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { CustomerService } from '../customer.service';
-import { ModalWithSent } from '../../address/address.model';
-import { CpfCnpjValidator } from 'src/app/acal-shared/validator/cpf.cnpj-validator';
+import { Address, ModalWithSent } from '../../address/address.model';
+import { AddressService } from '../../address/address.service';
+import { CustomerService } from '../../customer/customer.service';
+import { PlaceService } from '../../place/place.service';
+import { LinkService } from '../link.service';
+import { Customer } from '../../customer/customer.model';
 
 @Component({
-  selector: 'app-customer-create',
-  templateUrl: './customer-create.component.html',
+  templateUrl: './link-create.component.html',
 })
-export class CustomerCreateComponent implements OnInit, ModalWithSent {
+export class LinkCreateComponent implements OnInit, ModalWithSent {
  
   @Output()
   public sent = new EventEmitter<string>();
 
   public form: FormGroup;
   public submitted = false;
+  public addresses: Address[] = [];
+
+  public customers: Customer[] = [];
+
 
   constructor(
     private fb: FormBuilder,
-    private service: CustomerService,
+    private customerService: CustomerService,
+    private placeService: PlaceService,
+    private addressService: AddressService,
+    private service: LinkService,
     public activeModal: NgbActiveModal,
   ) {
 
-
     this.form = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
-      identity_card: ['', [CpfCnpjValidator.valid(), Validators.required]],
-      phone_number: [''],
-      partner_number: [''],
-      voter: [null,[Validators.required]],
+      number: ["A", [Validators.required]],
+      customer_id: [null, [Validators.required]],
+      place_id: [null, [Validators.required]],
+      category_id: [null, [Validators.required]],
+      exclusive_member: [null, [Validators.required]],
     });
-
   }
+
 
   ngOnInit(): void {
+    this.customerService.get().subscribe({
+      next: (customers) => {
+        this.customers = customers.sort((a, b) => a.name.localeCompare(b.name));;
+      }
+    });
+    
   }
+
 
   async onSubmit() {
     this.submitted = true;
@@ -67,5 +82,4 @@ export class CustomerCreateComponent implements OnInit, ModalWithSent {
   getControl(field: string): AbstractControl | null {
     return this.form.get(field);
   }
-
 }

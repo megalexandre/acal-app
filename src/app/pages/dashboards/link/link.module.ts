@@ -10,18 +10,20 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { LinkService } from './link.service';
 import { LinkRoutingModule } from './link-routing.module';
 import { LinkComponent } from './link.component';
+import { LinkCreateComponent } from './create/link-create.component';
 
 @NgModule({
   declarations: [
     LinkComponent, 
+    LinkCreateComponent,
   ],
   imports: [
+    CommonModule, 
     FormsModule,
     ReactiveFormsModule, 
     LinkRoutingModule,
     FeatherModule.pick(allIcons), 
     NgbPaginationModule, 
-    CommonModule, 
     SharedModule, 
     TranslateModule, 
     AcalModule,

@@ -1,4 +1,35 @@
-<app-breadcrumbs title="Usúarios" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<app-card>
+  <app-card-body>
+    <div class="accordion w-100">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Filtros</button>
+        </h2>
+
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <div class="row">
+              <div class="col-xxl-4 col-md-6">
+                <label class="form-label">Sócio:</label>
+                <input type="text" class="form-control" (keydown.enter)="search()" [(ngModel)]="filter.name" />
+              </div>
+
+              <div class="col-xxl-4 col-md-6">
+                <label class="form-label">Identificação:</label>
+                <input type="text" class="form-control" (keydown.enter)="search()" [(ngModel)]="filter.identity_card" />
+              </div>
+
+              <div class="col-12 col-md-2 offset-md-10 d-grid">
+                <label class="form-label invisible">Buscar</label>
+                <button type="button" class="btn btn-outline-primary" (click)="search()"><i class="mdi mdi-magnify"></i> Buscar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </app-card-body>
+</app-card>
 
 <div class="row">
   <div class="col-lg-12">
@@ -10,35 +41,55 @@
         </div>
       </app-card-header>
 
-      <app-card-body *ngIf="!loading">
-        <table datatable [dtOptions]="dtOptions" nclass="table table-striped">
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Identificação</th>
-              <th class="text-center">Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let customer of customeres">
-              <td>{{ customer.name }}</td>
-              <td>{{ customer.identity_card }}</td>
-              <td class="text-center">
-                <button class="btn btn-primary me-1" (click)="edit(customer)">
-                  <i class="ri-pencil-fill"></i>
-                </button>
-                <button class="btn btn-danger" (click)="delete(customer)">
-                  <i class="ri-delete-bin-5-fill"></i>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <app-card-body>
+        <div class="table-responsive table-card">
+          <table class="table table-striped table-borded align-middle table-nowrap mb-0">
+            <thead>
+              <tr>
+                <th style="width: 80%">Nome</th>
+                <th style="width: 15%">Identificação</th>
+                <th style="width: 5%">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let customer of page.content; trackBy: trackById; let i = index">
+                <td>{{ customer.name }}</td>
+                <td>{{ customer.identity_card }}</td>
+
+                <td class="text-center">
+                  <ul class="list-inline hstack justify-content-center gap-2 mb-0">
+                    <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" ngbTooltip="Edit" placement="top" (click)="edit(customer)">
+                      <i class="ri-pencil-fill fs-16"></i>
+                    </li>
+
+                    <li class="list-inline-item me-0" ngbTooltip="Remove" placement="top" data-bs-toggle="tooltip" data-bs-trigger="hover" (click)="delete(customer)">
+                      <a class="text-danger d-inline-block remove-item-btn">
+                        <i class="ri-delete-bin-5-fill fs-16"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </app-card-body>
 
-      <div *ngIf="loading" class="text-center p-3">
-        <div class="spinner-border text-primary" role="status"></div>
-      </div>
+      <app-card-footer>
+        <div class="d-flex flex-wrap justify-content-between align-items-center mt-3" *ngIf="page">
+          <div class="mb-2">
+            <div class="text-muted">
+              Exibindo itens {{ page.number * page.size + 1 }} a
+              {{ page.number * page.size + page.number_of_elements }}
+              de {{ page.total_elements }} no total
+            </div>
+          </div>
+
+          <div class="d-flex gap-2 flex-wrap">
+            <app-pagination [page]="filter.page + 1" [pageSize]="filter.size" [totalItems]="page?.total_elements || 0" (pageChange)="onPageChange($event)"> </app-pagination>
+          </div>
+        </div>
+      </app-card-footer>
     </app-card>
   </div>
 </div>

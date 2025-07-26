@@ -1,3 +1,4 @@
+import { SortOrder } from "../link/link.model";
 
 export class Place {
 
@@ -23,4 +24,10 @@ export class Place {
     );
   }
 
+}
+
+export interface PlaceFilter {
+  page: number;
+  size: number;
+  sort_orders: SortOrder[];
 }

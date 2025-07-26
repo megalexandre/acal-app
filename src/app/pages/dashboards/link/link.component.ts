@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalWithSent } from '../address/address.model';
 import { Link, LinkFilter, Page } from './link.model';
 import { LinkService } from './link.service';
+import { LinkCreateComponent } from './create/link-create.component';
 
 @Component({
   selector: 'app-link',
@@ -71,7 +72,7 @@ export class LinkComponent implements OnInit {
   }
 
   create() {
-    //this.openModal(LinkCreateComponent);
+    this.openModal(LinkCreateComponent);
   }
 
   delete(link: Link) {
