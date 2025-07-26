@@ -39,9 +39,6 @@ import { AuthenticationEffects } from './store/Authentication/authentication.eff
 
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
-import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
-
-import { NbThemeModule } from '@nebular/theme';
 
 registerLocaleData(localePt);
 
