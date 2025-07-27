@@ -85,7 +85,7 @@
               <tr *ngFor="let l of page.content; trackBy: trackById">
                 <td>{{ l.customer.name }}</td>
                 <td>{{ l.category.name }}</td>
-                <td>{{ l.place.address }}</td>
+                <td>{{ l.place.name }}</td>
                 <td>{{ l.place.number }}</td>
                 <td>{{ l.place.letter }}</td>
                 <td>{{ l.total | currency: 'BRL' }}</td>
@@ -106,36 +106,11 @@
       </app-card-body>
 
       <app-card-footer>
-        <div class="d-flex flex-wrap justify-content-between align-items-center mt-3" *ngIf="page">
-          <div class="mb-2">
-            itens por pagina:
-            <select class="form-select" [(ngModel)]="filter.size" (change)="search()">
-              <option value="10" selected>10</option>
-              <option value="20" selected>20</option>
-              <option value="50" selected>50</option>
-              <option value="100" selected>100</option>
-            </select>
-
-            <div class="text-muted">Página {{ page.number + 1 }} de {{ page.total_pages }}</div>
-
-            <div class="text-muted">
-              — Exibindo itens {{ page.number * page.size + 1 }} a
-              {{ page.number * page.size + page.number_of_elements }}
-              de {{ page.total_elements }} no total
-            </div>
-          </div>
+        <div class="d-flex flex-wrap justify-content-between align-items-center" *ngIf="page">
+          <div class="mb-2"></div>
 
           <div class="d-flex gap-2 flex-wrap">
-            <div class="container-fluid">
-              <app-button btnType="primary" outline [disabled]="page.first" (click)="loadPage(0)"> <i class="mdi mdi-chevron-double-left"></i>Primeira </app-button>
-              <app-button btnType="primary" outline [disabled]="page.first" (click)="loadPage(page.number - 1)"> <i class="mdi mdi-chevron-left"></i>Anterior </app-button>
-              <app-button btnType="primary" outline [disabled]="true">
-                <i class="mdi mdi-cellphone-link"></i>
-                {{ page.number + 1 }}
-              </app-button>
-              <app-button btnType="primary" outline [disabled]="page.last" (click)="loadPage(page.number + 1)"> <i class="mdi mdi-chevron-right"></i> Próxima </app-button>
-              <app-button btnType="primary" outline [disabled]="page.last" (click)="loadPage(page.total_pages - 1)"> <i class="mdi mdi-chevron-double-right"></i> Ultima </app-button>
-            </div>
+            <app-pagination [page]="filter.page + 1" [pageSize]="filter.size" [totalItems]="page.total_elements || 0" (pageChange)="onPageChange($event)"> </app-pagination>
           </div>
         </div>
       </app-card-footer>

@@ -1,12 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Address, ModalWithSent } from '../../address/address.model';
-import { AddressService } from '../../address/address.service';
-import { CustomerService } from '../../customer/customer.service';
-import { PlaceService } from '../../place/place.service';
+import { ModalWithSent } from '../../address/address.model';
 import { LinkService } from '../link.service';
-import { Customer } from '../../customer/customer.model';
 
 @Component({
   templateUrl: './link-create.component.html',
@@ -18,16 +14,9 @@ export class LinkCreateComponent implements OnInit, ModalWithSent {
 
   public form: FormGroup;
   public submitted = false;
-  public addresses: Address[] = [];
-
-  public customers: Customer[] = [];
-
 
   constructor(
     private fb: FormBuilder,
-    private customerService: CustomerService,
-    private placeService: PlaceService,
-    private addressService: AddressService,
     private service: LinkService,
     public activeModal: NgbActiveModal,
   ) {
@@ -35,29 +24,31 @@ export class LinkCreateComponent implements OnInit, ModalWithSent {
     this.form = this.fb.group({
       number: ["A", [Validators.required]],
       customer_id: [null, [Validators.required]],
-      place_id: [null, [Validators.required]],
+      place_id: [{id: '69c36dd8-5f82-11f0-afe4-a20d12156e59'}, [Validators.required]],
       category_id: [null, [Validators.required]],
       exclusive_member: [null, [Validators.required]],
     });
   }
 
-
   ngOnInit(): void {
-    this.customerService.get().subscribe({
-      next: (customers) => {
-        this.customers = customers.sort((a, b) => a.name.localeCompare(b.name));;
-      }
-    });
     
   }
-
 
   async onSubmit() {
     this.submitted = true;
     this.form.markAllAsTouched();
 
     if (this.form.valid) {
-      this.service.create(this.form.value).subscribe({
+
+      const request = {
+        number: '2025',
+        customer_id: this.customerControl.value.id,
+        place_id: this.placeControl.value.id,
+        category_id: this.categoryControl.value.id,
+        exclusive_member: this.exclusiveMenberControl.value,
+      }
+
+      this.service.create(request).subscribe({
         next: () => {
           this.sent.emit();
           this.close();
@@ -65,6 +56,8 @@ export class LinkCreateComponent implements OnInit, ModalWithSent {
         error: () => this.form.reset(),
       });
     }
+
+
   }
 
   close() {
@@ -82,4 +75,21 @@ export class LinkCreateComponent implements OnInit, ModalWithSent {
   getControl(field: string): AbstractControl | null {
     return this.form.get(field);
   }
+
+  get customerControl(): FormControl{
+    return this.form.get('customer_id') as FormControl;
+  }  
+
+  get categoryControl(): FormControl {
+    return this.form.get('category_id') as FormControl;
+  }
+
+  get exclusiveMenberControl(): FormControl {
+    return this.form.get('exclusive_member') as FormControl;
+  }
+
+  get placeControl(): FormControl{
+    return this.form.get('place_id') as FormControl;
+  }
+  
 }

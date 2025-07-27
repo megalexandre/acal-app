@@ -15,6 +15,8 @@ import { TableModule } from './table/table.module';
 import { PaginationComponent } from './pagination/pagination.component';
 import { CpfCnpjValidator } from './validator/cpf.cnpj-validator';
 import { CustomerSelectComponent } from './select/customer-select/customer-select.component';
+import { YesOrNoSelectComponent } from './select/yes-or-no-select/yes-or-no-select.component';
+import { PlaceSelectComponent } from './select/place-select/place-select.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { CustomerSelectComponent } from './select/customer-select/customer-selec
     AddressSelectComponent,
     PaginationComponent,
     CustomerSelectComponent,
+    YesOrNoSelectComponent,  
+    PlaceSelectComponent,
   ],
 
   imports: [
@@ -51,10 +55,11 @@ import { CustomerSelectComponent } from './select/customer-select/customer-selec
     CategorySelectComponent,
     AddressSelectComponent,
     PaginationComponent,
-
     CustomerSelectComponent,
-
+    YesOrNoSelectComponent,
+    PlaceSelectComponent
   ],
+
   providers:[
     provideNgxMask(),
     CpfCnpjValidator,

@@ -1,12 +1,27 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">Criar Residência</h5>
+    <h5 class="modal-title" id="exampleModalLabel">Criar Ligação</h5>
 
     <button type="button" outline class="btn-close" aria-label="Close" (click)="close()"></button>
   </div>
 
   <div class="modal-body">
-    <app-customer-select formControlName="customer" [control]="form.get('customer')"></app-customer-select>
+    {{ form.valid }}
+    <app-customer-select formControlName="customer_id" [control]="customerControl" />
+
+    <div class="mb-3">
+      <label class="form-label">Categoria: <span class="text-danger">*</span></label>
+      <app-category-select formControlName="category_id" [control]="categoryControl" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Locais: <span class="text-danger">*</span></label>
+      <app-place-select formControlName="place_id" [control]="placeControl" />
+    </div>
+
+    <div class="mb-3">
+      <app-yes-or-no-select formControlName="exclusive_member" [control]="exclusiveMenberControl" label="É exclusivamente sócio?" />
+    </div>
   </div>
 
   <div class="modal-footer">

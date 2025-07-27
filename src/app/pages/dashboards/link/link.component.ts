@@ -39,12 +39,17 @@ export class LinkComponent implements OnInit {
     this.search();
   }
 
+  onPageChange(newPage: number) {
+    this.filter.page = newPage -1;
+    this.search();
+  }
+
 
   search() {
     this.loading = true;
 
     this.service.paginate(this.filter).subscribe({
-      next: (page) => {
+      next: (page: any) => {
         this.page = page;
         this.loading = false;
       },

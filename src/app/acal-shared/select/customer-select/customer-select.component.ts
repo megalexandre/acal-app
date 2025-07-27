@@ -1,9 +1,10 @@
 
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CustomerService } from 'src/app/pages/dashboards/customer/customer.service';
 
 @Component({
+
   selector: 'app-customer-select',
   templateUrl: './customer-select.component.html',
   providers: [
@@ -17,8 +18,8 @@ import { CustomerService } from 'src/app/pages/dashboards/customer/customer.serv
 export class CustomerSelectComponent implements OnInit, ControlValueAccessor {
   
   @Input() 
-  control: AbstractControl | null = null;
-
+  control: FormControl | null = null;
+  
   customers: any[] = [];
 
   value: any = null;
@@ -44,6 +45,7 @@ export class CustomerSelectComponent implements OnInit, ControlValueAccessor {
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
+
   setDisabledState?(isDisabled: boolean): void {
     this.disabled = isDisabled;
   }
@@ -58,10 +60,10 @@ export class CustomerSelectComponent implements OnInit, ControlValueAccessor {
   }
 
   isValid(): boolean {
-    return false;
+    return this.control ? this.control.valid && (this.control.dirty || this.control.touched) : false;;
   }
 
   isInvalid(): boolean {
-    return false;
+    return this.control ? this.control.invalid && (this.control.dirty || this.control.touched) : false;
   }
 }

@@ -78,7 +78,7 @@ export class InvoiceCreateComponent  implements OnInit {
 
   private filterByAddress(invoices: Invoice[]): Invoice[] {
     if (!this.filter.address) return invoices;
-    return invoices.filter(invoice => invoice.place.address === this.filter.address);
+    return invoices.filter(invoice => invoice.place.name === this.filter.address);
   }
 
   private filterByCategory(invoices: Invoice[]): Invoice[] {
@@ -98,7 +98,7 @@ export class InvoiceCreateComponent  implements OnInit {
 
   private getUniqueAddresses(invoices: SelectableInvoice[]): string[] {
     return Array.from(
-      new Set(invoices.map(invoice => invoice.place.address))
+      new Set(invoices.map(invoice => invoice.place.name))
     ).sort((a, b) => a.localeCompare(b));
   }
 
@@ -123,7 +123,7 @@ export class InvoiceCreateComponent  implements OnInit {
     const groups: SelectableInvoiceGroup[] = uniqueAddressesName.map(address => ({
       name: address,
       checked: false,
-      items: selectablesInvoice.filter(invoice => invoice.place.address === address),
+      items: selectablesInvoice.filter(invoice => invoice.place.name === address),
     }));
 
     if(this.addresses.length === 0) {

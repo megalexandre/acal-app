@@ -1,55 +1,55 @@
 import { Component, Input, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
-import { Category, Group } from 'src/app/pages/dashboards/category/category.model';
-import { CategoryService } from 'src/app/pages/dashboards/category/category.service';
+import { Place } from 'src/app/pages/dashboards/place/place.model';
+import { PlaceService } from 'src/app/pages/dashboards/place/place.service';
 
-export interface CategorySelect {
-  group: string;
-  categories: Category[];
+export interface PlaceSelect {
+  name: string;
+  itens: Place[];
 }
 
 @Component({
-  selector: 'app-category-select',
-  templateUrl: './category-select.component.html',
+  selector: 'app-place-select',
+  templateUrl: './place-select.component.html',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CategorySelectComponent),
+      useExisting: forwardRef(() => PlaceSelectComponent),
       multi: true
     }
   ]
 })
-export class CategorySelectComponent implements ControlValueAccessor {
+export class PlaceSelectComponent implements ControlValueAccessor {
 
   @Input() disabled = false;
   @Input() control: FormControl | null = null;
 
-  groups: CategorySelect[] = [];
+  groups: PlaceSelect[] | null = null;
 
   value: string | null = null;
 
   private onChange: (value: any) => void = () => {};
   private onTouch: () => void = () => {};
 
-  constructor(private service: CategoryService) {
-    this.loadCategories();
+  constructor(private service: PlaceService) {
+    this.load();
   }
 
-  private loadCategories() {
+  private load() {
     this.service.get().subscribe({
-      next: (categories) => {
-        this.groups = this.buildGroups(categories);
+      next: (options: Place[]) => {
+        this.groups = this.build(options);
       }
     });
   }
 
-  private buildGroups(categories: Category[]): CategorySelect[] {
-    return Array.from(new Set(categories.map(c => c.group)))
+  private build(options: Place[]): PlaceSelect[] {
+    return Array.from(new Set(options.map(g => g.name)))
       .sort((a, b) => a.localeCompare(b))
-      .map(g => ({
-        group: g,
-        categories: categories
-          .filter(category => category.group === g)
+      .map(name => ({
+        name: name,
+        itens: options
+          .filter(option => option.name === name)
           .sort((a, b) => a.name.localeCompare(b.name))
       }));
   }

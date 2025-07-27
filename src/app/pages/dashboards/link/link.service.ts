@@ -21,8 +21,8 @@ export class LinkService {
     );
   }
   
-  create(Link: Omit<Link, 'id'>): Observable<Link> {
-    return this.http.post<Link>(this.apiUrl, Link);
+  create(request: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, request);
   }
 
   update(Link: Link): Observable<Link> {

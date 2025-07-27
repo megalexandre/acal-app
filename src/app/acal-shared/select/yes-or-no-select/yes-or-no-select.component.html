@@ -1,0 +1,7 @@
+<label class="form-label">{{ label }}</label>
+
+<select class="form-select" [ngClass]="{ 'is-invalid': isInvalid(), 'is-valid': isValid() }" [(ngModel)]="value" (ngModelChange)="onValueChange($event)" [disabled]="isDisabled">
+  <option [ngValue]="null">Selecione</option>
+  <option [ngValue]="true">Sim</option>
+  <option [ngValue]="false">Não</option>
+</select>
