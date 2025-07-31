@@ -15,11 +15,19 @@ import { InvoiceRoutingModule } from './invoice-routing.module';
 import { InvoiceComponent } from './invoice.component';
 import { InvoiceCreateComponent } from './create/invoice-create.component';
 import { DataTablesModule } from 'angular-datatables';
+import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
+import { InvoiceViewHeaderComponent } from './invoice-view/invoice-view-header/invoice-view-header.component';
+import { InvoiceViewDetailComponent } from './invoice-view/invoice-view-detail/invoice-view-detail.component';
+import { InvoiceViewWaterQualityComponent } from './invoice-view/invoice-view-water-quality/invoice-view-water-quality.component';
 
 @NgModule({
   declarations: [
     InvoiceComponent,
     InvoiceCreateComponent,
+    InvoiceViewComponent,
+    InvoiceViewHeaderComponent,
+    InvoiceViewDetailComponent,
+    InvoiceViewWaterQualityComponent
   ],
   imports: [
     SharedModule,
