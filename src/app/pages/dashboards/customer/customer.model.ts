@@ -17,3 +17,11 @@ export interface CustomerFilter {
   size: number;
   sort_orders: SortOrder[];
 }
+
+export const DEFAULT_CUSTOMER_FILTER: CustomerFilter = {
+  name: null,
+  identity_card: null,
+  page: 0,
+  size: 10,
+  sort_orders: [{ property: 'name', direction: 'ASC' }]
+};

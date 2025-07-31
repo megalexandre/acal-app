@@ -4,6 +4,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalWithSent } from '../../address/address.model';
 import { WaterQualityService } from '../water-quality.service';
 import { WaterParam } from '../water-quality.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-water-quality-create',
@@ -23,6 +24,7 @@ export class WaterQualityCreateComponent implements OnInit, ModalWithSent {
     private fb: FormBuilder,
     private service: WaterQualityService,
     public activeModal: NgbActiveModal,
+    private t: ToastrService,
   ) {}
 
   ngOnInit(): void {
@@ -70,7 +72,7 @@ export class WaterQualityCreateComponent implements OnInit, ModalWithSent {
           this.close();
         },
         error: (err) => {
-          this.form.reset();
+          this.t.error(err)
         },
       });
     }

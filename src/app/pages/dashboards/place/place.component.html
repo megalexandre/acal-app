@@ -41,19 +41,7 @@
         </div>
       </app-card-body>
       <app-card-footer>
-        <div class="d-flex flex-wrap justify-content-between align-items-center mt-3" *ngIf="page">
-          <div class="mb-2">
-            <div class="text-muted">
-              Exibindo itens {{ page.number * page.size + 1 }} a
-              {{ page.number * page.size + page.number_of_elements }}
-              de {{ page.total_elements }} no total
-            </div>
-          </div>
-
-          <div class="d-flex gap-2 flex-wrap">
-            <app-pagination [page]="filter.page + 1" [pageSize]="filter.size" [totalItems]="page?.total_elements || 0" (pageChange)="onPageChange($event)"> </app-pagination>
-          </div>
-        </div>
+        <app-pagination [page]="page" (pageChange)="onPageChange($event)" />
       </app-card-footer>
     </app-card>
   </div>

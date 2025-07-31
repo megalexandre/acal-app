@@ -4,7 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalWithSent } from '../address/address.model';
 import { ToastService } from '../dashboard/toast-service';
 import { CustomerCreateComponent } from './create/customer-create.component';
-import { Customer, CustomerFilter } from './customer.model';
+import { Customer, CustomerFilter, DEFAULT_CUSTOMER_FILTER } from './customer.model';
 import { CustomerService } from './customer.service';
 import { CustomerDeleteComponent } from './delete/customer-delete.component';
 import { CustomerEditComponent } from './edit/customer-edit.component';
@@ -15,16 +15,8 @@ import { CustomerEditComponent } from './edit/customer-edit.component';
 })
 export class CustomerComponent implements OnInit {
 
-    page: any;
-    filter: CustomerFilter = {
-      name: null,
-      identity_card: null,
-      page: 0,
-      size: 10,
-      sort_orders: [{ property: 'name', direction: 'ASC' }]
-    };
-    
-
+  page: any;
+  filter: CustomerFilter = { ...DEFAULT_CUSTOMER_FILTER, sort_orders: [...DEFAULT_CUSTOMER_FILTER.sort_orders] };
   loading = true;
 
   constructor(
@@ -34,18 +26,22 @@ export class CustomerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
     this.search();
   }
 
   trackById(index: number, item: Customer): string {
     return item.id;
-    }
+  }
 
- search(): void {
+  clear(): void {
+    this.filter = { ...DEFAULT_CUSTOMER_FILTER, sort_orders: [...DEFAULT_CUSTOMER_FILTER.sort_orders] };;
+    this.search();
+  }
+ 
+  search(): void {
     this.loading = true;
 
-    this.service.paginate(this.filter).subscribe({
+    this.service.paginate({...this.filter}).subscribe({
       next: (page) => {
         this.page = page;
         this.loading = false;
@@ -56,9 +52,12 @@ export class CustomerComponent implements OnInit {
     });
   }
 
-  onPageChange(newPage: number) {
-    this.filter.page = newPage -1;
-    this.search();
+
+  onPageChange(page: number): void {
+    setTimeout(() => {
+      this.filter.page = page;
+      this.search();
+    });
   }
 
   create(): void {

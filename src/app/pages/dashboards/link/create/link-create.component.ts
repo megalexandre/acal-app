@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalWithSent } from '../../address/address.model';
 import { LinkService } from '../link.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   templateUrl: './link-create.component.html',
@@ -19,12 +20,13 @@ export class LinkCreateComponent implements OnInit, ModalWithSent {
     private fb: FormBuilder,
     private service: LinkService,
     public activeModal: NgbActiveModal,
+    private t: ToastrService,
   ) {
 
     this.form = this.fb.group({
       number: ["A", [Validators.required]],
       customer_id: [null, [Validators.required]],
-      place_id: [{id: '69c36dd8-5f82-11f0-afe4-a20d12156e59'}, [Validators.required]],
+      place_id: [null, [Validators.required]],
       category_id: [null, [Validators.required]],
       exclusive_member: [null, [Validators.required]],
     });
@@ -53,7 +55,10 @@ export class LinkCreateComponent implements OnInit, ModalWithSent {
           this.sent.emit();
           this.close();
         },
-        error: () => this.form.reset(),
+        error: (error) => {
+          this.form.reset()
+          this.t.error('Error', error)
+        },
       });
     }
 

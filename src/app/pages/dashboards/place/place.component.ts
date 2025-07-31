@@ -1,4 +1,4 @@
-import { Component, OnInit, Type } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, Type } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PlaceService } from './place.service';
 import { Place, PlaceFilter } from './place.model';
@@ -9,6 +9,7 @@ import { PlaceDeleteComponent } from './delete/place-delete.component';
 @Component({
   selector: 'app-place',
   templateUrl: './place.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlaceComponent implements OnInit {
 
@@ -33,9 +34,9 @@ export class PlaceComponent implements OnInit {
  search(): void {
     this.loading = true;
 
-    this.service.paginate(this.filter).subscribe({
+    this.service.paginate({...this.filter}).subscribe({
       next: (page) => {
-        this.page = page;
+        this.page = { ...page }
         this.loading = false;
       },
       error: () => {
@@ -45,7 +46,7 @@ export class PlaceComponent implements OnInit {
   }
 
   onPageChange(newPage: number) {
-    this.filter.page = newPage -1;
+    this.filter.page = newPage;
     this.search();
   }
 

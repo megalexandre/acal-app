@@ -106,13 +106,7 @@
       </app-card-body>
 
       <app-card-footer>
-        <div class="d-flex flex-wrap justify-content-between align-items-center" *ngIf="page">
-          <div class="mb-2"></div>
-
-          <div class="d-flex gap-2 flex-wrap">
-            <app-pagination [page]="filter.page + 1" [pageSize]="filter.size" [totalItems]="page.total_elements || 0" (pageChange)="onPageChange($event)"> </app-pagination>
-          </div>
-        </div>
+        <app-pagination [page]="page" (pageChange)="onPageChange($event)" />
       </app-card-footer>
     </app-card>
   </div>

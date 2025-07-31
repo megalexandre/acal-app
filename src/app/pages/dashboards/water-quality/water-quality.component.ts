@@ -2,7 +2,6 @@ import { Component, OnInit, Type } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { ModalWithSent } from '../address/address.model';
-import { ToastService } from '../dashboard/toast-service';
 import { WaterQualityCreateComponent } from './create/water-quality-create.component';
 import { WaterQualityDeleteComponent } from './delete/water-quality-delete.component';
 import { WaterQuality } from './water-quality.model';
@@ -19,8 +18,7 @@ export class WaterQualityComponent implements OnInit{
 
   constructor(
     private service: WaterQualityService,
-    private modalService: NgbModal,
-    public toastService: ToastService
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {

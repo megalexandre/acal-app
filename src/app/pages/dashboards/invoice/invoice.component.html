@@ -50,7 +50,7 @@
       </app-card-body>
 
       <app-card-footer>
-        <app-pagination [page]="filter.page + 1" [pageSize]="filter.size" [totalItems]="page?.total_elements || 0" (pageChange)="onPageChange($event)"> </app-pagination>
+        <app-pagination [page]="page" (pageChange)="onPageChange($event)" />
       </app-card-footer>
     </app-card>
   </div>

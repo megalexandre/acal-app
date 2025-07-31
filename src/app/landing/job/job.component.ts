@@ -37,7 +37,10 @@ export class JobComponent implements OnInit {
     if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
       (document.getElementById('back-to-top') as HTMLElement).style.display = 'block';
     } else {
-      (document.getElementById('back-to-top') as HTMLElement).style.display = 'none';
+      const backToTop = document.getElementById('back-to-top');
+      if (backToTop) {
+        (backToTop as HTMLElement).style.display = 'none';
+      }
     }
   }
 

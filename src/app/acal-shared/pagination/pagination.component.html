@@ -1,16 +1,23 @@
-<div class="d-flex gap-2 align-items-center justify-content-end pt-2 flex-wrap">
-  <!-- Primeira página -->
-  <app-button btnType="primary" outline [disabled]="isFirstPage()" (click)="goToPage(1)"> <i class="mdi mdi-chevron-double-left"></i> Primeira </app-button>
+<div class="d-flex flex-wrap justify-content-between align-items-center" *ngIf="page">
+  <div class="mb-2">
+    <div><strong>Total:</strong> {{ page.total_elements }} registros | <strong>Página:</strong> {{ page.number + 1 }} de {{ page.total_pages }} | <strong>Exibindo:</strong> {{ page.number_of_elements }} itens</div>
+  </div>
 
-  <!-- Página anterior -->
-  <app-button btnType="primary" outline [disabled]="isFirstPage()" (click)="goToPage(page - 1)"> <i class="mdi mdi-chevron-left"></i> Anterior </app-button>
+  <div class="d-flex gap-2 flex-wrap">
+    <div class="d-flex gap-2 align-items-center justify-content-end pt-2 flex-wrap">
+      <app-button btnType="primary" outline [disabled]="isFirstPage()" (click)="goToPage(0)"> <i class="mdi mdi-chevron-double-left"></i> Primeira </app-button>
 
-  <!-- Página atual -->
-  <app-button btnType="primary" outline [disabled]="true"> <i class="mdi mdi-cellphone-link"></i> {{ page }} </app-button>
+      <!-- Página anterior -->
+      <app-button btnType="primary" outline [disabled]="isFirstPage()" (click)="goToPage(currentPage - 1)"> <i class="mdi mdi-chevron-left"></i> Anterior </app-button>
 
-  <!-- Página seguinte -->
-  <app-button btnType="primary" outline [disabled]="isLastPage()" (click)="goToPage(page + 1)"> <i class="mdi mdi-chevron-right"></i> Próxima </app-button>
+      <!-- Página atual -->
+      <app-button btnType="primary" outline [disabled]="true"> <i class="mdi mdi-cellphone-link"></i> {{ currentPage + 1 }} </app-button>
 
-  <!-- Última página -->
-  <app-button btnType="primary" outline [disabled]="isLastPage()" (click)="goToPage(totalPages)"> <i class="mdi mdi-chevron-double-right"></i> Última </app-button>
+      <!-- Página seguinte -->
+      <app-button btnType="primary" outline [disabled]="isLastPage()" (click)="goToPage(currentPage + 1)"> <i class="mdi mdi-chevron-right"></i> Próxima </app-button>
+
+      <!-- Última página -->
+      <app-button btnType="primary" outline [disabled]="isLastPage()" (click)="goToPage(totalPages - 1)"> <i class="mdi mdi-chevron-double-right"></i> Última </app-button>
+    </div>
+  </div>
 </div>

@@ -8,7 +8,7 @@
 
         <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
           <div class="accordion-body">
-            <div class="row">
+            <div class="row mb-3">
               <div class="col-xxl-4 col-md-6">
                 <label class="form-label">Sócio:</label>
                 <input type="text" class="form-control" (keydown.enter)="search()" [(ngModel)]="filter.name" />
@@ -18,10 +18,15 @@
                 <label class="form-label">Identificação:</label>
                 <input type="text" class="form-control" (keydown.enter)="search()" [(ngModel)]="filter.identity_card" />
               </div>
+            </div>
 
-              <div class="col-12 col-md-2 offset-md-10 d-grid">
-                <label class="form-label invisible">Buscar</label>
-                <button type="button" class="btn btn-outline-primary" (click)="search()"><i class="mdi mdi-magnify"></i> Buscar</button>
+            <div class="row">
+              <div class="col-6 col-md-2 offset-md-8 mb-3">
+                <button type="button" class="btn btn-outline-info w-100" (click)="clear()"><i class="mdi mdi-magnify"></i> Limpar</button>
+              </div>
+
+              <div class="col-6 col-md-2">
+                <button type="button" class="btn btn-outline-primary w-100" (click)="search()"><i class="mdi mdi-magnify"></i> Buscar</button>
               </div>
             </div>
           </div>
@@ -52,7 +57,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let customer of page.content; trackBy: trackById; let i = index">
+              <tr *ngFor="let customer of page?.content; trackBy: trackById; let i = index">
                 <td>{{ customer.name }}</td>
                 <td>{{ customer.identity_card }}</td>
 
@@ -76,19 +81,7 @@
       </app-card-body>
 
       <app-card-footer>
-        <div class="d-flex flex-wrap justify-content-between align-items-center mt-3" *ngIf="page">
-          <div class="mb-2">
-            <div class="text-muted">
-              Exibindo itens {{ page.number * page.size + 1 }} a
-              {{ page.number * page.size + page.number_of_elements }}
-              de {{ page.total_elements }} no total
-            </div>
-          </div>
-
-          <div class="d-flex gap-2 flex-wrap">
-            <app-pagination [page]="filter.page + 1" [pageSize]="filter.size" [totalItems]="page?.total_elements || 0" (pageChange)="onPageChange($event)"> </app-pagination>
-          </div>
-        </div>
+        <app-pagination [page]="page" (pageChange)="onPageChange($event)" />
       </app-card-footer>
     </app-card>
   </div>

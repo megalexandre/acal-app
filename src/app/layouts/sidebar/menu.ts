@@ -2,6 +2,11 @@ import { MenuItem } from './menu.model';
 
 export const MENU: MenuItem[] = [
   {
+    id: 1,
+    label: 'Menu',
+    isTitle: true,
+  },
+  {
     id: 1000,
     label: 'Água',
     icon: 'las la-tachometer-alt',
