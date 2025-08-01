@@ -1,6 +1,12 @@
 <div class="container border">
   <app-invoice-view-header />
-  <app-invoice-view-detail />
-  <app-invoice-view-water-quality />
-  <app-invoice-view-detail />
+  <app-invoice-view-detail [invoice]="invoice" />
+  <app-invoice-view-water-quality [invoice]="invoice" />
+  <app-invoice-view-detail [invoice]="invoice" />
+</div>
+
+<div class="d-flex justify-content-between" style="gap: 1rem">
+  <div class="border rounded" style="flex: 1">
+    <app-button btnType="primary" outline (click)="back()" />
+  </div>
 </div>

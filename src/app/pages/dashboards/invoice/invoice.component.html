@@ -19,11 +19,12 @@
               <th>Cliente</th>
               <th>Categoria</th>
               <th>Total</th>
+              <th>Ações</th>
             </tr>
           </thead>
 
           <tbody class="list form-check-all" table-body>
-            <tr *ngFor="let i of page.content">
+            <tr *ngFor="let i of page.content" (dblclick)="onDoubleClick(i)">
               <td>{{ i.reference }}</td>
               <td>{{ i.due_date }}</td>
               <td>{{ i.place.address }}</td>

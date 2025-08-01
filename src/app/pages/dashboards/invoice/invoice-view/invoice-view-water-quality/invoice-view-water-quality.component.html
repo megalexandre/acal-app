@@ -4,7 +4,7 @@
 </div>
 
 <div class="table-responsive mb-3">
-  <table class="table table-bordered text-center">
+  <table class="table table-bordered table-striped text-center">
     <thead class="table-light">
       <tr>
         <th>Parâmetros</th>
@@ -14,35 +14,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Cor aparente - 15UH</td>
-        <td>4</td>
-        <td>3</td>
-        <td>3</td>
-      </tr>
-      <tr>
-        <td>Turbidez - 5.0 UT</td>
-        <td>4</td>
-        <td>3</td>
-        <td>3</td>
-      </tr>
-      <tr>
-        <td>Cloro - Min 0,2 mg/l</td>
-        <td>4</td>
-        <td>3</td>
-        <td>3</td>
-      </tr>
-      <tr>
-        <td>Escherichia Coli</td>
-        <td>4</td>
-        <td>3</td>
-        <td>3</td>
-      </tr>
-      <tr>
-        <td>Coliformes Totais</td>
-        <td>4</td>
-        <td>3</td>
-        <td>3</td>
+      <tr *ngFor="let item of invoice.water_quality.analysis">
+        <td>{{ item.name }}</td>
+        <td>{{ item.required }}</td>
+        <td>{{ item.analyzed }}</td>
+        <td>{{ item.conformity }}</td>
       </tr>
     </tbody>
   </table>

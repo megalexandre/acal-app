@@ -12,31 +12,31 @@
 
     <div class="border rounded text-center" style="flex: 1">
       <strong>Conta referente:</strong><br />
-      Janeiro, 2020
+      {{ invoice.reference }}
     </div>
   </div>
 </div>
 
 <div class="row mb-3">
   <div class="d-flex justify-content-between" style="gap: 1rem">
-    <div class="border rounded w-100" style="flex: 1">
-      <div class="table-responsive w-100">
-        <table class="table table-bordered table-striped w-100">
+    <div class="border rounded" style="flex: 1">
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered">
           <tr>
             <td><strong>Sócio:</strong></td>
-            <td>Alexandre Bezerra de Queiroz</td>
+            <td>{{ invoice.customer.name }}</td>
           </tr>
           <tr>
             <td><strong>Endereço:</strong></td>
-            <td>Avenida Fernando Daltro</td>
+            <td>{{ invoice.place.name }} {{ invoice.place.number }}{{ invoice.place.letter }}</td>
           </tr>
           <tr>
-            <td><strong>CEP:</strong></td>
-            <td>44709-000, Lages do Batata - Jacobina BA.</td>
+            <td><strong>Local:</strong></td>
+            <td>Lages do Batata - Jacobina BA.</td>
           </tr>
           <tr>
             <td><strong>Categoria:</strong></td>
-            <td>Sócio Contribuinte Temporário</td>
+            <td>{{ invoice.category.group | group }} {{ invoice.category.name }}</td>
           </tr>
         </table>
       </div>
@@ -46,30 +46,27 @@
 
     <div class="border rounded" style="flex: 1">
       <div class="table-responsive">
-        <table class="table table-bordered table-striped">
+        <table class="table table-striped table-bordered">
           <tr>
             <td><strong>Data de Emissão:</strong></td>
-            <td>24 Julho 2025</td>
+            <td></td>
           </tr>
+
           <tr>
             <td><strong>Vencimento:</strong></td>
-            <td>R$ 26,50</td>
+            <td>{{ invoice.due_date | date }}</td>
           </tr>
-          <tr>
-            <td><strong>Valor Excesso:</strong></td>
-            <td>R$ 0,00</td>
+
+          <tr *ngFor="let item of invoice.values">
+            <td>
+              <strong>{{ item.name }}:</strong>
+            </td>
+            <td>{{ item.value | currency }}</td>
           </tr>
-          <tr>
-            <td><strong>Outras Taxas:</strong></td>
-            <td>R$ 0,00</td>
-          </tr>
-          <tr>
-            <td><strong>Taxas Sócio:</strong></td>
-            <td>R$ 0,00</td>
-          </tr>
+
           <tr>
             <td><strong>Valor total::</strong></td>
-            <td>R$ 26,50</td>
+            <td>{{ invoice.total | currency }}</td>
           </tr>
         </table>
       </div>

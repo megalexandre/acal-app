@@ -6,6 +6,7 @@ import { ModalWithSent } from '../address/address.model';
 import { ToastService } from '../dashboard/toast-service';
 import { Invoice, InvoiceFilter } from './invoice.model';
 import { InvoiceService } from './invoice.service';
+import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
 
 @Component({
   selector: 'app-invoice',
@@ -49,10 +50,17 @@ export class InvoiceComponent implements OnInit{
   }
 
   onPageChange(newPage: number) {
-    this.filter.page = newPage -1 ; // Adjust for zero-based index
+    this.filter.page = newPage -1 ; 
     this.search();
   }
 
+  onDoubleClick(invoice: Invoice){
+    this.view(invoice)
+  }
+
+ view(invoice: Invoice): void {
+  this.router.navigate(['view'], {relativeTo: this.route, state: { invoice } });
+}
 
   create(): void {
      this.router.navigate(['create'], { relativeTo: this.route });
@@ -66,7 +74,7 @@ export class InvoiceComponent implements OnInit{
     //this.openModal(InvoiceDeleteComponent, { invoice });
   }
 
-  openModal<T extends ModalWithSent>(
+  openModal<T>(
     component: Type<T>,
     data?: Partial<T>
   ): void {

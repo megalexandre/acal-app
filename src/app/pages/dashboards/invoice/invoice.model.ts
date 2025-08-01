@@ -12,7 +12,27 @@ export interface Invoice {
   total: number;
   consumption: number;
   water_value: number;
+  water_quality: WaterQuality;
   due_date: Date;
+  values: InvoiceValue[]
+}
+
+export interface WaterQuality {
+  id: string;
+  reference: string;
+  analysis: WaterAnalysis[];
+}
+
+export interface WaterAnalysis {
+  name: string;
+  required: string;
+  analyzed: string;
+  conformity: string;
+}
+
+export interface InvoiceValue{
+  name: string,
+  value: number
 }
 
 export interface SelectableInvoice extends Invoice  {
