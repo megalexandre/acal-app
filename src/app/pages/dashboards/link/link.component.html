@@ -10,12 +10,17 @@
           <div class="accordion-body">
             <div class="container-fluid">
               <div class="row g-2 align-items-end">
-                <div class="col-md-8 col-12">
+                <div class="col-md-6 col-12">
                   <label class="form-label">Nome</label>
                   <input type="text" class="form-control" [(ngModel)]="filter.name" placeholder="Nome" (keydown.enter)="search()" />
                 </div>
 
-                <div class="col-md-4 col-12">
+                <div class="col-md-3 col-12">
+                  <label class="form-label">Grupos</label>
+                  <app-group-select [(ngModel)]="filter.group" (change)="search()" />
+                </div>
+
+                <div class="col-md-3 col-12">
                   <label class="form-label">Categoria</label>
                   <app-category-select [(ngModel)]="filter.category" (change)="search()"></app-category-select>
                 </div>
@@ -42,7 +47,12 @@
               </div>
 
               <div class="row">
-                <div class="col-12 col-md-3 offset-md-9 d-grid">
+                <div class="col-6 col-md-3 offset-md-6 d-grid">
+                  <label class="form-label invisible">Limpar</label>
+                  <button type="button" class="btn btn-outline-secondary" (click)="clear()"><i class="mdi mdi-magnify"></i> Limpar</button>
+                </div>
+
+                <div class="col-6 col-md-3 d-grid">
                   <label class="form-label invisible">Buscar</label>
                   <button type="button" class="btn btn-outline-primary" (click)="search()"><i class="mdi mdi-magnify"></i> Buscar</button>
                 </div>
@@ -81,10 +91,10 @@
               </tr>
             </thead>
 
-            <tbody class="list form-check-all">
+            <tbody class="list form-check-all" *ngIf="!loading">
               <tr *ngFor="let l of page.content; trackBy: trackById">
                 <td>{{ l.customer.name }}</td>
-                <td>{{ l.category.name }}</td>
+                <td>{{ l.category.group | group }} {{ l.category.name }}</td>
                 <td>{{ l.place.name }}</td>
                 <td>{{ l.place.number }}</td>
                 <td>{{ l.place.letter }}</td>

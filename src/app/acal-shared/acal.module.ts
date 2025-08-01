@@ -17,6 +17,7 @@ import { CpfCnpjValidator } from './validator/cpf.cnpj-validator';
 import { CustomerSelectComponent } from './select/customer-select/customer-select.component';
 import { YesOrNoSelectComponent } from './select/yes-or-no-select/yes-or-no-select.component';
 import { PlaceSelectComponent } from './select/place-select/place-select.component';
+import { GroupSelectComponent } from './select/group-select/group-select.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { PlaceSelectComponent } from './select/place-select/place-select.compone
     CustomerSelectComponent,
     YesOrNoSelectComponent,  
     PlaceSelectComponent,
+    GroupSelectComponent,
   ],
 
   imports: [
@@ -57,7 +59,8 @@ import { PlaceSelectComponent } from './select/place-select/place-select.compone
     PaginationComponent,
     CustomerSelectComponent,
     YesOrNoSelectComponent,
-    PlaceSelectComponent
+    PlaceSelectComponent,
+    GroupSelectComponent,
   ],
 
   providers:[

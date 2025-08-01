@@ -2,12 +2,12 @@
   <div class="d-flex justify-content-between" style="gap: 1rem">
     <div class="border rounded text-center" style="flex: 1">
       <strong>Nº de Associado</strong><br />
-      446
+      {{ invoice.customer.partner_number }}
     </div>
 
     <div class="border rounded text-center" style="flex: 1">
       <strong>Boleto nº:</strong><br />
-      115280
+      {{ invoice.number }}
     </div>
 
     <div class="border rounded text-center" style="flex: 1">

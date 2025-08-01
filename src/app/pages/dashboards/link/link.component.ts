@@ -17,6 +17,7 @@ export class LinkComponent implements OnInit {
     category: null,
     address: null,
     letter: null,
+    group: null,
     number: null,
     page: 0,
     size: 20,
@@ -57,6 +58,26 @@ export class LinkComponent implements OnInit {
         this.loading = false;
       },
     });
+  }
+
+  clear(){
+    this.filter = {
+      category: null,
+      address: null,
+      group: null,
+      letter: null,
+      number: null,
+      page: 0,
+      size: 20,
+      sort_orders: [
+        {
+          'property': 'customer.normalizedName',
+          'direction': 'ASC'
+        }
+      ]
+    };
+
+    this.search();
   }
 
   trackById(index: number, item: Link): string {

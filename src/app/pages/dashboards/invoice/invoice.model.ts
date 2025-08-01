@@ -14,7 +14,9 @@ export interface Invoice {
   water_value: number;
   water_quality: WaterQuality;
   due_date: Date;
-  values: InvoiceValue[]
+  values: InvoiceValue[];
+  number: number;
+  
 }
 
 export interface WaterQuality {
