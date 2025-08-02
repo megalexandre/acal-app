@@ -6,7 +6,6 @@
   </div>
 
   <div class="modal-body">
-    {{ form.valid }}
     <app-customer-select formControlName="customer_id" [control]="customerControl" />
 
     <div class="mb-3">
@@ -15,8 +14,13 @@
     </div>
 
     <div class="mb-3">
-      <label class="form-label">Locais: <span class="text-danger">*</span></label>
-      <app-place-select formControlName="place_id" [control]="placeControl" />
+      <label class="form-label"> Rua: <span class="text-danger">*</span></label>
+      <app-address-select [(ngModel)]="address" [ngModelOptions]="{ standalone: true }" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label"> Local: <span class="text-danger">*</span></label>
+      <app-place-address-select [address]="address" formControlName="place_id" [control]="placeControl" [disabled]="!address" />
     </div>
 
     <div class="mb-3">

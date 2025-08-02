@@ -1,5 +1,5 @@
 import { Component, forwardRef, Input } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Address } from 'src/app/pages/dashboards/address/address.model';
 import { AddressService } from 'src/app/pages/dashboards/address/address.service';
 
@@ -14,29 +14,26 @@ import { AddressService } from 'src/app/pages/dashboards/address/address.service
       }
     ]
 })
-export class AddressSelectComponent {
-
-  @Input() disabled: boolean = false;
+export class AddressSelectComponent implements ControlValueAccessor {
+  @Input() disabled = false;
 
   public addresses: Address[] = [];
-  public value: string | null = null;
+  public value: Address | null = null;
 
-  private onChange: (value: any) => void = () => {};
+  private onChange: (value: Address | null) => void = () => {};
   private onTouch: () => void = () => {};
 
-  constructor(public service: AddressService) {
+  constructor(private service: AddressService) {
     this.loading();
   }
 
   private loading() {
     this.service.get().subscribe({
-      next: (addresses) => {
-        this.addresses = addresses ;
-      }
+      next: (addresses) => (this.addresses = addresses)
     });
   }
 
-  writeValue(value: any): void {
+  writeValue(value: Address | null): void {
     this.value = value;
   }
 
@@ -52,7 +49,7 @@ export class AddressSelectComponent {
     this.disabled = isDisabled;
   }
 
-  onSelectionChange(value: any): void {
+  onSelectionChange(value: Address | null): void {
     this.value = value;
     this.onChange(value);
     this.onTouch();

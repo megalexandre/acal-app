@@ -45,7 +45,6 @@ export class LinkComponent implements OnInit {
     this.search();
   }
 
-
   search() {
     this.loading = true;
 

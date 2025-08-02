@@ -18,6 +18,7 @@ import { CustomerSelectComponent } from './select/customer-select/customer-selec
 import { YesOrNoSelectComponent } from './select/yes-or-no-select/yes-or-no-select.component';
 import { PlaceSelectComponent } from './select/place-select/place-select.component';
 import { GroupSelectComponent } from './select/group-select/group-select.component';
+import { PlaceAddressSelectComponent } from './select/place-address-select/place-address-select.component';
 
 @NgModule({
   declarations: [
@@ -28,12 +29,13 @@ import { GroupSelectComponent } from './select/group-select/group-select.compone
     ReferenceInputComponent,
     DateInputComponent,
     CategorySelectComponent,
-    AddressSelectComponent,
     PaginationComponent,
     CustomerSelectComponent,
+    AddressSelectComponent,
     YesOrNoSelectComponent,  
     PlaceSelectComponent,
     GroupSelectComponent,
+    PlaceAddressSelectComponent
   ],
 
   imports: [
@@ -61,6 +63,7 @@ import { GroupSelectComponent } from './select/group-select/group-select.compone
     YesOrNoSelectComponent,
     PlaceSelectComponent,
     GroupSelectComponent,
+    PlaceAddressSelectComponent
   ],
 
   providers:[

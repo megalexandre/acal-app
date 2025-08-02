@@ -1,0 +1,11 @@
+<select class="form-select" [disabled]="disabled" [ngClass]="{ 'is-invalid': isInvalid(), 'is-valid': isValid() }" [(ngModel)]="value" (ngModelChange)="onSelectionChange($event)">
+  <option [ngValue]="null" class="text-muted">Selecione...</option>
+
+  <ng-container *ngFor="let group of groups">
+    <optgroup [label]="group.name">
+      <option *ngFor="let item of group.itens" [ngValue]="item">
+        {{ item.number + ' ' + item.letter }}
+      </option>
+    </optgroup>
+  </ng-container>
+</select>

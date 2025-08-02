@@ -1,4 +1,5 @@
-import { Category } from "../category/category.model";
+import { Address } from "../address/address.model";
+import { Category, Group } from "../category/category.model";
 import { Customer } from "../customer/customer.model";
 import { Place } from "../place/place.model";
 
@@ -9,9 +10,9 @@ export interface SortOrder {
 
 export interface LinkFilter {
   name?: string;
-  category?: string | null;
-  group?: string | null;
-  address?: string | null;
+  category?: Category | null;
+  group?: Group | null;
+  address?: Address | null;
   number?: string | null;
   letter?: string | null;
   total?: number;

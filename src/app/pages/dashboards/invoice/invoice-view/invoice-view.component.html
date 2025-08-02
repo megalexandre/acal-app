@@ -1,7 +1,9 @@
 <div class="container border">
   <app-invoice-view-header />
   <app-invoice-view-detail [invoice]="invoice" />
-  <app-invoice-view-water-quality [invoice]="invoice" />
+  <span *ngIf="invoice.water_quality">
+    <app-invoice-view-water-quality [invoice]="invoice" />
+  </span>
   <app-invoice-view-detail [invoice]="invoice" />
 </div>
 

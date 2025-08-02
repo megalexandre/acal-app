@@ -13,7 +13,18 @@ export class LinkService {
   constructor(private http: HttpClient) {}
 
   paginate(filter: LinkFilter): Observable<Page<Link>> {
-    return this.http.post<Page<Link>>(`${this.apiUrl}/paginate`, filter).pipe(
+     const payload = {
+      ...filter,
+        group_name: filter.group ? filter.group.value: null, 
+        category_id: filter.category ? filter.category.id: null,
+        address_id: filter.address ? filter.address.name: null,
+      };
+
+      delete (payload as any).group;
+      delete (payload as any).category
+      delete (payload as any).address
+    
+    return this.http.post<Page<Link>>(`${this.apiUrl}/paginate`, payload).pipe(
       map(response => {
         response.content = response.content.map(linkJson => Link.fromJson(linkJson));
         return response;

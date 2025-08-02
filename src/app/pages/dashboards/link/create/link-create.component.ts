@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalWithSent } from '../../address/address.model';
+import { Address, ModalWithSent } from '../../address/address.model';
 import { LinkService } from '../link.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -15,7 +15,8 @@ export class LinkCreateComponent implements OnInit, ModalWithSent {
 
   public form: FormGroup;
   public submitted = false;
-
+  
+  public address: Address | null = null;
   constructor(
     private fb: FormBuilder,
     private service: LinkService,

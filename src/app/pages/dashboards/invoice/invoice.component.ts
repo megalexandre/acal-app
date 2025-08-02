@@ -58,9 +58,9 @@ export class InvoiceComponent implements OnInit{
     this.view(invoice)
   }
 
- view(invoice: Invoice): void {
-  this.router.navigate(['view'], {relativeTo: this.route, state: { invoice } });
-}
+  view(invoice: Invoice): void {
+    this.router.navigate(['view'], {relativeTo: this.route, state: { invoice } });
+  }
 
   create(): void {
      this.router.navigate(['create'], { relativeTo: this.route });

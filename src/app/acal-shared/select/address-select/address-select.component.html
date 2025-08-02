@@ -1,7 +1,6 @@
 <select class="form-select" [disabled]="disabled" [ngModel]="value" (ngModelChange)="onSelectionChange($event)">
   <option [ngValue]="null" class="text-muted">Selecione...</option>
-
-  <option *ngFor="let address of addresses" [ngValue]="address.name">
+  <option *ngFor="let address of addresses" [ngValue]="address">
     {{ address.name }}
   </option>
 </select>
