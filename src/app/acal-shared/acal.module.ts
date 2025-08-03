@@ -35,7 +35,7 @@ import { PlaceAddressSelectComponent } from './select/place-address-select/place
     YesOrNoSelectComponent,  
     PlaceSelectComponent,
     GroupSelectComponent,
-    PlaceAddressSelectComponent
+    PlaceAddressSelectComponent,
   ],
 
   imports: [
@@ -63,7 +63,7 @@ import { PlaceAddressSelectComponent } from './select/place-address-select/place
     YesOrNoSelectComponent,
     PlaceSelectComponent,
     GroupSelectComponent,
-    PlaceAddressSelectComponent
+    PlaceAddressSelectComponent,
   ],
 
   providers:[

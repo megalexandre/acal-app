@@ -27,5 +27,10 @@ export class InvoiceViewComponent {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
 
+
+  get status(): string {
+    return this.invoice.paid_at ? 'Pago' : 'Aguardando'   
+  }
+
   
 }

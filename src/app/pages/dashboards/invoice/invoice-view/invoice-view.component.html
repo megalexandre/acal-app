@@ -7,8 +7,12 @@
   <app-invoice-view-detail [invoice]="invoice" />
 </div>
 
-<div class="d-flex justify-content-between" style="gap: 1rem">
-  <div class="border rounded" style="flex: 1">
-    <app-button btnType="primary" outline (click)="back()" />
+<div class="container border mt-3 mb-3">
+  <div class="row">
+    <div class="d-flex justify-content-between flex-wrap gap-2">
+      <button type="button" class="btn btn-success">Receber</button>
+      <button type="button" class="btn btn-danger">Apagar</button>
+      <button type="button" class="btn btn-primary">Voltar</button>
+    </div>
   </div>
 </div>

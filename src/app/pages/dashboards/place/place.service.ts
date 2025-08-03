@@ -14,7 +14,12 @@ export class PlaceService {
   constructor(private http: HttpClient) {}
 
   paginate(filter: PlaceFilter): Observable<Page<Place>> {
-    return this.http.post<Page<Place>>(`${this.apiUrl}/paginate`, filter);
+   const payload = {
+      ...filter,
+      name: filter.address?.name
+    };
+    delete (payload as any).address
+    return this.http.post<Page<Place>>(`${this.apiUrl}/paginate`, payload);
   }
 
   get(): Observable<Place[]> {

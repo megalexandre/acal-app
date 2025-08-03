@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, Type } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, Type } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PlaceService } from './place.service';
 import { Place, PlaceFilter } from './place.model';
@@ -15,6 +15,7 @@ export class PlaceComponent implements OnInit {
 
   page: any;
   filter: PlaceFilter = {
+    address: null,
     page: 0,
     size: 10,
     sort_orders: [{ property: 'name', direction: 'ASC' }]
@@ -29,6 +30,7 @@ export class PlaceComponent implements OnInit {
   constructor(
     private service: PlaceService,
     private modalService: NgbModal,
+     private cdr: ChangeDetectorRef
   ) {}
 
  search(): void {
@@ -38,16 +40,31 @@ export class PlaceComponent implements OnInit {
       next: (page) => {
         this.page = { ...page }
         this.loading = false;
+         this.cdr.markForCheck()
       },
       error: () => {
         this.loading = false;
+         this.cdr.markForCheck()
       }
     });
   }
 
-  onPageChange(newPage: number) {
-    this.filter.page = newPage;
+  clear(){
+    this.filter = {
+      address: null,
+      page: 0,
+      size: 10,
+      sort_orders: [{ property: 'name', direction: 'ASC' }]
+    };
+  
     this.search();
+  }
+
+  onPageChange(page: number): void {
+    setTimeout(() => {
+      this.filter.page = page;
+      this.search();
+    });
   }
 
   trackById(index: number, item: Place): string {

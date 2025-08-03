@@ -1,40 +1,36 @@
-<app-card>
-  <app-card-body>
-    <div class="accordion w-100">
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Filtros</button>
-        </h2>
+<div class="accordion w-100 mb-3">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Filtros</button>
+    </h2>
 
-        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            <div class="row mb-3">
-              <div class="col-xxl-4 col-md-6">
-                <label class="form-label">Sócio:</label>
-                <input type="text" class="form-control" (keydown.enter)="search()" [(ngModel)]="filter.name" />
-              </div>
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <div class="row mb-3">
+          <div class="col-xxl-8 col-md-6">
+            <label class="form-label">Sócio:</label>
+            <input type="text" class="form-control" (keydown.enter)="search()" [(ngModel)]="filter.name" />
+          </div>
 
-              <div class="col-xxl-4 col-md-6">
-                <label class="form-label">Identificação:</label>
-                <input type="text" class="form-control" (keydown.enter)="search()" [(ngModel)]="filter.identity_card" />
-              </div>
-            </div>
+          <div class="col-xxl-4 col-md-6">
+            <label class="form-label">Identificação:</label>
+            <input type="text" class="form-control" (keydown.enter)="search()" [(ngModel)]="filter.identity_card" />
+          </div>
+        </div>
 
-            <div class="row">
-              <div class="col-6 col-md-2 offset-md-8 mb-3">
-                <button type="button" class="btn btn-outline-info w-100" (click)="clear()"><i class="mdi mdi-magnify"></i> Limpar</button>
-              </div>
+        <div class="row">
+          <div class="col-6 col-md-2 offset-md-8 mb-3">
+            <button type="button" class="btn btn-outline-info w-100" (click)="clear()"><i class="mdi mdi-magnify"></i> Limpar</button>
+          </div>
 
-              <div class="col-6 col-md-2">
-                <button type="button" class="btn btn-outline-primary w-100" (click)="search()"><i class="mdi mdi-magnify"></i> Buscar</button>
-              </div>
-            </div>
+          <div class="col-6 col-md-2">
+            <button type="button" class="btn btn-outline-primary w-100" (click)="search()"><i class="mdi mdi-magnify"></i> Buscar</button>
           </div>
         </div>
       </div>
     </div>
-  </app-card-body>
-</app-card>
+  </div>
+</div>
 
 <div class="row">
   <div class="col-lg-12">

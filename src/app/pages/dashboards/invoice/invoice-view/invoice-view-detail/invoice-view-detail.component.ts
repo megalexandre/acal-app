@@ -13,4 +13,10 @@ export class InvoiceViewDetailComponent implements OnInit {
   ngOnInit(): void {
    
   }
+
+  get now(): Date {
+    return new Date();
+  }
+  
+
 }

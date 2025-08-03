@@ -3,6 +3,7 @@ import { Customer } from "../customer/customer.model";
 import { SortOrder } from "../link/link.model";
 import { Place } from "../place/place.model";
 
+
 export interface Invoice {
   id: string;
   reference: string;
@@ -16,7 +17,7 @@ export interface Invoice {
   due_date: Date;
   values: InvoiceValue[];
   number: number;
-  
+  paid_at: Date; 
 }
 
 export interface WaterQuality {
