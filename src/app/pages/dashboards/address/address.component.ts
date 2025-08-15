@@ -36,7 +36,7 @@ export class AddressComponent implements OnInit {
         this.addresses = addresses;
         this.loading = false;
       },
-      error: (error) => {
+      error: () => {
         this.loading = false;
         this.t.show("error");
       },

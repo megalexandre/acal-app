@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddressService } from '../address.service';
 import { Address, ModalWithSent } from '../address.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-address-edit',
@@ -23,7 +24,8 @@ export class AddressEditComponent implements OnInit, ModalWithSent {
   constructor(
     private fb: FormBuilder,
     private addressService: AddressService,
-    public activeModal: NgbActiveModal,
+    private activeModal: NgbActiveModal,
+    private t: ToastrService,
   ) {
 
   }
@@ -44,6 +46,7 @@ export class AddressEditComponent implements OnInit, ModalWithSent {
 
       this.addressService.update(this.addressForm.value).subscribe({
         next: () => {
+          this.t.success("Item editado");
           this.sent.emit();
           this.close();
         },

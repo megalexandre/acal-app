@@ -46,10 +46,12 @@ export interface SelectableInvoiceGroup {
   name: string;
   checked: boolean;
   items: SelectableInvoice[];
+  count: number;
 }  
 
 export interface InvoicePreviewTable {
   items: SelectableInvoiceGroup[];
+
 }
 
 export interface InvoiceFilter {

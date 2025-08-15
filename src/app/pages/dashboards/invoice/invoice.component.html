@@ -13,11 +13,11 @@
         <app-table>
           <thead class="table-light" table-header>
             <tr>
-              <th>Refererencia</th>
+              <th>Refererência</th>
               <th>Vencimento</th>
+              <th>Número</th>
               <th>Endereço</th>
               <th>Cliente</th>
-              <th>Categoria</th>
               <th>Total</th>
               <th>Ações</th>
             </tr>
@@ -27,9 +27,9 @@
             <tr *ngFor="let i of page.content" (dblclick)="onDoubleClick(i)">
               <td>{{ i.reference }}</td>
               <td>{{ i.due_date }}</td>
-              <td>{{ i.place.address }}</td>
+              <td>{{ i.number }}</td>
+              <td>{{ i.place | place }}</td>
               <td>{{ i.customer.name }}</td>
-              <td>{{ i.category.name }}</td>
               <td>{{ i.total | currency }}</td>
 
               <td class="text-center">

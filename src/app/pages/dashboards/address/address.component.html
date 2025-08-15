@@ -11,20 +11,18 @@
 
       <app-card-body>
         <app-table>
-          <thead class="table-light" table-header>
+          <thead table-header>
             <tr>
-              <th style="width: 05px">#</th>
-              <th style="width: 90px">Name</th>
-              <th style="width: 05px" class="text-center">Ações</th>
+              <th style="width: 97%">Name</th>
+              <th style="width: 3%" class="text-center">Ações</th>
             </tr>
           </thead>
 
-          <tbody class="list form-check-all" table-body>
+          <tbody table-body>
             <tr *ngFor="let address of addresses; let i = index; trackBy: trackById">
-              <td class="name">{{ i + 1 }}</td>
               <td class="name">{{ address.name }}</td>
 
-              <td class="text-center align-middle">
+              <td>
                 <ul class="list-inline hstack justify-content-center gap-2 mb-0">
                   <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" ngbTooltip="Edit" placement="top" (click)="edit(address)">
                     <i class="ri-pencil-fill fs-16"></i>

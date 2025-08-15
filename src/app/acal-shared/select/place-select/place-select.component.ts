@@ -44,13 +44,13 @@ export class PlaceSelectComponent implements ControlValueAccessor {
   }
 
   private build(options: Place[]): PlaceSelect[] {
-    return Array.from(new Set(options.map(g => g.name)))
+    return Array.from(new Set(options.map(g => g.address.name)))
       .sort((a, b) => a.localeCompare(b))
       .map(name => ({
         name: name,
         itens: options
-          .filter(option => option.name === name)
-          .sort((a, b) => a.name.localeCompare(b.name))
+          .filter(option => option.address.name === name)
+          .sort((a, b) => a.address.name.localeCompare(b.address.name))
       }));
   }
 

@@ -3,6 +3,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Place } from '../place.model';
 import { PlaceService } from '../place.service';
 import { ModalWithSent } from '../../address/address.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-place-delete',
@@ -18,7 +19,8 @@ export class PlaceDeleteComponent implements ModalWithSent {
   
   constructor(
     private placeService: PlaceService,
-    public activeModal: NgbActiveModal,
+    private t: ToastrService,
+    private activeModal: NgbActiveModal,
   ) {
 
   }
@@ -30,6 +32,7 @@ export class PlaceDeleteComponent implements ModalWithSent {
   confirm() {
     this.placeService.delete(this.place.id).subscribe({
       next: () => {
+        this.t.show("Deletado com sucesso");
         this.close();
         this.sent.emit();
       }

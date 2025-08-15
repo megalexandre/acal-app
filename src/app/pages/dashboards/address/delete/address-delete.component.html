@@ -1,41 +1,22 @@
-<div class="modal-content">
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">Deletar Endereço</h5>
 
-  <div class="modal-header">
-    <button 
-      type="button" 
-      class="btn-close" 
-      data-bs-dismiss="modal" 
-      aria-label="Close" 
-      id="btn-close" 
-      (click)="close()"
-      >
+  <button type="button" outline class="btn-close" aria-label="Close" (click)="close()"></button>
+</div>
 
-    </button>
+<div class="modal-body">
+  <div class="mb-3">
+    <label class="form-label">{{ 'PAGES.ADDRESS.NAME' | translate }}: </label>
+    {{ address.name }}
   </div>
+</div>
 
-  <div class="modal-body">
-    <div class="mt-2 text-center">
-      <a class="text-danger d-inline-block remove-item-btn">
-        <i class="ri-delete-bin-5-fill fs-48"></i>
-      </a> 
-      
-      <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
-        <h4>You are about to delete a order ?</h4>
-        <p class="text-muted mx-4 mb-0">Deleting your order will remove all of your information from our database.</p>
-        <p class="text-muted mx-4 mb-0">{{address.name}}</p>
-      
-      </div>
-    </div>
+<div class="modal-footer">
+  <div class="d-flex justify-content-between col-12">
+    <app-button type="button" btnType="secondary" outline (click)="close()">
+      {{ 'PAGES.ACTIONS.CANCEL' | translate }}
+    </app-button>
 
-    <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-      
-      <button (click)="close()"  class="btn btn-link link-success fw-medium text-decoration-none" data-bs-dismiss="modal"  id="deleteRecord-close">
-        <i class="ri-close-line me-1 align-middle"></i> Cancel
-      </button>
-      
-      <button (click)="confirm()"  type="button" class="btn w-sm btn-danger" id="delete-product" >
-        Yes, Delete It!
-      </button>
-    </div>
+    <app-button type="submit" btnType="danger" outline (click)="confirm()"> Deletar </app-button>
   </div>
 </div>

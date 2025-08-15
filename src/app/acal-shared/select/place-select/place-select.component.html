@@ -4,7 +4,7 @@
   <ng-container *ngFor="let group of groups">
     <optgroup [label]="group.name">
       <option *ngFor="let item of group.itens" [ngValue]="item">
-        {{ item.number + ' ' + item.letter + ' ' + item.name }}
+        {{ item.number + ' ' + item.letter + ' ' + item.address.name }}
       </option>
     </optgroup>
   </ng-container>

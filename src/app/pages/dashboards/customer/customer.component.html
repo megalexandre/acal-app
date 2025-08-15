@@ -9,12 +9,12 @@
         <div class="row mb-3">
           <div class="col-xxl-8 col-md-6">
             <label class="form-label">Sócio:</label>
-            <input type="text" class="form-control" (keydown.enter)="search()" [(ngModel)]="filter.name" />
+            <input type="text" class="form-control" (keydown.enter)="reset()" [(ngModel)]="filter.name" />
           </div>
 
           <div class="col-xxl-4 col-md-6">
             <label class="form-label">Identificação:</label>
-            <input type="text" class="form-control" (keydown.enter)="search()" [(ngModel)]="filter.identity_card" />
+            <input type="text" class="form-control" (keydown.enter)="reset()" [(ngModel)]="filter.identity_card" />
           </div>
         </div>
 
@@ -24,7 +24,7 @@
           </div>
 
           <div class="col-6 col-md-2">
-            <button type="button" class="btn btn-outline-primary w-100" (click)="search()"><i class="mdi mdi-magnify"></i> Buscar</button>
+            <button type="button" class="btn btn-outline-primary w-100" (click)="reset()"><i class="mdi mdi-magnify"></i> Buscar</button>
           </div>
         </div>
       </div>

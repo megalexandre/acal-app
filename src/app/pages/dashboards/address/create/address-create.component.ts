@@ -35,6 +35,7 @@ export class AddressCreateComponent implements ModalWithSent {
     if (this.form.valid) {
       this.addressService.create(this.form.value).subscribe({
         next: () => {
+          this.t.success("Item adicionado")
           this.sent.emit();
           this.close();
         },

@@ -4,6 +4,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { PlaceService } from '../place.service';
 import { Address, ModalWithSent } from '../../address/address.model';
 import { AddressService } from '../../address/address.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-place-create',
@@ -22,13 +23,14 @@ export class PlaceCreateComponent implements OnInit, ModalWithSent {
     private fb: FormBuilder,
     private service: PlaceService,
     private addressService: AddressService,
-    public activeModal: NgbActiveModal,
+    private activeModal: NgbActiveModal,
+    private t: ToastrService,
   ) {
 
     this.form = this.fb.group({
-      address: ['', [Validators.required]],
-      number: ['', [Validators.required]],
-      letter: ['', [Validators.required]]
+      address: [null, [Validators.required]],
+      number: [null, [Validators.required]],
+      letter: [null, [Validators.required]]
     });
   }
 
@@ -54,7 +56,11 @@ export class PlaceCreateComponent implements OnInit, ModalWithSent {
           this.sent.emit();
           this.close();
         },
-        error: () => this.form.reset(),
+        error: (error) => 
+          {
+            this.t.error(error);
+            this.form.reset();
+          }
       });
     }
   }

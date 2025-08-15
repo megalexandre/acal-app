@@ -5,33 +5,24 @@
   </div>
 
   <div class="modal-body">
-
     <div class="mb-3">
       <label class="form-label">Grupo: <span class="text-danger">*</span></label>
-      
-      <select 
-        class="form-select"
-        id="group"
-        formControlName="group"
-        [ngClass]="{ 'is-invalid': isInvalid('group'), 'is-valid': isValid('group') }"
-      >
+
+      <select class="form-select" id="group" formControlName="group" [ngClass]="{ 'is-invalid': isInvalid('group'), 'is-valid': isValid('group') }">
         <option value="" disabled selected>Selecione um Grupo</option>
         <option *ngFor="let group of groups" [value]="group.value">{{ group.name }}</option>
       </select>
 
       <div class="valid-feedback" *ngIf="isValid('group')">Válido</div>
       <div class="invalid-feedback" *ngIf="isInvalid('group')">
-        <ng-container *ngIf="getControl('group')?.errors?.['required']">
-          Grupo é obrigatório
-        </ng-container>
+        <ng-container *ngIf="getControl('group')?.errors?.['required']"> Grupo é obrigatório </ng-container>
       </div>
     </div>
 
     <div class="mb-3">
       <label class="form-label">Nome: <span class="text-danger">*</span></label>
-      <input type="text" class="form-control" id="name" formControlName="name" 
-        [ngClass]="{ 'is-invalid': isInvalid('name'), 'is-valid': isValid('name') }" placeholder="Name:" />
-      
+      <input type="text" class="form-control" id="name" formControlName="name" [ngClass]="{ 'is-invalid': isInvalid('name'), 'is-valid': isValid('name') }" placeholder="Name:" />
+
       <div class="valid-feedback" *ngIf="isValid('name')">Válido</div>
       <div class="invalid-feedback" *ngIf="isInvalid('name')">
         <ng-container *ngIf="getControl('name')?.errors?.['required']"> Nome é obrigatório </ng-container>
@@ -40,9 +31,8 @@
 
     <div class="mb-3">
       <label class="form-label">Valor da àgua: <span class="text-danger">*</span></label>
-      <input type="text" class="form-control" id="waterValue" formControlName="water_value" 
-        [ngClass]="{ 'is-invalid': isInvalid('water_value'), 'is-valid': isValid('water_value') }" placeholder="valor:" />
-      
+      <input type="text" class="form-control" currencyMask id="waterValue" formControlName="water_value" [ngClass]="{ 'is-invalid': isInvalid('water_value'), 'is-valid': isValid('water_value') }" placeholder="valor:" />
+
       <div class="valid-feedback" *ngIf="isValid('water_value')">Válido</div>
       <div class="invalid-feedback" *ngIf="isInvalid('water_value')">
         <ng-container *ngIf="getControl('water_value')?.errors?.['required']"> Valor é obrigatório </ng-container>
@@ -51,9 +41,8 @@
 
     <div class="mb-3">
       <label class="form-label">Valor da Associação: <span class="text-danger">*</span></label>
-      <input type="text" class="form-control" id="partner_value" formControlName="partner_value" 
-        [ngClass]="{ 'is-invalid': isInvalid('partner_value'), 'is-valid': isValid('partner_value') }" placeholder="valor:" />
-      
+      <input type="text" class="form-control" currencyMask id="partner_value" formControlName="partner_value" [ngClass]="{ 'is-invalid': isInvalid('partner_value'), 'is-valid': isValid('partner_value') }" placeholder="valor:" />
+
       <div class="valid-feedback" *ngIf="isValid('partner_value')">Válido</div>
       <div class="invalid-feedback" *ngIf="isInvalid('partner_value')">
         <ng-container *ngIf="getControl('partner_value')?.errors?.['required']"> Valor é obrigatório </ng-container>
@@ -62,13 +51,8 @@
 
     <div class="mb-3">
       <label class="form-label">Possui Hidrômetro?: <span class="text-danger">*</span></label>
-      
-      <select 
-        class="form-select"
-        id="is_hydrometer"
-        formControlName="is_hydrometer"
-        [ngClass]="{ 'is-invalid': isInvalid('is_hydrometer'), 'is-valid': isValid('is_hydrometer') }"
-      >
+
+      <select class="form-select" id="is_hydrometer" formControlName="is_hydrometer" [ngClass]="{ 'is-invalid': isInvalid('is_hydrometer'), 'is-valid': isValid('is_hydrometer') }">
         <option [value]="'null'">Selecione</option>
         <option [value]="true">Sim</option>
         <option [value]="false">Não</option>
@@ -76,25 +60,16 @@
 
       <div class="valid-feedback" *ngIf="isValid('is_hydrometer')">Válido</div>
       <div class="invalid-feedback" *ngIf="isInvalid('is_hydrometer')">
-        <ng-container *ngIf="getControl('is_hydrometer')?.errors?.['required']">
-          Obrigatório
-        </ng-container>
+        <ng-container *ngIf="getControl('is_hydrometer')?.errors?.['required']"> Obrigatório </ng-container>
       </div>
     </div>
-    
   </div>
 
   <div class="modal-footer">
     <div class="d-flex justify-content-between col-12">
-    
-      <app-button type="button" btnType="secondary" outline (click)="close()">
-        Cancelar
-      </app-button>
+      <app-button type="button" btnType="secondary" outline (click)="close()"> Cancelar </app-button>
 
-      <app-button type="submit"  btnType="success" outline >
-        Salvar
-      </app-button>
-
+      <app-button type="submit" btnType="success" outline> Salvar </app-button>
     </div>
   </div>
 </form>

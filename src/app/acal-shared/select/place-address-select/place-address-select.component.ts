@@ -52,15 +52,15 @@ export class PlaceAddressSelectComponent implements ControlValueAccessor, OnChan
   }
 
   private build(options: Place[]): PlaceSelect[] {
-    const filtered = options.filter(item => item.name === this.address?.name);
+    const filtered = options.filter(item => item.address.name === this.address?.name);
 
-    return Array.from(new Set(filtered.map(g => g.name)))
+    return Array.from(new Set(filtered.map(g => g.address.name)))
       .sort((a, b) => a.localeCompare(b))
       .map(name => ({
         name: name,
         itens: filtered 
-          .filter(option => option.name === name)
-          .sort((a, b) => a.name.localeCompare(b.name))
+          .filter(option => option.address.name === name)
+          .sort((a, b) => a.address.name.localeCompare(b.address.name))
       }));
   }
 

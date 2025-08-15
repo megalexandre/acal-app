@@ -52,19 +52,25 @@ export class InvoiceCreateComponent  implements OnInit {
  public confirm() {
 
   const selectedItems = this.preview.items
-  .flatMap(group => group.items) 
-  .filter(item => item.checked); 
+    .flatMap(group => group.items) 
+    .filter(item => item.checked); 
 
   selectedItems.forEach(item => {
     item.due_date = this.dueDate!;
   });
 
   this.service.create(selectedItems).subscribe({
-    next: (invoices) => {
-      this.preview.items = this.preview.items.map(group => ({
-        ...group,
-        items: group.items.filter(item => !item.checked)
-      }));
+    next: () => {
+      this.preview.items = this.preview.items
+  .map(group => {
+    const filteredItems = group.items.filter(item => !item.checked);
+    return {
+      ...group,
+      items: filteredItems,
+      count: filteredItems.length,
+    };
+  })
+  .filter(group => group.count > 0);
     },
     error: () => {
     }
@@ -78,7 +84,7 @@ export class InvoiceCreateComponent  implements OnInit {
 
   private filterByAddress(invoices: Invoice[]): Invoice[] {
     if (!this.filter.address) return invoices;
-    return invoices.filter(invoice => invoice.place.name === this.filter.address);
+    return invoices.filter(invoice => invoice.place.address.name === this.filter.address);
   }
 
   private filterByCategory(invoices: Invoice[]): Invoice[] {
@@ -98,7 +104,7 @@ export class InvoiceCreateComponent  implements OnInit {
 
   private getUniqueAddresses(invoices: SelectableInvoice[]): string[] {
     return Array.from(
-      new Set(invoices.map(invoice => invoice.place.name))
+      new Set(invoices.map(invoice => invoice.place.address.name))
     ).sort((a, b) => a.localeCompare(b));
   }
 
@@ -120,11 +126,15 @@ export class InvoiceCreateComponent  implements OnInit {
     const uniqueAddressesName = this.getUniqueAddresses(selectablesInvoice);
     const uniqueCategoriesName = this.getUniqueCategories(selectablesInvoice);
 
-    const groups: SelectableInvoiceGroup[] = uniqueAddressesName.map(address => ({
-      name: address,
-      checked: false,
-      items: selectablesInvoice.filter(invoice => invoice.place.name === address),
-    }));
+   const groups: SelectableInvoiceGroup[] = uniqueAddressesName.map(address => {
+      const items = selectablesInvoice.filter(invoice => invoice.place.address.name === address);
+      return {
+        name: address,
+        checked: false,
+        items,
+        count: items.length,
+      };
+    }).filter(group => group.count > 0);
 
     if(this.addresses.length === 0) {
       this.addresses = uniqueAddressesName;
@@ -133,6 +143,7 @@ export class InvoiceCreateComponent  implements OnInit {
     if(this.categories.length === 0) {
       this.categories = uniqueCategoriesName;
     }
+
 
     return {items: groups};
   }

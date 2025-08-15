@@ -26,12 +26,12 @@ export class PlaceService {
     return this.http.get<Place[]>(this.apiUrl);
   }
 
-  create(Place: Omit<Place, 'id'>): Observable<Place> {
-    return this.http.post<Place>(this.apiUrl, Place);
+  create(place: Omit<Place, 'id'>): Observable<Place> {
+    return this.http.post<Place>(this.apiUrl, place);
   }
 
-  update(Place: Place): Observable<Place> {
-    return this.http.put<Place>(this.apiUrl, Place);
+  update(place: Place): Observable<Place> {
+    return this.http.put<Place>(this.apiUrl, place);
   }
 
   delete(id: string): Observable<void> {

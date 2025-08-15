@@ -48,8 +48,8 @@
 
       <app-card-body>
         <div class="table-responsive table-card">
-          <table class="table align-middle table-nowrap mb-0 table-gridjs">
-            <thead class="table-light">
+          <table class="table table-bordered table-striped table-hover mb-0">
+            <thead app-table-header class="table-light">
               <tr>
                 <th style="width: 73%">Name:</th>
                 <th style="width: 12%">Número:</th>
@@ -59,7 +59,7 @@
             </thead>
             <tbody class="list form-check-all">
               <tr *ngFor="let place of page.content; trackBy: trackById; let i = index">
-                <td>{{ place.name }}</td>
+                <td>{{ place.address.name }}</td>
                 <td>{{ place.number }}</td>
                 <td>{{ place.letter }}</td>
 

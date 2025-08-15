@@ -12,8 +12,10 @@ import { LinkCreateComponent } from './create/link-create.component';
 export class LinkComponent implements OnInit {
 
   public reference: string | null = null;
-  page: Page<Link> | null = null;
-  filter: LinkFilter = {
+  
+  public page: Page<Link> | null = null;
+  
+  public filter: LinkFilter = {
     category: null,
     address: null,
     letter: null,

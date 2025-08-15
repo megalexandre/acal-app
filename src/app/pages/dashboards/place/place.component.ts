@@ -5,6 +5,7 @@ import { Place, PlaceFilter } from './place.model';
 import { PlaceCreateComponent } from './create/place-create.component';
 import { ModalWithSent } from '../address/address.model';
 import { PlaceDeleteComponent } from './delete/place-delete.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-place',
@@ -18,7 +19,7 @@ export class PlaceComponent implements OnInit {
     address: null,
     page: 0,
     size: 10,
-    sort_orders: [{ property: 'name', direction: 'ASC' }]
+    sort_orders: [{ property: 'address.name', direction: 'ASC' }, { property: 'number', direction: 'ASC' }, { property: 'letter', direction: 'ASC' }]
   };
   
   loading = true;
@@ -30,7 +31,7 @@ export class PlaceComponent implements OnInit {
   constructor(
     private service: PlaceService,
     private modalService: NgbModal,
-     private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
   ) {}
 
  search(): void {

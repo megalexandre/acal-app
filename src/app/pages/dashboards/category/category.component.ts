@@ -27,6 +27,7 @@ export class CategoryComponent implements OnInit {
     private modalService: NgbModal,
   ) {}
 
+
   search() {
     this.loading = true;
 

@@ -72,42 +72,40 @@
       </app-card-header>
 
       <app-card-body>
-        <div class="table-responsive table-card" *ngIf="page">
-          <table class="table table-hover table-striped table-bordered align-middle table-nowrap mb-0">
-            <thead class="table-light">
-              <tr>
-                <th style="width: 40%">Nome</th>
-                <th style="width: 20%">Categoria</th>
-                <th style="width: 10%">Local</th>
-                <th style="width: 5%">Número</th>
-                <th style="width: 5%">Letra</th>
-                <th style="width: 5%">Valor</th>
-                <th style="width: 5%" class="text-center">Ações</th>
-              </tr>
-            </thead>
+        <app-table *ngIf="page">
+          <thead table-header class="table-light">
+            <tr>
+              <th style="width: 40%">Nome</th>
+              <th style="width: 20%">Categoria</th>
+              <th style="width: 10%">Local</th>
+              <th style="width: 5%">Número</th>
+              <th style="width: 5%">Letra</th>
+              <th style="width: 5%">Valor</th>
+              <th style="width: 5%" class="text-center">Ações</th>
+            </tr>
+          </thead>
 
-            <tbody class="list form-check-all" *ngIf="!loading">
-              <tr *ngFor="let l of page.content; trackBy: trackById">
-                <td>{{ l.customer.name }}</td>
-                <td>{{ l.category.group | group }} {{ l.category.name }}</td>
-                <td>{{ l.place.name }}</td>
-                <td>{{ l.place.number }}</td>
-                <td>{{ l.place.letter }}</td>
-                <td>{{ l.total | currency: 'BRL' }}</td>
+          <tbody table-body *ngIf="!loading">
+            <tr *ngFor="let l of page.content; trackBy: trackById">
+              <td>{{ l.customer.name }}</td>
+              <td>{{ l.category.group | group }} {{ l.category.name }}</td>
+              <td>{{ l.place.address.name }}</td>
+              <td>{{ l.place.number }}</td>
+              <td>{{ l.place.letter }}</td>
+              <td>{{ l.total | currency: 'BRL' }}</td>
 
-                <td class="text-center">
-                  <ul class="list-inline hstack gap-2 mb-0 justify-content-center">
-                    <li class="list-inline-item">
-                      <a (click)="delete(l)" class="text-danger" ngbTooltip="Remover" placement="top">
-                        <i class="ri-delete-bin-5-fill fs-16"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+              <td class="text-center">
+                <ul class="list-inline hstack gap-2 mb-0 justify-content-center">
+                  <li class="list-inline-item">
+                    <a (click)="delete(l)" class="text-danger" ngbTooltip="Remover" placement="top">
+                      <i class="ri-delete-bin-5-fill fs-16"></i>
+                    </a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </app-table>
       </app-card-body>
 
       <app-card-footer>

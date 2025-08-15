@@ -22,32 +22,32 @@ export interface LinkFilter {
 }
 
 export interface Page<T> {
-  "content": T[],
-  "pageable": {
-      "page_number": number,
-      "page_size": number,
-      "sort": {
-          "empty": boolean,
-          "sorted": boolean,
-          "unsorted": boolean
+  content: T[],
+  pageable: {
+      page_number: number,
+      page_size: number,
+      sort: {
+          empty: boolean,
+          sorted: boolean,
+          unsorted: boolean
       },
-      "offset": number,
-      "paged": boolean,
-      "unpaged": boolean
+      offset: number,
+      paged: boolean,
+      unpaged: boolean
     },
-    "last": boolean,
-    "total_elements": number,
-    "total_pages": number,
-    "first": boolean,
-    "size": number,
-    "number": number,
-    "sort": {
-        "empty": boolean,
-        "sorted": boolean,
-        "unsorted": boolean
+    last: boolean,
+    total_elements: number,
+    total_pages: number,
+    first: boolean,
+    size: number,
+    number: number,
+    sort: {
+        empty: boolean,
+        sorted: boolean,
+        unsorted: boolean
     },
-    "number_of_elements": number,
-    "empty": boolean
+    number_of_elements: number,
+    empty: boolean
 }
 
 export class Link {
@@ -68,7 +68,7 @@ export class Link {
       json.number,
       json.category,
       json.customer,
-      Place.fromJson(json.place),
+      json.place,
       json.total,
       json.exclusive_member,
       json.active

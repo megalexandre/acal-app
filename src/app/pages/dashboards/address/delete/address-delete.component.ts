@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Address, ModalWithSent } from '../address.model';
 import { AddressService } from '../address.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-address-delete',
@@ -17,7 +18,8 @@ export class AddressDeleteComponent implements ModalWithSent {
   
   constructor(
     private addressService: AddressService,
-    public activeModal: NgbActiveModal,
+    private activeModal: NgbActiveModal,
+    private t: ToastrService,
   ) {
 
   }
@@ -29,6 +31,7 @@ export class AddressDeleteComponent implements ModalWithSent {
   confirm() {
     this.addressService.delete(this.address.id).subscribe({
       next: () => {
+        this.t.success("Deletado com sucesso!")
         this.close();
         this.sent.emit();
       }

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { FeatherModule } from 'angular-feather';
@@ -30,6 +30,7 @@ import { AddressEditComponent } from './edit/address-edit.component';
     ReactiveFormsModule, 
     NgbPaginationModule, 
     AcalModule,
+    FormsModule,
   ],
   providers: [
     AddressService,

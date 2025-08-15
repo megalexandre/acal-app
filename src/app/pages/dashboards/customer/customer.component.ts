@@ -51,7 +51,16 @@ export class CustomerComponent implements OnInit {
       }
     });
   }
+  
+  resetAndSerch(){
+    this.reset();
+    this.search();
+  }
 
+  reset(){
+    this.filter.page = 0;
+    this.search();
+  }
 
   onPageChange(page: number): void {
     setTimeout(() => {

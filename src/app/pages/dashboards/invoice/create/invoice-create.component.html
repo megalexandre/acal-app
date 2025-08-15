@@ -4,7 +4,7 @@
       <div class="row g-2 align-items-end">
         <div class="col-md-6 col-12">
           <label class="form-label">Referência</label>
-          <app-input-reference [(ngModel)]="reference" />
+          <app-input-reference [(ngModel)]="reference" (keydown.enter)="search()" />
         </div>
       </div>
 
@@ -19,9 +19,9 @@
   </app-card-body>
 </app-card>
 
-<div class="d-flex flex-column" style="height: 100vh" *ngIf="!loading">
-  <div style="height: 10vh">
-    <div class="border h-100">
+<div class="d-flex flex-column" *ngIf="!loading">
+  <div>
+    <div class="border">
       <div class="card">
         <div class="card-body">
           <div class="row">
@@ -58,8 +58,8 @@
     </div>
   </div>
 
-  <div style="height: 60vh">
-    <div class="border h-100 d-flex flex-column">
+  <div>
+    <div class="border d-flex flex-column">
       <div class="border mb-0 flex-grow-1 overflow-auto">
         <table class="table table-hover table-bordered table-striped mb-0" style="min-width: 100%">
           <thead class="table-light" style="position: sticky; top: 0; z-index: 1">
@@ -78,9 +78,7 @@
               <tr class="bg-light" (click)="toggleGroup(item)" [ngClass]="{ 'table-success': item.checked }">
                 <td colspan="6">
                   <div class="row">
-                    <div class="text-center fw-bold" style="font-size: 16px">
-                      {{ item.name }}
-                    </div>
+                    <div class="text-center fw-bold" style="font-size: 16px">{{ item.name }}</div>
                   </div>
                 </td>
               </tr>
@@ -100,7 +98,7 @@
     </div>
   </div>
 
-  <div style="height: 20vh">
+  <div>
     <div class="border h-100">
       <app-card>
         <app-card-body>
@@ -115,11 +113,14 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col-12 col-md-3 offset-md-9 d-grid">
-                <app-input-date [(ngModel)]="dueDate" />
+                <div>
+                  <label for="exampleInputdate" class="form-label">Data de vencimento</label>
+                  <app-input-date [(ngModel)]="dueDate" />
+                </div>
               </div>
             </div>
 
-            <div class="row">
+            <div class="row mt-3">
               <div class="col-12 col-md-3 offset-md-9 d-grid">
                 <button type="button" class="btn btn-outline-primary" (click)="confirm()">Confirmar</button>
               </div>
