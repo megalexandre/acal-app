@@ -23,7 +23,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 return user.email === request.body.email && user.password === request.body.password;
               });
               if (filteredUsers.length) {
-                // if login details are valid return 200 OK with user details and fake jwt token
                 const user = filteredUsers[0];
                 const body = {
                   id: user.id,
@@ -332,7 +331,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
         // tslint:disable-next-line: max-line-length
         .pipe(materialize())
-        .pipe(delay(500))
         .pipe(dematerialize())
     );
   }

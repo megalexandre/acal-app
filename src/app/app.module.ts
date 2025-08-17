@@ -94,9 +94,9 @@ if (environment.defaultauth === 'firebase') {
     ToastrModule.forRoot()
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true },
     { provide: LOCALE_ID, useValue: 'pt-BR' },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL'},
     { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig },
