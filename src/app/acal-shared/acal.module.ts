@@ -19,7 +19,6 @@ import { YesOrNoSelectComponent } from './select/yes-or-no-select/yes-or-no-sele
 import { PlaceSelectComponent } from './select/place-select/place-select.component';
 import { GroupSelectComponent } from './select/group-select/group-select.component';
 import { PlaceAddressSelectComponent } from './select/place-address-select/place-address-select.component';
-import { PlacePipe } from './pipe/place.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +26,6 @@ import { PlacePipe } from './pipe/place.pipe';
     ButtonComponent,
     GroupPipe,
     BooleanPipe,
-    PlacePipe,
     ReferenceInputComponent,
     DateInputComponent,
     CategorySelectComponent,
@@ -38,6 +36,7 @@ import { PlacePipe } from './pipe/place.pipe';
     PlaceSelectComponent,
     GroupSelectComponent,
     PlaceAddressSelectComponent,
+    YesOrNoSelectComponent,
   ],
 
   imports: [
@@ -55,7 +54,6 @@ import { PlacePipe } from './pipe/place.pipe';
     CardModule,
     TableModule,
     GroupPipe,
-    PlacePipe,
     BooleanPipe,
     DateInputComponent,
     ReferenceInputComponent,
@@ -67,6 +65,7 @@ import { PlacePipe } from './pipe/place.pipe';
     PlaceSelectComponent,
     GroupSelectComponent,
     PlaceAddressSelectComponent,
+    YesOrNoSelectComponent,
   ],
 
   providers:[
