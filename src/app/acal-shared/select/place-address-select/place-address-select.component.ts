@@ -22,43 +22,46 @@ export interface PlaceSelect {
 })
 export class PlaceAddressSelectComponent implements ControlValueAccessor, OnChanges {
 
+  
   @Input() disabled = false;
   @Input() address: Address | null = null
   @Input() control: FormControl | null = null;
 
   groups: PlaceSelect[] | null = null;
-
   value: string | null = null;
 
   private onChange: (value: any) => void = () => {};
   private onTouch: () => void = () => {};
 
-  constructor(private service: PlaceService) {
-    this.load();
+  constructor(private service: PlaceService) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['address'] && this.address) {
+      this.load(this.address);
+    }
   }
 
-  private load() {
+  private load(address: Address | null) {
+    if (!address) {
+      this.groups = [];
+      return;
+    }
+
     this.service.get().subscribe({
       next: (options: Place[]) => {
-        this.groups = this.build(options);
+        this.groups = this.build(options, address);
       }
     });
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['address']) {
-      this.load(); 
-    }
-  }
-
-  private build(options: Place[]): PlaceSelect[] {
-    const filtered = options.filter(item => item.address.name === this.address?.name);
+  private build(options: Place[], address: Address): PlaceSelect[] {
+    const filtered = options.filter(item => item.address.name === address.name);
 
     return Array.from(new Set(filtered.map(g => g.address.name)))
       .sort((a, b) => a.localeCompare(b))
       .map(name => ({
-        name: name,
-        itens: filtered 
+        name,
+        itens: filtered
           .filter(option => option.address.name === name)
           .sort((a, b) => a.address.name.localeCompare(b.address.name))
       }));

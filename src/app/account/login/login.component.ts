@@ -35,31 +35,39 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/']);
     }
     this.loginForm = this.formBuilder.group({
-      email: ['admin@themesbrand.com', [Validators.required, Validators.email]],
-      password: ['123456', [Validators.required]],
+      email: ['alexandre@acal.com', [Validators.required]],
+      password: ['#$!4eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9', [Validators.required]],
     });
 
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  get f() {
-    return this.loginForm.controls;
-  }
 
   onSubmit() {
     this.submitted = true;
 
-    this.authenticationService.login(this.f['email'].value, this.f['password'].value).subscribe((data: any) => {
-      if (data.status == 'success') {
-        sessionStorage.setItem('currentUser', JSON.stringify(data.data));
-        sessionStorage.setItem('token', data.token);
-        this.router.navigate(['/']);
-      } else {
-        this.toastService.show(data.data, { classname: 'bg-danger text-white', delay: 15000 });
+    this.authenticationService.login(this.f['email'].value, this.f['password'].value)
+      .subscribe(
+        (data: any) => {
+        if (data.status == 'success') {
+          sessionStorage.setItem('currentUser', JSON.stringify(data.data));
+          sessionStorage.setItem('token', data.token);
+          this.router.navigate(['/']);
+        } else {
+          this.toastService.show(data.data, { classname: 'bg-danger text-white', delay: 15000 });
+        }
+      }, 
+      (error) =>{
+        this.toastService.show(error.error.data, { classname: 'bg-danger text-white', delay: 15000 });
       }
-    });
+    );
   }
+  
   toggleFieldTextType() {
     this.fieldTextType = !this.fieldTextType;
+  }
+
+    get f() {
+    return this.loginForm.controls;
   }
 }

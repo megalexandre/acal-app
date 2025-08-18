@@ -15,8 +15,8 @@ export class LinkCreateComponent implements OnInit, ModalWithSent {
 
   public form: FormGroup;
   public submitted = false;
-  
   public address: Address | null = null;
+
   constructor(
     private fb: FormBuilder,
     private service: LinkService,
