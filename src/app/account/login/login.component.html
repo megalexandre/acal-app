@@ -11,10 +11,14 @@
           <!-- Email -->
           <div class="form-group mb-4">
             <label for="email" class="form-label">Email</label>
-            <input id="email" type="email" class="form-control" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" placeholder="seu@email.com" />
-            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
-              <div *ngIf="f['email'].errors['required']">Email é obrigatório</div>
-              <div *ngIf="f['email'].errors['email']">Email inválido</div>
+
+            <div class="input-group mb-3">
+              <input id="email" type="email" class="form-control" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" placeholder="seu@email.com" />
+              <span class="input-group-text">&#64;acal.org.br</span>
+              <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                <div *ngIf="f['email'].errors['required']">Email é obrigatório</div>
+                <div *ngIf="f['email'].errors['email']">Email inválido</div>
+              </div>
             </div>
           </div>
 

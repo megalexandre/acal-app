@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../../core/services/auth.service';
 import { ToastService } from './toast-service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private router: Router,
     private route: ActivatedRoute,
-    public toastService: ToastService,
+    private t: ToastrService,
   ) {
     if (this.authenticationService.currentUserValue) {
       this.router.navigate(['/']);
@@ -35,7 +36,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/']);
     }
     this.loginForm = this.formBuilder.group({
-      email: ['alexandre@acal.com', [Validators.required]],
+      email: ['', [Validators.required]],
       password: ['#$!4eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9', [Validators.required]],
     });
 
@@ -46,23 +47,29 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
+    if (this.loginForm.invalid) {
+      this.t.show('Preencha todos os campos corretamente.');
+      return;
+    }
+
     this.authenticationService.login(this.f['email'].value, this.f['password'].value)
-      .subscribe(
-        (data: any) => {
-        if (data.status == 'success') {
-          sessionStorage.setItem('currentUser', JSON.stringify(data.data));
-          sessionStorage.setItem('token', data.token);
-          this.router.navigate(['/']);
-        } else {
-          this.toastService.show(data.data, { classname: 'bg-danger text-white', delay: 15000 });
+      .subscribe({
+        next: (data: any) => {
+          if (data.status === 'success') {
+            sessionStorage.setItem('currentUser', JSON.stringify(data.data));
+            sessionStorage.setItem('token', data.token);
+            this.router.navigate(['/']);
+          } else {
+            this.t.show(data.data)
+          }
+        },
+        error: (error) => {
+          const message = error?.error?.data || error?.message || 'Erro inesperado.';
+          this.t.show(message);
         }
-      }, 
-      (error) =>{
-        this.toastService.show(error.error.data, { classname: 'bg-danger text-white', delay: 15000 });
-      }
-    );
+    });
   }
-  
+
   toggleFieldTextType() {
     this.fieldTextType = !this.fieldTextType;
   }
