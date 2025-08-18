@@ -2,7 +2,7 @@
   <option [ngValue]="null" class="text-muted">Selecione...</option>
 
   <ng-container *ngFor="let group of groups">
-    <optgroup [label]="group.group | group">
+    <optgroup [label]="group.group">
       <option *ngFor="let category of group.categories" [ngValue]="category">
         {{ category.name }}
       </option>

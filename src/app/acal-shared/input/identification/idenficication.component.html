@@ -1,0 +1,20 @@
+<div class="input-group">
+  <!-- Input -->
+  <input type="text" class="form-control" [mask]="selectedType === 'cpf' ? '000.000.000-00' : '00.000.000/0000-00'" [formControl]="control" [disabled]="!selectedType" />
+
+  <!-- Dropdown -->
+  <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    {{ selectedType === 'cpf' ? 'Pessoa Física' : selectedType === 'cnpj' ? 'Pessoa Jurídica' : 'Selecione' }}
+  </button>
+
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" (click)="selectType('cpf')">Pessoa Física</a></li>
+    <li><a class="dropdown-item" (click)="selectType('cnpj')">Pessoa Jurídica</a></li>
+  </ul>
+</div>
+
+<!-- Erros -->
+<div *ngIf="isInvalid()" class="text-danger mt-1">
+  <ng-container *ngIf="selectedType === 'cpf'">CPF inválido</ng-container>
+  <ng-container *ngIf="selectedType === 'cnpj'">CNPJ inválido</ng-container>
+</div>

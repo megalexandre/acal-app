@@ -17,7 +17,7 @@ export class LinkService {
       ...filter,
         group_name: filter.group ? filter.group.value: null, 
         category_id: filter.category ? filter.category.id: null,
-        address_id: filter.address ? filter.address.name: null,
+        address_id: filter.address ? filter.address.id: null,
       };
 
       delete (payload as any).group;
@@ -41,6 +41,17 @@ export class LinkService {
   }
 
   delete(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/delete/${id}`);
   }
+
+  inactivate(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/inactivate/${id}`);
+  }
+
+
+  activate(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/activate/${id}`);
+  }
+
 }
+

@@ -11,11 +11,13 @@ import { LinkService } from './link.service';
 import { LinkRoutingModule } from './link-routing.module';
 import { LinkComponent } from './link.component';
 import { LinkCreateComponent } from './create/link-create.component';
+import { LinkDeleteComponent } from './delete/link-delete.component';
 
 @NgModule({
   declarations: [
     LinkComponent, 
     LinkCreateComponent,
+    LinkDeleteComponent,
   ],
   imports: [
     CommonModule, 

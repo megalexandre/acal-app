@@ -16,6 +16,9 @@ export interface LinkFilter {
   number?: string | null;
   letter?: string | null;
   total?: number;
+  
+  deleted: boolean | null,
+  active: boolean | null,
   page: number;
   size: number;
   sort_orders: SortOrder[];
@@ -59,7 +62,8 @@ export class Link {
     public place: Place,
     public total: number,
     public exclusive_member: boolean,
-    public active: boolean
+    public active: boolean,
+    public deleted: boolean,
   ) {}
 
   static fromJson(json: any): Link {
@@ -71,7 +75,8 @@ export class Link {
       json.place,
       json.total,
       json.exclusive_member,
-      json.active
+      json.active,
+      json.deleted,
     );
   }
 }

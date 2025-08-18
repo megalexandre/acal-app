@@ -29,7 +29,7 @@ export class CustomerCreateComponent implements OnInit, ModalWithSent {
       identity_card: ['', [CpfCnpjValidator.valid(), Validators.required]],
       phone_number: [''],
       partner_number: [''],
-      voter: [null,[Validators.required]],
+      voter: [true,[Validators.required]],
     });
 
   }

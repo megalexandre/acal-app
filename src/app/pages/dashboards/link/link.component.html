@@ -25,7 +25,7 @@
                   <app-category-select [(ngModel)]="filter.category" (change)="search()"></app-category-select>
                 </div>
 
-                <div class="col-md-8 col-12">
+                <div class="col-md-4 col-12">
                   <label class="form-label">Endereço</label>
                   <app-address-select [(ngModel)]="filter.address" (change)="search()"></app-address-select>
                 </div>
@@ -38,6 +38,24 @@
                 <div class="col-md-2 col-6">
                   <label class="form-label">Letra</label>
                   <input type="text" class="form-control" [(ngModel)]="filter.letter" placeholder="Letra" (keydown.enter)="search()" />
+                </div>
+
+                <div class="col-md-2 col-6">
+                  <label class="form-label">Ativos</label>
+                  <select class="form-select" [(ngModel)]="filter.active" (change)="search()">
+                    <option [value]="null">Todos</option>
+                    <option [value]="true">Somente Ativos</option>
+                    <option [value]="false">Somente Inativos</option>
+                  </select>
+                </div>
+
+                <div class="col-md-2 col-6">
+                  <label class="form-label">Deletados</label>
+                  <select class="form-select" [(ngModel)]="filter.deleted" (change)="search()">
+                    <option [value]="null">Todos</option>
+                    <option [value]="false">Somente Ativos</option>
+                    <option [value]="true">Somente Deletados</option>
+                  </select>
                 </div>
               </div>
 
@@ -86,8 +104,13 @@
           </thead>
 
           <tbody table-body *ngIf="!loading">
-            <tr *ngFor="let l of page.content; trackBy: trackById">
-              <td>{{ l.customer.name }}</td>
+            <tr *ngFor="let l of page.content; trackBy: trackById" [ngClass]="{ 'table-danger': l.deleted, 'table-warning': !l.active }">
+              <td>
+                {{ l.customer.name }}
+
+                <span *ngIf="!l.active" class="badge bg-info-subtle text-body badge-border float-end">Inativo</span>
+                <span *ngIf="l.deleted" class="badge bg-info-subtle text-body badge-border float-end">Deletado</span>
+              </td>
               <td>{{ l.category.group | group }} {{ l.category.name }}</td>
               <td>{{ l.place.address.name }}</td>
               <td>{{ l.place.number }}</td>

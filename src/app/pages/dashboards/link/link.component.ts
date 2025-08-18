@@ -1,9 +1,10 @@
 import { Component, OnInit, Type } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ModalWithSent } from '../address/address.model';
 import { Link, LinkFilter, Page } from './link.model';
 import { LinkService } from './link.service';
 import { LinkCreateComponent } from './create/link-create.component';
+import { LinkDeleteComponent } from './delete/link-delete.component';
 
 @Component({
   selector: 'app-link',
@@ -21,6 +22,8 @@ export class LinkComponent implements OnInit {
     letter: null,
     group: null,
     number: null,
+    deleted: false,
+    active: null,
     page: 0,
     size: 20,
     sort_orders: [
@@ -67,9 +70,12 @@ export class LinkComponent implements OnInit {
       address: null,
       group: null,
       letter: null,
+      deleted: false,
+      active: null,
       number: null,
       page: 0,
       size: 20,
+      
       sort_orders: [
         {
           'property': 'customer.normalizedName',
@@ -85,11 +91,8 @@ export class LinkComponent implements OnInit {
     return item.id;
   }
 
-  /** novo método para mudar de página */
   loadPage(pageNumber: number) {
     if (!this.page) return;
-
-    // não faz nada se for fora dos limites
     if (pageNumber < 0 || pageNumber >= this.page.total_pages) {
       return;
     }
@@ -99,26 +102,30 @@ export class LinkComponent implements OnInit {
   }
 
   create() {
-    this.openModal(LinkCreateComponent);
+    this.openModal(LinkCreateComponent)
+     .componentInstance.sent.subscribe(() => {
+      this.search();
+    });
   }
 
   delete(link: Link) {
-    //this.openModal(LinkDeleteComponent, { category });
+    this.openModal(LinkDeleteComponent, { link } )
+    .componentInstance.sent.subscribe(() => {
+      this.search();
+    });
   }
 
   edit(link: Link) {
     //this.openModal(LinkEditComponent, { category });
   }
 
-  openModal<T extends ModalWithSent>(component: Type<T>, data?: Partial<T>): void {
-    const componentInstance = this.modalService
-      .open(component, { centered: true })
-      .componentInstance;
+  openModal<T extends ModalWithSent>(component: Type<T>, data?: Partial<T>): NgbModalRef {
+    const modalRef = this.modalService.open(component, { centered: true });
 
     if (data) {
-      Object.assign(componentInstance, data);
+      Object.assign(modalRef.componentInstance, data);
     }
 
-    componentInstance.sent.subscribe(() => this.search());
+    return modalRef;
   }
 }

@@ -1,2 +1,22 @@
-<input type="text" mask="0000-00-00" [dropSpecialCharacters]="false" class="form-control" [formControl]="reference" [placeholder]="placeholder" />
+<div class="input-group">
+  <!-- Dia -->
+  <input type="text" maxlength="2" class="form-control" placeholder="Dia" [formControl]="dayControl" />
+
+  <!-- Dropdown de Meses -->
+  <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    {{ selectedMonthLabel || 'Mês' }}
+  </button>
+
+  <ul class="dropdown-menu">
+    <li *ngFor="let month of months">
+      <a class="dropdown-item" (click)="selectMonth(month)">
+        {{ month.label }}
+      </a>
+    </li>
+  </ul>
+
+  <!-- Ano -->
+  <input type="text" maxlength="4" class="form-control" placeholder="Ano" [formControl]="yearControl" />
+</div>
+
 <div *ngIf="isInvalid()" class="text-danger">Data inválida</div>

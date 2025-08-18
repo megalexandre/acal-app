@@ -25,8 +25,8 @@
 
           <tbody class="list form-check-all" table-body>
             <tr *ngFor="let i of page.content" (dblclick)="onDoubleClick(i)">
-              <td>{{ i.reference }}</td>
-              <td>{{ i.due_date }}</td>
+              <td>{{ i.reference | reference }}</td>
+              <td>{{ i.due_date | date }}</td>
               <td>{{ i.number }}</td>
               <td>{{ i.place.address.name + ' ' + i.place.number + ' ' + i.place.letter }}</td>
               <td>{{ i.customer.name }}</td>

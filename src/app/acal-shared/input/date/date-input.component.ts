@@ -13,10 +13,8 @@ import {
   AbstractControl,
   ValidationErrors,
   FormControl,
-  Validators,
-  ValidatorFn
+  Validators
 } from '@angular/forms';
-import { DateValidators } from '../../validator/date.validator';
 
 @Component({
   selector: 'app-input-date',
@@ -37,15 +35,49 @@ import { DateValidators } from '../../validator/date.validator';
 export class DateInputComponent implements OnChanges, ControlValueAccessor, Validator {
 
   @Input() submitted!: boolean;
-  @Input() placeholder: string = 'YYYY-MM-DD';
 
-  reference = new FormControl('', [
+  // controles
+  dayControl = new FormControl('', [
     Validators.required,
-    DateValidators.valid()
+    Validators.min(1),
+    Validators.max(31),
+    Validators.pattern(/^[0-9]{1,2}$/)
   ]);
 
-  private onChange: (value: Date | null) => void = () => {};
-  private onTouched: () => void = () => {};
+  monthControl = new FormControl('', [Validators.required]);
+  yearControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(4),
+    Validators.maxLength(4),
+    Validators.pattern(/^[0-9]{4}$/)
+  ]);
+
+  // meses
+  months = [
+    { value: '01', label: 'Janeiro' },
+    { value: '02', label: 'Fevereiro' },
+    { value: '03', label: 'Março' },
+    { value: '04', label: 'Abril' },
+    { value: '05', label: 'Maio' },
+    { value: '06', label: 'Junho' },
+    { value: '07', label: 'Julho' },
+    { value: '08', label: 'Agosto' },
+    { value: '09', label: 'Setembro' },
+    { value: '10', label: 'Outubro' },
+    { value: '11', label: 'Novembro' },
+    { value: '12', label: 'Dezembro' }
+  ];
+
+  selectedMonth: string | null = null;
+  selectedMonthLabel: string | null = null;
+
+  private onChange: any = () => {};
+  private onTouched: any = () => {};
+
+  constructor() {
+    this.dayControl.valueChanges.subscribe(() => this.updateDate());
+    this.yearControl.valueChanges.subscribe(() => this.updateDate());
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['submitted']) {
@@ -53,70 +85,71 @@ export class DateInputComponent implements OnChanges, ControlValueAccessor, Vali
       const current = changes['submitted'].currentValue;
 
       if (current === true && prev !== true) {
-        this.reference.markAsTouched();
-        this.reference.updateValueAndValidity({ onlySelf: true, emitEvent: false });
+        this.dayControl.markAsTouched();
+        this.monthControl.markAsTouched();
+        this.yearControl.markAsTouched();
       }
     }
   }
 
-  writeValue(value: Date | string | null): void {
-    if (!value) {
-      this.reference.setValue('', { emitEvent: false });
-      return;
+  writeValue(value: string): void {
+    if (value) {
+      const [year, month, day] = value.split('-');
+      this.yearControl.setValue(year, { emitEvent: false });
+      this.dayControl.setValue(day, { emitEvent: false });
+      const found = this.months.find(m => m.value === month);
+      if (found) {
+        this.selectedMonth = found.value;
+        this.selectedMonthLabel = found.label;
+      }
     }
-
-    const str = value instanceof Date
-      ? value.toISOString().substring(0, 10) // 'YYYY-MM-DD'
-      : value;
-
-    this.reference.setValue(str, { emitEvent: false });
   }
 
-  registerOnChange(fn: (value: Date | null) => void): void {
+  registerOnChange(fn: any): void {
     this.onChange = fn;
-
-    this.reference.valueChanges.subscribe(val => {
-      if (!val) {
-        this.onChange(null);
-        return;
-      }
-
-      const dateParts = val.split('-');
-      if (dateParts.length === 3) {
-        const [year, month, day] = dateParts.map(Number);
-        const date = new Date(year, month - 1, day);
-        this.onChange(date);
-      } else {
-        this.onChange(null);
-      }
-    });
   }
 
-  registerOnTouched(fn: () => void): void {
+  registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
 
   setDisabledState?(isDisabled: boolean): void {
-    isDisabled ? this.reference.disable() : this.reference.enable();
+    isDisabled ? (this.dayControl.disable(), this.monthControl.disable(), this.yearControl.disable()) 
+               : (this.dayControl.enable(), this.monthControl.enable(), this.yearControl.enable());
   }
 
   validate(control: AbstractControl): ValidationErrors | null {
-    const validators: ValidatorFn[] = [
-      Validators.required,
-      DateValidators.valid()
-    ];
-
-    const composedValidator = Validators.compose(validators);
-    return composedValidator ? composedValidator(control) : null;
+    if (this.dayControl.invalid || this.yearControl.invalid || !this.selectedMonth) {
+      return { dateInvalid: true };
+    }
+    return null;
   }
 
   isInvalid(): boolean {
     if (!this.submitted) return false;
-    return this.reference.touched && this.reference.invalid;
+    return (this.dayControl.touched && this.dayControl.invalid) ||
+           (this.yearControl.touched && this.yearControl.invalid) ||
+           (!this.selectedMonth);
   }
 
   isValid(): boolean {
     if (!this.submitted) return false;
-    return this.reference.touched && this.reference.valid;
+    return this.dayControl.valid && this.yearControl.valid && !!this.selectedMonth;
+  }
+
+  selectMonth(month: { value: string, label: string }) {
+    this.selectedMonth = month.value;
+    this.selectedMonthLabel = month.label;
+    this.updateDate();
+  }
+
+  private updateDate() {
+    if (this.selectedMonth && this.yearControl.valid && this.dayControl.valid) {
+      const day = String(this.dayControl.value).padStart(2, '0');
+      const value = `${this.yearControl.value}-${this.selectedMonth}-${day}`;
+      this.onChange(value);
+    } else {
+      this.onChange(null);
+    }
   }
 }

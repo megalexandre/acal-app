@@ -1,0 +1,43 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">Deletar Ligação</h5>
+  <button type="button" outline class="btn-close" aria-label="Close" (click)="close()"></button>
+</div>
+
+<div class="modal-body">
+  <div class="mb-3">
+    <label class="form-label">Cliente:</label>
+    <input type="text" class="form-control" [(ngModel)]="link.customer.name" [disabled]="true" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Idenficação:</label>
+    <input type="text" class="form-control" [(ngModel)]="link.customer.identity_card" [disabled]="true" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Categoria:</label>
+    <input type="text" class="form-control" [(ngModel)]="link.category.name" [disabled]="true" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Local:</label>
+    <input type="text" class="form-control" [(ngModel)]="link.place.address.name" [disabled]="true" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">É exclusivamente sócio?</label>
+    <input type="text" class="form-control" [(ngModel)]="link.exclusive_member" [disabled]="true" />
+  </div>
+</div>
+
+<div class="modal-footer">
+  <div class="d-flex justify-content-between col-12">
+    <app-button type="button" btnType="secondary" outline (click)="close()"> Cancelar </app-button>
+    <div class="d-flex" *ngIf="!link.deleted">
+      <app-button *ngIf="link.active" type="button" btnType="warning" outline class="ms-2" (click)="inactivate()"> Inativar </app-button>
+      <app-button *ngIf="!link.active" type="button" btnType="success" outline class="ms-2" (click)="activate()"> Ativar </app-button>
+
+      <app-button type="button" btnType="danger" outline class="ms-2" (click)="delete()"> Deletar </app-button>
+    </div>
+  </div>
+</div>

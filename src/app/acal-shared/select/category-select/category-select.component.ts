@@ -1,6 +1,6 @@
 import { Component, Input, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
-import { Category, Group } from 'src/app/pages/dashboards/category/category.model';
+import { Category } from 'src/app/pages/dashboards/category/category.model';
 import { CategoryService } from 'src/app/pages/dashboards/category/category.service';
 
 export interface CategorySelect {
@@ -26,7 +26,8 @@ export class CategorySelectComponent implements ControlValueAccessor {
 
   groups: CategorySelect[] = [];
 
-  value: string | null = null;
+  // Agora o value é um Category, não string
+  value: Category | null = null;
 
   private onChange: (value: any) => void = () => {};
   private onTouch: () => void = () => {};
@@ -54,7 +55,7 @@ export class CategorySelectComponent implements ControlValueAccessor {
       }));
   }
 
-  writeValue(value: string | null): void {
+  writeValue(value: Category | null): void {
     this.value = value;
   }
 
@@ -70,7 +71,7 @@ export class CategorySelectComponent implements ControlValueAccessor {
     this.disabled = isDisabled;
   }
 
-  onSelectionChange(value: string | null): void {
+  onSelectionChange(value: Category | null): void {
     this.value = value;
     this.onChange(value);
     this.onTouch();

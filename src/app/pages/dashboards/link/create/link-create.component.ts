@@ -29,7 +29,7 @@ export class LinkCreateComponent implements OnInit, ModalWithSent {
       customer_id: [null, [Validators.required]],
       place_id: [null, [Validators.required]],
       category_id: [null, [Validators.required]],
-      exclusive_member: [null, [Validators.required]],
+      exclusive_member: [false, [Validators.required]],
     });
   }
 
@@ -58,7 +58,15 @@ export class LinkCreateComponent implements OnInit, ModalWithSent {
         },
         error: (error) => {
           this.form.reset()
-          this.t.error('Error', error)
+
+          if(error.message === 'DUPLICATE_LINK'){
+             
+            this.t.error('Error', 'Já existe um link com ativo nesse endereço.');
+          }
+          else {
+            this.t.error('Error', 'Erro ao criar link: ' + error.message);
+          }
+
         },
       });
     }
