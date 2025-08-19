@@ -16,30 +16,15 @@ export class LinkComponent implements OnInit {
   
   public page: Page<Link> | null = null;
   
-  public filter: LinkFilter = {
-    category: null,
-    address: null,
-    letter: null,
-    group: null,
-    number: null,
-    deleted: false,
-    active: null,
-    page: 0,
-    size: 20,
-    sort_orders: [
-      {
-        'property': 'customer.normalizedName',
-        'direction': 'ASC'
-      }
-    ]
-  };
-
+  public filter: LinkFilter;
   loading = true;
 
   constructor(
     private service: LinkService,
     private modalService: NgbModal,
-  ) {}
+  ) {
+    this.filter = this.initializeFilter();
+  }
 
   ngOnInit(): void {
     this.search();
@@ -64,8 +49,8 @@ export class LinkComponent implements OnInit {
     });
   }
 
-  clear(){
-    this.filter = {
+ private initializeFilter(): LinkFilter {
+   return {
       category: null,
       address: null,
       group: null,
@@ -83,7 +68,10 @@ export class LinkComponent implements OnInit {
         }
       ]
     };
+ }
 
+  clear(){
+    this.filter = this.initializeFilter();
     this.search();
   }
 

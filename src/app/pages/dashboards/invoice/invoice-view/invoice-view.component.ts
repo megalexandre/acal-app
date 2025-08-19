@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Invoice } from '../invoice.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { InvoiceViewReceiverComponent } from './invoice-view-receiver/invoice-view-receiver.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-invoice-view',
@@ -13,6 +15,7 @@ export class InvoiceViewComponent {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
+    private modalService: NgbModal
   ) {
     const navigation = this.router.getCurrentNavigation();
 
@@ -30,6 +33,16 @@ export class InvoiceViewComponent {
 
   get status(): string {
     return this.invoice.paid_at ? 'Pago' : 'Aguardando'   
+  }
+
+
+  public receiver() {
+    const modalRef = this.modalService.open(InvoiceViewReceiverComponent, { centered: true });
+    modalRef.componentInstance.invoice = this.invoice;
+
+    modalRef.componentInstance.sent.subscribe(() => {
+      console.log('Invoice receiver modal closed with sent event');
+    });
   }
 
   

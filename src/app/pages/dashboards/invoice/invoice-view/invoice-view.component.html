@@ -1,3 +1,23 @@
+<div class="d-flex align-items-center">
+  <h5 class="card-title flex-grow-1 mb-0">Faturas</h5>
+
+  <div class="d-flex gap-1 flex-wrap">
+    <div class="btn-group">
+      <button type="button" class="btn btn-light">Ações</button>
+      <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" (click)="back()">Voltar</a>
+        <ng-container *ngIf="invoice.paid!">
+          <a class="dropdown-item" (click)="receiver()">Receber</a>
+        </ng-container>
+        <a class="dropdown-item">Apagar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr />
+
 <div class="container border">
   <app-invoice-view-header />
   <app-invoice-view-detail [invoice]="invoice" />
@@ -7,12 +27,4 @@
   <app-invoice-view-detail [invoice]="invoice" />
 </div>
 
-<div class="container border mt-3 mb-3">
-  <div class="row">
-    <div class="d-flex justify-content-between flex-wrap gap-2">
-      <button type="button" class="btn btn-success">Receber</button>
-      <button type="button" class="btn btn-danger">Apagar</button>
-      <button type="button" class="btn btn-primary">Voltar</button>
-    </div>
-  </div>
-</div>
+<hr />

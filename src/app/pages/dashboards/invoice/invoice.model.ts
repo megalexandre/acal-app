@@ -1,7 +1,9 @@
- import { Category } from "../category/category.model";
+ import { ex } from "@fullcalendar/core/internal-common";
+import { Category } from "../category/category.model";
 import { Customer } from "../customer/customer.model";
 import { SortOrder } from "../link/link.model";
 import { Place } from "../place/place.model";
+import { number } from "echarts";
 
 
 export interface Invoice {
@@ -17,7 +19,8 @@ export interface Invoice {
   due_date: Date;
   values: InvoiceValue[];
   number: number;
-  paid_at: Date; 
+  paid_at?: Date; 
+  paid: boolean;
 }
 
 export interface WaterQuality {
@@ -54,8 +57,14 @@ export interface InvoicePreviewTable {
 
 }
 
-export interface InvoiceFilter {
+export interface Filter {
   page: number;
   size: number;
   sort_orders: SortOrder[];
+}
+
+export interface InvoiceFilter extends Filter {
+  reference?: string | null;
+  number?: string  | null;
+  status?: 'paid' | 'not_paid' | null;
 }

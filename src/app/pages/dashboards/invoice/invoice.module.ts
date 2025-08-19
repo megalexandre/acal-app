@@ -19,6 +19,9 @@ import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
 import { InvoiceViewHeaderComponent } from './invoice-view/invoice-view-header/invoice-view-header.component';
 import { InvoiceViewDetailComponent } from './invoice-view/invoice-view-detail/invoice-view-detail.component';
 import { InvoiceViewWaterQualityComponent } from './invoice-view/invoice-view-water-quality/invoice-view-water-quality.component';
+import { NgxMaskDirective } from 'ngx-mask';
+import { InvoiceViewReceiverComponent } from './invoice-view/invoice-view-receiver/invoice-view-receiver.component';
+import { InvoiceCancelComponent } from './invoice-view/invoice-cancel/invoice-cancel.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { InvoiceViewWaterQualityComponent } from './invoice-view/invoice-view-wa
     InvoiceViewComponent,
     InvoiceViewHeaderComponent,
     InvoiceViewDetailComponent,
-    InvoiceViewWaterQualityComponent
+    InvoiceViewWaterQualityComponent,
+    InvoiceViewReceiverComponent,
+    InvoiceCancelComponent,
   ],
   imports: [
     SharedModule,
@@ -46,6 +51,7 @@ import { InvoiceViewWaterQualityComponent } from './invoice-view/invoice-view-wa
     InvoicesRoutingModule, 
 
     DataTablesModule,
+    NgxMaskDirective,
   ],
   providers: [DatePipe],
 })

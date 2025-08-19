@@ -36,4 +36,12 @@ export class InvoiceService {
   preview(reference: string): Observable<Invoice[]>{
      return this.http.get<Invoice[]>(`${this.apiUrl}/preview/${reference}`);
   }
+
+  pay(id: String){
+    return this.http.post(`${this.apiUrl}/pay/${id}`, {});
+  }
+
+  cancelPayment(id: String){
+    return this.http.post(`${this.apiUrl}/cancel-payment/${id}`, {});
+  }
 }

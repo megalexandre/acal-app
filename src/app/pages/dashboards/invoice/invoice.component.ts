@@ -7,6 +7,8 @@ import { ToastService } from '../dashboard/toast-service';
 import { Invoice, InvoiceFilter } from './invoice.model';
 import { InvoiceService } from './invoice.service';
 import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
+import { InvoiceViewReceiverComponent } from './invoice-view/invoice-view-receiver/invoice-view-receiver.component';
+import { InvoiceCancelComponent } from './invoice-view/invoice-cancel/invoice-cancel.component';
 
 @Component({
   selector: 'app-invoice',
@@ -15,13 +17,8 @@ import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
 export class InvoiceComponent implements OnInit{
 
   page: any;
-  filter: InvoiceFilter = {
-    page: 0,
-    size: 10,
-    sort_orders: [{ property: 'created_at', direction: 'DESC' }]
-  };
-
-  loading = true;
+  filter: InvoiceFilter;
+  loading = false;
 
   constructor(
     private router: Router,
@@ -29,7 +26,9 @@ export class InvoiceComponent implements OnInit{
     private invoiceService: InvoiceService,
     private modalService: NgbModal,
     public toastService: ToastService
-  ) {}
+  ) {
+    this.filter = this.initializeFilter();
+  }
 
   ngOnInit(): void {
     this.search();
@@ -49,6 +48,22 @@ export class InvoiceComponent implements OnInit{
     });
   }
 
+  clear(){
+    this.filter = this.initializeFilter();
+    this.search();
+  }
+
+  initializeFilter(): InvoiceFilter {
+    return {
+      reference: null,
+      number: null,
+      status: null,
+      page: 0,
+      size: 10,
+      sort_orders: [{ property: 'created_at', direction: 'DESC' }]
+    };
+  }
+
   onPageChange(newPage: number) {
     this.filter.page = newPage -1 ; 
     this.search();
@@ -62,6 +77,28 @@ export class InvoiceComponent implements OnInit{
     this.router.navigate(['view'], {relativeTo: this.route, state: { invoice } });
   }
 
+
+  receiver(invoice: Invoice): void {
+    const modalRef = this.modalService.open(InvoiceViewReceiverComponent, { centered: true });
+    modalRef.componentInstance.invoice = invoice;
+
+    modalRef.componentInstance.sent.subscribe(() => {
+      this.toastService.show('Recebimento realizado com sucesso!');
+      this.search();
+    });
+
+  }
+  
+  cancel(invoice: Invoice): void {
+    const modalRef = this.modalService.open(InvoiceCancelComponent, { centered: true });
+    modalRef.componentInstance.invoice = invoice;
+
+    modalRef.componentInstance.sent.subscribe(() => {
+      this.toastService.show('Recebimento realizado com sucesso!');
+      this.search();
+    });
+
+  }
   create(): void {
      this.router.navigate(['create'], { relativeTo: this.route });
   }

@@ -1,3 +1,49 @@
+<div class="row mb-3">
+  <div class="col-lg-12">
+    <div class="accordion w-100">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Filtros</button>
+        </h2>
+
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <div class="container-fluid">
+              <div class="row g-2 align-items-end">
+                <div class="col-md-3 col-6">
+                  <label class="form-label">Número</label>
+                  <input type="text" class="form-control" [dropSpecialCharacters]="false" mask="0000-00/000000" [(ngModel)]="filter.number" placeholder="Número da Fatura" (keydown.enter)="search()" />
+                </div>
+
+                <div class="col-md-3 col-12">
+                  <label class="form-label">Status</label>
+                  <select class="form-select" [(ngModel)]="filter.status" (change)="search()">
+                    <option [ngValue]="null">Todos</option>
+                    <option [ngValue]="'paid'">Pagos</option>
+                    <option [ngValue]="'not_paid'">Abertos</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6 col-md-2 offset-md-8 d-grid">
+                  <label class="form-label invisible">Limpar</label>
+                  <button type="button" class="btn btn-outline-secondary" (click)="clear()"><i class="mdi mdi-magnify"></i> Limpar</button>
+                </div>
+
+                <div class="col-6 col-md-2 d-grid">
+                  <label class="form-label invisible">Buscar</label>
+                  <button type="button" class="btn btn-outline-primary" (click)="search()"><i class="mdi mdi-magnify"></i> Buscar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-lg-12">
     <app-card>
@@ -5,7 +51,14 @@
         <h5 class="card-title flex-grow-1 mb-0">Faturas</h5>
 
         <div class="d-flex gap-1 flex-wrap">
-          <app-button btnType="success" outline (click)="create()"> Adicionar </app-button>
+          <div class="btn-group">
+            <button type="button" class="btn btn-light">Ações</button>
+            <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" (click)="create()">Adicionar</a>
+              <a class="dropdown-item">Imprimir</a>
+            </div>
+          </div>
         </div>
       </app-card-header>
 
@@ -14,8 +67,9 @@
           <thead class="table-light" table-header>
             <tr>
               <th>Refererência</th>
-              <th>Vencimento</th>
               <th>Número</th>
+              <th>Vencimento</th>
+              <th>Pagamento</th>
               <th>Endereço</th>
               <th>Cliente</th>
               <th>Total</th>
@@ -24,26 +78,45 @@
           </thead>
 
           <tbody class="list form-check-all" table-body>
-            <tr *ngFor="let i of page.content" (dblclick)="onDoubleClick(i)">
+            <tr
+              *ngFor="let i of page.content"
+              (dblclick)="onDoubleClick(i)"
+              [ngClass]="{
+                'table-success': i.status === 'PAID',
+                'table-danger': i.status === 'OVERDUE',
+                'table-secondary': i.status === 'PENDING',
+              }"
+            >
               <td>{{ i.reference | reference }}</td>
-              <td>{{ i.due_date | date }}</td>
               <td>{{ i.number }}</td>
+              <td>{{ i.due_date | date }}</td>
+              <td>
+                {{ i.paid_at | date }}
+                <span *ngIf="i.status === 'PAID'" class="badge bg-primary-subtle text-body badge-border float-end">Pago</span>
+                <span *ngIf="i.status === 'PENDING'" class="badge bg-primary-subtle text-body badge-border float-end">Aguardando</span>
+                <span *ngIf="i.status === 'OVERDUE'" class="badge bg-primary-subtle text-body badge-border float-end">Atrasado</span>
+              </td>
               <td>{{ i.place.address.name + ' ' + i.place.number + ' ' + i.place.letter }}</td>
               <td>{{ i.customer.name }}</td>
               <td>{{ i.total | currency }}</td>
 
               <td class="text-center">
-                <ul class="list-inline hstack gap-2 mb-0">
-                  <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" ngbTooltip="Edit" placement="top" (click)="edit(i)">
-                    <i class="ri-pencil-fill fs-16"></i>
-                  </li>
+                <div class="dropdown">
+                  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="ri-hexagon-fill fs-16"></i>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <ng-container *ngIf="!i.paid">
+                      <a class="dropdown-item" (click)="receiver(i)">Receber</a>
+                    </ng-container>
 
-                  <li class="list-inline-item me-0" ngbTooltip="Remove" placement="top" data-bs-toggle="tooltip" data-bs-trigger="hover" (click)="delete(i)">
-                    <a class="text-danger d-inline-block remove-item-btn">
-                      <i class="ri-delete-bin-5-fill fs-16"></i>
-                    </a>
-                  </li>
-                </ul>
+                    <ng-container *ngIf="i.paid">
+                      <a class="dropdown-item" (click)="cancel(i)">Estornar Pagamento</a>
+                    </ng-container>
+                    <a class="dropdown-item"> Imprimir </a>
+                    <a class="dropdown-item"> Apagar </a>
+                  </div>
+                </div>
               </td>
             </tr>
           </tbody>

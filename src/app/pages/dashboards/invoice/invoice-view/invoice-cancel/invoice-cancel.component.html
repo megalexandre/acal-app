@@ -1,0 +1,17 @@
+<div class="modal-content">
+  <div class="modal-header"></div>
+
+  <div class="modal-body">
+    <h1>Extornar</h1>
+
+    Você tem certeza que extornar o pagamento <b>{{ invoice.number }}</b
+    >?
+  </div>
+
+  <div class="modal-footer">
+    <div class="d-flex justify-content-between col-12">
+      <app-button type="button" btnType="secondary" (click)="close()" outline> Cancelar </app-button>
+      <app-button type="button" btnType="danger" (click)="confirm()" outline> Extornar </app-button>
+    </div>
+  </div>
+</div>

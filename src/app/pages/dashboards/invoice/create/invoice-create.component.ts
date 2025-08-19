@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Invoice, InvoicePreviewTable, SelectableInvoice, SelectableInvoiceGroup } from '../invoice.model';
 import { InvoiceService } from '../invoice.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-invoice-create',
@@ -18,17 +19,25 @@ export class InvoiceCreateComponent  implements OnInit {
   public categories: string[] = [];
 
 
-  public filter = {
-    hasMeter: null as boolean | null,
-    address: null as string | null,
-    category: null as string | null
-  };
+  public filter;
   
   constructor(
-    public service: InvoiceService
-  ){}
+    public service: InvoiceService,
+    private router: Router,
+    private route: ActivatedRoute,
+  ){
+    this.filter = this.initializeFilter();
+  }
 
   ngOnInit(): void {
+  }
+
+  public initializeFilter() {
+    return {
+      hasMeter: null as boolean | null,
+      address: null as string | null,
+      category: null as string | null
+    }
   }
 
   public search(){
@@ -47,6 +56,10 @@ export class InvoiceCreateComponent  implements OnInit {
         }
       });
     }
+  }
+
+  public back() {
+    this.router.navigate(['../'], {relativeTo: this.route });
   }
 
  public confirm() {
