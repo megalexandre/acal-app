@@ -9,6 +9,7 @@ import { InvoiceService } from './invoice.service';
 import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
 import { InvoiceViewReceiverComponent } from './invoice-view/invoice-view-receiver/invoice-view-receiver.component';
 import { InvoiceCancelComponent } from './invoice-view/invoice-cancel/invoice-cancel.component';
+import { InvoiceDeleteComponent } from './invoice-view/invoice-delete/invoice-delete.component';
 
 @Component({
   selector: 'app-invoice',
@@ -44,6 +45,23 @@ export class InvoiceComponent implements OnInit{
       },
       error: () => {
         this.loading = false;
+      }
+    });
+  }
+
+  print(){
+    this.invoiceService.print(this.filter).subscribe({
+      next: (bytes) => {
+        const blob = new Blob([bytes], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'invoice.pdf';
+        a.click();
+        window.URL.revokeObjectURL(url);
+      },
+      error: () => {
+        this.toastService.show('Erro ao realizar o download do arquivo.');
       }
     });
   }
@@ -99,16 +117,27 @@ export class InvoiceComponent implements OnInit{
     });
 
   }
+
+
+  delete(invoice: Invoice): void {
+    const modalRef = this.modalService.open(InvoiceDeleteComponent, { centered: true });
+    modalRef.componentInstance.invoice = invoice;
+
+    modalRef.componentInstance.sent.subscribe(() => {
+      this.toastService.show('Recebimento realizado com sucesso!');
+      this.search();
+    });
+
+  }
+
+
+
   create(): void {
      this.router.navigate(['create'], { relativeTo: this.route });
   }
 
   edit(invoice: Invoice): void {
     //this.openModal(InvoiceEditComponent, { invoice });
-  }
-
-  delete(invoice: Invoice): void {
-    //this.openModal(InvoiceDeleteComponent, { invoice });
   }
 
   openModal<T>(

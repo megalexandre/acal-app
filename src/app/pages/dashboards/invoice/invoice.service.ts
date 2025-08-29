@@ -21,6 +21,10 @@ export class InvoiceService {
     return this.http.post<Page<Invoice>>(`${this.apiUrl}/paginate`, filter);
   }
 
+  print(filter: InvoiceFilter): Observable<Blob> {
+    return this.http.post(`${this.apiUrl}/print`, filter, { responseType: 'blob' });
+  }
+
   create(invoices: Omit<Invoice, 'id'>[]): Observable<Invoice[]> {
     return this.http.post<Invoice[]>(`${this.apiUrl}/all`, invoices);
   }
@@ -44,4 +48,6 @@ export class InvoiceService {
   cancelPayment(id: String){
     return this.http.post(`${this.apiUrl}/cancel-payment/${id}`, {});
   }
+
+
 }
