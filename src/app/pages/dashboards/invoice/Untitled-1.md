@@ -1,0 +1,5 @@
+- Coliformes Totais: Indicador que mensura contaminação bacteriológica do tipo: bacilos gram-negativos, aeróbios ou anaeróbios facultativos não esporogênicos, oxidase-negativos.
+- E. coli: Indicador que mensura contaminação bacteriológica de origem fecal.
+- Cloro Residual: Indicador do Poder Desinfetante oriundo do Cloro (Agente de Desinfecção).
+- Turbidez: Indicador do espalhamento de luz produzido pela presença de partículas em suspensão ou coloidais.
+- Cor Aparente: Indicador que mensura a cor em amostras com turbidez.

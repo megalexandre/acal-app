@@ -65,15 +65,47 @@ export class IdentificationInputComponent implements OnChanges, ControlValueAcce
   }
 
   validate(control: AbstractControl): ValidationErrors | null {
+    if (!this.control.value) {
+      return { required: true };
+    }
+
+    if (this.selectedType === 'cpf' && !this.isValidCpf(this.control.value)) {
+      return { invalidCpfOrCnpj: true };
+    }
+
+    if (this.selectedType === 'cnpj' && !this.isValidCnpj(this.control.value)) {
+      return { invalidCpfOrCnpj: true };
+    }
+
     return null;
   }
 
+  private isValidCpf(cpf: string): boolean {
+    return true; // Substituir por lógica real
+  }
+
+  private isValidCnpj(cnpj: string): boolean {
+    return true; // Substituir por lógica real
+  }
+
   isInvalid(): boolean {
-    return this.submitted && this.control.touched && !!this.validate(this.control);
+    return this.submitted && this.control.touched && this.control.invalid;
   }
 
   isValid(): boolean {
-    return this.submitted && this.control.touched && !this.validate(this.control);
+    return this.submitted && this.control.touched && this.control.valid;
+  }
+
+  status(): string{
+    if(!this.submitted){
+      return '';
+    }
+
+    else if (this.control.valid){
+      return 'is-valid';
+    }
+
+    return 'is-invalid';
   }
 
   selectType(type: 'cpf' | 'cnpj') {
@@ -84,9 +116,6 @@ export class IdentificationInputComponent implements OnChanges, ControlValueAcce
   }
 
   private updateValue() {
-    this.onChange({
-      type: this.selectedType,
-      value: this.control.value
-    });
+    this.onChange(this.control.value);
   }
 }

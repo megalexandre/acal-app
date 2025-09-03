@@ -1,6 +1,14 @@
 <div class="input-group">
   <!-- Input -->
-  <input type="text" class="form-control" [mask]="selectedType === 'cpf' ? '000.000.000-00' : '00.000.000/0000-00'" [formControl]="control" [disabled]="!selectedType" />
+  <input
+    type="text"
+    class="form-control"
+    [placeholder]="selectedType === 'cpf' ? '000.000.000-00' : '00.000.000/0000-00'"
+    [mask]="selectedType === 'cpf' ? '000.000.000-00' : '00.000.000/0000-00'"
+    [ngClass]="submitted ? { 'is-valid': isValid(), 'is-invalid': isInvalid() } : {}"
+    [formControl]="control"
+    [disabled]="!selectedType"
+  />
 
   <!-- Dropdown -->
   <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -18,3 +26,5 @@
   <ng-container *ngIf="selectedType === 'cpf'">CPF inválido</ng-container>
   <ng-container *ngIf="selectedType === 'cnpj'">CNPJ inválido</ng-container>
 </div>
+
+<div class="valid-feedback">Válido</div>

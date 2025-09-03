@@ -41,7 +41,6 @@ export class WaterQualityCreateComponent implements OnInit, ModalWithSent {
     this.form = this.fb.group({
       reference: ['', [
         Validators.required, 
-        Validators.pattern(/^\d{4}\d{2}$/)
       ]],
 
       analysis: this.fb.array(

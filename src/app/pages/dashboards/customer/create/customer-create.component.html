@@ -17,7 +17,7 @@
 
     <div class="mb-3">
       <label class="form-label">C.P.F\C.N.P.J: <span class="text-danger">*</span></label>
-      <input-identification formControlName="identity_card" [ngClass]="{ 'is-invalid': isInvalid('identity_card'), 'is-valid': isValid('identity_card') }" />
+      <input-identification formControlName="identity_card" [submitted]="submitted" />
 
       <div class="valid-feedback" *ngIf="isValid('identity_card')">Válido</div>
       <div class="invalid-feedback" *ngIf="isInvalid('identity_card')">
