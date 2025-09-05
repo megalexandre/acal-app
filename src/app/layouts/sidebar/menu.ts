@@ -76,7 +76,7 @@ export const MENU: MenuItem[] = [
       {
         id: 3002,
         label: 'Caixa',
-        link: '/links',
+        link: '/financial-record',
         parentId: 3000,
       },
     ]  

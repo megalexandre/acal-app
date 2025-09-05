@@ -35,7 +35,7 @@ import { EcommerceModule } from './ecommerce/ecommerce.module';
     CommonModule,
     FormsModule,
     NgbToastModule,
-    FlatpickrModule.forRoot(),
+    FlatpickrModule,
     CountUpModule,
     NgApexchartsModule,
     LeafletModule,

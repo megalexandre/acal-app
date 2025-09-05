@@ -35,7 +35,7 @@ import { JobComponent } from './job/job.component';
     SimplebarAngularModule,
     NgApexchartsModule,
     SlickCarouselModule,
-    FlatpickrModule.forRoot(),
+    FlatpickrModule,
     DashboardsRoutingModule,
     SharedModule,
     WidgetModule,

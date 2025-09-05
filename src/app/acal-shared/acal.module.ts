@@ -21,19 +21,35 @@ import { GroupSelectComponent } from './select/group-select/group-select.compone
 import { PlaceAddressSelectComponent } from './select/place-address-select/place-address-select.component';
 import { IdentificationInputComponent } from './input/identification/identification.component';
 import { ReferencePipe } from './pipe/reference.pipe';
+import { ReasonPipe } from './pipe/reason.pipe';
 
 
 const PIPES = [  
   GroupPipe,
   BooleanPipe,
   ReferencePipe,
+  ReasonPipe
+]
+
+const COMPONENTS = [
+  MonetaryInputComponent,
+  ButtonComponent,
 ]
 
 @NgModule({
+  imports: [
+    CommonModule,
+    CardModule,
+    TableModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxMaskDirective,
+  ],
+
   declarations: [
     ...PIPES,
-    MonetaryInputComponent,
-    ButtonComponent,
+    ...COMPONENTS,
+
     ReferenceInputComponent,
     DateInputComponent,
     CategorySelectComponent,
@@ -49,19 +65,11 @@ const PIPES = [
     
   ],
 
-  imports: [
-    CommonModule,
-    CardModule,
-    TableModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgxMaskDirective,
-  ],
 
   exports: [
     ...PIPES,
+    ...COMPONENTS,
     MonetaryInputComponent,
-    ButtonComponent,
     CardModule,
     TableModule,
    

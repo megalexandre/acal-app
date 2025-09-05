@@ -82,7 +82,6 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     NgbCollapseModule,
     FeatherModule.pick(allIcons),
     FullCalendarModule,
-    FlatpickrModule.forRoot(),
     SimplebarAngularModule,
     CKEditorModule,
     CountUpModule,

@@ -40,7 +40,8 @@ import { TaskEffects } from './store/Task/task_effect';
 import { TicketEffects } from './store/Ticket/ticket_effect';
 import { TodoEffects } from './store/Todo/todo_effect';
 import { CurrencyMaskConfig, CurrencyMaskModule, CURRENCY_MASK_CONFIG } from 'ng2-currency-mask';
-7
+import { Portuguese } from 'flatpickr/dist/l10n/pt.js';
+import { FlatpickrModule } from 'angularx-flatpickr';
 
 export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     align: "left",
@@ -64,13 +65,19 @@ if (environment.defaultauth === 'firebase') {
   FakeBackendInterceptor;
 }
 
-
+const flatpickrOptions = {
+    locale: Portuguese,
+    altInput: true,
+    altFormat: 'd/m/Y',
+    dateFormat: 'Y-m-d'
+}
 
 @NgModule({
   declarations: [AppComponent],
   bootstrap: [AppComponent],
   imports: [
     CurrencyMaskModule,
+    FlatpickrModule.forRoot(flatpickrOptions),
     TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader: {

@@ -67,8 +67,9 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     SlickCarouselModule,
     CKEditorModule,
     DropzoneModule,
-    FlatpickrModule.forRoot(),
+    FlatpickrModule,
     NgSelectModule,
+
     NgApexchartsModule,
     CountUpModule,
     EcommerceRoutingModule,
