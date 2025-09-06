@@ -250,18 +250,6 @@
                 <div class="col-lg-12">
                   <div>
                     <label for="date-field" class="form-label">Created Date</label>
-                    <input
-                      class="form-control flatpickr-input"
-                      type="text"
-                      placeholder="Select Date"
-                      mwlFlatpickr
-                      [altInput]="true"
-                      [enableTime]="true"
-                      [convertModelValue]="true"
-                      [dateFormat]="'Y-m-d H:i'"
-                      formControlName="date"
-                      [ngClass]="{ 'is-invalid': submitted && form['date'].errors }"
-                    />
                     @if (submitted && form['date'].errors) {
                       <div class="invalid-feedback" align="left">
                         @if (form['date'].errors['required']) {
@@ -324,7 +312,6 @@
     <div class="offcanvas-body">
       <div class="mb-4">
         <label for="datepicker-range" class="form-label text-muted text-uppercase fw-semibold mb-3">Date</label>
-        <input class="form-control flatpickr-input" type="text" placeholder="Select Date" mwlFlatpickr [altInput]="true" id="isDate" />
       </div>
       <div class="mb-4">
         <label for="country-select" class="form-label text-muted text-uppercase fw-semibold mb-3">Country</label>

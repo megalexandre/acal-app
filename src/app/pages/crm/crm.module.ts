@@ -26,7 +26,7 @@ import { SortByCrmPipe } from '../crm/sort-by.pipe';
 
 @NgModule({
   declarations: [ContactsComponent, CompaniesComponent, DealsComponent, LeadsComponent, SortByCrmPipe],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, NgbPaginationModule, NgbTypeaheadModule, NgbTooltipModule, NgbDropdownModule, NgbAccordionModule, FlatpickrModule, NgSelectModule, CRMRoutingModule, SharedModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, NgbPaginationModule, NgbTypeaheadModule, NgbTooltipModule, NgbDropdownModule, NgbAccordionModule, FlatpickrModule, NgSelectModule, CRMRoutingModule, SharedModule, FlatpickrModule],
   providers: [DatePipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

@@ -90,19 +90,7 @@
                   <div class="mb-3">
                     <label class="form-label">Event Date</label>
                     <div class="input-group">
-                      <input
-                        type="text"
-                        id="event-start-date"
-                        class="form-control flatpickr flatpickr-input"
-                        mwlFlatpickr
-                        [altInput]="true"
-                        altFormat="d/m/Y"
-                        [convertModelValue]="true"
-                        formControlName="date"
-                        placeholder="Select date"
-                        readonly
-                        required
-                      />
+                      <input type="text" id="event-start-date" class="form-control flatpickr flatpickr-input" placeholder="Select date" readonly required />
                       <span class="input-group-text"><i class="ri-calendar-event-line"></i></span>
                     </div>
                   </div>
@@ -114,18 +102,7 @@
                       <div class="mb-3">
                         <label class="form-label">Start Time</label>
                         <div class="input-group">
-                          <input
-                            id="timepicker1"
-                            type="text"
-                            mwlFlatpickr
-                            [noCalendar]="true"
-                            [enableTime]="true"
-                            [dateFormat]="'H:i'"
-                            formControlName="start"
-                            class="form-control flatpickr flatpickr-input"
-                            placeholder="Select start time"
-                            readonly
-                          />
+                          <input id="timepicker1" type="text" formControlName="start" class="form-control flatpickr flatpickr-input" placeholder="Select start time" readonly />
                           <span class="input-group-text"><i class="ri-time-line"></i></span>
                         </div>
                       </div>
@@ -135,18 +112,6 @@
                       <div class="mb-3">
                         <label class="form-label">End Time</label>
                         <div class="input-group">
-                          <input
-                            id="timepicker2"
-                            type="text"
-                            mwlFlatpickr
-                            [noCalendar]="true"
-                            [enableTime]="true"
-                            [dateFormat]="'H:i'"
-                            formControlName="end"
-                            class="form-control flatpickr flatpickr-input"
-                            placeholder="Select end time"
-                            readonly
-                          />
                           <span class="input-group-text"><i class="ri-time-line"></i></span>
                         </div>
                       </div>

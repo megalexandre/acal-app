@@ -68,27 +68,27 @@ export class InvoiceCreateComponent  implements OnInit {
     .flatMap(group => group.items) 
     .filter(item => item.checked); 
 
-  selectedItems.forEach(item => {
-    item.due_date = this.dueDate!;
-  });
+    selectedItems.forEach(item => {
+      item.due_date = this.dueDate!;
+    });
 
-  this.service.create(selectedItems).subscribe({
-    next: () => {
-      this.preview.items = this.preview.items
-  .map(group => {
-    const filteredItems = group.items.filter(item => !item.checked);
-    return {
-      ...group,
-      items: filteredItems,
-      count: filteredItems.length,
-    };
-  })
-  .filter(group => group.count > 0);
-    },
-    error: () => {
-    }
-  });
-}
+    this.service.create(selectedItems).subscribe({
+      next: () => {
+        this.preview.items = this.preview.items
+    .map(group => {
+      const filteredItems = group.items.filter(item => !item.checked);
+      return {
+        ...group,
+        items: filteredItems,
+        count: filteredItems.length,
+      };
+    })
+    .filter(group => group.count > 0);
+      },
+      error: () => {
+      }
+    });
+  }
 
   private filterByHasMeter(invoices: Invoice[]): Invoice[] {
     if (this.filter.hasMeter === null) return invoices;

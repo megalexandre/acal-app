@@ -80,6 +80,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     NgbNavModule,
     NgbPaginationModule,
     NgbCollapseModule,
+    FlatpickrModule,
     FeatherModule.pick(allIcons),
     FullCalendarModule,
     SimplebarAngularModule,

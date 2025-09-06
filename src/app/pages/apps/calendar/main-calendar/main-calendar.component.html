@@ -95,19 +95,6 @@
                   <div class="mb-3">
                     <label class="form-label">Event Date</label>
                     <div class="input-group">
-                      <input
-                        type="text"
-                        id="event-start-date"
-                        class="form-control flatpickr flatpickr-input"
-                        mwlFlatpickr
-                        [altInput]="true"
-                        altFormat="d/m/Y"
-                        [convertModelValue]="true"
-                        formControlName="date"
-                        placeholder="Select date"
-                        readonly
-                        required
-                      />
                       <span class="input-group-text"><i class="ri-calendar-event-line"></i></span>
                     </div>
                   </div>
@@ -119,18 +106,6 @@
                       <div class="mb-3">
                         <label class="form-label">Start Time</label>
                         <div class="input-group">
-                          <input
-                            id="timepicker1"
-                            type="text"
-                            mwlFlatpickr
-                            [noCalendar]="true"
-                            [enableTime]="true"
-                            [dateFormat]="'H:i'"
-                            formControlName="start"
-                            class="form-control flatpickr flatpickr-input"
-                            placeholder="Select start time"
-                            readonly
-                          />
                           <span class="input-group-text"><i class="ri-time-line"></i></span>
                         </div>
                       </div>
@@ -140,18 +115,7 @@
                       <div class="mb-3">
                         <label class="form-label">End Time</label>
                         <div class="input-group">
-                          <input
-                            id="timepicker2"
-                            type="text"
-                            mwlFlatpickr
-                            [noCalendar]="true"
-                            [enableTime]="true"
-                            [dateFormat]="'H:i'"
-                            formControlName="end"
-                            class="form-control flatpickr flatpickr-input"
-                            placeholder="Select end time"
-                            readonly
-                          />
+                          <input id="timepicker2" type="text" formControlName="end" class="form-control flatpickr flatpickr-input" placeholder="Select end time" readonly />
                           <span class="input-group-text"><i class="ri-time-line"></i></span>
                         </div>
                       </div>
@@ -164,9 +128,7 @@
                 <div class="col-12">
                   <div class="mb-3">
                     <label for="event-location" class="form-label">Location</label>
-                    <div>
-                      <input type="text" class="form-control" formControlName="location" name="event-location" id="event-location" placeholder="Event location" />
-                    </div>
+                    <div></div>
                   </div>
                 </div>
                 <!--end col-->
@@ -240,9 +202,7 @@
             <div class="col-12">
               <div class="mb-3">
                 <label>Event Date</label>
-                <div class="input-group">
-                  <input class="form-control flatpickr-input" type="text" mwlFlatpickr name="editDate" formControlName="editDate" [altInput]="true" [convertModelValue]="true" placeholder="Select date" />
-                </div>
+                <div class="input-group"></div>
               </div>
             </div>
             <!--end col-->
@@ -251,17 +211,13 @@
                 <div class="col-6">
                   <div class="mb-3">
                     <label class="form-label">Start Time</label>
-                    <div class="input-group">
-                      <input class="form-control flatpickr-input" type="text" placeholder="Select start time" mwlFlatpickr [noCalendar]="true" name="editStart" formControlName="editStart" [enableTime]="true" [dateFormat]="'H:i'" />
-                    </div>
+                    <div class="input-group"></div>
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="mb-3">
                     <label class="form-label">End Time</label>
-                    <div class="input-group">
-                      <input class="form-control flatpickr-input" type="text" placeholder="Select end time" mwlFlatpickr [noCalendar]="true" name="editEnd" formControlName="editEnd" [enableTime]="true" [dateFormat]="'H:i'" />
-                    </div>
+                    <div class="input-group"></div>
                   </div>
                 </div>
               </div>

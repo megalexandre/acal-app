@@ -9,11 +9,11 @@
         <div class="row mb-3">
           <div class="col-md-3 col-6">
             <label class="form-label mb-0">Inicio: </label>
-            <input class="form-control flatpickr-input" type="text" mwlFlatpickr />
+            <input class="form-control flatpickr-input" type="text" mwlFlatpickr [(ngModel)]="filter.date_start" />
           </div>
           <div class="col-md-3 col-6">
             <label class="form-label mb-0">Fim: </label>
-            <input class="form-control flatpickr-input" type="text" mwlFlatpickr />
+            <input class="form-control flatpickr-input" type="text" mwlFlatpickr [(ngModel)]="filter.date_end" />
           </div>
         </div>
 
