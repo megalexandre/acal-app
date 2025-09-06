@@ -23,4 +23,9 @@ export class FinancialRecordService {
 
     return this.http.post<Page<FinancialRecord>>(`${this.apiUrl}/paginate`, payload);
   }
+
+  print(filter: FinancialRecordFilter): Observable<Blob> {
+    return this.http.post(`${this.apiUrl}/print`, filter, { responseType: 'blob' });
+  }
+  
 }

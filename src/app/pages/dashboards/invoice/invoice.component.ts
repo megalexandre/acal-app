@@ -2,7 +2,7 @@ import { Component, OnInit, Type } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { ActivatedRoute, Router } from '@angular/router';
-import { ModalWithSent } from '../address/address.model';
+import { Address, ModalWithSent } from '../address/address.model';
 import { ToastService } from '../dashboard/toast-service';
 import { Invoice, InvoiceFilter } from './invoice.model';
 import { InvoiceService } from './invoice.service';
@@ -10,6 +10,7 @@ import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
 import { InvoiceViewReceiverComponent } from './invoice-view/invoice-view-receiver/invoice-view-receiver.component';
 import { InvoiceCancelComponent } from './invoice-view/invoice-cancel/invoice-cancel.component';
 import { InvoiceDeleteComponent } from './invoice-view/invoice-delete/invoice-delete.component';
+import { AddressService } from '../address/address.service';
 
 @Component({
   selector: 'app-invoice',
@@ -21,10 +22,13 @@ export class InvoiceComponent implements OnInit{
   filter: InvoiceFilter;
   loading = false;
 
+  public addresses: Address[] = [];
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private invoiceService: InvoiceService,
+    private addressService: AddressService,
     private modalService: NgbModal,
     public toastService: ToastService
   ) {
@@ -33,6 +37,15 @@ export class InvoiceComponent implements OnInit{
 
   ngOnInit(): void {
     this.search();
+
+    this.addressService.get().subscribe({
+      next: (addresses) => {
+        this.addresses = addresses.sort((a, b) => a.name.localeCompare(b.name));;
+      },
+      error: () => {
+        this.addresses = [];
+      }
+    });
   }
 
   search(): void {
@@ -71,6 +84,7 @@ print() {
 
   initializeFilter(): InvoiceFilter {
     return {
+      address: null,
       reference: null,
       number: null,
       status: null,

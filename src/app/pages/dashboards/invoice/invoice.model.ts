@@ -1,9 +1,8 @@
- import { ex } from "@fullcalendar/core/internal-common";
+ import { Address } from "../address/address.model";
 import { Category } from "../category/category.model";
 import { Customer } from "../customer/customer.model";
 import { SortOrder } from "../link/link.model";
 import { Place } from "../place/place.model";
-import { number } from "echarts";
 
 
 export interface Invoice {
@@ -64,6 +63,7 @@ export interface Filter {
 }
 
 export interface InvoiceFilter extends Filter {
+  address: Address | null;
   reference?: string | null;
   number?: string  | null;
   status?: 'paid' | 'not_paid' | null;

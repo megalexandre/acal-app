@@ -22,13 +22,15 @@ import { PlaceAddressSelectComponent } from './select/place-address-select/place
 import { IdentificationInputComponent } from './input/identification/identification.component';
 import { ReferencePipe } from './pipe/reference.pipe';
 import { ReasonPipe } from './pipe/reason.pipe';
+import { SumByKeyPipe } from './pipe/sum-by-key.pipe.ts.pipe';
 
 
 const PIPES = [  
   GroupPipe,
   BooleanPipe,
   ReferencePipe,
-  ReasonPipe
+  ReasonPipe,
+  SumByKeyPipe
 ]
 
 const COMPONENTS = [

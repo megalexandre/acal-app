@@ -23,6 +23,16 @@
                     <option [ngValue]="'not_paid'">Abertos</option>
                   </select>
                 </div>
+
+                <div class="col-md-3 col-12">
+                  <label class="form-label">Endereço:</label>
+                  <select class="form-select" [(ngModel)]="filter.address" (change)="search()">
+                    <option [ngValue]="null">Selecione um endereço</option>
+                    <option *ngFor="let address of addresses" [ngValue]="address">
+                      {{ address.name }}
+                    </option>
+                  </select>
+                </div>
               </div>
 
               <div class="row">

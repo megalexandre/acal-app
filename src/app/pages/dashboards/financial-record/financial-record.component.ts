@@ -46,6 +46,21 @@ export class FinancialRecordComponent implements OnInit {
     });
   }
 
+  print() {
+    this.service.print(this.filter).subscribe({
+      next: (bytes) => {
+        const blob = new Blob([bytes], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+
+        window.open(url, '_blank');
+
+      },
+      error: () => {
+        this.toastService.show('Erro ao realizar o download do arquivo.');
+      }
+    });
+  }
+
   onPageChange(page: number): void {
     setTimeout(() => {
       this.filter.page = page;
