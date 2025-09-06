@@ -17,8 +17,8 @@ export class FinancialRecordService {
   paginate(filter: FinancialRecordFilter): Observable<Page<FinancialRecord>> {
     const payload = {
       ...filter,
-      date_start: filter.date_start ? format(new Date(filter.date_start), "yyyy-MM-dd'T'HH:mm:ss") : null,
-      date_end: filter.date_end ? format(new Date(filter.date_end), "yyyy-MM-dd'T'HH:mm:ss") : null,
+      date_start: filter.date_start ? format(new Date(filter.date_start + 'T00:00:00'), "yyyy-MM-dd") : null,
+      date_end: filter.date_start ? format(new Date(filter.date_end + 'T00:00:00'), "yyyy-MM-dd") : null,
     };
 
     return this.http.post<Page<FinancialRecord>>(`${this.apiUrl}/paginate`, payload);
