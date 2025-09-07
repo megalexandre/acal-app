@@ -18,7 +18,7 @@
       <app-address-select [(ngModel)]="address" [ngModelOptions]="{ standalone: true }" />
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3" *ngIf="address">
       <label class="form-label"> Local: <span class="text-danger">*</span></label>
       <app-place-address-select [address]="address" formControlName="place_id" [control]="placeControl" [disabled]="!address" />
     </div>

@@ -55,7 +55,7 @@ export class PlaceAddressSelectComponent implements ControlValueAccessor, OnChan
   }
 
   private build(options: Place[], address: Address): PlaceSelect[] {
-    const filtered = options.filter(item => item.address.name === address.name);
+    const filtered = options.filter(item => item.address.id === address.id);
 
     return Array.from(new Set(filtered.map(g => g.address.name)))
       .sort((a, b) => a.localeCompare(b))
