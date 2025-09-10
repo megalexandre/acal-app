@@ -18,6 +18,12 @@ export const MENU: MenuItem[] = [
         link: '/water-quality',
         parentId: 1000,
       },
+      {
+        id: 1002,
+        label: 'Hidrômetros',
+        link: '/water-meters',
+        parentId: 1000,
+      },
     ]  
   },
 

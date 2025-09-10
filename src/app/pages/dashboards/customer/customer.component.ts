@@ -2,12 +2,12 @@ import { Component, OnInit, Type } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { ModalWithSent } from '../address/address.model';
-import { ToastService } from '../dashboard/toast-service';
 import { CustomerCreateComponent } from './create/customer-create.component';
 import { Customer, CustomerFilter, DEFAULT_CUSTOMER_FILTER } from './customer.model';
 import { CustomerService } from './customer.service';
 import { CustomerDeleteComponent } from './delete/customer-delete.component';
 import { CustomerEditComponent } from './edit/customer-edit.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-customer',
@@ -22,7 +22,7 @@ export class CustomerComponent implements OnInit {
   constructor(
     private service: CustomerService,
     private modalService: NgbModal,
-    public toastService: ToastService
+    public toastService: ToastrService
   ) {}
 
   ngOnInit(): void {

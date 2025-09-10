@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { ToastService } from '../dashboard/toast-service';
 import { DEFAULT_FILTER, FinancialRecord, FinancialRecordFilter } from './financial-record.model';
 import { FinancialRecordService } from './financial-record.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   templateUrl: './financial-record.component.html',
@@ -16,7 +16,6 @@ export class FinancialRecordComponent implements OnInit {
 
   constructor(
     private service: FinancialRecordService,
-    public toastService: ToastService
   ) {}
 
   ngOnInit(): void {
@@ -56,7 +55,6 @@ export class FinancialRecordComponent implements OnInit {
 
       },
       error: () => {
-        this.toastService.show('Erro ao realizar o download do arquivo.');
       }
     });
   }

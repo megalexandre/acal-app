@@ -1,14 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-// Component Pages
-import { AnalyticsComponent } from './analytics/analytics.component';
-import { CrmComponent } from './crm/crm.component';
-import { CryptoComponent } from './crypto/crypto.component';
-import { DashboardBlogComponent } from './dashboard-blog/dashboard-blog.component';
-import { JobComponent } from './job/job.component';
-import { NftComponent } from './nft/nft.component';
-import { ProjectsComponent } from './projects/projects.component';
 
 const routes: Routes = [
   {
@@ -44,34 +36,6 @@ const routes: Routes = [
     loadChildren: () => import('./financial-record/financial-record.module').then((m) => m.FinancialRecordModule),
   },
 
-  {
-    path: 'analytics',
-    component: AnalyticsComponent,
-  },
-  {
-    path: 'crm',
-    component: CrmComponent,
-  },
-  {
-    path: 'crypto',
-    component: CryptoComponent,
-  },
-  {
-    path: 'projects',
-    component: ProjectsComponent,
-  },
-  {
-    path: 'nft',
-    component: NftComponent,
-  },
-  {
-    path: 'job',
-    component: JobComponent,
-  },
-  {
-    path: 'dashboard-blog',
-    component: DashboardBlogComponent,
-  },
 ];
 
 @NgModule({

@@ -12,7 +12,6 @@ import { CountUpModule } from 'ngx-countup';
 import { NgxMaskDirective } from 'ngx-mask';
 import { AcalModule } from 'src/app/acal-shared/acal.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { InvoicesRoutingModule } from '../../invoices/invoices-routing.module';
 import { InvoiceCreateComponent } from './create/invoice-create.component';
 import { InvoiceRoutingModule } from './invoice-routing.module';
 import { InvoiceCancelComponent } from './invoice-view/invoice-cancel/invoice-cancel.component';
@@ -50,8 +49,6 @@ import { InvoiceComponent } from './invoice.component';
     CountUpModule, 
     FeatherModule.pick(allIcons), 
     FlatpickrModule, 
-    InvoicesRoutingModule, 
-
     DataTablesModule,
     NgxMaskDirective,
   ],
