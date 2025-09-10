@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'water-quality',
     loadChildren: () => import('./water-quality/water-quality.module').then((m) => m.WaterQualityModule),
   },
+   {
+    path: 'water-meters',
+    loadChildren: () => import('./water-meter/water-meter.module').then((m) => m.WaterMeterModule),
+  },
   {
     path: 'links',
     loadChildren: () => import('./link/link.module').then((m) => m.LinkModule),
