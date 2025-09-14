@@ -3,7 +3,6 @@ import { application } from './application';
 import { candidatelist } from './candidateList';
 import { cartData } from './cart';
 import { jobcategories } from './category';
-import { lineAreaChart, lineBarChart, pieChart, donutChart, polarChart, radarChart } from './chartjs';
 import { groupData, chatData, MessagesData, contactData } from './chat';
 import { companieslist } from './companiesList';
 import { Contacts, Companies, deals, Leads } from './crm';
@@ -65,12 +64,6 @@ export {
   candidatelist,
   cartData,
   jobcategories,
-  lineAreaChart,
-  lineBarChart,
-  pieChart,
-  donutChart,
-  polarChart,
-  radarChart,
   groupData,
   chatData,
   MessagesData,
