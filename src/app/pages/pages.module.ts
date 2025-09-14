@@ -15,7 +15,6 @@ import lottie from 'lottie-web';
 import { SharedModule } from '../shared/shared.module';
 import { WidgetModule } from '../shared/widget/widget.module';
 import { DashboardsModule } from './dashboards/dashboards.module';
-import { AppsModule } from './apps/apps.module';
 import { EcommerceModule } from './ecommerce/ecommerce.module';
 
 @NgModule({
@@ -35,7 +34,6 @@ import { EcommerceModule } from './ecommerce/ecommerce.module';
     SlickCarouselModule,
     LightboxModule,
     DashboardsModule,
-    AppsModule,
     EcommerceModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
