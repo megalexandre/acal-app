@@ -61,20 +61,19 @@ export class InvoiceComponent implements OnInit{
     });
   }
 
-print() {
-  this.invoiceService.print(this.filter).subscribe({
-    next: (bytes) => {
-      const blob = new Blob([bytes], { type: 'application/pdf' });
-      const url = window.URL.createObjectURL(blob);
+  print() {
+    this.invoiceService.print(this.filter).subscribe({
+      next: (bytes) => {
+        const blob = new Blob([bytes], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
 
-      window.open(url, '_blank');
-
-    },
-    error: () => {
-      this.toastService.show('Erro ao realizar o download do arquivo.');
-    }
-  });
-}
+        window.open(url, '_blank');
+      },
+      error: () => {
+        this.toastService.show('Erro ao realizar o download do arquivo.');
+      }
+    });
+  }
 
   clear(){
     this.filter = this.initializeFilter();

@@ -157,6 +157,27 @@ export class TopbarComponent implements OnInit {
     }
   }
 
+ backup() {
+  this.topbarService.backup().subscribe({
+    next: (bytes) => {
+      const blob = new Blob([bytes], { type: 'application/zip' });
+      const url = window.URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `backup_${new Date().toISOString()}.zip`;
+      a.click();
+
+      window.URL.revokeObjectURL(url);
+    },
+    error: (err) => {
+      console.error('Erro ao baixar backup', err);
+    }
+  });
+}
+
+
+
   /***
    * Language Listing
    */
