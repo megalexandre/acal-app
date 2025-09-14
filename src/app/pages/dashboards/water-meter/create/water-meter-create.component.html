@@ -1,0 +1,74 @@
+<app-card *ngIf="!hasRefernece">
+  <app-card-body>
+    <div class="container-fluid">
+      <div class="row g-2 align-items-end">
+        <div class="col-md-6 col-12">
+          <label class="form-label">Referência</label>
+          <app-input-reference [(ngModel)]="reference" (keydown.enter)="search()" />
+        </div>
+      </div>
+
+      <hr />
+      <div class="row">
+        <div class="col-6 col-md-2 offset-md-8 d-grid">
+          <label class="form-label invisible">voltar</label>
+          <button type="button" class="btn btn-outline-secondary" (click)="back()"><i class="mdi mdi-magnify"></i> Voltar</button>
+        </div>
+
+        <div class="col-6 col-md-2 d-grid">
+          <label class="form-label invisible">Buscar</label>
+          <button type="button" class="btn btn-outline-primary" (click)="search()"><i class="mdi mdi-magnify"></i> Buscar</button>
+        </div>
+      </div>
+    </div>
+  </app-card-body>
+</app-card>
+
+<div class="row" *ngIf="hasRefernece">
+  <div class="col-lg-12">
+    <app-card>
+      <app-card-header>
+        <h5 class="card-title flex-grow-1 mb-0">{{ reference | reference }}</h5>
+      </app-card-header>
+
+      <app-card-body>
+        <form [formGroup]="form">
+          <app-table>
+            <thead table-header>
+              <tr>
+                <th>Link:</th>
+                <th>Mês Passado:</th>
+                <th>Mês Atual: {{ reference }}</th>
+              </tr>
+            </thead>
+            <tbody table-body formArrayName="items">
+              <tr *ngFor="let item of items.controls; let i = index" [formGroupName]="i">
+                <td>{{ item.get('link_name')?.value }}</td>
+                <td>
+                  <input type="number" mask="0*" thousandSeparator="." [dropSpecialCharacters]="true" formControlName="start" class="form-control" />
+
+                  <div *ngIf="item.get('start')?.invalid && item.get('start')?.touched" class="text-danger">Obrigatório</div>
+                </td>
+                <td>
+                  <input type="number" mask="0*" thousandSeparator="." [dropSpecialCharacters]="true" formControlName="end" class="form-control" />
+
+                  <div *ngIf="item.get('end')?.invalid && item.get('end')?.touched" class="text-danger">Obrigatório</div>
+                </td>
+              </tr>
+            </tbody>
+          </app-table>
+        </form>
+      </app-card-body>
+    </app-card>
+
+    <div class="row">
+      <div class="col-6 col-md-2 offset-md-8 d-grid">
+        <button type="button" class="btn btn-outline-secondary" (click)="back()"><i class="mdi mdi-magnify"></i> Voltar</button>
+      </div>
+
+      <div class="col-6 col-md-2 d-grid">
+        <button type="button" class="btn btn-outline-primary" (click)="save()"><i class="mdi mdi-magnify"></i> Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>

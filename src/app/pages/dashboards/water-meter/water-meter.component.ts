@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WaterMeterService } from './water-meter.service';
 import { WaterMeter } from './water-meter.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -10,11 +11,17 @@ import { WaterMeter } from './water-meter.model';
 export class WaterMeterComponent implements OnInit{
 
   page: any;
-  ready = false;
+  loading = false;
 
   constructor(
     private service: WaterMeterService,
+    private router: Router,
+    private route: ActivatedRoute,
   ) {}
+
+  create(): void {
+    this.router.navigate(['create'], {relativeTo: this.route, state: {} });
+  }
 
   trackById(index: number, item: WaterMeter): string {
     return item.id;
@@ -25,7 +32,18 @@ export class WaterMeterComponent implements OnInit{
   }
 
   search(): void {
-    this.ready = false;
+    this.loading = false;
+
+   this.service.paginate({}).subscribe({
+      next: (page) => {
+        this.page = page;
+        this.loading = false;
+      },
+      error: () => {
+        this.loading = false;
+      }
+    });
+
   }
 
   onPageChange(page: number): void {

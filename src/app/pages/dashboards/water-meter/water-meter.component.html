@@ -26,7 +26,7 @@
       <app-card-header>
         <h5 class="card-title flex-grow-1 mb-0">Hidrômetros</h5>
         <div class="d-flex gap-1 flex-wrap">
-          <app-button btnType="success" outline>Adicionar</app-button>
+          <app-button btnType="success" outline (click)="create()">Adicionar </app-button>
         </div>
       </app-card-header>
 
@@ -35,29 +35,24 @@
           <table class="table table-striped table-borded align-middle table-nowrap mb-0">
             <thead>
               <tr>
-                <th>Nome</th>
-                <th></th>
-                <th></th>
+                <th>Referência:</th>
+                <th>Nome:</th>
+                <th>Mês Anterior:</th>
+                <th>Mês Atual:</th>
+                <th>Consumo:</th>
+                <th>Consumo considerado:</th>
+                <th>Total:</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let item of page?.content; trackBy: trackById; let i = index">
-                <td>{{ item | json }}</td>
-                <td></td>
-
-                <td class="text-center">
-                  <ul class="list-inline hstack justify-content-center gap-2 mb-0">
-                    <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" ngbTooltip="Edit" placement="top">
-                      <i class="ri-pencil-fill fs-16"></i>
-                    </li>
-
-                    <li class="list-inline-item me-0" ngbTooltip="Remove" placement="top" data-bs-toggle="tooltip" data-bs-trigger="hover">
-                      <a class="text-danger d-inline-block remove-item-btn">
-                        <i class="ri-delete-bin-5-fill fs-16"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </td>
+                <td>{{ item.reference | reference }}</td>
+                <td>{{ item.link_name }}</td>
+                <td>{{ item.start | number }}</td>
+                <td>{{ item.end | number }}</td>
+                <td>{{ item.consumption_total | number }}</td>
+                <td>{{ item.paid_usage_value | number }}</td>
+                <td>{{ item.total | currency }}</td>
               </tr>
             </tbody>
           </table>
