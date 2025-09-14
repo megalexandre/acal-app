@@ -32,9 +32,12 @@ import { TaskEffects } from './store/Task/task_effect';
 import { TicketEffects } from './store/Ticket/ticket_effect';
 import { TodoEffects } from './store/Todo/todo_effect';
 import { CurrencyMaskConfig, CurrencyMaskModule, CURRENCY_MASK_CONFIG } from 'ng2-currency-mask';
-import { Portuguese } from 'flatpickr/dist/l10n/pt.js';
+
 import { FlatpickrModule } from 'angularx-flatpickr';
+
+
 import localePt from '@angular/common/locales/pt';
+import { Portuguese } from './shared/flatpickr-locale-pt';
 
 registerLocaleData(localePt);
 

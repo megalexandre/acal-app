@@ -111,21 +111,22 @@
               <td>{{ i.total | currency }}</td>
 
               <td class="text-center">
-                <div class="dropdown">
-                  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="ri-hexagon-fill fs-16"></i>
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <ng-container *ngIf="!i.paid">
-                      <a class="dropdown-item" (click)="receiver(i)">Receber</a>
-                    </ng-container>
+                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" 4data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="ri-hexagon-fill fs-16"></i>
+                </button>
 
-                    <ng-container *ngIf="i.paid">
-                      <a class="dropdown-item" (click)="cancel(i)">Estornar Pagamento</a>
-                    </ng-container>
-                    <a class="dropdown-item"> Imprimir </a>
-                    <a class="dropdown-item" (click)="delete(i)"> Deletar </a>
-                  </div>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <ng-container *ngIf="!i.paid">
+                    <button class="dropdown-item" type="button" (click)="receiver(i)">Receber</button>
+                  </ng-container>
+
+                  <ng-container *ngIf="i.paid">
+                    <button class="dropdown-item" type="button" (click)="cancel(i)">Estornar Pagamento</button>
+                  </ng-container>
+
+                  <button class="dropdown-item" type="button">Imprimir</button>
+
+                  <button class="dropdown-item" type="button" (click)="delete(i)">Deletar</button>
                 </div>
               </td>
             </tr>
