@@ -17,7 +17,7 @@ import { InvoiceService } from './invoice.service';
 })
 export class InvoiceComponent implements OnInit{
 
-  page: any;
+  page: any = { content: [] };
   filter: InvoiceFilter;
   loading = false;
 
@@ -61,6 +61,23 @@ export class InvoiceComponent implements OnInit{
     });
   }
 
+  printOne(invoice: Invoice){
+    const filter: InvoiceFilter = this.initializeFilter()
+    filter.id = invoice.id;
+
+    this.invoiceService.print(filter).subscribe({
+      next: (bytes) => {
+        const blob = new Blob([bytes], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+
+        window.open(url, '_blank');
+      },
+      error: () => {
+        this.toastService.show('Erro ao realizar o download do arquivo.');
+      }
+    });
+  }
+
   print() {
     this.invoiceService.print(this.filter).subscribe({
       next: (bytes) => {
@@ -82,6 +99,7 @@ export class InvoiceComponent implements OnInit{
 
   initializeFilter(): InvoiceFilter {
     return {
+      id: null, 
       address: null,
       reference: null,
       number: null,

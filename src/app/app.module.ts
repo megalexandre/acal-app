@@ -38,6 +38,7 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 
 import localePt from '@angular/common/locales/pt';
 import { Portuguese } from './shared/flatpickr-locale-pt';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 registerLocaleData(localePt);
 
@@ -98,6 +99,7 @@ const storeDevConfig = {
   logOnly: environment.production,
 };
 
+
 @NgModule({
   declarations: [AppComponent],
   bootstrap: [AppComponent],
@@ -113,7 +115,9 @@ const storeDevConfig = {
     AppRoutingModule,
     LayoutsModule,
     PagesModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgxMaskDirective,
+    NgxMaskPipe,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
@@ -121,6 +125,7 @@ const storeDevConfig = {
     { provide: LOCALE_ID, useValue: 'pt-BR' },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL'},
     { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig },
+    provideNgxMask({}),
     provideHttpClient(withInterceptorsFromDi()),
   ],
 })

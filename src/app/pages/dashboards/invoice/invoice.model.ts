@@ -63,6 +63,7 @@ export interface Filter {
 }
 
 export interface InvoiceFilter extends Filter {
+  id: string | null;
   address: Address | null;
   reference?: string | null;
   number?: string  | null;

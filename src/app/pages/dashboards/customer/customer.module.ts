@@ -14,6 +14,7 @@ import { CustomerCreateComponent } from './create/customer-create.component';
 import { CustomerEditComponent } from './edit/customer-edit.component';
 import { CustomerDeleteComponent } from './delete/customer-delete.component';
 import { DataTablesModule } from 'angular-datatables';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,8 @@ import { DataTablesModule } from 'angular-datatables';
     DataTablesModule,
     AcalModule,
     FormsModule,
+    NgxMaskDirective,
+    NgxMaskPipe
   ],
   providers: [
     CustomerService,
