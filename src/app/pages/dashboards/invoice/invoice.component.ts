@@ -152,7 +152,7 @@ export class InvoiceComponent implements OnInit{
     modalRef.componentInstance.invoice = invoice;
 
     modalRef.componentInstance.sent.subscribe(() => {
-      this.toastService.show('Recebimento realizado com sucesso!');
+      this.toastService.show('Registro Apagado!');
       this.search();
     });
 
