@@ -25,8 +25,6 @@ export class CategorySelectComponent implements ControlValueAccessor {
   @Input() control: FormControl | null = null;
 
   groups: CategorySelect[] = [];
-
-  // Agora o value é um Category, não string
   value: Category | null = null;
 
   private onChange: (value: any) => void = () => {};

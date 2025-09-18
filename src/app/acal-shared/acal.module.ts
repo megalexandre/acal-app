@@ -23,6 +23,7 @@ import { IdentificationInputComponent } from './input/identification/identificat
 import { ReferencePipe } from './pipe/reference.pipe';
 import { ReasonPipe } from './pipe/reason.pipe';
 import { SumByKeyPipe } from './pipe/sum-by-key.pipe.ts.pipe';
+import { CategoryPipe } from './pipe/category.pipe';
 
 
 const PIPES = [  
@@ -30,7 +31,8 @@ const PIPES = [
   BooleanPipe,
   ReferencePipe,
   ReasonPipe,
-  SumByKeyPipe
+  SumByKeyPipe,
+  CategoryPipe,
 ]
 
 const COMPONENTS = [
